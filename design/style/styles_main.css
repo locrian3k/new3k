@@ -600,7 +600,7 @@ a:focus-visible {
 
 @keyframes scroll {
   from { transform: translateX(0);}
-  to { transform: translateX(calc(-30%)); }
+  to { transform: translateX(calc(-20%)); }
 }
 
 /* scrolling li's */

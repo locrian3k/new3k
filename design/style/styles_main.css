@@ -595,6 +595,9 @@ a:focus-visible {
 }
 
 .scroller[data-direction="right"] { --_animation-direction: reverse; }
+.scroller[data-direction="right"] .scroller__inner { 
+  animation: scroll-right var(--_animation-duration, 60s) linear infinite;
+}
 .scroller[data-direction="left"] { --_animation-direction: forwards; }
 .scroller[data-speed="fast"] { --_animation-duration: 50s; }
 .scroller[data-speed="slow"] { --_animation-duration: 60s; }
@@ -602,6 +605,11 @@ a:focus-visible {
 @keyframes scroll {
   from { transform: translateX(0); }
   to { transform: translateX(calc(-50%)); }
+}
+
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 /* scrolling li's */

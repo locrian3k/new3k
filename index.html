@@ -1,91 +1,93 @@
 <!DOCTYPE html>
 <html lang="en-US">
+<head>
+  <title>3Kingdoms - Home</title>
 
-  <head>
-    <title>3Kingdoms - Home</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official site for the MUD, Three Kingdoms.">
-    <meta name="keywords" content="Three Kingdoms mud, text-based game, 3kingdoms">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#000000">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="author" content="Mimic">
-    <!-- Font Awesome stylesheet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/design/style/styles_main.css">
-  </head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official site for the MUD, Three Kingdoms.">
+  <meta name="keywords" content="Three Kingdoms mud, text-based game, 3kingdoms">
+  <meta name="author" content="Mimic">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#000000">
 
-  <body>
-    <div class="accessibility">
-      <!-- THIS CODE ALLOWS SCREEN READERS TO SKIP THE NAVIGATION MENU AND VIEW CONTENT OF PAGE -->
-      <div id="skip-to-content">
-        <a href="#content" id="skip-to-content-link">
-          SKIP TO CONTENT
-        </a>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
 
-        <button onclick="topFunction()" id="GoToTopBtn" title="Go to top">
-          <strong>Top</strong>
-        </button>
-      </div>
-    </div>
+  <link rel="stylesheet" href="/design/style/styles_main.css">
+</head>
 
-    <header>
-      <div class="logo-container"></div>
-      <a href="../index.html" class="nav-logo">
-        <img class="logo-image" src="/images/three-kingdoms-logo.png" alt="Three Kingdoms logo.">
-      </a>
-      </div>
-      <nav id="navbar">
-        <button id="menu-toggle" aria-expanded="false" aria-controls="primary-navigation" title="Menu">
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </button>
-        <div class="navLinks-playNow">
-          <div class="primary-navigation-container">
-            <!-- <ul data-state="closed" class="primary-navigation nav-links" id="primary-navigation">
-              <li><a href="../index6.html" id="home">Home</a></li>
-              <li><a href="#about"><span class="purple" aria-hidden="true">|</span> About</a></li>
-              <li><a href="../index6.html"><span class="green" aria-hidden="true">|</span> Guilds</a></li>
-              <li><a href="../index6.html"><span class="blue" aria-hidden="true">|</span> How to Play</a></li>
-              <li><a href="../index6.html"><span class="purple" aria-hidden="true">|</span> <abbr
-                    title="Voluntary Access Fees">VAFs</abbr></a></li>
-              <li><a href="../index6.html"><span class="green" aria-hidden="true">|</span> <abbr
-                    title="Voluntary Access Fees">Contact</abbr></a></li>
-            </ul> -->
-            <ul data-state="closed" class="primary-navigation nav-links" id="primary-navigation">
-              <li class="border1"><a href="index.html" id="home">Home</a></li>
-              <li class="border1"><a href="#about">About</a></li>
-              <li class="border1"><a href="../index6.html">Guilds</a></li>
-              <li class="border1"><a href="../index6.html">How to Play</a></li>
-              <li class="border1"><a href="../index6.html"><abbr
-                    title="Voluntary Access Fees">VAFs</abbr></a></li>
-              <li class="border1"><a href="../index6.html"><abbr
-                    title="Voluntary Access Fees">Contact</abbr></a></li>
-            </ul>
-          </div>
+<body>
 
-          <div class="nav-play-now">
-              <button class="glowing-btn" title="Play 3Kingdoms Now" onClick="window.open('https://client.wemudtogether.com');" type="button">
-                <span class="glowing-txt">
-                  Play Now
-                </span>
-              </button>
-          </div>
+  <header class="site-header">
+
+    <!-- LOGO -->
+    <a href="../index.html" class="nav-logo">
+      <img
+        src="/images/three-kingdoms-logo.png"
+        class="logo-image"
+        alt="Three Kingdoms logo"
+        title="Home">
+    </a>
+
+    <!-- NAV -->
+    <nav class="site-nav" aria-label="Primary">
+
+      <!-- HAMBURGER -->
+      <button
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Open menu">
+
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <!-- NAV CONTENT -->
+      <div class="nav-content">
+
+        <ul
+          id="primary-navigation"
+          class="primary-navigation"
+          data-state="closed">
+
+          <li><a href="index.html" id="home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="../index6.html">Guilds</a></li>
+          <li><a href="../index6.html">How to Play</a></li>
+          <li><a href="../index6.html"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
+          <li><a href="../index6.html">Contact</a></li>
+
+        </ul>
+
+        <!-- PLAY NOW -->
+        <div class="nav-play-now">
+          <button
+            class="glowing-btn"
+            type="button"
+            title="Play 3Kingdoms Now"
+            onclick="window.open('https://client.wemudtogether.com');">
+
+            <span class="glowing-txt">Play Now</span>
+          </button>
         </div>
-      </nav>
-      <!-- <button class="theme-btn" id="theme-toggle" title="Light or Dark Mode Theme">
-        <i class="fa-solid fa-sun fa-2x"></i>
-        <span class="sr-only">Theme</span>
-      </button> -->
-    </header>
-    <hr class="hr-gradient extra-margin-top">
-    <br>
+
+      </div>
+    </nav>
+  </header>
+
+  <br>
+  <hr class="hr-gradient">
+  <br>
     <main id="content">
       <article>
         <section class="hero overlay">
@@ -108,6 +110,14 @@
           <br>
           <div class="scroller" data-direction="right" data-speed="slow">
             <div class="scroller__inner">
+              <img src="/images/scrolling/aruwins_windmill.png"
+                loading="lazy" 
+                alt="AI generated image windmill in the background of wheat fields" 
+                title="Aruwin's Windmill" />
+              <img src="/images/scrolling/captain_thistlebeard.png"
+                loading="lazy" 
+                alt="AI generated image of a short pirate in the main estate room of a ship"
+                title="Captain Thistlebeard" />                       
               <img src="/images/scrolling/fern_man_science.png"
                 loading="lazy" 
                 alt="AI generated image of a giant man covered in plants" 
@@ -120,34 +130,26 @@
                 loading="lazy" 
                 alt="AI generated image of a frozen tundra with people made of ice" 
                 title="Land of the Ice People" />
-              <img src="/images/scrolling/mahjongg.png"
-                loading="lazy" 
-                alt="AI generated image of a dark forest with a mahjongg gameboard on a wooden table" 
-                title="Mahjongg" />
               <img src="/images/scrolling/lyriac.png" 
                 loading="lazy" 
                 alt="AI generated image of a fearsome dark knight"
                 title="Lyriac" />
+              <img src="/images/scrolling/mahjongg.png"
+                loading="lazy" 
+                alt="AI generated image of a dark forest with a mahjongg gameboard on a wooden table" 
+                title="Mahjongg" />
               <img src="/images/scrolling/mantis_swamp.png" 
                 loading="lazy" 
                 alt="AI generated image of a swamp filled with giant mantes"
                 title="Mantis Swamp" />
+              <img src="/images/scrolling/murusFaralain.png" 
+                loading="lazy" 
+                alt="AI generated image of an ancient ruined city"
+                title="Murus Faralain" />                
               <img src="/images/scrolling/westerseaDocks.png"
                 loading="lazy" 
                 alt="AI generated image of boat docks" 
                 title="Westersea Docks" />
-              <img src="/images/scrolling/aruwins_windmill.png"
-                loading="lazy" 
-                alt="AI generated image windmill in the background of wheat fields" 
-                title="Aruwin's Windmill" />
-              <img src="/images/scrolling/murusFaralain.png" 
-                loading="lazy" 
-                alt="AI generated image of an ancient ruined city"
-                title="Murus Faralain" />
-              <img src="/images/scrolling/captain_thistlebeard.png"
-                loading="lazy" 
-                alt="AI generated image of a short pirate in the main estate room of a ship"
-                title="Captain Thistlebeard" />
             </div>
           </div>
           <br>
@@ -199,48 +201,6 @@
         </section>
       </article>
       <br><hr class="hr-gradient"><br>
-      <article id="about">
-        <section class="huge-header">
-          <h2 class="header-title-left"><span class="title-span"> GUILDS </span>Knights, Juggernauts, and More</h2>
-
-          <div class="columns">
-            <div>
-              <h3>Welcome to 3Kingdoms</h3>
-              <p>
-                3Kingdoms, established over 29 years ago, stands as a testament to continual development and innovation
-                in online gaming. Always free to play, it offers unparalleled depth and a rich gameplay experience that
-                has captivated thousands of players. Whether you're a seasoned adventurer or new to the realm, join us
-                and discover why 3Kingdoms remains a proven leader in the online gaming community.
-              </p>
-            </div>
-            <div>
-              <h3>Endless Exploration</h3>
-              <p>
-                Immerse yourself in one of the largest and most advanced online text-based game available today. With
-                thousands of players, tens of thousands of rooms, hundreds of areas, and over a hundred quests,
-                3Kingdoms offers limitless possibilities for exploration and adventure. Its dynamic world evolves with
-                each player's journey, offering challenges and rewards that ensure every quest is unique and
-                unforgettable.
-              </p>
-            </div>
-            <div>
-              <h3>Three Unique Realms</h3>
-              <p>
-                Based around the vibrant town of Pinnacle, 3Kingdoms invites you to explore three distinct realms:
-                Fantasy, a medieval world teeming with orcs, elves, and dragons; Science, a post-apocalyptic future
-                scarred by war; and Chaos, where fantastical and scientific forces collide, creating creatures beyond
-                imagination. Choose your path, join one of over twenty guilds available, like Knights or Necromancers,
-                and embark on a journey where alliances, exploration, and skill development define your legacy.
-              </p>
-            </div>
-          </div>
-          <div>
-            <p class="center">
-              EXPLORE OUR SISTER MUD, 3SCAPES, FOR MORE FUN.
-            </p>
-          </div>
-        </section>
-      </article>
     </main>
     <footer>
       <hr class="hr-gradient">

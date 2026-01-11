@@ -69,7 +69,8 @@ menuToggle.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key == 'Escape' || event.key == "Esc" || KeyboardEvent.keyCode == 27 && menuToggle.getAttribute('aria-expanded') === "true") {
+  if ((event.key === 'Escape' || event.key === "Esc" || event.keyCode === 27) 
+      && menuToggle.getAttribute('aria-expanded') === "true") {
     closeMenu();
   }
 });
@@ -81,14 +82,8 @@ function openMenu() {
 
 function closeMenu() {
   menuToggle.setAttribute('aria-expanded', "false");
-  primaryNavigation.setAttribute('data-state', "closing");
-
-  // Delay closing the menu to ensure it stays visible for a moment
-  setTimeout(() => {
-    primaryNavigation.setAttribute('data-state', "closed");
-  }, 300); // Adjust delay time as needed
+  primaryNavigation.setAttribute('data-state', "closed");
 }
-
 
 // ------------------------------------------
 // SCROLLING IMAGES

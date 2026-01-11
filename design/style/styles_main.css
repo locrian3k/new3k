@@ -331,6 +331,22 @@ abbr {
 .site-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding-inline: 1rem;
+}
+
+.site-header > .inner {
+  max-width: 100%;
+  margin-inline: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .site-header {
+  display: flex;
+  align-items: center;
   justify-content: space-evenly;
   background: var(--clr-bg-main);
   position: fixed;
@@ -340,7 +356,7 @@ abbr {
   max-width: 100%;
   z-index: 9999;
   height: 128px;
-}
+} */
 
 .nav-logo {
   padding: 0 1rem;
@@ -639,7 +655,7 @@ main {
   background-color: var(--clr-black);
   width: 100%;
   max-width: 100%;
-  margin: 5rem auto 0;
+  margin: 0 auto;
   overflow-x: hidden;
 }
 

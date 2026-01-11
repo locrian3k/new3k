@@ -282,18 +282,20 @@ abbr {
 }
 
 .hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); background: var(--clr-gold)}
+.hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
 .hamburger span:nth-child(3) { bottom: 0; }
 
 /* open state */
 .menu-toggle[aria-expanded="true"] .hamburger span:nth-child(1) {
   transform: translateY(0.65rem) rotate(45deg);
+  background: var(--clr-gold);
 }
 .menu-toggle[aria-expanded="true"] .hamburger span:nth-child(2) {
   opacity: 0;
 }
 .menu-toggle[aria-expanded="true"] .hamburger span:nth-child(3) {
   transform: translateY(-0.65rem) rotate(-45deg);
+  background: var(--clr-gold);
 }
 /* END OF HAMBURGER MENU BARS */
 
@@ -308,10 +310,13 @@ abbr {
   left: 0;
   width: 100%;
   z-index: 9999;
+  height: 10rem;
 }
 
 .nav-logo img {
-  max-height: 4rem;
+  height: 10rem;           /* preserve aspect ratio */
+  width: auto;            /* preserve aspect ratio */
+  display: block;
 }
 
 .nav-play-now {

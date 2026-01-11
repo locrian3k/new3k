@@ -17,28 +17,29 @@
   /* ------------------- */
   /* COLORS */
   /* ------------------- */
-  /* Base dark / light */
-  --clr-bg-dark: hsl(222 25% 15%);    /* primary dark background */
-  --clr-bg-light: hsl(0 0% 98%);      /* bright background / text on dark sections */
+  /* Base backgrounds */
+  --clr-bg-main: #193455;       /* Nile Blue → main background */
+  --clr-bg-secondary: #f1e3ac;  /* Sidecar → sidebars, asides, cards, secondary sections */
 
   /* Text */
-  --clr-text-primary: hsl(0 0% 94%);       /* light grayish white for main text */
-  --clr-text-secondary: hsl(0 0% 75%);     /* muted gray for captions / labels */
+  --clr-text-primary: #f1e3ac;  /* Sidecar → main text on dark bg */
+  --clr-text-secondary: #dc8f2a; /* Golden Grass → secondary text, captions */
+  --clr-text-heading: #f7d24b;  /* Energy Yellow → headings and section titles */
 
-  /* Accent / highlights */
-  --clr-text-heading: hsl(0 0% 100%);      /* bright white for headings / section titles */
-  --clr-accent-main: hsl(187 68% 21%);  /* hover / buttons / highlights */
-  --clr-accent-hover: hsl(187 68% 31%); /* slightly lighter accent for hover effects */
-  --clr-accent-glow: hsl(186 100% 69%); /* existing glow effect */
-  --clr-border-subtle: rgba(255, 255, 255, 0.1); /* nav li separators, cards, etc. */
+  /* Accent colors */
+  --clr-accent-main: #d44a02;   /* Grenadier → buttons, links, main accents */
+  --clr-accent-hover: #7c2907;  /* Kenyan Copper → hover states, pressed buttons */
+  --clr-accent-highlight: #dc8f2a; /* Golden Grass → small highlights, badges */
+  --clr-accent-blue: #63a0c3;   /* Fountain Blue → optional secondary accent */
+  --clr-accent-orange: #805b36; /* Potters Clay → optional subtle accent */
 
-  --clr-black: hsl(0 0% 0%);                /* black */
-  --clr-purple: hsl(260 100% 66%);          /* used for gradient */
-  --clr-green: hsl(95 46% 44%);             /* used for gradient */
-  --clr-blue: hsl(202 100% 61%);            /* used for gradient */
-  --clr-gold: hsl(55 45% 50%);
-  --clr-glow: hsl(186 100% 69%);            /* glowing button effect */
+  /* Neutral / utility */
+  --clr-black: #4e2915;  /* Brown Derby → dark neutral / footer backgrounds */
+  --clr-white: #f1e3ac;  /* Sidecar → light neutral */
 
+  /* Borders / subtle dividers */
+  --clr-border-subtle: rgba(255, 255, 255, 0.1);
+  
   --nav-li-border-radius: 0.35rem;
 
   /* ------------------- */
@@ -129,35 +130,45 @@
 
 
 /* ------------------- */
-/* COLORS / BACKGROUNDS */
+/* COLORS / BACKGROUNDS / TEXT UTILITIES */
 /* ------------------- */
-.dark { color: var(--clr-dark); }
-.light { color: var(--clr-light); }
-.primary { color: var(--clr-text-primary); }
-.accent { color: var(--clr-accent); }
-.highlight { color: var(--clr-highlight); }
-.purple { color: var(--clr-purple); }
-.green { color: var(--clr-green); }
-.blue { color: var(--clr-blue); }
-.gold { color: var(--clr-gold); }
 
-.bg-dark { background-color: var(--clr-dark); }
-.bg-dark-gradient { background-color: var(--clr-dark) / 0.8; }
-.bg-accent { background-color: var(--clr-accent); }
-.bg-light { background-color: var(--clr-light); }
-.bg-light-gradient { background-color: var(--clr-light) / 0.9; }
-.bg-white { background-color: var(--clr-text-primary); }
-.bg-highlight { background-color: var(--clr-highlight); }
+/* Text colors */
+.dark { color: var(--clr-black); }                  /* dark neutral */
+.light { color: var(--clr-white); }                /* light neutral */
+.primary { color: var(--clr-text-primary); }       /* main body text */
+.secondary { color: var(--clr-text-secondary); }   /* captions, muted text */
+.heading { color: var(--clr-text-heading); }       /* headings, titles */
+.accent { color: var(--clr-accent-main); }         /* primary accent */
+.accent-hover { color: var(--clr-accent-hover); }  /* hover accent for links/buttons */
+.highlight { color: var(--clr-accent-highlight); } /* badges, highlights */
+.blue { color: var(--clr-accent-blue); }           /* secondary accent */
+.orange { color: var(--clr-accent-orange); }       /* subtle accent */
+
+/* Background colors */
+.bg-main { background-color: var(--clr-bg-main); }          /* primary page background */
+.bg-secondary { background-color: var(--clr-bg-secondary); }/* sidebars, cards, asides */
+.bg-accent { background-color: var(--clr-accent-main); }    /* buttons, highlights */
+.bg-accent-hover { background-color: var(--clr-accent-hover); } /* hover for buttons/links */
+.bg-highlight { background-color: var(--clr-accent-highlight); } /* small accent blocks */
+.bg-blue { background-color: var(--clr-accent-blue); }      /* info banners */
+.bg-orange { background-color: var(--clr-accent-orange); }  /* subtle accent */
+.bg-black { background-color: var(--clr-black); }           /* neutral dark blocks */
+.bg-white { background-color: var(--clr-white); }           /* neutral light blocks */
+
+/* Borders / separators */
+.border-subtle { border-color: var(--clr-border-subtle); }
+
+/* Example gradient utility if needed */
 .bg-gradient {
   background-image: linear-gradient(to right,
     var(--clr-black),
-    var(--clr-purple),
-    var(--clr-green),
-    var(--clr-blue),
+    var(--clr-accent-blue),
+    var(--clr-accent-main),
+    var(--clr-accent-highlight),
     var(--clr-black)
   );
 }
-
 
 /* ------------------- */
 /* RESET & BOX-SIZING */
@@ -172,7 +183,7 @@
 
 html,
 body {
-  background-color: var(--clr-dark);
+  background-color: var(--clr-bg-main);
   color: var(--clr-text-primary);
   font-family: var(--ff-normal);
   font-size: var(--fs-body);
@@ -288,14 +299,14 @@ abbr {
 /* open state */
 .menu-toggle[aria-expanded="true"] .hamburger span:nth-child(1) {
   transform: translateY(0.65rem) rotate(45deg);
-  background: var(--clr-gold);
+  background: var(--clr-accent-yellow);
 }
 .menu-toggle[aria-expanded="true"] .hamburger span:nth-child(2) {
   opacity: 0;
 }
 .menu-toggle[aria-expanded="true"] .hamburger span:nth-child(3) {
   transform: translateY(-0.65rem) rotate(-45deg);
-  background: var(--clr-gold);
+  background: var(--clr-accent-yellow);
 }
 /* END OF HAMBURGER MENU BARS */
 
@@ -329,19 +340,19 @@ abbr {
 /* ------------------- */
 a {
   text-decoration: none;
-  color: var(--clr-highlight);
+  color: var(--clr-accent-highlight);
   transition: color 0.3s;
 }
 
 a:hover,
 a:focus {
-  color: var(--clr-highlight);
+  color: var(--clr-accent-main);
   text-decoration: underline;
   outline: none;
 }
 
 a:focus-visible {
-  outline: 2px solid var(--clr-highlight);
+  outline: 2px solid var(--clr-accent-highlight);
   outline-offset: 2px;
 }
 
@@ -391,13 +402,13 @@ a:focus-visible {
 
 .primary-navigation li:hover,
 .primary-navigation li:focus-within {
-  background-color: var(--clr-blue);
+  background-color: var(--clr-accent-blue);
   border-radius: var(--nav-li-border-radius);
 }
 
 .primary-navigation li:hover a,
 .primary-navigation li:focus-within a {
-  color: var(--clr-bg-dark);
+  color: var(--clr-bg-main);
 }
 
 
@@ -418,8 +429,8 @@ a:focus-visible {
   transition: box-shadow 0.3s, text-shadow 0.3s;
 }
 
-.theme-btn i { color: var(--clr-accent); }
-.theme-btn:hover { text-shadow: 0 0 50px var(--clr-glow); }
+.theme-btn i { color: var(--clr-accent-blue); }
+.theme-btn:hover { text-shadow: 0 0 50px var(--clr-accent-highlight); }
 .theme-btn:focus { 
   box-shadow: 0 0 8px 4px var(--clr-glow); 
   text-shadow: 0 0 50px var(--clr-glow); 
@@ -683,7 +694,8 @@ main {
 /* ------------------- */
 footer {
   position: relative;
-  background: var(--clr-black);
+  background: var(--clr-bg-main);
+  color: var(--clr-text-primary);
   justify-content: center;
   width: 100%;
   height: 100%;

@@ -544,6 +544,9 @@ a:focus-visible {
   place-content: center;
 }
 
+.hero .nav-play-now {
+  display: none;
+}
 
 /* ------------------------------------------ */
 /* SCROLLING IMAGES                           */

@@ -591,25 +591,16 @@ a:focus-visible {
   width: max-content;
   flex-wrap: nowrap;
   animation: scroll var(--_animation-duration, 60s) var(--_animation-direction, forwards) linear infinite;
-  will-change: transform;
 }
 
 .scroller[data-direction="right"] { --_animation-direction: reverse; }
-.scroller[data-direction="right"] .scroller__inner { 
-  animation: scroll-right var(--_animation-duration, 60s) linear infinite;
-}
 .scroller[data-direction="left"] { --_animation-direction: forwards; }
 .scroller[data-speed="fast"] { --_animation-duration: 50s; }
 .scroller[data-speed="slow"] { --_animation-duration: 60s; }
 
 @keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX((-50%)); }
-}
-
-@keyframes scroll-right {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+  from { transform: translateX(0);}
+  to { transform: translateX(calc(-30%)); }
 }
 
 /* scrolling li's */

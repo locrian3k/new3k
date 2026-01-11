@@ -604,7 +604,7 @@ a:focus-visible {
 
 @keyframes scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(calc(-50%)); }
+  to { transform: translateX((-50%)); }
 }
 
 @keyframes scroll-right {

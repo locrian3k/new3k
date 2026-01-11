@@ -23,236 +23,249 @@
 
 <body>
 
-  <header class="site-header">
+    <div class="accessibility">
+    <!-- THIS CODE ALLOWS SCREEN READERS TO SKIP THE NAVIGATION MENU AND VIEW CONTENT OF PAGE -->
+    <div id="skip-to-content">
+      <a href="#content" id="skip-to-content-link">
+        SKIP TO CONTENT
+      </a>
 
-    <!-- LOGO -->
-    <a href="../index.html" class="nav-logo">
-      <img
-        src="/images/3k_logo_shield_transparent.png"
-        class="logo-image"
-        alt="Three Kingdoms logo"
-        title="Home">
-    </a>
-
-    <!-- NAV -->
-    <nav class="site-nav" aria-label="Primary">
-
-      <!-- HAMBURGER -->
-      <button
-        id="menu-toggle"
-        class="menu-toggle"
-        aria-expanded="false"
-        aria-controls="primary-navigation"
-        aria-label="Open menu">
-
-        <span class="hamburger" title="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
+      <button onclick="topFunction()" id="GoToTopBtn" title="Go to top">
+        <strong>Top</strong>
       </button>
+    </div>
+  </div>
 
-      <!-- NAV CONTENT -->
-      <div class="nav-content">
+  <header class="site-header">
+    <div class="site-header">
+      <!-- LOGO -->
+      <a href="../index.html" class="nav-logo">
+        <img
+          src="/images/3k_logo_shield_transparent.png"
+          class="logo-image"
+          alt="Three Kingdoms logo"
+          title="Home">
+      </a>
 
-        <ul
-          id="primary-navigation"
-          class="primary-navigation"
-          data-state="closed">
+      <!-- PLAY NOW -->
+      <div class="nav-play-now">
+        <button
+          class="glowing-btn"
+          type="button"
+          title="Play 3Kingdoms Now"
+          onclick="window.open('https://client.wemudtogether.com');">
 
-          <li><a href="index.html" id="home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="../index6.html">Guilds</a></li>
-          <li><a href="../index6.html">How to Play</a></li>
-          <li><a href="../index6.html"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
-          <li><a href="../index6.html">Contact</a></li>
-
-        </ul>
-
-        <!-- PLAY NOW -->
-        <div class="nav-play-now">
-          <button
-            class="glowing-btn"
-            type="button"
-            title="Play 3Kingdoms Now"
-            onclick="window.open('https://client.wemudtogether.com');">
-
-            <span class="glowing-txt">Play Now</span>
-          </button>
-        </div>
-
+          <span class="glowing-txt">Play Now</span>
+        </button>
       </div>
-    </nav>
+
+      <!-- NAVIGATION -->
+      <nav class="site-nav" aria-label="Primary">
+
+        <!-- HAMBURGER MENU BUTTON -->
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+          aria-label="Open menu">
+
+          <span class="hamburger" title="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <!-- NAV CONTENT -->
+        <div class="nav-content">
+
+          <ul
+            id="primary-navigation"
+            class="primary-navigation"
+            data-state="closed">
+
+            <li><a href="index.html" id="home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="../index.html">Guilds</a></li>
+            <li><a href="../index.html">How to Play</a></li>
+            <li><a href="../index.html"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
+            <li><a href="../index.html">Contact</a></li>
+
+          </ul>
+
+        </div>
+      </nav>
+    </div>
+    <hr class="hr-gradient">
   </header>
 
-  <br>
-  <hr class="hr-gradient">
-  <br>
-    <main id="content">
-      <article>
-        <section class="hero overlay">
-          <h1 class="dark">EXPLORE THE REALMS TODAY!</h1>
-          <div class="scroller" data-speed="fast">
-            <ul class="tag-list scroller__inner">
-              <li><a href="#">Over 700 Areas to Explore</a></li>
-              <li>Active Playerbase</li>
-              <li>Dedicated Area for Newcomers</li>
-              <li>Regular Updates</li>
-              <li>Invasions</li>
-              <li>Over 700 Areas to Explore</li>
-              <li>3 Unique Realms</li>
-              <li>Chaos</li>
-              <li>Fantasy</li>
-              <li>Science</li>
-              <li>Dungeons</li>
-            </ul>
-          </div>
-          <br>
-          <div class="scroller" data-direction="right" data-speed="slow">
-            <div class="scroller__inner">
-              <img src="/images/scrolling/aruwins_windmill.png"
-                loading="lazy" 
-                alt="AI generated image windmill in the background of wheat fields" 
-                title="Aruwin's Windmill" />
-              <img src="/images/scrolling/captain_thistlebeard.png"
-                loading="lazy" 
-                alt="AI generated image of a short pirate in the main estate room of a ship"
-                title="Captain Thistlebeard" />                       
-              <img src="/images/scrolling/fern_man_science.png"
-                loading="lazy" 
-                alt="AI generated image of a giant man covered in plants" 
-                title="Fern Man" />
-              <img src="/images/scrolling/gamers_house.png" 
-                loading="lazy" 
-                alt="AI generated image of an extremely messy room"
-                title="Gamer's House" />
-              <img src="/images/scrolling/icy_blue_portal.png"
-                loading="lazy" 
-                alt="AI generated image of a frozen tundra with people made of ice" 
-                title="Land of the Ice People" />
-              <img src="/images/scrolling/lyriac.png" 
-                loading="lazy" 
-                alt="AI generated image of a fearsome dark knight"
-                title="Lyriac" />
-              <img src="/images/scrolling/mahjongg.png"
-                loading="lazy" 
-                alt="AI generated image of a dark forest with a mahjongg gameboard on a wooden table" 
-                title="Mahjongg" />
-              <img src="/images/scrolling/mantis_swamp.png" 
-                loading="lazy" 
-                alt="AI generated image of a swamp filled with giant mantes"
-                title="Mantis Swamp" />
-              <img src="/images/scrolling/murusFaralain.png" 
-                loading="lazy" 
-                alt="AI generated image of an ancient ruined city"
-                title="Murus Faralain" />                
-              <img src="/images/scrolling/westerseaDocks.png"
-                loading="lazy" 
-                alt="AI generated image of boat docks" 
-                title="Westersea Docks" />
-            </div>
-          </div>
-          <br>
-        </section>
-      </article>
-      <br>
-      <hr class="hr-gradient">
-      <br>
-      <article id="about">
-        <section>
-          <h2><span> ABOUT </span>3KINGDOMS</h2>
 
-          <div>
-            <div>
-              <h3>Welcome to 3Kingdoms</h3>
-              <p>
-                3Kingdoms, established over 29 years ago, stands as a testament to continual development and innovation
-                in online gaming. Always free to play, it offers unparalleled depth and a rich gameplay experience that
-                has captivated thousands of players. Whether you're a seasoned adventurer or new to the realm, join us
-                and discover why 3Kingdoms remains a proven leader in the online gaming community.
-              </p>
-            </div>
-            <div>
-              <h3>Endless Exploration</h3>
-              <p>
-                Immerse yourself in one of the largest and most advanced online text-based game available today. With
-                thousands of players, tens of thousands of rooms, hundreds of areas, and over a hundred quests,
-                3Kingdoms offers limitless possibilities for exploration and adventure. Its dynamic world evolves with
-                each player's journey, offering challenges and rewards that ensure every quest is unique and
-                unforgettable.
-              </p>
-            </div>
-            <div>
-              <h3>Three Unique Realms</h3>
-              <p>
-                Based around the vibrant town of Pinnacle, 3Kingdoms invites you to explore three distinct realms:
-                Fantasy, a medieval world teeming with orcs, elves, and dragons; Science, a post-apocalyptic future
-                scarred by war; and Chaos, where fantastical and scientific forces collide, creating creatures beyond
-                imagination. Choose your path, join one of over twenty guilds available, like Knights or Necromancers,
-                and embark on a journey where alliances, exploration, and skill development define your legacy.
-              </p>
-            </div>
+  <main id="content">
+    <article>
+      <section class="hero overlay">
+        <h1 class="dark">EXPLORE THE REALMS TODAY!</h1>
+        <div class="scroller" data-speed="fast">
+          <ul class="tag-list scroller__inner">
+            <li><a href="#">Over 700 Areas to Explore</a></li>
+            <li>Active Playerbase</li>
+            <li>Dedicated Area for Newcomers</li>
+            <li>Regular Updates</li>
+            <li>Invasions</li>
+            <li>Over 700 Areas to Explore</li>
+            <li>3 Unique Realms</li>
+            <li>Chaos</li>
+            <li>Fantasy</li>
+            <li>Science</li>
+            <li>Dungeons</li>
+          </ul>
+        </div>
+        <br>
+        <div class="scroller" data-direction="right" data-speed="slow">
+          <div class="scroller__inner">
+            <img src="/images/scrolling/aruwins_windmill.png"
+              loading="lazy" 
+              alt="AI generated image windmill in the background of wheat fields" 
+              title="Aruwin's Windmill" />
+            <img src="/images/scrolling/captain_thistlebeard.png"
+              loading="lazy" 
+              alt="AI generated image of a short pirate in the main estate room of a ship"
+              title="Captain Thistlebeard" />                       
+            <img src="/images/scrolling/fern_man_science.png"
+              loading="lazy" 
+              alt="AI generated image of a giant man covered in plants" 
+              title="Fern Man" />
+            <img src="/images/scrolling/gamers_house.png" 
+              loading="lazy" 
+              alt="AI generated image of an extremely messy room"
+              title="Gamer's House" />
+            <img src="/images/scrolling/icy_blue_portal.png"
+              loading="lazy" 
+              alt="AI generated image of a frozen tundra with people made of ice" 
+              title="Land of the Ice People" />
+            <img src="/images/scrolling/lyriac.png" 
+              loading="lazy" 
+              alt="AI generated image of a fearsome dark knight"
+              title="Lyriac" />
+            <img src="/images/scrolling/mahjongg.png"
+              loading="lazy" 
+              alt="AI generated image of a dark forest with a mahjongg gameboard on a wooden table" 
+              title="Mahjongg" />
+            <img src="/images/scrolling/mantis_swamp.png" 
+              loading="lazy" 
+              alt="AI generated image of a swamp filled with giant mantes"
+              title="Mantis Swamp" />
+            <img src="/images/scrolling/murusFaralain.png" 
+              loading="lazy" 
+              alt="AI generated image of an ancient ruined city"
+              title="Murus Faralain" />                
+            <img src="/images/scrolling/westerseaDocks.png"
+              loading="lazy" 
+              alt="AI generated image of boat docks" 
+              title="Westersea Docks" />
           </div>
+        </div>
+        <br>
+      </section>
+    </article>
+    <br>
+    <hr class="hr-gradient">
+    <br>
+    <article id="about">
+      <section>
+        <h2><span> ABOUT </span>3KINGDOMS</h2>
+
+        <div>
           <div>
-            <p class="center">
-              EXPLORE OUR SISTER MUD, 3SCAPES, FOR MORE FUN.
+            <h3>Welcome to 3Kingdoms</h3>
+            <p>
+              3Kingdoms, established over 29 years ago, stands as a testament to continual development and innovation
+              in online gaming. Always free to play, it offers unparalleled depth and a rich gameplay experience that
+              has captivated thousands of players. Whether you're a seasoned adventurer or new to the realm, join us
+              and discover why 3Kingdoms remains a proven leader in the online gaming community.
             </p>
           </div>
-        </section>
-      </article>
-      <br><hr class="hr-gradient"><br>
-    </main>
-    <footer>
-      <hr class="hr-gradient">
-      <br><br>
-      <ul class="footer-banner">
-        <li style="--accent-color:#11515a">
-          <a href="http://www.themarblegroup.com/" target="_blank">
-            <div class="icon">
-              <img src="/images/marble_logo.gif" alt="Blue and purple marble" width="50%" style="border:.15rem solid gray">
-            </div>
-            <br>
-            <div class="title">The Marble Group, Inc.</div>
-            <br>
-            <div class="descr">Purveyors of fine internet gaming goods since 1992</div>
-          </a>
-        </li>
-        <li style="--accent-color:#38b">
-          <a href="#">
-            <div class="icon"><i class="fa-solid fa-people-group"></i></div>
-            <br>
-            <div class="title">3Scapes</div>
-            <br>
-            <div class="descr">The sister group of 3Kingdoms, where the rules are different</div>
-          </a>
-        </li>
-        <li style="--accent-color:#08374D">
-          <a href="#">
-          <div class="icon"><img src="/images/LDMud.gif" width="100%" alt="metal plate with sword and shield decor, indicating it's powered by ldmud"></div>
-          <br>
-          <div class="title">LDMud</div>
-          <br>
-          <div class="descr">Content, source, aesthetics & originality<br>&copy;1993-Now,<br>The Marble Group, Inc.
+          <div>
+            <h3>Endless Exploration</h3>
+            <p>
+              Immerse yourself in one of the largest and most advanced online text-based game available today. With
+              thousands of players, tens of thousands of rooms, hundreds of areas, and over a hundred quests,
+              3Kingdoms offers limitless possibilities for exploration and adventure. Its dynamic world evolves with
+              each player's journey, offering challenges and rewards that ensure every quest is unique and
+              unforgettable.
+            </p>
           </div>
-          </a>
-        </li>
-        <li style="--accent-color:#6f6e2a">
-          <div class="icon"><i class="fa-solid fa-fan"></i></div>
-          <div class="title">Resources</div>
-          <div class="descr">
-            Player created<br>fan sites -
-            <br><br>
-            <div class="descr-justify">
-              &Gt; 3K Fandom
-              <br>
-              &Gt; <a href="https://wemudtogether.com" target="_blank">We Mud
-              Together</a>
-            </div>
+          <div>
+            <h3>Three Unique Realms</h3>
+            <p>
+              Based around the vibrant town of Pinnacle, 3Kingdoms invites you to explore three distinct realms:
+              Fantasy, a medieval world teeming with orcs, elves, and dragons; Science, a post-apocalyptic future
+              scarred by war; and Chaos, where fantastical and scientific forces collide, creating creatures beyond
+              imagination. Choose your path, join one of over twenty guilds available, like Knights or Necromancers,
+              and embark on a journey where alliances, exploration, and skill development define your legacy.
+            </p>
           </div>
-        </li>
-      </ul>
-    </footer>
-    <script src="/design/script/script_main.js"></script>
-  </body>
+        </div>
+        <div>
+          <p class="center">
+            EXPLORE OUR SISTER MUD, 3SCAPES, FOR MORE FUN.
+          </p>
+        </div>
+      </section>
+    </article>
+    <br><hr class="hr-gradient"><br>
+  </main>
+  <footer>
+    <hr class="hr-gradient">
+    <br><br>
+    <ul class="footer-banner">
+      <li style="--accent-color:#11515a">
+        <a href="http://www.themarblegroup.com/" target="_blank">
+          <div class="icon">
+            <img src="/images/marble_logo.gif" alt="Blue and purple marble" width="50%" style="border:.15rem solid gray">
+          </div>
+          <br>
+          <div class="title">The Marble Group, Inc.</div>
+          <br>
+          <div class="descr">Purveyors of fine internet gaming goods since 1992</div>
+        </a>
+      </li>
+      <li style="--accent-color:#38b">
+        <a href="#">
+          <div class="icon"><i class="fa-solid fa-people-group"></i></div>
+          <br>
+          <div class="title">3Scapes</div>
+          <br>
+          <div class="descr">The sister group of 3Kingdoms, where the rules are different</div>
+        </a>
+      </li>
+      <li style="--accent-color:#08374D">
+        <a href="#">
+        <div class="icon"><img src="/images/LDMud.gif" width="100%" alt="metal plate with sword and shield decor, indicating it's powered by ldmud"></div>
+        <br>
+        <div class="title">LDMud</div>
+        <br>
+        <div class="descr">Content, source, aesthetics & originality<br>&copy;1993-Now,<br>The Marble Group, Inc.
+        </div>
+        </a>
+      </li>
+      <li style="--accent-color:#6f6e2a">
+        <div class="icon"><i class="fa-solid fa-fan"></i></div>
+        <div class="title">Resources</div>
+        <div class="descr">
+          Player created<br>fan sites -
+          <br><br>
+          <div class="descr-justify">
+            &Gt; 3K Fandom
+            <br>
+            &Gt; <a href="https://wemudtogether.com" target="_blank">We Mud
+            Together</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </footer>
+  <script src="/design/script/script_main.js"></script>
+</body>
 
 </html>

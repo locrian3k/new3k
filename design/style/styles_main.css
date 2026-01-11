@@ -578,6 +578,7 @@ a:focus-visible {
   margin: 1rem 0;
   font-size: var(--fs-h1);
   font-family: var(--ff-ab);
+  font-weight: bolder;
 }
 
 .hero ul,
@@ -606,6 +607,7 @@ a:focus-visible {
 
 .scroller__inner img {
   width: 200px;
+  box-shadow: 0 0.5rem 1rem -0.25rem black;
 }
 
 .scroller[data-animated="true"] {
@@ -638,14 +640,14 @@ a:focus-visible {
 
 .tag-list li {
   padding: 1rem;
-  background: var(--clr-primary-800);
+  background: var(--clr-bg-main);
   border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
+  box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-black);
 }
 
 .tag-list a {
   text-decoration: none;
-  color: var(--clr-neutral-100);
+  color: var(--clr-text-primary);
   cursor: pointer;
 }
 

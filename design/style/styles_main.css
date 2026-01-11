@@ -533,12 +533,10 @@ a:focus-visible {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  min-height: 60vh;
   display: grid;
   place-content: center;
   text-align: center;
   padding: 2rem 1rem;
-  margin-top: 5rem;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
@@ -641,7 +639,6 @@ main {
   background-color: var(--clr-black);
   width: 100%;
   max-width: 100%;
-  padding: 0 1rem;
   margin: 5rem auto 0;
   overflow-x: hidden;
 }

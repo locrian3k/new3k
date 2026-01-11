@@ -39,6 +39,12 @@
 
   /* Borders / subtle dividers */
   --clr-border-subtle: rgba(255, 255, 255, 0.1);
+  --clr-gradient: linear-gradient(to right,
+    var(--clr-black),
+    var(--clr-accent-blue),
+    var(--clr-accent-main),
+    var(--clr-accent-highlight),
+    var(--clr-black));
   
   --nav-li-border-radius: 0.35rem;
 
@@ -274,7 +280,6 @@ abbr {
 /* --------------- */
 /* START OF HEADER */
 /* --------------- */
-
 /* HAMBURGER MENU BARS    */
 .menu-toggle {
   width: 3rem;
@@ -326,14 +331,13 @@ abbr {
   align-items: center;
   justify-content: space-between;
   background: var(--clr-bg-main);
-  padding: 1rem;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   max-width: 100%;
   z-index: 9999;
-  height: 5rem;
+  height: 128px;
 }
 
 .nav-logo {
@@ -341,7 +345,8 @@ abbr {
 }
 
 .nav-logo img {
-  height: 4rem;
+  height: 8rem;
+  margin: 0 2rem 0 1rem;
   width: auto;
   display: block;
 }
@@ -452,27 +457,6 @@ a:focus-visible {
 /* ------------------- */
 /* BUTTONS */
 /* ------------------- */
-.theme-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--clr-accent-main);
-  margin-left: auto;
-  padding: 0.35em 1em;
-  border-radius: 0.45em;
-  font-family: var(--ff-normal);
-  font-size: 1.1rem;
-  font-weight: 300;
-  transition: box-shadow 0.3s, text-shadow 0.3s;
-}
-
-.theme-btn i { color: var(--clr-accent-blue); }
-.theme-btn:hover { text-shadow: 0 0 50px var(--clr-accent-highlight); }
-.theme-btn:focus { 
-  box-shadow: 0 0 8px 4px var(--clr-glow); 
-  text-shadow: 0 0 50px var(--clr-glow); 
-}
-
 .glowing-btn {
   position: relative;
   color: var(--clr-text-heading);
@@ -480,9 +464,9 @@ a:focus-visible {
   padding: 0.5em 1em;
   border: 0.15em solid var(--clr-accent-main);
   border-radius: 0.45em;
-  background: none;
+  background: var(--clr-black);
   font-family: var(--ff-normal);
-  font-size: 0.9rem;
+  font-size: var(--fs-body-large);
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -498,9 +482,15 @@ a:focus-visible {
 .glowing-btn:hover,
 .glowing-btn:hover .glowing-txt { 
   color: var(--clr-bg-main);
-  background: var(--clr-accent-main);
+  background: var(--clr-text-secondary);
+  font-weight: bolder;
   text-shadow: none; 
   animation: none; 
+}
+
+.glowing-btn:hover {
+  box-shadow: inset 0 0 0.5em var(--clr-text-primary), 0 0 0.5em var(--clr-text-heading);
+  border: 0.15em solid var(--clr-bg-secondary);
 }
 
 .glowing-btn:focus { 
@@ -543,7 +533,7 @@ a:focus-visible {
 }
 
 .hero h1 {
-  margin: 1rem 0;
+  margin: 2rem 0 1rem 0;
   font-size: clamp(1.5rem, 5vw, var(--fs-h1));
   font-family: var(--ff-ab);
   font-weight: bolder;
@@ -826,12 +816,6 @@ footer {
 /* ------------------- */
 /* MEDIA QUERIES */
 /* ------------------- */
-@media (min-width: var(--bp-mobile)) {
-  .footer-banner li {
-    width: calc(33.333% - var(--col-gap));
-  }
-}
-
 @media (min-width: var(--bp-tablet)) {
   .menu-toggle { display: none; }
   

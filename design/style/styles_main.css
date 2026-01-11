@@ -678,9 +678,9 @@ main {
   background-image: linear-gradient(
     to right,
     var(--clr-black),
-    var(--clr-purple),
-    var(--clr-green),
-    var(--clr-blue),
+    var(--clr-accent-blue),
+    var(--clr-accent-main),
+    var(--clr-accent-highlight),
     var(--clr-black)
   );
 }

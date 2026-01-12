@@ -53,27 +53,30 @@ function closeMenu() {
 document.addEventListener("click", function (e) {
   const toggle = e.target.closest(".dropdown-toggle");
 
-  // Close all dropdowns if clicking elsewhere
+  // Clicked outside → close all
   if (!toggle) {
     document.querySelectorAll(".has-dropdown.open").forEach(item => {
       item.classList.remove("open");
       item.querySelector(".dropdown-toggle")
-          ?.setAttribute("aria-expanded", "false");
+        ?.setAttribute("aria-expanded", "false");
     });
     return;
   }
+
+  e.preventDefault();
+  e.stopPropagation();
 
   const parent = toggle.closest(".has-dropdown");
   const isOpen = parent.classList.contains("open");
 
   // Close others
-  document.querySelectorAll(".has-dropdown.open").forEach(item => {
-    item.classList.remove("open");
-    item.querySelector(".dropdown-toggle")
-        ?.setAttribute("aria-expanded", "false");
-  });
+  // document.querySelectorAll(".has-dropdown.open").forEach(item => {
+  //   item.classList.remove("open");
+  //   item.querySelector(".dropdown-toggle")
+  //     ?.setAttribute("aria-expanded", "false");
+  // });
 
-  // Toggle this one
+  // Toggle current
   parent.classList.toggle("open", !isOpen);
   toggle.setAttribute("aria-expanded", String(!isOpen));
 });
@@ -83,7 +86,6 @@ document.addEventListener("click", function (e) {
 // SCROLLING IMAGES
 // https://codepen.io/kevinpowell/pen/BavVLra
 // ------------------------------------------
-
 const scrollers = document.querySelectorAll(".scroller");
 
 // If a user hasn't opted in for recuded motion, then we add the animation

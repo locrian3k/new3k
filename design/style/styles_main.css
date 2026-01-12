@@ -386,6 +386,8 @@ abbr {
 /* ------------------- */
 /* LINKS & NAVIGATION */
 /* ------------------- */
+
+/* Basic link styles */
 a {
   text-decoration: none;
   color: var(--clr-accent-main);
@@ -404,11 +406,23 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+/* ------------------- */
+/* PRIMARY NAVIGATION */
+/* ------------------- */
+
+/* Make dropdown toggle identical to nav links 
+(KEEP THIS ABOVE .PRIMARY NAVIGATION A) */
+.primary-navigation .dropdown-toggle {
+  all: unset; /* reset button defaults */
+}
+
+/* Navigation container */
 .primary-navigation {
   position: fixed;
   top: 5rem;
   left: 0;
   right: 0;
+  text-align: center;
   z-index: 9998;
   background: var(--clr-bg-main);
   list-style: none;
@@ -416,19 +430,12 @@ a:focus-visible {
   padding: 1rem 0;
   display: grid;
   gap: 1rem;
-  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-  transform: translateY(-1rem);
-  opacity: 0;
-  visibility: hidden;
   max-height: calc(100vh - 5rem);
   overflow-y: auto;
-}
-
-.primary-navigation[data-state="closed"] {
   transform: translateY(-1rem);
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .primary-navigation[data-state="open"] {
@@ -438,80 +445,156 @@ a:focus-visible {
   pointer-events: auto;
 }
 
-/* Make the whole <li> highlight when hovering/focusing on the link */
-.primary-navigation li,
-.dropdown-toggle {
-  text-align: left;
-  padding-left: 2rem;
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: var(--nav-li-border-radius);
-  border-bottom: 0.05rem solid var(--clr-bg-secondary);
+.primary-navigation[data-state="closed"] {
+  pointer-events: none;
 }
 
+/* Make the whole <li> highlight when hovering/focusing on the link */
 .primary-navigation li,
-.dropdown-toggle {
+.primary-navigation li.has-dropdown ul li,
+.primary-navigation li.has-dropdown.open > .dropdown-toggle {
+  text-align: center;
+  border-radius: var(--nav-li-border-radius);
   border-bottom: 0.05rem solid transparent;
   border-image: var(--clr-gradient) 1;
 }
 
-.primary-navigation a {
-  display: block;
-  text-transform: uppercase;
-  font-weight: bolder;
-  font-family: var(--ff-normal);
-  font-size: var(--fs-body-large);
-  padding: 0.5rem 1rem;
-  color: var(--clr-text-primary);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.primary-navigation li:hover,
-.primary-navigation li:focus-within {
+.primary-navigation li:hover {
   background-color: var(--clr-text-heading);
   border-radius: var(--nav-li-border-radius);
+  cursor: pointer;
 }
 
 .primary-navigation li:hover a,
-.primary-navigation li:focus-within a {
+.primary-navigation li:hover .dropdown-toggle {
   color: var(--clr-bg-main);
 }
 
-/* Hide dropdown until opened */
-.dropdown {
-  display: none;
-  position: relative;
-  background: #000;
-  z-index: 1000;
+/* Target ONLY the dropdown toggle button */
+.primary-navigation li.has-dropdown:hover,
+.primary-navigation li.has-dropdown > .dropdown-toggle:hover {
+  background-color: var(--clr-bg-secondary); /* button background */
+  color: var(--clr-bg-main); /* text color */
+  border-radius: var(--nav-li-border-radius);
 }
 
-/* Show when open */
+.primary-navigation li.has-dropdown.open > .dropdown-toggle {
+  background-color: var(--clr-bg-secondary);
+  color: var(--clr-bg-main); /* adjust text if needed */
+}
+
+/* Optional focus-visible for accessibility */
+.primary-navigation li.has-dropdown > .dropdown-toggle:focus-visible {
+  outline: 2px solid var(--clr-accent-highlight);
+  outline-offset: 2px;
+}
+
+/* Only highlight dropdown links when hovered */
+.dropdown a:hover,
+.dropdown a:focus {
+  background-color: var(--clr-text-heading); /* dropdown link hover bg */
+  color: var(--clr-bg-main); /* dropdown link hover text */
+}
+
+/* Ensure parent hover does NOT affect dropdown links */
+.primary-navigation li.has-dropdown:hover .dropdown a,
+.primary-navigation li.has-dropdown:focus-within .dropdown a {
+  background: transparent;
+}
+
+.primary-navigation li.has-dropdown {
+  cursor: pointer;
+  position: relative;
+}
+
+.primary-navigation .dropdown-toggle > .arrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.primary-navigation .dropdown-toggle > .arrow::before {
+  content: "▶";
+  position: absolute;
+  top: 50%;
+  left: -1.5rem;
+  transform: translateY(-50%);
+  font-size: 0.6rem;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.has-dropdown.open .dropdown-toggle > .arrow::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* Dropdown container */
+.dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+/* Only show when parent is open */
 .has-dropdown.open > .dropdown {
   display: block;
 }
 
-.dropdown-toggle {
-  background: none;
+.dropdown li {
+  margin: 0;
   border: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
 }
 
-/* Triangle */
-/* .dropdown-toggle::before {
-  content: "▶";
-  font-size: 0.6rem;
-  transition: transform 0.2s ease;
-} */
+/* Dropdown links */
+.dropdown a {
+  display: block;
+  text-align: center;
+  padding: .5rem 3.5rem;
+  font-size: var(--fs-body);
+  font-weight: normal;
+  text-transform: none;
+  color: var(--clr-text-primary);
+  background: transparent;
+}
 
-/* Rotate when open */
-/* .has-dropdown.open .dropdown-toggle::before {
-  transform: rotate(90deg);
-} */
+.dropdown a:hover,
+.dropdown a:focus {
+  background: var(--clr-text-heading);
+  color: var(--clr-bg-main);
+}
+
+.primary-navigation a,
+.primary-navigation .dropdown-toggle {
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: color 0.3s;
+  box-sizing: border-box;
+}
+
+/* Expand the button to cover the full li */
+.primary-navigation li.has-dropdown > .dropdown-toggle {
+  all: unset;
+  position: relative;
+  cursor: pointer;
+  max-height: calc(100vh - 5rem);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.primary-navigation a,
+.primary-navigation .dropdown-toggle,
+.primary-navigation li.has-dropdown > .dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-family: var(--ff-normal);
+  font-size: var(--fs-body-large);
+  padding: .5rem 2.5rem;
+  color: var(--clr-text-primary);
+}
 
 /* ------------------- */
 /* BUTTONS */

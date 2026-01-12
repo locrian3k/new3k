@@ -59,80 +59,88 @@
       </div>
 
       <!-- NAVIGATION -->
-      <nav class="site-nav" aria-label="Primary">
-        <button
-          id="menu-toggle"
-          class="menu-toggle"
-          aria-expanded="false"
-          aria-controls="primary-navigation"
-          aria-label="Open menu">
+				<nav class="site-nav" aria-label="Primary">
+					<button
+						id="menu-toggle"
+						class="menu-toggle"
+						aria-expanded="false"
+						aria-controls="primary-navigation"
+						aria-label="Open menu">
+						<span class="hamburger" title="Menu">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+					</button>
 
-          <span class="hamburger" title="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </button>
+					<div class="nav-content">
+						<ul
+							id="primary-navigation"
+							class="primary-navigation"
+							data-state="closed">
+							<li><a href="/index.php">Home</a></li>
 
-        <div class="nav-content">
-          <ul
-            id="primary-navigation"
-            class="primary-navigation"
-            data-state="closed">
+							<li class="has-dropdown">
+								<button class="dropdown-toggle" aria-expanded="false">
+									<span class="arrow">About</span>
+								</button>
+								<ul class="dropdown">
+									<li><a href="/about-3kingdoms.php">3Kingdoms</a></li>
+									<li><a href="/about-3scapes.php">3Scapes</a></li>
+								</ul>
+							</li>
 
-            <li><a href="/index.php">Home</a></li>
+							<li class="has-dropdown">
+								<button class="dropdown-toggle" aria-expanded="false">
+									<span class="arrow">Play</span>
+								</button>
+								<ul class="dropdown">
+									<li><a href="/about-3kingdoms.php">Quick Connect</a></li>
+									<li><a href="/about-3scapes.php">Connection Options</a></li>
+									<li><a href="/about-3scapes.php">Who's Online</a></li>
+								</ul>
+							</li>
 
-            <li class="has-dropdown">
-              <button class="dropdown-toggle" aria-expanded="false">
-                About
-              </button>
-              <ul class="dropdown">
-                <li><a href="/about-3kingdoms.php">3Kingdoms</a></li>
-                <li><a href="/about-3scapes.php">3Scapes</a></li>
-              </ul>
-            </li>
+							<li><a href="/guilds.php">Guilds</a></li>
 
-            <li class="has-dropdown">
-              <button class="dropdown-toggle" aria-expanded="false">
-                Play
-              </button>
-              <ul class="dropdown">
-                <li><a href="/about-3kingdoms.php">Quick Connect</a></li>
-                <li><a href="/about-3scapes.php">Connection Options</a></li>
-                <li><a href="/about-3scapes.php">Who's Online</a></li>
-              </ul>
-            </li>
+							<li class="has-dropdown">
+								<button class="dropdown-toggle" aria-expanded="false">
+									<span class="arrow">Community</span>
+								</button>
+								<ul class="dropdown">
+									<li>
+										<a href="http://forums.3k.org" target="_blank">Forums</a>
+									</li>
+									<li><a href="/community/gallery.php">Gallery</a></li>
+									<li><a href="/community/omp.php">OMPs</a></li>
+									<li>
+										<a href="http://3kwiki.com/wiki" target="_blank">Wiki</a>
+									</li>
+									<li>
+										<a href="https://wemudtogether.com" target="_blank"
+											>We Mud Together</a
+										>
+									</li>
+									<li><a href="#">3K Fandom</a></li>
+								</ul>
+							</li>
 
-            <li><a href="/guilds.php">Guilds</a></li>
-
-            <li class="has-dropdown">
-              <button class="dropdown-toggle" aria-expanded="false">
-                Community
-              </button>
-              <ul class="dropdown">
-                <li><a href="http://forums.3k.org" target="_blank">Forums</a></li>
-                <li><a href="/community/gallery.php">Gallery</a></li>
-                <li><a href="/community/omp.php">OMPs</a></li>               
-                <li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
-                <li><a href="https://wemudtogether.com" target="_blank">We Mud Together</a></li>
-                <li><a href="#">3K Fandom</a></li>
-              </ul>
-            </li>
-
-            <li class="has-dropdown">
-              <button class="dropdown-toggle" aria-expanded="false">
-                Support
-              </button>
-              <ul class="dropdown">
-                <li><a href="/support/vafs.php"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
-                <li><a href="/support/contact.php">Contact</a></li>
-              </ul>
-            </li>            
-
-          </ul>
-
-        </div>
-      </nav>
+							<li class="has-dropdown">
+								<button class="dropdown-toggle" aria-expanded="false">
+									<span class="arrow">Support</span>
+								</button>
+								<ul class="dropdown">
+									<li>
+										<a href="/support/vafs.php"
+											><abbr title="Voluntary Access Fees">VAFs</abbr></a
+										>
+									</li>
+									<li><a href="/support/contact.php">Contact</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</nav>
     </div>
     <hr class="hr-gradient">
   </header>

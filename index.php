@@ -20,7 +20,7 @@ include 'includes/header.php';
         </div>
         <div class="scroller" data-speed="fast">
           <ul class="tag-list scroller__inner">
-            <li><a href="#">Over 700 Areas to Explore</a></li>
+            <li>Over 700 Areas to Explore</li>
             <li>Active Playerbase</li>
             <li>Dedicated Area for Newcomers</li>
             <li>Regular Updates</li>

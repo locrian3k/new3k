@@ -715,7 +715,7 @@ p {
 
 .img-display img {
   max-width: 100%;
-  width: clamp(4rem, 33%, 8rem); /* scale with container */
+  width: clamp(4rem, 30%, 7rem); /* scale with container */
   height: auto;
   object-fit: contain; 
   display: block;

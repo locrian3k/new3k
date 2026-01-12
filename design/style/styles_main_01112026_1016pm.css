@@ -451,7 +451,8 @@ a:focus-visible {
   border-image: var(--clr-gradient) 1;
 }
 
-.primary-navigation a {
+.primary-navigation a,
+.dropdown a {
   display: block;
   text-transform: uppercase;
   font-weight: bolder;
@@ -464,74 +465,44 @@ a:focus-visible {
 }
 
 .primary-navigation li:hover,
-.primary-navigation li:focus-within {
+.dropdown li:hover,
+.primary-navigation li:focus-within,
+.dropdown li:focus-within {
   background-color: var(--clr-text-heading);
   border-radius: var(--nav-li-border-radius);
 }
 
 .primary-navigation li:hover a,
+.dropdown li:hover a,
 .primary-navigation li:focus-within a {
   color: var(--clr-bg-main);
 }
 
-.has-dropdown {
-  position: relative;
-}
-
-/* Hide dropdown until opened */
+/* Dropdown Menus - Mobile */
 .dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--clr-bg-main);
+  border: 1px solid var(--clr-text-heading);
+  border-radius: var(--nav-li-border-radius);
   display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  background: #000;
-  min-width: 220px;
-  z-index: 1000;
+  position: static;
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
-.dropdown a {
+/* .dropdown li {
+  border-bottom: 0.05rem solid rgba(255, 255, 255, 0.1);
+} */
+
+.dropdown li:last-child {
+  border-bottom: none;
+}
+
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
   display: block;
-  padding: 0.6rem 1rem;
-  color: #fff;
-  background: transparent;
-  text-decoration: none;
-}
-
-/* Hover/focus */
-.dropdown a:hover,
-.dropdown a:focus {
-  background: #222;
-  color: #fff;
-}
-
-/* Show when open */
-.has-dropdown.open > .dropdown {
-  display: block;
-}
-
-.dropdown-toggle {
-  background: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-/* Triangle */
-.dropdown-toggle::before {
-  content: "▶";
-  font-size: 0.6rem;
-  transition: transform 0.2s ease;
-}
-
-/* Rotate when open */
-.has-dropdown.open .dropdown-toggle::before {
-  transform: rotate(90deg);
 }
 
 /* ------------------- */

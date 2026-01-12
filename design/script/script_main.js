@@ -50,60 +50,32 @@ function closeMenu() {
 // ------------------------------------------------------------------
 // MOBILE DROPDOWN NAVIGATION
 // ------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  const dropdownParents = document.querySelectorAll('.has-dropdown');
-  
-  dropdownParents.forEach(parent => {
-    const link = parent.querySelector('a');
-    const dropdown = parent.querySelector('.dropdown');
-    
-    if (!link || !dropdown) return;
-    
-    // On mobile, clicking the parent link toggles the dropdown
-    link.addEventListener('click', (e) => {
-      // Only prevent default and toggle on mobile (when menu toggle is visible)
-      const menuToggle = document.getElementById('menu-toggle');
-      const isVisible = window.getComputedStyle(menuToggle).display !== 'none';
-      
-      if (isVisible) {
-        e.preventDefault();
-        
-        // Close all other dropdowns
-        dropdownParents.forEach(otherParent => {
-          if (otherParent !== parent) {
-            otherParent.classList.remove('dropdown-open');
-          }
-        });
-        
-        // Toggle this dropdown
-        parent.classList.toggle('dropdown-open');
-      }
-      // On desktop, let the link work normally (CSS hover handles dropdown)
+document.addEventListener("click", function (e) {
+  const toggle = e.target.closest(".dropdown-toggle");
+
+  // Close all dropdowns if clicking elsewhere
+  if (!toggle) {
+    document.querySelectorAll(".has-dropdown.open").forEach(item => {
+      item.classList.remove("open");
+      item.querySelector(".dropdown-toggle")
+          ?.setAttribute("aria-expanded", "false");
     });
-  });
-  
-  // Close dropdowns when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.has-dropdown')) {
-      dropdownParents.forEach(parent => {
-        parent.classList.remove('dropdown-open');
-      });
-    }
-  });
-  
-  // Close dropdowns when menu is closed
-  const menuToggle = document.getElementById('menu-toggle');
-  if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-      if (!isOpen) {
-        // Menu is closing, so close all dropdowns
-        dropdownParents.forEach(parent => {
-          parent.classList.remove('dropdown-open');
-        });
-      }
-    });
+    return;
   }
+
+  const parent = toggle.closest(".has-dropdown");
+  const isOpen = parent.classList.contains("open");
+
+  // Close others
+  document.querySelectorAll(".has-dropdown.open").forEach(item => {
+    item.classList.remove("open");
+    item.querySelector(".dropdown-toggle")
+        ?.setAttribute("aria-expanded", "false");
+  });
+
+  // Toggle this one
+  parent.classList.toggle("open", !isOpen);
+  toggle.setAttribute("aria-expanded", String(!isOpen));
 });
 
 

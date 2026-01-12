@@ -1,102 +1,7 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-  <title>3Kingdoms - How to Play</title>
-
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn how to play on the Three Kingdoms MUD.">
-  <meta name="keywords" content="Three Kingdoms mud, text-based game, 3kingdoms, learn to play">
-  <meta name="author" content="Mimic">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="theme-color" content="#000000">
-
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer">
-
-  <link rel="stylesheet" href="/design/style/styles_main.css">
-</head>
-
-<body>
-
-    <div class="accessibility">
-    <!-- THIS CODE ALLOWS SCREEN READERS TO SKIP THE NAVIGATION MENU AND VIEW CONTENT OF PAGE -->
-    <div id="skip-to-content">
-      <a href="#content" id="skip-to-content-link">
-        SKIP TO CONTENT
-      </a>
-
-      <button onclick="topFunction()" id="GoToTopBtn" title="Go to top">
-        <strong>Top</strong>
-      </button>
-    </div>
-  </div>
-
-  <header class="site-header">
-    <div class="inner">
-      <!-- LOGO -->
-      <a href="../index.html" class="nav-logo">
-        <img
-          src="/images/3k_logo_shield_transparent.png"
-          class="logo-image"
-          alt="Three Kingdoms logo"
-          title="Home">
-      </a>
-
-      <!-- PLAY NOW -->
-      <div class="nav-play-now">
-        <button
-          class="glowing-btn"
-          type="button"
-          title="Play 3Kingdoms Now"
-          onclick="window.open('https://client.wemudtogether.com');">
-
-          <span class="glowing-txt">Play Now</span>
-        </button>
-      </div>
-
-      <!-- NAVIGATION -->
-      <nav class="site-nav" aria-label="Primary">
-
-        <!-- HAMBURGER MENU BUTTON -->
-        <button
-          id="menu-toggle"
-          class="menu-toggle"
-          aria-expanded="false"
-          aria-controls="primary-navigation"
-          aria-label="Open menu">
-
-          <span class="hamburger" title="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </button>
-
-        <!-- NAV CONTENT -->
-        <div class="nav-content">
-
-          <ul
-            id="primary-navigation"
-            class="primary-navigation"
-            data-state="closed">
-
-            <li><a href="index.html" id="home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="../index.html">Guilds</a></li>
-            <li><a href="../index.html">How to Play</a></li>
-            <li><a href="../index.html"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
-            <li><a href="../index.html">Contact</a></li>
-
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </header>
+<?php 
+$pageTitle = "3Kingdoms - How to Play";
+include 'includes/header.php'; 
+?>
 
   <main id="content">
     <article>
@@ -182,7 +87,7 @@
     <article id="about">
       <section>
         <div>
-          <h2>Adventure Awaits!</h2>
+          <h3>Adventure Awaits!</h3>
           <img src="/images/3k_logo_shield_transparent.png" alt="Three Kingdoms logo">
 
           <div>
@@ -192,14 +97,14 @@
           </div>
 
           <div>
-            <h2>Endless Areas to Explore</h2>
+            <h3>Endless Areas to Explore</h3>
             <p>
               Explore thousands of rooms, hundreds of areas, a plethora of quests, and billions of possibilities. Simple enough to pick up quickly, yet complex enough to challenge you for years, 3Kingdoms is the largest and most advanced online adventure available.
             </p>
           </div>    
 
           <div>
-            <h2>Three Unique Realms</h2>
+            <h3>Three Unique Realms</h3>
             <p>
               Based around the vibrant town of Pinnacle, 3Kingdoms invites you to explore three distinct realms:
               <br><br>
@@ -233,54 +138,7 @@
         <hr class="hr-gradient">
     </article>
   </main>
-  <footer>
-    <ul class="footer-banner">
-      <li style="--accent-color:#11515a">
-        <a href="http://www.themarblegroup.com/" target="_blank">
-          <div class="icon">
-            <img src="/images/marble_logo.gif" alt="Blue and purple marble" width="50%" style="border:.15rem solid gray">
-          </div>
-          <br>
-          <div class="title">The Marble Group, Inc.</div>
-          <br>
-          <div class="descr">Purveyors of fine internet gaming goods since 1992</div>
-        </a>
-      </li>
-      <li style="--accent-color:#38b">
-        <a href="#">
-          <div class="icon"><i class="fa-solid fa-people-group"></i></div>
-          <br>
-          <div class="title">3Scapes</div>
-          <br>
-          <div class="descr">The sister group of 3Kingdoms, where the rules are different</div>
-        </a>
-      </li>
-      <li style="--accent-color:#08374D">
-        <a href="#">
-        <div class="icon"><img src="/images/LDMud.gif" width="100%" alt="metal plate with sword and shield decor, indicating it's powered by ldmud"></div>
-        <br>
-        <div class="title">LDMud</div>
-        <br>
-        <div class="descr">Content, source, aesthetics & originality<br>&copy;1993-Now,<br>The Marble Group, Inc.
-        </div>
-        </a>
-      </li>
-      <li style="--accent-color:#6f6e2a">
-        <div class="icon"><i class="fa-solid fa-fan"></i></div>
-        <div class="title">Resources</div>
-        <div class="descr">
-          Player created<br>fan sites -
-          <br><br>
-          <div class="descr-justify">
-            &Gt; 3K Fandom
-            <br>
-            &Gt; <a href="https://wemudtogether.com" target="_blank">We Mud
-            Together</a>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </footer>
+  <?php include 'includes/footer.php'; ?>
   <script src="/design/script/script_main.js"></script>
 </body>
 

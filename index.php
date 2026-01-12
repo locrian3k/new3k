@@ -87,7 +87,7 @@ include 'includes/header.php';
     <article id="about">
       <section>
         <div>
-          <h2>Adventure Awaits!</h2>
+          <h3>Adventure Awaits!</h3>
           <img src="/images/3k_logo_shield_transparent.png" alt="Three Kingdoms logo">
 
           <div>
@@ -97,14 +97,14 @@ include 'includes/header.php';
           </div>
 
           <div>
-            <h2>Endless Areas to Explore</h2>
+            <h3>Endless Areas to Explore</h3>
             <p>
               Explore thousands of rooms, hundreds of areas, a plethora of quests, and billions of possibilities. Simple enough to pick up quickly, yet complex enough to challenge you for years, 3Kingdoms is the largest and most advanced online adventure available.
             </p>
           </div>    
 
           <div>
-            <h2>Three Unique Realms</h2>
+            <h3>Three Unique Realms</h3>
             <p>
               Based around the vibrant town of Pinnacle, 3Kingdoms invites you to explore three distinct realms:
               <br><br>
@@ -131,9 +131,7 @@ include 'includes/header.php';
     <article>
         <div class="sister-site">
           <img src="/images/3S_logo.png" alt="3Scapes logo">          
-          <p class="center">
-            EXPLORE OUR SISTER MUD, 3SCAPES, FOR MORE FUN.
-          </p>
+          <h2 class="center">EXPLORE OUR SISTER MUD, 3SCAPES, FOR MORE FUN!</h2>
         </div>
         <hr class="hr-gradient">
     </article>

@@ -596,6 +596,28 @@ a:focus-visible {
   color: var(--clr-text-primary);
 }
 
+.primary-navigation > li:last-child,
+.primary-navigation > li:last-child a,
+.primary-navigation > li:last-child:hover,
+.primary-navigation > li:last-child:focus-within {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--clr-bg-secondary);
+  padding: .75rem 2rem 0;
+  font-size: var(--fs-body);
+  font-family: var(--ff-ab);
+  font-weight: normal;
+  text-transform: none;
+}
+
+.primary-navigation > li:last-child img {
+  padding: .5rem 0;
+}
+
 /* ------------------- */
 /* BUTTONS */
 /* ------------------- */

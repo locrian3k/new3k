@@ -138,6 +138,18 @@
 									<li><a href="/support/contact.php">Contact</a></li>
 								</ul>
 							</li>
+              
+              <li>
+                <a href="https://www.michrenfest.com/" target="_blank">MICHIGAN RENAISSANCE FESTIVAL<br>
+                  <img src="http://www.gameaxle.com/images/RenFestBanner2025.jpg">
+                  <p>
+                    In the midwest? Check out the 2026 Michigan Renaissance Festival!
+                    <br>
+                    Aug 22-Oct 4
+                  </p>
+                </a>
+              </li>
+              
 						</ul>
 					</div>
 				</nav>

@@ -85,11 +85,11 @@
             data-state="closed">
 
             <li><a href="/index.php" id="home">Home</a></li>
-            <li><a href="/about.php">About</a></li>
-            <li><a href="/guilds.php">Guilds</a></li>
-            <li><a href="/how-to-play.php">How to Play</a></li>
-            <li><a href="/vafs.php"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
-            <li><a href="/contact.php">Contact</a></li>
+            <li><a href="/about/index.php">About</a></li>
+            <li><a href="/guilds/index.php">Guilds</a></li>
+            <li><a href="/play/index.php">How to Play</a></li>
+            <li><a href="/vafs/index.php"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
+            <li><a href="/contact/index.php">Contact</a></li>
 
           </ul>
         </div>

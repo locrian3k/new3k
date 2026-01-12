@@ -752,7 +752,7 @@ footer {
 }
 
 /* Footer Banner,  UL banner card from https://codepen.io/MarkBoots/pen/yLPwvda */
-.footer {
+.site-footer {
   min-height: 100vh;
   display: grid;
   align-content: center;

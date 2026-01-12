@@ -587,6 +587,10 @@ a:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+
+}
+
+.scroller_img_area {
   height: 182px;
 }
 

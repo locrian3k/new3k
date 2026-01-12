@@ -33,7 +33,7 @@ include 'includes/header.php';
             <li>Dungeons</li>
           </ul>
         </div>
-        <div class="scroller" data-direction="right" data-speed="slow">
+        <div class="scroller scroller_img_area" data-direction="right" data-speed="slow">
           <div class="scroller__inner">
             <img src="/images/scrolling/aruwins_windmill.png"
               loading="lazy" 

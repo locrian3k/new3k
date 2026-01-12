@@ -47,6 +47,7 @@
     var(--clr-black));
   
   --nav-li-border-radius: 0.35rem;
+  --header-height: 8rem;
 
   /* ------------------- */
   /* FONT FAMILIES */
@@ -329,34 +330,24 @@ abbr {
 /* END OF HAMBURGER MENU BARS */
 
 .site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-inline: 1rem;
-}
-
-.site-header > .inner {
-  max-width: 100%;
-  margin-inline: auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* .site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  background: var(--clr-bg-main);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  max-width: 100%;
   z-index: 9999;
-  height: 128px;
-} */
+  background-color: var(--clr-bg-main);
+}
+
+.site-header > .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: .5rem;
+  margin: .5rem 0 0 0;
+  height: var(--header-height);
+  max-width: 100%;
+  margin-inline: auto;
+}
 
 .nav-logo {
   padding: 0 1rem;
@@ -364,7 +355,7 @@ abbr {
 }
 
 .nav-logo img {
-  height: 8rem;
+  height: 9rem;
   width: auto;
   display: block;
 }
@@ -656,6 +647,7 @@ main {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
+  margin-top: var(--header-height);
   overflow-x: hidden;
 }
 

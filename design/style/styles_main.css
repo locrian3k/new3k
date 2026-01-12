@@ -587,6 +587,7 @@ a:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  height: 182px;
 }
 
 .scroller__inner img {

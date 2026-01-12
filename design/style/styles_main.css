@@ -451,7 +451,8 @@ a:focus-visible {
   border-image: var(--clr-gradient) 1;
 }
 
-.primary-navigation a {
+.primary-navigation a,
+.dropdown a {
   display: block;
   text-transform: uppercase;
   font-weight: bolder;
@@ -464,12 +465,15 @@ a:focus-visible {
 }
 
 .primary-navigation li:hover,
-.primary-navigation li:focus-within {
+.dropdown li:hover,
+.primary-navigation li:focus-within,
+.dropdown li:focus-within {
   background-color: var(--clr-text-heading);
   border-radius: var(--nav-li-border-radius);
 }
 
 .primary-navigation li:hover a,
+.dropdown li:hover a,
 .primary-navigation li:focus-within a {
   color: var(--clr-bg-main);
 }
@@ -494,24 +498,6 @@ a:focus-visible {
 
 .dropdown li:last-child {
   border-bottom: none;
-}
-
-.dropdown a {
-  display: block;
-  padding: 0.75rem 1rem;
-  color: var(--clr-text-primary);
-  text-decoration: none;
-  text-transform: none;
-  font-size: var(--fs-body);
-  font-weight: normal;
-}
-
-.dropdown li:hover {
-  background-color: var(--clr-text-heading);
-}
-
-.dropdown li:hover a {
-  color: var(--clr-bg-main);
 }
 
 .has-dropdown:hover .dropdown,

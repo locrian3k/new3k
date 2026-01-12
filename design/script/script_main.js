@@ -1,43 +1,4 @@
 // ------------------------------------------------------------------
-// CHANGING THEME
-// ------------------------------------------------------------------
-// document.addEventListener('DOMContentLoaded', () => {
-// 	const themeButton = document.querySelector('.theme-btn');
-// 	const currentTheme = localStorage.getItem('theme') || 'dark';
-// 	const themeIcon = themeButton.querySelector('i');
-// 	const srText = themeButton.querySelector('.sr-only');
-
-// 	document.body.classList.add(currentTheme + '-theme');
-// 	updateThemeButton(currentTheme);
-
-// 	themeButton.addEventListener('click', () => {
-// 		let newTheme = 'light';
-// 		if (document.body.classList.contains('light-theme')) {
-// 			newTheme = 'dark';
-// 		}
-// 		document.body.classList.remove('dark-theme', 'light-theme');
-// 		document.body.classList.add(newTheme + '-theme');
-// 		localStorage.setItem('theme', newTheme);
-// 		updateThemeButton(newTheme);
-// 	});
-
-// 	function updateThemeButton(theme) {
-// 		if (theme === 'light') {
-// 			themeButton.setAttribute('aria-label', 'Switch to dark theme');
-// 			themeIcon.classList.remove('fa-sun');
-// 			themeIcon.classList.add('fa-moon');
-// 			srText.textContent = 'Switch to dark theme';
-// 		} else {
-// 			themeButton.setAttribute('aria-label', 'Switch to light theme');
-// 			themeIcon.classList.remove('fa-moon');
-// 			themeIcon.classList.add('fa-sun');
-// 			srText.textContent = 'Switch to light theme';
-// 		}
-// 	}
-// });
-
-
-// ------------------------------------------------------------------
 // 'GO TO TOP OF PAGE' BUTTON THAT APPEARS AFTER SCROLLING
 // www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top
 // ------------------------------------------------------------------
@@ -84,6 +45,67 @@ function closeMenu() {
   menuToggle.setAttribute('aria-expanded', "false");
   primaryNavigation.setAttribute('data-state', "closed");
 }
+
+
+// ------------------------------------------------------------------
+// MOBILE DROPDOWN NAVIGATION
+// ------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownParents = document.querySelectorAll('.has-dropdown');
+  
+  dropdownParents.forEach(parent => {
+    const link = parent.querySelector('a');
+    const dropdown = parent.querySelector('.dropdown');
+    
+    if (!link || !dropdown) return;
+    
+    // On mobile, clicking the parent link toggles the dropdown
+    link.addEventListener('click', (e) => {
+      // Only prevent default and toggle on mobile (when menu toggle is visible)
+      const menuToggle = document.getElementById('menu-toggle');
+      const isVisible = window.getComputedStyle(menuToggle).display !== 'none';
+      
+      if (isVisible) {
+        e.preventDefault();
+        
+        // Close all other dropdowns
+        dropdownParents.forEach(otherParent => {
+          if (otherParent !== parent) {
+            otherParent.classList.remove('dropdown-open');
+          }
+        });
+        
+        // Toggle this dropdown
+        parent.classList.toggle('dropdown-open');
+      }
+      // On desktop, let the link work normally (CSS hover handles dropdown)
+    });
+  });
+  
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.has-dropdown')) {
+      dropdownParents.forEach(parent => {
+        parent.classList.remove('dropdown-open');
+      });
+    }
+  });
+  
+  // Close dropdowns when menu is closed
+  const menuToggle = document.getElementById('menu-toggle');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      if (!isOpen) {
+        // Menu is closing, so close all dropdowns
+        dropdownParents.forEach(parent => {
+          parent.classList.remove('dropdown-open');
+        });
+      }
+    });
+  }
+});
+
 
 // ------------------------------------------
 // SCROLLING IMAGES

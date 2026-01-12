@@ -488,9 +488,9 @@ a:focus-visible {
   margin-top: 0.5rem;
 }
 
-.dropdown li {
+/* .dropdown li {
   border-bottom: 0.05rem solid rgba(255, 255, 255, 0.1);
-}
+} */
 
 .dropdown li:last-child {
   border-bottom: none;
@@ -507,11 +507,11 @@ a:focus-visible {
 }
 
 .dropdown li:hover {
-  background-color: var(--clr-accent-main);
+  background-color: var(--clr-text-heading);
 }
 
 .dropdown li:hover a {
-  color: var(--clr-text-primary);
+  color: var(--clr-bg-main);
 }
 
 .has-dropdown:hover .dropdown,

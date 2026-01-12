@@ -439,8 +439,10 @@ a:focus-visible {
 }
 
 /* Make the whole <li> highlight when hovering/focusing on the link */
-.primary-navigation li {
-  text-align: center;
+.primary-navigation li,
+.primary-navigation li button .dropdown-toggle {
+  text-align: left;
+  padding-left: 2rem;
   transition: background-color 0.3s, color 0.3s;
   border-radius: var(--nav-li-border-radius);
   border-bottom: 0.05rem solid var(--clr-bg-secondary);
@@ -499,16 +501,16 @@ a:focus-visible {
 }
 
 /* Triangle */
-.dropdown-toggle::before {
+/* .dropdown-toggle::before {
   content: "▶";
   font-size: 0.6rem;
   transition: transform 0.2s ease;
-}
+} */
 
 /* Rotate when open */
-.has-dropdown.open .dropdown-toggle::before {
+/* .has-dropdown.open .dropdown-toggle::before {
   transform: rotate(90deg);
-}
+} */
 
 /* ------------------- */
 /* BUTTONS */

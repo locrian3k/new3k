@@ -474,6 +474,50 @@ a:focus-visible {
   color: var(--clr-bg-main);
 }
 
+/* Dropdown Menus - Mobile */
+.dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--clr-bg-main);
+  border: 1px solid var(--clr-text-heading);
+  border-radius: var(--nav-li-border-radius);
+  display: none;
+  position: static;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.dropdown li {
+  border-bottom: 0.05rem solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown li:last-child {
+  border-bottom: none;
+}
+
+.dropdown a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--clr-text-primary);
+  text-decoration: none;
+  text-transform: none;
+  font-size: var(--fs-body);
+  font-weight: normal;
+}
+
+.dropdown li:hover {
+  background-color: var(--clr-accent-main);
+}
+
+.dropdown li:hover a {
+  color: var(--clr-text-primary);
+}
+
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  display: block;
+}
 
 /* ------------------- */
 /* BUTTONS */

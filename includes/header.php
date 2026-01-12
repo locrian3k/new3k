@@ -121,17 +121,6 @@
 
           </ul>
 
-          <div class="nav-play-now">
-            <button
-              class="glowing-btn"
-              type="button"
-              title="Play 3Kingdoms Now"
-              onclick="window.open('https://client.wemudtogether.com');">
-
-              <span class="glowing-txt">Play Now</span>
-            </button>
-          </div>
-
         </div>
       </nav>
     </div>

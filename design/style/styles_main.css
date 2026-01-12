@@ -474,35 +474,12 @@ a:focus-visible {
   color: var(--clr-bg-main);
 }
 
-.has-dropdown {
-  position: relative;
-}
-
 /* Hide dropdown until opened */
 .dropdown {
   display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-
+  position: relative;
   background: #000;
-  min-width: 220px;
   z-index: 1000;
-}
-
-.dropdown a {
-  display: block;
-  padding: 0.6rem 1rem;
-  color: #fff;
-  background: transparent;
-  text-decoration: none;
-}
-
-/* Hover/focus */
-.dropdown a:hover,
-.dropdown a:focus {
-  background: #222;
-  color: #fff;
 }
 
 /* Show when open */
@@ -516,7 +493,6 @@ a:focus-visible {
   color: inherit;
   font: inherit;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   gap: 0.4rem;

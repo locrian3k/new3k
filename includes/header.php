@@ -93,15 +93,6 @@
             </li>
 
             <li class="has-dropdown">
-              <a href="/connect.php">Play</a>
-              <ul class="dropdown">
-                <li><a href="/connect.php">Quick Connect</a></li>
-                <li><a href="/connection-options.php">Connection Options</a></li>
-                <li><a href="/wholist.php">Who's Online</a></li>
-              </ul>
-            </li>
-
-            <li class="has-dropdown">
               <button class="dropdown-toggle" aria-expanded="false">
                 Play
               </button>
@@ -125,14 +116,6 @@
                 <li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
                 <li><a href="https://wemudtogether.com" target="_blank">We Mud Together</a></li>
                 <li><a href="#">3K Fandom</a></li>
-              </ul>
-            </li>
-
-            <li class="has-dropdown">
-              <a href="/support.php">Support</a>
-              <ul class="dropdown">
-                <li><a href="/support/vafs.php"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
-                <li><a href="/support/contact.php">Contact</a></li>
               </ul>
             </li>
 

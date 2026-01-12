@@ -24,6 +24,7 @@
 <body>
 
   <div class="accessibility">
+    <!-- THIS CODE ALLOWS SCREEN READERS TO SKIP THE NAVIGATION MENU AND VIEW CONTENT OF PAGE -->
     <div id="skip-to-content">
       <a href="#content" id="skip-to-content-link">
         SKIP TO CONTENT
@@ -37,6 +38,7 @@
 
   <header class="site-header">
     <div class="inner">
+
       <!-- LOGO -->
       <a href="/index.php" class="nav-logo">
         <img
@@ -60,6 +62,7 @@
 
       <!-- NAVIGATION -->
       <nav class="site-nav" aria-label="Primary">
+        <!-- HAMBURGER -->
         <button
           id="menu-toggle"
           class="menu-toggle"
@@ -74,66 +77,24 @@
           </span>
         </button>
 
+        <!-- NAV CONTENT -->
         <div class="nav-content">
           <ul
             id="primary-navigation"
             class="primary-navigation"
             data-state="closed">
 
-            <li><a href="/index.php">Home</a></li>
-            
-            <li class="has-dropdown">
-              <a href="/about.php">About</a>
-              <ul class="dropdown">
-                <li><a href="/about-3kingdoms.php">3Kingdoms</a></li>
-                <li><a href="/about-3scapes.php">3Scapes</a></li>
-              </ul>
-            </li>
-
-            <li class="has-dropdown">
-              <a href="/connect.php">Play</a>
-              <ul class="dropdown">
-                <li><a href="/connect.php">Quick Connect</a></li>
-                <li><a href="/connection-options.php">Connection Options</a></li>
-                <li><a href="/wholist.php">Who's Online</a></li>
-              </ul>
-            </li>
-
-            <li><a href="/guilds.php">Guilds</a></li>
-
-            <li class="has-dropdown">
-              <a href="/community.php">Community</a>
-              <ul class="dropdown">
-                <li><a href="http://forums.3k.org" target="_blank">Forums</a></li>
-                <li><a href="/gallery.php">Gallery</a></li>
-                <li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
-                <li><a href="/omp.php">OMPs</a></li>
-              </ul>
-            </li>
-
-            <li class="has-dropdown">
-              <a href="/support.php">Support</a>
-              <ul class="dropdown">
-                <li><a href="/vafs.php"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
-                <li><a href="/contact.php">Contact</a></li>
-              </ul>
-            </li>
+            <li><a href="/index.php" id="home">Home</a></li>
+            <li><a href="/about/index.php">About</a></li>
+            <li><a href="/guilds/index.php">Guilds</a></li>
+            <li><a href="/play/index.php">How to Play</a></li>
+            <li><a href="/vafs/index.php"><abbr title="Voluntary Access Fees">VAFs</abbr></a></li>
+            <li><a href="/contact/index.php">Contact</a></li>
 
           </ul>
-
-          <div class="nav-play-now">
-            <button
-              class="glowing-btn"
-              type="button"
-              title="Play 3Kingdoms Now"
-              onclick="window.open('https://client.wemudtogether.com');">
-
-              <span class="glowing-txt">Play Now</span>
-            </button>
-          </div>
-
         </div>
       </nav>
+      
     </div>
     <hr class="hr-gradient">
   </header>

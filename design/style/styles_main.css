@@ -182,6 +182,7 @@
 /* Headings */
 h1, h2, h3, .heading {
   color: var(--clr-text-heading);         /* 30% secondary for headings */
+  font-family: var(--ff-ab);
 }
 
 /* ------------------- */
@@ -609,9 +610,13 @@ a:focus-visible {
   color: var(--clr-bg-secondary);
   padding: .75rem 2rem 0;
   font-size: var(--fs-body);
-  font-family: var(--ff-ab);
   font-weight: normal;
   text-transform: none;
+}
+
+.primary-navigation > li:last-child p {
+  font-family: var(--ff-normal);
+  font-size: var(--fs-caption);
 }
 
 .primary-navigation > li:last-child img {

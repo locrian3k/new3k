@@ -144,9 +144,7 @@
                   <h3>Michigan Renaissance Festival</h3>
                   <img src="http://www.gameaxle.com/images/RenFestBanner2025.jpg">
                   <p>
-                    In the midwest? Check out the 2026 Michigan Renaissance Festival!
-                    <br>
-                    Aug 22-Oct 4
+                    In the midwest? Check out the 2026 Michigan Renaissance Festival! Aug 22-Oct 4
                   </p>
                 </a>
               </li>

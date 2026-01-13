@@ -140,7 +140,8 @@
 							</li>
               
               <li>
-                <a href="https://www.michrenfest.com/" target="_blank">MICHIGAN RENAISSANCE FESTIVAL<br>
+                <a href="https://www.michrenfest.com/" target="_blank">
+                  <h3>Michigan Renaissance Festival</h3>
                   <img src="http://www.gameaxle.com/images/RenFestBanner2025.jpg">
                   <p>
                     In the midwest? Check out the 2026 Michigan Renaissance Festival!
@@ -149,7 +150,7 @@
                   </p>
                 </a>
               </li>
-              
+
 						</ul>
 					</div>
 				</nav>

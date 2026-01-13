@@ -601,8 +601,7 @@ a:focus-visible {
 .primary-navigation > li:last-child a,
 .primary-navigation > li:last-child:hover,
 .primary-navigation > li:last-child:focus-within {
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   align-items: center;
   justify-content: center;
   background: none;
@@ -891,10 +890,6 @@ p {
 /* ------------------- */
 /* FOOTER */
 /* ------------------- */
-/* =============================================== */
-/* MODERN FOOTER - Replace your existing footer CSS */
-/* =============================================== */
-
 footer {
   position: relative;
   background: var(--clr-bg-main);

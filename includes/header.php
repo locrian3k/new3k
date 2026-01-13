@@ -40,7 +40,7 @@
       <!-- LOGO -->
       <a href="/index.php" class="nav-logo">
         <img
-          src="/images/3k_logo_shield_transparent.png"
+          src="/images/logo/3k_logo_shield_transparent.png"
           class="logo-image"
           alt="Three Kingdoms logo"
           title="Home">

@@ -88,7 +88,7 @@ include 'includes/header.php';
       <section>
         <div>
           <h3>Adventure Awaits!</h3>
-          <img src="/images/3k_logo_shield_transparent.png" alt="Three Kingdoms logo">
+          <img src="/images/logo/3k_logo_shield_transparent.png" alt="Three Kingdoms logo">
 
           <div>
             <p>
@@ -115,9 +115,9 @@ include 'includes/header.php';
               <span class="orange">Chaos</span>, where fantastical and scientific forces collide, creating creatures beyond imagination.
             </p>
             <div class="img-display">
-              <img src="/images/3k_fantasy_logo_transparent_small.png" alt="Three Kingdoms fantasy logo">
-              <img src="/images/3k_science_logo_transparent_small.png" alt="Three Kingdoms science logo">
-              <img src="/images/3k_chaos_logo_transparent_small.png" alt="Three Kingdoms chaos logo">
+              <img src="/images/logo/3k_fantasy_logo_transparent_small.png" alt="Three Kingdoms fantasy logo">
+              <img src="/images/logo/3k_science_logo_transparent_small.png" alt="Three Kingdoms science logo">
+              <img src="/images/logo/3k_chaos_logo_transparent_small.png" alt="Three Kingdoms chaos logo">
             </div>
             <p>
               Choose from over a dozen guilds like Knights, Necromancers, Juggernauts, and more. Guilds grant special powers, social hubs, and opportunities to team up with other players. Customize your character with comprehensive skills and abilities that make every journey unique.
@@ -130,7 +130,7 @@ include 'includes/header.php';
     </article>
     <article>
         <div class="sister-site">
-          <img src="/images/3S_logo.png" alt="3Scapes logo">          
+          <img src="/images/logo/3S_logo.png" alt="3Scapes logo">          
           <h2 class="center">EXPLORE OUR SISTER MUD, 3SCAPES, FOR MORE FUN!</h2>
         </div>
         <hr class="hr-gradient">

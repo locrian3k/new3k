@@ -78,7 +78,7 @@ include 'includes/header.php';
           </div>
         </div>
         <BR>
-        <h2 class="light">EXPLORE THE REALMS TODAY</h2>
+        <h2 class="light ff-normal">EXPLORE THE REALMS TODAY</h2>
       </section>
       <hr class="hr-gradient">
     </article>

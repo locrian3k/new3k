@@ -891,141 +891,165 @@ p {
 /* ------------------- */
 /* FOOTER */
 /* ------------------- */
+/* =============================================== */
+/* MODERN FOOTER - Replace your existing footer CSS */
+/* =============================================== */
+
 footer {
   position: relative;
   background: var(--clr-bg-main);
   color: var(--clr-text-primary);
-  justify-content: center;
   width: 100%;
   max-width: 100%;
-  height: 100%;
-  border-radius: 0.3rem;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 3rem 1rem 1rem;
   overflow-x: hidden;
+  border-top: 2px solid var(--clr-text-heading);
 }
 
-/* Footer Banner,  UL banner card from https://codepen.io/MarkBoots/pen/yLPwvda */
-.site-footer {
-  min-height: 100vh;
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer Navigation Grid */
+.footer-nav {
   display: grid;
-  align-content: center;
-  gap: 2rem;
-  padding: 2rem;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+  padding: 1rem 0 2rem;
 }
 
-.footer-banner {
-  --col-gap: 2rem;
-  --barH: 1rem;
-  --roleH: 2rem;
-  --flapH: 2rem;
+.footer-nav-column h3 {
+  color: var(--clr-text-heading);
+  font-size: var(--fs-h3);
+  margin-bottom: 1rem;
+  font-family: var(--ff-ab);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
 
-  width: min(60rem, 90%);
-  margin-inline: auto;
-  margin-bottom: 5rem;
+.footer-nav-column h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3rem;
+  height: 2px;
+  background: var(--clr-accent-main);
+}
 
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: var(--col-gap);
-  padding-inline: calc(var(--col-gap) / 2);
-
-  justify-content: center;
-  align-items: flex-start;
+.footer-nav-column ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.footer-banner li {
-  width: 10em;
-  display: grid;
-  grid-template:
-    "role"
-    "icon"
-    "title"
-    "descr";
-  align-items: flex-start;
-  gap: 1rem;
-  padding-block-end: calc(var(--flapH) + 1rem);
+.footer-nav-column li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-nav-column a {
+  color: var(--clr-text-primary);
+  text-decoration: none;
+  transition: all 0.3s;
+  font-size: var(--fs-body);
+  display: inline-block;
+  position: relative;
+}
+
+.footer-nav-column a::before {
+  content: '→';
+  opacity: 0;
+  margin-right: 0;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.footer-nav-column a:hover::before,
+.footer-nav-column a:focus::before {
+  opacity: 1;
+  margin-right: 0.5rem;
+}
+
+.footer-nav-column a:hover,
+.footer-nav-column a:focus {
+  color: var(--clr-text-heading);
+  transform: translateX(0.25rem);
+}
+
+/* Partner Info - Simple Text Links */
+.footer-partners {
   text-align: center;
-  background: var(--accent-color);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6) var(--roleH),
-    rgba(0, 0, 0, 0.4) calc(var(--roleH) + 0.5rem),
-    rgba(0, 0, 0, 0) calc(var(--roleH) + 0.5rem + 5rem));
-  clip-path: polygon(calc(var(--col-gap) / -2 - 5px) 0,
-    calc(100% + var(--col-gap) / 2 + 5px) 0,
-    calc(100% + var(--col-gap) / 2 + 5px) calc(100% - var(--flapH)),
-    50% 100%,
-    calc(var(--col-gap) / -2 - 5px) calc(100% - var(--flapH)));
+  padding: 2rem 0;
+  font-size: var(--fs-body-small);
+  color: var(--clr-text-secondary);
 }
 
-.descr-justify {
-  text-align: left;
+.footer-partners p {
+  margin: 0.5rem 0;
+  padding: 0;
 }
 
-/* bar */
-.footer-banner li::before {
-  content: "";
-  grid-area: role;
-  height: var(--barH);
-  width: calc(100% + var(--col-gap));
-  margin-left: calc(var(--col-gap) / -2);
-  margin-top: calc(var(--roleH) / 2 - var(--barH) / 2);
-  background: grey;
-  z-index: -1;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.2) 30%,
-    rgba(255, 255, 255, 0.1) 40%,
-    rgba(0, 0, 0, 0.1) 60%,
-    rgba(0, 0, 0, 0.2) 70%,
-    rgba(0, 0, 0, 0.4));
+.footer-partners a {
+  color: var(--clr-accent-main);
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-/* role */
-.footer-banner li::after {
-  content: "";
-  grid-area: role;
-  background: var(--accent-color);
-  background-image: linear-gradient(rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.2) 30%,
-    rgba(255, 255, 255, 0.1) 40%,
-    rgba(0, 0, 0, 0.1) 60%,
-    rgba(0, 0, 0, 0.2) 70%,
-    rgba(0, 0, 0, 0.4));
-  height: var(--roleH);
+.footer-partners a:hover,
+.footer-partners a:focus {
+  color: var(--clr-text-heading);
+  text-decoration: underline;
 }
 
-.footer-banner li .icon,
-.footer-banner li .title,
-.footer-banner li .descr {
-  padding-inline: 1rem;
-  color: white;
-  text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+.footer-partners .separator {
+  color: var(--clr-text-secondary);
+  margin: 0 0.5rem;
 }
 
-.footer-banner li .icon {
-  font-size: 3rem;
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(241, 227, 172, 0.2);
+  text-align: center;
 }
 
-.footer-banner li a {
-  color: white;
+.footer-copyright {
+  font-size: var(--fs-body-small);
+  color: var(--clr-text-secondary);
+  margin-bottom: 1rem;
 }
 
-.footer-banner li .title {
-  font-size: 1.25rem;
-  font-weight: 700;
+.footer-copyright p {
+  padding: 0;
+  margin: 0;
 }
 
-.footer-banner li .descr {
-  font-size: 0.9rem;
+.footer-logo {
+  margin: 1.5rem 0;
 }
 
-.updated {
-  /*this is a div at the footer area to state when the page was last updated*/
+.footer-logo img {
+  height: 4rem;
+  width: auto;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.footer-logo img:hover {
+  opacity: 1;
+}
+
+/*this is a div at the footer area to state when the page was last updated*/
+/* .updated {
   position: absolute;
   left: 5%;
   bottom: 1.5rem;
   font-size: .5rem;
   font-family: var(--ff-ab);
-}
+} */
 
 
 /* ------------------- */
@@ -1095,6 +1119,15 @@ footer {
     width: calc(25% - var(--col-gap));
     min-width: 180px;
   }
+
+    .footer-nav {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+  
+  .footer-partners {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: var(--bp-laptop)) {
@@ -1114,6 +1147,18 @@ footer {
   .hero h1 {
     font-size: var(--fs-h1);
   }
+
+  footer {
+    padding: 4rem 2rem 2rem;
+  }
+  
+  .footer-nav {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .footer-partners {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media (min-width: var(--bp-desktop)) {
@@ -1123,6 +1168,10 @@ footer {
   
   .scroller {
     max-width: 1200px;
+  }
+
+  .footer-nav-column h3 {
+    font-size: clamp(var(--fs-h3), 2vw, 1.75rem);
   }
 }
 

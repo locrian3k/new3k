@@ -350,13 +350,13 @@ h4 {
 
 /* Realm-specific text colors */
 .text-fantasy {
-	color: var(--clr-accent-blue);
+	color: var(--clr-fantasy);
 }
 .text-science {
-	color: var(--clr-accent-blue);
+	color: var(--clr-science);
 }
 .text-chaos {
-	color: var(--clr-accent-orange);
+	color: var(--clr-chaos);
 }
 
 /* Background colors */
@@ -886,8 +886,7 @@ main {
 	margin-top: 5rem;
 }
 
-.hero-modern {
-	min-height: 90vh;
+.hero {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -895,6 +894,12 @@ main {
 	text-align: center;
 	padding: var(--space-xl) var(--space-lg);
 	position: relative;
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.hero-index {
+  min-height: 90vh;
 	background: linear-gradient(
 			135deg,
 			rgba(7, 15, 25, 0.95),
@@ -902,11 +907,9 @@ main {
 		),
 		url("/images/castle-images/beautiful-fantasy-landscape-castle-stunning-illustration-232263945_iconl_wide_nowm.webp")
 			center/cover no-repeat;
-	border-bottom: 0.05rem solid transparent;
-	border-image: var(--clr-gradient) 1;
 }
 
-.hero-content-modern {
+.hero-content {
 	max-width: 1200px;
 	position: relative;
 	z-index: 10;
@@ -942,6 +945,12 @@ main {
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-logo-about {
+  height: 12rem;
+  padding: 0;
+  margin: 0 0 var(--space-md) 0;
 }
 
 .hero-subtitle {
@@ -1394,6 +1403,257 @@ main {
 	justify-content: center;
 }
 
+
+/* ============================= */
+/* ABOUT PAGE SPECIFIC STYLES */
+/* Add to /design/style/styles_about.css */
+/* ============================= */
+
+.hero-about {
+  min-height: 60vh;
+	background: linear-gradient(
+			135deg,
+			rgba(7, 15, 25, 0.95),
+			rgba(25, 52, 85, 0.9)
+		),
+		url("/images/castle-images/fantasy-castle-beel46.jpg")
+			center/cover no-repeat;
+}
+
+.hero-title-about {
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+
+/* Container for content sections */
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Introduction Section */
+.about-intro {
+  padding: var(--space-3xl) var(--space-lg);
+  background: var(--clr-black);
+  border-bottom: 0.05rem solid var(--clr-accent-main);
+}
+
+.pinnacle-image-container {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.pinnacle-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 25rem;
+  border-radius: var(--card-border-radius);
+  border: 2px solid var(--clr-accent-main);
+  box-shadow: 0 10px 40px rgba(212, 74, 2, 0.3);
+  margin-bottom: var(--space-sm);
+}
+
+.pinnacle-caption {
+  font-size: var(--fs-body-small);
+  color: var(--clr-text-secondary);
+  font-style: italic;
+}
+
+.intro-text {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body-large);
+  line-height: var(--lh-normal);
+  color: var(--clr-text-primary);
+}
+
+.intro-text p {
+  margin-bottom: var(--space-md);
+}
+
+.text-highlight-yellow {
+  color: var(--clr-text-heading);
+}
+
+.intro-cta {
+  text-align: center;
+  margin: var(--space-xl) 0;
+}
+
+.intro-link {
+  font-size: var(--fs-body-large);
+  color: var(--clr-text-heading);
+  font-weight: var(--fw-body-bold);
+  text-decoration: underline;
+}
+
+/* FAQ Section */
+.about-faq {
+  padding: var(--space-3xl) var(--space-lg);
+  background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));
+  border-bottom: 0.05rem solid var(--clr-accent-main);
+}
+
+.about-faq .section-title {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.faq-grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.faq-item {
+  background: rgba(25, 52, 85, 0.3);
+  border: 2px solid;
+  border-radius: var(--card-border-radius);
+  padding: var(--space-lg);
+}
+
+.faq-item-chaos {
+  border-color: rgba(212, 74, 2, 0.3);
+}
+
+.faq-item-science {
+  border-color: rgba(99, 160, 195, 0.3);
+}
+
+.faq-item-fantasy {
+  border-color: rgba(212, 160, 46, 0.3);
+}
+
+.faq-title {
+  color: var(--clr-text-heading);
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-md);
+}
+
+.faq-text {
+  color: var(--clr-text-primary);
+  line-height: var(--lh-normal);
+  margin: 0;
+}
+
+.faq-text-multi {
+  margin-bottom: var(--space-md);
+}
+
+/* Detailed Features Section */
+.about-details {
+  padding: var(--space-3xl) var(--space-lg);
+  background: var(--clr-black);
+  border-bottom: 0.05rem solid var(--clr-accent-main);
+}
+
+.about-details .section-title {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--clr-text-secondary);
+  font-size: var(--fs-body-large);
+  margin-bottom: var(--space-2xl);
+}
+
+.details-content {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--clr-text-primary);
+}
+
+.detail-block {
+  margin-bottom: var(--space-xl);
+}
+
+.detail-block:last-child {
+  margin-bottom: 0;
+}
+
+.detail-title {
+  color: var(--clr-text-heading);
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.detail-title i {
+  color: var(--clr-accent-main);
+}
+
+/* Features List Section */
+.about-features {
+  padding: var(--space-3xl) var(--space-lg);
+  background: linear-gradient(135deg, rgba(212, 74, 2, 0.1), rgba(25, 52, 85, 0.2));
+  border-bottom: 0.05rem solid var(--clr-accent-main);
+}
+
+.about-features .section-title {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.feature-item {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+}
+
+.feature-item i {
+  color: var(--clr-accent-main);
+  font-size: 1.2rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.feature-item p {
+  color: var(--clr-text-primary);
+  margin: 0;
+}
+
+.detail-block code {
+  background: rgba(247, 210, 75, 0.1);
+  color: var(--clr-text-heading);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  border: 1px solid rgba(247, 210, 75, 0.3);
+}
+
+/* Portal is essentially non-existent and not up-to-date */
+/* .portal-callout {
+  margin-top: var(--space-2xl);
+  padding: var(--space-lg);
+  background: rgba(25, 52, 85, 0.3);
+  border: 2px solid var(--clr-accent-blue);
+  border-radius: var(--card-border-radius);
+  text-align: center;
+}
+
+.portal-callout p {
+  color: var(--clr-text-primary);
+  line-height: var(--lh-normal);
+  font-size: var(--fs-body-large);
+  margin: 0;
+}
+
+.portal-link {
+  color: var(--clr-accent-blue);
+  font-weight: var(--fw-body-bold);
+} */
+
 /* ------------------- */
 /* FOOTER */
 /* ------------------- */
@@ -1537,6 +1797,14 @@ footer {
 	.realms-grid {
 		grid-template-columns: 1fr;
 	}
+
+  .hero-about {
+    min-height: 50vh;
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* TABLET */

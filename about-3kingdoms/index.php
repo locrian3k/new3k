@@ -7,8 +7,8 @@ include 'includes/header.php';
   <!-- Main Content -->
   <main id="content">
     <!-- Hero Section -->
-    <section class="hero-modern" style="min-height: 60vh; background: linear-gradient(135deg, rgba(7, 15, 25, 0.95), rgba(25, 52, 85, 0.9)), url('/images/castle-images/beautiful-fantasy-landscape-castle-stunning-illustration-232263945_iconl_wide_nowm.webp') center/cover no-repeat;">
-      <div class="hero-content-modern">
+    <section class="hero hero-about" style="min-height: 60vh; background: linear-gradient(135deg, rgba(7, 15, 25, 0.95), rgba(25, 52, 85, 0.9)), url('/images/castle-images/beautiful-fantasy-landscape-castle-stunning-illustration-232263945_iconl_wide_nowm.webp') center/cover no-repeat;">
+      <div class="hero-content">
         <h1 class="hero-title" style="font-size: clamp(2rem, 6vw, 4rem);">About 3Kingdoms</h1>
         <p class="hero-subtitle">
           Over 32 Years of Unparalleled Text-Based Adventure

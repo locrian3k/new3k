@@ -6,8 +6,8 @@ include 'includes/header.php';
 		<!-- Main Content -->
 		<main id="content">
 			<!-- Hero Section -->
-			<section class="hero-modern">
-				<div class="hero-content-modern">
+			<section class="hero hero-index">
+				<div class="hero-content">
 					<img
 						src="/images/logo/3k_logo_shield_transparent.png"
 						alt="3Kingdoms logo"

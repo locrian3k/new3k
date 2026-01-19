@@ -917,7 +917,7 @@ main {
 	border-image: var(--clr-gradient) 1;
 }
 
-.hero-content-modern {
+.hero-content {
 	max-width: 1200px;
 	position: relative;
 	z-index: 10;

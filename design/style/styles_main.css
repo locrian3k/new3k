@@ -1434,7 +1434,8 @@ main {
 .about-intro {
   padding: var(--space-3xl) var(--space-lg);
   background: var(--clr-black);
-  border-bottom: 0.05rem solid var(--clr-accent-main);
+  border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
 }
 
 .pinnacle-image-container {
@@ -1489,7 +1490,8 @@ main {
 .about-faq {
   padding: var(--space-3xl) var(--space-lg);
   background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));
-  border-bottom: 0.05rem solid var(--clr-accent-main);
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
 }
 
 .about-faq .section-title {
@@ -1542,7 +1544,8 @@ main {
 .about-details {
   padding: var(--space-3xl) var(--space-lg);
   background: var(--clr-black);
-  border-bottom: 0.05rem solid var(--clr-accent-main);
+  border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
 }
 
 .about-details .section-title {
@@ -1590,7 +1593,8 @@ main {
 .about-features {
   padding: var(--space-3xl) var(--space-lg);
   background: linear-gradient(135deg, rgba(212, 74, 2, 0.1), rgba(25, 52, 85, 0.2));
-  border-bottom: 0.05rem solid var(--clr-accent-main);
+  border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
 }
 
 .about-features .section-title {

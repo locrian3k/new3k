@@ -9,10 +9,6 @@ include '../includes/header.php';
 			<!-- Hero Section -->
 			<section class="hero hero-about">
 				<div class="hero-content">
-					<img
-						src="/images/logo/3k_logo_shield_transparent.png"
-						alt="3Kingdoms logo"
-						class="hero-logo-about" />
 					<h1 class="hero-title hero-title-about">About 3Kingdoms</h1>
 					<p class="hero-subtitle">
 						Over 32 Years of Unparalleled Text-Based Adventure

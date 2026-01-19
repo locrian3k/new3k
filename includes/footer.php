@@ -6,7 +6,7 @@
 						<h3>Game Info</h3>
 						<ul>
 							<li><a href="/about-3kingdoms/index.php">About 3Kingdoms</a></li>
-							<li><a href="/about-3scapes.php">About 3Scapes</a></li>
+							<li><a href="/about-3scapes/index.php">About 3Scapes</a></li>
 							<li><a href="/guilds.php">Guilds</a></li>
 							<li><a href="/quests.php">Quests</a></li>
 							<li><a href="/realms.php">Realms</a></li>

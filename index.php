@@ -23,7 +23,7 @@ include 'includes/header.php';
 							onclick="window.open('https://client.wemudtogether.com');">
 							Play Now
 						</button>
-						<a href="/about-3kingdoms.php" class="btn-secondary">Learn More</a>
+						<a href="/about-3kingdoms/index.php" class="btn-secondary">Learn More</a>
 					</div>
 
 					<div class="stats-grid">
@@ -204,7 +204,7 @@ include 'includes/header.php';
 							onclick="window.open('https://client.wemudtogether.com');">
 							Start Playing
 						</button>
-						<a href="/about/index.php" class="btn-secondary">Read More</a>
+						<a href="/about-3kingdoms/index.php" class="btn-secondary">Read More</a>
 					</div>
 				</div>
 			</section>

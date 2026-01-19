@@ -61,6 +61,8 @@
             </p>
           </div>
           <div class="footer-logo">
+            <!-- <a href="https://www.ldmud.eu" target="_blank"><img src="/images/logo/LDMud.gif"></a>
+            <br> -->
             <a href="https://www.themarblegroup.com"><img src="/images/logo/marble_logo_transparent.png"></a>
           </div>
 				</div>

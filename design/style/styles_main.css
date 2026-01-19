@@ -1401,7 +1401,7 @@ footer {
   position: relative;
   background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));;
   color: var(--clr-text-primary);
-  max-width: 1000px;
+  max-width: 100%;
   padding: 3rem 1rem;
   overflow-x: hidden;
   border-top: 2px solid var(--clr-text-heading);
@@ -1454,20 +1454,6 @@ footer {
   position: relative;
 }
 
-.footer-nav-column a::before {
-  content: '→';
-  opacity: 0;
-  margin-right: 0;
-  transition: all 0.3s;
-  display: inline-block;
-}
-
-.footer-nav-column a:hover::before,
-.footer-nav-column a:focus::before {
-  opacity: 1;
-  margin-right: 0.5rem;
-}
-
 .footer-nav-column a:hover,
 .footer-nav-column a:focus {
   color: var(--clr-text-heading);
@@ -1495,7 +1481,6 @@ footer {
 }
 
 .footer-logo img {
-  height: 4rem;
   width: auto;
   opacity: 0.7;
   transition: opacity 0.3s;
@@ -1503,6 +1488,14 @@ footer {
 
 .footer-logo img:hover {
   opacity: 1;
+}
+
+.footer-logo .ldmud-logo {
+  height: 2rem;
+}
+
+.footer-logo .marble-logo {
+  height: 4rem;
 }
 
 .footer-owner {
@@ -1813,10 +1806,6 @@ footer {
   .primary-navigation > li.has-dropdown > .dropdown-toggle:hover,
   .primary-navigation .has-dropdown:hover > .dropdown-toggle:hover {
     color: var(--clr-text-heading);
-  }
-
-  footer {
-    max-width: 100%;
   }
 }
 

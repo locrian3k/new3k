@@ -1,140 +1,241 @@
-<?php 
-$pageTitle = "3Kingdoms - Home";
-include 'includes/header.php'; 
-?>
+		<!-- Main Content -->
+		<main id="content">
+			<!-- Hero Section -->
+			<section class="hero-modern">
+				<div class="hero-content-modern">
+					<img
+						src="/images/logo/3k_logo_shield_transparent.png"
+						alt="3Kingdoms logo"
+						class="hero-logo" />
+					<h1 class="hero-title">Three Kingdoms</h1>
+					<p class="hero-subtitle">
+						Epic Adventures Across Fantasy, Science & Chaos
+					</p>
 
-  <main id="content">
-    <article>
-      <section class="hero overlay">
-        <h1 class="dark">WELCOME TO THREE KINGDOMS</h1>
-        <!-- PLAY NOW -->
-        <div class="nav-play-now">
-          <button
-            class="glowing-btn"
-            type="button"
-            title="Play 3Kingdoms Now"
-            onclick="window.open('https://client.wemudtogether.com');">
+					<div class="hero-actions">
+						<button
+							class="btn-primary"
+							onclick="window.open('https://client.wemudtogether.com');">
+							Play Now
+						</button>
+						<a href="/about-3kingdoms.php" class="btn-secondary">Learn More</a>
+					</div>
 
-            <span class="glowing-txt">Play Now</span>
-          </button>
-        </div>
-        <div class="scroller" data-speed="fast">
-          <ul class="tag-list scroller__inner">
-            <li>Over 700 Areas to Explore</li>
-            <li>Active Playerbase</li>
-            <li>Dedicated Area for Newcomers</li>
-            <li>Regular Updates</li>
-            <li>Invasions</li>
-            <li>Over 700 Areas to Explore</li>
-            <li>3 Unique Realms</li>
-            <li>Chaos</li>
-            <li>Fantasy</li>
-            <li>Science</li>
-            <li>Dungeons</li>
-          </ul>
-        </div>
-        <div class="scroller scroller_img_area" data-direction="right" data-speed="slow">
-          <div class="scroller__inner">
-            <img src="/images/scrolling/aruwins_windmill.png"
-              loading="lazy" 
-              alt="AI generated image windmill in the background of wheat fields" 
-              title="Aruwin's Windmill" />
-            <img src="/images/scrolling/captain_thistlebeard.png"
-              loading="lazy" 
-              alt="AI generated image of a short pirate in the main estate room of a ship"
-              title="Captain Thistlebeard" />                       
-            <img src="/images/scrolling/fern_man_science.png"
-              loading="lazy" 
-              alt="AI generated image of a giant man covered in plants" 
-              title="Fern Man" />
-            <img src="/images/scrolling/gamers_house.png" 
-              loading="lazy" 
-              alt="AI generated image of an extremely messy room"
-              title="Gamer's House" />
-            <img src="/images/scrolling/icy_blue_portal.png"
-              loading="lazy" 
-              alt="AI generated image of a frozen tundra with people made of ice" 
-              title="Land of the Ice People" />
-            <img src="/images/scrolling/lyriac.png" 
-              loading="lazy" 
-              alt="AI generated image of a fearsome dark knight"
-              title="Lyriac" />
-            <img src="/images/scrolling/mahjongg.png"
-              loading="lazy" 
-              alt="AI generated image of a dark forest with a mahjongg gameboard on a wooden table" 
-              title="Mahjongg" />
-            <img src="/images/scrolling/mantis_swamp.png" 
-              loading="lazy" 
-              alt="AI generated image of a swamp filled with giant mantes"
-              title="Mantis Swamp" />
-            <img src="/images/scrolling/murusFaralain.png" 
-              loading="lazy" 
-              alt="AI generated image of an ancient ruined city"
-              title="Murus Faralain" />                
-            <img src="/images/scrolling/westerseaDocks.png"
-              loading="lazy" 
-              alt="AI generated image of boat docks" 
-              title="Westersea Docks" />
-          </div>
-        </div>
-        <BR>
-        <h2 class="light ff-normal">EXPLORE THE REALMS TODAY</h2>
-      </section>
-      <hr class="hr-gradient">
-    </article>
-    <br>
-    <br>
-    <article id="about">
-      <section>
-        <div>
-          <h3>Adventure Awaits!</h3>
-          <img src="/images/logo/3k_logo_shield_transparent.png" alt="Three Kingdoms logo">
+					<div class="stats-grid">
+						<div class="stat-card">
+							<span class="stat-number">3</span>
+							<span class="stat-label">Realms</span>
+						</div>
+						<div class="stat-card">
+							<span class="stat-number">32+</span>
+							<span class="stat-label">Years</span>
+						</div>
+						<div class="stat-card">
+							<span class="stat-number">700+</span>
+							<span class="stat-label">Areas</span>
+						</div>
+						<div class="stat-card">
+							<span class="stat-number"
+								><i class="fa-solid fa-infinity"></i
+							></span>
+							<span class="stat-label">Adventures</span>
+						</div>
+					</div>
+				</div>
+			</section>
 
-          <div>
-            <p>
-              Over 32 Years of Free Online Adventure. Dive into 3Kingdoms, a premier online game with decades of continuous developmen where thousands of players have trusted us to deliver a rich, immersive experience with endless areas to explore.
-            </p>
-          </div>
+			<!-- Quick Access Section -->
+			<section class="quick-access">
+				<div class="quick-access-grid">
+					<a
+						href="https://client.wemudtogether.com"
+						class="quick-link-card"
+						target="_blank">
+						<i class="fas fa-play-circle quick-link-icon"></i>
+						<h3 class="quick-link-title">Play Now</h3>
+						<p class="quick-link-desc">Jump directly into the game</p>
+					</a>
 
-          <div>
-            <h3>Endless Areas to Explore</h3>
-            <p>
-              Explore thousands of rooms, hundreds of areas, a plethora of quests, and billions of possibilities. Simple enough to pick up quickly, yet complex enough to challenge you for years, 3Kingdoms is the largest and most advanced online adventure available.
-            </p>
-          </div>    
+					<a href="/support/vafs.php" class="quick-link-card">
+						<i class="fas fa-heart quick-link-icon"></i>
+						<h3 class="quick-link-title">Support Us</h3>
+						<p class="quick-link-desc">VAFs & Donations</p>
+					</a>
 
-          <div>
-            <h3>Three Unique Realms</h3>
-            <p>
-              Based around the vibrant town of Pinnacle, 3Kingdoms invites you to explore three distinct realms:
-              <br><br>
-              <span class="">Fantasy</span>, a medieval world teeming with orcs, elves, and dragons;
-              <br>
-              <span class="blue">Science</span>, a post-apocalyptic future scarred by war; and
-              <br>
-              <span class="orange">Chaos</span>, where fantastical and scientific forces collide, creating creatures beyond imagination.
-            </p>
-            <div class="img-display">
-              <img src="/images/logo/3k_fantasy_logo_transparent_small.png" alt="Three Kingdoms fantasy logo">
-              <img src="/images/logo/3k_science_logo_transparent_small.png" alt="Three Kingdoms science logo">
-              <img src="/images/logo/3k_chaos_logo_transparent_small.png" alt="Three Kingdoms chaos logo">
-            </div>
-            <p>
-              Choose from over a dozen guilds like Knights, Necromancers, Juggernauts, and more. Guilds grant special powers, social hubs, and opportunities to team up with other players. Customize your character with comprehensive skills and abilities that make every journey unique.
-            </p>
-          </div>
+					<a href="/wholist.php" class="quick-link-card">
+						<i class="fas fa-users quick-link-icon"></i>
+						<h3 class="quick-link-title">Who's Online</h3>
+						<p class="quick-link-desc">See current players</p>
+					</a>
 
-        </div>
-      </section>
-      <hr class="hr-gradient">
-    </article>
-    <article>
-        <div class="sister-site">
-          <img src="/images/logo/3S_logo.png" alt="3Scapes logo">          
-          <h2 class="center">EXPLORE OUR SISTER MUD, 3SCAPES, FOR MORE FUN!</h2>
-        </div>
-        <hr class="hr-gradient">
-    </article>
-  </main>
+					<a
+						href="http://forums.3k.org"
+						class="quick-link-card"
+						target="_blank">
+						<i class="fas fa-comments quick-link-icon"></i>
+						<h3 class="quick-link-title">Forums</h3>
+						<p class="quick-link-desc">Join the discussion</p>
+					</a>
+				</div>
+			</section>
 
-  <?php include 'includes/footer.php'; ?>
+			<!-- Realms Section -->
+			<section class="realms-showcase">
+				<div class="section-header">
+					<h2 class="section-title">Three Unique Realms</h2>
+					<p class="section-desc">
+						Based around the vibrant town of Pinnacle, explore three distinct
+						worlds with their own challenges, creatures, and legends
+					</p>
+				</div>
+
+				<div class="realms-grid">
+					<div class="realm-card fantasy">
+						<img
+							src="/images/logo/3k_fantasy_logo_transparent_small.png"
+							alt="Fantasy Realm"
+							class="realm-logo" />
+						<h3 class="realm-title">Fantasy</h3>
+						<p class="realm-desc">
+							A medieval world teeming with orcs, elves, and dragons. Ancient
+							castles, mystical forests, and legendary creatures await the
+							brave.
+						</p>
+						<a href="/realms/fantasy/index.php" class="realm-link"
+							>Explore Fantasy</a
+						>
+					</div>
+
+					<div class="realm-card science">
+						<img
+							src="/images/logo/3k_science_logo_transparent_small.png"
+							alt="Science Realm"
+							class="realm-logo" />
+						<h3 class="realm-title">Science</h3>
+						<p class="realm-desc">
+							A post-apocalyptic future scarred by war. Advanced technology,
+							cybernetic enhancements, and the remnants of civilization collide.
+						</p>
+						<a href="/realms/science/index.php" class="realm-link"
+							>Explore Science</a
+						>
+					</div>
+
+					<div class="realm-card chaos">
+						<img
+							src="/images/logo/3k_chaos_logo_transparent_small.png"
+							alt="Chaos Realm"
+							class="realm-logo" />
+						<h3 class="realm-title">Chaos</h3>
+						<p class="realm-desc">
+							Where fantastical and scientific forces collide, creating
+							creatures beyond imagination. Reality bends in this unpredictable
+							realm.
+						</p>
+						<a href="/realms/chaos/index.php" class="realm-link"
+							>Explore Chaos</a
+						>
+					</div>
+				</div>
+			</section>
+
+			<!-- Features Section -->
+			<section class="features-section">
+				<div class="section-header">
+					<h2 class="section-title">Why 3Kingdoms?</h2>
+				</div>
+
+				<div class="features-grid">
+					<div class="feature-card">
+						<i class="fas fa-shield-alt feature-icon"></i>
+						<h3 class="feature-title">12+ Guilds</h3>
+						<p class="feature-desc">
+							Knights, Necromancers, Juggernauts, and more. Each with unique
+							powers and social hubs.
+						</p>
+					</div>
+
+					<div class="feature-card">
+						<i class="fas fa-map feature-icon"></i>
+						<h3 class="feature-title">Massive World</h3>
+						<p class="feature-desc">
+							Thousands of rooms and hundreds of areas. Simple to start, deep
+							enough for years of play.
+						</p>
+					</div>
+
+					<div class="feature-card">
+						<i class="fas fa-trophy feature-icon"></i>
+						<h3 class="feature-title">Epic Quests</h3>
+						<p class="feature-desc">
+							Challenging quests, dynamic invasions, and endless adventures
+							await discovery.
+						</p>
+					</div>
+
+					<div class="feature-card">
+						<i class="fas fa-users-cog feature-icon"></i>
+						<h3 class="feature-title">Active Community</h3>
+						<p class="feature-desc">
+							Join a thriving playerbase with over 32 years of shared history
+							and legends.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Call To Action Section -->
+			<section class="cta-section">
+				<div class="cta-content">
+					<h2 class="cta-title">Your Adventure Begins Today</h2>
+					<p class="cta-text">
+						Join thousands of players who have made 3Kingdoms their home. Free
+						to play, easy to learn, impossible to master.
+					</p>
+
+					<div class="cta-buttons">
+						<button
+							class="btn-primary"
+							onclick="window.open('https://client.wemudtogether.com');">
+							Start Playing
+						</button>
+						<a href="/about/index.php" class="btn-secondary">Read More</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- Sister MUD -->
+			<section
+				style="
+					padding: var(--space-2xl) var(--space-lg);
+					background: var(--clr-black);
+					text-align: center;
+				">
+				<a href="/about-3scapes.php">
+					<img
+						src="/images/logo/3S_logo_transparent.png"
+						alt="3Scapes logo"
+						class="hero-logo-sm" />
+				</a>
+				<h2
+					style="
+						color: var(--clr-text-heading);
+						font-family: var(--ff-heading);
+						font-size: 1.8rem;
+						margin-bottom: var(--space-sm);
+					">
+					Explore 3Scapes
+				</h2>
+				<p
+					style="
+						color: var(--clr-text-secondary);
+						font-family: var(--ff-body);
+						font-size: 1.1rem;
+					">
+					Our sister MUD, where the rules are different.
+				</p>
+				<a href="/about-3scapes.php">
+					<button class="btn-secondary">Learn About 3Scapes</button>
+				</a>
+			</section>
+		</main>

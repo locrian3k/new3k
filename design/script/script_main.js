@@ -1,22 +1,44 @@
 // ------------------------------------------------------------------
 // 'GO TO TOP OF PAGE' BUTTON THAT APPEARS AFTER SCROLLING
 // www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top
+// Fade in and out for header logo on main landing page
 // ------------------------------------------------------------------
 var topbutton = document.getElementById("GoToTopBtn");
-// Scroll down 20px from the top of the document, show the button
-window.onscroll = function () { scrollFunction() };
-function scrollFunction() {
-	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-		topbutton.style.display = "block";
-	} else {
-		topbutton.style.display = "none";
-	}
-}
+// var headerlogo = document.getElementById("HeaderLogo");
+
+// Check if we're on the landing page
+var path = window.location.pathname;
+var isLandingPage = path === '/' || 
+                    path === '/index.php' || 
+                    path === '/index.html';
+
+// Combined scroll handler using addEventListener
+window.addEventListener('scroll', function() {
+  var scrollPosition = document.body.scrollTop || document.documentElement.scrollTop;
+
+    // Handle "Go to Top" button
+    if (scrollPosition > 20) {
+        topbutton.style.display = "block";
+    } else {
+        topbutton.style.display = "none";
+    }
+    
+    // Handle header logo visibility
+    // if (isLandingPage && headerlogo) {
+    //   if (scrollPosition > 350) {
+    //       headerlogo.classList.add('visible');
+    //   } else {
+    //       headerlogo.classList.remove('visible');
+    //   }
+    // }
+});
+
 // Click on button, scroll to top of document
 function topFunction() {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }
+
 
 // ------------------------------------------------------------------
 // NAVIGATION
@@ -46,12 +68,10 @@ function closeMenu() {
   primaryNavigation.setAttribute('data-state', "closed");
 }
 
-
-// ------------------------------------------------------------------
-// MOBILE DROPDOWN NAVIGATION
-// ------------------------------------------------------------------
+// Only close if screen is laptop and bigger
 document.addEventListener("click", function (e) {
   const toggle = e.target.closest(".dropdown-toggle");
+  const isDesktop = window.matchMedia("(min-width: 992px)").matches;
 
   // Clicked outside → close all
   if (!toggle) {
@@ -69,12 +89,16 @@ document.addEventListener("click", function (e) {
   const parent = toggle.closest(".has-dropdown");
   const isOpen = parent.classList.contains("open");
 
-  // Close others
-  // document.querySelectorAll(".has-dropdown.open").forEach(item => {
-  //   item.classList.remove("open");
-  //   item.querySelector(".dropdown-toggle")
-  //     ?.setAttribute("aria-expanded", "false");
-  // });
+  // On desktop (992px+), close all other dropdowns before opening new one
+  if (isDesktop) {
+    document.querySelectorAll(".has-dropdown.open").forEach(item => {
+      if (item !== parent) {
+        item.classList.remove("open");
+        item.querySelector(".dropdown-toggle")
+          ?.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 
   // Toggle current
   parent.classList.toggle("open", !isOpen);

@@ -1,3 +1,8 @@
+<?php 
+$pageTitle = "3Kingdoms - Home";
+include 'includes/header.php'; 
+?>
+
 		<!-- Main Content -->
 		<main id="content">
 			<!-- Hero Section -->
@@ -239,3 +244,5 @@
 				</a>
 			</section>
 		</main>
+
+  <?php include 'includes/footer.php'; ?>

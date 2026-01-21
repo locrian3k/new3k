@@ -1,0 +1,519 @@
+<?php 
+$pageTitle = "Connect - 3Kingdoms";
+include '../../includes/header.php'; 
+?>
+
+<!-- Main Content -->
+<main id="content">
+  <!-- Hero Section -->
+  <section class="hero hero-default">
+    <div class="hero-content">
+      <h1 class="hero-title hero-title-about">Connection Options</h1>
+      <p class="hero-subtitle">Choose Your Path to Adventure</p>
+    </div>
+  </section>
+
+  <!-- Connection Details -->
+  <section class="about-intro">
+    <div class="about-container">
+      <div class="intro-text connection-server-info">
+        <h2>Server Information</h2>
+        <p>
+          <strong class="connection-server-label">3Kingdoms:</strong>
+          <code>3k.org:3000</code>
+          <br />
+          <strong class="connection-server-label-alt">3Scapes:</strong>
+          <code>3scapes.org:3200</code>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connection Methods -->
+  <section class="about-faq">
+    <div class="about-container">
+      <h2 class="section-title">Connection Methods</h2>
+      <p class="section-subtitle">
+        Multiple ways to connect - choose what works best for you<br /><em
+          style="
+            font-size: var(--fs-body-small);
+            color: var(--clr-accent-highlight);
+          "
+          >Click any card to see more details</em
+        >
+      </p>
+
+      <div class="faq-grid">
+        <!-- Web Client - Featured -->
+        <div
+          class="faq-item faq-item-chaos connection-featured-border"
+          onclick="this.classList.toggle('flipped')">
+          <div class="faq-item-inner">
+            <!-- Front -->
+            <div class="faq-item-front">
+              <div class="connection-icon-header">
+                <i class="fas fa-star"></i>
+                <h3 class="faq-title">
+                  Recommended: We MUD Together (WMT)
+                </h3>
+              </div>
+              <p class="faq-text connection-text-spacing">
+                The easiest way to start playing immediately! No downloads
+                required, just click and play directly in your browser.
+                Perfect for beginners and works on any device.
+              </p>
+              <div class="connection-button-center">
+                <button
+                  class="btn-primary connection-btn-auto"
+                  onclick="event.stopPropagation(); window.open('https://client.wemudtogether.com');">
+                  Launch WMT Client
+                </button>
+              </div>
+              <div class="flip-indicator">
+                <span>More info</span>
+                <i class="fas fa-sync-alt"></i>
+              </div>
+            </div>
+            <!-- Back -->
+            <div class="faq-item-back">
+              <div class="connection-back-content">
+                <h4>Why We MUD Together?</h4>
+                <p>Designed for quick, easy access and ease of use:</p>
+                <ul>
+                  <li>Play from any device, anywhere</li>
+                  <li>No installation or configuration needed</li>
+                  <li>
+                    MUD Image Protocol (MIP) support for enhanced visuals
+                  </li>
+                  <li>Automatic updates - always on the latest version</li>
+                  <li>Works behind most firewalls</li>
+                  <li>
+                    Perfect for trying 3Kingdoms before committing to a full
+                    client
+                  </li>
+                </ul>
+                <p>
+                  For many players, this web client is all they need to
+                  enjoy the full 3Kingdoms experience.
+                  <a
+                    href="https://client.wemudtogether.com"
+                    target="_blank"
+                    class="connection-client-link"
+                    onclick="event.stopPropagation();"
+                    >Connect to WMT client.
+                    <i class="fas fa-external-link-alt"></i
+                  ></a>
+                </p>
+                <div class="flip-indicator">
+                  <span>Back</span>
+                  <i class="fas fa-sync-alt"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Apps -->
+        <div
+          class="faq-item faq-item-science"
+          onclick="this.classList.toggle('flipped')">
+          <div class="faq-item-inner">
+            <!-- Front -->
+            <div class="faq-item-front">
+              <div class="connection-icon-header">
+                <i class="fas fa-mobile-alt"></i>
+                <h3 class="faq-title">Mobile Clients</h3>
+              </div>
+              <p class="faq-text connection-text-spacing">
+                Play on the go with mobile solutions. Options range from
+                dedicated apps to SSH-based terminal access.
+              </p>
+              <div class="connection-client-section">
+                <h4 class="connection-client-heading">
+                  <i class="fab fa-android"></i>Android
+                </h4>
+                <p class="connection-client-text">
+                  <strong
+                    ><a
+                      href="https://blowtorch.en.aptoide.com/app"
+                      target="_blank"
+                      class="connection-client-link"
+                      onclick="event.stopPropagation();"
+                      >BlowTorch <i class="fas fa-external-link-alt"></i></a
+                  ></strong>
+                  - Classic Android MUD client (development discontinued but
+                  still functional)
+                </p>
+                <h4 class="connection-client-heading">
+                  <i class="fab fa-apple"></i>iOS
+                </h4>
+                <p class="connection-client-text">
+                  <strong
+                    ><a
+                      href="https://apps.apple.com/us/app/mudbasher/id6755510450"
+                      target="_blank"
+                      class="connection-client-link"
+                      onclick="event.stopPropagation();"
+                      >MUDBasher <i class="fas fa-external-link-alt"></i></a
+                  ></strong>
+                  - Originally MUDRammer, this is the updated app - faster,
+                  prettier, and more features than the previous version.
+                </p>
+              </div>
+              <div class="flip-indicator">
+                <span>More info</span>
+                <i class="fas fa-sync-alt"></i>
+              </div>
+            </div>
+            <!-- Back -->
+            <div class="faq-item-back">
+              <div class="connection-back-content">
+                <h4>Advanced Mobile Setup</h4>
+                <p>
+                  Many experienced players use SSH-based solutions for
+                  mobile play:
+                </p>
+                <ul>
+                  <li>
+                    <strong
+                      ><a
+                        href="https://termius.com/"
+                        target="_blank"
+                        class="connection-client-link"
+                        onclick="event.stopPropagation();"
+                        >Termius <i class="fas fa-external-link-alt"></i></a
+                    ></strong>
+                    - SSH client for iOS/Android that can connect to
+                    cloud-based TinTin++ instances
+                  </li>
+                  <li>
+                    <strong
+                      ><a
+                        href="https://tintin.mudhalla.net/"
+                        target="_blank"
+                        class="connection-client-link"
+                        onclick="event.stopPropagation();"
+                        >TinTin++
+                        <i class="fas fa-external-link-alt"></i></a
+                    ></strong>
+                    - Run TinTin++ on a cloud server (Google Cloud, AWS,
+                    etc.) and access via SSH from any mobile device
+                  </li>
+                  <li>
+                    <strong
+                      ><a
+                        href="https://client.wemudtogether.com"
+                        target="_blank"
+                        class="connection-client-link"
+                        onclick="event.stopPropagation();"
+                        >WMT client
+                        <i class="fas fa-external-link-alt"></i></a
+                    ></strong>
+                    - Works great on mobile browsers as well
+                  </li>
+                </ul>
+                <p>
+                  <strong>Benefits of cloud-based approach:</strong> Your
+                  session persists even when you disconnect, letting you
+                  seamlessly switch between devices.
+                </p>
+                <div class="flip-indicator">
+                  <span>Back</span>
+                  <i class="fas fa-sync-alt"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop Clients -->
+        <div
+          class="faq-item faq-item-fantasy"
+          onclick="this.classList.toggle('flipped')">
+          <div class="faq-item-inner">
+            <!-- Front -->
+            <div class="faq-item-front">
+              <div class="connection-icon-header">
+                <i class="fas fa-desktop"></i>
+                <h3 class="faq-title">Desktop Clients</h3>
+              </div>
+              <p class="faq-text connection-text-spacing">
+                For serious players who want maximum control and
+                customization. Your scripts live as local text files you
+                fully control.
+              </p>
+
+              <div class="connection-client-section">
+                <h4 class="connection-client-heading">
+                  <i class="fab fa-linux"></i><i class="fab fa-windows"></i
+                  ><i class="fab fa-apple"></i>Cross-Platform
+                </h4>
+                <p class="connection-client-text">
+                  <strong>Mudlet</strong> - User-friendly GUI client with
+                  built-in scripting and mapping.
+                </p>
+                <a
+                  href="https://www.mudlet.org/"
+                  target="_blank"
+                  class="connection-client-link"
+                  onclick="event.stopPropagation();"
+                  >Download Mudlet <i class="fas fa-external-link-alt"></i
+                ></a>
+                <br>
+                <p class="connection-client-text">
+                  <strong>TinTin++</strong> - Powerful, highly customizable
+                  client with extensive scripting. Most popular among 3K
+                  players.
+                </p>
+                <a
+                  href="https://tintin.mudhalla.net/"
+                  target="_blank"
+                  class="connection-client-link"
+                  onclick="event.stopPropagation();"
+                  >Download TinTin++ <i class="fas fa-external-link-alt"></i
+                ></a>
+              </div>
+              <div class="flip-indicator">
+                <span>More info</span>
+                <i class="fas fa-sync-alt"></i>
+              </div>
+            </div>
+            <!-- Back -->
+            <div class="faq-item-back">
+              <div class="connection-back-content">
+                <h4>Why Desktop Clients?</h4>
+                <p>
+                  Desktop clients offer different tradeoffs from web
+                  clients:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Full Control:</strong> Scripts as local text
+                    files you own and control
+                  </li>
+                  <li>
+                    <strong>Advanced Features:</strong> Complex scripting,
+                    triggers, aliases, custom mappers
+                  </li>
+                  <li>
+                    <strong>System Integration:</strong> Launch external
+                    programs and deep customization
+                  </li>
+                  <li>
+                    <strong>Longevity:</strong> Text configs survive better
+                    than cloud solutions
+                  </li>
+                </ul>
+                <div class="connection-note-box">
+                  <p>
+                    <strong>Portal™:</strong> Created by GameAxle with MIP
+                    and sound support. No longer maintained; may need
+                    compatibility mode.
+                  </p>
+                  <a
+                    href="http://www.gameaxle.com/cgi-bin/index.pl"
+                    target="_blank"
+                    class="connection-client-link"
+                    onclick="event.stopPropagation();"
+                    >Portal™ Info <i class="fas fa-external-link-alt"></i
+                  ></a>
+                </div>
+                <div class="flip-indicator">
+                  <span>Back</span>
+                  <i class="fas fa-sync-alt"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alternative Options -->
+        <div
+          class="faq-item faq-item-science"
+          onclick="this.classList.toggle('flipped')">
+          <div class="faq-item-inner">
+            <!-- Front -->
+            <div class="faq-item-front">
+              <div class="connection-icon-header">
+                <i class="fas fa-network-wired"></i>
+                <h3 class="faq-title">Alternative Methods</h3>
+              </div>
+              <p class="faq-text connection-text-spacing">
+                Additional connection options for specific needs or
+                restrictions.
+              </p>
+
+              <div class="connection-alt-methods">
+                <div>
+                  <strong>SSH Tunneling</strong>
+                  <p>
+                    Advanced users can bypass restrictive firewalls using
+                    SSH tunneling.
+                  </p>
+                  <a
+                    href="/connect_ssh.php"
+                    onclick="event.stopPropagation();"
+                    >SSH Tunneling Guide
+                    <i class="fas fa-external-link-alt"></i
+                  ></a>
+                </div>
+
+                <div>
+                  <strong>Traditional Telnet</strong>
+                  <p>
+                    For systems with telnet installed (less common on modern
+                    systems).
+                  </p>
+                  <code>telnet 3k.org 3000</code>
+                </div>
+              </div>
+              <div class="flip-indicator">
+                <span>More info</span>
+                <i class="fas fa-sync-alt"></i>
+              </div>
+            </div>
+            <!-- Back -->
+            <div class="faq-item-back">
+              <div class="connection-back-content">
+                <h4>When to Use These Methods</h4>
+                <p>
+                  <strong>SSH Tunneling:</strong> Useful when you're behind
+                  a restrictive firewall that blocks standard MUD ports.
+                  This method wraps your connection in SSH encryption,
+                  making it appear as regular SSH traffic.
+                </p>
+                <p>
+                  <strong>Telnet:</strong> The original MUD connection
+                  method. While it works, telnet is unencrypted and lacks
+                  modern features. Only recommended if you have specific
+                  compatibility requirements.
+                </p>
+                <p>
+                  <strong>Note:</strong> Most players will be better served
+                  by We MUD Together or a desktop client. These alternative
+                  methods are primarily for troubleshooting connectivity
+                  issues.
+                </p>
+                <div class="flip-indicator">
+                  <span>Back</span>
+                  <i class="fas fa-sync-alt"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started Guide -->
+  <section class="about-details">
+    <div class="about-container">
+      <h2 class="section-title">Getting Started</h2>
+      <p class="section-subtitle">Your first steps in 3Kingdoms</p>
+
+      <div class="details-content">
+        <div class="detail-block">
+          <h3 class="detail-title">
+            <i class="fas fa-user-plus"></i>
+            Creating Your Character
+          </h3>
+          <p class="connection-text-spacing">
+            Once connected, you'll be greeted with a login screen. Press
+            <strong>Enter</strong> to continue, then you'll see options to
+            either log in with an existing character or create a new one.
+          </p>
+
+          <p class="connection-text-spacing">
+            <strong>New players:</strong> When prompted for your character
+            name, choose something unique and creative. Names cannot contain
+            numbers or profanity. If the name is already taken, you'll be
+            asked for a password - just disconnect and try a different name.
+          </p>
+
+          <p>
+            You can also login as <code>guest</code> to explore the game
+            before creating a character.
+          </p>
+        </div>
+
+        <div class="detail-block">
+          <h3 class="detail-title">
+            <i class="fas fa-graduation-cap"></i>
+            The Tutorial
+          </h3>
+          <p class="connection-text-spacing">
+            After creating your character, you'll be offered a basic
+            tutorial. We <strong>strongly recommend</strong> taking it if
+            you're new to MUDs or 3Kingdoms. It will teach you fundamental
+            commands and help you navigate your first steps.
+          </p>
+
+          <p>
+            The tutorial is interactive and will guide you through movement,
+            combat basics, and essential commands to get you started on your
+            adventure.
+          </p>
+        </div>
+
+        <div class="detail-block">
+          <h3 class="detail-title">
+            <i class="fas fa-hands-helping"></i>
+            Getting Help
+          </h3>
+          <p class="connection-text-spacing">
+            3Kingdoms has an extensive support system for new players:
+          </p>
+
+          <ul class="connection-help-list">
+            <li>
+              <strong>Newbie Helpers:</strong> Dedicated players who
+              volunteer their time to help newcomers. Use the
+              <code>newb</code> channel to ask questions.
+            </li>
+            <li>
+              <strong>Help System:</strong> Type <code>help</code> anytime
+              for access to comprehensive help files.
+            </li>
+            <li>
+              <strong>Newbie Area:</strong> A dedicated safe zone designed
+              for learning the basics.
+            </li>
+            <li>
+              <strong>Community:</strong> The player community is welcoming
+              and helpful - don't hesitate to ask!
+            </li>
+          </ul>
+
+          <p>
+            Example: <code>newb Hi! I'm new, can someone help me?</code>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call To Action Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Begin?</h2>
+      <p class="cta-text">
+        Your adventure awaits. Choose your connection method and step into
+        the world of 3Kingdoms.
+      </p>
+
+      <div class="cta-buttons">
+        <button
+          class="btn-primary"
+          onclick="window.open('https://wemudtogether.com');">
+          Connect Now
+        </button>
+        <a href="/about-3kingdoms.php" class="btn-secondary"
+          >Learn More About 3K</a
+        >
+      </div>
+    </div>
+  </section>
+</main>
+
+<?php include '../includes/footer.php'; ?>

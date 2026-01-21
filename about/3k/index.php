@@ -1,6 +1,6 @@
 <?php 
 $pageTitle = "About - 3Kingdoms";
-include '../includes/header.php'; 
+include '../../includes/header.php'; 
 ?>
 
     
@@ -61,7 +61,7 @@ include '../includes/header.php';
 						</p>
 
 						<p class="intro-cta">
-							<a href="/connect.php" class="intro-link"
+							<a href="/connect/index.php" class="intro-link"
 								>Cut to the chase and learn how to play now</a
 							>
 							or keep reading...

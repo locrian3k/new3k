@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Connection Options - 3Kingdoms</title>
+
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Connect to 3Kingdoms - Multiple connection options including web client, mobile apps, and desktop clients for Windows and Mac." />
+		<meta
+			name="keywords"
+			content="3Kingdoms, MUD client, connect, telnet, web client, mobile MUD" />
+		<meta name="author" content="The Marble Group" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="theme-color" content="#000000" />
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+			integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="stylesheet" href="/design/style/styles_main.css" />
+		
+		<style>
+		/* Connection Options Page Specific Styles */
+		.connection-server-info {
+			text-align: center;
+		}
+		
+		.connection-server-info h2 {
+			color: var(--clr-text-heading);
+			margin-bottom: var(--space-md);
+		}
+		
+		.connection-server-info p {
+			font-size: var(--fs-h3);
+			margin-bottom: var(--space-xl);
+		}
+		
+		.connection-server-info code {
+			background: rgba(247, 210, 75, 0.1);
+			color: var(--clr-text-heading);
+			padding: 0.3rem 0.7rem;
+			border-radius: 0.25rem;
+			font-family: 'Courier New', monospace;
+			border: 1px solid rgba(247, 210, 75, 0.3);
+		}
+		
+		.connection-server-label {
+			color: var(--clr-fantasy);
+		}
+		
+		.connection-server-label-alt {
+			color: var(--clr-science);
+			margin-top: var(--space-sm);
+			display: inline-block;
+		}
+		
+		.connection-featured-border {
+			border-width: 3px;
+		}
+		
+		.connection-icon-header {
+			display: flex;
+			align-items: center;
+			gap: var(--space-sm);
+			margin-bottom: var(--space-md);
+		}
+		
+		.connection-icon-header i {
+			font-size: 1.5rem;
+		}
+		
+		.connection-icon-header .fa-star {
+			color: var(--clr-text-heading);
+		}
+		
+		.connection-icon-header .fa-mobile-alt {
+			color: var(--clr-science);
+		}
+		
+		.connection-icon-header .fa-desktop {
+			color: var(--clr-fantasy);
+		}
+		
+		.connection-icon-header .fa-network-wired {
+			color: var(--clr-science);
+		}
+		
+		.connection-icon-header h3 {
+			margin: 0;
+		}
+		
+		.connection-text-spacing {
+			margin-bottom: var(--space-md);
+		}
+		
+		.connection-button-center {
+			text-align: center;
+		}
+		
+		.connection-btn-auto {
+			width: auto;
+			max-width: none;
+		}
+		
+		.connection-btn-icon {
+			margin-right: 0.5rem;
+		}
+		
+		.connection-client-section {
+			margin-top: var(--space-lg);
+		}
+		
+		.connection-client-heading {
+			color: var(--clr-text-secondary);
+			font-size: var(--fs-body);
+			margin-bottom: var(--space-sm);
+		}
+		
+		.connection-client-heading i {
+			margin-right: 0.5rem;
+		}
+		
+		.connection-client-text {
+			font-size: var(--fs-body-small);
+			margin-bottom: var(--space-sm);
+		}
+		
+		.connection-client-link {
+			color: var(--clr-accent-blue);
+			font-size: var(--fs-body-small);
+		}
+		
+		.connection-client-link i {
+			font-size: 0.8em;
+		}
+		
+		.connection-mip-note {
+			margin-top: var(--space-md);
+			padding: var(--space-sm);
+			background: rgba(247, 210, 75, 0.1);
+			border-left: 3px solid var(--clr-text-heading);
+			border-radius: 0.25rem;
+		}
+		
+		.connection-mip-note p {
+			font-size: var(--fs-body-small);
+			margin: 0;
+			color: var(--clr-text-primary);
+		}
+		
+		.connection-mip-note strong {
+			color: var(--clr-text-heading);
+		}
+		
+		.connection-alt-methods {
+			display: grid;
+			gap: var(--space-md);
+			font-size: var(--fs-body-small);
+		}
+		
+		.connection-alt-methods strong {
+			color: var(--clr-text-heading);
+		}
+		
+		.connection-alt-methods p {
+			margin: 0.25rem 0;
+		}
+		
+		.connection-alt-methods a {
+			color: var(--clr-accent-blue);
+		}
+		
+		.connection-alt-methods code {
+			background: rgba(247, 210, 75, 0.1);
+			color: var(--clr-text-heading);
+			padding: 0.2rem 0.5rem;
+			border-radius: 0.25rem;
+			font-family: 'Courier New', monospace;
+			border: 1px solid rgba(247, 210, 75, 0.3);
+		}
+		
+		.connection-help-list {
+			color: var(--clr-text-primary);
+			margin-left: var(--space-lg);
+			margin-bottom: var(--space-md);
+		}
+		
+		.connection-help-list li {
+			margin-bottom: var(--space-sm);
+		}
+		
+		.connection-help-list code {
+			background: rgba(247, 210, 75, 0.1);
+			color: var(--clr-text-heading);
+			padding: 0.2rem 0.5rem;
+			border-radius: 0.25rem;
+			font-family: 'Courier New', monospace;
+			border: 1px solid rgba(247, 210, 75, 0.3);
+		}
+		
+		.detail-block code {
+			background: rgba(247, 210, 75, 0.1);
+			color: var(--clr-text-heading);
+			padding: 0.2rem 0.5rem;
+			border-radius: 0.25rem;
+			font-family: 'Courier New', monospace;
+			font-size: 0.9em;
+			border: 1px solid rgba(247, 210, 75, 0.3);
+		}
+		
+		.btn-secondary.connection-btn-auto {
+			display: inline-block;
+		}
+		
+		.connection-alt-methods i.fas.fa-external-link-alt {
+			font-size: 0.8em;
+		}
+		</style>
+	</head>
+
+	<body>
+		<!-- Accessibility -->
+		<div class="accessibility">
+			<div id="skip-to-content">
+				<a href="#content" id="skip-to-content-link">SKIP TO CONTENT</a>
+				<button onclick="topFunction()" id="GoToTopBtn" title="Go to top">
+					<strong>Top</strong>
+				</button>
+			</div>
+		</div>
+
+		<!-- Header -->
+		<header class="site-header">
+			<div class="inner">
+				<div id="HeaderLogo">
+					<a href="/index.php" class="nav-logo">
+						<img
+							src="/images/logo/3k_logo_shield_transparent.png"
+							class="logo-image"
+							alt="Three Kingdoms logo"
+							title="Home" />
+					</a>
+				</div>
+
+				<nav class="site-nav" aria-label="Primary">
+					<button
+						id="menu-toggle"
+						class="menu-toggle"
+						aria-expanded="false"
+						aria-controls="primary-navigation"
+						aria-label="Open menu">
+						<span class="hamburger" title="Menu">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+					</button>
+
+					<div class="nav-content">
+						<ul
+							id="primary-navigation"
+							class="primary-navigation"
+							data-state="closed">
+							<li><a href="/index.php">Home</a></li>
+							<li class="has-dropdown">
+								<button class="dropdown-toggle" aria-expanded="false">
+									<span class="arrow">About</span>
+								</button>
+								<ul class="dropdown">
+									<li><a href="/about-3kingdoms.php">3Kingdoms</a></li>
+									<li><a href="/about-3scapes.php">3Scapes</a></li>
+								</ul>
+							</li>
+							<li class="has-dropdown">
+								<button class="dropdown-toggle" aria-expanded="false">
+									<span class="arrow">Play</span>
+								</button>
+								<ul class="dropdown">
+									<li><a href="/connect.php">Quick Connect</a></li>
+									<li>
+										<a href="/connection-options.php">Connection Options</a>
+									</li>
+									<li><a href="/wholist.php">Who's Online</a></li>
+								</ul>
+							</li>
+							<li><a href="/guilds.php">Guilds</a></li>
+							<li class="has-dropdown">
+								<button class="dropdown-toggle" aria-expanded="false">
+									<span class="arrow">Community</span>
+								</button>
+								<ul class="dropdown">
+									<li>
+										<a href="http://forums.3k.org" target="_blank">Forums</a>
+									</li>
+									<li><a href="/community/gallery.php">Gallery</a></li>
+									<li><a href="/community/omp.php">OMPs</a></li>
+									<li>
+										<a href="http://3kwiki.com/wiki" target="_blank">Wiki</a>
+									</li>
+									<li>
+										<a href="https://wemudtogether.com" target="_blank"
+											>We Mud Together</a
+										>
+									</li>
+								</ul>
+							</li>
+							<li class="has-dropdown">
+								<button class="dropdown-toggle" aria-expanded="false">
+									<span class="arrow">Support</span>
+								</button>
+								<ul class="dropdown">
+									<li>
+										<a href="/support/vafs.php"
+											><abbr title="Voluntary Access Fees">VAFs</abbr></a
+										>
+									</li>
+									<li><a href="/support/contact.php">Contact</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main Content -->
+		<main id="content">
+			<!-- Hero Section -->
+			<section class="hero hero-default">
+				<div class="hero-content">
+					<h1 class="hero-title hero-title-about">Connection Options</h1>
+					<p class="hero-subtitle">
+						Choose Your Path to Adventure
+					</p>
+				</div>
+			</section>
+
+			<!-- Connection Details -->
+			<section class="about-intro">
+				<div class="about-container">
+					<div class="intro-text connection-server-info">
+						<h2>Server Information</h2>
+						<p>
+							<strong class="connection-server-label">3Kingdoms:</strong> <code>3k.org:3000</code>
+							<br>
+							<strong class="connection-server-label-alt">3Scapes:</strong> <code>3scapes.org:3200</code>
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Connection Methods -->
+			<section class="about-faq">
+				<div class="about-container">
+					<h2 class="section-title">Connection Methods</h2>
+					<p class="section-subtitle">Multiple ways to connect - choose what works best for you</p>
+
+					<div class="faq-grid">
+						<!-- Web Client - Featured -->
+						<div class="faq-item faq-item-chaos" style="border-width: 3px;">
+							<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+								<i class="fas fa-star" style="color: var(--clr-text-heading); font-size: 1.5rem;"></i>
+								<h3 class="faq-title" style="margin: 0;">Recommended: We MUD Together</h3>
+							</div>
+							<p class="faq-text" style="margin-bottom: var(--space-md);">The easiest way to start playing immediately! No downloads required - just click and play directly in your browser. Perfect for beginners and works on any device with a modern web browser.</p>
+							<div style="text-align: center;">
+								<button class="btn-primary" onclick="window.open('https://wemudtogether.com');" style="width: auto; max-width: none;">
+									<i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i>
+									Launch We MUD Together
+								</button>
+							</div>
+						</div>
+
+						<!-- Mobile Apps -->
+						<div class="faq-item faq-item-science">
+							<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+								<i class="fas fa-mobile-alt" style="color: var(--clr-science); font-size: 1.5rem;"></i>
+								<h3 class="faq-title" style="margin: 0;">Mobile Clients</h3>
+							</div>
+							<p class="faq-text" style="margin-bottom: var(--space-md);">Play on the go with dedicated mobile apps for iOS and Android. Optimized for touchscreen controls and mobile connectivity.</p>
+							<div style="text-align: center;">
+								<a href="/mobile.php" class="btn-secondary" style="width: auto; max-width: none; display: inline-block;">
+									<i class="fas fa-mobile-alt" style="margin-right: 0.5rem;"></i>
+									View Mobile Options
+								</a>
+							</div>
+						</div>
+
+						<!-- Desktop Clients -->
+						<div class="faq-item faq-item-fantasy">
+							<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+								<i class="fas fa-desktop" style="color: var(--clr-fantasy); font-size: 1.5rem;"></i>
+								<h3 class="faq-title" style="margin: 0;">Desktop Clients</h3>
+							</div>
+							<p class="faq-text" style="margin-bottom: var(--space-md);">For the ultimate MUD experience, use a dedicated desktop client with advanced features like triggers, aliases, macros, sound packs, and more.</p>
+							
+							<div style="margin-top: var(--space-lg);">
+								<h4 style="color: var(--clr-text-secondary); font-size: var(--fs-body); margin-bottom: var(--space-sm);">
+									<i class="fab fa-windows" style="margin-right: 0.5rem;"></i>Windows
+								</h4>
+								<p style="font-size: var(--fs-body-small); margin-bottom: var(--space-sm);"><strong>Portal™ GT</strong> - The premier Windows MUD client with instant 3Kingdoms support, sound packs, and image integration.</p>
+								<a href="http://www.gameaxle.com/cgi-bin/index.pl" target="_blank" style="color: var(--clr-accent-blue); font-size: var(--fs-body-small);">Download Portal™ <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
+								<br>
+								<a href="/client.php" style="color: var(--clr-accent-blue); font-size: var(--fs-body-small);">3K Portal™ Support & Downloads <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
+							</div>
+
+							<div style="margin-top: var(--space-md);">
+								<h4 style="color: var(--clr-text-secondary); font-size: var(--fs-body); margin-bottom: var(--space-sm);">
+									<i class="fab fa-apple" style="margin-right: 0.5rem;"></i>Mac OS X
+								</h4>
+								<p style="font-size: var(--fs-body-small); margin-bottom: var(--space-sm);"><strong>MudWalker</strong> - Open-source MUD client designed specifically for Mac users.</p>
+								<a href="http://mudwalker.cubik.org/" target="_blank" style="color: var(--clr-accent-blue); font-size: var(--fs-body-small);">Download MudWalker <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
+							</div>
+						</div>
+
+						<!-- Alternative Options -->
+						<div class="faq-item faq-item-science">
+							<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
+								<i class="fas fa-network-wired" style="color: var(--clr-science); font-size: 1.5rem;"></i>
+								<h3 class="faq-title" style="margin: 0;">Alternative Connection Methods</h3>
+							</div>
+							<p class="faq-text" style="margin-bottom: var(--space-md);">Additional connection options for specific needs or firewall restrictions.</p>
+							
+							<div style="display: grid; gap: var(--space-md); font-size: var(--fs-body-small);">
+								<div>
+									<strong style="color: var(--clr-text-heading);">Anyterm (Firewall Friendly)</strong>
+									<p style="margin: 0.25rem 0;">Bare-bones web terminal that can penetrate most firewalls.</p>
+									<a href="https://anyterm.3k.org:3040/anyterm/anyterm.html" target="_blank" style="color: var(--clr-accent-blue);">Connect via Anyterm <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
+								</div>
+
+								<div>
+									<strong style="color: var(--clr-text-heading);">SSH Tunneling</strong>
+									<p style="margin: 0.25rem 0;">Advanced users can bypass restrictive firewalls using SSH tunneling.</p>
+									<a href="/connect_ssh.php" style="color: var(--clr-accent-blue);">SSH Tunneling Guide <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
+								</div>
+
+								<div>
+									<strong style="color: var(--clr-text-heading);">Traditional Telnet</strong>
+									<p style="margin: 0.25rem 0;">For systems with telnet installed (less common on modern systems).</p>
+									<code style="background: rgba(247, 210, 75, 0.1); color: var(--clr-text-heading); padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-family: 'Courier New', monospace; border: 1px solid rgba(247, 210, 75, 0.3);">telnet 3k.org 3000</code>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Getting Started Guide -->
+			<section class="about-details">
+				<div class="about-container">
+					<h2 class="section-title">Getting Started</h2>
+					<p class="section-subtitle">Your first steps in 3Kingdoms</p>
+
+					<div class="details-content">
+						<div class="detail-block">
+							<h3 class="detail-title">
+								<i class="fas fa-user-plus"></i>
+								Creating Your Character
+							</h3>
+							<p class="connection-text-spacing">Once connected, you'll be greeted with a login screen. Press <strong>Enter</strong> to continue, then you'll see options to either log in with an existing character or create a new one.</p>
+							
+							<p class="connection-text-spacing"><strong>New players:</strong> When prompted for your character name, choose something unique and creative. Names cannot contain numbers or profanity. If the name is already taken, you'll be asked for a password - just disconnect and try a different name.</p>
+							
+							<p>You can also login as <code>guest</code> to explore the game before creating a character.</p>
+						</div>
+
+						<div class="detail-block">
+							<h3 class="detail-title">
+								<i class="fas fa-graduation-cap"></i>
+								The Tutorial
+							</h3>
+							<p class="connection-text-spacing">After creating your character, you'll be offered a basic tutorial. We <strong>strongly recommend</strong> taking it if you're new to MUDs or 3Kingdoms. It will teach you fundamental commands and help you navigate your first steps.</p>
+							
+							<p>The tutorial is interactive and will guide you through movement, combat basics, and essential commands to get you started on your adventure.</p>
+						</div>
+
+						<div class="detail-block">
+							<h3 class="detail-title">
+								<i class="fas fa-hands-helping"></i>
+								Getting Help
+							</h3>
+							<p class="connection-text-spacing">3Kingdoms has an extensive support system for new players:</p>
+							
+							<ul class="connection-help-list">
+								<li><strong>Newbie Helpers:</strong> Dedicated players who volunteer their time to help newcomers. Use the <code>newb</code> channel to ask questions.</li>
+								<li><strong>Help System:</strong> Type <code>help</code> anytime for access to comprehensive help files.</li>
+								<li><strong>Newbie Area:</strong> A dedicated safe zone designed for learning the basics.</li>
+								<li><strong>Community:</strong> The player community is welcoming and helpful - don't hesitate to ask!</li>
+							</ul>
+							
+							<p>Example: <code>newb Hi! I'm new, can someone help me?</code></p>
+						</div>
+
+						<div class="detail-block">
+							<h3 class="detail-title">
+								<i class="fas fa-terminal"></i>
+								Why Use a Client?
+							</h3>
+							<p class="connection-text-spacing">While the web client is perfect for getting started, dedicated MUD clients offer features that will <em>significantly</em> enhance your experience:</p>
+							
+							<ul class="connection-help-list">
+								<li><strong>Triggers:</strong> Automatic responses to game events</li>
+								<li><strong>Aliases:</strong> Shortcut commands for complex actions</li>
+								<li><strong>Macros:</strong> Bind actions to function keys</li>
+								<li><strong>Mappers:</strong> Visual maps of your location</li>
+								<li><strong>Sound Packs:</strong> Audio enhancement (Portal™)</li>
+								<li><strong>Scrollback:</strong> Review previous text easily</li>
+								<li><strong>Color Customization:</strong> Personalize your display</li>
+								<li><strong>And much more!</strong></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Call To Action Section -->
+			<section class="cta-section">
+				<div class="cta-content">
+					<h2 class="cta-title">Ready to Begin?</h2>
+					<p class="cta-text">
+						Your adventure awaits. Choose your connection method and step into the world of 3Kingdoms.
+					</p>
+
+					<div class="cta-buttons">
+						<button
+							class="btn-primary"
+							onclick="window.open('https://wemudtogether.com');">
+							Connect Now
+						</button>
+						<a href="/about-3kingdoms.php" class="btn-secondary">Learn More About 3K</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div class="footer-content">
+				<div class="footer-nav">
+					<div class="footer-nav-column">
+						<h3>Game Info</h3>
+						<ul>
+							<li><a href="/about-3kingdoms.php">About 3Kingdoms</a></li>
+							<li><a href="/about-3scapes.php">About 3Scapes</a></li>
+							<li><a href="/guilds.php">Guilds</a></li>
+							<li><a href="/quests.php">Quests</a></li>
+							<li><a href="/realms.php">Realms</a></li>
+						</ul>
+					</div>
+
+					<div class="footer-nav-column">
+						<h3>Get Playing</h3>
+						<ul>
+							<li><a href="/connect.php">Quick Connect</a></li>
+							<li>
+								<a href="/connection-options.php">Connection Options</a>
+							</li>
+							<li><a href="/wholist.php">Who's Online</a></li>
+						</ul>
+					</div>
+
+					<div class="footer-nav-column">
+						<h3>Community</h3>
+						<ul>
+							<li><a href="http://forums.3k.org" target="_blank">Forums</a></li>
+							<li><a href="/omp.php">Official Mud Parties</a></li>
+							<li><a href="/gallery.php">Gallery</a></li>              
+							<li><a href="/flyers.php">Download Flyers</a></li>
+							<li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
+							<li><a href="https://wemudtogether.com" target="_blank">We Mud Together</a></li>              
+						</ul>
+					</div>
+
+					<div class="footer-nav-column">
+						<h3>Support</h3>
+						<ul>
+							<li><a href="/vafs.php">VAFs (Support Us)</a></li>
+							<li><a href="/admin.php">Admin</a></li>
+							<li><a href="/contact.php">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="footer-copyright">
+          <div class="footer-copyright-info">
+            <p>
+              Content, source, aesthetics & originality &copy;1993-2026, The
+              Marble Group, Inc.
+            </p>
+            <p class="footer-owner">
+              <a href="https://www.themarblegroup.com">
+                A Marble Group Production
+              </a>
+            </p>
+          </div>
+          <div class="footer-logo">
+            <a href="https://www.themarblegroup.com"><img src="/images/logo/marble_logo_transparent.png" class="marble-logo"></a>
+          </div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="/design/script/script_main.js"></script>
+	</body>
+</html>

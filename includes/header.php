@@ -75,8 +75,8 @@
 									<span class="arrow">About</span>
 								</button>
 								<ul class="dropdown">
-									<li><a href="/about-3kingdoms/index.php">3Kingdoms</a></li>
-									<li><a href="/about-3scapes/index.php">3Scapes</a></li>
+									<li><a href="/about/3k/index.php">3Kingdoms</a></li>
+									<li><a href="/about/3s/index.php">3Scapes</a></li>
 								</ul>
 							</li>
 							<li class="has-dropdown">
@@ -86,12 +86,12 @@
 								<ul class="dropdown">
 									<li><a href="/connect.php">Quick Connect</a></li>
 									<li>
-										<a href="/connection-options.php">Connection Options</a>
+										<a href="/connect/index.php">Connection Options</a>
 									</li>
-									<li><a href="/wholist.php">Who's Online</a></li>
+									<li><a href="/connect/wholist.php">Who's Online</a></li>
 								</ul>
 							</li>
-							<li><a href="/guilds.php">Guilds</a></li>
+							<li><a href="/guilds/index.php">Guilds</a></li>
 							<li class="has-dropdown">
 								<button class="dropdown-toggle" aria-expanded="false">
 									<span class="arrow">Community</span>
@@ -100,8 +100,8 @@
 									<li>
 										<a href="http://forums.3k.org" target="_blank">Forums</a>
 									</li>
-									<li><a href="/community/gallery.php">Gallery</a></li>
-									<li><a href="/community/omp.php">OMPs</a></li>
+									<li><a href="/community/gallery/index.php">Gallery</a></li>
+									<li><a href="/community/omp/index.php">OMPs</a></li>
 									<li>
 										<a href="http://3kwiki.com/wiki" target="_blank">Wiki</a>
 									</li>
@@ -118,11 +118,11 @@
 								</button>
 								<ul class="dropdown">
 									<li>
-										<a href="/support/vafs.php"
+										<a href="/support/vafs/index.php"
 											><abbr title="Voluntary Access Fees">VAFs</abbr></a
 										>
 									</li>
-									<li><a href="/support/contact.php">Contact</a></li>
+									<li><a href="/support/contact/index.php">Contact</a></li>
 								</ul>
 							</li>
 						</ul>

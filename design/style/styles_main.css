@@ -1409,7 +1409,7 @@ main {
 /* Add to /design/style/styles_about.css */
 /* ============================= */
 
-.hero-about {
+.hero-default {
   min-height: 60vh;
 	background: linear-gradient(
 			135deg,
@@ -1802,7 +1802,7 @@ footer {
 		grid-template-columns: 1fr;
 	}
 
-  .hero-about {
+  .hero-default {
     min-height: 50vh;
   }
 

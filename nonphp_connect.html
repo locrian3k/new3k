@@ -24,185 +24,316 @@
 			referrerpolicy="no-referrer" />
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="stylesheet" href="/design/style/styles_main.css" />
-		
+
 		<style>
-		/* Connection Options Page Specific Styles */
-		.connection-server-info {
-			text-align: center;
-		}
-		
-		.connection-server-info h2 {
-			color: var(--clr-text-heading);
-			margin-bottom: var(--space-md);
-		}
-		
-		.connection-server-info p {
-			font-size: var(--fs-h3);
-			margin-bottom: var(--space-xl);
-		}
-		
-		.connection-server-info code {
-			background: rgba(247, 210, 75, 0.1);
-			color: var(--clr-text-heading);
-			padding: 0.3rem 0.7rem;
-			border-radius: 0.25rem;
-			font-family: 'Courier New', monospace;
-			border: 1px solid rgba(247, 210, 75, 0.3);
-		}
-		
-		.connection-server-label {
-			color: var(--clr-fantasy);
-		}
-		
-		.connection-server-label-alt {
-			color: var(--clr-science);
-			margin-top: var(--space-sm);
-			display: inline-block;
-		}
-		
-		.connection-featured-border {
-			border-width: 3px;
-		}
-		
-		.connection-icon-header {
-			display: flex;
-			align-items: center;
-			gap: var(--space-sm);
-			margin-bottom: var(--space-md);
-		}
-		
-		.connection-icon-header i {
-			font-size: 1.5rem;
-		}
-		
-		.connection-icon-header .fa-star {
-			color: var(--clr-text-heading);
-		}
-		
-		.connection-icon-header .fa-mobile-alt {
-			color: var(--clr-science);
-		}
-		
-		.connection-icon-header .fa-desktop {
-			color: var(--clr-fantasy);
-		}
-		
-		.connection-icon-header .fa-network-wired {
-			color: var(--clr-science);
-		}
-		
-		.connection-icon-header h3 {
-			margin: 0;
-		}
-		
-		.connection-text-spacing {
-			margin-bottom: var(--space-md);
-		}
-		
-		.connection-button-center {
-			text-align: center;
-		}
-		
-		.connection-btn-auto {
-			width: auto;
-			max-width: none;
-		}
-		
-		.connection-btn-icon {
-			margin-right: 0.5rem;
-		}
-		
-		.connection-client-section {
-			margin-top: var(--space-lg);
-		}
-		
-		.connection-client-heading {
-			color: var(--clr-text-secondary);
-			font-size: var(--fs-body);
-			margin-bottom: var(--space-sm);
-		}
-		
-		.connection-client-heading i {
-			margin-right: 0.5rem;
-		}
-		
-		.connection-client-text {
-			font-size: var(--fs-body-small);
-			margin-bottom: var(--space-sm);
-		}
-		
-		.connection-client-link {
-			color: var(--clr-accent-blue);
-			font-size: var(--fs-body-small);
-		}
-		
-		.connection-client-link i {
-			font-size: 0.8em;
-		}
-		
-		.connection-mip-note {
-			margin-top: var(--space-md);
-			padding: var(--space-sm);
-			background: rgba(247, 210, 75, 0.1);
-			border-left: 3px solid var(--clr-text-heading);
-			border-radius: 0.25rem;
-		}
-		
-		.connection-mip-note p {
-			font-size: var(--fs-body-small);
-			margin: 0;
-			color: var(--clr-text-primary);
-		}
-		
-		.connection-mip-note strong {
-			color: var(--clr-text-heading);
-		}
-		
-		.connection-alt-methods {
-			display: grid;
-			gap: var(--space-md);
-			font-size: var(--fs-body-small);
-		}
-		
-		.connection-alt-methods strong {
-			color: var(--clr-text-heading);
-		}
-		
-		.connection-alt-methods p {
-			margin: 0.25rem 0;
-		}
-		
-		.connection-alt-methods a {
-			color: var(--clr-accent-blue);
-		}
-		
-		.connection-alt-methods code {
-			background: rgba(247, 210, 75, 0.1);
-			color: var(--clr-text-heading);
-			padding: 0.2rem 0.5rem;
-			border-radius: 0.25rem;
-			font-family: 'Courier New', monospace;
-			border: 1px solid rgba(247, 210, 75, 0.3);
-		}
-		
-		.connection-help-list {
-			color: var(--clr-text-primary);
-			margin-left: var(--space-lg);
-			margin-bottom: var(--space-md);
-		}
-		
-		.connection-help-list li {
-			margin-bottom: var(--space-sm);
-		}
-		
-		.connection-help-list code {
-			background: rgba(247, 210, 75, 0.1);
-			color: var(--clr-text-heading);
-			padding: 0.2rem 0.5rem;
-			border-radius: 0.25rem;
-			font-family: 'Courier New', monospace;
-			border: 1px solid rgba(247, 210, 75, 0.3);
-		}
+			/* Connection Options Page Specific Styles */
+			.connection-server-info {
+				text-align: center;
+			}
+
+			.connection-server-info h2 {
+				color: var(--clr-text-heading);
+				margin-bottom: var(--space-md);
+			}
+
+			.connection-server-info p {
+				font-size: var(--fs-h3);
+				margin-bottom: var(--space-xl);
+			}
+
+			.connection-server-info code {
+				background: rgba(247, 210, 75, 0.1);
+				color: var(--clr-text-heading);
+				padding: 0.3rem 0.7rem;
+				border-radius: 0.25rem;
+				font-family: "Courier New", monospace;
+				border: 1px solid rgba(247, 210, 75, 0.3);
+			}
+
+			.connection-server-label {
+				color: var(--clr-fantasy);
+			}
+
+			.connection-server-label-alt {
+				color: var(--clr-science);
+				margin-top: var(--space-sm);
+				display: inline-block;
+			}
+
+			/* Flip Card Styles */
+			.faq-item,
+			.faq-inner,
+			.faq-item-front,
+			.faq-item-back {
+				min-height: 550px;
+			}
+
+			.faq-item {
+				perspective: 1000px;
+				cursor: pointer;
+				position: relative;
+				background: transparent;
+				border: none;
+				padding: 0;
+			}
+
+			.faq-item-inner {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				transition: transform 0.6s;
+				transform-style: preserve-3d;
+			}
+
+			.faq-item.flipped .faq-item-inner {
+				transform: rotateY(180deg);
+			}
+
+			.faq-item-front,
+			.faq-item-back {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				backface-visibility: hidden;
+				-webkit-backface-visibility: hidden;
+				background: rgba(25, 52, 85, 0.3);
+				border: 2px solid;
+				border-radius: var(--card-border-radius);
+				padding: var(--space-lg);
+				box-sizing: border-box;
+			}
+
+			.faq-item-back {
+				transform: rotateY(180deg);
+			}
+
+			.faq-item-chaos .faq-item-front,
+			.faq-item-chaos .faq-item-back {
+				border-color: rgba(212, 74, 2, 0.3);
+			}
+
+			.faq-item-science .faq-item-front,
+			.faq-item-science .faq-item-back {
+				border-color: rgba(99, 160, 195, 0.3);
+			}
+
+			.faq-item-fantasy .faq-item-front,
+			.faq-item-fantasy .faq-item-back {
+				border-color: rgba(212, 160, 46, 0.3);
+			}
+
+			.connection-featured-border .faq-item-front,
+			.connection-featured-border .faq-item-back {
+				border-width: 3px;
+			}
+
+			.flip-indicator {
+				position: absolute;
+				bottom: var(--space-md);
+				right: var(--space-md);
+				font-size: var(--fs-body-small);
+				color: var(--clr-text-secondary);
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+			}
+
+			.flip-indicator i {
+				font-size: 1.2rem;
+			}
+
+			.connection-featured-border {
+				border-width: 3px;
+			}
+
+			.connection-icon-header {
+				display: flex;
+				align-items: center;
+				gap: var(--space-sm);
+				margin-bottom: var(--space-md);
+			}
+
+			.connection-icon-header i {
+				font-size: 1.5rem;
+			}
+
+			.connection-icon-header .fa-star {
+				color: var(--clr-text-heading);
+			}
+
+			.connection-icon-header .fa-mobile-alt {
+				color: var(--clr-science);
+			}
+
+			.connection-icon-header .fa-desktop {
+				color: var(--clr-fantasy);
+			}
+
+			.connection-icon-header .fa-network-wired {
+				color: var(--clr-science);
+			}
+
+			.connection-icon-header h3 {
+				margin: 0;
+			}
+
+			.connection-text-spacing {
+				margin-bottom: var(--space-md);
+			}
+
+			.connection-button-center {
+				text-align: center;
+			}
+
+			.connection-btn-auto {
+				width: auto;
+				max-width: none;
+			}
+
+			.connection-btn-icon {
+				margin-right: 0.5rem;
+			}
+
+			.connection-client-section {
+				margin-top: var(--space-lg);
+			}
+
+			.connection-client-section:first-of-type {
+				margin-top: 0;
+			}
+
+			.connection-client-heading {
+				color: var(--clr-text-secondary);
+				font-size: var(--fs-body);
+				margin-bottom: var(--space-sm);
+			}
+
+			.connection-client-heading i {
+				margin-right: 0.5rem;
+			}
+
+			.connection-client-text {
+				font-size: var(--fs-body-small);
+				margin-bottom: var(--space-sm);
+			}
+
+			.connection-client-link {
+				color: var(--clr-accent-blue);
+				font-size: var(--fs-body-small);
+			}
+
+			.connection-client-link i {
+				font-size: 0.8em;
+			}
+
+			.connection-note-box {
+				margin-top: var(--space-md);
+				padding: var(--space-sm);
+				background: rgba(247, 210, 75, 0.1);
+				border-left: 3px solid var(--clr-text-heading);
+				border-radius: 0.25rem;
+			}
+
+			.connection-note-box p {
+				font-size: var(--fs-body-small);
+				margin: 0;
+				color: var(--clr-text-primary);
+			}
+
+			.connection-note-box strong {
+				color: var(--clr-text-heading);
+			}
+
+			.connection-alt-methods {
+				display: grid;
+				gap: var(--space-md);
+				font-size: var(--fs-body-small);
+			}
+
+			.connection-alt-methods strong {
+				color: var(--clr-text-heading);
+			}
+
+			.connection-alt-methods p {
+				margin: 0.25rem 0;
+			}
+
+			.connection-alt-methods a {
+				color: var(--clr-accent-blue);
+			}
+
+			.connection-alt-methods code {
+				background: rgba(247, 210, 75, 0.1);
+				color: var(--clr-text-heading);
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.25rem;
+				font-family: "Courier New", monospace;
+				border: 1px solid rgba(247, 210, 75, 0.3);
+			}
+
+			.connection-help-list {
+				color: var(--clr-text-primary);
+				margin-left: var(--space-lg);
+				margin-bottom: var(--space-md);
+			}
+
+			.connection-help-list li {
+				margin-bottom: var(--space-sm);
+			}
+
+			.connection-help-list code {
+				background: rgba(247, 210, 75, 0.1);
+				color: var(--clr-text-heading);
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.25rem;
+				font-family: "Courier New", monospace;
+				border: 1px solid rgba(247, 210, 75, 0.3);
+			}
+
+			.detail-block code {
+				background: rgba(247, 210, 75, 0.1);
+				color: var(--clr-text-heading);
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.25rem;
+				font-family: "Courier New", monospace;
+				font-size: 0.9em;
+				border: 1px solid rgba(247, 210, 75, 0.3);
+			}
+
+			.btn-secondary.connection-btn-auto {
+				display: inline-block;
+			}
+
+			.connection-alt-methods i.fas.fa-external-link-alt {
+				font-size: 0.8em;
+			}
+
+			.connection-back-content {
+				overflow-y: auto;
+				max-height: 100%;
+			}
+
+			.connection-back-content h4 {
+				color: var(--clr-text-heading);
+				margin: var(--space-xs);
+			}
+
+			.connection-back-content p {
+				margin-bottom: var(--space-sm);
+				font-size: var(--fs-body-small);
+			}
+
+			.connection-back-content ul,
+      .connection-help-list {
+				margin-left: 0;
+				padding-left: 0.8rem;
+				margin-bottom: var(--space-md);
+			}
+
+			.connection-back-content li {
+				margin-bottom: 0.5rem;
+				font-size: var(--fs-body-small);
+			}
 		</style>
 	</head>
 
@@ -314,12 +445,10 @@
 		<!-- Main Content -->
 		<main id="content">
 			<!-- Hero Section -->
-			<section class="hero hero-about">
+			<section class="hero hero-default">
 				<div class="hero-content">
 					<h1 class="hero-title hero-title-about">Connection Options</h1>
-					<p class="hero-subtitle">
-						Choose Your Path to Adventure
-					</p>
+					<p class="hero-subtitle">Choose Your Path to Adventure</p>
 				</div>
 			</section>
 
@@ -329,9 +458,11 @@
 					<div class="intro-text connection-server-info">
 						<h2>Server Information</h2>
 						<p>
-							<strong class="connection-server-label">3Kingdoms:</strong> <code>3k.org:3000</code>
-							<br>
-							<strong class="connection-server-label-alt">3Scapes:</strong> <code>3scapes.org:3200</code>
+							<strong class="connection-server-label">3Kingdoms:</strong>
+							<code>3k.org:3000</code>
+							<br />
+							<strong class="connection-server-label-alt">3Scapes:</strong>
+							<code>3scapes.org:3200</code>
 						</p>
 					</div>
 				</div>
@@ -341,91 +472,372 @@
 			<section class="about-faq">
 				<div class="about-container">
 					<h2 class="section-title">Connection Methods</h2>
-					<p class="section-subtitle">Multiple ways to connect - choose what works best for you</p>
+					<p class="section-subtitle">
+						Multiple ways to connect - choose what works best for you<br /><em
+							style="
+								font-size: var(--fs-body-small);
+								color: var(--clr-accent-highlight);
+							"
+							>Click any card to see more details</em
+						>
+					</p>
 
 					<div class="faq-grid">
 						<!-- Web Client - Featured -->
-						<div class="faq-item faq-item-chaos">
-							<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
-								<i class="fas fa-star" style="color: var(--clr-text-heading); font-size: 1.5rem;"></i>
-								<h3 class="faq-title" style="margin: 0;">Recommended: We MUD Together</h3>
-							</div>
-							<p class="faq-text" style="margin-bottom: var(--space-md);">The easiest way to start playing immediately! No downloads required - just click and play directly in your browser. Perfect for beginners and works on any device with a modern web browser.</p>
-							<div style="text-align: center;">
-								<button class="btn-primary" onclick="window.open('https://wemudtogether.com');" style="width: auto; max-width: none;">
-									<i class="fas fa-play-circle" style="margin-right: 0.5rem;"></i>
-									Launch We MUD Together
-								</button>
+						<div
+							class="faq-item faq-item-chaos connection-featured-border"
+							onclick="this.classList.toggle('flipped')">
+							<div class="faq-item-inner">
+								<!-- Front -->
+								<div class="faq-item-front">
+									<div class="connection-icon-header">
+										<i class="fas fa-star"></i>
+										<h3 class="faq-title">
+											Recommended: We MUD Together (WMT)
+										</h3>
+									</div>
+									<p class="faq-text connection-text-spacing">
+										The easiest way to start playing immediately! No downloads
+										required, just click and play directly in your browser.
+										Perfect for beginners and works on any device.
+									</p>
+									<div class="connection-button-center">
+										<button
+											class="btn-primary connection-btn-auto"
+											onclick="event.stopPropagation(); window.open('https://client.wemudtogether.com');">
+											Launch WMT Client
+										</button>
+									</div>
+									<div class="flip-indicator">
+										<span>More info</span>
+										<i class="fas fa-sync-alt"></i>
+									</div>
+								</div>
+								<!-- Back -->
+								<div class="faq-item-back">
+									<div class="connection-back-content">
+										<h4>Why We MUD Together?</h4>
+										<p>Designed for quick, easy access and ease of use:</p>
+										<ul>
+											<li>Play from any device, anywhere</li>
+											<li>No installation or configuration needed</li>
+											<li>
+												MUD Image Protocol (MIP) support for enhanced visuals
+											</li>
+											<li>Automatic updates - always on the latest version</li>
+											<li>Works behind most firewalls</li>
+											<li>
+												Perfect for trying 3Kingdoms before committing to a full
+												client
+											</li>
+										</ul>
+										<p>
+											For many players, this web client is all they need to
+											enjoy the full 3Kingdoms experience.
+											<a
+												href="https://client.wemudtogether.com"
+												target="_blank"
+												class="connection-client-link"
+												onclick="event.stopPropagation();"
+												>Connect to WMT client.
+												<i class="fas fa-external-link-alt"></i
+											></a>
+										</p>
+										<div class="flip-indicator">
+											<span>Back</span>
+											<i class="fas fa-sync-alt"></i>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 
 						<!-- Mobile Apps -->
-						<div class="faq-item faq-item-science">
-							<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
-								<i class="fas fa-mobile-alt" style="color: var(--clr-science); font-size: 1.5rem;"></i>
-								<h3 class="faq-title" style="margin: 0;">Mobile Clients</h3>
-							</div>
-							<p class="faq-text" style="margin-bottom: var(--space-md);">Play on the go with dedicated mobile apps for iOS and Android. Optimized for touchscreen controls and mobile connectivity.</p>
-							<div style="text-align: center;">
-								<a href="/mobile.php" class="btn-secondary" style="width: auto; max-width: none; display: inline-block;">
-									<i class="fas fa-mobile-alt" style="margin-right: 0.5rem;"></i>
-									View Mobile Options
-								</a>
+						<div
+							class="faq-item faq-item-science"
+							onclick="this.classList.toggle('flipped')">
+							<div class="faq-item-inner">
+								<!-- Front -->
+								<div class="faq-item-front">
+									<div class="connection-icon-header">
+										<i class="fas fa-mobile-alt"></i>
+										<h3 class="faq-title">Mobile Clients</h3>
+									</div>
+									<p class="faq-text connection-text-spacing">
+										Play on the go with mobile solutions. Options range from
+										dedicated apps to SSH-based terminal access.
+									</p>
+									<div class="connection-client-section">
+										<h4 class="connection-client-heading">
+											<i class="fab fa-android"></i>Android
+										</h4>
+										<p class="connection-client-text">
+											<strong
+												><a
+													href="https://blowtorch.en.aptoide.com/app"
+													target="_blank"
+													class="connection-client-link"
+													onclick="event.stopPropagation();"
+													>BlowTorch <i class="fas fa-external-link-alt"></i></a
+											></strong>
+											- Classic Android MUD client (development discontinued but
+											still functional)
+										</p>
+										<h4 class="connection-client-heading">
+											<i class="fab fa-apple"></i>iOS
+										</h4>
+										<p class="connection-client-text">
+											<strong
+												><a
+													href="https://apps.apple.com/us/app/mudbasher/id6755510450"
+													target="_blank"
+													class="connection-client-link"
+													onclick="event.stopPropagation();"
+													>MUDBasher <i class="fas fa-external-link-alt"></i></a
+											></strong>
+											- Originally MUDRammer, this is the updated app - faster,
+											prettier, and more features than the previous version.
+										</p>
+									</div>
+									<div class="flip-indicator">
+										<span>More info</span>
+										<i class="fas fa-sync-alt"></i>
+									</div>
+								</div>
+								<!-- Back -->
+								<div class="faq-item-back">
+									<div class="connection-back-content">
+										<h4>Advanced Mobile Setup</h4>
+										<p>
+											Many experienced players use SSH-based solutions for
+											mobile play:
+										</p>
+										<ul>
+											<li>
+												<strong
+													><a
+														href="https://termius.com/"
+														target="_blank"
+														class="connection-client-link"
+														onclick="event.stopPropagation();"
+														>Termius <i class="fas fa-external-link-alt"></i></a
+												></strong>
+												- SSH client for iOS/Android that can connect to
+												cloud-based TinTin++ instances
+											</li>
+											<li>
+												<strong
+													><a
+														href="https://tintin.mudhalla.net/"
+														target="_blank"
+														class="connection-client-link"
+														onclick="event.stopPropagation();"
+														>TinTin++
+														<i class="fas fa-external-link-alt"></i></a
+												></strong>
+												- Run TinTin++ on a cloud server (Google Cloud, AWS,
+												etc.) and access via SSH from any mobile device
+											</li>
+											<li>
+												<strong
+													><a
+														href="https://client.wemudtogether.com"
+														target="_blank"
+														class="connection-client-link"
+														onclick="event.stopPropagation();"
+														>WMT client
+														<i class="fas fa-external-link-alt"></i></a
+												></strong>
+												- Works great on mobile browsers as well
+											</li>
+										</ul>
+										<p>
+											<strong>Benefits of cloud-based approach:</strong> Your
+											session persists even when you disconnect, letting you
+											seamlessly switch between devices.
+										</p>
+										<div class="flip-indicator">
+											<span>Back</span>
+											<i class="fas fa-sync-alt"></i>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 
 						<!-- Desktop Clients -->
-						<div class="faq-item faq-item-fantasy">
-							<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
-								<i class="fas fa-desktop" style="color: var(--clr-fantasy); font-size: 1.5rem;"></i>
-								<h3 class="faq-title" style="margin: 0;">Desktop Clients</h3>
-							</div>
-							<p class="faq-text" style="margin-bottom: var(--space-md);">For the ultimate MUD experience, use a dedicated desktop client with advanced features like triggers, aliases, macros, sound packs, and more.</p>
-							
-							<div style="margin-top: var(--space-lg);">
-								<h4 style="color: var(--clr-text-secondary); font-size: var(--fs-body); margin-bottom: var(--space-sm);">
-									<i class="fab fa-windows" style="margin-right: 0.5rem;"></i>Windows
-								</h4>
-								<p style="font-size: var(--fs-body-small); margin-bottom: var(--space-sm);"><strong>Portal™ GT</strong> - The premier Windows MUD client with instant 3Kingdoms support, sound packs, and image integration.</p>
-								<a href="http://www.gameaxle.com/cgi-bin/index.pl" target="_blank" style="color: var(--clr-accent-blue); font-size: var(--fs-body-small);">Download Portal™ <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
-								<br>
-								<a href="/client.php" style="color: var(--clr-accent-blue); font-size: var(--fs-body-small);">3K Portal™ Support & Downloads <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
-							</div>
+						<div
+							class="faq-item faq-item-fantasy"
+							onclick="this.classList.toggle('flipped')">
+							<div class="faq-item-inner">
+								<!-- Front -->
+								<div class="faq-item-front">
+									<div class="connection-icon-header">
+										<i class="fas fa-desktop"></i>
+										<h3 class="faq-title">Desktop Clients</h3>
+									</div>
+									<p class="faq-text connection-text-spacing">
+										For serious players who want maximum control and
+										customization. Your scripts live as local text files you
+										fully control.
+									</p>
 
-							<div style="margin-top: var(--space-md);">
-								<h4 style="color: var(--clr-text-secondary); font-size: var(--fs-body); margin-bottom: var(--space-sm);">
-									<i class="fab fa-apple" style="margin-right: 0.5rem;"></i>Mac OS X
-								</h4>
-								<p style="font-size: var(--fs-body-small); margin-bottom: var(--space-sm);"><strong>MudWalker</strong> - Open-source MUD client designed specifically for Mac users.</p>
-								<a href="http://mudwalker.cubik.org/" target="_blank" style="color: var(--clr-accent-blue); font-size: var(--fs-body-small);">Download MudWalker <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
+									<div class="connection-client-section">
+										<h4 class="connection-client-heading">
+											<i class="fab fa-linux"></i><i class="fab fa-windows"></i
+											><i class="fab fa-apple"></i>Cross-Platform
+										</h4>
+										<p class="connection-client-text">
+											<strong>Mudlet</strong> - User-friendly GUI client with
+											built-in scripting and mapping.
+										</p>
+										<a
+											href="https://www.mudlet.org/"
+											target="_blank"
+											class="connection-client-link"
+											onclick="event.stopPropagation();"
+											>Download Mudlet <i class="fas fa-external-link-alt"></i
+										></a>
+                    <br>
+										<p class="connection-client-text">
+											<strong>TinTin++</strong> - Powerful, highly customizable
+											client with extensive scripting. Most popular among 3K
+											players.
+										</p>
+										<a
+											href="https://tintin.mudhalla.net/"
+											target="_blank"
+											class="connection-client-link"
+											onclick="event.stopPropagation();"
+											>Download TinTin++ <i class="fas fa-external-link-alt"></i
+										></a>
+									</div>
+									<div class="flip-indicator">
+										<span>More info</span>
+										<i class="fas fa-sync-alt"></i>
+									</div>
+								</div>
+								<!-- Back -->
+								<div class="faq-item-back">
+									<div class="connection-back-content">
+										<h4>Why Desktop Clients?</h4>
+										<p>
+											Desktop clients offer different tradeoffs from web
+											clients:
+										</p>
+										<ul>
+											<li>
+												<strong>Full Control:</strong> Scripts as local text
+												files you own and control
+											</li>
+											<li>
+												<strong>Advanced Features:</strong> Complex scripting,
+												triggers, aliases, custom mappers
+											</li>
+											<li>
+												<strong>System Integration:</strong> Launch external
+												programs and deep customization
+											</li>
+											<li>
+												<strong>Longevity:</strong> Text configs survive better
+												than cloud solutions
+											</li>
+										</ul>
+										<div class="connection-note-box">
+											<p>
+												<strong>Portal™:</strong> Created by GameAxle with MIP
+												and sound support. No longer maintained; may need
+												compatibility mode.
+											</p>
+											<a
+												href="http://www.gameaxle.com/cgi-bin/index.pl"
+												target="_blank"
+												class="connection-client-link"
+												onclick="event.stopPropagation();"
+												>Portal™ Info <i class="fas fa-external-link-alt"></i
+											></a>
+										</div>
+										<div class="flip-indicator">
+											<span>Back</span>
+											<i class="fas fa-sync-alt"></i>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 
 						<!-- Alternative Options -->
-						<div class="faq-item faq-item-science">
-							<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md);">
-								<i class="fas fa-network-wired" style="color: var(--clr-science); font-size: 1.5rem;"></i>
-								<h3 class="faq-title" style="margin: 0;">Alternative Connection Methods</h3>
-							</div>
-							<p class="faq-text" style="margin-bottom: var(--space-md);">Additional connection options for specific needs or firewall restrictions.</p>
-							
-							<div style="display: grid; gap: var(--space-md); font-size: var(--fs-body-small);">
-								<div>
-									<strong style="color: var(--clr-text-heading);">Anyterm (Firewall Friendly)</strong>
-									<p style="margin: 0.25rem 0;">Bare-bones web terminal that can penetrate most firewalls.</p>
-									<a href="https://anyterm.3k.org:3040/anyterm/anyterm.html" target="_blank" style="color: var(--clr-accent-blue);">Connect via Anyterm <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
-								</div>
+						<div
+							class="faq-item faq-item-science"
+							onclick="this.classList.toggle('flipped')">
+							<div class="faq-item-inner">
+								<!-- Front -->
+								<div class="faq-item-front">
+									<div class="connection-icon-header">
+										<i class="fas fa-network-wired"></i>
+										<h3 class="faq-title">Alternative Methods</h3>
+									</div>
+									<p class="faq-text connection-text-spacing">
+										Additional connection options for specific needs or
+										restrictions.
+									</p>
 
-								<div>
-									<strong style="color: var(--clr-text-heading);">SSH Tunneling</strong>
-									<p style="margin: 0.25rem 0;">Advanced users can bypass restrictive firewalls using SSH tunneling.</p>
-									<a href="/connect_ssh.php" style="color: var(--clr-accent-blue);">SSH Tunneling Guide <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a>
-								</div>
+									<div class="connection-alt-methods">
+										<div>
+											<strong>SSH Tunneling</strong>
+											<p>
+												Advanced users can bypass restrictive firewalls using
+												SSH tunneling.
+											</p>
+											<a
+												href="/connect_ssh.php"
+												onclick="event.stopPropagation();"
+												>SSH Tunneling Guide
+												<i class="fas fa-external-link-alt"></i
+											></a>
+										</div>
 
-								<div>
-									<strong style="color: var(--clr-text-heading);">Traditional Telnet</strong>
-									<p style="margin: 0.25rem 0;">For systems with telnet installed (less common on modern systems).</p>
-									<code style="background: rgba(247, 210, 75, 0.1); color: var(--clr-text-heading); padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-family: 'Courier New', monospace; border: 1px solid rgba(247, 210, 75, 0.3);">telnet 3k.org 3000</code>
+										<div>
+											<strong>Traditional Telnet</strong>
+											<p>
+												For systems with telnet installed (less common on modern
+												systems).
+											</p>
+											<code>telnet 3k.org 3000</code>
+										</div>
+									</div>
+									<div class="flip-indicator">
+										<span>More info</span>
+										<i class="fas fa-sync-alt"></i>
+									</div>
+								</div>
+								<!-- Back -->
+								<div class="faq-item-back">
+									<div class="connection-back-content">
+										<h4>When to Use These Methods</h4>
+										<p>
+											<strong>SSH Tunneling:</strong> Useful when you're behind
+											a restrictive firewall that blocks standard MUD ports.
+											This method wraps your connection in SSH encryption,
+											making it appear as regular SSH traffic.
+										</p>
+										<p>
+											<strong>Telnet:</strong> The original MUD connection
+											method. While it works, telnet is unencrypted and lacks
+											modern features. Only recommended if you have specific
+											compatibility requirements.
+										</p>
+										<p>
+											<strong>Note:</strong> Most players will be better served
+											by We MUD Together or a desktop client. These alternative
+											methods are primarily for troubleshooting connectivity
+											issues.
+										</p>
+										<div class="flip-indicator">
+											<span>Back</span>
+											<i class="fas fa-sync-alt"></i>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -445,11 +857,23 @@
 								<i class="fas fa-user-plus"></i>
 								Creating Your Character
 							</h3>
-							<p class="connection-text-spacing">Once connected, you'll be greeted with a login screen. Press <strong>Enter</strong> to continue, then you'll see options to either log in with an existing character or create a new one.</p>
-							
-							<p class="connection-text-spacing"><strong>New players:</strong> When prompted for your character name, choose something unique and creative. Names cannot contain numbers or profanity. If the name is already taken, you'll be asked for a password - just disconnect and try a different name.</p>
-							
-							<p>You can also login as <code>guest</code> to explore the game before creating a character.</p>
+							<p class="connection-text-spacing">
+								Once connected, you'll be greeted with a login screen. Press
+								<strong>Enter</strong> to continue, then you'll see options to
+								either log in with an existing character or create a new one.
+							</p>
+
+							<p class="connection-text-spacing">
+								<strong>New players:</strong> When prompted for your character
+								name, choose something unique and creative. Names cannot contain
+								numbers or profanity. If the name is already taken, you'll be
+								asked for a password - just disconnect and try a different name.
+							</p>
+
+							<p>
+								You can also login as <code>guest</code> to explore the game
+								before creating a character.
+							</p>
 						</div>
 
 						<div class="detail-block">
@@ -457,9 +881,18 @@
 								<i class="fas fa-graduation-cap"></i>
 								The Tutorial
 							</h3>
-							<p class="connection-text-spacing">After creating your character, you'll be offered a basic tutorial. We <strong>strongly recommend</strong> taking it if you're new to MUDs or 3Kingdoms. It will teach you fundamental commands and help you navigate your first steps.</p>
-							
-							<p>The tutorial is interactive and will guide you through movement, combat basics, and essential commands to get you started on your adventure.</p>
+							<p class="connection-text-spacing">
+								After creating your character, you'll be offered a basic
+								tutorial. We <strong>strongly recommend</strong> taking it if
+								you're new to MUDs or 3Kingdoms. It will teach you fundamental
+								commands and help you navigate your first steps.
+							</p>
+
+							<p>
+								The tutorial is interactive and will guide you through movement,
+								combat basics, and essential commands to get you started on your
+								adventure.
+							</p>
 						</div>
 
 						<div class="detail-block">
@@ -467,35 +900,33 @@
 								<i class="fas fa-hands-helping"></i>
 								Getting Help
 							</h3>
-							<p class="connection-text-spacing">3Kingdoms has an extensive support system for new players:</p>
-							
-							<ul class="connection-help-list">
-								<li><strong>Newbie Helpers:</strong> Dedicated players who volunteer their time to help newcomers. Use the <code>newb</code> channel to ask questions.</li>
-								<li><strong>Help System:</strong> Type <code>help</code> anytime for access to comprehensive help files.</li>
-								<li><strong>Newbie Area:</strong> A dedicated safe zone designed for learning the basics.</li>
-								<li><strong>Community:</strong> The player community is welcoming and helpful - don't hesitate to ask!</li>
-							</ul>
-							
-							<p>Example: <code>newb Hi! I'm new, can someone help me?</code></p>
-						</div>
+							<p class="connection-text-spacing">
+								3Kingdoms has an extensive support system for new players:
+							</p>
 
-						<div class="detail-block">
-							<h3 class="detail-title">
-								<i class="fas fa-terminal"></i>
-								Why Use a Client?
-							</h3>
-							<p class="connection-text-spacing">While the web client is perfect for getting started, dedicated MUD clients offer features that will <em>significantly</em> enhance your experience:</p>
-							
 							<ul class="connection-help-list">
-								<li><strong>Triggers:</strong> Automatic responses to game events</li>
-								<li><strong>Aliases:</strong> Shortcut commands for complex actions</li>
-								<li><strong>Macros:</strong> Bind actions to function keys</li>
-								<li><strong>Mappers:</strong> Visual maps of your location</li>
-								<li><strong>Sound Packs:</strong> Audio enhancement (Portal™)</li>
-								<li><strong>Scrollback:</strong> Review previous text easily</li>
-								<li><strong>Color Customization:</strong> Personalize your display</li>
-								<li><strong>And much more!</strong></li>
+								<li>
+									<strong>Newbie Helpers:</strong> Dedicated players who
+									volunteer their time to help newcomers. Use the
+									<code>newb</code> channel to ask questions.
+								</li>
+								<li>
+									<strong>Help System:</strong> Type <code>help</code> anytime
+									for access to comprehensive help files.
+								</li>
+								<li>
+									<strong>Newbie Area:</strong> A dedicated safe zone designed
+									for learning the basics.
+								</li>
+								<li>
+									<strong>Community:</strong> The player community is welcoming
+									and helpful - don't hesitate to ask!
+								</li>
 							</ul>
+
+							<p>
+								Example: <code>newb Hi! I'm new, can someone help me?</code>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -506,7 +937,8 @@
 				<div class="cta-content">
 					<h2 class="cta-title">Ready to Begin?</h2>
 					<p class="cta-text">
-						Your adventure awaits. Choose your connection method and step into the world of 3Kingdoms.
+						Your adventure awaits. Choose your connection method and step into
+						the world of 3Kingdoms.
 					</p>
 
 					<div class="cta-buttons">
@@ -515,7 +947,9 @@
 							onclick="window.open('https://wemudtogether.com');">
 							Connect Now
 						</button>
-						<a href="/about-3kingdoms.php" class="btn-secondary">Learn More About 3K</a>
+						<a href="/about-3kingdoms.php" class="btn-secondary"
+							>Learn More About 3K</a
+						>
 					</div>
 				</div>
 			</section>
@@ -528,7 +962,7 @@
 					<div class="footer-nav-column">
 						<h3>Game Info</h3>
 						<ul>
-							<li><a href="/about-3kingdoms.php">About 3Kingdoms</a></li>
+							<li><a href="/about/3k/index.php">About 3Kingdoms</a></li>
 							<li><a href="/about-3scapes.php">About 3Scapes</a></li>
 							<li><a href="/guilds.php">Guilds</a></li>
 							<li><a href="/quests.php">Quests</a></li>
@@ -552,10 +986,14 @@
 						<ul>
 							<li><a href="http://forums.3k.org" target="_blank">Forums</a></li>
 							<li><a href="/omp.php">Official Mud Parties</a></li>
-							<li><a href="/gallery.php">Gallery</a></li>              
+							<li><a href="/gallery.php">Gallery</a></li>
 							<li><a href="/flyers.php">Download Flyers</a></li>
 							<li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
-							<li><a href="https://wemudtogether.com" target="_blank">We Mud Together</a></li>              
+							<li>
+								<a href="https://wemudtogether.com" target="_blank"
+									>We Mud Together</a
+								>
+							</li>
 						</ul>
 					</div>
 
@@ -570,20 +1008,25 @@
 				</div>
 
 				<div class="footer-copyright">
-          <div class="footer-copyright-info">
-            <p>
-              Content, source, aesthetics & originality &copy;1993-2026, The
-              Marble Group, Inc.
-            </p>
-            <p class="footer-owner">
-              <a href="https://www.themarblegroup.com">
-                A Marble Group Production
-              </a>
-            </p>
-          </div>
-          <div class="footer-logo">
-            <a href="https://www.themarblegroup.com"><img src="/images/logo/marble_logo_transparent.png" class="marble-logo"></a>
-          </div>
+					<div class="footer-copyright-info">
+						<p>
+							Content, source, aesthetics & originality &copy;1993-2026, The
+							Marble Group, Inc.
+						</p>
+						<p class="footer-owner">
+							<a href="https://www.themarblegroup.com">
+								A Marble Group Production
+							</a>
+						</p>
+					</div>
+					<div class="footer-logo">
+						<!-- <a href="https://www.ldmud.eu" target="_blank"><img src="/images/logo/LDMud.gif" class="ldmud-logo"></a><br> -->
+						<a href="https://www.themarblegroup.com"
+							><img
+								src="/images/logo/marble_logo_transparent.png"
+								class="marble-logo"
+						/></a>
+					</div>
 				</div>
 			</div>
 		</footer>

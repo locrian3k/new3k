@@ -5,22 +5,22 @@
 					<div class="footer-nav-column">
 						<h3>Game Info</h3>
 						<ul>
-							<li><a href="/about-3kingdoms/index.php">About 3Kingdoms</a></li>
-							<li><a href="/about-3scapes/index.php">About 3Scapes</a></li>
-							<li><a href="/guilds.php">Guilds</a></li>
-							<li><a href="/quests.php">Quests</a></li>
-							<li><a href="/realms.php">Realms</a></li>
+							<li><a href="/about/3k/index.php">About 3Kingdoms</a></li>
+							<li><a href="/about/3s/index.php">About 3Scapes</a></li>
+							<li><a href="/guilds/index.php">Guilds</a></li>
+							<li><a href="/quests/index.php">Quests</a></li>
+							<li><a href="/realms/index.php">Realms</a></li>
 						</ul>
 					</div>
 
 					<div class="footer-nav-column">
 						<h3>Get Playing</h3>
 						<ul>
-							<li><a href="/connect.php">Quick Connect</a></li>
+							<li><a href="https://client.wemudtogether.com" target="_blank">Quick Connect</a></li>
 							<li>
-								<a href="/connection-options.php">Connection Options</a>
+								<a href="/connect/index.php">Connection Options</a>
 							</li>
-							<li><a href="/wholist.php">Who's Online</a></li>
+							<li><a href="/connect/wholist.php">Who's Online</a></li>
 						</ul>
 					</div>
 
@@ -28,9 +28,9 @@
 						<h3>Community</h3>
 						<ul>
 							<li><a href="http://forums.3k.org" target="_blank">Forums</a></li>
-							<li><a href="/omp.php">Official Mud Parties</a></li>
-							<li><a href="/gallery.php">Gallery</a></li>              
-							<li><a href="/flyers.php">Download Flyers</a></li>
+							<li><a href="/community/omp/index.php">Official Mud Parties</a></li>
+							<li><a href="/community/gallery/index.php">Gallery</a></li>              
+							<li><a href="/community/flyers/index.php">Download Flyers</a></li>
 							<li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
 							<li><a href="https://wemudtogether.com" target="_blank">We Mud Together</a></li>              
 						</ul>
@@ -39,9 +39,9 @@
 					<div class="footer-nav-column">
 						<h3>Support</h3>
 						<ul>
-							<li><a href="/vafs.php">VAFs (Support Us)</a></li>
-							<li><a href="/admin.php">Admin</a></li>
-							<li><a href="/contact.php">Contact</a></li>
+							<li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
+							<li><a href="/support/admin/index.php">Admin</a></li>
+							<li><a href="/support/contact/index.php">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
             </p>
             <p class="footer-owner">
               <a
-                href="https://www.themarblegroup.com"
+                href="https://www.themarblegroup.com" target="_blank"
                 >
                 A Marble Group Production
               </a>
@@ -63,7 +63,7 @@
           <div class="footer-logo">
             <!-- <a href="https://www.ldmud.eu" target="_blank"><img src="/images/logo/LDMud.gif"></a>
             <br> -->
-            <a href="https://www.themarblegroup.com"><img src="/images/logo/marble_logo_transparent.png" class="marble-logo"></a>
+            <a href="https://www.themarblegroup.com" target="_blank"><img src="/images/logo/marble_logo_transparent.png" class="marble-logo"></a>
           </div>
 				</div>
 			</div>

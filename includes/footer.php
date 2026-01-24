@@ -20,7 +20,6 @@
 							<li>
 								<a href="/connect/index.php">Connection Options</a>
 							</li>
-							<li><a href="/connect/wholist.php">Who's Online</a></li>
 						</ul>
 					</div>
 
@@ -29,7 +28,8 @@
 						<ul>
 							<li><a href="http://forums.3k.org" target="_blank">Forums</a></li>
 							<li><a href="/community/omp/index.php">Official Mud Parties</a></li>
-							<li><a href="/community/gallery/index.php">Gallery</a></li>              
+							<li><a href="/community/gallery/index.php">Gallery</a></li>
+							<li><a href="/connect/wholist.php">Who's Online</a></li>
 							<li><a href="/community/flyers/index.php">Download Flyers</a></li>
 							<li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
 							<li><a href="https://wemudtogether.com" target="_blank">We Mud Together</a></li>              

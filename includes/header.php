@@ -88,7 +88,6 @@
 									<li>
 										<a href="/connect/index.php">Connection Options</a>
 									</li>
-									<li><a href="/connect/wholist.php">Who's Online</a></li>
 								</ul>
 							</li>
 							<li><a href="/guilds/index.php">Guilds</a></li>
@@ -102,13 +101,13 @@
 									</li>
 									<li><a href="/community/gallery/index.php">Gallery</a></li>
 									<li><a href="/community/omp/index.php">OMPs</a></li>
+                  <li><a href="/connect/wholist.php">Who's Online</a></li>
 									<li>
 										<a href="http://3kwiki.com/wiki" target="_blank">Wiki</a>
 									</li>
 									<li>
 										<a href="https://wemudtogether.com" target="_blank"
-											>We Mud Together</a
-										>
+											>We Mud Together</a>
 									</li>
 								</ul>
 							</li>
@@ -118,9 +117,9 @@
 								</button>
 								<ul class="dropdown">
 									<li>
-										<a href="/support/vafs/index.php"
-											><abbr title="Voluntary Access Fees">VAFs</abbr></a
-										>
+										<a href="/support/vafs/index.php">
+                      <abbr title="Voluntary Access Fees">VAFs</abbr>
+                    </a>
 									</li>
 									<li><a href="/support/contact/index.php">Contact</a></li>
 								</ul>

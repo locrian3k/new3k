@@ -508,7 +508,7 @@ include '../../includes/header.php';
           onclick="window.open('https://wemudtogether.com');">
           Connect Now
         </button>
-        <a href="/about-3kingdoms.php" class="btn-secondary"
+        <a href="../about/3k/index.php" class="btn-secondary"
           >Learn More About 3K</a
         >
       </div>
@@ -516,4 +516,4 @@ include '../../includes/header.php';
   </section>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include '../../includes/footer.php'; ?>

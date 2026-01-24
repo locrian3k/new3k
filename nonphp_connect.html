@@ -61,14 +61,14 @@
 			}
 
 			/* Flip Card Styles */
-			.faq-item,
+			.faq-item-realm,
 			.faq-inner,
 			.faq-item-front,
 			.faq-item-back {
 				min-height: 550px;
 			}
 
-			.faq-item {
+			.faq-item-realm {
 				perspective: 1000px;
 				cursor: pointer;
 				position: relative;
@@ -105,21 +105,6 @@
 
 			.faq-item-back {
 				transform: rotateY(180deg);
-			}
-
-			.faq-item-chaos .faq-item-front,
-			.faq-item-chaos .faq-item-back {
-				border-color: rgba(212, 74, 2, 0.3);
-			}
-
-			.faq-item-science .faq-item-front,
-			.faq-item-science .faq-item-back {
-				border-color: rgba(99, 160, 195, 0.3);
-			}
-
-			.faq-item-fantasy .faq-item-front,
-			.faq-item-fantasy .faq-item-back {
-				border-color: rgba(212, 160, 46, 0.3);
 			}
 
 			.connection-featured-border .faq-item-front,
@@ -485,7 +470,7 @@
 					<div class="faq-grid">
 						<!-- Web Client - Featured -->
 						<div
-							class="faq-item faq-item-chaos connection-featured-border"
+							class="faq-item-realm faq-item-chaos connection-featured-border"
 							onclick="this.classList.toggle('flipped')">
 							<div class="faq-item-inner">
 								<!-- Front -->
@@ -554,7 +539,7 @@
 
 						<!-- Mobile Apps -->
 						<div
-							class="faq-item faq-item-science"
+							class="faq-item-realm faq-item-science"
 							onclick="this.classList.toggle('flipped')">
 							<div class="faq-item-inner">
 								<!-- Front -->
@@ -667,7 +652,7 @@
 
 						<!-- Desktop Clients -->
 						<div
-							class="faq-item faq-item-fantasy"
+							class="faq-item-realm faq-item-fantasy"
 							onclick="this.classList.toggle('flipped')">
 							<div class="faq-item-inner">
 								<!-- Front -->
@@ -768,7 +753,7 @@
 
 						<!-- Alternative Options -->
 						<div
-							class="faq-item faq-item-science"
+							class="faq-item-realm faq-item-science"
 							onclick="this.classList.toggle('flipped')">
 							<div class="faq-item-inner">
 								<!-- Front -->

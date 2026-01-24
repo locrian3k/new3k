@@ -1405,8 +1405,7 @@ main {
 
 
 /* ============================= */
-/* ABOUT PAGE SPECIFIC STYLES */
-/* Add to /design/style/styles_about.css */
+/* ABOUT PAGE SPECIFIC STYLES    */
 /* ============================= */
 
 .hero-default {
@@ -1511,15 +1510,21 @@ main {
   padding: var(--space-lg);
 }
 
-.faq-item-chaos {
+.faq-item-chaos,
+.faq-item-chaos .faq-item-front,
+.faq-item-chaos .faq-item-back {
   border-color: rgba(212, 74, 2, 0.3);
 }
 
-.faq-item-science {
+.faq-item-science,
+.faq-item-science .faq-item-front,
+.faq-item-science .faq-item-back {
   border-color: rgba(99, 160, 195, 0.3);
 }
 
-.faq-item-fantasy {
+.faq-item-fantasy,
+.faq-item-fantasy .faq-item-front,
+.faq-item-fantasy .faq-item-back {
   border-color: rgba(212, 160, 46, 0.3);
 }
 
@@ -1657,6 +1662,304 @@ main {
   color: var(--clr-accent-blue);
   font-weight: var(--fw-body-bold);
 } */
+
+
+/* ============================= */
+/* CONNECT PAGE SPECIFIC STYLES    */
+/* ============================= */
+.connection-server-info {
+  text-align: center;
+}
+
+.connection-server-info h2 {
+  color: var(--clr-text-heading);
+  margin-bottom: var(--space-md);
+}
+
+.connection-server-info p {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-xl);
+}
+
+.connection-server-info code {
+  background: rgba(247, 210, 75, 0.1);
+  color: var(--clr-text-heading);
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.25rem;
+  font-family: "Courier New", monospace;
+  border: 1px solid rgba(247, 210, 75, 0.3);
+}
+
+.connection-server-label {
+  color: var(--clr-fantasy);
+}
+
+.connection-server-label-alt {
+  color: var(--clr-science);
+  margin-top: var(--space-sm);
+  display: inline-block;
+}
+
+/* Flip Card Styles */
+.faq-item-realm,
+.faq-inner,
+.faq-item-front,
+.faq-item-back {
+  min-height: 550px;
+}
+
+.faq-item-realm {
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.faq-item-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.faq-item.flipped .faq-item-inner {
+  transform: rotateY(180deg);
+}
+
+.faq-item-front,
+.faq-item-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: rgba(25, 52, 85, 0.3);
+  border: 2px solid;
+  border-radius: var(--card-border-radius);
+  padding: var(--space-lg);
+  box-sizing: border-box;
+}
+
+.faq-item-back {
+  transform: rotateY(180deg);
+}
+
+.connection-featured-border .faq-item-front,
+.connection-featured-border .faq-item-back {
+  border-width: 3px;
+}
+
+.flip-indicator {
+  position: absolute;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  font-size: var(--fs-body-small);
+  color: var(--clr-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flip-indicator i {
+  font-size: 1.2rem;
+}
+
+.connection-featured-border {
+  border-width: 3px;
+}
+
+.connection-icon-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.connection-icon-header i {
+  font-size: 1.5rem;
+}
+
+.connection-icon-header .fa-star {
+  color: var(--clr-text-heading);
+}
+
+.connection-icon-header .fa-mobile-alt {
+  color: var(--clr-science);
+}
+
+.connection-icon-header .fa-desktop {
+  color: var(--clr-fantasy);
+}
+
+.connection-icon-header .fa-network-wired {
+  color: var(--clr-science);
+}
+
+.connection-icon-header h3 {
+  margin: 0;
+}
+
+.connection-text-spacing {
+  margin-bottom: var(--space-md);
+}
+
+.connection-button-center {
+  text-align: center;
+}
+
+.connection-btn-auto {
+  width: auto;
+  max-width: none;
+}
+
+.connection-btn-icon {
+  margin-right: 0.5rem;
+}
+
+.connection-client-section {
+  margin-top: var(--space-lg);
+}
+
+.connection-client-section:first-of-type {
+  margin-top: 0;
+}
+
+.connection-client-heading {
+  color: var(--clr-text-secondary);
+  font-size: var(--fs-body);
+  margin-bottom: var(--space-sm);
+}
+
+.connection-client-heading i {
+  margin-right: 0.5rem;
+}
+
+.connection-client-text {
+  font-size: var(--fs-body-small);
+  margin-bottom: var(--space-sm);
+}
+
+.connection-client-link {
+  color: var(--clr-accent-blue);
+  font-size: var(--fs-body-small);
+}
+
+.connection-client-link i {
+  font-size: 0.8em;
+}
+
+.connection-note-box {
+  margin-top: var(--space-md);
+  padding: var(--space-sm);
+  background: rgba(247, 210, 75, 0.1);
+  border-left: 3px solid var(--clr-text-heading);
+  border-radius: 0.25rem;
+}
+
+.connection-note-box p {
+  font-size: var(--fs-body-small);
+  margin: 0;
+  color: var(--clr-text-primary);
+}
+
+.connection-note-box strong {
+  color: var(--clr-text-heading);
+}
+
+.connection-alt-methods {
+  display: grid;
+  gap: var(--space-md);
+  font-size: var(--fs-body-small);
+}
+
+.connection-alt-methods strong {
+  color: var(--clr-text-heading);
+}
+
+.connection-alt-methods p {
+  margin: 0.25rem 0;
+}
+
+.connection-alt-methods a {
+  color: var(--clr-accent-blue);
+}
+
+.connection-alt-methods code {
+  background: rgba(247, 210, 75, 0.1);
+  color: var(--clr-text-heading);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: "Courier New", monospace;
+  border: 1px solid rgba(247, 210, 75, 0.3);
+}
+
+.connection-help-list {
+  color: var(--clr-text-primary);
+  margin-left: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.connection-help-list li {
+  margin-bottom: var(--space-sm);
+}
+
+.connection-help-list code {
+  background: rgba(247, 210, 75, 0.1);
+  color: var(--clr-text-heading);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: "Courier New", monospace;
+  border: 1px solid rgba(247, 210, 75, 0.3);
+}
+
+.detail-block code {
+  background: rgba(247, 210, 75, 0.1);
+  color: var(--clr-text-heading);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.9em;
+  border: 1px solid rgba(247, 210, 75, 0.3);
+}
+
+.btn-secondary.connection-btn-auto {
+  display: inline-block;
+}
+
+.connection-alt-methods i.fas.fa-external-link-alt {
+  font-size: 0.8em;
+}
+
+.connection-back-content {
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.connection-back-content h4 {
+  color: var(--clr-text-heading);
+  margin: var(--space-xs);
+}
+
+.connection-back-content p {
+  margin-bottom: var(--space-sm);
+  font-size: var(--fs-body-small);
+}
+
+.connection-back-content ul,
+.connection-help-list {
+  margin-left: 0;
+  padding-left: 0.8rem;
+  margin-bottom: var(--space-md);
+}
+
+.connection-back-content li {
+  margin-bottom: 0.5rem;
+  font-size: var(--fs-body-small);
+}
+
 
 /* ------------------- */
 /* FOOTER */

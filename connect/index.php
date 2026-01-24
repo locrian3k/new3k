@@ -46,7 +46,7 @@ include '../includes/header.php';
       <div class="faq-grid">
         <!-- Web Client - Featured -->
         <div
-          class="faq-item faq-item-chaos connection-featured-border"
+          class="faq-item-realm faq-item-chaos connection-featured-border"
           onclick="this.classList.toggle('flipped')">
           <div class="faq-item-inner">
             <!-- Front -->
@@ -115,7 +115,7 @@ include '../includes/header.php';
 
         <!-- Mobile Apps -->
         <div
-          class="faq-item faq-item-science"
+          class="faq-item-realm faq-item-science"
           onclick="this.classList.toggle('flipped')">
           <div class="faq-item-inner">
             <!-- Front -->
@@ -228,7 +228,7 @@ include '../includes/header.php';
 
         <!-- Desktop Clients -->
         <div
-          class="faq-item faq-item-fantasy"
+          class="faq-item-realm faq-item-fantasy"
           onclick="this.classList.toggle('flipped')">
           <div class="faq-item-inner">
             <!-- Front -->
@@ -329,7 +329,7 @@ include '../includes/header.php';
 
         <!-- Alternative Options -->
         <div
-          class="faq-item faq-item-science"
+          class="faq-item-realm faq-item-science"
           onclick="this.classList.toggle('flipped')">
           <div class="faq-item-inner">
             <!-- Front -->

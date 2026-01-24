@@ -106,7 +106,7 @@ include 'includes/header.php';
 							castles, mystical forests, and legendary creatures await the
 							brave.
 						</p>
-						<a href="/realms/fantasy/index.php" class="realm-link"
+						<a href="/realms/index.php#fantasy" class="realm-link"
 							>Explore Fantasy</a
 						>
 					</div>
@@ -121,7 +121,7 @@ include 'includes/header.php';
 							A post-apocalyptic future scarred by war. Advanced technology,
 							cybernetic enhancements, and the remnants of civilization collide.
 						</p>
-						<a href="/realms/science/index.php" class="realm-link"
+						<a href="/realms/index.php#science" class="realm-link"
 							>Explore Science</a
 						>
 					</div>
@@ -137,7 +137,7 @@ include 'includes/header.php';
 							creatures beyond imagination. Reality bends in this unpredictable
 							realm.
 						</p>
-						<a href="/realms/chaos/index.php" class="realm-link"
+						<a href="/realms/index.php#chaos" class="realm-link"
 							>Explore Chaos</a
 						>
 					</div>

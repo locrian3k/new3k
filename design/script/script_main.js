@@ -124,3 +124,48 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+
+// ------------------------------------------
+// REALM TABS (Realms Page)
+// ------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+  const realmTabs = document.querySelectorAll('.realm-tab');
+  const realmContents = document.querySelectorAll('.realm-content');
+
+  // Only run if we're on a page with realm tabs
+  if (realmTabs.length === 0) return;
+
+  // Handle tab clicks
+  realmTabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      const realm = this.getAttribute('data-realm');
+
+      // Update active tab
+      realmTabs.forEach(function(t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      this.classList.add('active');
+      this.setAttribute('aria-selected', 'true');
+
+      // Update active content
+      realmContents.forEach(function(content) {
+        content.classList.remove('active');
+      });
+      document.getElementById(realm).classList.add('active');
+
+      // Update URL hash without scrolling
+      history.replaceState(null, null, '#' + realm);
+    });
+  });
+
+  // Check for hash on page load
+  var hash = window.location.hash.substring(1);
+  if (hash && document.getElementById(hash)) {
+    var targetTab = document.querySelector('.realm-tab[data-realm="' + hash + '"]');
+    if (targetTab) {
+      targetTab.click();
+    }
+  }
+});

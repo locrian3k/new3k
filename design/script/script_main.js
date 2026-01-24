@@ -107,32 +107,20 @@ document.addEventListener("click", function (e) {
 
 
 // ------------------------------------------
-// SCROLLING IMAGES
-// https://codepen.io/kevinpowell/pen/BavVLra
+// FLIP CARDS (Connection Options Page)
 // ------------------------------------------
-const scrollers = document.querySelectorAll(".scroller");
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle flip card clicks
+  document.querySelectorAll('.faq-item').forEach(function(card) {
+    card.addEventListener('click', function() {
+      this.classList.toggle('flipped');
+    });
+  });
 
-// If a user hasn't opted in for recuded motion, then we add the animation
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-	addAnimation();
-}
-
-function addAnimation() {
-	scrollers.forEach((scroller) => {
-		// add data-animated="true" to every `.scroller` on the page
-		scroller.setAttribute("data-animated", true);
-
-		// Make an array from the elements within `.scroller-inner`
-		const scrollerInner = scroller.querySelector(".scroller__inner");
-		const scrollerContent = Array.from(scrollerInner.children);
-
-		// For each item in the array, clone it
-		// add aria-hidden to it
-		// add it into the `.scroller-inner`
-		scrollerContent.forEach((item) => {
-			const duplicatedItem = item.cloneNode(true);
-			duplicatedItem.setAttribute("aria-hidden", true);
-			scrollerInner.appendChild(duplicatedItem); //THIS MAKES TWO OF THE UL AND TWO OF THE IMAGES, BUT NECESSARY FOR SMOOTH TRANSITION
-		});
-	});
-}
+  // Prevent flip when clicking buttons/links inside cards
+  document.querySelectorAll('.faq-item a, .faq-item button').forEach(function(el) {
+    el.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  });
+});

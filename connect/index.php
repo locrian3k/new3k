@@ -63,11 +63,9 @@ include '../includes/header.php';
                 Perfect for beginners and works on any device.
               </p>
               <div class="connection-button-center">
-                <button
-                  class="btn-primary connection-btn-auto"
-                  onclick="event.stopPropagation(); window.open('https://client.wemudtogether.com');">
+                <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary connection-btn-auto">
                   Launch WMT Client
-                </button>
+                </a>
               </div>
               <div class="flip-indicator">
                 <span>More info</span>
@@ -95,12 +93,7 @@ include '../includes/header.php';
                 <p>
                   For many players, this web client is all they need to
                   enjoy the full 3Kingdoms experience.
-                  <a
-                    href="https://client.wemudtogether.com"
-                    target="_blank"
-                    class="connection-client-link"
-                    onclick="event.stopPropagation();"
-                    >Connect to WMT client.
+                  <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary connection-btn-auto">Connect to WMT client.
                     <i class="fas fa-external-link-alt"></i
                   ></a>
                 </p>
@@ -115,8 +108,7 @@ include '../includes/header.php';
 
         <!-- Mobile Apps -->
         <div
-          class="faq-item faq-item-science"
-          onclick="this.classList.toggle('flipped')">
+          class="faq-item faq-item-science">
           <div class="faq-item-inner">
             <!-- Front -->
             <div class="faq-item-front">
@@ -138,7 +130,6 @@ include '../includes/header.php';
                       href="https://blowtorch.en.aptoide.com/app"
                       target="_blank"
                       class="connection-client-link"
-                      onclick="event.stopPropagation();"
                       >BlowTorch <i class="fas fa-external-link-alt"></i></a
                   ></strong>
                   - Classic Android MUD client (development discontinued but
@@ -153,7 +144,6 @@ include '../includes/header.php';
                       href="https://apps.apple.com/us/app/mudbasher/id6755510450"
                       target="_blank"
                       class="connection-client-link"
-                      onclick="event.stopPropagation();"
                       >MUDBasher <i class="fas fa-external-link-alt"></i></a
                   ></strong>
                   - Originally MUDRammer, this is the updated app - faster,
@@ -180,7 +170,6 @@ include '../includes/header.php';
                         href="https://termius.com/"
                         target="_blank"
                         class="connection-client-link"
-                        onclick="event.stopPropagation();"
                         >Termius <i class="fas fa-external-link-alt"></i></a
                     ></strong>
                     - SSH client for iOS/Android that can connect to
@@ -192,7 +181,6 @@ include '../includes/header.php';
                         href="https://tintin.mudhalla.net/"
                         target="_blank"
                         class="connection-client-link"
-                        onclick="event.stopPropagation();"
                         >TinTin++
                         <i class="fas fa-external-link-alt"></i></a
                     ></strong>
@@ -205,7 +193,6 @@ include '../includes/header.php';
                         href="https://client.wemudtogether.com"
                         target="_blank"
                         class="connection-client-link"
-                        onclick="event.stopPropagation();"
                         >WMT client
                         <i class="fas fa-external-link-alt"></i></a
                     ></strong>
@@ -228,8 +215,7 @@ include '../includes/header.php';
 
         <!-- Desktop Clients -->
         <div
-          class="faq-item faq-item-fantasy"
-          onclick="this.classList.toggle('flipped')">
+          class="faq-item faq-item-fantasy">
           <div class="faq-item-inner">
             <!-- Front -->
             <div class="faq-item-front">
@@ -256,7 +242,6 @@ include '../includes/header.php';
                   href="https://www.mudlet.org/"
                   target="_blank"
                   class="connection-client-link"
-                  onclick="event.stopPropagation();"
                   >Download Mudlet <i class="fas fa-external-link-alt"></i
                 ></a>
                 <br>
@@ -269,7 +254,6 @@ include '../includes/header.php';
                   href="https://tintin.mudhalla.net/"
                   target="_blank"
                   class="connection-client-link"
-                  onclick="event.stopPropagation();"
                   >Download TinTin++ <i class="fas fa-external-link-alt"></i
                 ></a>
               </div>
@@ -314,7 +298,6 @@ include '../includes/header.php';
                     href="http://www.gameaxle.com/cgi-bin/index.pl"
                     target="_blank"
                     class="connection-client-link"
-                    onclick="event.stopPropagation();"
                     >Portal™ Info <i class="fas fa-external-link-alt"></i
                   ></a>
                 </div>
@@ -329,8 +312,7 @@ include '../includes/header.php';
 
         <!-- Alternative Options -->
         <div
-          class="faq-item faq-item-science"
-          onclick="this.classList.toggle('flipped')">
+          class="faq-item faq-item-science">
           <div class="faq-item-inner">
             <!-- Front -->
             <div class="faq-item-front">
@@ -352,7 +334,6 @@ include '../includes/header.php';
                   </p>
                   <a
                     href="/connect_ssh.php"
-                    onclick="event.stopPropagation();"
                     >SSH Tunneling Guide
                     <i class="fas fa-external-link-alt"></i
                   ></a>
@@ -503,11 +484,9 @@ include '../includes/header.php';
       </p>
 
       <div class="cta-buttons">
-        <button
-          class="btn-primary"
-          onclick="window.open('https://wemudtogether.com');">
+        <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary connection-btn-auto">
           Connect Now
-        </button>
+        </a>
         <a href="../about/3k/index.php" class="btn-secondary"
           >Learn More About 3K</a
         >

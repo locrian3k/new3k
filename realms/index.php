@@ -276,3 +276,7 @@ include '../includes/header.php';
 		</main>
 
 <?php include '../includes/footer.php'; ?>
+
+		<script src="/design/script/script_main.js"></script>
+	</body>
+</html>

@@ -68,7 +68,3 @@
 				</div>
 			</div>
 		</footer>
-
-		<script src="/design/script/script_main.js"></script>
-	</body>
-</html>

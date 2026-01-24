@@ -516,4 +516,8 @@ include '../includes/header.php';
   </section>
 </main>
 
-<?php include '../../includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>
+
+		<script src="../design/script/script_main.js"></script>
+	</body>
+</html>

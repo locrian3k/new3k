@@ -1663,7 +1663,6 @@ main {
 /* ============================= */
 /* CONNECTION PAGE SPECIFIC STYLES */
 /* ============================= */
-
 .connection-server-info {
 	text-align: center;
 }
@@ -1899,33 +1898,14 @@ main {
 	color: var(--clr-accent-blue);
 }
 
-.connection-alt-methods code {
-	background: rgba(247, 210, 75, 0.1);
-	color: var(--clr-text-heading);
-	padding: 0.2rem 0.5rem;
-	border-radius: 0.25rem;
-	font-family: "Courier New", monospace;
-	border: 1px solid rgba(247, 210, 75, 0.3);
-}
-
 .connection-help-list {
 	color: var(--clr-text-primary);
-	margin-left: 0;
-	padding-left: 0.8rem;
+	margin-left: var(--space-lg);
 	margin-bottom: var(--space-md);
 }
 
 .connection-help-list li {
 	margin-bottom: var(--space-sm);
-}
-
-.connection-help-list code {
-	background: rgba(247, 210, 75, 0.1);
-	color: var(--clr-text-heading);
-	padding: 0.2rem 0.5rem;
-	border-radius: 0.25rem;
-	font-family: "Courier New", monospace;
-	border: 1px solid rgba(247, 210, 75, 0.3);
 }
 
 .btn-secondary.connection-btn-auto {
@@ -1962,6 +1942,17 @@ main {
 	font-size: var(--fs-body-small);
 }
 
+.connection-help-list code,
+.connection-alt-methods code,
+.detail-block code {
+	background: rgba(247, 210, 75, 0.1);
+	color: var(--clr-text-heading);
+	padding: 0.2rem 0.5rem;
+	border-radius: 0.25rem;
+	font-family: "Courier New", monospace;
+	font-size: 0.9em;
+	border: 1px solid rgba(247, 210, 75, 0.3);
+}
 
 /* ------------------- */
 /* FOOTER */

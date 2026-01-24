@@ -1,6 +1,6 @@
 <?php 
 $pageTitle = "Connect - 3Kingdoms";
-include '../../includes/header.php'; 
+include '../includes/header.php'; 
 ?>
 
 <!-- Main Content -->

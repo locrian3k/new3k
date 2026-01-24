@@ -372,7 +372,7 @@ include '../../includes/header.php';
 							onclick="window.open('https://client.wemudtogether.com');">
 							Start Playing Now
 						</button>
-						<a href="/connect.php" class="btn-secondary">Connection Options</a>
+						<a href="/connect/index.php" class="btn-secondary">Connection Options</a>
 					</div>
 				</div>
 			</section>

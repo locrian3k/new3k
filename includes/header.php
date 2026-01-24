@@ -99,9 +99,8 @@
 									<li>
 										<a href="http://forums.3k.org" target="_blank">Forums</a>
 									</li>
-									<li><a href="/community/gallery/index.php">Gallery</a></li>
-									<li><a href="/community/omp/index.php">OMPs</a></li>
-                  <li><a href="/connect/wholist.php">Who's Online</a></li>
+                  <li><a href="/community/wholist.php">Who's Online</a></li>
+                  <li><a href="/community/omp/index.php">OMPs</a></li>
 									<li>
 										<a href="http://3kwiki.com/wiki" target="_blank">Wiki</a>
 									</li>

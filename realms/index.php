@@ -84,10 +84,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <p>Travelers who use knowledge and wisdom to entertain and help others. Their songs are magical, providing helpful powers in times of need.</p>
             </div>
             <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-wand-sparkles"></i> Mages</h4>
-              <p>Modeled after AD&D Magic Users with over 100 spells at their disposal. One of the most challenging guilds due to complex combat tactics.</p>
-            </div>
-            <div class="realm-guild-card">
               <h4><i class="fa-solid fa-hands-praying"></i> Priests</h4>
               <p>Devoted followers granted extraordinary powers by their deities, including healing, damage, and control over weather and elements.</p>
             </div>
@@ -158,10 +154,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h4><i class="fa-solid fa-dna"></i> Gentech</h4>
               <p>Elite soldier-scientists with complete control over mind, body, and time itself through genetic enhancement from the far future.</p>
             </div>
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-jedi"></i> Jedi</h4>
-              <p>A sci-fi guild based on Star Wars, offering unique powers to fans of the saga. Theme-focused with balanced abilities.</p>
-            </div>
           </div>
         </div>
 
@@ -206,10 +198,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h4>Terra's Terrific Treehouse</h4>
               <p>A whimsical treehouse that defies the laws of physics and architecture.</p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/icy_blue_portal.png');">
-              <h4>The Icy Blue Portal</h4>
-              <p>A shimmering gateway to unknown dimensions, frozen in eternal twilight.</p>
-            </div>
           </div>
         </div>
 
@@ -228,10 +216,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="realm-guild-card">
               <h4><i class="fa-solid fa-wind"></i> Fremen</h4>
               <p>Desert warriors from Arrakis (Dune). Fierce and powerful fighters trained in combat and mental powers by Bene Gesserit teachings.</p>
-            </div>
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-sword"></i> Bladesingers</h4>
-              <p>Returned from the fall of Myth Drannor, teaching dedicated humans the ancient elven techniques of blade and song.</p>
             </div>
           </div>
         </div>

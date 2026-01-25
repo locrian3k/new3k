@@ -53,25 +53,21 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-features">
           <h3>Notable Locations</h3>
           <div class="realm-features-grid">
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-tower-observation"></i>
-              <h4>Ravenloft</h4>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/aruwins_windmill.png');">
+              <h4>Aruwin's Windmill</h4>
+              <p>A mysterious windmill on the outskirts of civilization, home to secrets and strange happenings.</p>
+            </div>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/captain_thistlebeard.png');">
+              <h4>Thistlebeard's Galleon</h4>
+              <p>The legendary pirate captain's ship, sailing the treacherous waters in search of plunder.</p>
+            </div>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/ravenloftBarovia.png');">
+              <h4>Barovia</h4>
               <p>The cursed domain of Strahd, where darkness reigns eternal and vampires stalk the mist-shrouded lands.</p>
             </div>
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-tree"></i>
-              <h4>Elven Forests</h4>
-              <p>Ancient woodlands home to the elder races, where trees older than memory guard timeless secrets.</p>
-            </div>
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-mountain"></i>
-              <h4>Dragon Peaks</h4>
-              <p>Treacherous mountains where legendary wyrms make their lairs atop hoards of stolen treasure.</p>
-            </div>
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-dungeon"></i>
-              <h4>The Underdark</h4>
-              <p>A vast underground network of caverns filled with dangers that never see the light of day.</p>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/rocs_nest.png');">
+              <h4>Roc's Nest</h4>
+              <p>High atop treacherous peaks, the giant roc guards its nest with deadly vigilance.</p>
             </div>
           </div>
         </div>
@@ -88,14 +84,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </ul>
         </div>
 
-        <div class="realm-images">
-          <div class="realm-image-grid">
-            <img src="/images/scrolling/ravenloftBarovia.png" alt="Ravenloft Barovia">
-            <img src="/images/scrolling/aruwins_windmill.png" alt="Aruwin's Windmill">
-            <img src="/images/scrolling/captain_thistlebeard.png" alt="Captain Thistlebeard">
-            <img src="/images/scrolling/rocs_nest.png" alt="Roc's Nest">
-          </div>
-        </div>
       </div>
     </div>
 
@@ -120,25 +108,21 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-features">
           <h3>Notable Locations</h3>
           <div class="realm-features-grid">
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-city"></i>
-              <h4>Houston Metroplex</h4>
-              <p>A sprawling megacity where corporate towers cast shadows over the struggling masses below.</p>
-            </div>
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-flask"></i>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/gen_lab.png');">
               <h4>Gen Labs</h4>
               <p>Cutting-edge research facilities where the boundaries of human evolution are pushed ever further.</p>
             </div>
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-truck"></i>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/houstonTransport.png');">
+              <h4>Midway Space Station</h4>
+              <p>Humanity's foothold in space, where the elite live above the troubles of Earth.</p>
+            </div>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/lastChanceTruckStop.png');">
               <h4>Last Chance Truck Stop</h4>
               <p>A haven for road warriors and wanderers in the irradiated wastelands between cities.</p>
             </div>
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-satellite"></i>
-              <h4>Orbital Stations</h4>
-              <p>Humanity's foothold in space, where the elite live above the troubles of Earth.</p>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/fern_man_science.png');">
+              <h4>Fern Man's Domain</h4>
+              <p>A bizarre corner of the realm where plant and machine have merged in unexpected ways.</p>
             </div>
           </div>
         </div>
@@ -154,14 +138,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </ul>
         </div>
 
-        <div class="realm-images">
-          <div class="realm-image-grid">
-            <img src="/images/scrolling/houstonTransport.png" alt="Houston Transport">
-            <img src="/images/scrolling/gen_lab.png" alt="Gen Lab">
-            <img src="/images/scrolling/lastChanceTruckStop.png" alt="Last Chance Truck Stop">
-            <img src="/images/scrolling/fern_man_science.png" alt="Fern Man">
-          </div>
-        </div>
       </div>
     </div>
 
@@ -186,25 +162,21 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-features">
           <h3>Notable Locations</h3>
           <div class="realm-features-grid">
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-door-open"></i>
-              <h4>The Rift Zones</h4>
-              <p>Unstable areas where portals to other dimensions open and close without warning.</p>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/gamers_house.png');">
+              <h4>Gamer's House</h4>
+              <p>A peculiar dwelling where reality and games blur together in unexpected ways.</p>
             </div>
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-cloud-bolt"></i>
-              <h4>Storm Wastes</h4>
-              <p>Lands perpetually wracked by magical and electrical storms of immense power.</p>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/mahjongg.png');">
+              <h4>Mahjongg</h4>
+              <p>An ancient gaming hall where tiles hold more power than they appear.</p>
             </div>
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-mask"></i>
-              <h4>The Twisted Carnival</h4>
-              <p>An otherworldly circus where entertainment and terror are indistinguishable.</p>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/terras_terrific_treehouse.png');">
+              <h4>Terra's Terrific Treehouse</h4>
+              <p>A whimsical treehouse that defies the laws of physics and architecture.</p>
             </div>
-            <div class="realm-feature-item">
-              <i class="fa-solid fa-diamond"></i>
-              <h4>Crystal Caverns</h4>
-              <p>Underground labyrinths where crystalline formations pulse with chaotic energy.</p>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/icy_blue_portal.png');">
+              <h4>The Icy Blue Portal</h4>
+              <p>A shimmering gateway to unknown dimensions, frozen in eternal twilight.</p>
             </div>
           </div>
         </div>
@@ -219,14 +191,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </ul>
         </div>
 
-        <div class="realm-images">
-          <div class="realm-image-grid">
-            <img src="/images/scrolling/icy_blue_portal.png" alt="Icy Blue Portal">
-            <img src="/images/scrolling/mantis_swamp.png" alt="Mantis Swamp">
-            <img src="/images/scrolling/lyriac.png" alt="Lyriac">
-            <img src="/images/scrolling/murusFaralain.png" alt="Murus Faralain">
-          </div>
-        </div>
       </div>
     </div>
   </section>

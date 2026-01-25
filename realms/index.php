@@ -40,10 +40,15 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="realm-content-tagline">Where magic and myth come alive</p>
         <div class="realm-description">
           <p>
-            From the dank swamps south of the thriving city of Wayhaven to the icy reaches of Niroth, this gargantuan realm poses a challenge to any would-be explorer. Rich in original theme and boasting over 250 areas, Fantasy has something for every level of player.
+            From the dank swamps south of the thriving city of Wayhaven to the icy reaches of Niroth, this gargantuan
+            realm poses a challenge to any would-be explorer. Rich in original theme and boasting over 250 areas,
+            Fantasy has something for every level of player.
           </p>
           <p>
-            Dragons slumber in hidden grottos, dwarves mine the hills, elves reside in the forests, man toils in the cities and all manner of creatures both fair and foul roam the lands. Some only wish to live in peace while others lie in wait, eager to prey on unfortunate victims. So strap on your armour, grab your weapon, and don't forget your torch. Adventure awaits!
+            Dragons slumber in hidden grottos, dwarves mine the hills, elves reside in the forests, man toils in the
+            cities and all manner of creatures both fair and foul roam the lands. Some only wish to live in peace while
+            others lie in wait, eager to prey on unfortunate victims. So strap on your armour, grab your weapon, and
+            don't forget your torch. Adventure awaits!
           </p>
         </div>
       </div>
@@ -57,17 +62,19 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h4>Aruwin's Windmill</h4>
               <p>A mysterious windmill on the outskirts of civilization, home to secrets and strange happenings.</p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/captain_thistlebeard.png');">
-              <h4>Thistlebeard's Galleon</h4>
-              <p>The legendary pirate captain's ship, sailing the treacherous waters in search of plunder.</p>
+            <div class="realm-feature-item"
+              style="background-image: url('/images/scrolling/lyriac.png');">
+              <h4>Ravenloft</h4>
+              <p>Go head to head with Lyriac in Ravenloft.</p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/ravenloftBarovia.png');">
-              <h4>Barovia</h4>
-              <p>The cursed domain of Strahd, where darkness reigns eternal and vampires stalk the mist-shrouded lands.</p>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/icy_blue_portal.png');">
+              <h4>Land of the Ice People</h4>
+              <p>Icy blue portal area description.
+              </p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/rocs_nest.png');">
-              <h4>Roc's Nest</h4>
-              <p>High atop treacherous peaks, the giant roc guards its nest with deadly vigilance.</p>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/murusFaralain.png');">
+              <h4>Murus Faralain</h4>
+              <p>Something something, an abandoned city.</p>
             </div>
           </div>
         </div>
@@ -76,11 +83,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <h3>Fantasy Guilds</h3>
           <p>Several guilds call the Fantasy realm their primary home:</p>
           <ul class="realm-guild-list">
-            <li><strong>Knights</strong> - Noble warriors bound by honor and duty</li>
-            <li><strong>Mages</strong> - Masters of arcane arts and elemental forces</li>
-            <li><strong>Necromancers</strong> - Dark practitioners who command the undead</li>
-            <li><strong>Clerics</strong> - Divine servants wielding holy power</li>
             <li><strong>Bards</strong> - Wandering musicians whose songs carry magic</li>
+            <li><strong>Mages</strong> - Masters of arcane arts and elemental forces</li>
+            <li><strong>Priests</strong> - something about priests</li>
+            <li><strong>Necromancers</strong> - Dark practitioners who command the undead</li>
           </ul>
         </div>
 
@@ -95,10 +101,15 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="realm-content-tagline">A post-apocalyptic future awaits</p>
         <div class="realm-description">
           <p>
-            Step through a portal into a realm waiting to be explored. From the shining cyber cities of New America to the desolate wastelands of the Techno-Ruins, the realm of Science offers a host of wonders as yet undiscovered.
+            Step through a portal into a realm waiting to be explored. From the shining cyber cities of New America to
+            the desolate wastelands of the Techno-Ruins, the realm of Science offers a host of wonders as yet
+            undiscovered.
           </p>
           <p>
-            Explore Mars, and find out if it really does have a red sky - combat the Borg in a fight for survival - attempt to survive the perils of the deadly traffic of Atlanta, or just hang out at the Nano Cantina. Science offers a challenge for players of all levels. Step into the future and visit the realm of Science. You never know what you'll find!
+            Explore Mars, and find out if it really does have a red sky - combat the Borg in a fight for survival -
+            attempt to survive the perils of the deadly traffic of Atlanta, or just hang out at the Nano Cantina.
+            Science offers a challenge for players of all levels. Step into the future and visit the realm of Science.
+            You never know what you'll find!
           </p>
         </div>
       </div>
@@ -108,10 +119,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-features">
           <h3>Notable Locations</h3>
           <div class="realm-features-grid">
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/gen_lab.png');">
-              <h4>Gen Labs</h4>
-              <p>Cutting-edge research facilities where the boundaries of human evolution are pushed ever further.</p>
-            </div>
             <div class="realm-feature-item" style="background-image: url('/images/scrolling/houstonTransport.png');">
               <h4>Midway Space Station</h4>
               <p>Humanity's foothold in space, where the elite live above the troubles of Earth.</p>
@@ -120,10 +127,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h4>Last Chance Truck Stop</h4>
               <p>A haven for road warriors and wanderers in the irradiated wastelands between cities.</p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/fern_man_science.png');">
-              <h4>Fern Man's Domain</h4>
-              <p>A bizarre corner of the realm where plant and machine have merged in unexpected ways.</p>
-            </div>
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/mantis_swamp.png');">
+              <h4>Mantis Swamp</h4>
+              <p>Some description about Mantis Swamp.</p>
+            </div>            
           </div>
         </div>
 
@@ -132,9 +139,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <p>These guilds thrive in the technological landscape:</p>
           <ul class="realm-guild-list">
             <li><strong>Juggernauts</strong> - Heavily armored combat specialists with devastating firepower</li>
-            <li><strong>Cyborgs</strong> - Human-machine hybrids enhanced beyond natural limits</li>
-            <li><strong>Engineers</strong> - Technical geniuses who bend technology to their will</li>
             <li><strong>Psicorps</strong> - Psychic operatives with powers of the mind</li>
+            <li><strong>Cyborgs</strong> - Human-machine hybrids enhanced beyond natural limits</li>
+            <li><strong>Fremen</strong> - Human-machine hybrids enhanced beyond natural limits</li>                        
           </ul>
         </div>
 
@@ -149,10 +156,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="realm-content-tagline">Where reality bends and breaks</p>
         <div class="realm-description">
           <p>
-            Through the swirling vortex of mist and nightmare that brushes the northern edge of Pinnacle, you find the twisted realm of Chaos. Bring your wits, but leave your assumptions behind, because this realm will challenge your mind and blow away all that you think you know.
+            Through the swirling vortex of mist and nightmare that brushes the northern edge of Pinnacle, you find the
+            twisted realm of Chaos. Bring your wits, but leave your assumptions behind, because this realm will
+            challenge your mind and blow away all that you think you know.
           </p>
           <p>
-            Be you strong or weak, young or old, Chaos holds a place for you somewhere in its mystifying depths. Terrifying monsters coexist with cartoon heroes, fantastic characters mix with the unknown and the strange and familiar mingle to produce the unexpected. Come and expect the unexpected!
+            Be you strong or weak, young or old, Chaos holds a place for you somewhere in its mystifying depths.
+            Terrifying monsters coexist with cartoon heroes, fantastic characters mix with the unknown and the strange
+            and familiar mingle to produce the unexpected. Come and expect the unexpected!
           </p>
         </div>
       </div>
@@ -170,7 +181,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h4>Mahjongg</h4>
               <p>An ancient gaming hall where tiles hold more power than they appear.</p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/terras_terrific_treehouse.png');">
+            <div class="realm-feature-item"
+              style="background-image: url('/images/scrolling/terras_terrific_treehouse.png');">
               <h4>Terra's Terrific Treehouse</h4>
               <p>A whimsical treehouse that defies the laws of physics and architecture.</p>
             </div>
@@ -186,8 +198,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <p>Those who embrace the unpredictable find their home here:</p>
           <ul class="realm-guild-list">
             <li><strong>Changelings</strong> - Shapeshifters who adapt to any situation</li>
-            <li><strong>Bladesingers</strong> - Warriors who weave magic into their combat techniques</li>
-            <li><strong>Monks</strong> - Disciplined martial artists who find order within chaos</li>
+            <li><strong>Angels</strong> - Warriors who weave magic into their combat techniques</li>
+            <li><strong>Breed</strong> - Disciplined martial artists who find order within chaos</li>
+            <li><strong>Fremen</strong> - something about fremen</li>            
           </ul>
         </div>
 

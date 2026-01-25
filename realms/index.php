@@ -38,21 +38,22 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <img src="/images/logo/3k_fantasy_logo_transparent_small.png" alt="Fantasy Realm" class="realm-content-logo" />
         <h2 class="realm-content-title">The Fantasy Realm</h2>
         <p class="realm-content-tagline">Where magic and myth come alive</p>
-        <div class="realm-body">
-          <div class="realm-description">
-            <p>
-              Step into a medieval world teeming with orcs, elves, dragons, and ancient magic.
-              The Fantasy realm is the heart of classic adventure, where brave heroes forge
-              their legends through steel and sorcery.
-            </p>
-            <p>
-              From the towering spires of mystical castles to the depths of dragon-guarded
-              dungeons, every corner holds secrets waiting to be discovered. Ancient forests
-              whisper of forgotten lore, while dark caverns echo with the growls of creatures
-              best left undisturbed.
-            </p>
-          </div>
+        <div class="realm-description">
+          <p>
+            Step into a medieval world teeming with orcs, elves, dragons, and ancient magic.
+            The Fantasy realm is the heart of classic adventure, where brave heroes forge
+            their legends through steel and sorcery.
+          </p>
+          <p>
+            From the towering spires of mystical castles to the depths of dragon-guarded
+            dungeons, every corner holds secrets waiting to be discovered. Ancient forests
+            whisper of forgotten lore, while dark caverns echo with the growls of creatures
+            best left undisturbed.
+          </p>
         </div>
+      </div>
+
+      <div class="realm-body">
 
         <div class="realm-features">
           <h3>Notable Locations</h3>

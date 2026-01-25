@@ -81,28 +81,28 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Ravenloft</h4>
-                <span class="quest-level">Lv 100</span>
+                <span class="quest-level">100 QP</span>
               </div>
               <p>Venture into the cursed domain of Strahd. Only the bravest and most skilled adventurers dare attempt this legendary challenge.</p>
             </div>
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Dragon Egg</h4>
-                <span class="quest-level">Lv 50</span>
+                <span class="quest-level">50 QP</span>
               </div>
               <p>A dangerous quest involving the sacred eggs of dragonkind. Tread carefully around these ancient creatures.</p>
             </div>
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Haunted Manor</h4>
-                <span class="quest-level">Lv 25</span>
+                <span class="quest-level">25 QP</span>
               </div>
               <p>Explore a decrepit mansion filled with restless spirits and uncover the dark secrets within its walls.</p>
             </div>
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Orc Slayer</h4>
-                <span class="quest-level">Lv 10</span>
+                <span class="quest-level">10 QP</span>
               </div>
               <p>Prove your worth as a warrior by taking on the orc menace threatening the peaceful villages.</p>
             </div>
@@ -161,28 +161,28 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Megatech</h4>
-                <span class="quest-level">Lv 65</span>
+                <span class="quest-level">65 QP</span>
               </div>
               <p>Infiltrate the massive Megatech corporation and uncover their darkest technological secrets.</p>
             </div>
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>The Project</h4>
-                <span class="quest-level">Lv 55</span>
+                <span class="quest-level">55 QP</span>
               </div>
               <p>A mysterious government project has gone wrong. Investigate before it's too late.</p>
             </div>
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Shadowrun</h4>
-                <span class="quest-level">Lv 30</span>
+                <span class="quest-level">30 QP</span>
               </div>
               <p>Enter the cyberpunk underworld where megacorps rule and runners live by their wits.</p>
             </div>
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Codename: Kodiak</h4>
-                <span class="quest-level">Lv 5</span>
+                <span class="quest-level">5 QP</span>
               </div>
               <p>A perfect starting quest for new agents looking to prove themselves in the field.</p>
             </div>
@@ -241,28 +241,28 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Evil God</h4>
-                <span class="quest-level">Lv 90</span>
+                <span class="quest-level">90 QP</span>
               </div>
               <p>Confront a malevolent deity in this ultimate test of power and will. Few have survived the attempt.</p>
             </div>
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Mortal Kombat</h4>
-                <span class="quest-level">Lv 45</span>
+                <span class="quest-level">45 QP</span>
               </div>
               <p>Enter the tournament where warriors from all realms fight for supremacy. Test your might!</p>
             </div>
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Dragonball Z</h4>
-                <span class="quest-level">Lv 40</span>
+                <span class="quest-level">40 QP</span>
               </div>
               <p>Power levels are off the charts in this anime-inspired adventure across time and space.</p>
             </div>
             <div class="realm-quest-card">
               <div class="quest-header">
                 <h4>Destroy Barney</h4>
-                <span class="quest-level">Lv 10</span>
+                <span class="quest-level">10 QP</span>
               </div>
               <p>The purple menace must be stopped. A fan-favorite quest that's exactly what it sounds like.</p>
             </div>

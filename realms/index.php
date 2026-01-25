@@ -58,15 +58,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-features">
           <h3>Notable Locations</h3>
           <div class="realm-features-grid">
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/aruwins_windmill.png');">
-              <h4>Aruwin's Windmill</h4>
-              <p>A mysterious windmill on the outskirts of civilization, home to secrets and strange happenings.</p>
-            </div>
-            <div class="realm-feature-item"
-              style="background-image: url('/images/scrolling/lyriac.png');">
-              <h4>Ravenloft</h4>
-              <p>Go head to head with Lyriac in Ravenloft.</p>
-            </div>
             <div class="realm-feature-item" style="background-image: url('/images/scrolling/icy_blue_portal.png');">
               <h4>Land of the Ice People</h4>
               <p>Icy blue portal area description.
@@ -76,6 +67,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h4>Murus Faralain</h4>
               <p>Something something, an abandoned city.</p>
             </div>
+            <div class="realm-feature-item"
+              style="background-image: url('/images/scrolling/westerseaDocks.png');">
+              <h4>Westersea Docks</h4>
+              <p>Something about Westersea Docks.</p>
+            </div>            
           </div>
         </div>
 

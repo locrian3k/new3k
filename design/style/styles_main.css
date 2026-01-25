@@ -1419,7 +1419,7 @@ main {
 
 /* Realm Tabs */
 .realms-tabs-section {
-	padding: var(--space-xl) var(--space-lg);
+	padding: var(--space-xl) var(--space-lg) var(--space-sm);
 	background: var(--clr-black);
 	max-width: 1400px;
 	margin: 0 auto;
@@ -1468,7 +1468,7 @@ main {
 }
 
 .realm-tab[data-realm="fantasy"] {
-  border: .5px solid var(--clr-fantasy);
+  border: .25px solid var(--clr-fantasy);
 }
 
 .realm-tab[data-realm="fantasy"]:hover,
@@ -1479,7 +1479,7 @@ main {
 }
 
 .realm-tab[data-realm="science"] {
-  border: .5px solid var(--clr-science);
+  border: .25px solid var(--clr-science);
 }
 
 .realm-tab[data-realm="science"]:hover,
@@ -1490,7 +1490,7 @@ main {
 }
 
 .realm-tab[data-realm="chaos"] {
-  border: .5px solid var(--clr-chaos);
+  border: .25px solid var(--clr-chaos);
 }
 
 .realm-tab[data-realm="chaos"]:hover,

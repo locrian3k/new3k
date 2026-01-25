@@ -1451,7 +1451,6 @@ main {
 	letter-spacing: var(--ls-normal);
 	color: var(--clr-text-secondary);
 	background: transparent;
-	border: 2px solid var(--clr-text-muted);
 	border-radius: var(--radius-sm);
 	cursor: pointer;
 	transition: all 0.3s ease;
@@ -1468,6 +1467,10 @@ main {
 	border-color: var(--clr-text-primary);
 }
 
+.realm-tab[data-realm="fantasy"] {
+  border: 2px solid var(--clr-fantasy);
+}
+
 .realm-tab[data-realm="fantasy"]:hover,
 .realm-tab[data-realm="fantasy"].active {
 	color: var(--clr-fantasy);
@@ -1475,11 +1478,19 @@ main {
 	box-shadow: var(--glow-fantasy);
 }
 
+.realm-tab[data-realm="science"] {
+  border: 2px solid var(--clr-science);
+}
+
 .realm-tab[data-realm="science"]:hover,
 .realm-tab[data-realm="science"].active {
 	color: var(--clr-science);
 	border-color: var(--clr-science);
 	box-shadow: var(--glow-science);
+}
+
+.realm-tab[data-realm="chaos"] {
+  border: 2px solid var(--clr-chaos);
 }
 
 .realm-tab[data-realm="chaos"]:hover,

@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 			<!-- Hero Section -->
 			<section class="hero hero-realms">
 				<div class="hero-content">
-					<h1 class="hero-title">The Three Realms</h1>
+					<h1 class="hero-title">The Realms</h1>
 					<p class="hero-subtitle">
 						Explore three distinct worlds, each with unique challenges, creatures, and legends
 					</p>

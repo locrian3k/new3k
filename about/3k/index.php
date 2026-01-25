@@ -1,6 +1,6 @@
 <?php 
 $pageTitle = "About - 3Kingdoms";
-include '../../includes/header.php'; 
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; 
 ?>
 
     
@@ -164,7 +164,7 @@ include '../../includes/header.php';
 								real people, there have been many opportunities for those people
 								to meet beyond the game. From individual couples "hooking up" on
 								their own, to annual, 3K sponsored,
-								<a href="/omp.php">Official Mud Parties</a> (OMP's), many of the
+								<a href="/community/omp/index.php">Official Mud Parties</a> (OMP's), many of the
 								gamers have come to be good friends with other people in real
 								life. In fact, there have even been marriages that have resulted
 								from people meeting on 3Kingdoms. No kidding!
@@ -378,8 +378,8 @@ include '../../includes/header.php';
 			</section>
 		</main>
 
-  <?php include '../../includes/footer.php'; ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 
-  		<script src="../../design/script/script_main.js"></script>
+		<script src="/design/script/script_main.js"></script>
 	</body>
 </html>

@@ -1,6 +1,6 @@
 <?php 
 $pageTitle = "3Kingdoms - Home";
-include 'includes/header.php'; 
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; 
 ?>
 
 		<!-- Main Content -->
@@ -61,13 +61,13 @@ include 'includes/header.php';
 						<p class="quick-link-desc">Jump directly into the game</p>
 					</a>
 
-					<a href="/support/vafs.php" class="quick-link-card">
+					<a href="/support/vafs/index.php" class="quick-link-card">
 						<i class="fas fa-heart quick-link-icon"></i>
 						<h3 class="quick-link-title">Support Us</h3>
 						<p class="quick-link-desc">VAFs & Donations</p>
 					</a>
 
-					<a href="/wholist.php" class="quick-link-card">
+					<a href="/community/wholist.php" class="quick-link-card">
 						<i class="fas fa-users quick-link-icon"></i>
 						<h3 class="quick-link-title">Who's Online</h3>
 						<p class="quick-link-desc">See current players</p>
@@ -216,7 +216,7 @@ include 'includes/header.php';
 					background: var(--clr-black);
 					text-align: center;
 				">
-				<a href="/about-3scapes.php">
+				<a href="/about/3s/index.php">
 					<img
 						src="/images/logo/3S_logo_transparent.png"
 						alt="3Scapes logo"
@@ -239,10 +239,14 @@ include 'includes/header.php';
 					">
 					Our sister MUD, where the rules are different.
 				</p>
-				<a href="/about-3scapes.php">
+				<a href="/about/3s/index.php">
 					<button class="btn-secondary">Learn About 3Scapes</button>
 				</a>
 			</section>
 		</main>
 
-  <?php include 'includes/footer.php'; ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
+
+		<script src="/design/script/script_main.js"></script>
+	</body>
+</html>

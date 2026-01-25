@@ -1,6 +1,6 @@
 <?php
 $pageTitle = "The Three Realms - 3Kingdoms";
-include '../includes/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 ?>
 
 		<!-- Main Content -->
@@ -275,7 +275,7 @@ include '../includes/header.php';
 			</section>
 		</main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 
 		<script src="/design/script/script_main.js"></script>
 	</body>

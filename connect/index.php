@@ -1,6 +1,6 @@
 <?php 
 $pageTitle = "Connect - 3Kingdoms";
-include '../includes/header.php'; 
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php'; 
 ?>
 
 <!-- Main Content -->
@@ -487,7 +487,7 @@ include '../includes/header.php';
         <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary connection-btn-auto">
           Connect Now
         </a>
-        <a href="../about/3k/index.php" class="btn-secondary"
+        <a href="/about/3k/index.php" class="btn-secondary"
           >Learn More About 3K</a
         >
       </div>
@@ -495,8 +495,8 @@ include '../includes/header.php';
   </section>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 
-		<script src="../design/script/script_main.js"></script>
+		<script src="/design/script/script_main.js"></script>
 	</body>
 </html>

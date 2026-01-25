@@ -67,31 +67,47 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h4>Murus Faralain</h4>
               <p>Something something, an abandoned city.</p>
             </div>
-            <div class="realm-feature-item"
-              style="background-image: url('/images/scrolling/westerseaDocks.png');">
+            <div class="realm-feature-item" style="background-image: url('/images/scrolling/westerseaDocks.png');">
               <h4>Westersea Docks</h4>
               <p>Something about Westersea Docks.</p>
-            </div>            
+            </div>
           </div>
         </div>
 
-        <div class="realm-guilds">
-          <h3>Fantasy Guilds</h3>
-          <p>Several guilds call the Fantasy realm their primary home:</p>
-          <div class="realm-guild-grid">
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-music"></i> Bards</h4>
-              <p>Travelers who use knowledge and wisdom to entertain and help others. Their songs are magical, providing helpful powers in times of need.</p>
+        <div class="realm-quests">
+          <h3>Featured Quests</h3>
+          <p>Fantasy offers 42 quests ranging from beginner puzzles to legendary challenges:</p>
+          <div class="realm-quest-grid">
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Ravenloft</h4>
+                <span class="quest-level">Lv 100</span>
+              </div>
+              <p>Venture into the cursed domain of Strahd. Only the bravest and most skilled adventurers dare attempt this legendary challenge.</p>
             </div>
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-hands-praying"></i> Priests</h4>
-              <p>Devoted followers granted extraordinary powers by their deities, including healing, damage, and control over weather and elements.</p>
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Dragon Egg</h4>
+                <span class="quest-level">Lv 50</span>
+              </div>
+              <p>A dangerous quest involving the sacred eggs of dragonkind. Tread carefully around these ancient creatures.</p>
             </div>
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-skull"></i> Necromancers</h4>
-              <p>Masters of the power between life and death. Command creatures from foul beasts to ethereal forms that stop hearts with the chill of the grave.</p>
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Haunted Manor</h4>
+                <span class="quest-level">Lv 25</span>
+              </div>
+              <p>Explore a decrepit mansion filled with restless spirits and uncover the dark secrets within its walls.</p>
+            </div>
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Orc Slayer</h4>
+                <span class="quest-level">Lv 10</span>
+              </div>
+              <p>Prove your worth as a warrior by taking on the orc menace threatening the peaceful villages.</p>
             </div>
           </div>
+          <p class="realm-quests-link"><a href="/quests/index.php">View all quests <i class="fa-solid fa-arrow-right"></i></a></p>
         </div>
 
       </div>
@@ -134,27 +150,44 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="realm-feature-item" style="background-image: url('/images/scrolling/mantis_swamp.png');">
               <h4>Mantis Swamp</h4>
               <p>Some description about Mantis Swamp.</p>
-            </div>            
+            </div>
           </div>
         </div>
 
-        <div class="realm-guilds">
-          <h3>Science Guilds</h3>
-          <p>These guilds thrive in the technological landscape:</p>
-          <div class="realm-guild-grid">
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-shield-halved"></i> Juggernauts</h4>
-              <p>A defensively oriented guild priding themselves on avoiding hits and fighting through dire situations. Known for absorbing massive damage.</p>
+        <div class="realm-quests">
+          <h3>Featured Quests</h3>
+          <p>Science offers 9 quests in this high-tech realm:</p>
+          <div class="realm-quest-grid">
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Megatech</h4>
+                <span class="quest-level">Lv 65</span>
+              </div>
+              <p>Infiltrate the massive Megatech corporation and uncover their darkest technological secrets.</p>
             </div>
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-robot"></i> Cyborgs</h4>
-              <p>Human-machine hybrids enhanced beyond natural limits through cutting-edge cybernetic technology and implants.</p>
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>The Project</h4>
+                <span class="quest-level">Lv 55</span>
+              </div>
+              <p>A mysterious government project has gone wrong. Investigate before it's too late.</p>
             </div>
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-dna"></i> Gentech</h4>
-              <p>Elite soldier-scientists with complete control over mind, body, and time itself through genetic enhancement from the far future.</p>
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Shadowrun</h4>
+                <span class="quest-level">Lv 30</span>
+              </div>
+              <p>Enter the cyberpunk underworld where megacorps rule and runners live by their wits.</p>
+            </div>
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Codename: Kodiak</h4>
+                <span class="quest-level">Lv 5</span>
+              </div>
+              <p>A perfect starting quest for new agents looking to prove themselves in the field.</p>
             </div>
           </div>
+          <p class="realm-quests-link"><a href="/quests/index.php">View all quests <i class="fa-solid fa-arrow-right"></i></a></p>
         </div>
 
       </div>
@@ -201,23 +234,40 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </div>
         </div>
 
-        <div class="realm-guilds">
-          <h3>Chaos Guilds</h3>
-          <p>Those who embrace the unpredictable find their home here:</p>
-          <div class="realm-guild-grid">
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-masks-theater"></i> Changelings</h4>
-              <p>Shapeshifters who adapt to any situation, transforming their very being to overcome any challenge they face.</p>
+        <div class="realm-quests">
+          <h3>Featured Quests</h3>
+          <p>Chaos offers 27 quests where reality bends and anything is possible:</p>
+          <div class="realm-quest-grid">
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Evil God</h4>
+                <span class="quest-level">Lv 90</span>
+              </div>
+              <p>Confront a malevolent deity in this ultimate test of power and will. Few have survived the attempt.</p>
             </div>
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-brain"></i> Breed</h4>
-              <p>One of the eldest races, wielding the potent force of psi from within. A secretive lot who believe each must forge their own destiny.</p>
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Mortal Kombat</h4>
+                <span class="quest-level">Lv 45</span>
+              </div>
+              <p>Enter the tournament where warriors from all realms fight for supremacy. Test your might!</p>
             </div>
-            <div class="realm-guild-card">
-              <h4><i class="fa-solid fa-wind"></i> Fremen</h4>
-              <p>Desert warriors from Arrakis (Dune). Fierce and powerful fighters trained in combat and mental powers by Bene Gesserit teachings.</p>
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Dragonball Z</h4>
+                <span class="quest-level">Lv 40</span>
+              </div>
+              <p>Power levels are off the charts in this anime-inspired adventure across time and space.</p>
+            </div>
+            <div class="realm-quest-card">
+              <div class="quest-header">
+                <h4>Destroy Barney</h4>
+                <span class="quest-level">Lv 10</span>
+              </div>
+              <p>The purple menace must be stopped. A fan-favorite quest that's exactly what it sounds like.</p>
             </div>
           </div>
+          <p class="realm-quests-link"><a href="/quests/index.php">View all quests <i class="fa-solid fa-arrow-right"></i></a></p>
         </div>
 
       </div>

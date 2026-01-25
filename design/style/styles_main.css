@@ -1790,6 +1790,128 @@ main {
 	color: var(--clr-chaos);
 }
 
+/* Realm Quests */
+.realm-quests {
+	max-width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.realm-quests > h3 {
+	margin-bottom: var(--space-sm);
+}
+
+.realm-quests > p {
+	font-family: var(--ff-body);
+	color: var(--clr-text-secondary);
+	margin-bottom: var(--space-lg);
+}
+
+.realm-quest-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: var(--space-md);
+}
+
+.realm-quest-card {
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.02),
+		rgba(255, 255, 255, 0.06)
+	);
+	border: 1px solid var(--clr-border);
+	border-radius: var(--radius-md);
+	padding: var(--space-md);
+	text-align: left;
+	transition: all 0.3s ease;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xs);
+}
+
+.realm-quest-card:hover {
+	transform: translateY(-3px);
+	border-color: var(--clr-accent-main);
+}
+
+.realm-quest-card .quest-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.realm-quest-card h4 {
+	font-family: var(--ff-heading);
+	font-size: 1.05rem;
+	font-weight: var(--fw-heading-bold);
+	color: var(--clr-text-heading);
+	margin: 0;
+}
+
+.realm-quest-card .quest-level {
+	font-family: var(--ff-body);
+	font-size: 0.75rem;
+	font-weight: 600;
+	color: var(--clr-text-secondary);
+	background: rgba(255, 255, 255, 0.1);
+	padding: 0.2rem 0.5rem;
+	border-radius: var(--radius-sm);
+	white-space: nowrap;
+}
+
+.realm-quest-card p {
+	font-family: var(--ff-body);
+	font-size: 0.85rem;
+	color: var(--clr-text-secondary);
+	line-height: var(--lh-normal);
+	margin: 0;
+}
+
+.realm-quests-link {
+	margin-top: var(--space-md);
+}
+
+.realm-quests-link a {
+	font-family: var(--ff-body);
+	font-size: 0.9rem;
+	color: var(--clr-accent-main);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.realm-quests-link a:hover {
+	color: var(--clr-accent-highlight);
+}
+
+/* Realm-specific quest card colors */
+#fantasy .realm-quest-card:hover {
+	border-color: var(--clr-fantasy);
+}
+
+#fantasy .realm-quest-card .quest-level {
+	background: rgba(139, 69, 19, 0.3);
+	color: var(--clr-fantasy);
+}
+
+#science .realm-quest-card:hover {
+	border-color: var(--clr-science);
+}
+
+#science .realm-quest-card .quest-level {
+	background: rgba(0, 191, 255, 0.2);
+	color: var(--clr-science);
+}
+
+#chaos .realm-quest-card:hover {
+	border-color: var(--clr-chaos);
+}
+
+#chaos .realm-quest-card .quest-level {
+	background: rgba(148, 0, 211, 0.3);
+	color: var(--clr-chaos);
+}
+
 /* Legacy list style - keep for backwards compatibility */
 .realm-guild-list {
 	list-style: none;

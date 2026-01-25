@@ -40,15 +40,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="realm-content-tagline">Where magic and myth come alive</p>
         <div class="realm-description">
           <p>
-            Step into a medieval world teeming with orcs, elves, dragons, and ancient magic.
-            The Fantasy realm is the heart of classic adventure, where brave heroes forge
-            their legends through steel and sorcery.
+            From the dank swamps south of the thriving city of Wayhaven to the icy reaches of Niroth, this gargantuan realm poses a challenge to any would-be explorer. Rich in original theme and boasting over 250 areas, Fantasy has something for every level of player.
           </p>
           <p>
-            From the towering spires of mystical castles to the depths of dragon-guarded
-            dungeons, every corner holds secrets waiting to be discovered. Ancient forests
-            whisper of forgotten lore, while dark caverns echo with the growls of creatures
-            best left undisturbed.
+            Dragons slumber in hidden grottos, dwarves mine the hills, elves reside in the forests, man toils in the cities and all manner of creatures both fair and foul roam the lands. Some only wish to live in peace while others lie in wait, eager to prey on unfortunate victims. So strap on your armour, grab your weapon, and don't forget your torch. Adventure awaits!
           </p>
         </div>
       </div>
@@ -61,8 +56,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="realm-feature-item">
               <i class="fa-solid fa-tower-observation"></i>
               <h4>Ravenloft</h4>
-              <p>The cursed domain of Strahd, where darkness reigns eternal and vampires stalk the mist-shrouded lands.
-              </p>
+              <p>The cursed domain of Strahd, where darkness reigns eternal and vampires stalk the mist-shrouded lands.</p>
             </div>
             <div class="realm-feature-item">
               <i class="fa-solid fa-tree"></i>
@@ -113,14 +107,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="realm-content-tagline">A post-apocalyptic future awaits</p>
         <div class="realm-description">
           <p>
-            Welcome to a world scarred by nuclear war and rebuilt through advanced technology.
-            The Science realm is a gritty cyberpunk landscape where megacorporations vie for
-            power and humanity struggles to survive among the ruins of the old world.
+            Step through a portal into a realm waiting to be explored. From the shining cyber cities of New America to the desolate wastelands of the Techno-Ruins, the realm of Science offers a host of wonders as yet undiscovered.
           </p>
           <p>
-            Neon-lit cities rise from the ashes, their streets patrolled by corporate security
-            forces and prowled by gangs of chrome-enhanced outlaws. Space stations orbit
-            overhead, and the secrets of genetic engineering have created wonders and horrors alike.
+            Explore Mars, and find out if it really does have a red sky - combat the Borg in a fight for survival - attempt to survive the perils of the deadly traffic of Atlanta, or just hang out at the Nano Cantina. Science offers a challenge for players of all levels. Step into the future and visit the realm of Science. You never know what you'll find!
           </p>
         </div>
       </div>
@@ -169,7 +159,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <img src="/images/scrolling/houstonTransport.png" alt="Houston Transport">
             <img src="/images/scrolling/gen_lab.png" alt="Gen Lab">
             <img src="/images/scrolling/lastChanceTruckStop.png" alt="Last Chance Truck Stop">
-            <img src="/images/scrolling/fern_man_science.png" alt="Science Fern Man">
+            <img src="/images/scrolling/fern_man_science.png" alt="Fern Man">
           </div>
         </div>
       </div>
@@ -183,15 +173,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="realm-content-tagline">Where reality bends and breaks</p>
         <div class="realm-description">
           <p>
-            Enter a dimension where the laws of nature hold no sway. The Chaos realm exists
-            at the intersection of Fantasy and Science, a place where magic and technology
-            collide to create something entirely unpredictable.
+            Through the swirling vortex of mist and nightmare that brushes the northern edge of Pinnacle, you find the twisted realm of Chaos. Bring your wits, but leave your assumptions behind, because this realm will challenge your mind and blow away all that you think you know.
           </p>
           <p>
-            Here you'll find creatures that defy classification, landscapes that shift
-            without warning, and challenges that require both sword and circuit to overcome.
-            The Chaos realm rewards those who can adapt to the unexpected and thrive in
-            an environment where nothing is certain.
+            Be you strong or weak, young or old, Chaos holds a place for you somewhere in its mystifying depths. Terrifying monsters coexist with cartoon heroes, fantastic characters mix with the unknown and the strange and familiar mingle to produce the unexpected. Come and expect the unexpected!
           </p>
         </div>
       </div>

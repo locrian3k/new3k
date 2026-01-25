@@ -1591,7 +1591,7 @@ main {
 
 .realm-description {
 	max-width: 900px;
-	margin: 0 auto;
+	margin: var(--space-lg) auto 0;
 	text-align: center;
 }
 

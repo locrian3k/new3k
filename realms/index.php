@@ -111,9 +111,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <img src="/images/logo/3k_science_logo_transparent_small.png" alt="Science Realm" class="realm-content-logo" />
         <h2 class="realm-content-title">The Science Realm</h2>
         <p class="realm-content-tagline">A post-apocalyptic future awaits</p>
-      </div>
-
-      <div class="realm-body">
         <div class="realm-description">
           <p>
             Welcome to a world scarred by nuclear war and rebuilt through advanced technology.
@@ -126,6 +123,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             overhead, and the secrets of genetic engineering have created wonders and horrors alike.
           </p>
         </div>
+      </div>
+
+      <div class="realm-body">
 
         <div class="realm-features">
           <h3>Notable Locations</h3>
@@ -181,9 +181,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <img src="/images/logo/3k_chaos_logo_transparent_small.png" alt="Chaos Realm" class="realm-content-logo" />
         <h2 class="realm-content-title">The Chaos Realm</h2>
         <p class="realm-content-tagline">Where reality bends and breaks</p>
-      </div>
-
-      <div class="realm-body">
         <div class="realm-description">
           <p>
             Enter a dimension where the laws of nature hold no sway. The Chaos realm exists
@@ -197,6 +194,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             an environment where nothing is certain.
           </p>
         </div>
+      </div>
+
+      <div class="realm-body">
 
         <div class="realm-features">
           <h3>Notable Locations</h3>

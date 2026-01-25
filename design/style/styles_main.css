@@ -1849,7 +1849,7 @@ main {
 	margin: 0;
 }
 
-.realm-quest-card .quest-level {
+.realm-quest-card .quest-points {
 	font-family: var(--ff-body);
 	font-size: 0.75rem;
 	font-weight: 600;
@@ -1889,7 +1889,7 @@ main {
 	border-color: var(--clr-fantasy);
 }
 
-#fantasy .realm-quest-card .quest-level {
+#fantasy .realm-quest-card .quest-points {
 	background: rgba(139, 69, 19, 0.3);
 	color: var(--clr-fantasy);
 }
@@ -1898,7 +1898,7 @@ main {
 	border-color: var(--clr-science);
 }
 
-#science .realm-quest-card .quest-level {
+#science .realm-quest-card .quest-points {
 	background: rgba(0, 191, 255, 0.2);
 	color: var(--clr-science);
 }
@@ -1907,9 +1907,9 @@ main {
 	border-color: var(--clr-chaos);
 }
 
-#chaos .realm-quest-card .quest-level {
-	background: rgba(148, 0, 211, 0.3);
-	color: var(--clr-chaos);
+#chaos .realm-quest-card .quest-points {
+	background: rgba(236, 96, 9, 0.3);
+	color: var(--clr-black);
 }
 
 /* Legacy list style - keep for backwards compatibility */

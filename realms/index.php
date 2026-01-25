@@ -78,12 +78,24 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-guilds">
           <h3>Fantasy Guilds</h3>
           <p>Several guilds call the Fantasy realm their primary home:</p>
-          <ul class="realm-guild-list">
-            <li><strong>Bards</strong> - Wandering musicians whose songs carry magic</li>
-            <li><strong>Mages</strong> - Masters of arcane arts and elemental forces</li>
-            <li><strong>Priests</strong> - something about priests</li>
-            <li><strong>Necromancers</strong> - Dark practitioners who command the undead</li>
-          </ul>
+          <div class="realm-guild-grid">
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-music"></i> Bards</h4>
+              <p>Travelers who use knowledge and wisdom to entertain and help others. Their songs are magical, providing helpful powers in times of need.</p>
+            </div>
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-wand-sparkles"></i> Mages</h4>
+              <p>Modeled after AD&D Magic Users with over 100 spells at their disposal. One of the most challenging guilds due to complex combat tactics.</p>
+            </div>
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-hands-praying"></i> Priests</h4>
+              <p>Devoted followers granted extraordinary powers by their deities, including healing, damage, and control over weather and elements.</p>
+            </div>
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-skull"></i> Necromancers</h4>
+              <p>Masters of the power between life and death. Command creatures from foul beasts to ethereal forms that stop hearts with the chill of the grave.</p>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -133,12 +145,24 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-guilds">
           <h3>Science Guilds</h3>
           <p>These guilds thrive in the technological landscape:</p>
-          <ul class="realm-guild-list">
-            <li><strong>Juggernauts</strong> - Heavily armored combat specialists with devastating firepower</li>
-            <li><strong>Psicorps</strong> - Psychic operatives with powers of the mind</li>
-            <li><strong>Cyborgs</strong> - Human-machine hybrids enhanced beyond natural limits</li>
-            <li><strong>Fremen</strong> - Human-machine hybrids enhanced beyond natural limits</li>                        
-          </ul>
+          <div class="realm-guild-grid">
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-shield-halved"></i> Juggernauts</h4>
+              <p>A defensively oriented guild priding themselves on avoiding hits and fighting through dire situations. Known for absorbing massive damage.</p>
+            </div>
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-robot"></i> Cyborgs</h4>
+              <p>Human-machine hybrids enhanced beyond natural limits through cutting-edge cybernetic technology and implants.</p>
+            </div>
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-dna"></i> Gentech</h4>
+              <p>Elite soldier-scientists with complete control over mind, body, and time itself through genetic enhancement from the far future.</p>
+            </div>
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-jedi"></i> Jedi</h4>
+              <p>A sci-fi guild based on Star Wars, offering unique powers to fans of the saga. Theme-focused with balanced abilities.</p>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -192,12 +216,24 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-guilds">
           <h3>Chaos Guilds</h3>
           <p>Those who embrace the unpredictable find their home here:</p>
-          <ul class="realm-guild-list">
-            <li><strong>Changelings</strong> - Shapeshifters who adapt to any situation</li>
-            <li><strong>Angels</strong> - Warriors who weave magic into their combat techniques</li>
-            <li><strong>Breed</strong> - Disciplined martial artists who find order within chaos</li>
-            <li><strong>Fremen</strong> - something about fremen</li>            
-          </ul>
+          <div class="realm-guild-grid">
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-masks-theater"></i> Changelings</h4>
+              <p>Shapeshifters who adapt to any situation, transforming their very being to overcome any challenge they face.</p>
+            </div>
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-brain"></i> Breed</h4>
+              <p>One of the eldest races, wielding the potent force of psi from within. A secretive lot who believe each must forge their own destiny.</p>
+            </div>
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-wind"></i> Fremen</h4>
+              <p>Desert warriors from Arrakis (Dune). Fierce and powerful fighters trained in combat and mental powers by Bene Gesserit teachings.</p>
+            </div>
+            <div class="realm-guild-card">
+              <h4><i class="fa-solid fa-sword"></i> Bladesingers</h4>
+              <p>Returned from the fall of Myth Drannor, teaching dedicated humans the ancient elven techniques of blade and song.</p>
+            </div>
+          </div>
         </div>
 
       </div>

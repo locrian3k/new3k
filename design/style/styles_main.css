@@ -1697,17 +1697,100 @@ main {
 
 /* Realm Guilds */
 .realm-guilds {
-	max-width: 800px;
+	max-width: 1000px;
 	margin: 0 auto;
 	text-align: center;
+}
+
+.realm-guilds > h3 {
+	margin-bottom: var(--space-md);
 }
 
 .realm-guilds > p {
 	font-family: var(--ff-body);
 	color: var(--clr-text-secondary);
-	margin-bottom: var(--space-md);
+	margin-bottom: var(--space-lg);
 }
 
+.realm-guild-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: var(--space-md);
+}
+
+.realm-guild-card {
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.03),
+		rgba(255, 255, 255, 0.08)
+	);
+	border: 1px solid var(--clr-border);
+	border-radius: var(--radius-md);
+	padding: var(--space-md);
+	text-align: left;
+	transition: all 0.3s ease;
+}
+
+.realm-guild-card:hover {
+	transform: translateY(-3px);
+	border-color: var(--clr-accent-main);
+	background: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.05),
+		rgba(255, 255, 255, 0.1)
+	);
+}
+
+.realm-guild-card h4 {
+	font-family: var(--ff-heading);
+	font-size: 1.1rem;
+	font-weight: var(--fw-heading-bold);
+	color: var(--clr-text-heading);
+	margin-bottom: var(--space-xs);
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+}
+
+.realm-guild-card h4 i {
+	font-size: 1rem;
+	opacity: 0.8;
+}
+
+.realm-guild-card p {
+	font-family: var(--ff-body);
+	font-size: 0.85rem;
+	color: var(--clr-text-secondary);
+	line-height: var(--lh-normal);
+	margin: 0;
+}
+
+/* Realm-specific guild card colors */
+#fantasy .realm-guild-card:hover {
+	border-color: var(--clr-fantasy);
+}
+
+#fantasy .realm-guild-card h4 i {
+	color: var(--clr-fantasy);
+}
+
+#science .realm-guild-card:hover {
+	border-color: var(--clr-science);
+}
+
+#science .realm-guild-card h4 i {
+	color: var(--clr-science);
+}
+
+#chaos .realm-guild-card:hover {
+	border-color: var(--clr-chaos);
+}
+
+#chaos .realm-guild-card h4 i {
+	color: var(--clr-chaos);
+}
+
+/* Legacy list style - keep for backwards compatibility */
 .realm-guild-list {
 	list-style: none;
 	padding: 0;

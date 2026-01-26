@@ -46,8 +46,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="faq-grid">
         <!-- Web Client - Featured -->
         <div
-          class="faq-item faq-item-chaos connection-featured-border"
-          onclick="this.classList.toggle('flipped')">
+          class="faq-item faq-item-chaos connection-featured-border">
           <div class="faq-item-inner">
             <!-- Front -->
             <div class="faq-item-front">

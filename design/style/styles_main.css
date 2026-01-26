@@ -1908,8 +1908,8 @@ main {
 }
 
 #chaos .realm-quest-card .quest-points {
-	background: rgba(236, 96, 9, 0.3);
-	color: var(--clr-black);
+	background: rgba(139, 69, 19, 0.3);
+	color: var(--clr-chaos);
 }
 
 /* Legacy list style - keep for backwards compatibility */

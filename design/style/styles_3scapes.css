@@ -1,0 +1,431 @@
+/* ============================= */
+/* 3SCAPES DEDICATED STYLESHEET  */
+/* ============================= */
+/* Color palette derived from 3Scapes logo:
+   - Cool blues (left side): #4A90B8, #2C5F7C, #1A3A4D
+   - Warm oranges/reds (right side): #E67E22, #D35400, #C0392B
+   - Neutral/metallic: #8B9BAE, #C0C0C0
+*/
+
+/* ============================= */
+/* 3SCAPES CSS VARIABLES         */
+/* ============================= */
+:root {
+	/* 3Scapes Primary Colors - Blue Side */
+	--clr-3s-blue-light: #4A90B8;
+	--clr-3s-blue: #2C5F7C;
+	--clr-3s-blue-dark: #1A3A4D;
+
+	/* 3Scapes Primary Colors - Orange/Red Side */
+	--clr-3s-orange-light: #F39C12;
+	--clr-3s-orange: #E67E22;
+	--clr-3s-orange-dark: #D35400;
+	--clr-3s-red: #C0392B;
+
+	/* 3Scapes Accent Colors */
+	--clr-3s-accent-primary: #E67E22;
+	--clr-3s-accent-secondary: #4A90B8;
+	--clr-3s-accent-highlight: #F39C12;
+
+	/* 3Scapes Background Colors */
+	--clr-3s-bg-dark: #0A0F14;
+	--clr-3s-bg-main: #0D1820;
+	--clr-3s-bg-card: rgba(44, 95, 124, 0.15);
+
+	/* 3Scapes Text Colors */
+	--clr-3s-text-heading: #F7D24B;
+	--clr-3s-text-primary: #E8E4D9;
+	--clr-3s-text-secondary: #8B9BAE;
+
+	/* 3Scapes Border Colors */
+	--clr-3s-border: rgba(74, 144, 184, 0.3);
+	--clr-3s-border-accent: rgba(230, 126, 34, 0.5);
+
+	/* 3Scapes Gradients */
+	--clr-3s-gradient: linear-gradient(135deg, var(--clr-3s-blue) 0%, var(--clr-3s-orange) 100%);
+	--clr-3s-gradient-subtle: linear-gradient(135deg, rgba(44, 95, 124, 0.3) 0%, rgba(230, 126, 34, 0.3) 100%);
+}
+
+/* ============================= */
+/* 3SCAPES PAGE OVERRIDES        */
+/* ============================= */
+
+/* Hero Section for 3Scapes */
+.hero-3scapes {
+	min-height: 70vh;
+	background: linear-gradient(
+			135deg,
+			rgba(10, 15, 20, 0.95),
+			rgba(13, 24, 32, 0.9)
+		),
+		url("/images/3scapes-bg.jpg") center/cover no-repeat;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: var(--space-2xl) var(--space-lg);
+	position: relative;
+}
+
+.hero-3scapes::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: var(--clr-3s-gradient-subtle);
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.hero-3scapes .hero-content {
+	position: relative;
+	z-index: 2;
+}
+
+.hero-3scapes .hero-title {
+	background: var(--clr-3s-gradient);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* 3Scapes Container */
+.scapes-container {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+/* 3Scapes Introduction Section */
+.scapes-intro {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-3s-bg-dark);
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-3s-gradient) 1;
+}
+
+.scapes-logo-container {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+}
+
+.scapes-logo {
+	max-width: 100%;
+	height: auto;
+	max-height: 20rem;
+	border-radius: var(--radius-md);
+	/* No border - let the logo stand on its own */
+}
+
+.scapes-intro-text {
+	font-family: var(--ff-body);
+	font-size: var(--fs-body-large);
+	line-height: var(--lh-normal);
+	color: var(--clr-3s-text-primary);
+}
+
+.scapes-intro-text p {
+	margin-bottom: var(--space-md);
+}
+
+.scapes-highlight {
+	color: var(--clr-3s-accent-primary);
+	font-weight: var(--fw-body-bold);
+}
+
+.scapes-highlight-blue {
+	color: var(--clr-3s-blue-light);
+	font-weight: var(--fw-body-bold);
+}
+
+/* 3Scapes Origin Story Section */
+.scapes-origin {
+	padding: var(--space-3xl) var(--space-lg);
+	background: linear-gradient(180deg, var(--clr-3s-bg-main), var(--clr-3s-bg-dark));
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-3s-gradient) 1;
+}
+
+.scapes-origin .section-title {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+	color: var(--clr-3s-text-heading);
+}
+
+.origin-content {
+	display: grid;
+	gap: var(--space-xl);
+}
+
+.origin-block {
+	background: var(--clr-3s-bg-card);
+	border: 1px solid var(--clr-3s-border);
+	border-radius: var(--radius-md);
+	padding: var(--space-lg);
+	transition: all 0.3s ease;
+}
+
+.origin-block:hover {
+	border-color: var(--clr-3s-accent-primary);
+	transform: translateY(-2px);
+}
+
+.origin-block h3 {
+	color: var(--clr-3s-text-heading);
+	font-family: var(--ff-heading);
+	font-size: var(--fs-h3);
+	margin-bottom: var(--space-md);
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.origin-block h3 i {
+	color: var(--clr-3s-accent-primary);
+}
+
+.origin-block p {
+	color: var(--clr-3s-text-primary);
+	line-height: var(--lh-normal);
+	margin: 0;
+}
+
+/* 3Scapes Key Differences Section */
+.scapes-differences {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-3s-bg-dark);
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-3s-gradient) 1;
+}
+
+.scapes-differences .section-title {
+	text-align: center;
+	margin-bottom: var(--space-md);
+	color: var(--clr-3s-text-heading);
+}
+
+.scapes-differences .section-subtitle {
+	text-align: center;
+	color: var(--clr-3s-text-secondary);
+	margin-bottom: var(--space-2xl);
+}
+
+.differences-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: var(--space-lg);
+}
+
+.difference-card {
+	background: linear-gradient(
+		135deg,
+		rgba(44, 95, 124, 0.2),
+		rgba(230, 126, 34, 0.1)
+	);
+	border: 1px solid var(--clr-3s-border);
+	border-radius: var(--radius-md);
+	padding: var(--space-lg);
+	text-align: center;
+	transition: all 0.3s ease;
+}
+
+.difference-card:hover {
+	border-color: var(--clr-3s-accent-primary);
+	transform: translateY(-3px);
+	box-shadow: 0 8px 25px rgba(230, 126, 34, 0.2);
+}
+
+.difference-card i {
+	font-size: 2.5rem;
+	margin-bottom: var(--space-md);
+	display: block;
+}
+
+.difference-card.card-blue i {
+	color: var(--clr-3s-blue-light);
+}
+
+.difference-card.card-orange i {
+	color: var(--clr-3s-orange);
+}
+
+.difference-card.card-red i {
+	color: var(--clr-3s-red);
+}
+
+.difference-card h4 {
+	color: var(--clr-3s-text-heading);
+	font-family: var(--ff-heading);
+	font-size: 1.2rem;
+	margin-bottom: var(--space-sm);
+}
+
+.difference-card p {
+	color: var(--clr-3s-text-secondary);
+	font-size: 0.95rem;
+	line-height: var(--lh-normal);
+	margin: 0;
+}
+
+/* 3Scapes Connection Info Section */
+.scapes-connect {
+	padding: var(--space-3xl) var(--space-lg);
+	background: linear-gradient(180deg, var(--clr-3s-bg-main), var(--clr-3s-bg-dark));
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-3s-gradient) 1;
+}
+
+.scapes-connect .section-title {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+	color: var(--clr-3s-text-heading);
+}
+
+.connect-info-box {
+	background: var(--clr-3s-bg-card);
+	border: 2px solid var(--clr-3s-border-accent);
+	border-radius: var(--radius-md);
+	padding: var(--space-xl);
+	text-align: center;
+	max-width: 600px;
+	margin: 0 auto var(--space-xl);
+}
+
+.connect-info-box h3 {
+	color: var(--clr-3s-text-heading);
+	margin-bottom: var(--space-md);
+}
+
+.connect-info-box code {
+	background: rgba(230, 126, 34, 0.15);
+	color: var(--clr-3s-accent-highlight);
+	padding: 0.3rem 0.7rem;
+	border-radius: 0.25rem;
+	font-family: "Courier New", monospace;
+	font-size: 1.1rem;
+	border: 1px solid rgba(230, 126, 34, 0.3);
+}
+
+.connect-info-box p {
+	color: var(--clr-3s-text-secondary);
+	margin-top: var(--space-sm);
+}
+
+/* 3Scapes Features Section */
+.scapes-features {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-3s-bg-dark);
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-3s-gradient) 1;
+}
+
+.scapes-features .section-title {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+	color: var(--clr-3s-text-heading);
+}
+
+.scapes-features-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: var(--space-md);
+}
+
+.scapes-feature-item {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-sm);
+	padding: var(--space-sm);
+}
+
+.scapes-feature-item i {
+	color: var(--clr-3s-accent-primary);
+	font-size: 1.2rem;
+	margin-top: 0.2rem;
+	flex-shrink: 0;
+}
+
+.scapes-feature-item p {
+	color: var(--clr-3s-text-primary);
+	margin: 0;
+	line-height: var(--lh-normal);
+}
+
+/* 3Scapes CTA Section */
+.scapes-cta {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-3s-gradient-subtle);
+	text-align: center;
+}
+
+.scapes-cta .cta-title {
+	color: var(--clr-3s-text-heading);
+	font-family: var(--ff-heading);
+	font-size: var(--fs-h2);
+	margin-bottom: var(--space-md);
+}
+
+.scapes-cta .cta-text {
+	color: var(--clr-3s-text-primary);
+	font-size: var(--fs-body-large);
+	margin-bottom: var(--space-xl);
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.scapes-cta .btn-primary {
+	background: var(--clr-3s-gradient);
+	border: none;
+}
+
+.scapes-cta .btn-primary:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 5px 20px rgba(230, 126, 34, 0.4);
+}
+
+.scapes-cta .btn-secondary {
+	border-color: var(--clr-3s-blue-light);
+	color: var(--clr-3s-blue-light);
+}
+
+.scapes-cta .btn-secondary:hover {
+	background: var(--clr-3s-blue-light);
+	color: var(--clr-3s-bg-dark);
+}
+
+/* 3Scapes specific text colors */
+.text-3s-orange {
+	color: var(--clr-3s-orange);
+}
+
+.text-3s-blue {
+	color: var(--clr-3s-blue-light);
+}
+
+.text-3s-highlight {
+	color: var(--clr-3s-accent-highlight);
+}
+
+/* ============================= */
+/* 3SCAPES RESPONSIVE STYLES     */
+/* ============================= */
+@media (max-width: 768px) {
+	.hero-3scapes {
+		min-height: 50vh;
+		padding: var(--space-xl) var(--space-md);
+	}
+
+	.scapes-logo {
+		max-height: 15rem;
+	}
+
+	.differences-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.scapes-features-list {
+		grid-template-columns: 1fr;
+	}
+}

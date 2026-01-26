@@ -76,7 +76,7 @@
 								</button>
 								<ul class="dropdown">
 									<li><a href="/about/3k/index.php">3Kingdoms</a></li>
-									<li><a href="/about/3s/index.php">3Scapes</a></li>
+									<li><a href="/about/3scapes/index.php">3Scapes</a></li>
 								</ul>
 							</li>
 							<li class="has-dropdown">

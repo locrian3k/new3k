@@ -92,9 +92,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
                 <p>
                   For many players, this web client is all they need to
                   enjoy the full 3Kingdoms experience.
-                  <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary connection-btn-auto">Connect to WMT client.
-                    <i class="fas fa-external-link-alt"></i
-                  ></a>
                 </p>
                 <div class="flip-indicator">
                   <span>Back</span>

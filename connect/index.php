@@ -14,8 +14,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   </section>
 
   <!-- Connection Details -->
-  <section class="about-intro">
-    <div class="about-container">
+  <section class="connect-intro">
+    <div class="connect-container">
       <div class="intro-text connection-server-info">
         <h2>Server Information</h2>
         <p>
@@ -30,8 +30,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   </section>
 
   <!-- Connection Methods -->
-  <section class="about-faq">
-    <div class="about-container">
+  <section class="connect-faq">
+    <div class="connect-container">
       <h2 class="section-title">Connection Methods</h2>
       <p class="section-subtitle">
         Multiple ways to connect - choose what works best for you<br /><em
@@ -388,8 +388,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   </section>
 
   <!-- Getting Started Guide -->
-  <section class="about-details">
-    <div class="about-container">
+  <section class="connect-details">
+    <div class="connect-container">
       <h2 class="section-title">Getting Started</h2>
       <p class="section-subtitle">Your first steps in 3Kingdoms</p>
 

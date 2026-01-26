@@ -2251,6 +2251,43 @@ main {
 /* ============================= */
 /* CONNECTION PAGE SPECIFIC STYLES */
 /* ============================= */
+
+.connect-container {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.connect-intro {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-black);
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.connect-faq {
+	padding: var(--space-3xl) var(--space-lg);
+	background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.connect-faq .section-title {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+}
+
+.connect-details {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-black);
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.connect-details .section-title {
+	text-align: center;
+	margin-bottom: var(--space-md);
+}
+
 .connection-server-info {
 	text-align: center;
 }
@@ -2285,14 +2322,14 @@ main {
 }
 
 /* Connection Page Flip Card Styles */
-.about-faq .faq-item,
-.about-faq .faq-inner,
-.about-faq .faq-item-front,
-.about-faq .faq-item-back {
+.connect-faq .faq-item,
+.connect-faq .faq-inner,
+.connect-faq .faq-item-front,
+.connect-faq .faq-item-back {
 	min-height: 550px;
 }
 
-.about-faq .faq-item {
+.connect-faq .faq-item {
 	perspective: 1000px;
 	cursor: pointer;
 	position: relative;
@@ -2301,7 +2338,7 @@ main {
 	padding: 0;
 }
 
-.about-faq .faq-item-inner {
+.connect-faq .faq-item-inner {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -2309,12 +2346,12 @@ main {
 	transform-style: preserve-3d;
 }
 
-.about-faq .faq-item.flipped .faq-item-inner {
+.connect-faq .faq-item.flipped .faq-item-inner {
 	transform: rotateY(180deg);
 }
 
-.about-faq .faq-item-front,
-.about-faq .faq-item-back {
+.connect-faq .faq-item-front,
+.connect-faq .faq-item-back {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -2327,22 +2364,22 @@ main {
 	box-sizing: border-box;
 }
 
-.about-faq .faq-item-back {
+.connect-faq .faq-item-back {
 	transform: rotateY(180deg);
 }
 
-.about-faq .faq-item-chaos .faq-item-front,
-.about-faq .faq-item-chaos .faq-item-back {
+.connect-faq .faq-item-chaos .faq-item-front,
+.connect-faq .faq-item-chaos .faq-item-back {
 	border-color: rgba(212, 74, 2, 0.3);
 }
 
-.about-faq .faq-item-science .faq-item-front,
-.about-faq .faq-item-science .faq-item-back {
+.connect-faq .faq-item-science .faq-item-front,
+.connect-faq .faq-item-science .faq-item-back {
 	border-color: rgba(99, 160, 195, 0.3);
 }
 
-.about-faq .faq-item-fantasy .faq-item-front,
-.about-faq .faq-item-fantasy .faq-item-back {
+.connect-faq .faq-item-fantasy .faq-item-front,
+.connect-faq .faq-item-fantasy .faq-item-back {
 	border-color: rgba(212, 160, 46, 0.3);
 }
 

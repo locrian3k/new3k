@@ -26,7 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   <section class="scapes-intro">
     <div class="scapes-container">
       <div class="scapes-logo-container">
-        <img src="/images/logo/3scapes_logo.png" alt="3Scapes Logo" class="scapes-logo" />
+        <img src="/images/logo/3S_logo_transparent.png" alt="3Scapes Logo" class="scapes-logo" />
       </div>
 
       <div class="scapes-intro-text">

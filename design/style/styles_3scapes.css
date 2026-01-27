@@ -129,6 +129,7 @@
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
 	margin-bottom: var(--space-xl);
+  border-radius: var(--radius-lg);
 }
 
 .hero-3scapes .btn-primary {

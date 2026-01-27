@@ -113,11 +113,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
       <div class="portal-grid">
         <div class="portal-card">
-          <i class="fa-solid fa-lock card-icon"></i>
-          <h4>No Quest Sharing</h4>
+          <i class="fa-solid fa-shield-halved card-icon"></i>
+          <h4>Exclusive Guilds</h4>
           <p>
-            Quest information cannot be shared between players. Every solution must be
-            discovered on your own - a true test of wit.
+            Discover guilds unique to 3Scapes that don't exist in 3Kingdoms, each with
+            their own powers, lore, and advancement paths.
           </p>
         </div>
 
@@ -125,8 +125,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <i class="fa-solid fa-landmark card-icon"></i>
           <h4>Foundation</h4>
           <p>
-            The central hub is called Foundation, not Pinnacle. A reimagined crossroads
-            serving as the heart of this dimension.
+            The central hub is called Foundation. The primary city that serves as the heart of this dimension.
           </p>
         </div>
 
@@ -134,8 +133,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <i class="fa-solid fa-map card-icon"></i>
           <h4>Exclusive Areas</h4>
           <p>
-            Discover locations found nowhere else, including the popular Smurfland 2 and
-            Smurfland 3 - unique to 3Scapes.
+            Discover locations found nowhere else, including Idavallen, The Hunger Games, and the Chaos Haberdashery.
           </p>
         </div>
 
@@ -143,8 +141,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <i class="fa-solid fa-puzzle-piece card-icon"></i>
           <h4>Solo Discovery</h4>
           <p>
-            With no quest info sharing, puzzles remain genuinely challenging. Your victories
-            are truly earned.
+            With no quest info sharing, puzzles remain genuinely challenging. Your victories are truly earned.
           </p>
         </div>
 
@@ -161,8 +158,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <i class="fa-solid fa-users card-icon"></i>
           <h4>Distinct Community</h4>
           <p>
-            A tight-knit community with its own culture, events, and traditions that have
-            evolved over the years.
+            A tight-knit community with its own culture, events, and traditions that have evolved over the years.
           </p>
         </div>
       </div>

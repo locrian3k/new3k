@@ -35,7 +35,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             caused a ripple effect, effectively copying the base universe itself.
           </p>
           <p>
-            This massive upheaval gave birth to <span class="scapes-highlight">3Scapes</span> -
+            This massive upheaval gave birth to <span class="scapes-highlight">3Scapes</span>,
             an alternative dimension similar in many respects, but completely unique in its own ways.
             Communication across dimensions is possible, and you can retain your character identity
             in both worlds, but beyond that, everything else is distinct.
@@ -72,8 +72,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="timeline-content">
             <h3>Foundation Emerges</h3>
             <p>
-              The central hub transformed. What was once Pinnacle became Foundation - a new
-              crossroads for the three realms in this parallel dimension.
+              The central hub transformed. What was once Pinnacle became Foundation, a new crossroads for the three
+              realms in this parallel dimension.
             </p>
           </div>
         </div>
@@ -83,8 +83,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="timeline-content">
             <h3>Divergent Paths</h3>
             <p>
-              The two dimensions began evolving separately. New areas, quests, and guild features
-              emerged exclusively in 3Scapes, forging its own identity.
+              The two dimensions began evolving separately. New areas, quests, and guild features emerged exclusively in
+              3Scapes, forging its own identity.
             </p>
           </div>
         </div>
@@ -267,4 +267,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 <script src="/design/script/script_main.js"></script>
 </body>
+
 </html>

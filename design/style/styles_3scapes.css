@@ -765,7 +765,7 @@
 		var(--clr-3s-orange-glow),
 		transparent
 	);
-	transform: translate(-50%, -50%) rotate(-15deg);
+	transform: translate(-50%, -50%) rotate(-10deg);
 	opacity: 0.3;
 	pointer-events: none;
 }

@@ -30,7 +30,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
         <div class="intro-content">
           <p>
-            At one unknown point in the past, a universal anomaly formed of primordial energy
+            In the past, a universal anomaly formed of primordial energy
             pierced the dimension of 3Kingdoms. The resulting cataclysmic eruption of force
             caused a ripple effect, effectively copying the base universe itself.
           </p>

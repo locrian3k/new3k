@@ -1,31 +1,25 @@
 /* ============================= */
 /* 3SCAPES DEDICATED STYLESHEET  */
 /* ============================= */
-/* A distinct visual identity emphasizing:
-   - Split/dual design (blue vs orange from logo)
-   - Glassmorphism/portal effects
-   - Darker, mysterious atmosphere
-   - Dimensional rift theme
-*/
 
 /* ============================= */
 /* 3SCAPES CSS VARIABLES         */
 /* ============================= */
 :root {
-	/* 3Scapes Primary Colors - Blue Side (Cold/Mystery) */
+	/* 3Scapes Primary Colors - Blue Side */
 	--clr-3s-blue-light: #4A90B8;
 	--clr-3s-blue: #2C5F7C;
 	--clr-3s-blue-dark: #1A3A4D;
 	--clr-3s-blue-glow: rgba(74, 144, 184, 0.4);
 
-	/* 3Scapes Primary Colors - Orange/Red Side (Warmth/Energy) */
+	/* 3Scapes Primary Colors - Orange/Red Side */
 	--clr-3s-orange-light: #F39C12;
 	--clr-3s-orange: #E67E22;
 	--clr-3s-orange-dark: #D35400;
 	--clr-3s-red: #C0392B;
 	--clr-3s-orange-glow: rgba(230, 126, 34, 0.4);
 
-	/* 3Scapes Background Colors - Darker, more mysterious */
+	/* 3Scapes Background Colors - Darker */
 	--clr-3s-void: #050608;
 	--clr-3s-bg-dark: #080A0E;
 	--clr-3s-bg-main: #0A0E14;
@@ -840,7 +834,10 @@
 	}
 
 	.hero-3scapes::after {
-		display: none;
+		width: 1px;
+		top: 20%;
+		bottom: 20%;
+		opacity: 0.4;
 	}
 
 	.scapes-split {

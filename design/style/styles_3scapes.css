@@ -132,7 +132,7 @@
 }
 
 .hero-3scapes .btn-primary {
-	background: linear-gradient(90deg, var(--clr-3s-blue) 0%, var(--clr-3s-orange-dark) 100%);
+	background: linear-gradient(75deg, var(--clr-3s-blue) 0%, var(--clr-3s-orange-dark) 100%);
 	border: 1px solid rgba(255, 255, 255, 0.1);
 	box-shadow: var(--rift-glow);
 	transition: all 0.3s ease;

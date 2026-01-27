@@ -39,6 +39,15 @@
 	--rift-glow: 0 0 60px rgba(74, 144, 184, 0.3), 0 0 60px rgba(230, 126, 34, 0.3);
 }
 
+.btn-primary {
+	background: linear-gradient(90deg, var(--clr-3s-blue) 0%, var(--clr-3s-blue) 20%, var(--clr-3s-orange-dark) 80%, var(--clr-3s-orange-dark) 100%);
+	background-size: 120% 100%;
+	background-position: center;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: var(--rift-glow);
+	transition: all 0.3s ease;
+}
+
 /* ============================= */
 /* 3SCAPES HERO - RIFT PORTAL    */
 /* ============================= */
@@ -130,15 +139,6 @@
 	text-transform: uppercase;
 	margin-bottom: var(--space-xl);
   border-radius: var(--radius-lg);
-}
-
-.hero-3scapes .btn-primary {
-	background: linear-gradient(90deg, var(--clr-3s-blue) 0%, var(--clr-3s-blue) 20%, var(--clr-3s-orange-dark) 80%, var(--clr-3s-orange-dark) 100%);
-	background-size: 120% 100%;
-	background-position: center;
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	box-shadow: var(--rift-glow);
-	transition: all 0.3s ease;
 }
 
 .hero-3scapes .btn-primary:hover {

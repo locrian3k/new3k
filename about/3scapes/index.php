@@ -208,7 +208,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
         <div class="mosaic-item">
           <i class="fa-solid fa-star"></i>
-          <span>Exclusive Smurfland areas</span>
+          <span>Exclusive areas</span>
         </div>
         <div class="mosaic-item">
           <i class="fa-solid fa-brain"></i>
@@ -244,8 +244,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="cta-content">
         <h2 class="cta-title">Ready to Explore Another Dimension?</h2>
         <p class="cta-text">
-          Step through the rift and discover a world that mirrors yet defies everything you know.
-          Your parallel adventure awaits.
+          Step through the rift and discover a world that mirrors, yet defies, everything you know. Your parallel adventure awaits.
         </p>
 
         <div class="cta-buttons">

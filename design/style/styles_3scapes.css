@@ -759,13 +759,13 @@
 	width: 150%;
 	height: 300px;
 	background: linear-gradient(
-		135deg,
+		90deg,
 		transparent,
 		var(--clr-3s-blue-glow),
 		var(--clr-3s-orange-glow),
 		transparent
 	);
-	transform: translate(-50%, -50%) rotate(-5deg);
+	transform: translate(-50%, -50%) rotate(-15deg);
 	opacity: 0.3;
 	pointer-events: none;
 }

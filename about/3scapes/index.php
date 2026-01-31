@@ -253,9 +253,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </p>
 
         <div class="cta-buttons">
-          <button class="btn-primary" onclick="window.open('https://3scapes.org:3240');">
+          <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary">
             Enter 3Scapes
-          </button>
+          </a>
           <a href="/about/3kingdoms/index.php" class="btn-secondary">Explore 3Kingdoms</a>
         </div>
       </div>

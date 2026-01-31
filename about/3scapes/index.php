@@ -171,29 +171,37 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <h2>Quick Tips for New Explorers</h2>
       </div>
 
-      <div class="tips-grid">
-        <div class="tip-card">
-          <i class="fa-solid fa-comments card-icon"></i>
-          <h4>Talk to NPCs</h4>
-          <p>Non-player characters offer quests, guidance, and valuable information. Don't skip the dialogue!</p>
+      <div class="tips-path">
+        <div class="tip-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Talk to NPCs</h4>
+            <p>Non-player characters offer quests, guidance, and valuable information. Don't skip the dialogue!</p>
+          </div>
         </div>
 
-        <div class="tip-card">
-          <i class="fa-solid fa-circle-question card-icon"></i>
-          <h4>Use 'help newbie'</h4>
-          <p>The in-game help system is your best friend. Type <code>help newbie</code> to get started.</p>
+        <div class="tip-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Use 'help newbie'</h4>
+            <p>The in-game help system is your best friend. Type <code>help newbie</code> to get started.</p>
+          </div>
         </div>
 
-        <div class="tip-card">
-          <i class="fa-solid fa-hand-fist card-icon"></i>
-          <h4>Join a Guild Early</h4>
-          <p>Guilds unlock powerful abilities and connect you with experienced players who can mentor you.</p>
+        <div class="tip-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Join a Guild Early</h4>
+            <p>Guilds unlock powerful abilities and connect you with experienced players who can mentor you.</p>
+          </div>
         </div>
 
-        <div class="tip-card">
-          <i class="fa-solid fa-people-group card-icon"></i>
-          <h4>Ask on Chat</h4>
-          <p>Use the <code>newbie</code> channel freely. Our community loves helping new adventurers find their way.</p>
+        <div class="tip-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Ask on Chat</h4>
+            <p>Use the <code>newbie</code> channel freely. Our community loves helping new adventurers find their way.</p>
+          </div>
         </div>
       </div>
     </div>

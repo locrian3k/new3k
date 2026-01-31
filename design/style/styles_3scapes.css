@@ -596,83 +596,110 @@
 	font-size: var(--fs-h2);
 }
 
-.tips-grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: var(--space-lg);
+/* Numbered Steps Path */
+.tips-path {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
 	position: relative;
 	z-index: 1;
+	max-width: 1000px;
+	margin: 0 auto;
 }
 
-.tip-card {
-	background: var(--glass-bg);
-	backdrop-filter: var(--glass-blur);
-	-webkit-backdrop-filter: var(--glass-blur);
-	border: 1px solid var(--glass-border);
-	border-radius: var(--radius-lg);
-	padding: var(--space-lg);
+/* Connecting line behind steps */
+.tips-path::before {
+	content: "";
+	position: absolute;
+	top: 24px;
+	left: 40px;
+	right: 40px;
+	height: 3px;
+	background: linear-gradient(
+		90deg,
+		var(--clr-3s-blue),
+		var(--clr-3s-blue-light) 33%,
+		var(--clr-3s-orange-light) 66%,
+		var(--clr-3s-orange)
+	);
+	z-index: 0;
+}
+
+.tip-step {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	text-align: center;
+	flex: 1;
+	max-width: 200px;
+	position: relative;
+}
+
+.step-number {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--ff-heading);
+	font-size: 1.4rem;
+	font-weight: bold;
+	margin-bottom: var(--space-md);
+	position: relative;
+	z-index: 2;
 	transition: all 0.3s ease;
 }
 
-.tip-card:nth-child(odd) {
-	border-top: 2px solid var(--clr-3s-blue);
-}
-
-.tip-card:nth-child(even) {
-	border-top: 2px solid var(--clr-3s-orange);
-}
-
-.tip-card:hover {
-	transform: translateY(-5px);
-}
-
-.tip-card:nth-child(odd):hover {
-	box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 20px var(--clr-3s-blue-glow);
-}
-
-.tip-card:nth-child(even):hover {
-	box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 20px var(--clr-3s-orange-glow);
-}
-
-.tip-card .card-icon {
-	font-size: 2rem;
-	margin-bottom: var(--space-md);
-	display: block;
-}
-
-.tip-card:nth-child(odd) .card-icon {
-	color: var(--clr-3s-blue-light);
-}
-
-.tip-card:nth-child(even) .card-icon {
-	color: var(--clr-3s-orange);
-}
-
-.tip-card h4 {
-	font-family: var(--ff-heading);
-	font-size: 1.1rem;
+/* Alternating colors for step numbers */
+.tip-step:nth-child(odd) .step-number {
+	background: var(--clr-3s-blue);
 	color: var(--clr-3s-text-heading);
-	margin-bottom: var(--space-sm);
+	box-shadow: 0 0 20px var(--clr-3s-blue-glow);
 }
 
-.tip-card p {
+.tip-step:nth-child(even) .step-number {
+	background: var(--clr-3s-orange);
+	color: var(--clr-3s-text-heading);
+	box-shadow: 0 0 20px var(--clr-3s-orange-glow);
+}
+
+.tip-step:hover .step-number {
+	transform: scale(1.1);
+}
+
+.tip-step:nth-child(odd):hover .step-number {
+	box-shadow: 0 0 30px var(--clr-3s-blue-glow), 0 0 40px var(--clr-3s-blue-glow);
+}
+
+.tip-step:nth-child(even):hover .step-number {
+	box-shadow: 0 0 30px var(--clr-3s-orange-glow), 0 0 40px var(--clr-3s-orange-glow);
+}
+
+.step-content {
+	padding: 0 var(--space-sm);
+}
+
+.step-content h4 {
+	font-family: var(--ff-heading);
+	font-size: 1rem;
+	color: var(--clr-3s-text-heading);
+	margin-bottom: var(--space-xs);
+}
+
+.step-content p {
 	color: var(--clr-3s-text-secondary);
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 	line-height: var(--lh-normal);
 }
 
-.tip-card code {
+.step-content code {
 	background: rgba(0, 0, 0, 0.4);
 	color: var(--clr-3s-text-glow);
-	padding: 0.15rem 0.4rem;
+	padding: 0.1rem 0.3rem;
 	border-radius: var(--radius-sm);
 	font-family: "Courier New", monospace;
-	font-size: 0.85rem;
-}
-
-.connect-card.card-orange .btn-primary {
-	background: linear-gradient(135deg, var(--clr-3s-orange-dark), var(--clr-3s-orange));
+	font-size: 0.8rem;
 }
 
 /* ============================= */
@@ -813,8 +840,19 @@
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	.tips-grid {
-		grid-template-columns: repeat(2, 1fr);
+	.tips-path {
+		flex-wrap: wrap;
+		gap: var(--space-xl);
+		justify-content: center;
+	}
+
+	.tips-path::before {
+		display: none;
+	}
+
+	.tip-step {
+		flex: 0 0 40%;
+		max-width: 250px;
 	}
 
 	.features-mosaic {
@@ -884,8 +922,16 @@
 		grid-template-columns: 1fr;
 	}
 
-	.tips-grid {
-		grid-template-columns: 1fr;
+	.tips-path {
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-lg);
+	}
+
+	.tip-step {
+		flex: 0 0 auto;
+		max-width: 300px;
+		width: 100%;
 	}
 
 	.features-mosaic {

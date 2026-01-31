@@ -2322,12 +2322,7 @@ main {
 }
 
 /* Connection Page Flip Card Styles */
-.connect-faq .faq-item,
-.connect-faq .faq-inner,
-.connect-faq .faq-item-front,
-.connect-faq .faq-item-back {
-	min-height: 550px;
-}
+/* Height is set dynamically by JavaScript to match the tallest card */
 
 .connect-faq .faq-item {
 	perspective: 1000px;

@@ -110,6 +110,66 @@ document.addEventListener("click", function (e) {
 // FLIP CARDS (Connection Options Page)
 // ------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
+  // Only run if flip cards exist
+  const faqItems = document.querySelectorAll('.connect-faq .faq-item');
+  if (faqItems.length === 0) return;
+
+  // Calculate the maximum height needed for all card faces
+  function setEqualCardHeights() {
+    let maxHeight = 0;
+
+    // Reset heights to auto to measure natural content height
+    faqItems.forEach(function(card) {
+      const front = card.querySelector('.faq-item-front');
+      const back = card.querySelector('.faq-item-back');
+
+      if (front) front.style.height = 'auto';
+      if (back) back.style.height = 'auto';
+      card.style.height = 'auto';
+
+      const inner = card.querySelector('.faq-item-inner');
+      if (inner) inner.style.height = 'auto';
+    });
+
+    // Measure all fronts and backs to find the tallest
+    faqItems.forEach(function(card) {
+      const front = card.querySelector('.faq-item-front');
+      const back = card.querySelector('.faq-item-back');
+
+      if (front) {
+        const frontHeight = front.scrollHeight;
+        if (frontHeight > maxHeight) maxHeight = frontHeight;
+      }
+      if (back) {
+        const backHeight = back.scrollHeight;
+        if (backHeight > maxHeight) maxHeight = backHeight;
+      }
+    });
+
+    // Add a small buffer for padding
+    maxHeight += 20;
+
+    // Apply the max height to all cards
+    faqItems.forEach(function(card) {
+      card.style.height = maxHeight + 'px';
+
+      const inner = card.querySelector('.faq-item-inner');
+      if (inner) inner.style.height = maxHeight + 'px';
+
+      const front = card.querySelector('.faq-item-front');
+      const back = card.querySelector('.faq-item-back');
+
+      if (front) front.style.height = maxHeight + 'px';
+      if (back) back.style.height = maxHeight + 'px';
+    });
+  }
+
+  // Run on load
+  setEqualCardHeights();
+
+  // Re-run on window resize
+  window.addEventListener('resize', setEqualCardHeights);
+
   // Handle flip card clicks
   document.querySelectorAll('.faq-item').forEach(function(card) {
     card.addEventListener('click', function() {

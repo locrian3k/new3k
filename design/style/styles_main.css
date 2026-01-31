@@ -2669,7 +2669,7 @@ footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	padding: 1rem 0;
 	pointer-events: none;
 	z-index: 0;
@@ -2738,10 +2738,9 @@ footer {
 
 /* Last updated text in footer */
 .updated {
-	margin-top: 1rem !important;
+	margin-top: 1rem;
 	font-size: 0.7rem;
 	font-family: var(--ff-heading);
-	color: var(--clr-text-secondary);
 	opacity: 0.6;
 	letter-spacing: 0.05em;
 }

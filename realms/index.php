@@ -58,16 +58,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-features">
           <h3>Notable Locations</h3>
           <div class="realm-features-grid">
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/icy_blue_portal.png');">
+            <div class="realm-feature-item" style="background-image: url('/images/ai-areas/icy_blue_portal.png');">
               <h4>Land of the Ice People</h4>
               <p>Icy blue portal area description.
               </p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/murusFaralain.png');">
+            <div class="realm-feature-item" style="background-image: url('/images/ai-areas/murusFaralain.png');">
               <h4>Murus Faralain</h4>
               <p>Something something, an abandoned city.</p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/westerseaDocks.png');">
+            <div class="realm-feature-item" style="background-image: url('/images/ai-areas/westerseaDocks.png');">
               <h4>Westersea Docks</h4>
               <p>Something about Westersea Docks.</p>
             </div>
@@ -139,15 +139,15 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-features">
           <h3>Notable Locations</h3>
           <div class="realm-features-grid">
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/houstonTransport.png');">
+            <div class="realm-feature-item" style="background-image: url('/images/ai-areas/houstonTransport.png');">
               <h4>Midway Space Station</h4>
               <p>Humanity's foothold in space, where the elite live above the troubles of Earth.</p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/lastChanceTruckStop.png');">
+            <div class="realm-feature-item" style="background-image: url('/images/ai-areas/lastChanceTruckStop.png');">
               <h4>Last Chance Truck Stop</h4>
               <p>A haven for road warriors and wanderers in the irradiated wastelands between cities.</p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/mantis_swamp.png');">
+            <div class="realm-feature-item" style="background-image: url('/images/ai-areas/mantis_swamp.png');">
               <h4>Mantis Swamp</h4>
               <p>Some description about Mantis Swamp.</p>
             </div>
@@ -218,16 +218,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="realm-features">
           <h3>Notable Locations</h3>
           <div class="realm-features-grid">
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/gamers_house.png');">
+            <div class="realm-feature-item" style="background-image: url('/images/ai-areas/gamers_house.png');">
               <h4>Gamer's House</h4>
               <p>A peculiar dwelling where reality and games blur together in unexpected ways.</p>
             </div>
-            <div class="realm-feature-item" style="background-image: url('/images/scrolling/mahjongg.png');">
+            <div class="realm-feature-item" style="background-image: url('/images/ai-areas/mahjongg.png');">
               <h4>Mahjongg</h4>
               <p>An ancient gaming hall where tiles hold more power than they appear.</p>
             </div>
             <div class="realm-feature-item"
-              style="background-image: url('/images/scrolling/terras_terrific_treehouse.png');">
+              style="background-image: url('/images/ai-areas/terras_terrific_treehouse.png');">
               <h4>Terra's Terrific Treehouse</h4>
               <p>A whimsical treehouse that defies the laws of physics and architecture.</p>
             </div>

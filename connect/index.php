@@ -483,7 +483,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary connection-btn-auto">
           Connect Now
         </a>
-        <a href="/about/3k/index.php" class="btn-secondary"
+        <a href="/about/3kingdoms/index.php" class="btn-secondary"
           >Learn More About 3K</a
         >
       </div>

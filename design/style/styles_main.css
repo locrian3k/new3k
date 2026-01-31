@@ -3022,7 +3022,8 @@ footer {
 
 /* DESKTOP */
 @media (min-width: 1200px) {
-	.features-grid {
+	.quick-access,
+  .features-grid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 	}

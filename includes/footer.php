@@ -5,7 +5,7 @@
 					<div class="footer-nav-column">
 						<h3>Game Info</h3>
 						<ul>
-							<li><a href="/about/3k/index.php">About 3Kingdoms</a></li>
+							<li><a href="/about/3kingdoms/index.php">About 3Kingdoms</a></li>
 							<li><a href="/about/3scapes/index.php">About 3Scapes</a></li>
 							<li><a href="/guilds/index.php">Guilds</a></li>
 							<li><a href="/quests/index.php">Quests</a></li>
@@ -26,13 +26,13 @@
 					<div class="footer-nav-column">
 						<h3>Community</h3>
 						<ul>
+              <li><a href="/community/flyers/index.php">Download Flyers</a></li>
 							<li><a href="http://forums.3k.org" target="_blank">Forums</a></li>
+              <li><a href="/community/gallery/index.php">Gallery</a></li>
 							<li><a href="/community/omp/index.php">Official Mud Parties</a></li>
-							<li><a href="/community/gallery/index.php">Gallery</a></li>
 							<li><a href="/community/wholist.php">Who's Online</a></li>
-							<li><a href="/community/flyers/index.php">Download Flyers</a></li>
-							<li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
-							<li><a href="https://wemudtogether.com" target="_blank">We Mud Together</a></li>              
+							<li><a href="https://wemudtogether.com" target="_blank">We Mud Together</a></li>
+              <li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>           
 						</ul>
 					</div>
 

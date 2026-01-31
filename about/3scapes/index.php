@@ -13,9 +13,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <h1 class="hero-title">3Scapes</h1>
       <p class="hero-subtitle">A Parallel Dimension Awaits</p>
       <div class="hero-actions">
-        <button class="btn-primary" onclick="window.open('https://3scapes.org:3240');">
+        <a href class="btn-primary">
           Enter the Rift
-        </button>
+        </a>
       </div>
     </div>
   </section>
@@ -108,13 +108,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     <div class="scapes-container">
       <div class="differences-header">
         <h2>What Sets 3Scapes Apart</h2>
-        <p>Key differences from its sister dimension</p>
       </div>
 
       <div class="portal-grid">
         <div class="portal-card">
           <i class="fa-solid fa-shield-halved card-icon"></i>
-          <h4>Exclusive Guilds</h4>
+          <h4>Exciting Guilds</h4>
           <p>
             Discover guilds unique to 3Scapes that don't exist in 3Kingdoms, each with
             their own powers, lore, and advancement paths.
@@ -251,7 +250,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <button class="btn-primary" onclick="window.open('https://3scapes.org:3240');">
             Enter 3Scapes
           </button>
-          <a href="/about/3k/index.php" class="btn-secondary">Explore 3Kingdoms</a>
+          <a href="/about/3kingdoms/index.php" class="btn-secondary">Explore 3Kingdoms</a>
         </div>
       </div>
     </div>

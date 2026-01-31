@@ -75,7 +75,7 @@
 									<span class="arrow">About</span>
 								</button>
 								<ul class="dropdown">
-									<li><a href="/about/3k/index.php">3Kingdoms</a></li>
+									<li><a href="/about/3kingdoms/index.php">3Kingdoms</a></li>
 									<li><a href="/about/3scapes/index.php">3Scapes</a></li>
 								</ul>
 							</li>
@@ -100,14 +100,6 @@
 										<a href="http://forums.3k.org" target="_blank">Forums</a>
 									</li>
                   <li><a href="/community/wholist.php">Who's Online</a></li>
-                  <li><a href="/community/omp/index.php">OMPs</a></li>
-									<li>
-										<a href="http://3kwiki.com/wiki" target="_blank">Wiki</a>
-									</li>
-									<li>
-										<a href="https://wemudtogether.com" target="_blank"
-											>We Mud Together</a>
-									</li>
 								</ul>
 							</li>
 							<li class="has-dropdown">
@@ -115,12 +107,12 @@
 									<span class="arrow">Support</span>
 								</button>
 								<ul class="dropdown">
+                  <li><a href="/support/contact/index.php">Contact</a></li>
 									<li>
 										<a href="/support/vafs/index.php">
                       <abbr title="Voluntary Access Fees">VAFs</abbr>
                     </a>
 									</li>
-									<li><a href="/support/contact/index.php">Contact</a></li>
 								</ul>
 							</li>
 						</ul>

@@ -2966,7 +2966,7 @@ main {
 	height: 100%;
 	backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
-	border-radius: var(--radius-lg);
+	border-radius: var(--card-border-radius);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -2975,17 +2975,31 @@ main {
 	text-align: center;
 	box-sizing: border-box;
 	background: rgba(25, 52, 85, 0.3);
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .guild-flip-back {
 	transform: rotateY(180deg);
-	background: linear-gradient(135deg, rgba(25, 52, 85, 0.5), rgba(17, 35, 58, 0.7));
-	border: 1px solid rgba(255, 255, 255, 0.15);
+	background: rgba(25, 52, 85, 0.3);
+}
+
+/* Varying border colors for guild flip cards */
+.guild-flip-card:nth-child(3n+1) .guild-flip-front,
+.guild-flip-card:nth-child(3n+1) .guild-flip-back {
+	border-color: rgba(212, 74, 2, 0.3);
+}
+
+.guild-flip-card:nth-child(3n+2) .guild-flip-front,
+.guild-flip-card:nth-child(3n+2) .guild-flip-back {
+	border-color: rgba(99, 160, 195, 0.3);
+}
+
+.guild-flip-card:nth-child(3n+3) .guild-flip-front,
+.guild-flip-card:nth-child(3n+3) .guild-flip-back {
+	border-color: rgba(212, 160, 46, 0.3);
 }
 
 .guild-flip-card:not(.flipped) .guild-flip-front:hover {
-	border-color: rgba(255, 255, 255, 0.2);
 	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 

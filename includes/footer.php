@@ -62,6 +62,7 @@
             <p class="footer-copyright-text">
               Content, source, aesthetics & originality &copy;1993-<?php echo date("Y"); ?>, The Marble Group, Inc.
             </p>
+            <p class="updated">Last updated: <?php echo date("F j, Y"); ?></p>
           </div>
 				</div>
 			</div>

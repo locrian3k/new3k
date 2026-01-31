@@ -2736,13 +2736,14 @@ footer {
 	font-size: 0.8rem;
 }
 
-/*this is a div at the footer area to state when the page was last updated*/
+/* Last updated text in footer */
 .updated {
-	position: absolute;
-	left: 5%;
-	bottom: 1.5rem;
-	font-size: 0.5rem;
+	margin-top: 1rem !important;
+	font-size: 0.7rem;
 	font-family: var(--ff-heading);
+	color: var(--clr-text-secondary);
+	opacity: 0.6;
+	letter-spacing: 0.05em;
 }
 
 /* Responsive adjustments */

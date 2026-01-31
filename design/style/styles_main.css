@@ -2654,8 +2654,8 @@ footer {
 	font-size: var(--fs-body-small);
 	color: var(--clr-text-secondary);
 	margin: 2rem 0 1rem;
-	padding: 2rem 1rem;
-	min-height: 150px;
+	padding: 3rem 1rem;
+	min-height: 200px;
 }
 
 /* Watermark container - logos stacked vertically */
@@ -2670,14 +2670,24 @@ footer {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0.5rem 0;
-	opacity: 0.12;
+	padding: 1rem 0;
 	pointer-events: none;
 	z-index: 0;
 }
 
 .footer-watermark img {
-	filter: grayscale(100%) brightness(1.5);
+	filter: grayscale(50%) brightness(1.2);
+	opacity: 0.25;
+	transition: filter 0.3s, opacity 0.3s;
+}
+
+.footer-watermark a {
+	pointer-events: auto;
+}
+
+.footer-watermark a:hover img {
+	filter: grayscale(0%) brightness(1);
+	opacity: 0.9;
 }
 
 .footer-watermark .watermark-top {
@@ -2709,10 +2719,6 @@ footer {
 
 .footer-copyright-info p {
 	margin: 0.25rem 0;
-}
-
-.footer-copyright-info p:first-of-type {
-  margin-top: 3rem;
 }
 
 .footer-copyright-info a {
@@ -2751,6 +2757,12 @@ footer {
 	.btn-secondary {
 		width: 77%;
 		max-width: 300px;
+	}
+
+	.footer-nav {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem 1rem;
 	}
 
 	.stats-grid {

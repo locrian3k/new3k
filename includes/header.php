@@ -72,15 +72,6 @@
 							<li><a href="/index.php">Home</a></li>
 							<li class="has-dropdown">
 								<button class="dropdown-toggle" aria-expanded="false">
-									<span class="arrow">About</span>
-								</button>
-								<ul class="dropdown">
-									<li><a href="/about/3kingdoms/index.php">3Kingdoms</a></li>
-									<li><a href="/about/3scapes/index.php">3Scapes</a></li>
-								</ul>
-							</li>
-							<li class="has-dropdown">
-								<button class="dropdown-toggle" aria-expanded="false">
 									<span class="arrow">Play</span>
 								</button>
 								<ul class="dropdown">
@@ -90,7 +81,16 @@
 									</li>
 								</ul>
 							</li>
-							<li><a href="/guilds/index.php">Guilds</a></li>
+              <li><a href="/guilds/index.php">Guilds</a></li>            
+							<li class="has-dropdown">
+								<button class="dropdown-toggle" aria-expanded="false">
+									<span class="arrow">About</span>
+								</button>
+								<ul class="dropdown">
+									<li><a href="/about/3kingdoms/index.php">3Kingdoms</a></li>
+									<li><a href="/about/3scapes/index.php">3Scapes</a></li>
+								</ul>
+							</li>
 							<li class="has-dropdown">
 								<button class="dropdown-toggle" aria-expanded="false">
 									<span class="arrow">Community</span>
@@ -114,7 +114,7 @@
                     </a>
 									</li>
 								</ul>
-							</li>
+							</li>                
 						</ul>
 					</div>
 				</nav>

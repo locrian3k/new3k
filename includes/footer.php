@@ -2,16 +2,6 @@
 		<footer>
 			<div class="footer-content">
 				<div class="footer-nav">
-					<div class="footer-nav-column">
-						<h3>Game Info</h3>
-						<ul>
-							<li><a href="/about/3kingdoms/index.php">About 3Kingdoms</a></li>
-							<li><a href="/about/3scapes/index.php">About 3Scapes</a></li>
-							<li><a href="/guilds/index.php">Guilds</a></li>
-							<li><a href="/quests/index.php">Quests</a></li>
-							<li><a href="/realms/index.php">Realms</a></li>
-						</ul>
-					</div>
 
 					<div class="footer-nav-column">
 						<h3>Get Playing</h3>
@@ -20,6 +10,27 @@
 							<li>
 								<a href="/connect/index.php">Connection Options</a>
 							</li>
+						</ul>
+					</div>
+
+					<div class="footer-nav-column">
+						<h3>Support</h3>
+						<ul>
+							<li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
+							<li><a href="/support/admin/index.php">Admin</a></li>
+							<li><a href="/support/contact/index.php">Contact</a></li>
+						</ul>
+					</div>
+				</div>          
+
+					<div class="footer-nav-column">
+						<h3>Game Info</h3>
+						<ul>
+							<li><a href="/about/3kingdoms/index.php">About 3Kingdoms</a></li>
+							<li><a href="/about/3scapes/index.php">About 3Scapes</a></li>
+							<li><a href="/guilds/index.php">Guilds</a></li>
+							<li><a href="/quests/index.php">Quests</a></li>
+							<li><a href="/realms/index.php">Realms</a></li>
 						</ul>
 					</div>
 
@@ -35,16 +46,6 @@
               <li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>           
 						</ul>
 					</div>
-
-					<div class="footer-nav-column">
-						<h3>Support</h3>
-						<ul>
-							<li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
-							<li><a href="/support/admin/index.php">Admin</a></li>
-							<li><a href="/support/contact/index.php">Contact</a></li>
-						</ul>
-					</div>
-				</div>
 
 				<div class="footer-copyright">
           <div class="footer-copyright-info">

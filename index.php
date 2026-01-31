@@ -153,7 +153,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 				<div class="features-grid">
 					<div class="feature-card">
 						<i class="fas fa-shield-alt feature-icon"></i>
-						<h3 class="feature-title">12+ Guilds</h3>
+						<h3 class="feature-title">15+ Guilds</h3>
 						<p class="feature-desc">
 							Knights, Necromancers, Juggernauts, and more. Each with unique
 							powers and social hubs.

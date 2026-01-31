@@ -1,0 +1,481 @@
+<?php
+$pageTitle = "Guilds - 3Kingdoms";
+include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
+?>
+
+<!-- Main Content -->
+<main id="content">
+  <!-- Hero Section -->
+  <section class="hero hero-default">
+    <div class="hero-content">
+      <h1 class="hero-title">Guilds of 3Kingdoms</h1>
+      <p class="hero-subtitle">Choose Your Path to Power</p>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="guilds-intro">
+    <div class="guilds-container">
+      <p class="intro-text">
+        Guilds are the heart of your character's identity in 3Kingdoms. Each guild offers unique powers,
+        abilities, and playstyles. Whether you seek the arcane mysteries of magic, the discipline of
+        martial combat, or the technological edge of science fiction, there's a guild waiting for you.
+      </p>
+      <p class="intro-text">
+        New players start in the <strong>Adventurer</strong> guild and can join a full guild upon reaching
+        Level 5. Choose wisely - your guild will shape your entire journey through the realms.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Guilds -->
+  <section class="guilds-section guilds-core">
+    <div class="guilds-container">
+      <div class="section-header">
+        <h2 class="section-title">Core Guilds</h2>
+        <p class="section-subtitle">Quick-start guilds designed for casual players - faster advancement with level caps</p>
+      </div>
+
+      <div class="guild-grid guild-grid-core">
+        <!-- Android -->
+        <div class="guild-card guild-card-science">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-robot guild-icon"></i>
+            <h3 class="guild-name">Android</h3>
+            <span class="guild-realm">Science</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Highly customizable robots that can deal death or absorb the most deadly of blows. With an array of components, they fit any situation - offensive, defensive, or balanced.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Core Guild</span>
+            <span class="guild-tag">Customizable</span>
+          </div>
+        </div>
+
+        <!-- Cleric -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-hand-holding-medical guild-icon"></i>
+            <h3 class="guild-name">Cleric</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Spiritual healers with offensive and defensive spells. Learn healing, utility spells, and powerful attacks that target an opponent's weakest defenses.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Core Guild</span>
+            <span class="guild-tag">Healer</span>
+          </div>
+        </div>
+
+        <!-- Fighter -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-shield-halved guild-icon"></i>
+            <h3 class="guild-name">Fighter</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Elite warriors focused on physical combat. Absorb huge attacks with armour and destroy opponents with weapons. Equipment is key to overwhelming stronger enemies.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Core Guild</span>
+            <span class="guild-tag">Tank</span>
+          </div>
+        </div>
+
+        <!-- Sorcerer -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-fire guild-icon"></i>
+            <h3 class="guild-name">Sorcerer</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Masters of elemental magics. Fire and ice bend to their will for protection and destruction. At high levels, summon powerful golems to defend in battle.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Core Guild</span>
+            <span class="guild-tag">Caster</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fantasy Guilds -->
+  <section class="guilds-section guilds-fantasy">
+    <div class="guilds-container">
+      <div class="section-header">
+        <h2 class="section-title">Fantasy Guilds</h2>
+        <p class="section-subtitle">Magic, steel, and ancient traditions from the realm of Fantasy</p>
+      </div>
+
+      <div class="guild-grid">
+        <!-- Bards -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-music guild-icon"></i>
+            <h3 class="guild-name">Bards</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Passionate souls nourished by beauty and drawn to mystery. Master deadly combat songs, pure physical combat, soothing instruments, or shadow arts to gather knowledge unseen.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Versatile</span>
+            <span class="guild-tag">Music</span>
+          </div>
+        </div>
+
+        <!-- Bladesingers -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-feather-pointed guild-icon"></i>
+            <h3 class="guild-name">Bladesingers</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Ancient elven warriors returned to teach the old ways. Master fighting styles, read ancient runes, and call upon the Unseelie Court of the faerie world to enhance your combat.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Elven</span>
+            <span class="guild-tag">Runes</span>
+          </div>
+        </div>
+
+        <!-- Changelings -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-paw guild-icon"></i>
+            <h3 class="guild-name">Changelings</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>An ancient race with unnatural control over their cells. Shapeshift into mammals, reptiles, avians, and rumored dinosaur forms with lethal natural weaponry.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Shapeshifter</span>
+            <span class="guild-tag">Unique</span>
+          </div>
+        </div>
+
+        <!-- Elemental -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-tornado guild-icon"></i>
+            <h3 class="guild-name">Elemental</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Draw power from Fire, Water, Air, and Earth. Master each element independently before combining them. Renowned for sheer force and environmental manipulation.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Elements</span>
+            <span class="guild-tag">Offensive</span>
+          </div>
+        </div>
+
+        <!-- Knight -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-chess-knight guild-icon"></i>
+            <h3 class="guild-name">Knight</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Powerful warriors whose strength is sheathed within a code of honour. Not perfect, but always reaching for higher ideals. Glory in battle with noble purpose.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Honor</span>
+            <span class="guild-tag">Warrior</span>
+          </div>
+        </div>
+
+        <!-- Mage -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-hat-wizard guild-icon"></i>
+            <h3 class="guild-name">Mage</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Masters of sorcery with over 100 spells. Conjure powerful beasts, change form, and float above the ground. Trade physical strength for arcane power.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Arcane</span>
+            <span class="guild-tag">Summons</span>
+          </div>
+        </div>
+
+        <!-- Monk -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-hand-fist guild-icon"></i>
+            <h3 class="guild-name">Monk</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Born fighters needing no weapon or heavy armour. Study, meditate, and fight with bare hands. DEX and INT determine your devastating combat ability.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Martial Arts</span>
+            <span class="guild-tag">Unarmed</span>
+          </div>
+        </div>
+
+        <!-- Necromancer -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-skull guild-icon"></i>
+            <h3 class="guild-name">Necromancer</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Command ancient energies and ethereal forces. Hundreds of powers, extreme complexity, and hidden secrets await. The most intense guild experience in 3Kingdoms.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Dark Magic</span>
+            <span class="guild-tag">Complex</span>
+          </div>
+        </div>
+
+        <!-- Priest -->
+        <div class="guild-card guild-card-fantasy">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-cross guild-icon"></i>
+            <h3 class="guild-name">Priest</h3>
+            <span class="guild-realm">Fantasy</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Devoted followers granted extraordinary powers by their deities. Choose from 12 gods - good, neutral, or evil. Heal, damage, control weather and elements.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Divine</span>
+            <span class="guild-tag">12 Gods</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Science Guilds -->
+  <section class="guilds-section guilds-science">
+    <div class="guilds-container">
+      <div class="section-header">
+        <h2 class="section-title">Science Guilds</h2>
+        <p class="section-subtitle">Technology, psionics, and futuristic warfare from the realm of Science</p>
+      </div>
+
+      <div class="guild-grid">
+        <!-- Cyborg -->
+        <div class="guild-card guild-card-science">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-microchip guild-icon"></i>
+            <h3 class="guild-name">Cyborg</h3>
+            <span class="guild-realm">Science</span>
+          </div>
+          <div class="guild-card-body">
+            <p>"More human than human." The Cybernetic Research Corporation provides implants designed to maximize damage resistance, environmental mastery, and dealing death.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Implants</span>
+            <span class="guild-tag">Tech</span>
+          </div>
+        </div>
+
+        <!-- Fremen -->
+        <div class="guild-card guild-card-science">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-sun guild-icon"></i>
+            <h3 class="guild-name">Fremen</h3>
+            <span class="guild-realm">Science</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Fierce desert warriors from Arrakis. Swift attacks, mental anguish, mind control, and meditative self-healing. Enhanced fighting in groups.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Dune</span>
+            <span class="guild-tag">Tribal</span>
+          </div>
+        </div>
+
+        <!-- Gentech -->
+        <div class="guild-card guild-card-science">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-dna guild-icon"></i>
+            <h3 class="guild-name">Gentech</h3>
+            <span class="guild-realm">Science</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Refugees from a future sector war. Balance genetic enhancement and advanced technology. Perform experiments to acquire any power - the guild of choice.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Genetic</span>
+            <span class="guild-tag">Experimental</span>
+          </div>
+        </div>
+
+        <!-- Jedi -->
+        <div class="guild-card guild-card-science">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-jedi guild-icon"></i>
+            <h3 class="guild-name">Jedi</h3>
+            <span class="guild-realm">Science</span>
+          </div>
+          <div class="guild-card-body">
+            <p>No two Jedi advance the same way. Choose from 17 careers and 49 ability skills. Lightsabers, lightning, healing - all available if you train. Beware the Dark Side.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Star Wars</span>
+            <span class="guild-tag">Force</span>
+          </div>
+        </div>
+
+        <!-- Juggernaut -->
+        <div class="guild-card guild-card-science">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-user-astronaut guild-icon"></i>
+            <h3 class="guild-name">Juggernaut</h3>
+            <span class="guild-realm">Science</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Battletech-themed Elementals in Main Battle Armour. Choose suits ranging from purely offensive to purely defensive. Divided into clans with their own leadership.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Battletech</span>
+            <span class="guild-tag">Mech Suit</span>
+          </div>
+        </div>
+
+        <!-- Psicorps -->
+        <div class="guild-card guild-card-science">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-brain guild-icon"></i>
+            <h3 class="guild-name">Psicorps</h3>
+            <span class="guild-realm">Science</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Secret Marine Corps division using Psionic Implant Modules. Highly configurable - swap powers anytime to match the situation. Tank, DPS, or anything between.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Psionic</span>
+            <span class="guild-tag">Military</span>
+          </div>
+        </div>
+
+        <!-- Sii -->
+        <div class="guild-card guild-card-science">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-virus guild-icon"></i>
+            <h3 class="guild-name">Sii</h3>
+            <span class="guild-realm">Science</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Alien symbionts that merge with host bodies. Inhabit prepared "forms" - leathery winged creatures, lizard humanoids, or human bodies. Adapt to survive.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Symbiont</span>
+            <span class="guild-tag">Alien</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Guilds -->
+  <section class="guilds-section guilds-other">
+    <div class="guilds-container">
+      <div class="section-header">
+        <h2 class="section-title">Specialty Guilds</h2>
+        <p class="section-subtitle">Unique guilds that transcend the realms or serve special purposes</p>
+      </div>
+
+      <div class="guild-grid">
+        <!-- Adventurer -->
+        <div class="guild-card guild-card-default">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-compass guild-icon"></i>
+            <h3 class="guild-name">Adventurer</h3>
+            <span class="guild-realm">Starting</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Your default starting guild. Learn the basics with consider, fireball, shock, and missile spells. Join a full guild upon reaching Level 5.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Starter</span>
+            <span class="guild-tag">Temporary</span>
+          </div>
+        </div>
+
+        <!-- Angel -->
+        <div class="guild-card guild-card-chaos">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-dove guild-icon"></i>
+            <h3 class="guild-name">Angel</h3>
+            <span class="guild-realm">Chaos</span>
+          </div>
+          <div class="guild-card-body">
+            <p>Mortals imbued with divine spark to restore cosmic balance. Develop martial combat, divine powers, or combine both. Your wings await.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Divine</span>
+            <span class="guild-tag">Balance</span>
+          </div>
+        </div>
+
+        <!-- Ascended -->
+        <div class="guild-card guild-card-chaos">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-mountain-sun guild-icon"></i>
+            <h3 class="guild-name">Ascended</h3>
+            <span class="guild-realm">Chaos</span>
+          </div>
+          <div class="guild-card-body">
+            <p>For those who've reached significant mortal power. Become the immortal manifestation of your soul. Requires High Mortal status and level 90+. Keep your mortal guild.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Prestige</span>
+            <span class="guild-tag">High Level</span>
+          </div>
+        </div>
+
+        <!-- Breed -->
+        <div class="guild-card guild-card-chaos">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-eye guild-icon"></i>
+            <h3 class="guild-name">Breed</h3>
+            <span class="guild-realm">Chaos</span>
+          </div>
+          <div class="guild-card-body">
+            <p>One of the eldest races, returned from exile with the power of the mind. Secretive, diverse, and highly individual. Each Breed forges their own destiny.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Psionic</span>
+            <span class="guild-tag">Ancient</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="guilds-cta">
+    <div class="guilds-container">
+      <h2>Ready to Choose Your Path?</h2>
+      <p>Connect to 3Kingdoms and explore the guild halls. Talk to guild members, ask questions, and find the perfect fit for your playstyle.</p>
+      <div class="cta-buttons">
+        <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary">Play Now</a>
+        <a href="/connect/index.php" class="btn-secondary">Connection Options</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
+
+<script src="/design/script/script_main.js"></script>
+</body>
+
+</html>

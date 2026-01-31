@@ -2579,6 +2579,292 @@ main {
 }
 
 /* ------------------- */
+/* GUILDS PAGE         */
+/* ------------------- */
+.guilds-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 var(--space-lg);
+}
+
+.guilds-intro {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-black);
+	text-align: center;
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.guilds-intro .intro-text {
+	max-width: 800px;
+	margin: 0 auto var(--space-md);
+	color: var(--clr-text-primary);
+	font-size: 1.1rem;
+	line-height: var(--lh-relaxed);
+}
+
+.guilds-intro .intro-text strong {
+	color: var(--clr-text-heading);
+}
+
+/* Guild Sections */
+.guilds-section {
+	padding: var(--space-3xl) var(--space-lg);
+}
+
+.guilds-core {
+	background: linear-gradient(180deg, var(--clr-bg-main) 0%, var(--clr-black) 100%);
+}
+
+.guilds-fantasy {
+	background: linear-gradient(180deg, rgba(212, 160, 46, 0.05) 0%, var(--clr-black) 100%);
+}
+
+.guilds-science {
+	background: linear-gradient(180deg, rgba(99, 160, 195, 0.05) 0%, var(--clr-black) 100%);
+}
+
+.guilds-other {
+	background: linear-gradient(180deg, rgba(212, 74, 2, 0.05) 0%, var(--clr-black) 100%);
+}
+
+.guilds-section .section-header {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+}
+
+.guilds-section .section-title {
+	color: var(--clr-text-heading);
+	font-size: var(--fs-h2);
+	margin-bottom: var(--space-sm);
+}
+
+.guilds-section .section-subtitle {
+	color: var(--clr-text-secondary);
+	font-size: 1rem;
+}
+
+/* Guild Grid */
+.guild-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--space-lg);
+}
+
+.guild-grid-core {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+/* Guild Cards */
+.guild-card {
+	background: rgba(25, 52, 85, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: var(--radius-lg);
+	padding: var(--space-lg);
+	display: flex;
+	flex-direction: column;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.guild-card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: var(--clr-gradient);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.guild-card:hover {
+	transform: translateY(-5px);
+	border-color: rgba(255, 255, 255, 0.2);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.guild-card:hover::before {
+	opacity: 1;
+}
+
+/* Realm-specific card colors */
+.guild-card-fantasy {
+	border-left: 3px solid var(--clr-fantasy);
+}
+
+.guild-card-fantasy:hover {
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 160, 46, 0.2);
+}
+
+.guild-card-science {
+	border-left: 3px solid var(--clr-science);
+}
+
+.guild-card-science:hover {
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 160, 195, 0.2);
+}
+
+.guild-card-chaos {
+	border-left: 3px solid var(--clr-chaos);
+}
+
+.guild-card-chaos:hover {
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 74, 2, 0.2);
+}
+
+.guild-card-default {
+	border-left: 3px solid var(--clr-text-secondary);
+}
+
+/* Guild Card Header */
+.guild-card-header {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: var(--space-md);
+}
+
+.guild-icon {
+	font-size: 2rem;
+	margin-bottom: var(--space-sm);
+	opacity: 0.9;
+}
+
+.guild-card-fantasy .guild-icon {
+	color: var(--clr-fantasy);
+}
+
+.guild-card-science .guild-icon {
+	color: var(--clr-science);
+}
+
+.guild-card-chaos .guild-icon {
+	color: var(--clr-chaos);
+}
+
+.guild-card-default .guild-icon {
+	color: var(--clr-text-secondary);
+}
+
+.guild-name {
+	font-family: var(--ff-heading);
+	font-size: 1.25rem;
+	color: var(--clr-text-heading);
+	margin: 0 0 var(--space-xs) 0;
+}
+
+.guild-realm {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	padding: 0.2rem 0.6rem;
+	border-radius: 50px;
+	background: rgba(255, 255, 255, 0.1);
+	color: var(--clr-text-secondary);
+}
+
+.guild-card-fantasy .guild-realm {
+	background: rgba(212, 160, 46, 0.2);
+	color: var(--clr-fantasy);
+}
+
+.guild-card-science .guild-realm {
+	background: rgba(99, 160, 195, 0.2);
+	color: var(--clr-science);
+}
+
+.guild-card-chaos .guild-realm {
+	background: rgba(212, 74, 2, 0.2);
+	color: var(--clr-chaos);
+}
+
+/* Guild Card Body */
+.guild-card-body {
+	flex: 1;
+	margin-bottom: var(--space-md);
+}
+
+.guild-card-body p {
+	color: var(--clr-text-primary);
+	font-size: 0.9rem;
+	line-height: var(--lh-normal);
+	margin: 0;
+}
+
+/* Guild Card Footer */
+.guild-card-footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-xs);
+}
+
+.guild-tag {
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	padding: 0.15rem 0.5rem;
+	border-radius: var(--radius-sm);
+	background: rgba(255, 255, 255, 0.05);
+	color: var(--clr-text-secondary);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Guilds CTA */
+.guilds-cta {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-black);
+	text-align: center;
+	border-top: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.guilds-cta h2 {
+	color: var(--clr-text-heading);
+	font-size: var(--fs-h2);
+	margin-bottom: var(--space-md);
+}
+
+.guilds-cta p {
+	color: var(--clr-text-primary);
+	font-size: 1.1rem;
+	max-width: 600px;
+	margin: 0 auto var(--space-xl);
+}
+
+.guilds-cta .cta-buttons {
+	display: flex;
+	justify-content: center;
+	gap: var(--space-md);
+	flex-wrap: wrap;
+}
+
+/* Guilds Page Responsive */
+@media (max-width: 1024px) {
+	.guild-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.guild-grid-core {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.guild-grid,
+	.guild-grid-core {
+		grid-template-columns: 1fr;
+	}
+
+	.guilds-cta .cta-buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+/* ------------------- */
 /* FOOTER */
 /* ------------------- */
 footer {

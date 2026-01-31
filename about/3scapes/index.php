@@ -207,46 +207,22 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     </div>
   </section>
 
-  <!-- Features Mosaic -->
+  <!-- Features Tag Cloud -->
   <section class="scapes-features">
     <div class="scapes-container">
       <div class="features-header">
         <h2>What Awaits Beyond the Rift</h2>
       </div>
 
-      <div class="features-mosaic">
-        <div class="mosaic-item">
-          <i class="fa-solid fa-globe"></i>
-          <span>Three vast realms to explore</span>
-        </div>
-        <div class="mosaic-item">
-          <i class="fa-solid fa-star"></i>
-          <span>Exclusive areas</span>
-        </div>
-        <div class="mosaic-item">
-          <i class="fa-solid fa-brain"></i>
-          <span>Challenging solo quests</span>
-        </div>
-        <div class="mosaic-item">
-          <i class="fa-solid fa-bolt"></i>
-          <span>Unique guild powers</span>
-        </div>
-        <div class="mosaic-item">
-          <i class="fa-solid fa-comments"></i>
-          <span>Cross-dimension chat</span>
-        </div>
-        <div class="mosaic-item">
-          <i class="fa-solid fa-user"></i>
-          <span>Shared character names</span>
-        </div>
-        <div class="mosaic-item">
-          <i class="fa-solid fa-heart"></i>
-          <span>Active community since 2009</span>
-        </div>
-        <div class="mosaic-item">
-          <i class="fa-solid fa-infinity"></i>
-          <span>Free to play forever</span>
-        </div>
+      <div class="features-cloud">
+        <span class="cloud-tag size-lg">Three Realms</span>
+        <span class="cloud-tag size-md">Exclusive Areas</span>
+        <span class="cloud-tag size-sm">Solo Quests</span>
+        <span class="cloud-tag size-lg">Unique Guilds</span>
+        <span class="cloud-tag size-md">Cross-Dimension Chat</span>
+        <span class="cloud-tag size-sm">Shared Names</span>
+        <span class="cloud-tag size-md">Active Since 2009</span>
+        <span class="cloud-tag size-lg">Free Forever</span>
       </div>
     </div>
   </section>

@@ -36,15 +36,15 @@
 		          <li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
 		        </ul>
 		      </div>
-		    </div>
 
-		    <div class="footer-nav-column">
-		      <h3>Support</h3>
-		      <ul>
-		        <li><a href="/support/admin/index.php">Admin</a></li>
-		        <li><a href="/support/contact/index.php">Contact</a></li>
-		        <li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
-		      </ul>
+          <div class="footer-nav-column">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="/support/admin/index.php">Admin</a></li>
+              <li><a href="/support/contact/index.php">Contact</a></li>
+              <li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
+            </ul>
+          </div>          
 		    </div>
 
 		    <div class="footer-copyright">

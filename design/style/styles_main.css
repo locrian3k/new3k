@@ -2714,6 +2714,7 @@ footer {
 	position: relative;
 	z-index: 1;
 	text-align: center;
+  vertical-align: center;
 	padding: 0;
 	margin: 0;
 }

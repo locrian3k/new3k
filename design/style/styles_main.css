@@ -2646,66 +2646,42 @@ footer {
 }
 
 .footer-copyright {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	gap: 1.5rem;
 	font-size: var(--fs-body-small);
 	color: var(--clr-text-secondary);
 	margin: 2rem 0 1rem;
-	padding: 3rem 1rem;
-	min-height: 200px;
+	padding: 2rem 1rem;
 }
 
-/* Watermark container - logos stacked vertically */
-.footer-watermark {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 100%;
-	height: 100%;
-  gap: 5rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-evenly;
-	padding: 1rem 0;
-	pointer-events: none;
-	z-index: 0;
+/* Footer logo links */
+.footer-logo-top,
+.footer-logo-bottom {
+	display: block;
+	line-height: 0;
 }
 
-.footer-watermark img {
+.footer-logo-top img,
+.footer-logo-bottom img {
 	filter: grayscale(50%) brightness(1.2);
 	opacity: 0.25;
 	transition: filter 0.3s, opacity 0.3s;
 }
 
-.footer-watermark a {
-	pointer-events: auto;
-}
-
-.footer-watermark a:hover img {
+.footer-logo-top:hover img,
+.footer-logo-bottom:hover img {
 	filter: grayscale(0%) brightness(1);
 	opacity: 0.9;
 }
 
-.footer-watermark .watermark-top {
-	display: flex;
-	align-items: flex-start;
-}
-
-.footer-watermark .watermark-bottom {
-	display: flex;
-	align-items: flex-end;
-}
-
-.footer-watermark .ldmud-logo {
+.footer-copyright .ldmud-logo {
 	height: 3rem;
 }
 
-.footer-watermark .marble-logo {
+.footer-copyright .marble-logo {
 	height: 5rem;
 }
 

@@ -48,14 +48,9 @@
 				</div>  
 
 				<div class="footer-copyright">
-          <div class="footer-watermark">
-            <a href="https://www.themarblegroup.com" target="_blank" class="watermark-top">
-              <img src="/images/logo/marble_logo_transparent.png" class="marble-logo" alt="The Marble Group">
-            </a>
-            <a href="https://www.ldmud.eu" target="_blank" class="watermark-bottom">
-              <img src="/images/logo/LDMud.gif" class="ldmud-logo" alt="LDMud">
-            </a>
-          </div>
+          <a href="https://www.themarblegroup.com" target="_blank" class="footer-logo-top">
+            <img src="/images/logo/marble_logo_transparent.png" class="marble-logo" alt="The Marble Group">
+          </a>
           <div class="footer-copyright-info">
             <p><a href="https://www.themarblegroup.com" target="_blank">A Marble Group Production</a></p>
             <p><a href="https://www.ldmud.eu" target="_blank">Powered by LDMud</a></p>
@@ -64,6 +59,9 @@
             </p>
             <p class="updated">Last updated: <?php echo date("F j, Y"); ?></p>
           </div>
+          <a href="https://www.ldmud.eu" target="_blank" class="footer-logo-bottom">
+            <img src="/images/logo/LDMud.gif" class="ldmud-logo" alt="LDMud">
+          </a>
 				</div>
 			</div>
 		</footer>

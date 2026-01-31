@@ -2683,7 +2683,7 @@ footer {
 .footer-watermark .watermark-top {
 	display: flex;
 	align-items: flex-start;
-  padding-bottom: 1rem;
+  padding-bottom: 4rem;
 }
 
 .footer-watermark .watermark-bottom {

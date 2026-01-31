@@ -20,8 +20,7 @@
 							<li><a href="/support/admin/index.php">Admin</a></li>
 							<li><a href="/support/contact/index.php">Contact</a></li>
 						</ul>
-					</div>
-				</div>          
+					</div>        
 
 					<div class="footer-nav-column">
 						<h3>Game Info</h3>
@@ -46,7 +45,8 @@
               <li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>           
 						</ul>
 					</div>
-
+				</div>  
+        
 				<div class="footer-copyright">
           <div class="footer-copyright-info">
             <p>

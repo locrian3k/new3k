@@ -2324,6 +2324,10 @@ main {
 /* Connection Page Flip Card Styles */
 /* Height is set dynamically by JavaScript to match the tallest card */
 
+.connect-faq .faq-grid {
+	grid-template-columns: repeat(2, 1fr);
+}
+
 .connect-faq .faq-item {
 	perspective: 1000px;
 	cursor: pointer;
@@ -2770,6 +2774,11 @@ footer {
 
 	.realm-tab span {
 		display: inline;
+	}
+
+	/* Connect page flip cards - single column on mobile */
+	.connect-faq .faq-grid {
+		grid-template-columns: 1fr;
 	}
 }
 

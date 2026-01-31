@@ -183,24 +183,24 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="tip-step">
           <div class="step-number">2</div>
           <div class="step-content">
-            <h4>Use 'help newbie'</h4>
-            <p>The in-game help system is your best friend. Type <code>help newbie</code> to get started.</p>
+            <h4>Ask for Help</h4>
+            <p>Type <code>help newbie</code> or ask on the <code>newbie</code> channel. Our community loves helping new adventurers!</p>
           </div>
         </div>
 
         <div class="tip-step">
           <div class="step-number">3</div>
           <div class="step-content">
-            <h4>Join a Guild Early</h4>
-            <p>Guilds unlock powerful abilities and connect you with experienced players who can mentor you.</p>
+            <h4>Complete the Tutorial</h4>
+            <p>Follow the tutorial and try your hand at quests. They're a great way to learn the world and earn rewards.</p>
           </div>
         </div>
 
         <div class="tip-step">
           <div class="step-number">4</div>
           <div class="step-content">
-            <h4>Ask on Chat</h4>
-            <p>Use the <code>newbie</code> channel freely. Our community loves helping new adventurers find their way.</p>
+            <h4>Join a Guild</h4>
+            <p>Guilds unlock powerful abilities and connect you with experienced players who can mentor you.</p>
           </div>
         </div>
       </div>

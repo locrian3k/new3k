@@ -563,15 +563,15 @@
 }
 
 /* ============================= */
-/* CONNECTION SECTION            */
+/* QUICK TIPS SECTION            */
 /* ============================= */
-.scapes-connect {
+.scapes-tips {
 	padding: var(--space-3xl) 0;
 	background: var(--clr-3s-void);
 	position: relative;
 }
 
-.scapes-connect::before {
+.scapes-tips::before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -584,98 +584,91 @@
 	pointer-events: none;
 }
 
-.connect-header {
+.tips-header {
 	text-align: center;
 	margin-bottom: var(--space-2xl);
 	position: relative;
 	z-index: 1;
 }
 
-.connect-header h2 {
+.tips-header h2 {
 	color: var(--clr-3s-text-heading);
 	font-size: var(--fs-h2);
 }
 
-.connect-split {
+.tips-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: var(--space-xl);
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--space-lg);
 	position: relative;
 	z-index: 1;
 }
 
-.connect-card {
+.tip-card {
 	background: var(--glass-bg);
 	backdrop-filter: var(--glass-blur);
 	-webkit-backdrop-filter: var(--glass-blur);
 	border: 1px solid var(--glass-border);
 	border-radius: var(--radius-lg);
-	padding: var(--space-xl);
+	padding: var(--space-lg);
 	text-align: center;
 	transition: all 0.3s ease;
 }
 
-.connect-card.card-blue {
-	border-left: 3px solid var(--clr-3s-blue);
+.tip-card:nth-child(odd) {
+	border-top: 2px solid var(--clr-3s-blue);
 }
 
-.connect-card.card-orange {
-	border-left: 3px solid var(--clr-3s-orange);
+.tip-card:nth-child(even) {
+	border-top: 2px solid var(--clr-3s-orange);
 }
 
-.connect-card:hover {
+.tip-card:hover {
 	transform: translateY(-5px);
 }
 
-.connect-card.card-blue:hover {
-	box-shadow: 0 15px 30px rgba(0,0,0,0.3), -10px 0 30px var(--clr-3s-blue-glow);
+.tip-card:nth-child(odd):hover {
+	box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 20px var(--clr-3s-blue-glow);
 }
 
-.connect-card.card-orange:hover {
-	box-shadow: 0 15px 30px rgba(0,0,0,0.3), 10px 0 30px var(--clr-3s-orange-glow);
+.tip-card:nth-child(even):hover {
+	box-shadow: 0 15px 30px rgba(0,0,0,0.3), 0 0 20px var(--clr-3s-orange-glow);
 }
 
-.connect-card h3 {
-	font-family: var(--ff-heading);
-	font-size: 1.3rem;
+.tip-card .card-icon {
+	font-size: 2rem;
 	margin-bottom: var(--space-md);
+	display: block;
 }
 
-.connect-card.card-blue h3 {
+.tip-card:nth-child(odd) .card-icon {
 	color: var(--clr-3s-blue-light);
 }
 
-.connect-card.card-orange h3 {
+.tip-card:nth-child(even) .card-icon {
 	color: var(--clr-3s-orange);
 }
 
-.connect-card code {
-	display: block;
+.tip-card h4 {
+	font-family: var(--ff-heading);
+	font-size: 1.1rem;
+	color: var(--clr-3s-text-heading);
+	margin-bottom: var(--space-sm);
+}
+
+.tip-card p {
+	color: var(--clr-3s-text-secondary);
+	font-size: 0.9rem;
+	line-height: var(--lh-normal);
+}
+
+.tip-card code {
 	background: rgba(0, 0, 0, 0.4);
 	color: var(--clr-3s-text-glow);
-	padding: var(--space-sm) var(--space-md);
+	padding: 0.15rem 0.4rem;
 	border-radius: var(--radius-sm);
 	font-family: "Courier New", monospace;
-	font-size: 1.1rem;
-	margin-bottom: var(--space-md);
-	border: 1px solid rgba(255,255,255,0.1);
-}
-
-.connect-card p {
-	color: var(--clr-3s-text-secondary);
-	font-size: 0.95rem;
-	margin-bottom: var(--space-lg);
-}
-
-.connect-card .btn-primary {
-	display: inline-block;
-	padding: 0.75rem 1.5rem;
-	font-size: 0.95rem;
-	text-decoration: none;
-}
-
-.connect-card.card-blue .btn-primary {
-	background: var(--clr-3s-blue);
+	font-size: 0.85rem;
 }
 
 .connect-card.card-orange .btn-primary {
@@ -820,6 +813,10 @@
 		grid-template-columns: repeat(2, 1fr);
 	}
 
+	.tips-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
 	.features-mosaic {
 		grid-template-columns: repeat(2, 1fr);
 	}
@@ -887,7 +884,7 @@
 		grid-template-columns: 1fr;
 	}
 
-	.connect-split {
+	.tips-grid {
 		grid-template-columns: 1fr;
 	}
 

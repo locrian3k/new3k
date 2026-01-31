@@ -164,30 +164,36 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     </div>
   </section>
 
-  <!-- Connection Section -->
-  <section class="scapes-connect">
+  <!-- Quick Tips Section -->
+  <section class="scapes-tips">
     <div class="scapes-container">
-      <div class="connect-header">
-        <h2>Cross the Dimensional Rift</h2>
+      <div class="tips-header">
+        <h2>Quick Tips for New Explorers</h2>
       </div>
 
-      <div class="connect-split">
-        <div class="connect-card card-blue">
-          <h3>Web Portal</h3>
-          <code>3scapes.org:3240</code>
-          <p>Connect instantly through your browser. No downloads, no setup - just adventure.</p>
-          <a href="https://3scapes.org:3240" class="btn-primary" target="_blank">
-            Launch Web Client
-          </a>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <i class="fa-solid fa-comments card-icon"></i>
+          <h4>Talk to NPCs</h4>
+          <p>Non-player characters offer quests, guidance, and valuable information. Don't skip the dialogue!</p>
         </div>
 
-        <div class="connect-card card-orange">
-          <h3>Direct Connection</h3>
-          <code>3scapes.org port 3200</code>
-          <p>Use your favorite MUD client for the full experience with triggers and aliases.</p>
-          <a href="telnet://3scapes.org:3200" class="btn-primary">
-            Connect via Telnet
-          </a>
+        <div class="tip-card">
+          <i class="fa-solid fa-circle-question card-icon"></i>
+          <h4>Use 'help newbie'</h4>
+          <p>The in-game help system is your best friend. Type <code>help newbie</code> to get started.</p>
+        </div>
+
+        <div class="tip-card">
+          <i class="fa-solid fa-hand-fist card-icon"></i>
+          <h4>Join a Guild Early</h4>
+          <p>Guilds unlock powerful abilities and connect you with experienced players who can mentor you.</p>
+        </div>
+
+        <div class="tip-card">
+          <i class="fa-solid fa-people-group card-icon"></i>
+          <h4>Ask on Chat</h4>
+          <p>Use the <code>newbie</code> channel freely. Our community loves helping new adventurers find their way.</p>
         </div>
       </div>
     </div>

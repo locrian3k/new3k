@@ -16,9 +16,9 @@
 					<div class="footer-nav-column">
 						<h3>Support</h3>
 						<ul>
-							<li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
 							<li><a href="/support/admin/index.php">Admin</a></li>
 							<li><a href="/support/contact/index.php">Contact</a></li>
+              <li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
 						</ul>
 					</div>        
 
@@ -46,7 +46,7 @@
 						</ul>
 					</div>
 				</div>  
-        
+
 				<div class="footer-copyright">
           <div class="footer-copyright-info">
             <p>

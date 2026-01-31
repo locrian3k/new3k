@@ -49,11 +49,11 @@
 
 				<div class="footer-copyright">
           <div class="footer-watermark">
-            <a href="https://www.ldmud.eu" target="_blank">
-              <img src="/images/logo/LDMud.gif" class="ldmud-logo" alt="LDMud">
-            </a>
-            <a href="https://www.themarblegroup.com" target="_blank">
+            <a href="https://www.themarblegroup.com" target="_blank" class="watermark-top">
               <img src="/images/logo/marble_logo_transparent.png" class="marble-logo" alt="The Marble Group">
+            </a>
+            <a href="https://www.ldmud.eu" target="_blank" class="watermark-bottom">
+              <img src="/images/logo/LDMud.gif" class="ldmud-logo" alt="LDMud">
             </a>
           </div>
           <div class="footer-copyright-info">

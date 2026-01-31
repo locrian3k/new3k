@@ -2719,6 +2719,51 @@ main {
 	border-left: 3px solid var(--clr-text-secondary);
 }
 
+/* Card type-specific styles */
+.guild-card-starter {
+	border-left: 3px solid var(--clr-accent-blue);
+}
+
+.guild-card-starter .guild-icon {
+	color: var(--clr-accent-blue);
+}
+
+.guild-card-starter:hover {
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 160, 195, 0.2);
+}
+
+.guild-card-core {
+	border-left: 3px solid var(--clr-accent-gold);
+}
+
+.guild-card-core .guild-icon {
+	color: var(--clr-accent-gold);
+}
+
+.guild-card-core:hover {
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 160, 46, 0.2);
+}
+
+.guild-card-prestige {
+	border-left: 3px solid var(--clr-accent-purple);
+	background: linear-gradient(135deg, rgba(138, 79, 165, 0.15), rgba(25, 52, 85, 0.2));
+}
+
+.guild-card-prestige .guild-icon {
+	color: var(--clr-accent-purple);
+}
+
+.guild-card-prestige:hover {
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(138, 79, 165, 0.3);
+}
+
+/* Single card grid for Adventurer and Ascended */
+.guild-grid-single {
+	grid-template-columns: 1fr;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
 /* Guild Card Header */
 .guild-card-header {
 	display: flex;
@@ -2731,6 +2776,7 @@ main {
 	font-size: 2rem;
 	margin-bottom: var(--space-sm);
 	opacity: 0.9;
+	color: var(--clr-accent-blue-light);
 }
 
 .guild-card-fantasy .guild-icon {

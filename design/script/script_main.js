@@ -240,6 +240,62 @@ document.addEventListener('DOMContentLoaded', function() {
   // Only run if guild flip cards exist
   if (guildFlipCards.length === 0) return;
 
+  // Calculate the maximum height needed for all card faces
+  function setEqualGuildCardHeights() {
+    let maxHeight = 0;
+
+    // Reset heights to auto to measure natural content height
+    guildFlipCards.forEach(function(card) {
+      const front = card.querySelector('.guild-flip-front');
+      const back = card.querySelector('.guild-flip-back');
+
+      if (front) front.style.height = 'auto';
+      if (back) back.style.height = 'auto';
+      card.style.height = 'auto';
+
+      const inner = card.querySelector('.guild-flip-inner');
+      if (inner) inner.style.height = 'auto';
+    });
+
+    // Measure all fronts and backs to find the tallest
+    guildFlipCards.forEach(function(card) {
+      const front = card.querySelector('.guild-flip-front');
+      const back = card.querySelector('.guild-flip-back');
+
+      if (front) {
+        const frontHeight = front.scrollHeight;
+        if (frontHeight > maxHeight) maxHeight = frontHeight;
+      }
+      if (back) {
+        const backHeight = back.scrollHeight;
+        if (backHeight > maxHeight) maxHeight = backHeight;
+      }
+    });
+
+    // Add a small buffer for padding
+    maxHeight += 20;
+
+    // Apply the max height to all cards
+    guildFlipCards.forEach(function(card) {
+      card.style.height = maxHeight + 'px';
+
+      const inner = card.querySelector('.guild-flip-inner');
+      if (inner) inner.style.height = maxHeight + 'px';
+
+      const front = card.querySelector('.guild-flip-front');
+      const back = card.querySelector('.guild-flip-back');
+
+      if (front) front.style.height = maxHeight + 'px';
+      if (back) back.style.height = maxHeight + 'px';
+    });
+  }
+
+  // Run on load
+  setEqualGuildCardHeights();
+
+  // Re-run on window resize
+  window.addEventListener('resize', setEqualGuildCardHeights);
+
   // Handle flip card clicks
   guildFlipCards.forEach(function(card) {
     card.addEventListener('click', function() {

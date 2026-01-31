@@ -2919,6 +2919,8 @@ main {
 }
 
 /* Guild Flip Cards */
+/* Height is set dynamically by JavaScript to match the tallest card */
+
 .flip-hint {
 	color: var(--clr-text-secondary);
 	font-size: 0.9rem;
@@ -2932,24 +2934,24 @@ main {
 
 .guild-flip-grid {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	gap: var(--space-lg);
 }
 
 .guild-flip-card {
 	perspective: 1000px;
-	height: 220px;
 	cursor: pointer;
 	position: relative;
+	background: transparent;
+	border: none;
+	padding: 0;
 }
 
 .guild-flip-inner {
-	position: absolute;
-	top: 0;
-	left: 0;
+	position: relative;
 	width: 100%;
 	height: 100%;
-	transition: transform 0.6s ease;
+	transition: transform 0.6s;
 	transform-style: preserve-3d;
 }
 
@@ -2960,8 +2962,6 @@ main {
 .guild-flip-front,
 .guild-flip-back {
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
 	backface-visibility: hidden;
@@ -2971,15 +2971,17 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: var(--space-lg);
+	padding: var(--space-xl);
 	text-align: center;
 	box-sizing: border-box;
-}
-
-.guild-flip-front {
 	background: rgba(25, 52, 85, 0.3);
 	border: 1px solid rgba(255, 255, 255, 0.1);
-	z-index: 2;
+}
+
+.guild-flip-back {
+	transform: rotateY(180deg);
+	background: linear-gradient(135deg, rgba(25, 52, 85, 0.5), rgba(17, 35, 58, 0.7));
+	border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .guild-flip-card:not(.flipped) .guild-flip-front:hover {
@@ -2987,15 +2989,8 @@ main {
 	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
-.guild-flip-back {
-	background: linear-gradient(135deg, rgba(25, 52, 85, 0.6), rgba(17, 35, 58, 0.8));
-	border: 1px solid rgba(255, 255, 255, 0.15);
-	transform: rotateY(180deg);
-	z-index: 1;
-}
-
 .guild-flip-icon {
-	font-size: 2.5rem;
+	font-size: 3rem;
 	color: var(--clr-accent-blue-light);
 	margin-bottom: var(--space-md);
 	transition: transform 0.3s ease;
@@ -3007,7 +3002,7 @@ main {
 
 .guild-flip-name {
 	font-family: var(--ff-heading);
-	font-size: 1.1rem;
+	font-size: 1.3rem;
 	color: var(--clr-text-heading);
 	margin: 0 0 var(--space-sm) 0;
 }
@@ -3022,23 +3017,17 @@ main {
 
 .guild-flip-back .guild-flip-name {
 	margin-bottom: var(--space-md);
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 }
 
 .guild-flip-back p {
 	color: var(--clr-text-primary);
-	font-size: 0.85rem;
-	line-height: var(--lh-normal);
+	font-size: 0.95rem;
+	line-height: var(--lh-relaxed);
 	margin: 0;
 }
 
 /* Guilds Page Responsive */
-@media (max-width: 1200px) {
-	.guild-flip-grid {
-		grid-template-columns: repeat(3, 1fr);
-	}
-}
-
 @media (max-width: 1024px) {
 	.guild-grid {
 		grid-template-columns: repeat(2, 1fr);
@@ -3049,7 +3038,7 @@ main {
 	}
 
 	.guild-flip-grid {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
@@ -3063,10 +3052,6 @@ main {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	.guild-flip-card {
-		height: 200px;
-	}
-
 	.guilds-cta .cta-buttons {
 		flex-direction: column;
 		align-items: center;
@@ -3076,10 +3061,6 @@ main {
 @media (max-width: 480px) {
 	.guild-flip-grid {
 		grid-template-columns: 1fr;
-	}
-
-	.guild-flip-card {
-		height: 180px;
 	}
 }
 

@@ -48,23 +48,20 @@
 				</div>  
 
 				<div class="footer-copyright">
-          <div class="footer-copyright-info">
-            <p>
-              Content, source, aesthetics & originality &copy;1993-2026, The
-              Marble Group, Inc.
-            </p>
-            <p class="footer-owner">
-              <a
-                href="https://www.themarblegroup.com" target="_blank"
-                >
-                A Marble Group Production
-              </a>
-            </p>
+          <div class="footer-watermark">
+            <a href="https://www.ldmud.eu" target="_blank">
+              <img src="/images/logo/LDMud.gif" class="ldmud-logo" alt="LDMud">
+            </a>
+            <a href="https://www.themarblegroup.com" target="_blank">
+              <img src="/images/logo/marble_logo_transparent.png" class="marble-logo" alt="The Marble Group">
+            </a>
           </div>
-          <div class="footer-logo">
-            <!-- <a href="https://www.ldmud.eu" target="_blank"><img src="/images/logo/LDMud.gif"></a>
-            <br> -->
-            <a href="https://www.themarblegroup.com" target="_blank"><img src="/images/logo/marble_logo_transparent.png" class="marble-logo"></a>
+          <div class="footer-copyright-info">
+            <p><a href="https://www.themarblegroup.com" target="_blank">A Marble Group Production</a></p>
+            <p><a href="https://www.ldmud.eu" target="_blank">Powered by LDMud</a></p>
+            <p class="footer-copyright-text">
+              Content, source, aesthetics & originality &copy;1993-<?php echo date("Y"); ?>, The Marble Group, Inc.
+            </p>
           </div>
 				</div>
 			</div>

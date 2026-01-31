@@ -2646,46 +2646,72 @@ footer {
 }
 
 .footer-copyright {
+	position: relative;
 	display: flex;
-	gap: 1.5rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	font-size: var(--fs-body-small);
 	color: var(--clr-text-secondary);
-	margin: 1rem 0;
-	vertical-align: center;
+	margin: 2rem 0 1rem;
+	padding: 2rem 1rem;
+	min-height: 150px;
 }
 
+/* Watermark container - logos as background */
+.footer-watermark {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	opacity: 0.12;
+	pointer-events: none;
+	z-index: 0;
+}
+
+.footer-watermark img {
+	filter: grayscale(100%) brightness(1.5);
+	transition: opacity 0.3s;
+}
+
+.footer-watermark .ldmud-logo {
+	height: 5rem;
+}
+
+.footer-watermark .marble-logo {
+	height: 6rem;
+}
+
+/* Copyright info - centered text over watermark */
 .footer-copyright-info {
-	vertical-align: center;
+	position: relative;
+	z-index: 1;
+	text-align: center;
 	padding: 0;
 	margin: 0;
 }
 
-.footer-logo {
-	margin: 1.5rem 0;
-	vertical-align: center;
+.footer-copyright-info p {
+	margin: 0.25rem 0;
 }
 
-.footer-logo img {
-	width: auto;
-	opacity: 0.7;
-	transition: opacity 0.3s;
+.footer-copyright-info a {
+	color: var(--clr-text-secondary);
+	text-decoration: none;
+	transition: color 0.3s;
 }
 
-.footer-logo img:hover {
-	opacity: 1;
+.footer-copyright-info a:hover {
+	color: var(--clr-text-heading);
 }
 
-.footer-logo .ldmud-logo {
-	height: 2rem;
-}
-
-.footer-logo .marble-logo {
-	height: 4rem;
-}
-
-.footer-owner {
-	margin-top: 0;
-	color: var(--clr-accent-blue);
+.footer-copyright-text {
+	margin-top: 0.75rem !important;
+	font-size: 0.8rem;
 }
 
 /*this is a div at the footer area to state when the page was last updated*/

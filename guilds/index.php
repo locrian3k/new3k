@@ -138,297 +138,352 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="section-header">
         <h2 class="section-title">Full Guilds</h2>
         <p class="section-subtitle">Traditional guilds with deeper progression, unique themes, and no level caps</p>
+        <p class="flip-hint"><i class="fa-solid fa-hand-pointer"></i> Click a card to learn more</p>
       </div>
 
-      <div class="guild-grid">
+      <div class="guild-flip-grid">
         <!-- Angel -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-dove guild-icon"></i>
-            <h3 class="guild-name">Angel</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Mortals imbued with divine spark to restore cosmic balance. Develop martial combat, divine powers, or combine both. Your wings await.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Divine</span>
-            <span class="guild-tag">Balance</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-dove guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Angel</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Divine</span>
+                <span class="guild-tag">Balance</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Angel</h3>
+              <p>Mortals imbued with divine spark to restore cosmic balance. Develop martial combat, divine powers, or combine both. Your wings await.</p>
+            </div>
           </div>
         </div>
 
         <!-- Bards -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-music guild-icon"></i>
-            <h3 class="guild-name">Bards</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Passionate souls nourished by beauty and drawn to mystery. Master deadly combat songs, pure physical combat, soothing instruments, or shadow arts to gather knowledge unseen.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Versatile</span>
-            <span class="guild-tag">Music</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-music guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Bards</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Versatile</span>
+                <span class="guild-tag">Music</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Bards</h3>
+              <p>Passionate souls nourished by beauty and drawn to mystery. Master deadly combat songs, pure physical combat, soothing instruments, or shadow arts to gather knowledge unseen.</p>
+            </div>
           </div>
         </div>
 
         <!-- Bladesingers -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-feather-pointed guild-icon"></i>
-            <h3 class="guild-name">Bladesingers</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Ancient elven warriors returned to teach the old ways. Master fighting styles, read ancient runes, and call upon the Unseelie Court of the faerie world to enhance your combat.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Elven</span>
-            <span class="guild-tag">Runes</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-feather-pointed guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Bladesingers</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Elven</span>
+                <span class="guild-tag">Runes</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Bladesingers</h3>
+              <p>Ancient elven warriors returned to teach the old ways. Master fighting styles, read ancient runes, and call upon the Unseelie Court of the faerie world to enhance your combat.</p>
+            </div>
           </div>
         </div>
 
         <!-- Breed -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-eye guild-icon"></i>
-            <h3 class="guild-name">Breed</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>One of the eldest races, returned from exile with the power of the mind. Secretive, diverse, and highly individual. Each Breed forges their own destiny.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Psionic</span>
-            <span class="guild-tag">Ancient</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-eye guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Breed</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Psionic</span>
+                <span class="guild-tag">Ancient</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Breed</h3>
+              <p>One of the eldest races, returned from exile with the power of the mind. Secretive, diverse, and highly individual. Each Breed forges their own destiny.</p>
+            </div>
           </div>
         </div>
 
         <!-- Changelings -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-paw guild-icon"></i>
-            <h3 class="guild-name">Changelings</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>An ancient race with unnatural control over their cells. Shapeshift into mammals, reptiles, avians, and rumored dinosaur forms with lethal natural weaponry.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Shapeshifter</span>
-            <span class="guild-tag">Unique</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-paw guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Changelings</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Shapeshifter</span>
+                <span class="guild-tag">Unique</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Changelings</h3>
+              <p>An ancient race with unnatural control over their cells. Shapeshift into mammals, reptiles, avians, and rumored dinosaur forms with lethal natural weaponry.</p>
+            </div>
           </div>
         </div>
 
         <!-- Cyborg -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-microchip guild-icon"></i>
-            <h3 class="guild-name">Cyborg</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>"More human than human." The Cybernetic Research Corporation provides implants designed to maximize damage resistance, environmental mastery, and dealing death.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Implants</span>
-            <span class="guild-tag">Tech</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-microchip guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Cyborg</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Implants</span>
+                <span class="guild-tag">Tech</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Cyborg</h3>
+              <p>"More human than human." The Cybernetic Research Corporation provides implants designed to maximize damage resistance, environmental mastery, and dealing death.</p>
+            </div>
           </div>
         </div>
 
         <!-- Elemental -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-tornado guild-icon"></i>
-            <h3 class="guild-name">Elemental</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Draw power from Fire, Water, Air, and Earth. Master each element independently before combining them. Renowned for sheer force and environmental manipulation.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Elements</span>
-            <span class="guild-tag">Offensive</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-tornado guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Elemental</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Elements</span>
+                <span class="guild-tag">Offensive</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Elemental</h3>
+              <p>Draw power from Fire, Water, Air, and Earth. Master each element independently before combining them. Renowned for sheer force and environmental manipulation.</p>
+            </div>
           </div>
         </div>
 
         <!-- Fremen -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-sun guild-icon"></i>
-            <h3 class="guild-name">Fremen</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Fierce desert warriors from Arrakis. Swift attacks, mental anguish, mind control, and meditative self-healing. Enhanced fighting in groups.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Dune</span>
-            <span class="guild-tag">Tribal</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-sun guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Fremen</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Dune</span>
+                <span class="guild-tag">Tribal</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Fremen</h3>
+              <p>Fierce desert warriors from Arrakis. Swift attacks, mental anguish, mind control, and meditative self-healing. Enhanced fighting in groups.</p>
+            </div>
           </div>
         </div>
 
         <!-- Gentech -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-dna guild-icon"></i>
-            <h3 class="guild-name">Gentech</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Refugees from a future sector war. Balance genetic enhancement and advanced technology. Perform experiments to acquire any power - the guild of choice.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Genetic</span>
-            <span class="guild-tag">Experimental</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-dna guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Gentech</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Genetic</span>
+                <span class="guild-tag">Experimental</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Gentech</h3>
+              <p>Refugees from a future sector war. Balance genetic enhancement and advanced technology. Perform experiments to acquire any power - the guild of choice.</p>
+            </div>
           </div>
         </div>
 
         <!-- Jedi -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-jedi guild-icon"></i>
-            <h3 class="guild-name">Jedi</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>No two Jedi advance the same way. Choose from 17 careers and 49 ability skills. Lightsabers, lightning, healing - all available if you train. Beware the Dark Side.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Star Wars</span>
-            <span class="guild-tag">Force</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-jedi guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Jedi</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Star Wars</span>
+                <span class="guild-tag">Force</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Jedi</h3>
+              <p>No two Jedi advance the same way. Choose from 17 careers and 49 ability skills. Lightsabers, lightning, healing - all available if you train. Beware the Dark Side.</p>
+            </div>
           </div>
         </div>
 
         <!-- Juggernaut -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-user-astronaut guild-icon"></i>
-            <h3 class="guild-name">Juggernaut</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Battletech-themed Elementals in Main Battle Armour. Choose suits ranging from purely offensive to purely defensive. Divided into clans with their own leadership.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Battletech</span>
-            <span class="guild-tag">Mech Suit</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-user-astronaut guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Juggernaut</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Battletech</span>
+                <span class="guild-tag">Mech Suit</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Juggernaut</h3>
+              <p>Battletech-themed Elementals in Main Battle Armour. Choose suits ranging from purely offensive to purely defensive. Divided into clans with their own leadership.</p>
+            </div>
           </div>
         </div>
 
         <!-- Knight -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-chess-knight guild-icon"></i>
-            <h3 class="guild-name">Knight</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Powerful warriors whose strength is sheathed within a code of honour. Not perfect, but always reaching for higher ideals. Glory in battle with noble purpose.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Honor</span>
-            <span class="guild-tag">Warrior</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-chess-knight guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Knight</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Honor</span>
+                <span class="guild-tag">Warrior</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Knight</h3>
+              <p>Powerful warriors whose strength is sheathed within a code of honour. Not perfect, but always reaching for higher ideals. Glory in battle with noble purpose.</p>
+            </div>
           </div>
         </div>
 
         <!-- Mage -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-hat-wizard guild-icon"></i>
-            <h3 class="guild-name">Mage</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Masters of sorcery with over 100 spells. Conjure powerful beasts, change form, and float above the ground. Trade physical strength for arcane power.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Arcane</span>
-            <span class="guild-tag">Summons</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-hat-wizard guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Mage</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Arcane</span>
+                <span class="guild-tag">Summons</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Mage</h3>
+              <p>Masters of sorcery with over 100 spells. Conjure powerful beasts, change form, and float above the ground. Trade physical strength for arcane power.</p>
+            </div>
           </div>
         </div>
 
         <!-- Monk -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-hand-fist guild-icon"></i>
-            <h3 class="guild-name">Monk</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Born fighters needing no weapon or heavy armour. Study, meditate, and fight with bare hands. DEX and INT determine your devastating combat ability.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Martial Arts</span>
-            <span class="guild-tag">Unarmed</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-hand-fist guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Monk</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Martial Arts</span>
+                <span class="guild-tag">Unarmed</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Monk</h3>
+              <p>Born fighters needing no weapon or heavy armour. Study, meditate, and fight with bare hands. DEX and INT determine your devastating combat ability.</p>
+            </div>
           </div>
         </div>
 
         <!-- Necromancer -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-skull guild-icon"></i>
-            <h3 class="guild-name">Necromancer</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Command ancient energies and ethereal forces. Hundreds of powers, extreme complexity, and hidden secrets await. The most intense guild experience in 3Kingdoms.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Dark Magic</span>
-            <span class="guild-tag">Complex</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-skull guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Necromancer</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Dark Magic</span>
+                <span class="guild-tag">Complex</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Necromancer</h3>
+              <p>Command ancient energies and ethereal forces. Hundreds of powers, extreme complexity, and hidden secrets await. The most intense guild experience in 3Kingdoms.</p>
+            </div>
           </div>
         </div>
 
         <!-- Priest -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-cross guild-icon"></i>
-            <h3 class="guild-name">Priest</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Devoted followers granted extraordinary powers by their deities. Choose from 12 gods - good, neutral, or evil. Heal, damage, control weather and elements.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Divine</span>
-            <span class="guild-tag">12 Gods</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-cross guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Priest</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Divine</span>
+                <span class="guild-tag">12 Gods</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Priest</h3>
+              <p>Devoted followers granted extraordinary powers by their deities. Choose from 12 gods - good, neutral, or evil. Heal, damage, control weather and elements.</p>
+            </div>
           </div>
         </div>
 
         <!-- Psicorps -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-brain guild-icon"></i>
-            <h3 class="guild-name">Psicorps</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Secret Marine Corps division using Psionic Implant Modules. Highly configurable - swap powers anytime to match the situation. Tank, DPS, or anything between.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Psionic</span>
-            <span class="guild-tag">Military</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-brain guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Psicorps</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Psionic</span>
+                <span class="guild-tag">Military</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Psicorps</h3>
+              <p>Secret Marine Corps division using Psionic Implant Modules. Highly configurable - swap powers anytime to match the situation. Tank, DPS, or anything between.</p>
+            </div>
           </div>
         </div>
 
         <!-- Sii -->
-        <div class="guild-card">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-virus guild-icon"></i>
-            <h3 class="guild-name">Sii</h3>
-          </div>
-          <div class="guild-card-body">
-            <p>Alien symbionts that merge with host bodies. Inhabit prepared "forms" - leathery winged creatures, lizard humanoids, or human bodies. Adapt to survive.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Symbiont</span>
-            <span class="guild-tag">Alien</span>
+        <div class="guild-flip-card">
+          <div class="guild-flip-inner">
+            <div class="guild-flip-front">
+              <i class="fa-solid fa-virus guild-flip-icon"></i>
+              <h3 class="guild-flip-name">Sii</h3>
+              <div class="guild-flip-tags">
+                <span class="guild-tag">Symbiont</span>
+                <span class="guild-tag">Alien</span>
+              </div>
+            </div>
+            <div class="guild-flip-back">
+              <h3 class="guild-flip-name">Sii</h3>
+              <p>Alien symbionts that merge with host bodies. Inhabit prepared "forms" - leathery winged creatures, lizard humanoids, or human bodies. Adapt to survive.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Prestige Guild -->
-  <section class="guilds-section guilds-prestige">
+  <!-- High Mortal Guild -->
+  <section class="guilds-section guilds-highmortal">
     <div class="guilds-container">
       <div class="section-header">
-        <h2 class="section-title">Prestige Guild</h2>
+        <h2 class="section-title">High Mortal Guild</h2>
         <p class="section-subtitle">For those who have achieved great power and seek even more</p>
       </div>
 
       <div class="guild-grid guild-grid-single">
         <!-- Ascended -->
-        <div class="guild-card guild-card-prestige">
+        <div class="guild-card guild-card-highmortal">
           <div class="guild-card-header">
             <i class="fa-solid fa-mountain-sun guild-icon"></i>
             <h3 class="guild-name">Ascended</h3>
-            <span class="guild-realm">Prestige</span>
+            <span class="guild-realm">High Mortal</span>
           </div>
           <div class="guild-card-body">
             <p>For those who've reached significant mortal power. Leave behind your physical shell and become the immortal manifestation of your soul. Tanks and protectors of large groups. Requires High Mortal status and level 90+. You do not need to leave your mortal guild to join Ascended.</p>
@@ -436,6 +491,34 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="guild-card-footer">
             <span class="guild-tag">High Level</span>
             <span class="guild-tag">Secondary Guild</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Eternal Guild -->
+  <section class="guilds-section guilds-eternal">
+    <div class="guilds-container">
+      <div class="section-header">
+        <h2 class="section-title">Eternal Guild</h2>
+        <p class="section-subtitle">Some mysteries reveal themselves only to those who endure</p>
+      </div>
+
+      <div class="guild-grid guild-grid-single">
+        <!-- Eternal -->
+        <div class="guild-card guild-card-eternal">
+          <div class="guild-card-header">
+            <i class="fa-solid fa-infinity guild-icon"></i>
+            <h3 class="guild-name">Eternal</h3>
+            <span class="guild-realm">???</span>
+          </div>
+          <div class="guild-card-body">
+            <p class="guild-mystery">The path to becoming Eternal is known only to those who walk it. This guild reveals itself when you reach the required milestone. No spoilers here - your journey will show the way.</p>
+          </div>
+          <div class="guild-card-footer">
+            <span class="guild-tag">Secret</span>
+            <span class="guild-tag">Discover In-Game</span>
           </div>
         </div>
       </div>

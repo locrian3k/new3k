@@ -229,3 +229,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+
+// ------------------------------------------
+// GUILD FLIP CARDS (Guilds Page)
+// ------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+  const guildFlipCards = document.querySelectorAll('.guild-flip-card');
+
+  // Only run if guild flip cards exist
+  if (guildFlipCards.length === 0) return;
+
+  // Handle flip card clicks
+  guildFlipCards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      this.classList.toggle('flipped');
+    });
+  });
+
+  // Allow keyboard accessibility
+  guildFlipCards.forEach(function(card) {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', 'Click to flip card and see guild details');
+
+    card.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        this.classList.toggle('flipped');
+      }
+    });
+  });
+});

@@ -3038,4 +3038,7 @@ footer {
 	.nav-logo .logo-image {
 		height: 6rem;
 	}
+  .quick-access-grid {
+    gap: 3rem;
+  }
 }

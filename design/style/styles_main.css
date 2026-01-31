@@ -2683,6 +2683,7 @@ footer {
 
 .footer-copyright .marble-logo {
 	height: 5rem;
+	margin-top: 0.5rem;
 }
 
 /* Copyright info - centered text over watermark */

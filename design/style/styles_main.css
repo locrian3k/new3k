@@ -3211,14 +3211,11 @@ main {
 .vafs-intro {
 	padding: var(--space-3xl) var(--space-lg);
 	background: var(--clr-black);
-	border-top: 0.05rem solid transparent;
 	border-bottom: 0.05rem solid transparent;
 	border-image: var(--clr-gradient) 1;
 }
 
 .vafs-intro .intro-card {
-	padding: var(--space-2xl) var(--space-xl);
-	text-align: center;
 	max-width: 900px;
 	margin: 0 auto;
 }
@@ -3227,18 +3224,32 @@ main {
 	font-family: var(--ff-heading);
 	font-size: var(--fs-h2);
 	color: var(--clr-text-heading);
-	margin-bottom: var(--space-lg);
+	margin-bottom: var(--space-md);
+	text-align: center;
 }
 
 .vafs-intro .intro-card p {
-	color: var(--clr-text-primary);
+	font-family: var(--ff-body);
 	font-size: var(--fs-body-large);
 	line-height: var(--lh-normal);
+	color: var(--clr-text-primary);
 	margin-bottom: var(--space-md);
 }
 
 .vafs-intro .intro-card p:last-child {
 	margin-bottom: 0;
+}
+
+.vafs-intro .intro-card a {
+	color: var(--clr-text-heading);
+	text-decoration: none;
+	border-bottom: 1px solid var(--clr-text-heading);
+	transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.vafs-intro .intro-card a:hover {
+	color: var(--clr-accent-main);
+	border-color: var(--clr-accent-main);
 }
 
 /* VAFs Info Section */
@@ -3865,17 +3876,11 @@ main {
 .contact-intro {
 	padding: var(--space-3xl) var(--space-lg);
 	background: var(--clr-black);
-	border-top: 0.05rem solid transparent;
 	border-bottom: 0.05rem solid transparent;
 	border-image: var(--clr-gradient) 1;
 }
 
 .contact-intro .intro-card {
-	background: rgba(25, 52, 85, 0.5);
-	border: 1px solid rgba(255, 255, 255, 0.15);
-	border-radius: var(--card-border-radius);
-	padding: var(--space-2xl) var(--space-xl);
-	text-align: center;
 	max-width: 900px;
 	margin: 0 auto;
 }
@@ -3884,13 +3889,15 @@ main {
 	font-family: var(--ff-heading);
 	font-size: var(--fs-h2);
 	color: var(--clr-text-heading);
-	margin-bottom: var(--space-lg);
+	margin-bottom: var(--space-md);
+	text-align: center;
 }
 
 .contact-intro .intro-card p {
-	color: var(--clr-text-primary);
+	font-family: var(--ff-body);
 	font-size: var(--fs-body-large);
 	line-height: var(--lh-normal);
+	color: var(--clr-text-primary);
 	margin-bottom: var(--space-md);
 }
 

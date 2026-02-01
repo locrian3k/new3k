@@ -66,7 +66,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <!-- MUD Related -->
         <div class="contact-card">
           <div class="contact-card-header">
-            <i class="fa-solid fa-gamepad"></i>
+            <i class="fa-solid fa-keyboard"></i>
             <h3>MUD Related Questions</h3>
           </div>
           <p>
@@ -166,7 +166,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <i class="fa-solid fa-bullhorn"></i>
           </div>
           <h3>Chat Channel</h3>
-          <code>chat &lt;message&gt;</code>
+          <code>flapchat &lt;message&gt;</code>
           <p>Join the general chat channel to connect with other players and get quick answers.</p>
         </div>
 
@@ -189,7 +189,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <p>Jump into 3Kingdoms and experience the adventure for yourself!</p>
       <div class="cta-buttons">
         <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary">
-          <i class="fa-solid fa-play"></i>
           Play Now
         </a>
         <a href="/connect/index.php" class="btn-secondary">Connection Options</a>

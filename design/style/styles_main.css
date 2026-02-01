@@ -3305,7 +3305,7 @@ main {
 /* VAFs Notice */
 .vafs-notice {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	gap: var(--space-md);
 	background: rgba(212, 74, 2, 0.15);
 	border: 2px solid rgba(212, 74, 2, 0.3);
@@ -3839,7 +3839,6 @@ main {
 	}
 
 	.vafs-notice {
-    display: flex;
 		flex-direction: column;
 		text-align: center;
 	}

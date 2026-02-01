@@ -98,84 +98,64 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="section-subtitle">Senior administrators and order leaders</p>
       </div>
 
-      <div class="staff-grid">
-        <div class="staff-card">
-          <div class="staff-image">
-            <div class="staff-placeholder">
-              <i class="fa-solid fa-user-astronaut"></i>
-            </div>
+      <div class="archons-grid">
+        <div class="archon-card">
+          <div class="archon-icon">
+            <i class="fa-solid fa-user-astronaut"></i>
           </div>
-          <div class="staff-info">
-            <h3>Tensor</h3>
-            <span class="staff-order order-guilds">Guilds</span>
-            <p class="staff-contributions">
-              Necromancers Guild, Raveloft, Ant Caves, Der'Thalas, Katin, Lonely Keep,
-              and countless other areas and systems.
-            </p>
-          </div>
+          <h3>Tensor</h3>
+          <span class="archon-order order-guilds">Guilds</span>
+          <p>
+            Necromancers Guild, Raveloft, Ant Caves, Der'Thalas, Katin, Lonely Keep,
+            and countless other areas and systems.
+          </p>
         </div>
 
-        <div class="staff-card">
-          <div class="staff-image">
-            <div class="staff-placeholder">
-              <i class="fa-solid fa-terminal"></i>
-            </div>
+        <div class="archon-card">
+          <div class="archon-icon">
+            <i class="fa-solid fa-terminal"></i>
           </div>
-          <div class="staff-info">
-            <h3>Rastafan</h3>
-            <span class="staff-order order-mudlib">Mudlib</span>
-            <p class="staff-contributions">
-              Monks, Mages, Elementals, Bards guilds. The Abyss, Underdark, Hell,
-              and extensive mudlib development.
-            </p>
-          </div>
+          <h3>Rastafan</h3>
+          <span class="archon-order order-mudlib">Mudlib</span>
+          <p>
+            Monks, Mages, Elementals, Bards guilds. The Abyss, Underdark, Hell,
+            and extensive mudlib development.
+          </p>
         </div>
 
-        <div class="staff-card">
-          <div class="staff-image">
-            <div class="staff-placeholder">
-              <i class="fa-solid fa-shield"></i>
-            </div>
+        <div class="archon-card">
+          <div class="archon-icon">
+            <i class="fa-solid fa-shield"></i>
           </div>
-          <div class="staff-info">
-            <h3>Kikipopo</h3>
-            <span class="staff-order order-ethos">Ethos</span>
-            <p class="staff-contributions">
-              Knights Guild, Knight recode, Bailout Quest, Section Z, and community management.
-            </p>
-          </div>
+          <h3>Kikipopo</h3>
+          <span class="archon-order order-ethos">Ethos</span>
+          <p>
+            Knights Guild, Knight recode, Bailout Quest, Section Z, and community management.
+          </p>
         </div>
 
-        <div class="staff-card">
-          <div class="staff-image">
-            <div class="staff-placeholder">
-              <i class="fa-solid fa-wand-sparkles"></i>
-            </div>
+        <div class="archon-card">
+          <div class="archon-icon">
+            <i class="fa-solid fa-wand-sparkles"></i>
           </div>
-          <div class="staff-info">
-            <h3>Adalius</h3>
-            <span class="staff-order order-areas">Areas</span>
-            <span class="staff-order order-admin">Administration</span>
-            <p class="staff-contributions">
-              Long-time contributor to the realms, game administration, and author of
-              the <a href="/resources/primer/index.html" target="_blank">3K Coding Primer</a>.
-            </p>
-          </div>
+          <h3>Adalius</h3>
+          <span class="archon-order order-areas">Areas</span>
+          <span class="archon-order order-admin">Administration</span>
+          <p>
+            Long-time contributor to the realms, game administration, and author of
+            the <a href="/resources/primer/index.html" target="_blank">3K Coding Primer</a>.
+          </p>
         </div>
 
-        <div class="staff-card">
-          <div class="staff-image">
-            <div class="staff-placeholder">
-              <i class="fa-solid fa-tower-observation"></i>
-            </div>
+        <div class="archon-card">
+          <div class="archon-icon">
+            <i class="fa-solid fa-tower-observation"></i>
           </div>
-          <div class="staff-info">
-            <h3>Turnhold</h3>
-            <span class="staff-order order-admin">Administration</span>
-            <p class="staff-contributions">
-              Dedicated administrator helping guide the future of 3Kingdoms.
-            </p>
-          </div>
+          <h3>Turnhold</h3>
+          <span class="archon-order order-admin">Administration</span>
+          <p>
+            Dedicated administrator helping guide the future of 3Kingdoms.
+          </p>
         </div>
       </div>
     </div>

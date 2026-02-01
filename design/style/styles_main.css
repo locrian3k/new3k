@@ -4290,101 +4290,110 @@ main {
 	border-image: var(--clr-gradient) 1;
 }
 
-.staff-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+.archons-grid {
+	display: flex;
+	flex-wrap: wrap;
 	gap: var(--space-lg);
 	margin-top: var(--space-xl);
+	justify-content: center;
 }
 
-.staff-card {
-	display: flex;
-	gap: var(--space-lg);
+.archon-card {
 	background: rgba(255, 255, 255, 0.03);
 	border: 2px solid rgba(255, 255, 255, 0.1);
 	border-radius: 8px;
-	padding: var(--space-lg);
+	padding: var(--space-xl);
+	text-align: center;
 	transition: all 0.3s ease;
+	width: 100%;
+	max-width: 280px;
 }
 
-.staff-card:hover {
+.archon-card:hover {
+	transform: translateY(-4px);
 	border-color: var(--clr-accent-main);
 	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.staff-image {
-	flex-shrink: 0;
-}
-
-.staff-placeholder {
-	width: 100px;
-	height: 100px;
-	background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-	border: 2px solid rgba(255, 255, 255, 0.15);
-	border-radius: 8px;
+.archon-icon {
+	width: 70px;
+	height: 70px;
+	margin: 0 auto var(--space-md);
+	background: rgba(255, 255, 255, 0.1);
+	border: 2px solid var(--clr-accent-main);
+	border-radius: 50%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.staff-placeholder i {
-	font-size: 2.5rem;
+.archon-icon i {
+	font-size: 1.75rem;
 	color: var(--clr-accent-main);
-	opacity: 0.7;
 }
 
-.staff-info {
-	flex: 1;
-}
-
-.staff-info h3 {
+.archon-card h3 {
 	font-family: var(--ff-heading);
 	font-size: var(--fs-h3);
 	color: var(--clr-text-heading);
 	margin-bottom: var(--space-xs);
 }
 
-.staff-order {
+.archon-order {
 	display: inline-block;
 	padding: 0.2rem 0.6rem;
 	border-radius: 4px;
-	font-size: var(--fs-body-small);
+	font-size: 0.8rem;
 	font-weight: 600;
 	margin-bottom: var(--space-sm);
+	margin-right: var(--space-xs);
 	background: rgba(255, 255, 255, 0.1);
 	color: var(--clr-text-primary);
 }
 
-.staff-order.order-guilds {
+.archon-order:last-of-type {
+	margin-right: 0;
+}
+
+.archon-order.order-guilds {
 	background: rgba(139, 69, 19, 0.3);
 	color: #daa520;
 }
 
-.staff-order.order-mudlib {
+.archon-order.order-mudlib {
 	background: rgba(0, 100, 0, 0.3);
 	color: #90ee90;
 }
 
-.staff-order.order-ethos {
+.archon-order.order-ethos {
 	background: rgba(75, 0, 130, 0.3);
 	color: #dda0dd;
 }
 
-.staff-order.order-areas {
+.archon-order.order-areas {
 	background: rgba(0, 0, 139, 0.3);
 	color: #87ceeb;
 }
 
-.staff-order.order-admin {
+.archon-order.order-admin {
 	background: rgba(139, 0, 0, 0.3);
 	color: #f08080;
 }
 
-.staff-contributions {
+.archon-card p {
 	color: var(--clr-text-primary);
 	font-size: var(--fs-body-small);
 	line-height: var(--lh-normal);
 	margin: 0;
+}
+
+.archon-card p a {
+	color: var(--clr-accent-main);
+	text-decoration: none;
+}
+
+.archon-card p a:hover {
+	text-decoration: underline;
 }
 
 /* Wizards Section */
@@ -4604,8 +4613,9 @@ main {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	.staff-grid {
-		grid-template-columns: 1fr;
+	.archon-card {
+		max-width: 260px;
+		flex: 0 1 calc(50% - var(--space-lg));
 	}
 }
 
@@ -4631,14 +4641,9 @@ main {
 		grid-template-columns: 1fr;
 	}
 
-	.staff-card {
-		flex-direction: column;
-		text-align: center;
-	}
-
-	.staff-image {
-		display: flex;
-		justify-content: center;
+	.archon-card {
+		max-width: 100%;
+		flex: 0 1 100%;
 	}
 
 	.new-wizards-list {

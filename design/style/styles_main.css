@@ -3838,11 +3838,6 @@ main {
 		grid-template-columns: 1fr;
 	}
 
-	.vafs-notice {
-		flex-direction: column;
-		text-align: center;
-	}
-
 	.breakdown-bar {
 		height: 20px;
 	}

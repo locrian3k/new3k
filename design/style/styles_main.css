@@ -3859,6 +3859,326 @@ main {
 }
 
 /* ------------------- */
+/* CONTACT PAGE */
+/* ------------------- */
+.contact-container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 0 var(--space-lg);
+}
+
+/* Contact Intro Section */
+.contact-intro {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-black);
+	border-top: 0.05rem solid transparent;
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.contact-intro .intro-card {
+	background: rgba(25, 52, 85, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: var(--card-border-radius);
+	padding: var(--space-2xl) var(--space-xl);
+	text-align: center;
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.contact-intro .intro-card h2 {
+	font-family: var(--ff-heading);
+	font-size: var(--fs-h2);
+	color: var(--clr-text-heading);
+	margin-bottom: var(--space-lg);
+}
+
+.contact-intro .intro-card p {
+	color: var(--clr-text-primary);
+	font-size: var(--fs-body-large);
+	line-height: var(--lh-normal);
+	margin-bottom: var(--space-md);
+}
+
+.contact-intro .intro-card p:last-child {
+	margin-bottom: 0;
+}
+
+.contact-intro .intro-card a {
+	color: var(--clr-text-heading);
+	text-decoration: none;
+	border-bottom: 1px solid var(--clr-text-heading);
+	transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-intro .intro-card a:hover {
+	color: var(--clr-accent-main);
+	border-color: var(--clr-accent-main);
+}
+
+/* Contact Methods Section */
+.contact-methods {
+	padding: var(--space-3xl) var(--space-lg);
+	background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.contact-methods .section-header {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+}
+
+.contact-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-xl);
+}
+
+.contact-card {
+	background: rgba(25, 52, 85, 0.5);
+	border: 2px solid rgba(255, 255, 255, 0.15);
+	border-radius: var(--card-border-radius);
+	padding: var(--space-xl);
+	transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-card:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--shadow-lg);
+	border-color: rgba(247, 210, 75, 0.3);
+}
+
+.contact-card-header {
+	display: flex;
+	align-items: center;
+	gap: var(--space-md);
+	margin-bottom: var(--space-md);
+}
+
+.contact-card-header i {
+	font-size: 2rem;
+	color: var(--clr-text-heading);
+}
+
+.contact-card-header h3 {
+	font-family: var(--ff-heading);
+	font-size: var(--fs-h3);
+	color: var(--clr-text-heading);
+	margin: 0;
+}
+
+.contact-card > p {
+	color: var(--clr-text-primary);
+	font-size: var(--fs-body);
+	line-height: var(--lh-normal);
+	margin-bottom: var(--space-md);
+}
+
+.contact-info {
+	margin-bottom: var(--space-md);
+}
+
+.contact-email,
+.contact-link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-sm);
+	color: var(--clr-text-heading);
+	text-decoration: none;
+	font-size: var(--fs-body-large);
+	padding: var(--space-sm) var(--space-md);
+	background: rgba(247, 210, 75, 0.1);
+	border: 1px solid rgba(247, 210, 75, 0.3);
+	border-radius: 8px;
+	transition: all 0.3s ease;
+}
+
+.contact-email:hover,
+.contact-link:hover {
+	background: rgba(247, 210, 75, 0.2);
+	border-color: var(--clr-text-heading);
+	transform: translateX(5px);
+}
+
+.contact-email i,
+.contact-link i {
+	font-size: 1rem;
+}
+
+.contact-command {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-sm);
+	padding: var(--space-sm) var(--space-md);
+	background: rgba(99, 160, 195, 0.1);
+	border: 1px solid rgba(99, 160, 195, 0.3);
+	border-radius: 8px;
+}
+
+.contact-command i {
+	color: var(--clr-science);
+	font-size: 1rem;
+}
+
+.contact-command code {
+	background: rgba(255, 255, 255, 0.1);
+	padding: 0.2rem 0.5rem;
+	border-radius: 3px;
+	font-family: monospace;
+	font-size: var(--fs-body-large);
+	color: var(--clr-text-heading);
+}
+
+.contact-command-note {
+	color: var(--clr-text-secondary);
+	font-size: var(--fs-body-small);
+	font-style: italic;
+}
+
+.contact-note {
+	color: var(--clr-text-secondary);
+	font-size: var(--fs-body-small);
+	line-height: var(--lh-normal);
+	margin: 0;
+	font-style: italic;
+}
+
+/* In-Game Resources Section */
+.contact-ingame {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-black);
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.contact-ingame .section-header {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+}
+
+.ingame-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--space-lg);
+}
+
+.ingame-card {
+	background: rgba(25, 52, 85, 0.5);
+	border: 2px solid rgba(255, 255, 255, 0.15);
+	border-radius: var(--card-border-radius);
+	padding: var(--space-lg);
+	text-align: center;
+	transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.ingame-card:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--shadow-lg);
+	border-color: rgba(99, 160, 195, 0.3);
+}
+
+.ingame-icon {
+	margin-bottom: var(--space-md);
+}
+
+.ingame-icon i {
+	font-size: 2.5rem;
+	color: var(--clr-science);
+}
+
+.ingame-card h3 {
+	font-family: var(--ff-heading);
+	font-size: 1.1rem;
+	color: var(--clr-text-heading);
+	margin-bottom: var(--space-sm);
+}
+
+.ingame-card code {
+	display: inline-block;
+	background: rgba(255, 255, 255, 0.1);
+	padding: 0.3rem 0.6rem;
+	border-radius: 4px;
+	font-family: monospace;
+	font-size: var(--fs-body-small);
+	color: var(--clr-text-heading);
+	margin-bottom: var(--space-sm);
+}
+
+.ingame-card p {
+	color: var(--clr-text-primary);
+	font-size: var(--fs-body-small);
+	line-height: var(--lh-normal);
+	margin: 0;
+}
+
+/* Contact CTA */
+.contact-cta {
+	padding: var(--space-3xl) var(--space-lg);
+	text-align: center;
+	background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));
+	border-top: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.contact-cta h2 {
+	font-family: var(--ff-heading);
+	font-size: var(--fs-h2);
+	color: var(--clr-text-heading);
+	margin-bottom: var(--space-sm);
+}
+
+.contact-cta p {
+	color: var(--clr-text-primary);
+	font-size: var(--fs-body-large);
+	margin-bottom: var(--space-lg);
+}
+
+.contact-cta .cta-buttons {
+	display: flex;
+	gap: var(--space-md);
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.contact-cta .btn-primary i {
+	margin-right: var(--space-xs);
+}
+
+/* Contact Page Responsive */
+@media (max-width: 1024px) {
+	.ingame-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.contact-intro,
+	.contact-methods,
+	.contact-ingame,
+	.contact-cta {
+		padding: var(--space-xl) var(--space-md);
+	}
+
+	.contact-container {
+		padding: 0 var(--space-sm);
+	}
+
+	.contact-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.ingame-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-cta .cta-buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+/* ------------------- */
 /* FOOTER */
 /* ------------------- */
 footer {

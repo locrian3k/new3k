@@ -141,7 +141,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <h3>Kikipopo</h3>
             <span class="staff-order order-ethos">Ethos</span>
             <p class="staff-contributions">
-              Knights Guild, Knight recode, Bailout Quest, and community management.
+              Knights Guild, Knight recode, Bailout Quest, Section Z, and community management.
             </p>
           </div>
         </div>
@@ -158,7 +158,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <span class="staff-order order-admin">Administration</span>
             <p class="staff-contributions">
               Long-time contributor to the realms, game administration, and author of
-              the <a href="/resources/primer/index.html">3K Coding Primer</a>.
+              the <a href="/resources/primer/index.html" target="_blank">3K Coding Primer</a>.
             </p>
           </div>
         </div>
@@ -201,16 +201,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
         <div class="wizard-card">
           <div class="wizard-icon">
-            <i class="fa-solid fa-flask"></i>
-          </div>
-          <h3>Frank</h3>
-          <span class="wizard-order order-guilds">Guilds</span>
-          <span class="wizard-order order-areas">Areas</span>
-          <p>Realm development</p>
-        </div>
-
-        <div class="wizard-card">
-          <div class="wizard-icon">
             <i class="fa-solid fa-fire"></i>
           </div>
           <h3>Flaxen</h3>
@@ -221,11 +211,21 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
         <div class="wizard-card">
           <div class="wizard-icon">
+            <i class="fa-solid fa-flask"></i>
+          </div>
+          <h3>Frank</h3>
+          <span class="wizard-order order-guilds">Guilds</span>
+          <span class="wizard-order order-areas">Areas</span>
+          <p>Mage Guild, Guild maintenance, Realm development</p>
+        </div>
+
+        <div class="wizard-card">
+          <div class="wizard-icon">
             <i class="fa-solid fa-gear"></i>
           </div>
           <h3>Crolack</h3>
           <span class="wizard-order order-guilds">Guilds</span>
-          <p>Realm development</p>
+          <p>Psicorps Guild, Realm development</p>
         </div>
       </div>
 
@@ -235,15 +235,15 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="new-wizards-list">
           <div class="new-wizard">
             <i class="fa-solid fa-star"></i>
+            <span>Canislupus</span>
+          </div>          
+          <div class="new-wizard">
+            <i class="fa-solid fa-star"></i>
             <span>Mimic</span>
           </div>
           <div class="new-wizard">
             <i class="fa-solid fa-star"></i>
             <span>Quirk</span>
-          </div>
-          <div class="new-wizard">
-            <i class="fa-solid fa-star"></i>
-            <span>Canislupus</span>
           </div>
         </div>
       </div>

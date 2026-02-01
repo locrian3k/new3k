@@ -121,7 +121,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
 
         <!-- PayPal Option - Hosted Button (Current) -->
-        <!-- <div class="payment-card">
+        <div class="payment-card">
           <div class="payment-header">
             <div class="payment-logo-text"><i class="fa-brands fa-paypal"></i> PayPal</div>
           </div>
@@ -170,7 +170,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               </button>
             </form>
           </div>
-        </div> -->
+        </div>
 
         <?php
         /*
@@ -185,7 +185,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         ============================================================================
         */
         ?>
-        
+        <!--
         <div class="payment-card">
           <div class="payment-header">
             <div class="payment-logo-text"><i class="fa-brands fa-paypal"></i> PayPal</div>
@@ -232,7 +232,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             </form>
           </div>
         </div>
-       
+        -->
       </div>
 
       <p class="payment-note">

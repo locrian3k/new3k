@@ -3062,7 +3062,7 @@ main {
 }
 
 .guild-split-card.card-gray {
-	border-left: 3px solid var(--clr-text-secondary);
+	border-left: 3px solid #888888;
 }
 
 .guild-split-card:hover {
@@ -3087,7 +3087,7 @@ main {
 }
 
 .guild-split-card.card-gray .guild-split-icon {
-	color: var(--clr-text-secondary);
+	color: #888888;
 }
 
 .guild-split-card h3 {

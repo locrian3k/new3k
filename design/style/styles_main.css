@@ -2803,6 +2803,13 @@ main {
 	margin-bottom: var(--space-md);
 }
 
+/* Guild Logo Images */
+.guild-logo {
+	max-width: 150px;
+	height: auto;
+	margin-bottom: var(--space-sm);
+}
+
 .guild-icon {
 	font-size: 2rem;
 	margin-bottom: var(--space-sm);
@@ -3012,6 +3019,24 @@ main {
 
 .guild-flip-front:hover .guild-flip-icon {
 	transform: scale(1.1);
+}
+
+/* Guild Flip Card Logos */
+.guild-flip-logo {
+	max-width: 120px;
+	height: auto;
+	margin-bottom: var(--space-sm);
+	transition: transform 0.3s ease;
+}
+
+.guild-flip-front:hover .guild-flip-logo {
+	transform: scale(1.05);
+}
+
+.guild-flip-logo-back {
+	max-width: 80px;
+	height: auto;
+	margin-bottom: var(--space-md);
 }
 
 .guild-flip-name {

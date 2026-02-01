@@ -40,8 +40,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <!-- Adventurer -->
         <div class="guild-card guild-card-starter">
           <div class="guild-card-header">
-            <i class="fa-solid fa-compass guild-icon"></i>
-            <h3 class="guild-name">Adventurer</h3>
+            <img src="/images/logo/guilds/guild_logo_adventurer.png" alt="Adventurer Guild" class="guild-logo">
             <span class="guild-realm">Default</span>
           </div>
           <div class="guild-card-body">
@@ -68,8 +67,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <!-- Android -->
         <div class="guild-card guild-card-core">
           <div class="guild-card-header">
-            <i class="fa-solid fa-robot guild-icon"></i>
-            <h3 class="guild-name">Android</h3>
+            <img src="/images/logo/guilds/guild_logo_android.png" alt="Android Guild" class="guild-logo">
             <span class="guild-realm">Core</span>
           </div>
           <div class="guild-card-body">
@@ -84,8 +82,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <!-- Cleric -->
         <div class="guild-card guild-card-core">
           <div class="guild-card-header">
-            <i class="fa-solid fa-hand-holding-medical guild-icon"></i>
-            <h3 class="guild-name">Cleric</h3>
+            <img src="/images/logo/guilds/guild_logo_cleric.png" alt="Cleric Guild" class="guild-logo">
             <span class="guild-realm">Core</span>
           </div>
           <div class="guild-card-body">
@@ -146,8 +143,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-dove guild-flip-icon"></i>
-              <h3 class="guild-flip-name">Angel</h3>
+              <img src="/images/logo/guilds/guild_logo_angel.png" alt="Angel Guild" class="guild-flip-logo">
               <div class="guild-flip-tags">
                 <span class="guild-tag">Divine</span>
                 <span class="guild-tag">Balance</span>
@@ -155,7 +151,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
-              <h3 class="guild-flip-name">Angel</h3>
+              <img src="/images/logo/guilds/guild_logo_angel.png" alt="Angel Guild" class="guild-flip-logo-back">
               <p>Mortals imbued with divine spark to restore cosmic balance. Develop martial combat, divine powers, or combine both. Your wings await.</p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
@@ -166,8 +162,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-music guild-flip-icon"></i>
-              <h3 class="guild-flip-name">Bards</h3>
+              <img src="/images/logo/guilds/guild_logo_bard.png" alt="Bards Guild" class="guild-flip-logo">
               <div class="guild-flip-tags">
                 <span class="guild-tag">Versatile</span>
                 <span class="guild-tag">Music</span>
@@ -175,7 +170,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
-              <h3 class="guild-flip-name">Bards</h3>
+              <img src="/images/logo/guilds/guild_logo_bard.png" alt="Bards Guild" class="guild-flip-logo-back">
               <p>Passionate souls nourished by beauty and drawn to mystery. Master deadly combat songs, pure physical combat, soothing instruments, or shadow arts to gather knowledge unseen.</p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
@@ -186,8 +181,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-feather-pointed guild-flip-icon"></i>
-              <h3 class="guild-flip-name">Bladesingers</h3>
+              <img src="/images/logo/guilds/guild_logo_bladesinger.png" alt="Bladesingers Guild" class="guild-flip-logo">
               <div class="guild-flip-tags">
                 <span class="guild-tag">Elven</span>
                 <span class="guild-tag">Runes</span>
@@ -195,7 +189,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
-              <h3 class="guild-flip-name">Bladesingers</h3>
+              <img src="/images/logo/guilds/guild_logo_bladesinger.png" alt="Bladesingers Guild" class="guild-flip-logo-back">
               <p>Ancient elven warriors returned to teach the old ways. Master fighting styles, read ancient runes, and call upon the Unseelie Court of the faerie world to enhance your combat.</p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
@@ -206,8 +200,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-eye guild-flip-icon"></i>
-              <h3 class="guild-flip-name">Breed</h3>
+              <img src="/images/logo/guilds/guild_logo_breed.png" alt="Breed Guild" class="guild-flip-logo">
               <div class="guild-flip-tags">
                 <span class="guild-tag">Psionic</span>
                 <span class="guild-tag">Ancient</span>
@@ -215,7 +208,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
-              <h3 class="guild-flip-name">Breed</h3>
+              <img src="/images/logo/guilds/guild_logo_breed.png" alt="Breed Guild" class="guild-flip-logo-back">
               <p>One of the eldest races, returned from exile with the power of the mind. Secretive, diverse, and highly individual. Each Breed forges their own destiny.</p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
@@ -226,8 +219,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-paw guild-flip-icon"></i>
-              <h3 class="guild-flip-name">Changelings</h3>
+              <img src="/images/logo/guilds/guild_logo_changeling.png" alt="Changelings Guild" class="guild-flip-logo">
               <div class="guild-flip-tags">
                 <span class="guild-tag">Shapeshifter</span>
                 <span class="guild-tag">Unique</span>
@@ -235,7 +227,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
-              <h3 class="guild-flip-name">Changelings</h3>
+              <img src="/images/logo/guilds/guild_logo_changeling.png" alt="Changelings Guild" class="guild-flip-logo-back">
               <p>An ancient race with unnatural control over their cells. Shapeshift into mammals, reptiles, avians, and rumored dinosaur forms with lethal natural weaponry.</p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>

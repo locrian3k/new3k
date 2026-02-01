@@ -165,7 +165,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   <section class="admin-wizards">
     <div class="admin-container">
       <div class="section-header">
-        <h2 class="section-title">Wizards</h2>
+        <h2 class="section-title">Solar+</h2>
         <p class="section-subtitle">The builders and maintainers of the realms</p>
       </div>
 

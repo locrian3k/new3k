@@ -2590,17 +2590,25 @@ main {
 .guilds-intro {
 	padding: var(--space-3xl) var(--space-lg);
 	background: var(--clr-black);
-	text-align: center;
 	border-bottom: 0.05rem solid transparent;
 	border-image: var(--clr-gradient) 1;
 }
 
+.guilds-intro .guilds-container {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
 .guilds-intro .intro-text {
-	max-width: 800px;
-	margin: 0 auto var(--space-md);
+	font-family: var(--ff-body);
+	font-size: var(--fs-body-large);
+	line-height: var(--lh-normal);
 	color: var(--clr-text-primary);
-	font-size: 1.1rem;
-	line-height: var(--lh-relaxed);
+	margin-bottom: var(--space-md);
+}
+
+.guilds-intro .intro-text:last-child {
+	margin-bottom: 0;
 }
 
 .guilds-intro .intro-text strong {

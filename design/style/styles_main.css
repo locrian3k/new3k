@@ -3041,6 +3041,97 @@ main {
 	margin: 0;
 }
 
+/* Guild Split Cards (Advanced Guilds) */
+.guild-split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-xl);
+}
+
+.guild-split-card {
+	background: rgba(25, 52, 85, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: var(--card-border-radius);
+	padding: var(--space-xl);
+	text-align: center;
+	transition: all 0.3s ease;
+}
+
+.guild-split-card.card-purple {
+	border-left: 3px solid var(--clr-accent-purple);
+}
+
+.guild-split-card.card-gray {
+	border-left: 3px solid var(--clr-text-secondary);
+}
+
+.guild-split-card:hover {
+	transform: translateY(-5px);
+}
+
+.guild-split-card.card-purple:hover {
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), -10px 0 30px rgba(138, 79, 165, 0.2);
+}
+
+.guild-split-card.card-gray:hover {
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 10px 0 30px rgba(150, 150, 150, 0.15);
+}
+
+.guild-split-icon {
+	font-size: 2.5rem;
+	margin-bottom: var(--space-md);
+}
+
+.guild-split-card.card-purple .guild-split-icon {
+	color: var(--clr-accent-purple);
+}
+
+.guild-split-card.card-gray .guild-split-icon {
+	color: var(--clr-text-secondary);
+}
+
+.guild-split-card h3 {
+	font-family: var(--ff-heading);
+	font-size: 1.5rem;
+	color: var(--clr-text-heading);
+	margin-bottom: var(--space-sm);
+}
+
+.guild-split-badge {
+	display: inline-block;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	padding: 0.2rem 0.6rem;
+	border-radius: 50px;
+	background: rgba(255, 255, 255, 0.1);
+	color: var(--clr-text-secondary);
+	margin-bottom: var(--space-md);
+}
+
+.guild-split-card.card-purple .guild-split-badge {
+	background: rgba(138, 79, 165, 0.2);
+	color: var(--clr-accent-purple);
+}
+
+.guild-split-card p {
+	color: var(--clr-text-primary);
+	font-size: 0.95rem;
+	line-height: var(--lh-relaxed);
+	margin-bottom: var(--space-lg);
+}
+
+.guild-split-card p.guild-mystery {
+	font-style: italic;
+}
+
+.guild-split-requirements {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--space-xs);
+}
+
 /* Guilds Page Responsive */
 @media (max-width: 1024px) {
 	.guild-grid {
@@ -3059,7 +3150,8 @@ main {
 @media (max-width: 768px) {
 	.guild-grid,
 	.guild-grid-core,
-	.guild-flip-grid {
+	.guild-flip-grid,
+	.guild-split {
 		grid-template-columns: 1fr;
 	}
 

@@ -505,54 +505,35 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     </div>
   </section>
 
-  <!-- High Mortal Guild -->
-  <section class="guilds-section guilds-highmortal">
+  <!-- Advanced Guilds -->
+  <section class="guilds-section guilds-advanced">
     <div class="guilds-container">
       <div class="section-header">
-        <h2 class="section-title">High Mortal Guild</h2>
+        <h2 class="section-title">Advanced Guilds</h2>
         <p class="section-subtitle">For those who have achieved great power and seek even more</p>
       </div>
 
-      <div class="guild-grid guild-grid-single">
+      <div class="guild-split">
         <!-- Ascended -->
-        <div class="guild-card guild-card-highmortal">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-mountain-sun guild-icon"></i>
-            <h3 class="guild-name">Ascended</h3>
-            <span class="guild-realm">High Mortal</span>
-          </div>
-          <div class="guild-card-body">
-            <p>For those who've reached significant mortal power. Leave behind your physical shell and become the immortal manifestation of your soul. Tanks and protectors of large groups. Requires High Mortal status and level 90+. You do not need to leave your mortal guild to join Ascended.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">High Level</span>
+        <div class="guild-split-card card-purple">
+          <i class="fa-solid fa-mountain-sun guild-split-icon"></i>
+          <h3>Ascended</h3>
+          <span class="guild-split-badge">High Mortal</span>
+          <p>Leave behind your physical shell and become the immortal manifestation of your soul. Tanks and protectors of large groups. You do not need to leave your mortal guild to join.</p>
+          <div class="guild-split-requirements">
+            <span class="guild-tag">Level 90+</span>
+            <span class="guild-tag">High Mortal Status</span>
             <span class="guild-tag">Secondary Guild</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Eternal Guild -->
-  <section class="guilds-section guilds-eternal">
-    <div class="guilds-container">
-      <div class="section-header">
-        <h2 class="section-title">Eternal Guild</h2>
-        <p class="section-subtitle">Some mysteries reveal themselves only to those who endure</p>
-      </div>
-
-      <div class="guild-grid guild-grid-single">
         <!-- Eternal -->
-        <div class="guild-card guild-card-eternal">
-          <div class="guild-card-header">
-            <i class="fa-solid fa-infinity guild-icon"></i>
-            <h3 class="guild-name">Eternal</h3>
-            <span class="guild-realm">???</span>
-          </div>
-          <div class="guild-card-body">
-            <p class="guild-mystery">The path to becoming Eternal is known only to those who walk it. This guild reveals itself when you reach the required milestone. No spoilers here - your journey will show the way.</p>
-          </div>
-          <div class="guild-card-footer">
+        <div class="guild-split-card card-gray">
+          <i class="fa-solid fa-infinity guild-split-icon"></i>
+          <h3>Eternal</h3>
+          <span class="guild-split-badge">???</span>
+          <p class="guild-mystery">The path to becoming Eternal is known only to those who walk it. This guild reveals itself when you reach the required milestone. No spoilers here - your journey will show the way.</p>
+          <div class="guild-split-requirements">
             <span class="guild-tag">Secret</span>
             <span class="guild-tag">Discover In-Game</span>
           </div>

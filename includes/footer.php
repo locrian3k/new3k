@@ -20,7 +20,6 @@
 		          <li><a href="/about/3scapes/index.php">About 3Scapes</a></li>
 		          <li><a href="/guilds/index.php">Guilds</a></li>
 		          <li><a href="/help/index.php">Help Files</a></li>
-		          <li><a href="/quests/index.php">Quests</a></li>
 		          <li><a href="/realms/index.php">Realms</a></li>
 		        </ul>
 		      </div>

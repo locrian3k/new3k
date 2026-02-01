@@ -4332,6 +4332,47 @@ main {
 	color: var(--clr-accent-main);
 }
 
+/* Order-specific icon colors */
+.archon-icon.order-guilds {
+	border-color: #daa520;
+}
+
+.archon-icon.order-guilds i {
+	color: #daa520;
+}
+
+.archon-icon.order-mudlib {
+	border-color: #90ee90;
+}
+
+.archon-icon.order-mudlib i {
+	color: #90ee90;
+}
+
+.archon-icon.order-ethos {
+	border-color: #dda0dd;
+}
+
+.archon-icon.order-ethos i {
+	color: #dda0dd;
+}
+
+.archon-icon.order-areas {
+	border-color: #87ceeb;
+}
+
+.archon-icon.order-areas i {
+	color: #87ceeb;
+}
+
+.archon-icon.order-admin {
+	border-color: #f08080;
+}
+
+.archon-icon.order-admin i {
+	color: #f08080;
+}
+
 .archon-card h3 {
 	font-family: var(--ff-heading);
 	font-size: var(--fs-h3);
@@ -4431,6 +4472,7 @@ main {
 	height: 50px;
 	margin: 0 auto var(--space-sm);
 	background: rgba(255, 255, 255, 0.1);
+	border: 2px solid var(--clr-accent-main);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -4440,6 +4482,39 @@ main {
 .wizard-icon i {
 	font-size: 1.25rem;
 	color: var(--clr-accent-main);
+}
+
+/* Order-specific wizard icon colors */
+.wizard-icon.order-guilds {
+	border-color: #daa520;
+}
+
+.wizard-icon.order-guilds i {
+	color: #daa520;
+}
+
+.wizard-icon.order-mudlib {
+	border-color: #90ee90;
+}
+
+.wizard-icon.order-mudlib i {
+	color: #90ee90;
+}
+
+.wizard-icon.order-areas {
+	border-color: #87ceeb;
+}
+
+.wizard-icon.order-areas i {
+	color: #87ceeb;
+}
+
+.wizard-icon.order-ethos {
+	border-color: #dda0dd;
+}
+
+.wizard-icon.order-ethos i {
+	color: #dda0dd;
 }
 
 .wizard-card h3 {

@@ -120,7 +120,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </a>
         </div>
 
-        <!-- PayPal Option -->
+        <!-- PayPal Option - Hosted Button (Current) -->
         <div class="payment-card">
           <div class="payment-header">
             <div class="payment-logo-text"><i class="fa-brands fa-paypal"></i> PayPal</div>
@@ -132,7 +132,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </p>
 
           <div class="paypal-form-container">
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="paypal-form">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
               <input type="hidden" name="cmd" value="_s-xclick">
               <input type="hidden" name="hosted_button_id" value="76H7AUJNZEWXJ">
 
@@ -171,6 +171,68 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             </form>
           </div>
         </div>
+
+        <?php
+        /*
+        ============================================================================
+        ALTERNATIVE: PayPal _xclick Form (Custom Amount Option)
+        ============================================================================
+        To enable this alternative PayPal form that allows custom donation amounts:
+        1. Comment out or remove the "PayPal Option - Hosted Button" div above
+        2. Uncomment the div below
+
+        NOTE: This uses _xclick which is less secure than hosted buttons - users could potentially modify form values. However, it allows flexible/custom amounts.
+        ============================================================================
+        */
+        ?>
+        <!--
+        <div class="payment-card">
+          <div class="payment-header">
+            <div class="payment-logo-text"><i class="fa-brands fa-paypal"></i> PayPal</div>
+          </div>
+          <h3>PayPal Checkout</h3>
+          <p>
+            Use PayPal for a familiar checkout experience. Enter your desired VAF amount and character name. Remember: $1 = 1 VAF Credit.
+          </p>
+
+          <div class="paypal-form-container">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="paypal@3k.org">
+              <input type="hidden" name="item_name" value="3Kingdoms VAF Credit">
+              <input type="hidden" name="no_shipping" value="1">
+              <input type="hidden" name="no_note" value="1">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="tax" value="0.00">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="bn" value="PP-BuyNowBF">
+
+              <div class="form-group">
+                <label for="vaf-game">Select Game</label>
+                <select name="item_name" id="vaf-game" class="form-select">
+                  <option value="3Kingdoms VAF Credit">3Kingdoms</option>
+                  <option value="3Scapes VAF Credit">3Scapes</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="vaf-amount">Amount (USD)</label>
+                <input type="number" name="amount" id="vaf-amount" min="1" step="1" class="form-input" placeholder="Enter amount ($1 = 1 credit)" required>
+              </div>
+
+              <div class="form-group">
+                <label for="char-name-alt">Character Name</label>
+                <input type="text" name="custom" id="char-name-alt" maxlength="200" class="form-input" placeholder="Enter any of your characters" required>
+              </div>
+
+              <button type="submit" class="btn-secondary payment-btn">
+                <i class="fa-brands fa-paypal"></i>
+                Pay with PayPal
+              </button>
+            </form>
+          </div>
+        </div>
+        -->
       </div>
 
       <p class="payment-note">

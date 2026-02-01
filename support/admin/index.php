@@ -156,7 +156,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <h3>Adalius</h3>
             <span class="staff-order order-admin">Administration</span>
             <p class="staff-contributions">
-              Long-time contributor to the realms and game administration.
+              Long-time contributor to the realms, game administration, and author of
+              the <a href="/resources/primer/index.html">3K Coding Primer</a>.
             </p>
           </div>
         </div>
@@ -257,10 +258,19 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           improving the game, consider applying to become a wizard.
         </p>
         <p>
-          Speak with any current wizard in-game or contact the Ethos order to learn
-          more about the application process and what's involved in building the realms.
+          To get started, check out the <strong><a href="/resources/primer/index.html">3K Coding Primer</a></strong>,
+          a comprehensive guide written by Adalius that covers everything from LPC basics
+          to building your own areas, monsters, and more.
+        </p>
+        <p>
+          When you're ready, speak with any current wizard in-game or contact the Ethos
+          order to learn more about the application process.
         </p>
         <div class="join-actions">
+          <a href="/resources/primer/index.html" class="btn-primary">
+            <i class="fa-solid fa-book"></i>
+            Read the Primer
+          </a>
           <a href="/support/contact/index.php" class="btn-secondary">
             <i class="fa-solid fa-envelope"></i>
             Contact Us

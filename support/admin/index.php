@@ -217,7 +217,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <i class="fa-solid fa-star"></i>
             <span>Canislupus</span>
           </div>          
-          <div class="new-wizard">
+          <div class="new-wizard order-areas">
             <i class="fa-solid fa-map"></i>
             <span>Mimic</span>
           </div>

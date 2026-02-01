@@ -528,7 +528,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
 
         <!-- Eternal -->
-        <div class="guild-split-card card-gray">
+        <div class="guild-split-card card-purple">
           <i class="fa-solid fa-infinity guild-split-icon"></i>
           <h3>Eternal</h3>
           <span class="guild-split-badge">???</span>

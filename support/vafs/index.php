@@ -19,13 +19,20 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="intro-card">
         <h2>What are VAFs?</h2>
         <p>
+          <a href="http://www.themarblegroup.com" target="_blank">The Marble Group Inc.</a> is a privately held,
+          Michigan-based company that owns and operates 3Kingdoms, 3Scapes, and all related entities.
+          Our primary purpose is the health, promotion, and well-being of these games - resulting in
+          persistent online adventures that are world-leaders in depth, description, and overall richness of play.
+        </p>
+        <p>
           3Kingdoms and 3Scapes are completely <strong>free to play</strong> - no subscriptions,
           no pay-to-win mechanics, just pure adventure. However, running world-class MUD servers
           takes resources. Voluntary Access Fees (VAFs) are how our community keeps the realms alive.
+          Think of it like PBS, but with monsters.
         </p>
         <p>
-          Think of it like PBS, but with monsters. Your contributions help cover server costs,
-          hardware upgrades, and keep the adventure running for everyone.
+          We rely on the generosity of our player community to keep the adventure running for everyone.
+          Thank you for being part of this journey.
         </p>
       </div>
     </div>
@@ -347,25 +354,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <span class="breakdown-amount">10&cent;</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About The Marble Group -->
-  <section class="vafs-about">
-    <div class="vafs-container">
-      <div class="about-card">
-        <h3>About The Marble Group</h3>
-        <p>
-          <a href="http://www.themarblegroup.com" target="_blank">The Marble Group Inc.</a> is a privately held,
-          Michigan-based company that owns and operates 3Kingdoms, 3Scapes, and all related entities.
-          Our primary purpose is the health, promotion, and well-being of these games - resulting in
-          persistent online adventures that are world-leaders in depth, description, and overall richness of play.
-        </p>
-        <p>
-          We rely on the generosity of our player community to keep the adventure running for everyone.
-          Thank you for being part of this journey.
-        </p>
       </div>
     </div>
   </section>

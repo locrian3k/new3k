@@ -3765,54 +3765,6 @@ main {
 	font-weight: var(--fw-heading-semibold);
 }
 
-/* About Section */
-.vafs-about {
-	padding: var(--space-3xl) var(--space-lg);
-	background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));
-	border-bottom: 0.05rem solid transparent;
-	border-image: var(--clr-gradient) 1;
-}
-
-.vafs-about .about-card {
-	background: rgba(25, 52, 85, 0.5);
-	border: 2px solid rgba(255, 255, 255, 0.15);
-	border-radius: var(--card-border-radius);
-	padding: var(--space-2xl);
-	max-width: 900px;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.vafs-about .about-card h3 {
-	font-family: var(--ff-heading);
-	font-size: var(--fs-h3);
-	color: var(--clr-text-heading);
-	margin-bottom: var(--space-md);
-}
-
-.vafs-about .about-card p {
-	color: var(--clr-text-primary);
-	font-size: var(--fs-body);
-	line-height: var(--lh-normal);
-	margin-bottom: var(--space-md);
-}
-
-.vafs-about .about-card p:last-child {
-	margin-bottom: 0;
-}
-
-.vafs-about .about-card a {
-	color: var(--clr-text-heading);
-	text-decoration: none;
-	border-bottom: 1px solid var(--clr-text-heading);
-	transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-.vafs-about .about-card a:hover {
-	color: var(--clr-accent-main);
-	border-color: var(--clr-accent-main);
-}
-
 /* VAFs CTA */
 .vafs-cta {
 	padding: var(--space-3xl) var(--space-lg);
@@ -3859,7 +3811,6 @@ main {
 	.vafs-payment,
 	.vafs-rewards,
 	.vafs-breakdown,
-	.vafs-about,
 	.vafs-cta {
 		padding: var(--space-xl) var(--space-md);
 	}

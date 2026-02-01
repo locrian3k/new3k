@@ -31,8 +31,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           Think of it like PBS, but with monsters.
         </p>
         <p>
-          We rely on the generosity of our player community to keep the adventure running for everyone.
-          Thank you for being part of this journey.
+          We rely on the generosity of our player community to keep the adventure running for everyone. As a bonus for VAFs contributed, players are afforded a number of choice rewards they can apply to their
+          characters, a tiny sample of which are listed below. There are MANY, MANY more to choose from inside the
+          games. Thank you for being part of this journey.
         </p>
       </div>
     </div>
@@ -166,7 +167,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
               <div class="form-group">
                 <label for="char-name">Character Name</label>
-                <input type="text" name="os1" id="char-name" maxlength="200" class="form-input" placeholder="Enter any of your characters">
+                <input type="text" name="os1" id="char-name" maxlength="200" class="form-input"
+                  placeholder="Enter any of your characters">
                 <input type="hidden" name="on1" value="Character Name">
               </div>
 

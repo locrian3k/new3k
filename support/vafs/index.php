@@ -32,7 +32,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   </section>
 
   <!-- Key Info -->
-  <section class="vafs-section vafs-info">
+  <section class="vafs-info">
     <div class="vafs-container">
       <div class="section-header">
         <h2 class="section-title">How VAFs Work</h2>
@@ -41,23 +41,31 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
       <div class="vafs-info-grid">
         <div class="info-card">
-          <i class="fa-solid fa-coins"></i>
-          <h3>$1 = 1 Credit</h3>
+          <div class="info-card-header">
+            <i class="fa-solid fa-coins"></i>
+            <h3>$1 = 1 Credit</h3>
+          </div>
           <p>VAF credits are purchased in packages where each dollar equals one credit</p>
         </div>
         <div class="info-card">
-          <i class="fa-solid fa-clock"></i>
-          <h3>Quick Processing</h3>
+          <div class="info-card-header">
+            <i class="fa-solid fa-clock"></i>
+            <h3>Quick Processing</h3>
+          </div>
           <p>Credits applied within 24 hours, usually much sooner</p>
         </div>
         <div class="info-card">
-          <i class="fa-solid fa-users"></i>
-          <h3>Account-Wide</h3>
+          <div class="info-card-header">
+            <i class="fa-solid fa-users"></i>
+            <h3>Account-Wide</h3>
+          </div>
           <p>All your legal characters on that game share the same VAF credits</p>
         </div>
         <div class="info-card">
-          <i class="fa-solid fa-infinity"></i>
-          <h3>Never Expire</h3>
+          <div class="info-card-header">
+            <i class="fa-solid fa-infinity"></i>
+            <h3>Never Expire</h3>
+          </div>
           <p>Your VAF credits remain available forever - use them whenever you want</p>
         </div>
       </div>
@@ -73,7 +81,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   </section>
 
   <!-- Payment Options -->
-  <section class="vafs-section vafs-payment">
+  <section class="vafs-payment">
     <div class="vafs-container">
       <div class="section-header">
         <h2 class="section-title">Purchase VAF Credits</h2>
@@ -174,7 +182,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   </section>
 
   <!-- VAF Rewards -->
-  <section class="vafs-section vafs-rewards">
+  <section class="vafs-rewards">
     <div class="vafs-container">
       <div class="section-header">
         <h2 class="section-title">VAF Rewards</h2>
@@ -232,7 +240,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   </section>
 
   <!-- How VAFs Are Used -->
-  <section class="vafs-section vafs-breakdown">
+  <section class="vafs-breakdown">
     <div class="vafs-container">
       <div class="section-header">
         <h2 class="section-title">Where Your VAFs Go</h2>
@@ -282,7 +290,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   </section>
 
   <!-- About The Marble Group -->
-  <section class="vafs-section vafs-about">
+  <section class="vafs-about">
     <div class="vafs-container">
       <div class="about-card">
         <h3>About The Marble Group</h3>

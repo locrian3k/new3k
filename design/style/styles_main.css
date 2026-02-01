@@ -3202,29 +3202,25 @@ main {
 /* VAFS PAGE */
 /* ------------------- */
 .vafs-container {
-	max-width: 1200px;
+	max-width: 1100px;
 	margin: 0 auto;
-	padding: 0 var(--space-md);
+	padding: 0 var(--space-lg);
 }
 
-.vafs-section {
-	padding: var(--space-2xl) 0;
-}
-
-.vafs-section:nth-child(odd) {
-	background: rgba(25, 52, 85, 0.3);
-}
-
-/* VAFs Intro Section */
+/* VAFs Intro Section - with gradient borders */
 .vafs-intro {
-	padding: var(--space-xl) 0;
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-black);
+	border-top: 0.05rem solid transparent;
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
 }
 
 .vafs-intro .intro-card {
-	background: rgba(25, 52, 85, 0.4);
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(25, 52, 85, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.15);
 	border-radius: var(--card-border-radius);
-	padding: var(--space-xl);
+	padding: var(--space-2xl) var(--space-xl);
 	text-align: center;
 	max-width: 900px;
 	margin: 0 auto;
@@ -3234,7 +3230,7 @@ main {
 	font-family: var(--ff-heading);
 	font-size: var(--fs-h2);
 	color: var(--clr-text-heading);
-	margin-bottom: var(--space-md);
+	margin-bottom: var(--space-lg);
 }
 
 .vafs-intro .intro-card p {
@@ -3248,6 +3244,19 @@ main {
 	margin-bottom: 0;
 }
 
+/* VAFs Info Section */
+.vafs-info {
+	padding: var(--space-3xl) var(--space-lg);
+	background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.vafs-info .section-header {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+}
+
 /* VAFs Info Grid */
 .vafs-info-grid {
 	display: grid;
@@ -3258,29 +3267,35 @@ main {
 
 .info-card {
 	background: rgba(25, 52, 85, 0.5);
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	border: 2px solid rgba(255, 255, 255, 0.15);
 	border-radius: var(--card-border-radius);
 	padding: var(--space-lg);
-	text-align: center;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .info-card:hover {
 	transform: translateY(-5px);
 	box-shadow: var(--shadow-lg);
+	border-color: rgba(247, 210, 75, 0.3);
 }
 
-.info-card i {
-	font-size: 2.5rem;
+.info-card-header {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+	margin-bottom: var(--space-sm);
+}
+
+.info-card-header i {
+	font-size: 1.8rem;
 	color: var(--clr-text-heading);
-	margin-bottom: var(--space-md);
 }
 
-.info-card h3 {
+.info-card-header h3 {
 	font-family: var(--ff-heading);
 	font-size: 1.1rem;
 	color: var(--clr-text-heading);
-	margin-bottom: var(--space-sm);
+	margin: 0;
 }
 
 .info-card p {
@@ -3296,7 +3311,7 @@ main {
 	align-items: flex-start;
 	gap: var(--space-md);
 	background: rgba(212, 74, 2, 0.15);
-	border: 1px solid rgba(212, 74, 2, 0.3);
+	border: 2px solid rgba(212, 74, 2, 0.3);
 	border-radius: var(--card-border-radius);
 	padding: var(--space-lg);
 }
@@ -3322,6 +3337,18 @@ main {
 }
 
 /* Payment Section */
+.vafs-payment {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-black);
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.vafs-payment .section-header {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+}
+
 .payment-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -3330,21 +3357,28 @@ main {
 }
 
 .payment-card {
-	background: rgba(25, 52, 85, 0.4);
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(25, 52, 85, 0.5);
+	border: 2px solid rgba(255, 255, 255, 0.2);
 	border-radius: var(--card-border-radius);
 	padding: var(--space-xl);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .payment-card:hover {
 	transform: translateY(-5px);
 	box-shadow: var(--shadow-lg);
+	border-color: rgba(99, 160, 195, 0.4);
 }
 
 .payment-card.payment-featured {
 	border: 2px solid var(--clr-accent-main);
 	position: relative;
+	background: rgba(212, 74, 2, 0.08);
+}
+
+.payment-card.payment-featured:hover {
+	border-color: var(--clr-accent-main);
+	box-shadow: var(--shadow-lg), 0 0 20px rgba(212, 74, 2, 0.2);
 }
 
 .payment-header {
@@ -3509,6 +3543,18 @@ main {
 }
 
 /* Rewards Section */
+.vafs-rewards {
+	padding: var(--space-3xl) var(--space-lg);
+	background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.vafs-rewards .section-header {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+}
+
 .rewards-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -3517,10 +3563,15 @@ main {
 }
 
 .rewards-card {
-	background: rgba(25, 52, 85, 0.4);
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(25, 52, 85, 0.5);
+	border: 2px solid rgba(255, 255, 255, 0.15);
 	border-radius: var(--card-border-radius);
 	padding: var(--space-xl);
+	transition: border-color 0.3s ease;
+}
+
+.rewards-card:hover {
+	border-color: rgba(212, 160, 46, 0.3);
 }
 
 .rewards-header {
@@ -3598,6 +3649,18 @@ main {
 }
 
 /* Breakdown Section */
+.vafs-breakdown {
+	padding: var(--space-3xl) var(--space-lg);
+	background: var(--clr-black);
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
+.vafs-breakdown .section-header {
+	text-align: center;
+	margin-bottom: var(--space-2xl);
+}
+
 .breakdown-container {
 	max-width: 800px;
 	margin: 0 auto;
@@ -3706,11 +3769,18 @@ main {
 }
 
 /* About Section */
+.vafs-about {
+	padding: var(--space-3xl) var(--space-lg);
+	background: linear-gradient(180deg, var(--clr-bg-main), var(--clr-black));
+	border-bottom: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
+}
+
 .vafs-about .about-card {
-	background: rgba(25, 52, 85, 0.4);
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(25, 52, 85, 0.5);
+	border: 2px solid rgba(255, 255, 255, 0.15);
 	border-radius: var(--card-border-radius);
-	padding: var(--space-xl);
+	padding: var(--space-2xl);
 	max-width: 900px;
 	margin: 0 auto;
 	text-align: center;
@@ -3748,9 +3818,11 @@ main {
 
 /* VAFs CTA */
 .vafs-cta {
-	padding: var(--space-2xl) 0;
+	padding: var(--space-3xl) var(--space-lg);
 	text-align: center;
-	background: linear-gradient(180deg, rgba(25, 52, 85, 0.5), rgba(7, 15, 25, 0.8));
+	background: var(--clr-black);
+	border-top: 0.05rem solid transparent;
+	border-image: var(--clr-gradient) 1;
 }
 
 .vafs-cta h2 {
@@ -3785,8 +3857,30 @@ main {
 }
 
 @media (max-width: 768px) {
+	.vafs-intro,
+	.vafs-info,
+	.vafs-payment,
+	.vafs-rewards,
+	.vafs-breakdown,
+	.vafs-about,
+	.vafs-cta {
+		padding: var(--space-xl) var(--space-md);
+	}
+
+	.vafs-container {
+		padding: 0 var(--space-sm);
+	}
+
 	.vafs-info-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.info-card-header {
+		justify-content: center;
+	}
+
+	.info-card p {
+		text-align: center;
 	}
 
 	.payment-grid {

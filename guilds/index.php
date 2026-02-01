@@ -153,6 +153,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <img src="/images/logo/guilds/guild_logo_angel.png" alt="Angel Guild" class="guild-flip-logo-back">
               <p>Mortals imbued with divine spark to restore cosmic balance. Develop martial combat, divine powers, or combine both. Your wings await.</p>
+              <p class="guild-help-hint">In-game: <code>help angel</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -172,6 +173,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <img src="/images/logo/guilds/guild_logo_bard.png" alt="Bards Guild" class="guild-flip-logo-back">
               <p>Passionate souls nourished by beauty and drawn to mystery. Master deadly combat songs, pure physical combat, soothing instruments, or shadow arts to gather knowledge unseen.</p>
+              <p class="guild-help-hint">In-game: <code>help bards</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -191,6 +193,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <img src="/images/logo/guilds/guild_logo_bladesinger.png" alt="Bladesingers Guild" class="guild-flip-logo-back">
               <p>Ancient elven warriors returned to teach the old ways. Master fighting styles, read ancient runes, and call upon the Unseelie Court of the faerie world to enhance your combat.</p>
+              <p class="guild-help-hint">In-game: <code>help bladesingers</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -210,6 +213,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <img src="/images/logo/guilds/guild_logo_breed.png" alt="Breed Guild" class="guild-flip-logo-back">
               <p>One of the eldest races, returned from exile with the power of the mind. Secretive, diverse, and highly individual. Each Breed forges their own destiny.</p>
+              <p class="guild-help-hint">In-game: <code>help breed</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -229,6 +233,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <img src="/images/logo/guilds/guild_logo_changeling.png" alt="Changelings Guild" class="guild-flip-logo-back">
               <p>An ancient race with unnatural control over their cells. Shapeshift into mammals, reptiles, avians, and rumored dinosaur forms with lethal natural weaponry.</p>
+              <p class="guild-help-hint">In-game: <code>help changelings</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -249,6 +254,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Cyborg</h3>
               <p>"More human than human." The Cybernetic Research Corporation provides implants designed to maximize damage resistance, environmental mastery, and dealing death.</p>
+              <p class="guild-help-hint">In-game: <code>help cyborg</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -269,6 +275,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Elemental</h3>
               <p>Draw power from Fire, Water, Air, and Earth. Master each element independently before combining them. Renowned for sheer force and environmental manipulation.</p>
+              <p class="guild-help-hint">In-game: <code>help elemental</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -289,6 +296,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Fremen</h3>
               <p>Fierce desert warriors from Arrakis. Swift attacks, mental anguish, mind control, and meditative self-healing. Enhanced fighting in groups.</p>
+              <p class="guild-help-hint">In-game: <code>help fremen</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -309,6 +317,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Gentech</h3>
               <p>Refugees from a future sector war. Balance genetic enhancement and advanced technology. Perform experiments to acquire any power - the guild of choice.</p>
+              <p class="guild-help-hint">In-game: <code>help gentech</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -329,6 +338,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Jedi</h3>
               <p>No two Jedi advance the same way. Choose from 17 careers and 49 ability skills. Lightsabers, lightning, healing - all available if you train. Beware the Dark Side.</p>
+              <p class="guild-help-hint">In-game: <code>help jedi</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -349,6 +359,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Juggernaut</h3>
               <p>Battletech-themed Elementals in Main Battle Armour. Choose suits ranging from purely offensive to purely defensive. Divided into clans with their own leadership.</p>
+              <p class="guild-help-hint">In-game: <code>help juggernaut</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -369,6 +380,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Knight</h3>
               <p>Powerful warriors whose strength is sheathed within a code of honour. Not perfect, but always reaching for higher ideals. Glory in battle with noble purpose.</p>
+              <p class="guild-help-hint">In-game: <code>help knight</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -389,6 +401,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Mage</h3>
               <p>Masters of sorcery with over 100 spells. Conjure powerful beasts, change form, and float above the ground. Trade physical strength for arcane power.</p>
+              <p class="guild-help-hint">In-game: <code>help mage</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -409,6 +422,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Monk</h3>
               <p>Born fighters needing no weapon or heavy armour. Study, meditate, and fight with bare hands. DEX and INT determine your devastating combat ability.</p>
+              <p class="guild-help-hint">In-game: <code>help monk</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -429,6 +443,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Necromancer</h3>
               <p>Command ancient energies and ethereal forces. Hundreds of powers, extreme complexity, and hidden secrets await. The most intense guild experience in 3Kingdoms.</p>
+              <p class="guild-help-hint">In-game: <code>help necromancer</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -449,6 +464,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Priest</h3>
               <p>Devoted followers granted extraordinary powers by their deities. Choose from 12 gods - good, neutral, or evil. Heal, damage, control weather and elements.</p>
+              <p class="guild-help-hint">In-game: <code>help priest</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -469,6 +485,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Psicorps</h3>
               <p>Secret Marine Corps division using Psionic Implant Modules. Highly configurable - swap powers anytime to match the situation. Tank, DPS, or anything between.</p>
+              <p class="guild-help-hint">In-game: <code>help psicorps</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>
@@ -489,6 +506,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="guild-flip-back">
               <h3 class="guild-flip-name">Sii</h3>
               <p>Alien symbionts that merge with host bodies. Inhabit prepared "forms" - leathery winged creatures, lizard humanoids, or human bodies. Adapt to survive.</p>
+              <p class="guild-help-hint">In-game: <code>help sii</code></p>
               <div class="flip-indicator"><span>Back</span><i class="fas fa-sync-alt"></i></div>
             </div>
           </div>

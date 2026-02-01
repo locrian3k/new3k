@@ -3023,9 +3023,9 @@ main {
 
 /* Guild Flip Card Logos */
 .guild-flip-logo {
-	max-width: 120px;
+	max-width: 180px;
 	height: auto;
-	margin-bottom: var(--space-sm);
+	margin-bottom: 0;
 	transition: transform 0.3s ease;
 }
 
@@ -3034,9 +3034,9 @@ main {
 }
 
 .guild-flip-logo-back {
-	max-width: 80px;
+	max-width: 60px;
 	height: auto;
-	margin-bottom: var(--space-md);
+	margin-bottom: var(--space-sm);
 }
 
 .guild-flip-name {
@@ -3051,7 +3051,7 @@ main {
 	gap: var(--space-xs);
 	flex-wrap: wrap;
 	justify-content: center;
-	margin-top: var(--space-sm);
+	margin-top: 0;
 }
 
 .guild-flip-back .guild-flip-name {
@@ -3064,6 +3064,21 @@ main {
 	font-size: 0.95rem;
 	line-height: var(--lh-relaxed);
 	margin: 0;
+}
+
+.guild-help-hint {
+	font-size: 0.85rem;
+	color: var(--clr-text-secondary);
+	margin-top: var(--space-sm);
+	opacity: 0.9;
+}
+
+.guild-help-hint code {
+	background: rgba(255, 255, 255, 0.1);
+	padding: 0.15rem 0.4rem;
+	border-radius: 3px;
+	font-family: monospace;
+	font-size: 0.85rem;
 }
 
 /* Guild Split Cards (Advanced Guilds) */

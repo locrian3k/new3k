@@ -154,6 +154,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </div>
           <div class="staff-info">
             <h3>Adalius</h3>
+            <span class="staff-order order-areas">Areas</span>
             <span class="staff-order order-admin">Administration</span>
             <p class="staff-contributions">
               Long-time contributor to the realms, game administration, and author of
@@ -203,7 +204,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <i class="fa-solid fa-flask"></i>
           </div>
           <h3>Frank</h3>
-          <span class="wizard-order">Wizard</span>
+          <span class="wizard-order order-guilds">Guilds</span>
+          <span class="wizard-order order-areas">Areas</span>
           <p>Realm development</p>
         </div>
 
@@ -213,6 +215,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </div>
           <h3>Flaxen</h3>
           <span class="wizard-order order-mudlib">Mudlib</span>
+          <span class="wizard-order order-areas">Areas</span>
           <p>Sii Guild, Crafting, Missions, Professions</p>
         </div>
 
@@ -221,7 +224,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <i class="fa-solid fa-gear"></i>
           </div>
           <h3>Crolack</h3>
-          <span class="wizard-order">Wizard</span>
+          <span class="wizard-order order-guilds">Guilds</span>
           <p>Realm development</p>
         </div>
       </div>

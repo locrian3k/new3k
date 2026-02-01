@@ -3051,14 +3051,11 @@ main {
 .guild-split-card {
 	background: rgba(25, 52, 85, 0.3);
 	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-left: 3px solid var(--clr-accent-purple);
 	border-radius: var(--card-border-radius);
 	padding: var(--space-xl);
 	text-align: center;
 	transition: all 0.3s ease;
-}
-
-.guild-split-card.card-purple {
-	border-left: 3px solid var(--clr-accent-purple);
 }
 
 .guild-split-card.card-gray {

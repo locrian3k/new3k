@@ -3217,9 +3217,6 @@ main {
 }
 
 .vafs-intro .intro-card {
-	background: rgba(25, 52, 85, 0.5);
-	border: 1px solid rgba(255, 255, 255, 0.15);
-	border-radius: var(--card-border-radius);
 	padding: var(--space-2xl) var(--space-xl);
 	text-align: center;
 	max-width: 900px;

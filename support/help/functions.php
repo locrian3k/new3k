@@ -89,7 +89,7 @@ function scanHelpDirectory($directory, $extension) {
 
     foreach (glob($pattern) as $filepath) {
         $filename = pathinfo($filepath, PATHINFO_FILENAME);
-        // Convert filename to display name (capitalize, replace underscores)
+        // Convert filename to display name (replace underscores)
         $displayName = ucwords(str_replace(['_', '-'], ' ', $filename));
         $files[$filename] = $displayName;
     }

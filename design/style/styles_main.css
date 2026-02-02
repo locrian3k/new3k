@@ -4892,7 +4892,7 @@ main {
 
 .category-count {
 	background: rgba(255, 204, 0, 0.15);
-	color: var(--clr-accent-main);
+	color: var(--clr-text-heading);
 	padding: 0.3rem 0.8rem;
 	border-radius: 20px;
 	font-size: var(--fs-body-small);

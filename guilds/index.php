@@ -68,30 +68,32 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-card guild-card-core">
           <div class="guild-card-header">
             <img src="/images/logo/guilds/guild_logo_android.png" alt="Android Guild" class="guild-logo">
+            <h3 class="guild-name">Android</h3>
             <span class="guild-realm">Core</span>
           </div>
           <div class="guild-card-body">
             <p>Highly customizable robots that can deal death or absorb the most deadly of blows. With an array of components, they fit any situation - offensive, defensive, or balanced.</p>
           </div>
-          <div class="guild-card-footer">
+          <!-- <div class="guild-card-footer">
             <span class="guild-tag">Customizable</span>
             <span class="guild-tag">Versatile</span>
-          </div>
+          </div> -->
         </div>
 
         <!-- Cleric -->
         <div class="guild-card guild-card-core">
           <div class="guild-card-header">
             <img src="/images/logo/guilds/guild_logo_cleric.png" alt="Cleric Guild" class="guild-logo">
+            <h3 class="guild-name">Cleric</h3>
             <span class="guild-realm">Core</span>
           </div>
           <div class="guild-card-body">
             <p>Spiritual healers with offensive and defensive spells. Learn healing, utility spells, and powerful attacks that target an opponent's weakest defenses.</p>
           </div>
-          <div class="guild-card-footer">
+          <!-- <div class="guild-card-footer">
             <span class="guild-tag">Healer</span>
             <span class="guild-tag">Spellcaster</span>
-          </div>
+          </div> -->
         </div>
 
         <!-- Fighter -->
@@ -104,10 +106,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="guild-card-body">
             <p>Elite warriors focused on physical combat. Absorb huge attacks with armour and destroy opponents with weapons. Equipment is key to overwhelming stronger enemies.</p>
           </div>
-          <div class="guild-card-footer">
+          <!-- <div class="guild-card-footer">
             <span class="guild-tag">Tank</span>
             <span class="guild-tag">Melee</span>
-          </div>
+          </div> -->
         </div>
 
         <!-- Sorcerer -->
@@ -120,10 +122,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="guild-card-body">
             <p>Masters of elemental magics. Fire and ice bend to their will for protection and destruction. At high levels, summon powerful golems to defend in battle.</p>
           </div>
-          <div class="guild-card-footer">
+          <!-- <div class="guild-card-footer">
             <span class="guild-tag">Caster</span>
             <span class="guild-tag">Elemental</span>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -144,10 +146,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
               <img src="/images/logo/guilds/guild_logo_angel.png" alt="Angel Guild" class="guild-flip-logo">
-              <div class="guild-flip-tags">
+              <h3 class="guild-name">Angel</h3>
+              <!-- <div class="guild-flip-tags">
                 <span class="guild-tag">Divine</span>
                 <span class="guild-tag">Balance</span>
-              </div>
+              </div> -->
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
@@ -164,10 +167,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
               <img src="/images/logo/guilds/guild_logo_bard.png" alt="Bards Guild" class="guild-flip-logo">
-              <div class="guild-flip-tags">
+              <h3 class="guild-name">Bard</h3>
+              <!-- <div class="guild-flip-tags">
                 <span class="guild-tag">Versatile</span>
                 <span class="guild-tag">Music</span>
-              </div>
+              </div> -->
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
@@ -184,10 +188,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
               <img src="/images/logo/guilds/guild_logo_bladesinger.png" alt="Bladesingers Guild" class="guild-flip-logo">
-              <div class="guild-flip-tags">
+              <h3 class="guild-name">Bladesinger</h3>
+              <!-- <div class="guild-flip-tags">
                 <span class="guild-tag">Elven</span>
                 <span class="guild-tag">Runes</span>
-              </div>
+              </div> -->
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">

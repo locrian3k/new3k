@@ -152,9 +152,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <i class="fa-solid fa-tower-observation"></i>
           </div>
           <h3>Turnhold</h3>
-          <span class="archon-order order-admin">Administration</span>
+          <span class="archon-order order-ethos">Ethos</span>
           <p>
-            Dedicated administrator helping guide the future of 3Kingdoms.
+            Breed Guild, Dedicated to helping guide the future of 3Kingdoms.
           </p>
         </div>
       </div>
@@ -217,7 +217,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <i class="fa-solid fa-star"></i>
             <span>Canislupus</span>
           </div>          
-          <div class="new-wizard order-areas">
+          <div class="new-wizard">
             <i class="fa-solid fa-map"></i>
             <span>Mimic</span>
           </div>

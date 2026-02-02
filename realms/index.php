@@ -60,16 +60,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="realm-features-grid">
             <div class="realm-feature-item" style="background-image: url('/images/ai-areas/icy_blue_portal.png');">
               <h4>Land of the Ice People</h4>
-              <p>Icy blue portal area description.
+              <p>//TODO Icy blue portal area description.
               </p>
             </div>
             <div class="realm-feature-item" style="background-image: url('/images/ai-areas/murusFaralain.png');">
               <h4>Murus Faralain</h4>
-              <p>Something something, an abandoned city.</p>
+              <p>//TODO Something something, an abandoned city.</p>
             </div>
             <div class="realm-feature-item" style="background-image: url('/images/ai-areas/westerseaDocks.png');">
               <h4>Westersea Docks</h4>
-              <p>Something about Westersea Docks.</p>
+              <p>//TODO Something about Westersea Docks.</p>
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             </div>
             <div class="realm-feature-item" style="background-image: url('/images/ai-areas/mantis_swamp.png');">
               <h4>Mantis Swamp</h4>
-              <p>Some description about Mantis Swamp.</p>
+              <p>//TODO Some description about Mantis Swamp.</p>
             </div>
           </div>
         </div>

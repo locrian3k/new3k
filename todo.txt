@@ -1,15 +1,30 @@
-Add to about/3scapes/index.php
-Simon tells you: I think the essence of the divergence with 3s was
-       twofold, one was infinite alts, and the second was a "higher order
-       endgame" (which has been diverged severely due to changes on both
-       ports).
-Simon tells you: Today I think it's the infinite alts but also
-       quicker-to-end-game-content. Usually 100-150 combat days gets you
-       to the 95% of the guild and most of the mud access.
-Simon tells you: Oh also we have tiers (and rumors about generations) here
-Note: tiers begin when you reach 150
-Simon tells you: Hmmmm somewhat but very different. Basically as you use
-       xp to level you access to buying talent points that you can spend
-       on increasing your tier-talents.
-Simon tells you: Like more professions, stats, stat max, regen, skill
-       points, etc.
+TODO Add to about/3scapes/index.php
+      Simon tells you: I think the essence of the divergence with 3s was
+            twofold, one was infinite alts, and the second was a "higher order
+            endgame" (which has been diverged severely due to changes on both
+            ports).
+      Simon tells you: Today I think it's the infinite alts but also
+            quicker-to-end-game-content. Usually 100-150 combat days gets you
+            to the 95% of the guild and most of the mud access.
+      Simon tells you: Oh also we have tiers (and rumors about generations) here
+      Note: tiers begin when you reach 150
+      Simon tells you: Hmmmm somewhat but very different. Basically as you use
+            xp to level you access to buying talent points that you can spend
+            on increasing your tier-talents.
+      Simon tells you: Like more professions, stats, stat max, regen, skill
+            points, etc.
+
+TODO Look over 3k.org/help/index.php and create support/help/index.php
+
+TODO Finish making guild images
+
+TODO Update area descriptions on realms page
+
+TODO Create community/omp/index.php
+
+TODO Create community/wholist.php
+
+TODO When a player clicks on a realm from the home page, have the realm choice viewable
+
+TODO When a player flips a guild card, the large guild logo can still be seen momentarily
+

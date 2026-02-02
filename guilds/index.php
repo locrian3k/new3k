@@ -97,7 +97,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <!-- Fighter -->
         <div class="guild-card guild-card-core">
           <div class="guild-card-header">
-            <i class="fa-solid fa-shield-halved guild-icon"></i>
+            <img src="/images/logo/guilds/guild_logo_fighter.png" alt="Fighter Guild" class="guild-logo">
             <h3 class="guild-name">Fighter</h3>
             <span class="guild-realm">Core</span>
           </div>
@@ -113,7 +113,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <!-- Sorcerer -->
         <div class="guild-card guild-card-core">
           <div class="guild-card-header">
-            <i class="fa-solid fa-fire guild-icon"></i>
+            <img src="/images/logo/guilds/guild_logo_sorcerer.png" alt="Sorcerer Guild" class="guild-logo">
             <h3 class="guild-name">Sorcerer</h3>
             <span class="guild-realm">Core</span>
           </div>
@@ -243,7 +243,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-microchip guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_cyborg.png" alt="Cyborg Guild" class="guild-logo">
               <h3 class="guild-flip-name">Cyborg</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Implants</span>
@@ -264,7 +264,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-tornado guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_elemental.png" alt="Elemental Guild" class="guild-logo">
               <h3 class="guild-flip-name">Elemental</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Elements</span>
@@ -285,7 +285,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-sun guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_fremen.png" alt="Fremen Guild" class="guild-logo">
               <h3 class="guild-flip-name">Fremen</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Dune</span>
@@ -306,7 +306,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-dna guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_gentech.png" alt="Gentech Guild" class="guild-logo">
               <h3 class="guild-flip-name">Gentech</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Genetic</span>
@@ -327,7 +327,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-jedi guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_Jedi.png" alt="Jedi Guild" class="guild-logo">
               <h3 class="guild-flip-name">Jedi</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Star Wars</span>

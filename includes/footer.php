@@ -41,6 +41,7 @@
             <ul>
               <li><a href="/support/admin/index.php">Admin</a></li>
               <li><a href="/support/contact/index.php">Contact</a></li>
+              <li><a href="/support/help/index.php">Help Files</a></li>
               <li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
             </ul>
           </div>          

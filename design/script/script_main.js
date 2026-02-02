@@ -317,3 +317,81 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+
+// ------------------------------------------
+// HELP FILE SEARCH (Help Page)
+// ------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('helpSearch');
+  const clearBtn = document.getElementById('clearSearch');
+  const categories = document.querySelectorAll('.help-category');
+  const noResults = document.getElementById('noResults');
+
+  // Only run if help search elements exist
+  if (!searchInput || !clearBtn || categories.length === 0) return;
+
+  searchInput.addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase().trim();
+
+    // Show/hide clear button
+    clearBtn.style.display = searchTerm ? 'block' : 'none';
+
+    if (!searchTerm) {
+      // Show all categories and links
+      categories.forEach(function(cat) {
+        cat.style.display = 'block';
+        cat.querySelectorAll('.help-link').forEach(function(link) {
+          link.style.display = 'inline-block';
+        });
+      });
+      if (noResults) noResults.style.display = 'none';
+      return;
+    }
+
+    let totalVisible = 0;
+
+    categories.forEach(function(cat) {
+      const links = cat.querySelectorAll('.help-link');
+      let categoryVisible = 0;
+
+      links.forEach(function(link) {
+        const topic = link.getAttribute('data-topic');
+        if (topic && topic.includes(searchTerm)) {
+          link.style.display = 'inline-block';
+          categoryVisible++;
+        } else {
+          link.style.display = 'none';
+        }
+      });
+
+      if (categoryVisible > 0) {
+        cat.style.display = 'block';
+        totalVisible += categoryVisible;
+      } else {
+        cat.style.display = 'none';
+      }
+    });
+
+    if (noResults) {
+      noResults.style.display = totalVisible === 0 ? 'block' : 'none';
+    }
+  });
+
+  clearBtn.addEventListener('click', function() {
+    searchInput.value = '';
+    searchInput.dispatchEvent(new Event('input'));
+    searchInput.focus();
+  });
+
+  // Allow Enter key to focus first visible result
+  searchInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const firstVisible = document.querySelector('.help-link[style="display: inline-block;"]');
+      if (firstVisible) {
+        firstVisible.focus();
+      }
+    }
+  });
+});

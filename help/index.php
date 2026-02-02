@@ -2,94 +2,9 @@
 $pageTitle = "Help Files - 3Kingdoms";
 include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
-// Load configuration
+// Load configuration and functions
 $config = include __DIR__ . '/config.php';
-
-/**
- * Get help files based on configuration
- */
-function getHelpFiles($config) {
-    $source = $config['source'] ?? 'static';
-
-    if ($source === 'static') {
-        return $config['categories'];
-    }
-
-    if ($source === 'directory' || $source === 'hybrid') {
-        $directory = $config['help_directory'] ?? '';
-        $extension = $config['file_extension'] ?? 'php';
-
-        // If directory scanning is enabled and directory exists
-        if (!empty($directory) && is_dir($directory)) {
-            $scannedFiles = scanHelpDirectory($directory, $extension);
-
-            if ($source === 'directory') {
-                // Return all files in a single "All Help Files" category
-                return [
-                    'all' => [
-                        'title' => 'All Help Files',
-                        'icon' => 'fa-solid fa-folder-open',
-                        'description' => 'Complete list of available help topics',
-                        'files' => $scannedFiles
-                    ]
-                ];
-            }
-
-            // Hybrid mode: use static categories, add uncategorized files
-            $categories = $config['categories'];
-            $categorizedFiles = [];
-
-            // Collect all files that are already in categories
-            foreach ($categories as $cat) {
-                foreach ($cat['files'] as $file => $title) {
-                    $categorizedFiles[$file] = true;
-                }
-            }
-
-            // Find uncategorized files
-            $uncategorized = [];
-            foreach ($scannedFiles as $file => $title) {
-                if (!isset($categorizedFiles[$file])) {
-                    $uncategorized[$file] = $title;
-                }
-            }
-
-            // Add uncategorized files if any exist
-            if (!empty($uncategorized)) {
-                ksort($uncategorized);
-                $categories['uncategorized'] = [
-                    'title' => 'Other Topics',
-                    'icon' => 'fa-solid fa-folder',
-                    'description' => 'Additional help files',
-                    'files' => $uncategorized
-                ];
-            }
-
-            return $categories;
-        }
-    }
-
-    // Fallback to static categories
-    return $config['categories'];
-}
-
-/**
- * Scan a directory for help files
- */
-function scanHelpDirectory($directory, $extension) {
-    $files = [];
-    $pattern = $directory . '/*.' . $extension;
-
-    foreach (glob($pattern) as $filepath) {
-        $filename = pathinfo($filepath, PATHINFO_FILENAME);
-        // Convert filename to display name (capitalize, replace underscores)
-        $displayName = ucwords(str_replace(['_', '-'], ' ', $filename));
-        $files[$filename] = $displayName;
-    }
-
-    ksort($files);
-    return $files;
-}
+include __DIR__ . '/functions.php';
 
 // Get help categories based on config
 $helpCategories = getHelpFiles($config);
@@ -188,67 +103,6 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
 </main>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
-
-<script>
-// Help file search functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const searchInput = document.getElementById('helpSearch');
-  const clearBtn = document.getElementById('clearSearch');
-  const categories = document.querySelectorAll('.help-category');
-  const noResults = document.getElementById('noResults');
-
-  searchInput.addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase().trim();
-
-    // Show/hide clear button
-    clearBtn.style.display = searchTerm ? 'block' : 'none';
-
-    if (!searchTerm) {
-      // Show all categories and links
-      categories.forEach(cat => {
-        cat.style.display = 'block';
-        cat.querySelectorAll('.help-link').forEach(link => {
-          link.style.display = 'inline-block';
-        });
-      });
-      noResults.style.display = 'none';
-      return;
-    }
-
-    let totalVisible = 0;
-
-    categories.forEach(cat => {
-      const links = cat.querySelectorAll('.help-link');
-      let categoryVisible = 0;
-
-      links.forEach(link => {
-        const topic = link.getAttribute('data-topic');
-        if (topic.includes(searchTerm)) {
-          link.style.display = 'inline-block';
-          categoryVisible++;
-        } else {
-          link.style.display = 'none';
-        }
-      });
-
-      if (categoryVisible > 0) {
-        cat.style.display = 'block';
-        totalVisible += categoryVisible;
-      } else {
-        cat.style.display = 'none';
-      }
-    });
-
-    noResults.style.display = totalVisible === 0 ? 'block' : 'none';
-  });
-
-  clearBtn.addEventListener('click', function() {
-    searchInput.value = '';
-    searchInput.dispatchEvent(new Event('input'));
-    searchInput.focus();
-  });
-});
-</script>
 
 <script src="/design/script/script_main.js"></script>
 </body>

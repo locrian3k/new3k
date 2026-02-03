@@ -5292,18 +5292,22 @@ button.help-link {
 		overflow-x: hidden;
 	}
 
-	.help-modal-content {
-		font-size: 0.75rem;
-		padding: var(--space-sm);
+	/* Override pre tag behavior for mobile */
+	pre.help-modal-content {
+		font-size: 0.7rem;
+		padding: var(--space-xs);
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 		overflow-x: hidden;
+		white-space: pre-wrap !important;
+		word-break: break-word;
 	}
 
 	.help-modal-content .help-body {
-		white-space: pre-wrap;
+		white-space: pre-wrap !important;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
+		word-break: break-word;
 	}
 
 	/* Hide only the ::: decoration border on mobile - it forces width */

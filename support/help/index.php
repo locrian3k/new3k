@@ -137,7 +137,7 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
         <i class="fa-solid fa-exclamation-triangle"></i>
         <span id="helpModalErrorText">Unable to load help file.</span>
       </div>
-      <pre id="helpModalContent" class="help-modal-content" style="display: none;"></pre>
+      <div id="helpModalContent" class="help-modal-content" style="display: none;"></div>
     </div>
     <div class="help-modal-footer">
       <span class="help-modal-tip">

@@ -191,11 +191,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
         <div class="wizard-card">
           <div class="wizard-icon order-guilds">
-            <i class="fa-solid fa-shield-halved"></i>
+            <i class="fa-solid"></i>
           </div>
           <h3>Frank</h3>
-          <span class="wizard-order order-guilds">Guilds</span>
-          <span class="wizard-order order-areas">Areas</span>
           <p>Mage Guild, Guild maintenance, Realm development</p>
         </div>
 

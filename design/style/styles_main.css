@@ -5306,11 +5306,18 @@ button.help-link {
 		overflow-wrap: break-word;
 	}
 
-	/* Hide the ::: decoration border on mobile - it forces width */
-	.help-modal-content .help-border,
-	.help-modal-content .help-header-box,
-	.help-modal-content font[color] {
+	/* Hide only the ::: decoration border on mobile - it forces width */
+	.help-modal-content .help-border {
 		display: none;
+	}
+
+	/* Keep the header title visible but style it for mobile */
+	.help-modal-content .help-header-title {
+		display: block;
+		text-align: center;
+		color: var(--clr-text-heading);
+		font-weight: bold;
+		margin-bottom: var(--space-sm);
 	}
 
 	.help-modal-footer {

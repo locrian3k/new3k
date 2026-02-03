@@ -329,6 +329,22 @@ function extractAndFormatExternalContent($html) {
     // Also try without center tags
     $content = preg_replace('/<a[^>]*javascript:window\.close\(\)[^>]*>[^<]*<\/a>/is', '', $content);
 
+    // Convert the ::: decoration lines to a CSS class we can hide on mobile
+    // Format: <FONT COLOR="#990033"> ::::::...</FONT>
+    $content = preg_replace(
+        '/<FONT\s+COLOR=["\']?#990033["\']?[^>]*>\s*:+\s*<\/FONT>/is',
+        '<span class="help-border">::::::::::::::::::::::::::::::</span>',
+        $content
+    );
+
+    // Convert the Topic title to a styled span
+    // Format: <FONT COLOR="#FFFF00"> Topic: Arena</FONT>
+    $content = preg_replace(
+        '/<FONT\s+COLOR=["\']?#FFFF00["\']?[^>]*>([^<]+)<\/FONT>/is',
+        '<span class="help-header-title">$1</span>',
+        $content
+    );
+
     // Handle "See also" section
     // Format: See also: <A HREF="pk.php">pk</A>, <A HREF="kill.php">kill</A>, ...
     if (preg_match('/See\s+also:\s*(.*?)(?:\n|$)/is', $content, $seeAlsoMatch)) {

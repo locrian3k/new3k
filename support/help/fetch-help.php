@@ -282,7 +282,7 @@ function formatHelpContent($body, $header, $seeAlso) {
     if (!empty($seeAlso)) {
         $seeAlsoLinks = array_map(function($topic) {
             $topic = trim($topic);
-            return '<a href="#" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($topic) . '</a>';
+            return '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($topic) . '</button>';
         }, $seeAlso);
 
         $output .= "\n" . '<div class="help-see-also">';

@@ -323,32 +323,32 @@ function extractAndFormatExternalContent($html) {
         $content = $html;
     }
 
-    // Remove "Close Window" links - both HTML and markdown style
-    // HTML style: <a href="javascript:window.close()">Close Window</a>
-    $content = preg_replace('/<a[^>]*javascript:window\.close[^>]*>[^<]*<\/a>/is', '', $content);
-    // Markdown style: [Close Window](javascript:window.close())
-    $content = preg_replace('/\[Close\s*Window\]\([^)]*\)/is', '', $content);
+    // Remove "Close Window" link and its container
+    // Format: <center><a href="javascript:window.close()">Close Window</a></center>
+    $content = preg_replace('/<center>\s*<a[^>]*javascript:window\.close\(\)[^>]*>[^<]*<\/a>\s*<\/center>/is', '', $content);
+    // Also try without center tags
+    $content = preg_replace('/<a[^>]*javascript:window\.close\(\)[^>]*>[^<]*<\/a>/is', '', $content);
 
     // Handle "See also" section
-    // The format is: See also: [topic1](topic1.php), [topic2](topic2.php), ...
-    if (preg_match('/See\s+also:\s*(.+?)(?:\n|$)/is', $content, $seeAlsoMatch)) {
+    // Format: See also: <A HREF="pk.php">pk</A>, <A HREF="kill.php">kill</A>, ...
+    if (preg_match('/See\s+also:\s*(.*?)(?:\n|$)/is', $content, $seeAlsoMatch)) {
         $seeAlsoLine = $seeAlsoMatch[0];
         $seeAlsoContent = $seeAlsoMatch[1];
 
-        // Extract markdown-style links: [text](url.php)
-        preg_match_all('/\[([^\]]+)\]\(([^)]+)\.php\)/i', $seeAlsoContent, $linkMatches, PREG_SET_ORDER);
+        // Extract HTML-style links: <A HREF="topic.php">text</A>
+        preg_match_all('/<a\s+href=["\']?([^"\'>\s]+\.php)["\']?[^>]*>([^<]+)<\/a>/is', $seeAlsoContent, $linkMatches, PREG_SET_ORDER);
 
         if (!empty($linkMatches)) {
             // Sort links alphabetically by link text
             usort($linkMatches, function($a, $b) {
-                return strcasecmp($a[1], $b[1]);
+                return strcasecmp(trim($a[2]), trim($b[2]));
             });
 
             // Build sorted buttons
             $sortedButtons = [];
             foreach ($linkMatches as $match) {
-                $text = trim($match[1]);
-                $topic = basename($match[2]); // Get just the filename part
+                $topic = basename($match[1], '.php'); // Get filename without .php
+                $text = trim($match[2]);
                 $sortedButtons[] = '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($text) . '</button>';
             }
 
@@ -358,23 +358,12 @@ function extractAndFormatExternalContent($html) {
         }
     }
 
-    // Convert any remaining markdown-style links to buttons: [text](url.php)
+    // Convert any remaining HTML-style <a> tags to buttons
     $content = preg_replace_callback(
-        '/\[([^\]]+)\]\(([^)]+)\.php\)/i',
+        '/<a\s+href=["\']?([^"\'>\s]+\.php)["\']?[^>]*>([^<]+)<\/a>/is',
         function($matches) {
-            $text = trim($matches[1]);
-            $topic = basename($matches[2]);
-            return '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($text) . '</button>';
-        },
-        $content
-    );
-
-    // Also handle HTML-style <a> tags if present
-    $content = preg_replace_callback(
-        '/<a\s+[^>]*href=["\'](?:[^"\']*\/)?([^"\'\/]+)\.php["\'][^>]*>([^<]+)<\/a>/i',
-        function($matches) {
-            $topic = $matches[1];
-            $text = $matches[2];
+            $topic = basename($matches[1], '.php');
+            $text = trim($matches[2]);
             return '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($text) . '</button>';
         },
         $content

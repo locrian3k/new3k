@@ -5273,7 +5273,7 @@ button.help-link {
 @media (max-width: 768px) {
 	.help-modal-container {
 		width: 92%;
-		max-width: 400px;
+		max-width: 350px;
 		max-height: 85vh;
 		margin: var(--space-sm);
 	}
@@ -5289,6 +5289,7 @@ button.help-link {
 
 	.help-modal-body {
 		padding: var(--space-sm);
+		overflow-x: hidden;
 	}
 
 	.help-modal-content {
@@ -5296,6 +5297,7 @@ button.help-link {
 		padding: var(--space-sm);
 		word-wrap: break-word;
 		overflow-wrap: break-word;
+		overflow-x: hidden;
 	}
 
 	.help-modal-content .help-body {
@@ -5304,10 +5306,11 @@ button.help-link {
 		overflow-wrap: break-word;
 	}
 
-	.help-modal-content .help-border {
-		font-size: 0.5rem;
-		overflow: hidden;
-		text-overflow: ellipsis;
+	/* Hide the ::: decoration border on mobile - it forces width */
+	.help-modal-content .help-border,
+	.help-modal-content .help-header-box,
+	.help-modal-content font[color] {
+		display: none;
 	}
 
 	.help-modal-footer {

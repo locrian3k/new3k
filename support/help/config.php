@@ -8,47 +8,76 @@
 
 return [
     // ===========================================
+    // DISPLAY MODE
+    // ===========================================
+    // 'modal' - Opens help content in a popup modal (recommended)
+    // 'link'  - Links directly to external URLs (legacy mode)
+    'display_mode' => 'modal',
+
+    // ===========================================
     // HELP FILE SOURCE CONFIGURATION
     // ===========================================
-
-    // Set to 'static' to use the predefined categories below
-    // Set to 'directory' to scan a directory for help files
-    // Set to 'hybrid' to use static categories but scan directory for uncategorized files
-    'source' => 'static',
+    // 'static'    - Use the predefined categories below (current setup)
+    // 'directory' - Scan a directory for help files
+    // 'hybrid'    - Use static categories + scan for uncategorized files
+    'source' => 'hybrid',
 
     // ===========================================
-    // DIRECTORY SCANNING SETTINGS
-    // (Only used when source is 'directory' or 'hybrid')
+    // CONTENT SOURCE (for modal display)
+    // ===========================================
+    // Where to fetch help file content from:
+    // 'local'    - Read from local directory (when on production server)
+    // 'external' - Fetch from external URL (current 3k.org setup)
+    'content_source' => 'external',
+
+    // ===========================================
+    // LOCAL DIRECTORY SETTINGS
+    // (Used when content_source is 'local' or source is 'directory'/'hybrid')
     // ===========================================
 
     // Path to the help files directory (absolute path on server)
-    // Example: '/var/mud/lib/doc/help/' or '/home/3k/help/'
+    // This should be the path to the help folder relative to www
+    // Example: '/var/www/3k/help/' or '../help/' (relative to www)
+    //
+    // PRODUCTION NOTE: When deployed, the help folder is at the same level
+    // as the www folder. You may need to use something like:
+    // 'help_directory' => $_SERVER['DOCUMENT_ROOT'] . '/../help/',
     'help_directory' => '',
 
-    // File extension to look for (without the dot)
-    // Common options: 'php', 'c', 'txt', 'html'
-    'file_extension' => 'php',
+    // File extension for local help files (without the dot)
+    // The MUD's help files are typically plain text or .c (LPC) files
+    // Common options: '' (no extension), 'c', 'txt', 'php'
+    'file_extension' => '',
 
     // ===========================================
-    // URL CONFIGURATION
+    // EXTERNAL URL SETTINGS
+    // (Used when content_source is 'external' or display_mode is 'link')
     // ===========================================
 
-    // Base URL for linking to help files
-    // For external: 'https://3k.org/help/'
-    // For local: '/help/files/' or '/help/view.php?topic='
-    'base_url' => 'https://3k.org/help/',
+    // Base URL for fetching/linking to help files
+    'external_url' => 'https://3k.org/help/',
 
-    // URL suffix (file extension for links)
-    // Set to '.php' for PHP files, '' (empty) if using a viewer script with query params
+    // URL suffix (file extension for external links)
     'url_suffix' => '.php',
+
+    // ===========================================
+    // LEGACY LINK MODE SETTINGS
+    // (Only used when display_mode is 'link')
+    // ===========================================
 
     // Open links in new window?
     'open_in_new_window' => true,
 
     // ===========================================
     // STATIC HELP FILE CATEGORIES
-    // (Used when source is 'static' or 'hybrid')
     // ===========================================
+    //
+    // These categories organize the help files for display.
+    // The organization here is INDEPENDENT of how files are stored on the server.
+    //
+    // When 'source' is 'static' or 'hybrid', this list determines what's shown.
+    // When 'source' is 'directory', these categories are ignored and all files
+    // from the directory are shown in a single list.
     //
     // Format:
     // 'category_id' => [
@@ -56,13 +85,13 @@ return [
     //     'icon' => 'fa-solid fa-icon-name',
     //     'description' => 'Brief description',
     //     'files' => [
-    //         'filename' => 'Display Name',
+    //         'filename' => 'display_name',  // filename = what to fetch, display_name = what user sees
     //         ...
     //     ]
     // ]
     //
-    // To add new help files, simply add them to the appropriate category's 'files' array.
-    // The key is the filename (without extension), the value is the display name.
+    // IMPORTANT: The 'filename' key is what gets sent to the server.
+    // It should match the actual help file name (case-sensitive).
 
     'categories' => [
         'important' => [

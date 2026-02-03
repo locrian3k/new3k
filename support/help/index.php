@@ -9,8 +9,12 @@ include __DIR__ . '/functions.php';
 // Get help categories based on config
 $helpCategories = getHelpFiles($config);
 
-// URL settings
-$helpBaseUrl = $config['base_url'] ?? 'https://3k.org/help/';
+// Display mode settings
+$displayMode = $config['display_mode'] ?? 'modal';
+$isModal = ($displayMode === 'modal');
+
+// URL settings (for link mode fallback)
+$helpBaseUrl = $config['external_url'] ?? 'https://3k.org/help/';
 $urlSuffix = $config['url_suffix'] ?? '.php';
 $openInNewWindow = $config['open_in_new_window'] ?? true;
 $linkTarget = $openInNewWindow ? '_blank' : '_self';
@@ -65,6 +69,16 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
         </div>
         <div class="help-links">
           <?php foreach ($category['files'] as $file => $title): ?>
+          <?php if ($isModal): ?>
+          <button
+            type="button"
+            class="help-link"
+            data-topic="<?php echo htmlspecialchars($file); ?>"
+            data-title="<?php echo htmlspecialchars($title); ?>"
+          >
+            <?php echo htmlspecialchars($title); ?>
+          </button>
+          <?php else: ?>
           <a
             href="<?php echo htmlspecialchars($helpBaseUrl . $file . $urlSuffix); ?>"
             class="help-link"
@@ -73,6 +87,7 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
           >
             <?php echo htmlspecialchars($title); ?>
           </a>
+          <?php endif; ?>
           <?php endforeach; ?>
         </div>
       </div>
@@ -101,6 +116,42 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
     </div>
   </section>
 </main>
+
+<?php if ($isModal): ?>
+<!-- Help Modal -->
+<div id="helpModal" class="help-modal" aria-hidden="true">
+  <div class="help-modal-overlay"></div>
+  <div class="help-modal-container">
+    <div class="help-modal-header">
+      <h3 id="helpModalTitle">Loading...</h3>
+      <button type="button" class="help-modal-close" aria-label="Close">
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
+    <div class="help-modal-body">
+      <div id="helpModalLoading" class="help-modal-loading">
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        <span>Loading help file...</span>
+      </div>
+      <div id="helpModalError" class="help-modal-error" style="display: none;">
+        <i class="fa-solid fa-exclamation-triangle"></i>
+        <span id="helpModalErrorText">Unable to load help file.</span>
+      </div>
+      <pre id="helpModalContent" class="help-modal-content" style="display: none;"></pre>
+    </div>
+    <div class="help-modal-footer">
+      <span class="help-modal-tip">
+        <i class="fa-solid fa-terminal"></i>
+        In-game: <code>help <span id="helpModalCommand"></span></code>
+      </span>
+      <a id="helpModalExternal" href="#" target="_blank" class="help-modal-external">
+        <i class="fa-solid fa-external-link-alt"></i>
+        Open in new tab
+      </a>
+    </div>
+  </div>
+</div>
+<?php endif; ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 

@@ -395,3 +395,103 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+
+// ------------------------------------------
+// HELP FILE MODAL (Help Page)
+// ------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('helpModal');
+
+  // Only run if modal exists
+  if (!modal) return;
+
+  const overlay = modal.querySelector('.help-modal-overlay');
+  const closeBtn = modal.querySelector('.help-modal-close');
+  const titleEl = document.getElementById('helpModalTitle');
+  const loadingEl = document.getElementById('helpModalLoading');
+  const errorEl = document.getElementById('helpModalError');
+  const errorTextEl = document.getElementById('helpModalErrorText');
+  const contentEl = document.getElementById('helpModalContent');
+  const commandEl = document.getElementById('helpModalCommand');
+  const externalLink = document.getElementById('helpModalExternal');
+
+  // External URL base (for "Open in new tab" link)
+  const externalUrlBase = 'https://3k.org/help/';
+  const urlSuffix = '.php';
+
+  // Get all help link buttons
+  const helpLinks = document.querySelectorAll('.help-link[data-topic]');
+
+  // Open modal when clicking a help link
+  helpLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      const topic = this.getAttribute('data-topic');
+      const title = this.getAttribute('data-title') || topic;
+      openHelpModal(topic, title);
+    });
+  });
+
+  // Close modal functions
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', closeModal);
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  // Open modal and fetch content
+  function openHelpModal(topic, title) {
+    // Set title and command
+    titleEl.textContent = 'help ' + title;
+    commandEl.textContent = topic;
+    externalLink.href = externalUrlBase + topic + urlSuffix;
+
+    // Show loading state
+    loadingEl.style.display = 'flex';
+    errorEl.style.display = 'none';
+    contentEl.style.display = 'none';
+
+    // Open modal
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Fetch content
+    fetch('/support/help/fetch-help.php?topic=' + encodeURIComponent(topic))
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        loadingEl.style.display = 'none';
+
+        if (data.success) {
+          contentEl.textContent = data.content;
+          contentEl.style.display = 'block';
+        } else {
+          errorTextEl.textContent = data.error || 'Unable to load help file.';
+          errorEl.style.display = 'flex';
+        }
+      })
+      .catch(function(error) {
+        loadingEl.style.display = 'none';
+        errorTextEl.textContent = 'Network error. Please try again.';
+        errorEl.style.display = 'flex';
+        console.error('Help fetch error:', error);
+      });
+  }
+});

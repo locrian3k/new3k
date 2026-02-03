@@ -5007,6 +5007,212 @@ main {
 	}
 }
 
+/* Help Link as Button (for modal mode) */
+button.help-link {
+	font-family: var(--ff-body);
+	cursor: pointer;
+}
+
+/* Help Modal */
+.help-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.help-modal.open {
+	opacity: 1;
+	visibility: visible;
+}
+
+.help-modal-overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(4px);
+}
+
+.help-modal-container {
+	position: relative;
+	width: 90%;
+	max-width: 800px;
+	max-height: 85vh;
+	background: var(--clr-black);
+	border: 2px solid var(--clr-accent-main);
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	transform: scale(0.9) translateY(20px);
+	transition: transform 0.3s ease;
+	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.help-modal.open .help-modal-container {
+	transform: scale(1) translateY(0);
+}
+
+.help-modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--space-lg);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.02);
+}
+
+.help-modal-header h3 {
+	font-family: var(--ff-heading);
+	font-size: var(--fs-h3);
+	color: var(--clr-text-heading);
+	margin: 0;
+}
+
+.help-modal-close {
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 8px;
+	color: var(--clr-text-primary);
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.help-modal-close:hover {
+	background: var(--clr-accent-main);
+	border-color: var(--clr-accent-main);
+	color: white;
+}
+
+.help-modal-body {
+	flex: 1;
+	overflow-y: auto;
+	padding: var(--space-lg);
+	min-height: 200px;
+}
+
+.help-modal-loading,
+.help-modal-error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-md);
+	padding: var(--space-2xl);
+	color: var(--clr-text-secondary);
+	text-align: center;
+}
+
+.help-modal-loading i,
+.help-modal-error i {
+	font-size: 2rem;
+}
+
+.help-modal-error {
+	color: #f87171;
+}
+
+.help-modal-error i {
+	color: #fbbf24;
+}
+
+.help-modal-content {
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 0.9rem;
+	line-height: 1.6;
+	color: var(--clr-text-primary);
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	margin: 0;
+	padding: var(--space-md);
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 8px;
+	overflow-x: auto;
+}
+
+.help-modal-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--space-md) var(--space-lg);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.02);
+}
+
+.help-modal-tip {
+	color: var(--clr-text-secondary);
+	font-size: var(--fs-body-small);
+}
+
+.help-modal-tip i {
+	color: var(--clr-accent-main);
+	margin-right: var(--space-xs);
+}
+
+.help-modal-tip code {
+	background: rgba(255, 255, 255, 0.1);
+	padding: 0.15rem 0.4rem;
+	border-radius: 4px;
+	font-family: monospace;
+	color: var(--clr-text-heading);
+}
+
+.help-modal-external {
+	color: var(--clr-text-secondary);
+	text-decoration: none;
+	font-size: var(--fs-body-small);
+	transition: color 0.2s ease;
+}
+
+.help-modal-external:hover {
+	color: var(--clr-text-heading);
+}
+
+.help-modal-external i {
+	margin-right: var(--space-xs);
+}
+
+/* Help Modal Responsive */
+@media (max-width: 768px) {
+	.help-modal-container {
+		width: 95%;
+		max-height: 90vh;
+		margin: var(--space-md);
+	}
+
+	.help-modal-header {
+		padding: var(--space-md);
+	}
+
+	.help-modal-header h3 {
+		font-size: var(--fs-h4);
+	}
+
+	.help-modal-body {
+		padding: var(--space-md);
+	}
+
+	.help-modal-content {
+		font-size: 0.8rem;
+	}
+
+	.help-modal-footer {
+		flex-direction: column;
+		gap: var(--space-sm);
+		text-align: center;
+	}
+}
+
 /* ------------------- */
 /* FOOTER */
 /* ------------------- */

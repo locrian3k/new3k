@@ -353,7 +353,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-user-astronaut guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_juggernaut.png" alt="Juggernaut Guild" class="guild-flip-logo">
               <h3 class="guild-flip-name">Juggernaut</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Battletech</span>
@@ -374,7 +374,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-chess-knight guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_knight.png" alt="Knight Guild" class="guild-flip-logo">
               <h3 class="guild-flip-name">Knight</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Honor</span>
@@ -395,7 +395,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-hat-wizard guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_mage.png" alt="Mage Guild" class="guild-flip-logo">
               <h3 class="guild-flip-name">Mage</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Arcane</span>
@@ -416,7 +416,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-hand-fist guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_monk.png" alt="Monk Guild" class="guild-flip-logo">
               <h3 class="guild-flip-name">Monk</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Martial Arts</span>
@@ -437,7 +437,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-skull guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_necromancer.png" alt="Necromancer Guild" class="guild-flip-logo">
               <h3 class="guild-flip-name">Necromancer</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Dark Magic</span>
@@ -458,7 +458,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-cross guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_priest.png" alt="Priest Guild" class="guild-flip-logo">
               <h3 class="guild-flip-name">Priest</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Divine</span>
@@ -479,7 +479,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-brain guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_psicorps.png" alt="Psicorps Guild" class="guild-flip-logo">
               <h3 class="guild-flip-name">Psicorps</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Psionic</span>
@@ -500,7 +500,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <i class="fa-solid fa-virus guild-flip-icon"></i>
+              <img src="/images/logo/guilds/guild_logo_sii.png" alt="Sii Guild" class="guild-flip-logo">
               <h3 class="guild-flip-name">Sii</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Symbiont</span>

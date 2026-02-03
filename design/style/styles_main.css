@@ -2581,6 +2581,17 @@ main {
 /* ------------------- */
 /* GUILDS PAGE         */
 /* ------------------- */
+.hero-guild {
+	min-height: 60vh;
+	background: linear-gradient(
+			135deg,
+			rgba(7, 15, 25, 0.95),
+			rgba(25, 52, 85, 0.9)
+		),
+		url("/images/castle-images/KMiSeldUclGIWBKxjLpy--1--x8lhq_8x.webp") center/cover
+			no-repeat;
+}
+
 .guilds-container {
 	max-width: 1200px;
 	margin: 0 auto;

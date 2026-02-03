@@ -194,6 +194,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <i class="fa-solid"></i>
           </div>
           <h3>Frank</h3>
+          <span class="wizard-order"></span>
           <p>Mage Guild, Guild maintenance, Realm development</p>
         </div>
 

@@ -90,7 +90,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 								up with "search desk" for a closer look. To help you out in the
 								game, all you need to do is type "help" to give you access to
 								3K's expansive help files. Beyond that, the same files are
-								available online <a href="/help/index.php">right here</a> if you
+								available online <a href="/support/help/index.php">right here</a> if you
 								ever need them.
 							</p>
 						</div>

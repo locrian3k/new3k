@@ -5294,20 +5294,22 @@ button.help-link {
 
 	/* Override pre tag behavior for mobile */
 	pre.help-modal-content {
-		font-size: 0.7rem;
+		font-size: 0.75rem;
 		padding: var(--space-xs);
-		word-wrap: break-word;
-		overflow-wrap: break-word;
 		overflow-x: hidden;
 		white-space: pre-wrap !important;
-		word-break: break-word;
+		word-wrap: break-word !important;
+		overflow-wrap: break-word !important;
+		word-break: break-word !important;
+		max-width: 100%;
 	}
 
 	.help-modal-content .help-body {
 		white-space: pre-wrap !important;
-		word-wrap: break-word;
-		overflow-wrap: break-word;
-		word-break: break-word;
+		word-wrap: break-word !important;
+		overflow-wrap: break-word !important;
+		word-break: break-word !important;
+		max-width: 100%;
 	}
 
 	/* Hide only the ::: decoration border on mobile - it forces width */
@@ -5321,9 +5323,9 @@ button.help-link {
 		text-align: center;
 		color: var(--clr-text-heading);
 		font-weight: bold;
-		margin: 0 0 var(--space-xs) 0;
+		margin: 0.25rem 0;
 		padding: 0;
-		white-space: normal;
+		white-space: normal !important;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 	}

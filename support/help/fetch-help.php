@@ -337,13 +337,23 @@ function extractAndFormatExternalContent($html) {
         $content
     );
 
-    // Convert the Topic title to a styled span
+    // Convert the Topic title to a styled span (trim the whitespace)
     // Format: <FONT COLOR="#FFFF00"> Topic: Arena</FONT>
-    $content = preg_replace(
+    $content = preg_replace_callback(
         '/<FONT\s+COLOR=["\']?#FFFF00["\']?[^>]*>([^<]+)<\/FONT>/is',
-        '<span class="help-header-title">$1</span>',
+        function($matches) {
+            return '<span class="help-header-title">' . trim($matches[1]) . '</span>';
+        },
         $content
     );
+
+    // Remove excessive blank lines (more than 2 newlines in a row)
+    $content = preg_replace('/\n{3,}/', "\n\n", $content);
+
+    // Trim leading whitespace from each line (the original has centered text with spaces)
+    $lines = explode("\n", $content);
+    $lines = array_map('trim', $lines);
+    $content = implode("\n", $lines);
 
     // Handle "See also" section
     // Format: See also: <A HREF="pk.php">pk</A>, <A HREF="kill.php">kill</A>, ...

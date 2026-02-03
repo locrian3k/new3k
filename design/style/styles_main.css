@@ -5317,7 +5317,11 @@ button.help-link {
 		text-align: center;
 		color: var(--clr-text-heading);
 		font-weight: bold;
-		margin-bottom: var(--space-sm);
+		margin: 0 0 var(--space-xs) 0;
+		padding: 0;
+		white-space: normal;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
 	}
 
 	.help-modal-footer {

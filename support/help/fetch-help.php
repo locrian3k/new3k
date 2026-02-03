@@ -323,8 +323,40 @@ function extractAndFormatExternalContent($html) {
         $content = $html;
     }
 
-    // Convert <a> tags to buttons for "See also" links
-    // Match links like <a href="topic.php">topic</a> or <a href="/help/topic.php">topic</a>
+    // Remove "Close Window" buttons/links that may come from external source
+    $content = preg_replace('/<a[^>]*>.*?Close\s*Window.*?<\/a>/is', '', $content);
+    $content = preg_replace('/<button[^>]*>.*?Close\s*Window.*?<\/button>/is', '', $content);
+    $content = preg_replace('/<input[^>]*value=["\']?Close\s*Window["\']?[^>]*>/is', '', $content);
+
+    // Extract and sort "See also" links
+    // First, find the "See also" section and extract all links
+    if (preg_match('/See\s+also:\s*(.*?)(?:\.|$)/is', $content, $seeAlsoMatch)) {
+        $seeAlsoSection = $seeAlsoMatch[0];
+
+        // Extract all links from the See also section
+        preg_match_all('/<a\s+[^>]*href=["\'](?:[^"\']*\/)?([^"\'\/]+)\.php["\'][^>]*>([^<]+)<\/a>/i', $seeAlsoSection, $linkMatches, PREG_SET_ORDER);
+
+        if (!empty($linkMatches)) {
+            // Sort links alphabetically by topic name
+            usort($linkMatches, function($a, $b) {
+                return strcasecmp($a[1], $b[1]);
+            });
+
+            // Build sorted buttons
+            $sortedButtons = [];
+            foreach ($linkMatches as $match) {
+                $topic = $match[1];
+                $text = $match[2];
+                $sortedButtons[] = '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($text) . '</button>';
+            }
+
+            // Replace the See also section with sorted version
+            $newSeeAlso = '<span class="help-color-yellow">See also:</span>  ' . implode(', ', $sortedButtons) . '.';
+            $content = preg_replace('/See\s+also:\s*.*?(?:\.|$)/is', $newSeeAlso, $content);
+        }
+    }
+
+    // Convert any remaining <a> tags to buttons (links not in See also section)
     $content = preg_replace_callback(
         '/<a\s+[^>]*href=["\'](?:[^"\']*\/)?([^"\'\/]+)\.php["\'][^>]*>([^<]+)<\/a>/i',
         function($matches) {

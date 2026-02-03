@@ -280,6 +280,10 @@ function formatHelpContent($body, $header, $seeAlso) {
 
     // Add "See also" section
     if (!empty($seeAlso)) {
+        // Sort alphabetically
+        $seeAlso = array_values($seeAlso);
+        sort($seeAlso, SORT_STRING | SORT_FLAG_CASE);
+
         $seeAlsoLinks = array_map(function($topic) {
             $topic = trim($topic);
             return '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($topic) . '</button>';
@@ -301,22 +305,35 @@ function formatHelpContent($body, $header, $seeAlso) {
  * @return string Formatted content
  */
 function extractAndFormatExternalContent($html) {
+    $content = '';
+
     // Try to find content within <pre> tags
     if (preg_match('/<pre[^>]*>(.*?)<\/pre>/is', $html, $matches)) {
         $content = $matches[1];
-        // The external site may already have some formatting, preserve it
-        return '<div class="help-body">' . $content . '</div>';
     }
-
     // Try to find content within <body> tags
-    if (preg_match('/<body[^>]*>(.*?)<\/body>/is', $html, $matches)) {
-        $body = $matches[1];
+    elseif (preg_match('/<body[^>]*>(.*?)<\/body>/is', $html, $matches)) {
+        $content = $matches[1];
         // Remove script and style tags
-        $body = preg_replace('/<script[^>]*>.*?<\/script>/is', '', $body);
-        $body = preg_replace('/<style[^>]*>.*?<\/style>/is', '', $body);
-        return '<div class="help-body">' . trim($body) . '</div>';
+        $content = preg_replace('/<script[^>]*>.*?<\/script>/is', '', $content);
+        $content = preg_replace('/<style[^>]*>.*?<\/style>/is', '', $content);
+    }
+    else {
+        // Fallback: use as-is
+        $content = $html;
     }
 
-    // Fallback: return as-is wrapped in help-body
-    return '<div class="help-body">' . htmlspecialchars($html) . '</div>';
+    // Convert <a> tags to buttons for "See also" links
+    // Match links like <a href="topic.php">topic</a> or <a href="/help/topic.php">topic</a>
+    $content = preg_replace_callback(
+        '/<a\s+[^>]*href=["\'](?:[^"\']*\/)?([^"\'\/]+)\.php["\'][^>]*>([^<]+)<\/a>/i',
+        function($matches) {
+            $topic = $matches[1];
+            $text = $matches[2];
+            return '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($text) . '</button>';
+        },
+        $content
+    );
+
+    return '<div class="help-body">' . trim($content) . '</div>';
 }

@@ -323,21 +323,23 @@ function extractAndFormatExternalContent($html) {
         $content = $html;
     }
 
-    // Remove "Close Window" buttons/links that may come from external source
-    $content = preg_replace('/<a[^>]*>.*?Close\s*Window.*?<\/a>/is', '', $content);
-    $content = preg_replace('/<button[^>]*>.*?Close\s*Window.*?<\/button>/is', '', $content);
-    $content = preg_replace('/<input[^>]*value=["\']?Close\s*Window["\']?[^>]*>/is', '', $content);
+    // Remove "Close Window" links - both HTML and markdown style
+    // HTML style: <a href="javascript:window.close()">Close Window</a>
+    $content = preg_replace('/<a[^>]*javascript:window\.close[^>]*>[^<]*<\/a>/is', '', $content);
+    // Markdown style: [Close Window](javascript:window.close())
+    $content = preg_replace('/\[Close\s*Window\]\([^)]*\)/is', '', $content);
 
-    // Extract and sort "See also" links
-    // First, find the "See also" section and extract all links
-    if (preg_match('/See\s+also:\s*(.*?)(?:\.|$)/is', $content, $seeAlsoMatch)) {
-        $seeAlsoSection = $seeAlsoMatch[0];
+    // Handle "See also" section
+    // The format is: See also: [topic1](topic1.php), [topic2](topic2.php), ...
+    if (preg_match('/See\s+also:\s*(.+?)(?:\n|$)/is', $content, $seeAlsoMatch)) {
+        $seeAlsoLine = $seeAlsoMatch[0];
+        $seeAlsoContent = $seeAlsoMatch[1];
 
-        // Extract all links from the See also section
-        preg_match_all('/<a\s+[^>]*href=["\'](?:[^"\']*\/)?([^"\'\/]+)\.php["\'][^>]*>([^<]+)<\/a>/i', $seeAlsoSection, $linkMatches, PREG_SET_ORDER);
+        // Extract markdown-style links: [text](url.php)
+        preg_match_all('/\[([^\]]+)\]\(([^)]+)\.php\)/i', $seeAlsoContent, $linkMatches, PREG_SET_ORDER);
 
         if (!empty($linkMatches)) {
-            // Sort links alphabetically by topic name
+            // Sort links alphabetically by link text
             usort($linkMatches, function($a, $b) {
                 return strcasecmp($a[1], $b[1]);
             });
@@ -345,18 +347,29 @@ function extractAndFormatExternalContent($html) {
             // Build sorted buttons
             $sortedButtons = [];
             foreach ($linkMatches as $match) {
-                $topic = $match[1];
-                $text = $match[2];
+                $text = trim($match[1]);
+                $topic = basename($match[2]); // Get just the filename part
                 $sortedButtons[] = '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($text) . '</button>';
             }
 
-            // Replace the See also section with sorted version
+            // Replace the See also line with sorted version
             $newSeeAlso = '<span class="help-color-yellow">See also:</span>  ' . implode(', ', $sortedButtons) . '.';
-            $content = preg_replace('/See\s+also:\s*.*?(?:\.|$)/is', $newSeeAlso, $content);
+            $content = str_replace($seeAlsoLine, $newSeeAlso . "\n", $content);
         }
     }
 
-    // Convert any remaining <a> tags to buttons (links not in See also section)
+    // Convert any remaining markdown-style links to buttons: [text](url.php)
+    $content = preg_replace_callback(
+        '/\[([^\]]+)\]\(([^)]+)\.php\)/i',
+        function($matches) {
+            $text = trim($matches[1]);
+            $topic = basename($matches[2]);
+            return '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($text) . '</button>';
+        },
+        $content
+    );
+
+    // Also handle HTML-style <a> tags if present
     $content = preg_replace_callback(
         '/<a\s+[^>]*href=["\'](?:[^"\']*\/)?([^"\'\/]+)\.php["\'][^>]*>([^<]+)<\/a>/i',
         function($matches) {

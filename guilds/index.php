@@ -83,9 +83,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <!-- Cleric -->
         <div class="guild-card guild-card-core">
           <div class="guild-card-header">
-            <img src="/images/logo/guilds/guild_logo_cleric.png" alt="Cleric Guild" class="guild-logo">
             <h3 class="guild-name">Cleric</h3>
             <span class="guild-realm">Core</span>
+            <img src="/images/logo/guilds/guild_logo_cleric.png" alt="Cleric Guild" class="guild-logo">
+            
           </div>
           <div class="guild-card-body">
             <p>Spiritual healers with offensive and defensive spells. Learn healing, utility spells, and powerful attacks that target an opponent's weakest defenses.</p>
@@ -99,9 +100,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <!-- Fighter -->
         <div class="guild-card guild-card-core">
           <div class="guild-card-header">
-            <img src="/images/logo/guilds/guild_logo_fighter.png" alt="Fighter Guild" class="guild-logo">
             <h3 class="guild-name">Fighter</h3>
             <span class="guild-realm">Core</span>
+            <img src="/images/logo/guilds/guild_logo_fighter.png" alt="Fighter Guild" class="guild-logo">
+            
           </div>
           <div class="guild-card-body">
             <p>Elite warriors focused on physical combat. Absorb huge attacks with armour and destroy opponents with weapons. Equipment is key to overwhelming stronger enemies.</p>
@@ -115,9 +117,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <!-- Sorcerer -->
         <div class="guild-card guild-card-core">
           <div class="guild-card-header">
-            <img src="/images/logo/guilds/guild_logo_sorcerer.png" alt="Sorcerer Guild" class="guild-logo">
             <h3 class="guild-name">Sorcerer</h3>
             <span class="guild-realm">Core</span>
+            <img src="/images/logo/guilds/guild_logo_sorcerer.png" alt="Sorcerer Guild" class="guild-logo">
+            
           </div>
           <div class="guild-card-body">
             <p>Masters of elemental magics. Fire and ice bend to their will for protection and destruction. At high levels, summon powerful golems to defend in battle.</p>

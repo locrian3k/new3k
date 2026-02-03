@@ -5158,7 +5158,6 @@ button.help-link {
 }
 
 .help-modal-content .help-body {
-	white-space: pre-wrap;
 	word-wrap: break-word;
 }
 
@@ -5293,11 +5292,10 @@ button.help-link {
 	}
 
 	/* Override pre tag behavior for mobile */
-	pre.help-modal-content {
+	div.help-modal-content {
 		font-size: 0.75rem;
 		padding: var(--space-xs);
 		overflow-x: hidden;
-		white-space: pre-wrap !important;
 		word-wrap: break-word !important;
 		overflow-wrap: break-word !important;
 		word-break: break-word !important;
@@ -5305,7 +5303,6 @@ button.help-link {
 	}
 
 	.help-modal-content .help-body {
-		white-space: pre-wrap !important;
 		word-wrap: break-word !important;
 		overflow-wrap: break-word !important;
 		word-break: break-word !important;

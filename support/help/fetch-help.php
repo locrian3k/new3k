@@ -3,10 +3,11 @@
  * Help File Content Fetcher
  *
  * This endpoint fetches help file content for display in the modal.
- * It supports both local files and external URLs.
+ * It supports both local files and external URLs, and parses the
+ * 3K help file format with metadata headers and color codes.
  *
  * Usage: fetch-help.php?topic=alias
- * Returns: JSON with content or error
+ * Returns: JSON with formatted HTML content or error
  */
 
 header('Content-Type: application/json');
@@ -69,9 +70,9 @@ if ($contentSource === 'local') {
         exit;
     }
 
-    $content = file_get_contents($filepath);
+    $rawContent = file_get_contents($filepath);
 
-    if ($content === false) {
+    if ($rawContent === false) {
         echo json_encode([
             'success' => false,
             'error' => 'Unable to read help file'
@@ -79,10 +80,16 @@ if ($contentSource === 'local') {
         exit;
     }
 
+    // Parse the 3K help file format
+    $parsed = parseHelpFile($rawContent);
+
     echo json_encode([
         'success' => true,
         'topic' => $topic,
-        'content' => $content,
+        'header' => $parsed['header'],
+        'content' => $parsed['html'],
+        'keywords' => $parsed['keywords'],
+        'seeAlso' => $parsed['seeAlso'],
         'source' => 'local'
     ]);
 
@@ -124,28 +131,181 @@ if ($contentSource === 'local') {
         exit;
     }
 
-    // Extract just the main content from the HTML response
-    // The 3k.org help pages have the content in a specific format
-    $content = extractHelpContent($response);
+    // Extract content from HTML and format it
+    $content = extractAndFormatExternalContent($response);
 
     echo json_encode([
         'success' => true,
         'topic' => $topic,
+        'header' => '',
         'content' => $content,
+        'keywords' => [],
+        'seeAlso' => [],
         'source' => 'external'
     ]);
 }
 
 /**
- * Extract help content from HTML response
+ * Parse a 3K help file format
  *
- * This function attempts to extract just the help file content
- * from the full HTML page returned by 3k.org
+ * Format:
+ * keywords: word1, word2, word3
+ * aliases: alias1, alias2
+ * short: Short description
+ * header: Display Header Title
+ *
+ * Body content here with @color:'text'@ markup
+ *
+ * @param string $content Raw file content
+ * @return array Parsed data with 'header', 'html', 'keywords', 'seeAlso'
  */
-function extractHelpContent($html) {
-    // Try to find content within <pre> tags (common for help files)
+function parseHelpFile($content) {
+    $lines = explode("\n", $content);
+    $metadata = [];
+    $bodyLines = [];
+    $inBody = false;
+
+    // Parse metadata and body
+    foreach ($lines as $line) {
+        if (!$inBody) {
+            // Check for metadata lines
+            if (preg_match('/^(keywords|aliases|short|header):\s*(.*)$/i', $line, $matches)) {
+                $key = strtolower($matches[1]);
+                $metadata[$key] = trim($matches[2]);
+                continue;
+            }
+            // Empty line or non-metadata line starts the body
+            if (trim($line) === '' && empty($metadata)) {
+                continue; // Skip leading empty lines
+            }
+            if (!preg_match('/^[a-z]+:/i', $line)) {
+                $inBody = true;
+            }
+        }
+
+        if ($inBody) {
+            $bodyLines[] = $line;
+        }
+    }
+
+    // Get header and keywords
+    $header = $metadata['header'] ?? '';
+    $keywords = [];
+    if (!empty($metadata['keywords'])) {
+        $keywords = array_map('trim', explode(',', $metadata['keywords']));
+    }
+
+    // Build "See also" from keywords (excluding common terms)
+    $seeAlso = array_filter($keywords, function($kw) {
+        return !in_array(strtolower($kw), ['general', 'misc', 'miscellaneous']);
+    });
+
+    // Process body content
+    $body = implode("\n", $bodyLines);
+    $body = trim($body);
+
+    // Convert to HTML
+    $html = formatHelpContent($body, $header, $seeAlso);
+
+    return [
+        'header' => $header,
+        'html' => $html,
+        'keywords' => $keywords,
+        'seeAlso' => $seeAlso
+    ];
+}
+
+/**
+ * Format help content to HTML with styling
+ *
+ * @param string $body The body content
+ * @param string $header The header title
+ * @param array $seeAlso Related topics
+ * @return string Formatted HTML
+ */
+function formatHelpContent($body, $header, $seeAlso) {
+    // Escape HTML entities first
+    $html = htmlspecialchars($body, ENT_QUOTES, 'UTF-8');
+
+    // Parse color codes: @color:'text'@ or @color:text@
+    // Common colors: hired (red), yellow, green, blue, cyan, magenta, white, bold
+    $colorMap = [
+        'hired' => 'help-color-red',
+        'red' => 'help-color-red',
+        'yellow' => 'help-color-yellow',
+        'green' => 'help-color-green',
+        'blue' => 'help-color-blue',
+        'cyan' => 'help-color-cyan',
+        'magenta' => 'help-color-magenta',
+        'white' => 'help-color-white',
+        'bold' => 'help-color-bold',
+        'orange' => 'help-color-orange'
+    ];
+
+    // Match @color:'text'@ or @color:text@ patterns
+    $html = preg_replace_callback(
+        "/@([a-z]+):'([^']*)'@|@([a-z]+):([^@]*)@/i",
+        function($matches) use ($colorMap) {
+            // Determine which capture group matched
+            if (!empty($matches[1])) {
+                $color = strtolower($matches[1]);
+                $text = $matches[2];
+            } else {
+                $color = strtolower($matches[3]);
+                $text = $matches[4];
+            }
+
+            $class = $colorMap[$color] ?? 'help-color-default';
+            return '<span class="' . $class . '">' . $text . '</span>';
+        },
+        $html
+    );
+
+    // Build the complete formatted output
+    $output = '';
+
+    // Add header with decorative border
+    if (!empty($header)) {
+        $borderLine = str_repeat(':', 70);
+        $headerPadded = str_pad($header, 60, ' ', STR_PAD_BOTH);
+        $output .= '<div class="help-header-box">';
+        $output .= '<span class="help-border">' . $borderLine . '</span>' . "\n";
+        $output .= '<span class="help-header-title">' . htmlspecialchars($headerPadded) . '</span>' . "\n";
+        $output .= '<span class="help-border">' . $borderLine . '</span>';
+        $output .= '</div>' . "\n";
+    }
+
+    // Add body content
+    $output .= '<div class="help-body">' . $html . '</div>';
+
+    // Add "See also" section
+    if (!empty($seeAlso)) {
+        $seeAlsoLinks = array_map(function($topic) {
+            $topic = trim($topic);
+            return '<a href="#" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($topic) . '</a>';
+        }, $seeAlso);
+
+        $output .= "\n" . '<div class="help-see-also">';
+        $output .= '<span class="help-color-yellow">See also:</span>  ';
+        $output .= implode(', ', $seeAlsoLinks) . '.';
+        $output .= '</div>';
+    }
+
+    return $output;
+}
+
+/**
+ * Extract and format content from external HTML response
+ *
+ * @param string $html Raw HTML response
+ * @return string Formatted content
+ */
+function extractAndFormatExternalContent($html) {
+    // Try to find content within <pre> tags
     if (preg_match('/<pre[^>]*>(.*?)<\/pre>/is', $html, $matches)) {
-        return html_entity_decode(strip_tags($matches[1]));
+        $content = $matches[1];
+        // The external site may already have some formatting, preserve it
+        return '<div class="help-body">' . $content . '</div>';
     }
 
     // Try to find content within <body> tags
@@ -154,19 +314,9 @@ function extractHelpContent($html) {
         // Remove script and style tags
         $body = preg_replace('/<script[^>]*>.*?<\/script>/is', '', $body);
         $body = preg_replace('/<style[^>]*>.*?<\/style>/is', '', $body);
-        // Convert <br> to newlines
-        $body = preg_replace('/<br\s*\/?>/i', "\n", $body);
-        // Strip remaining HTML tags
-        $body = strip_tags($body);
-        // Decode HTML entities
-        $body = html_entity_decode($body);
-        // Clean up whitespace
-        $body = trim($body);
-        return $body;
+        return '<div class="help-body">' . trim($body) . '</div>';
     }
 
-    // Fallback: return cleaned HTML
-    $content = strip_tags($html);
-    $content = html_entity_decode($content);
-    return trim($content);
+    // Fallback: return as-is wrapped in help-body
+    return '<div class="help-body">' . htmlspecialchars($html) . '</div>';
 }

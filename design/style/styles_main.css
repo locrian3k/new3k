@@ -5128,16 +5128,97 @@ button.help-link {
 .help-modal-content {
 	font-family: 'Courier New', Courier, monospace;
 	font-size: 0.9rem;
-	line-height: 1.6;
+	line-height: 1.5;
 	color: var(--clr-text-primary);
-	white-space: pre-wrap;
-	word-wrap: break-word;
 	margin: 0;
 	padding: var(--space-md);
 	background: rgba(255, 255, 255, 0.03);
 	border: 1px solid rgba(255, 255, 255, 0.1);
 	border-radius: 8px;
 	overflow-x: auto;
+}
+
+/* Help content formatting */
+.help-modal-content .help-header-box {
+	text-align: center;
+	margin-bottom: var(--space-md);
+}
+
+.help-modal-content .help-border {
+	display: block;
+	color: var(--clr-text-secondary);
+	opacity: 0.6;
+}
+
+.help-modal-content .help-header-title {
+	display: block;
+	color: var(--clr-text-heading);
+	font-weight: bold;
+	padding: var(--space-xs) 0;
+}
+
+.help-modal-content .help-body {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.help-modal-content .help-see-also {
+	margin-top: var(--space-lg);
+	padding-top: var(--space-md);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.help-modal-content .help-see-also-link {
+	color: var(--clr-accent-blue);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.help-modal-content .help-see-also-link:hover {
+	color: var(--clr-text-heading);
+	text-decoration: underline;
+}
+
+/* Help file color classes (matching MUD ANSI colors) */
+.help-color-red {
+	color: #f87171;
+}
+
+.help-color-yellow {
+	color: #fbbf24;
+}
+
+.help-color-green {
+	color: #4ade80;
+}
+
+.help-color-blue {
+	color: #60a5fa;
+}
+
+.help-color-cyan {
+	color: #22d3d3;
+}
+
+.help-color-magenta {
+	color: #e879f9;
+}
+
+.help-color-white {
+	color: #ffffff;
+}
+
+.help-color-bold {
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.help-color-orange {
+	color: #fb923c;
+}
+
+.help-color-default {
+	color: var(--clr-text-primary);
 }
 
 .help-modal-footer {

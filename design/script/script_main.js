@@ -454,6 +454,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // Handle clicks on "See also" links within the modal content
+  contentEl.addEventListener('click', function(event) {
+    const seeAlsoLink = event.target.closest('.help-see-also-link');
+    if (seeAlsoLink) {
+      event.preventDefault();
+      const topic = seeAlsoLink.getAttribute('data-topic');
+      if (topic) {
+        openHelpModal(topic, topic);
+      }
+    }
+  });
+
   // Open modal and fetch content
   function openHelpModal(topic, title) {
     // Set title and command
@@ -480,8 +492,11 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingEl.style.display = 'none';
 
         if (data.success) {
-          contentEl.textContent = data.content;
+          // Use innerHTML since content is now formatted HTML
+          contentEl.innerHTML = data.content;
           contentEl.style.display = 'block';
+          // Scroll to top of content
+          contentEl.scrollTop = 0;
         } else {
           errorTextEl.textContent = data.error || 'Unable to load help file.';
           errorEl.style.display = 'flex';

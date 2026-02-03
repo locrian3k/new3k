@@ -29,7 +29,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 					<div class="pinnacle-image-container">
 						<a href="/images/pinnacle.jpg" target="_blank">
 							<img
-								src="/images/pinnacle.jpg"
+								src="/images/ai-areas/pinnacle.png"
 								alt="The mighty town of Pinnacle"
 								class="pinnacle-image" />
 							<p class="pinnacle-caption">

@@ -568,7 +568,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="guild-split">
         <!-- Ascended -->
         <div class="guild-split-card card-purple">
-          <img src="/images/logo/guilds/guild_logo_eternal.png" alt="Eternal Guild" class="guild-flip-logo">
+          <img src="/images/logo/guilds/guild_logo_ascended.png" alt="Ascended Guild" class="guild-flip-logo">
           <h3>Ascended</h3>
           <span class="guild-split-badge">High Mortal</span>
           <p>Leave behind your physical shell and become the immortal manifestation of your soul. Tanks and protectors

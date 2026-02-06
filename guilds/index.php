@@ -36,23 +36,20 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <p class="section-subtitle">Where every adventurer begins their journey</p>
       </div>
 
-      <div class="guild-grid guild-grid-single">
+      <div class="guild-split-card card-purple">
         <!-- Adventurer -->
-        <div class="guild-card guild-card-starter">
-          <div class="guild-card-header">
-            <img src="/images/logo/guilds/guild_logo_adventurer.png" alt="Adventurer Guild" class="guild-logo">
-            <span class="guild-realm">Default</span>
-          </div>
-          <div class="guild-card-body">
-            <p>Your default starting guild. Learn the basics with consider, fireball, shock, and missile spells. The
-              Adventurer's advancement room is up from the Login room. Join a full guild upon reaching Level 5.</p>
-          </div>
-          <div class="guild-card-footer">
-            <span class="guild-tag">Starter</span>
-            <span class="guild-tag">Level 1-5</span>
-          </div>
+        <img src="/images/logo/guilds/guild_logo_adventurer.png" alt="Adventurer Guild" class="guild-logo">
+        <h3>Adventurer</h3>
+        <span class="guild-split-badge">Default</span>
+        <p class="guild-mystery">Your default starting guild. Learn the basics with consider, fireball, shock, and
+          missile spells. The
+          Adventurer's advancement room is up from the Login room. Join a full guild upon reaching Level 5.</p>
+        <div class="guild-split-requirements">
+          <span class="guild-tag">Starter</span>
+          <span class="guild-tag">Level 1-5</span>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -165,7 +162,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
-              <img src="/images/logo/guilds/guild_logo_angel.png" alt="Angel Guild" class="guild-flip-logo-back">
+              <h3 class="guild-name">Angel</h3>
               <p>Mortals imbued with divine spark to restore cosmic balance. Develop martial combat, divine powers, or
                 combine both. Your wings await.</p>
               <p class="guild-help-hint">In-game: <code>help angel</code></p>
@@ -188,7 +185,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
-              <img src="/images/logo/guilds/guild_logo_bard.png" alt="Bards Guild" class="guild-flip-logo-back">
+              <h3 class="guild-name">Bard</h3>
               <p>Passionate souls nourished by beauty and drawn to mystery. Master deadly combat songs, pure physical
                 combat, soothing instruments, or shadow arts to gather knowledge unseen.</p>
               <p class="guild-help-hint">In-game: <code>help bards</code></p>
@@ -212,8 +209,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
-              <img src="/images/logo/guilds/guild_logo_bladesinger.png" alt="Bladesingers Guild"
-                class="guild-flip-logo-back">
+              <h3 class="guild-name">Bladesinger</h3>
               <p>Ancient elven warriors returned to teach the old ways. Master fighting styles, read ancient runes, and
                 call upon the Unseelie Court of the faerie world to enhance your combat.</p>
               <p class="guild-help-hint">In-game: <code>help bladesingers</code></p>
@@ -236,7 +232,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
             </div>
             <div class="guild-flip-back">
-              <img src="/images/logo/guilds/guild_logo_breed.png" alt="Breed Guild" class="guild-flip-logo-back">
+              <h3 class="guild-name">Breed</h3>
               <p>One of the eldest races, returned from exile with the power of the mind. Secretive, diverse, and highly
                 individual. Each Breed forges their own destiny.</p>
               <p class="guild-help-hint">In-game: <code>help breed</code></p>
@@ -249,16 +245,20 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-flip-card">
           <div class="guild-flip-inner">
             <div class="guild-flip-front">
-              <img src="/images/logo/guilds/guild_logo_changeling.png" alt="Changelings Guild" class="guild-flip-logo">
               <div class="guild-flip-tags">
+                <h3 class="guild-flip-name">Changeling</h3>
                 <span class="guild-tag">Shapeshifter</span>
                 <span class="guild-tag">Unique</span>
               </div>
-              <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
+
+              <img src="/images/logo/guilds/guild_logo_changeling.png" alt="Changelings Guild" class="guild-flip-logo">
+
+              <div class="flip-indicator">
+                <span>More info</span><i class="fas fa-sync-alt"></i>
+              </div>
             </div>
             <div class="guild-flip-back">
-              <img src="/images/logo/guilds/guild_logo_changeling.png" alt="Changelings Guild"
-                class="guild-flip-logo-back">
+              <h3 class="guild-flip-name">Changeling</h3>
               <p>An ancient race with unnatural control over their cells. Shapeshift into mammals, reptiles, avians, and
                 rumored dinosaur forms with lethal natural weaponry.</p>
               <p class="guild-help-hint">In-game: <code>help changelings</code></p>
@@ -561,13 +561,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     <div class="guilds-container">
       <div class="section-header">
         <h2 class="section-title">Advanced Guilds</h2>
+
         <p class="section-subtitle">For those who have achieved great power and seek even more</p>
       </div>
 
       <div class="guild-split">
         <!-- Ascended -->
         <div class="guild-split-card card-purple">
-          <i class="fa-solid fa-mountain-sun guild-split-icon"></i>
+          <img src="/images/logo/guilds/guild_logo_eternal.png" alt="Eternal Guild" class="guild-flip-logo">
           <h3>Ascended</h3>
           <span class="guild-split-badge">High Mortal</span>
           <p>Leave behind your physical shell and become the immortal manifestation of your soul. Tanks and protectors
@@ -581,7 +582,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
         <!-- Eternal -->
         <div class="guild-split-card card-purple">
-          <i class="fa-solid fa-infinity guild-split-icon"></i>
+          <img src="/images/logo/guilds/guild_logo_eternal.png" alt="Eternal Guild" class="guild-flip-logo">
           <h3>Eternal</h3>
           <span class="guild-split-badge">???</span>
           <p class="guild-mystery">The path to becoming Eternal is known only to those who walk it. This guild reveals

@@ -3088,7 +3088,7 @@ main {
 .guild-help-hint {
 	font-size: 0.85rem;
 	color: var(--clr-text-secondary);
-	margin-top: var(--space-sm);
+	margin-top: var(--space-md);
 	opacity: 0.9;
 }
 

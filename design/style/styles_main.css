@@ -3042,8 +3042,8 @@ main {
 
 /* Guild Flip Card Logos */
 .guild-flip-logo {
-	width: 140px;
-	height: 140px;
+	width: 180px;
+	height: 180px;
 	object-fit: contain;
 	margin-bottom: 0;
 	transition: transform 0.3s ease;
@@ -3115,7 +3115,7 @@ main {
 }
 
 .guild-split-quad {
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 }
 
 .guild-split-card {
@@ -3169,8 +3169,8 @@ main {
 
 /* Guild Split Card Logo */
 .guild-split-logo {
-	width: 120px;
-	height: 120px;
+	width: 160px;
+	height: 160px;
 	object-fit: contain;
 	margin-bottom: var(--space-md);
 }
@@ -3231,6 +3231,12 @@ main {
 }
 
 /* Guilds Page Responsive */
+@media (max-width: 1200px) {
+	.guild-split-quad {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
 @media (max-width: 1024px) {
 	.guild-grid {
 		grid-template-columns: repeat(2, 1fr);
@@ -3242,6 +3248,16 @@ main {
 
 	.guild-flip-grid {
 		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.guild-flip-logo {
+		width: 160px;
+		height: 160px;
+	}
+
+	.guild-split-logo {
+		width: 140px;
+		height: 140px;
 	}
 }
 
@@ -3259,13 +3275,13 @@ main {
 	}
 
 	.guild-split-logo {
-		width: 100px;
-		height: 100px;
+		width: 120px;
+		height: 120px;
 	}
 
 	.guild-flip-logo {
-		width: 120px;
-		height: 120px;
+		width: 140px;
+		height: 140px;
 	}
 
 	.guilds-cta .cta-buttons {

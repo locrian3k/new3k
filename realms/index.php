@@ -149,7 +149,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             </div>
             <div class="realm-feature-item" style="background-image: url('/images/ai-areas/mantis_swamp.png');">
               <h4>Mantis Swamp</h4>
-              <p>A swampland ravaged by the horrors of nuclear fallout, occupied by monstrous mantises.</p>
+              <p>A swampland ravaged by the nuclear fallout, occupied by monstrous mantises.</p>
             </div>
           </div>
         </div>

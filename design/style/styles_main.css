@@ -2533,6 +2533,14 @@ main { margin-top: 5rem; }
 	box-sizing: border-box;
 }
 
+/* Connect Page - Large Desktop+ (2500px) */
+@media (min-width: 2500px) {
+  .connect-faq .faq-item-front,
+  .connect-faq .faq-item-back {
+    height: 475px;
+  }
+}
+
 .connect-faq .faq-item-back {
 	transform: rotateY(180deg);
 }

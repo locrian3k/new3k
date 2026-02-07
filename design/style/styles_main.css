@@ -2270,7 +2270,15 @@ main { margin-top: 5rem; }
 	display: grid;
 	gap: var(--space-xl);
 }
-/*see media query in connect section for 2500px+ sizing*/
+
+@media (min-width: 2500px) {
+  .about-container .faq-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .about-container .faq-grid .faq-item {
+    width: 300px;
+  }
+}
 
 .faq-item {
 	background: rgba(25, 52, 85, 0.3);
@@ -2471,9 +2479,9 @@ main { margin-top: 5rem; }
 	}
 }
 
-/* About and Connect Page - Large Desktop+ (2500px) */
+/* Connect Page - Large Desktop+ (2500px) */
 @media (min-width: 2500px) {
-	.faq-grid {
+	.connect-faq .faq-grid {
 		grid-template-columns: repeat(4, 1fr);
 	}
 }

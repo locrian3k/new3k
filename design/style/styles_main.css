@@ -2486,7 +2486,7 @@ main { margin-top: 5rem; }
 
 /* Connect Page - Large Desktop+ (2500px) */
 @media (min-width: 2500px) {
-  .connect-faq {
+  .connect-faq .connect-container {
 	max-width: 2450px;
 	margin: 0 auto;
 }

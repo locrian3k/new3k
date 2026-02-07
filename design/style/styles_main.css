@@ -2278,7 +2278,7 @@ main { margin-top: 5rem; }
   }
 
   .about-container .faq-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-row-start: auto;
   }
   .about-container .faq-grid .faq-item {

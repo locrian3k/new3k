@@ -167,7 +167,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
               <div class="form-group">
                 <label for="char-name">Character Name</label>
-                <input type="text" name="os1" id="char-name" maxlength="200" class="form-input"
+                <input type="text" name="os1" id="char-name" maxlength="150" class="form-input"
                   placeholder="Enter any of your characters">
                 <input type="hidden" name="on1" value="Character Name">
               </div>

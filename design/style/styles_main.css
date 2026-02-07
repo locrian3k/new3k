@@ -2274,7 +2274,7 @@ main { margin-top: 5rem; }
 @media (min-width: 2500px) {
   .about-container .faq-grid {
     grid-template-columns: repeat(4, 1fr);
-    align-items: center;
+    grid-row-start: auto;
   }
   .about-container .faq-grid .faq-item {
     width: 350px;

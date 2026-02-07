@@ -3727,6 +3727,10 @@ main { margin-top: 5rem; }
 	gap: var(--space-sm);
 }
 
+.square {
+  width: 80%;
+}
+
 /* PayPal Form */
 .paypal-form-container {
 	margin-top: var(--space-md);

@@ -340,7 +340,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h3 class="guild-name">Juggernaut</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Battletech</span>
-                <span class="guild-tag">Mech Suit</span>
+                <span class="guild-tag">Battle armor</span>
               </div>
               <img src="/images/logo/guilds/guild_logo_juggernaut.png" alt="Juggernaut Guild" class="guild-flip-logo" loading="lazy">
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
@@ -424,7 +424,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h3 class="guild-name">Necromancer</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Dark Magic</span>
-                <span class="guild-tag">Complex</span>
+                <span class="guild-tag">Macabre</span>
               </div>
               <img src="/images/logo/guilds/guild_logo_necromancer.png" alt="Necromancer Guild" class="guild-flip-logo" loading="lazy">
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>
@@ -445,7 +445,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <h3 class="guild-name">Priest</h3>
               <div class="guild-flip-tags">
                 <span class="guild-tag">Divine</span>
-                <span class="guild-tag">12 Gods</span>
+                <span class="guild-tag">Pious</span>
               </div>
               <img src="/images/logo/guilds/guild_logo_priest.png" alt="Priest Guild" class="guild-flip-logo" loading="lazy">
               <div class="flip-indicator"><span>More info</span><i class="fas fa-sync-alt"></i></div>

@@ -76,7 +76,7 @@
 									<span class="arrow">Play</span>
 								</button>
 								<ul class="dropdown">
-									<li><a href="/connect.php">Quick Connect</a></li>
+									<li><a href="https://client.wemudtogether.com" target="_blank">Quick Connect</a></li>
 									<li>
 										<a href="/connect/index.php">Connection Options</a>
 									</li>

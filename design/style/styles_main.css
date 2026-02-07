@@ -3271,14 +3271,6 @@ main { margin-top: 5rem; }
 	}
 }
 
-/* Guilds Page - Large Desktop (1200px) */
-@media (min-width: 1200px) {
-	.guild-grid-core,
-	.guild-split-quad {
-		grid-template-columns: repeat(4, 1fr);
-	}
-}
-
 /* ------------------- */
 /* VAFS PAGE           */
 /* ------------------- */

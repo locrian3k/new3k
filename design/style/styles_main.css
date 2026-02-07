@@ -3752,7 +3752,6 @@ main { margin-top: 5rem; }
 .paypal-form .form-input {
 	width: 100%;
 	padding: 0.75rem 1rem;
-  margin-right: 1rem;
 	background: rgba(7, 15, 25, 0.5);
 	border: 1px solid rgba(255, 255, 255, 0.2);
 	border-radius: 8px;
@@ -3776,6 +3775,7 @@ main { margin-top: 5rem; }
 
 .paypal-form .form-input::placeholder {
 	color: rgba(251, 251, 241, 0.5);
+  width: 80%;
 }
 
 .payment-note {

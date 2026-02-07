@@ -12,8 +12,9 @@
 
 header('Content-Type: application/json');
 
-// Load configuration
+// Load configuration and functions
 $config = include __DIR__ . '/config.php';
+include __DIR__ . '/functions.php';
 
 // Get the requested topic
 $topic = isset($_GET['topic']) ? trim($_GET['topic']) : '';
@@ -31,38 +32,10 @@ if (empty($topic) || !preg_match('/^[a-zA-Z0-9_-]+$/', $topic)) {
 $contentSource = $config['content_source'] ?? 'external';
 
 if ($contentSource === 'local') {
-    // Read from local directory
-    $helpDirectory = $config['help_directory'] ?? '';
-    $fileExtension = $config['file_extension'] ?? '';
+    // Use the findHelpFile function to locate the file
+    $filepath = findHelpFile($topic, $config);
 
-    if (empty($helpDirectory)) {
-        echo json_encode([
-            'success' => false,
-            'error' => 'Help directory not configured'
-        ]);
-        exit;
-    }
-
-    // Build the file path
-    $filename = $topic;
-    if (!empty($fileExtension)) {
-        $filename .= '.' . $fileExtension;
-    }
-    $filepath = rtrim($helpDirectory, '/') . '/' . $filename;
-
-    // Security check: ensure path doesn't escape help directory
-    $realHelpDir = realpath($helpDirectory);
-    $realFilePath = realpath($filepath);
-
-    if ($realFilePath === false || strpos($realFilePath, $realHelpDir) !== 0) {
-        echo json_encode([
-            'success' => false,
-            'error' => 'Help file not found'
-        ]);
-        exit;
-    }
-
-    if (!file_exists($filepath) || !is_readable($filepath)) {
+    if ($filepath === false) {
         echo json_encode([
             'success' => false,
             'error' => 'Help file not found: ' . $topic
@@ -70,7 +43,27 @@ if ($contentSource === 'local') {
         exit;
     }
 
-    $rawContent = file_get_contents($filepath);
+    // Security check: ensure path is within allowed base path
+    $basePath = realpath($config['help_base_path'] ?? '');
+    $realFilePath = realpath($filepath);
+
+    if ($realFilePath === false || $basePath === false || strpos($realFilePath, $basePath) !== 0) {
+        echo json_encode([
+            'success' => false,
+            'error' => 'Help file not found'
+        ]);
+        exit;
+    }
+
+    if (!is_readable($realFilePath)) {
+        echo json_encode([
+            'success' => false,
+            'error' => 'Help file not readable: ' . $topic
+        ]);
+        exit;
+    }
+
+    $rawContent = file_get_contents($realFilePath);
 
     if ($rawContent === false) {
         echo json_encode([

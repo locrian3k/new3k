@@ -28,25 +28,45 @@ return [
     // Where to fetch help file content from:
     // 'local'    - Read from local directory (when on production server)
     // 'external' - Fetch from external URL (current 3k.org setup)
-    'content_source' => 'external',
+    'content_source' => 'local',
 
     // ===========================================
     // LOCAL DIRECTORY SETTINGS
     // (Used when content_source is 'local' or source is 'directory'/'hybrid')
     // ===========================================
 
-    // Path to the help files directory (absolute path on server)
-    // This should be the path to the help folder relative to www
-    // Example: '/var/www/3k/help/' or '../help/' (relative to www)
-    //
-    // PRODUCTION NOTE: When deployed, the help folder is at the same level
-    // as the www folder. You may need to use something like:
-    // 'help_directory' => $_SERVER['DOCUMENT_ROOT'] . '/../help/',
-    'help_directory' => '',
+    // Base path for help files (parent directory containing help and cmds folders)
+    // On production, this would be something like: $_SERVER['DOCUMENT_ROOT'] . '/../'
+    // For local development, point to where the help/cmds folders are
+    'help_base_path' => dirname($_SERVER['DOCUMENT_ROOT']) . '/',
+
+    // Help sources configuration
+    // Each source defines a directory to scan and which subfolders to include/exclude
+    'help_sources' => [
+        // Main help folder
+        'help' => [
+            'path' => 'help/',
+            'include_root_files' => true,  // Include files in the root of help/
+            'subfolders' => [
+                // Include these subfolders (all files and folders EXCEPT those listed in 'exclude')
+                'mode' => 'exclude',  // 'include' = only these folders, 'exclude' = all except these
+                'list' => ['APPWIZ', 'BACKUP', 'WIZARD']  // Folders to exclude
+            ]
+        ],
+        // Commands folder
+        'cmds' => [
+            'path' => 'cmds/',
+            'include_root_files' => false,  // Don't include root files in cmds/
+            'subfolders' => [
+                // Only include specific subfolders
+                'mode' => 'include',  // Only include folders in the list
+                'list' => ['himort', 'mortal']  // Folders to include
+            ]
+        ]
+    ],
 
     // File extension for local help files (without the dot)
-    // The MUD's help files are typically plain text or .c (LPC) files
-    // Common options: '' (no extension), 'c', 'txt', 'php'
+    // The MUD's help files are typically plain text with no extension
     'file_extension' => '',
 
     // ===========================================

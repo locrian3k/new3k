@@ -19,7 +19,6 @@
 		          <li><a href="/about/3kingdoms/index.php">About 3Kingdoms</a></li>
 		          <li><a href="/about/3scapes/index.php">About 3Scapes</a></li>
 		          <li><a href="/guilds/index.php">Guilds</a></li>
-		          <li><a href="/help/index.php">Help Files</a></li>
 		          <li><a href="/realms/index.php">Realms</a></li>
 		        </ul>
 		      </div>
@@ -41,6 +40,7 @@
             <ul>
               <li><a href="/support/admin/index.php">Admin</a></li>
               <li><a href="/support/contact/index.php">Contact</a></li>
+              <li><a href="/support/help/index.php">Help Files</a></li>
               <li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
             </ul>
           </div>          

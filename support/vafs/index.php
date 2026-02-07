@@ -122,7 +122,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <span>Use <code>mail VAFS</code> in-game with your transaction ID</span>
             </div>
           </div>
-          <a href="https://squareup.com/market/the-marble-group-inc" target="_blank" class="btn-primary payment-btn">
+          <a href="https://squareup.com/market/the-marble-group-inc" target="_blank" class="btn-primary square payment-btn">
             <i class="fa-solid fa-external-link-alt"></i>
             Visit Square Store
           </a>

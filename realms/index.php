@@ -60,16 +60,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="realm-features-grid">
             <div class="realm-feature-item" style="background-image: url('/images/ai-areas/icy_blue_portal.png');">
               <h4>Land of the Ice People</h4>
-              <p>//TODO Icy blue portal area description.
+              <p>A peaceful village tucked away in the deep frost.
               </p>
             </div>
             <div class="realm-feature-item" style="background-image: url('/images/ai-areas/murusFaralain.png');">
               <h4>Murus Faralain</h4>
-              <p>//TODO Something something, an abandoned city.</p>
+              <p>Lost in time, the fabled city of the elves was over-run by an orcish invasion over 600 years ago.</p>
             </div>
             <div class="realm-feature-item" style="background-image: url('/images/ai-areas/westerseaDocks.png');">
               <h4>Westersea Docks</h4>
-              <p>//TODO Something about Westersea Docks.</p>
+              <p>A major city full of ancient secrets and opportunity.</p>
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             </div>
             <div class="realm-feature-item" style="background-image: url('/images/ai-areas/mantis_swamp.png');">
               <h4>Mantis Swamp</h4>
-              <p>//TODO Some description about Mantis Swamp.</p>
+              <p>A swampland ravaged by the horrors of nuclear fallout, occupied by monstrous mantises.</p>
             </div>
           </div>
         </div>

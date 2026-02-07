@@ -3192,30 +3192,18 @@ main { margin-top: 5rem; }
 	border-color: rgba(150, 150, 150, 0.6);
 }
 
-/* Guild Split Card Logo - (smaller) */
+/* Guild Split Card Logo */
 .guild-split-logo {
-	width: 120px;
-	height: 120px;
+	width: 160px;
+	height: 160px;
 	object-fit: contain;
-}
-
-.guild-split-icon {
-	font-size: 2.5rem;
-	margin-bottom: var(--space-md);
-}
-
-.guild-split-card.card-purple .guild-split-icon {
-	color: var(--clr-accent-purple);
-}
-
-.guild-split-card.card-gray .guild-split-icon {
-	color: #888888;
 }
 
 .guild-split-card h3 {
 	font-family: var(--ff-heading);
 	font-size: 1.5rem;
 	color: var(--clr-text-heading);
+  margin-top: 0;
 	margin-bottom: var(--space-sm);
 }
 

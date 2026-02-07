@@ -2487,12 +2487,15 @@ main { margin-top: 5rem; }
 /* Connect Page - Large Desktop+ (2500px) */
 @media (min-width: 2500px) {
   .connect-faq .connect-container {
-	max-width: 2450px;
-	margin: 0 auto;
-}
+    max-width: 2450px;
+    margin: 0 auto;
+  }
 	.connect-faq .faq-grid {
 		grid-template-columns: repeat(4, 1fr);
 	}
+  .connection-note-box {
+    margin-bottom: var(--space-lg);
+  }
 }
 
 .connect-faq .faq-item {

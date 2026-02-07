@@ -2270,6 +2270,7 @@ main { margin-top: 5rem; }
 	display: grid;
 	gap: var(--space-xl);
 }
+/*see media query in connect section for 2500px+ sizing*/
 
 .faq-item {
 	background: rgba(25, 52, 85, 0.3);
@@ -2467,6 +2468,13 @@ main { margin-top: 5rem; }
 @media (min-width: 768px) {
 	.connect-faq .faq-grid {
 		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* About and Connect Page - Large Desktop+ (2500px) */
+@media (min-width: 2500px) {
+	.faq-grid {
+		grid-template-columns: repeat(4, 1fr);
 	}
 }
 

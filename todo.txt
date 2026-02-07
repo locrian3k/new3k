@@ -16,10 +16,6 @@ TODO Add to about/3scapes/index.php
 
 TODO Look over 3k.org/help/index.php and create support/help/index.php
 
-TODO Finish making guild images
-
-TODO Update area descriptions on realms page
-
 TODO Create community/omp/index.php
 
 TODO Create community/wholist.php

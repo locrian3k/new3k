@@ -2840,7 +2840,7 @@ main { margin-top: 5rem; }
 	font-size: 1rem;
 }
 
-/* Guild Grid (1 column) */
+/* Guild Grid - Mobile first (1 column) */
 .guild-grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -2848,6 +2848,10 @@ main { margin-top: 5rem; }
 }
 
 .guild-grid-core {
+	grid-template-columns: 1fr;
+}
+
+.guild-grid-full {
 	grid-template-columns: 1fr;
 }
 
@@ -3121,163 +3125,7 @@ main { margin-top: 5rem; }
 	flex-wrap: wrap;
 }
 
-/* Guild Flip Cards */
-/* Height is set dynamically by JavaScript to match the tallest card */
-.flip-hint {
-	color: var(--clr-text-secondary);
-	font-size: 0.9rem;
-	margin-top: var(--space-sm);
-}
-
-.flip-hint i {
-	margin-right: var(--space-xs);
-	color: var(--clr-accent-blue-light);
-}
-
-.guild-flip-grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: var(--space-lg);
-}
-
-.guild-flip-card {
-	perspective: 1000px;
-	cursor: pointer;
-	position: relative;
-	background: transparent;
-	border: none;
-	padding: 0;
-}
-
-.guild-flip-inner {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	transition: transform 0.6s;
-	transform-style: preserve-3d;
-}
-
-.guild-flip-card.flipped .guild-flip-inner {
-	transform: rotateY(180deg);
-}
-
-.guild-flip-front,
-.guild-flip-back {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	backface-visibility: hidden;
-	-webkit-backface-visibility: hidden;
-	border-radius: var(--card-border-radius);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: var(--space-xl);
-	text-align: center;
-	box-sizing: border-box;
-	background: rgba(25, 52, 85, 0.3);
-	border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.guild-flip-back {
-	transform: rotateY(180deg);
-	background: rgba(25, 52, 85, 0.3);
-}
-
-/* Varying border colors for guild flip cards */
-.guild-flip-card:nth-child(3n+1) .guild-flip-front,
-.guild-flip-card:nth-child(3n+1) .guild-flip-back {
-	border-color: rgba(212, 74, 2, 0.3);
-}
-
-.guild-flip-card:nth-child(3n+2) .guild-flip-front,
-.guild-flip-card:nth-child(3n+2) .guild-flip-back {
-	border-color: rgba(99, 160, 195, 0.3);
-}
-
-.guild-flip-card:nth-child(3n+3) .guild-flip-front,
-.guild-flip-card:nth-child(3n+3) .guild-flip-back {
-	border-color: rgba(212, 160, 46, 0.3);
-}
-
-.guild-flip-card:not(.flipped) .guild-flip-front:hover {
-	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-.guild-flip-icon {
-	font-size: 3rem;
-	color: var(--clr-accent-blue-light);
-	margin-bottom: var(--space-md);
-	transition: transform 0.3s ease;
-}
-
-.guild-flip-front:hover .guild-flip-icon {
-	transform: scale(1.1);
-}
-
-/* Guild Flip Card Logos - Mobile first (smaller) */
-.guild-flip-logo {
-	width: 140px;
-	height: 140px;
-	object-fit: contain;
-	margin-bottom: 0;
-	transition: transform 0.3s ease;
-}
-
-.guild-flip-front:hover .guild-flip-logo {
-	transform: scale(1.05);
-}
-
-.guild-flip-logo-back {
-	max-width: 60px;
-	height: auto;
-	margin-bottom: var(--space-sm);
-}
-
-.guild-flip-name {
-	font-family: var(--ff-heading);
-	font-size: 1.3rem;
-	color: var(--clr-text-heading);
-	margin: 0 0 var(--space-sm) 0;
-}
-
-.guild-flip-tags {
-	display: flex;
-	gap: var(--space-xs);
-	flex-wrap: wrap;
-	justify-content: center;
-	margin-top: 0;
-}
-
-.guild-flip-back .guild-flip-name {
-	margin-bottom: var(--space-md);
-	font-size: 1.4rem;
-}
-
-.guild-flip-back p {
-	color: var(--clr-text-primary);
-	font-size: 0.95rem;
-	line-height: var(--lh-relaxed);
-	margin: 0;
-}
-
-.guild-help-hint {
-	font-size: 0.85rem;
-	color: var(--clr-text-secondary);
-	margin-top: var(--space-md);
-	opacity: 0.9;
-}
-
-.guild-help-hint code {
-	background: rgba(255, 255, 255, 0.1);
-	padding: 0.15rem 0.4rem;
-	border-radius: 3px;
-	font-family: monospace;
-	font-size: 0.85rem;
-}
-
-/* Guild Split Cards (1 column) */
+/* Guild Split Cards - Mobile first (1 column) */
 .guild-split {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -3410,19 +3258,23 @@ main { margin-top: 5rem; }
 @media (min-width: 768px) {
 	.guild-grid,
 	.guild-grid-core,
-	.guild-flip-grid,
+	.guild-grid-full,
 	.guild-split-quad {
 		grid-template-columns: repeat(2, 1fr);
 	}
 	.guild-split {
 		grid-template-columns: 1fr 1fr;
 	}
+	.guild-split-logo {
+		width: 160px;
+		height: 160px;
+	}
 }
 
 /* Guilds Page - Desktop (1024px) */
 @media (min-width: 1024px) {
 	.guild-grid,
-	.guild-flip-grid {
+	.guild-grid-full {
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
@@ -3775,7 +3627,6 @@ main { margin-top: 5rem; }
 
 .paypal-form .form-input::placeholder {
 	color: rgba(251, 251, 241, 0.5);
-  width: 80%;
 }
 
 .payment-note {

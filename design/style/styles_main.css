@@ -3135,6 +3135,7 @@ main { margin-top: 5rem; }
 .guild-split-single {
 	grid-template-columns: 1fr;
 	max-width: 500px;
+	min-width: min(400px, 100%);
 	margin: 0 auto;
 }
 
@@ -3264,6 +3265,10 @@ main { margin-top: 5rem; }
 	}
 	.guild-split {
 		grid-template-columns: 1fr 1fr;
+	}
+	/* Keep single-card layout centered */
+	.guild-split-single {
+		grid-template-columns: 1fr;
 	}
 	.guild-split-logo {
 		width: 160px;

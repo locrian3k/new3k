@@ -36,9 +36,10 @@ return [
     // ===========================================
 
     // Base path for help files (parent directory containing help and cmds folders)
-    // On production, this would be something like: $_SERVER['DOCUMENT_ROOT'] . '/../'
-    // For local development, point to where the help/cmds folders are
-    'help_base_path' => dirname($_SERVER['DOCUMENT_ROOT']) . '/',
+    // This calculates the path relative to this config file's location
+    // config.php is in: new3k/support/help/
+    // We need to go up to: WebDesign/ (where help/ and cmds/ folders are)
+    'help_base_path' => dirname(__DIR__, 3) . '/',
 
     // Help sources configuration
     // Each source defines a directory to scan and which subfolders to include/exclude

@@ -463,7 +463,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </ul>
 
           <p>
-            Example: <code>newb Hi! I'm new, can someone help me?</code>
+            Example: <code>newb Hi! I'm new, can I get help?</code>
           </p>
         </div>
       </div>

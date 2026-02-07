@@ -229,7 +229,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <div class="realm-feature-item"
               style="background-image: url('/images/ai-areas/terras_terrific_treehouse.png');">
               <h4>Terra's Terrific Treehouse</h4>
-              <p>A whimsical treehouse that defies the laws of physics and architecture.</p>
+              <p>An enormous elder titan of the forest, its guarded by root warriors who serve their master, Terra.</p>
             </div>
           </div>
         </div>

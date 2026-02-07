@@ -23,7 +23,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       </p>
       <p class="intro-text">
         New players start in the <strong>Adventurer</strong> guild and can join a full guild upon reaching
-        Level 5. Choose wisely - your guild will shape your entire journey through the realms.
+        Level 5. Choose wisely, your guild will shape your entire journey through the realms.
       </p>
     </div>
   </section>

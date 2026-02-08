@@ -5888,9 +5888,6 @@ button.help-link {
 
 /* Tablet and up */
 @media (min-width: 768px) {
-  .hero-omp {
-    min-height: 45vh;
-  }
   .omp-intro {
     padding: 4rem 0;
   }

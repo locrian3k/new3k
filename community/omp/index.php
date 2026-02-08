@@ -30,6 +30,29 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </p>
       </div>
     </div>
+
+    <div class="omp-stats">
+      <div class="omp-container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">17</span>
+            <span class="stat-label">Gatherings Held</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">25+</span>
+            <span class="stat-label">Years of Tradition</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">14</span>
+            <span class="stat-label">Cities Visited</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1998</span>
+            <span class="stat-label">First Gathering</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Statistics Section -->
@@ -277,4 +300,5 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 <script src="/design/script/script_main.js"></script>
 <script src="/design/script/script_omp.js"></script>
 </body>
+
 </html>

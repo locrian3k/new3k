@@ -288,7 +288,7 @@ if (!$whoData) {
                 <p>Connect now and become part of the 3Kingdoms community!</p>
                 <div class="cta-buttons">
                     <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary">Play Now</a>
-                    <a href="/about/" class="btn-secondary">Learn More</a>
+                    <a href="/about/index.php" class="btn-secondary">Learn More</a>
                 </div>
             </div>
         </div>

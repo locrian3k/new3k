@@ -5,6 +5,59 @@
 
 // OMP Data - Historical information for each gathering
 const ompData = {
+
+  /* ==========================================================================
+     EXAMPLE FUTURE OMP - Uncomment and modify when announcing a new gathering
+     ==========================================================================
+
+  '2026': {
+    year: '2026',
+    location: 'Detroit, MI',
+    dates: 'August 7-9, 2026',
+    venue: {
+      name: 'Crowne Plaza Detroit Metro Airport',
+      address: '8000 Merriman Rd, Romulus, MI 48174',
+      phone: '(734) 729-2600',
+      groupName: '3Kingdoms OMP 2026',
+      roomRate: '$109/night (single/double occupancy)',
+      amenities: ['Free parking', 'Complimentary breakfast', 'Free WiFi', 'Indoor pool', 'Fitness center'],
+      coverCharge: '$25 per person (covers hospitality suite snacks & drinks)',
+      bookingDeadline: 'July 15, 2026'
+    },
+    showRideshare: true,
+    schedule: {
+      friday: [
+        'Check-in begins (3:00 PM)',
+        'Hospitality suite opens (4:00 PM)',
+        'Meet & greet and catching up',
+        'Group dinner at local restaurant (7:00 PM)',
+        'Evening socializing in suite'
+      ],
+      saturday: [
+        'Breakfast at hotel',
+        'Group activity TBD (optional)',
+        'Free time for exploration',
+        'Group dinner (6:30 PM)',
+        'Evening festivities and games'
+      ],
+      sunday: [
+        'Farewell breakfast (9:00 AM)',
+        'Check-out (11:00 AM)',
+        'Safe travels home!'
+      ]
+    },
+    activities: [
+      'Hospitality suite with snacks and drinks',
+      'Group dinners',
+      'Optional group activity (TBD)',
+      'Lots of catching up and reminiscing'
+    ],
+    stories: 'Join us for another epic gathering of 3Kingdoms players! Whether you\'re a veteran of many OMPs or this is your first time meeting your online friends in person, you\'re in for an unforgettable weekend.',
+    photoCredits: []
+  },
+
+  ========================================================================== */
+
   '2013': {
     year: '2013',
     location: 'Chicago, IL',
@@ -519,6 +572,44 @@ function openModal(ompId) {
         <div class="venue-info">
           <p><strong>${data.venue.name}</strong></p>
           <p>${data.venue.address}</p>
+          ${data.venue.phone ? `<p><i class="fa-solid fa-phone"></i> ${data.venue.phone}</p>` : ''}
+        </div>
+    `;
+
+    // Booking details (for upcoming/future OMPs)
+    if (data.venue.groupName || data.venue.roomRate || data.venue.coverCharge) {
+      bodyHTML += `<div class="venue-booking">`;
+
+      if (data.venue.groupName) {
+        bodyHTML += `<p><strong>Reserve under:</strong> ${data.venue.groupName}</p>`;
+      }
+      if (data.venue.roomRate) {
+        bodyHTML += `<p><strong>Room Rate:</strong> ${data.venue.roomRate}</p>`;
+      }
+      if (data.venue.amenities && data.venue.amenities.length > 0) {
+        bodyHTML += `<p><strong>Includes:</strong> ${data.venue.amenities.join(', ')}</p>`;
+      }
+      if (data.venue.coverCharge) {
+        bodyHTML += `<p><strong>OMP Cover Charge:</strong> ${data.venue.coverCharge}</p>`;
+      }
+      if (data.venue.bookingDeadline) {
+        bodyHTML += `<p class="booking-deadline"><i class="fa-solid fa-clock"></i> Book by: ${data.venue.bookingDeadline}</p>`;
+      }
+
+      bodyHTML += `</div>`;
+    }
+
+    bodyHTML += `</div>`;
+  }
+
+  // Rideshare section (for upcoming OMPs)
+  if (data.showRideshare) {
+    bodyHTML += `
+      <div class="modal-section">
+        <h3><i class="fa-solid fa-car"></i> Rideshare Coordination</h3>
+        <div class="rideshare-info">
+          <p>Need a ride from the airport or want to carpool? Coordinate with other attendees!</p>
+          <p class="rideshare-command">Type <code>rideshare</code> in the OMP room on 3K to connect with others.</p>
         </div>
       </div>
     `;

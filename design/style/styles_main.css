@@ -5851,6 +5851,73 @@ button.help-link {
   margin-bottom: 0;
 }
 
+.venue-info i {
+  color: var(--clr-text-secondary);
+  margin-right: 0.25rem;
+}
+
+/* Venue Booking Details */
+.venue-booking {
+  background: rgba(247, 210, 75, 0.1);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  border: 1px solid rgba(247, 210, 75, 0.2);
+}
+
+.venue-booking p {
+  margin-bottom: 0.5rem;
+  color: var(--clr-text-primary);
+}
+
+.venue-booking p:last-child {
+  margin-bottom: 0;
+}
+
+.venue-booking strong {
+  color: var(--clr-text-heading);
+}
+
+.booking-deadline {
+  color: var(--clr-accent-main) !important;
+  font-weight: 600;
+  margin-top: 0.75rem !important;
+}
+
+.booking-deadline i {
+  margin-right: 0.25rem;
+}
+
+/* Rideshare Section */
+.rideshare-info {
+  background: rgba(99, 160, 195, 0.1);
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid rgba(99, 160, 195, 0.2);
+}
+
+.rideshare-info p {
+  color: var(--clr-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.rideshare-info p:last-child {
+  margin-bottom: 0;
+}
+
+.rideshare-command {
+  font-weight: 500;
+}
+
+.rideshare-command code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  color: var(--clr-text-heading);
+  font-weight: 600;
+}
+
 /* Story/Memory Section */
 .modal-story {
   background: linear-gradient(135deg, rgba(212, 74, 2, 0.1) 0%, rgba(247, 210, 75, 0.05) 100%);
@@ -6113,4 +6180,247 @@ footer {
 		padding: 1rem 0 2rem;
 		justify-content: space-evenly;
 	}
+}
+
+/* ==========================================================================
+   WHOLIST PAGE STYLES
+   ========================================================================== */
+
+/* Compact Hero for Wholist */
+.hero-compact {
+  min-height: 25vh;
+  padding: 4rem 1.5rem 2rem;
+}
+
+/* Server Status Section */
+.wholist-status {
+  padding: 2rem 0;
+  background: linear-gradient(180deg, var(--clr-black) 0%, var(--clr-bg-main) 100%);
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.status-item {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid var(--clr-border-subtle);
+}
+
+.status-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--clr-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.status-value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--clr-text-heading);
+}
+
+.status-timestamp {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--clr-text-primary);
+  opacity: 0.6;
+  margin-top: 1rem;
+}
+
+/* Player List Section */
+.wholist-players {
+  padding: 2rem 0 4rem;
+  background: var(--clr-bg-main);
+}
+
+.player-table-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.player-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.player-table thead {
+  display: none;
+}
+
+.player-table tr {
+  border-bottom: 1px solid var(--clr-border-subtle);
+}
+
+.player-table td {
+  padding: 0.75rem 0.5rem;
+  vertical-align: top;
+}
+
+.player-table td:first-child {
+  width: 60px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--clr-text-heading);
+  font-size: 0.9rem;
+}
+
+.player-table td:nth-child(2) {
+  display: none;
+}
+
+.player-table i,
+.player-table b {
+  color: var(--clr-text-primary);
+}
+
+.player-table a {
+  color: var(--clr-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.player-table a:hover {
+  color: var(--clr-accent-main);
+}
+
+/* Wholist Empty State */
+.wholist-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: var(--clr-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.wholist-empty h2 {
+  font-family: var(--ff-heading);
+  color: var(--clr-text-heading);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.wholist-empty p {
+  color: var(--clr-text-primary);
+  margin-bottom: 1rem;
+}
+
+.wholist-empty ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.wholist-empty li {
+  color: var(--clr-text-primary);
+  opacity: 0.8;
+  padding: 0.25rem 0;
+}
+
+.wholist-empty li::before {
+  content: '\2022';
+  color: var(--clr-accent-main);
+  margin-right: 0.5rem;
+}
+
+/* Wholist Note */
+.wholist-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--clr-text-primary);
+  opacity: 0.7;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.wholist-note i {
+  color: var(--clr-accent-blue);
+}
+
+/* Wholist CTA */
+.wholist-cta {
+  padding: 3rem 0;
+  background: linear-gradient(180deg, var(--clr-bg-main) 0%, var(--clr-black) 100%);
+  text-align: center;
+}
+
+.wholist-cta .cta-content h2 {
+  font-family: var(--ff-heading);
+  color: var(--clr-text-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.wholist-cta .cta-content p {
+  color: var(--clr-text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.wholist-cta .cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Wholist Responsive - Tablet+ */
+@media (min-width: 768px) {
+  .hero-compact {
+    min-height: 30vh;
+    padding: 5rem 2rem 3rem;
+  }
+
+  .status-grid {
+    gap: 2rem;
+  }
+
+  .status-value {
+    font-size: 1.25rem;
+  }
+
+  .player-table thead {
+    display: table-header-group;
+  }
+
+  .player-table th {
+    text-align: left;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 2px solid var(--clr-accent-main);
+    color: var(--clr-text-heading);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .player-table th:first-child {
+    width: 80px;
+    text-align: center;
+  }
+
+  .wholist-empty h2 {
+    font-size: 1.75rem;
+  }
+
+  .wholist-cta .cta-content h2 {
+    font-size: 1.75rem;
+  }
 }

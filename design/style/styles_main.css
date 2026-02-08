@@ -6745,8 +6745,21 @@ footer {
   flex-wrap: wrap;
 }
 
+/* SSH Page Responsive - Mobile */
+.ssh-intro .container,
+.ssh-section .container,
+.ssh-cta .container {
+  padding: 0 1rem;
+}
+
 /* SSH Page Responsive - Tablet+ */
 @media (min-width: 768px) {
+  .ssh-intro .container,
+  .ssh-section .container,
+  .ssh-cta .container {
+    padding: 0 1.5rem;
+  }
+
   .ssh-intro {
     padding: 4rem 0;
   }

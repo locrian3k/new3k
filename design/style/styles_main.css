@@ -5251,6 +5251,12 @@ button.help-link {
 	text-decoration: underline;
 }
 
+/* Non-clickable see also text (topic doesn't exist as help file) */
+.help-modal-content .help-see-also-text {
+	color: var(--clr-text-muted);
+	font-style: italic;
+}
+
 /* Help file color classes (matching MUD ANSI colors) */
 .help-color-red {
 	color: #f87171;

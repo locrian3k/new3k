@@ -187,8 +187,12 @@ function scanDirectoryForFiles($directory, $extension = '', $excludeFiles = []) 
             continue;
         }
 
-        // Use lowercase filename as display name
-        $files[$filename] = strtolower($filename);
+        // Decode URL-encoded filenames for display (e.g., %3F becomes ?)
+        // This handles Windows filesystem limitations for special characters
+        $displayName = urldecode($filename);
+
+        // Use actual filename as key (for fetching), decoded name for display
+        $files[$filename] = strtolower($displayName);
     }
 
     return $files;
@@ -244,10 +248,20 @@ function findHelpFile($topic, $config) {
     $extension = $config['file_extension'] ?? '';
     $globalExclude = $config['global_exclude_folders'] ?? [];
 
-    // Build the filename
-    $filename = $topic;
+    // Build possible filenames to try:
+    // 1. Original topic name (e.g., "!" or "?")
+    // 2. URL-encoded version (e.g., "%21" or "%3F") for Windows filesystem compatibility
+    $filenamesToTry = [$topic];
+    $encodedTopic = rawurlencode($topic);
+    if ($encodedTopic !== $topic) {
+        $filenamesToTry[] = $encodedTopic;
+    }
+
+    // Add extension if configured
     if (!empty($extension)) {
-        $filename .= '.' . $extension;
+        $filenamesToTry = array_map(function($f) use ($extension) {
+            return $f . '.' . $extension;
+        }, $filenamesToTry);
     }
 
     foreach ($sources as $sourceId => $sourceConfig) {
@@ -259,9 +273,11 @@ function findHelpFile($topic, $config) {
 
         // Check root directory if configured
         if (!empty($sourceConfig['include_root_files'])) {
-            $filepath = $sourcePath . $filename;
-            if (file_exists($filepath) && is_readable($filepath)) {
-                return $filepath;
+            foreach ($filenamesToTry as $filename) {
+                $filepath = $sourcePath . $filename;
+                if (file_exists($filepath) && is_readable($filepath)) {
+                    return $filepath;
+                }
             }
         }
 
@@ -295,10 +311,12 @@ function findHelpFile($topic, $config) {
             }
 
             if ($shouldSearch) {
-                // Search recursively in this subfolder
-                $found = findFileRecursive($subdir, $filename, $globalExclude);
-                if ($found !== false) {
-                    return $found;
+                // Search recursively in this subfolder, trying all filename variations
+                foreach ($filenamesToTry as $filename) {
+                    $found = findFileRecursive($subdir, $filename, $globalExclude);
+                    if ($found !== false) {
+                        return $found;
+                    }
                 }
             }
         }

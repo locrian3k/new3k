@@ -73,7 +73,7 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
           <button
             type="button"
             class="help-link"
-            data-topic="<?php echo htmlspecialchars($file); ?>"
+            data-topic="<?php echo htmlspecialchars($title); ?>"
             data-title="<?php echo htmlspecialchars($title); ?>"
           >
             <?php echo htmlspecialchars($title); ?>

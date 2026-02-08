@@ -19,8 +19,12 @@ include __DIR__ . '/functions.php';
 // Get the requested topic
 $topic = isset($_GET['topic']) ? trim($_GET['topic']) : '';
 
-// Validate topic (only allow alphanumeric, underscores, and hyphens)
-if (empty($topic) || !preg_match('/^[a-zA-Z0-9_-]+$/', $topic)) {
+// Validate topic
+// Allow alphanumeric, underscores, hyphens, and specific special chars (!, ?, ')
+// Block path traversal characters (.., /, \) and other dangerous chars
+if (empty($topic) ||
+    !preg_match('/^[a-zA-Z0-9_\-!?\' ]+$/', $topic) ||
+    preg_match('/\.\./', $topic)) {
     echo json_encode([
         'success' => false,
         'error' => 'Invalid topic specified'
@@ -73,8 +77,8 @@ if ($contentSource === 'local') {
         exit;
     }
 
-    // Parse the 3K help file format
-    $parsed = parseHelpFile($rawContent);
+    // Parse the 3K help file format (pass config for topic validation)
+    $parsed = parseHelpFile($rawContent, $config);
 
     echo json_encode([
         'success' => true,
@@ -150,9 +154,10 @@ if ($contentSource === 'local') {
  * Body content here with @color:'text'@ markup
  *
  * @param string $content Raw file content
+ * @param array $config Configuration array for file validation
  * @return array Parsed data with 'header', 'html', 'keywords', 'seeAlso'
  */
-function parseHelpFile($content) {
+function parseHelpFile($content, $config = []) {
     $lines = explode("\n", $content);
     $metadata = [];
     $bodyLines = [];
@@ -197,8 +202,31 @@ function parseHelpFile($content) {
     $body = implode("\n", $bodyLines);
     $body = trim($body);
 
+    // Extract "See Also:" from body content if present
+    $bodySeeAlso = [];
+    if (preg_match('/@?yellow:?\'?See\s+Also:\s*([^@\']+)\'?@?|See\s+Also:\s*(.+)$/im', $body, $seeAlsoMatch)) {
+        // Get the matched topics (either from colored or plain format)
+        $topicsStr = !empty($seeAlsoMatch[1]) ? $seeAlsoMatch[1] : ($seeAlsoMatch[2] ?? '');
+        // Parse comma-separated topics
+        $bodySeeAlso = array_map('trim', explode(',', $topicsStr));
+        // Clean up any trailing punctuation
+        $bodySeeAlso = array_map(function($t) {
+            return rtrim(trim($t), '.');
+        }, $bodySeeAlso);
+        // Filter out empty values
+        $bodySeeAlso = array_filter($bodySeeAlso);
+
+        // Remove the "See Also:" line from the body since we'll add it formatted
+        $body = preg_replace('/@?yellow:?\'?See\s+Also:\s*[^@\']+\'?@?\s*$/im', '', $body);
+        $body = preg_replace('/See\s+Also:\s*.+$/im', '', $body);
+        $body = trim($body);
+    }
+
+    // Merge keywords-based and body-based see also lists
+    $seeAlso = array_unique(array_merge(array_values($seeAlso), $bodySeeAlso));
+
     // Convert to HTML
-    $html = formatHelpContent($body, $header, $seeAlso);
+    $html = formatHelpContent($body, $header, $seeAlso, $config);
 
     return [
         'header' => $header,
@@ -214,9 +242,10 @@ function parseHelpFile($content) {
  * @param string $body The body content
  * @param string $header The header title
  * @param array $seeAlso Related topics
+ * @param array $config Configuration array for file validation
  * @return string Formatted HTML
  */
-function formatHelpContent($body, $header, $seeAlso) {
+function formatHelpContent($body, $header, $seeAlso, $config = []) {
     // Escape HTML entities first
     $html = htmlspecialchars($body, ENT_QUOTES, 'UTF-8');
 
@@ -277,15 +306,33 @@ function formatHelpContent($body, $header, $seeAlso) {
         $seeAlso = array_values($seeAlso);
         sort($seeAlso, SORT_STRING | SORT_FLAG_CASE);
 
-        $seeAlsoLinks = array_map(function($topic) {
+        $seeAlsoLinks = [];
+        foreach ($seeAlso as $topic) {
             $topic = trim($topic);
-            return '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($topic) . '</button>';
-        }, $seeAlso);
+            if (empty($topic)) continue;
 
-        $output .= "\n" . '<div class="help-see-also">';
-        $output .= '<span class="help-color-yellow">See also:</span>  ';
-        $output .= implode(', ', $seeAlsoLinks) . '.';
-        $output .= '</div>';
+            // Check if this topic exists as a help file
+            $topicExists = false;
+            if (!empty($config)) {
+                $filepath = findHelpFile($topic, $config);
+                $topicExists = ($filepath !== false);
+            }
+
+            if ($topicExists) {
+                // Create a clickable button for existing topics
+                $seeAlsoLinks[] = '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($topic) . '</button>';
+            } else {
+                // Display as plain text (styled but not clickable) for non-existent topics
+                $seeAlsoLinks[] = '<span class="help-see-also-text">' . htmlspecialchars($topic) . '</span>';
+            }
+        }
+
+        if (!empty($seeAlsoLinks)) {
+            $output .= "\n" . '<div class="help-see-also">';
+            $output .= '<span class="help-color-yellow">See also:</span>  ';
+            $output .= implode(', ', $seeAlsoLinks) . '.';
+            $output .= '</div>';
+        }
     }
 
     return $output;

@@ -1,0 +1,554 @@
+/* ==========================================================================
+   OMP (Official MUD Party) Page Styles
+   ========================================================================== */
+
+/* Hero Section */
+.hero-omp {
+  background: linear-gradient(135deg,
+    rgba(30, 30, 40, 0.95) 0%,
+    rgba(60, 40, 80, 0.9) 50%,
+    rgba(30, 30, 40, 0.95) 100%
+  );
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-omp::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(147, 112, 219, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 165, 0, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Container */
+.omp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Introduction Section */
+.omp-intro {
+  padding: 3rem 0;
+  background: var(--color-bg-primary);
+}
+
+.omp-intro .intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.omp-intro .lead-text {
+  font-size: 1.15rem;
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.omp-intro p {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* Statistics Section */
+.omp-stats {
+  padding: 2.5rem 0;
+  background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.stat-item {
+  padding: 1.5rem 1rem;
+  background: var(--color-bg-tertiary);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Timeline Section */
+.omp-timeline {
+  padding: 4rem 0;
+  background: var(--color-bg-primary);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 3rem;
+}
+
+/* Timeline Layout */
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg,
+    var(--color-accent-primary) 0%,
+    var(--color-accent-secondary) 50%,
+    var(--color-accent-tertiary) 100%
+  );
+  border-radius: 3px;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 1rem 0 1rem 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(5px);
+}
+
+.timeline-item:hover .timeline-content {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent-primary);
+}
+
+.timeline-item:hover .timeline-marker {
+  transform: scale(1.3);
+  box-shadow: 0 0 15px var(--color-accent-primary);
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2rem;
+  top: 1.5rem;
+  width: 12px;
+  height: 12px;
+  background: var(--color-accent-primary);
+  border-radius: 50%;
+  border: 3px solid var(--color-bg-primary);
+  transform: translateX(-50%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-left: -1.5px;
+}
+
+.timeline-item-first .timeline-marker {
+  width: 16px;
+  height: 16px;
+  background: var(--color-accent-gold);
+  box-shadow: 0 0 10px var(--color-accent-gold);
+}
+
+.timeline-content {
+  background: var(--color-bg-secondary);
+  padding: 1.25rem 1.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.timeline-year {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent-primary);
+  background: rgba(147, 112, 219, 0.15);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-season {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent-secondary);
+  background: rgba(100, 200, 255, 0.15);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+}
+
+.timeline-milestone {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.timeline-content h3 {
+  font-size: 1.15rem;
+  color: var(--color-text-primary);
+  margin: 0.25rem 0;
+}
+
+.timeline-content p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* CTA Section */
+.omp-cta {
+  padding: 4rem 0;
+  background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 1.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cta-buttons .btn-primary,
+.cta-buttons .btn-secondary {
+  min-width: 200px;
+}
+
+/* ==========================================================================
+   Modal Styles
+   ========================================================================== */
+
+.omp-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.omp-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.omp-modal-content {
+  background: var(--color-bg-secondary);
+  border-radius: 16px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.omp-modal.active .omp-modal-content {
+  transform: translateY(0);
+}
+
+.omp-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.omp-modal-close:hover {
+  background: var(--color-accent-primary);
+  color: white;
+  border-color: var(--color-accent-primary);
+}
+
+.omp-modal-header {
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(180deg, var(--color-bg-tertiary) 0%, var(--color-bg-secondary) 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.modal-year {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-accent-primary);
+  background: rgba(147, 112, 219, 0.2);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+}
+
+.modal-location {
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  margin: 0.5rem 0;
+}
+
+.modal-dates {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.omp-modal-body {
+  padding: 1.5rem 2rem 2rem;
+}
+
+/* Modal Content Sections */
+.modal-section {
+  margin-bottom: 1.5rem;
+}
+
+.modal-section:last-child {
+  margin-bottom: 0;
+}
+
+.modal-section h3 {
+  font-size: 1rem;
+  color: var(--color-accent-secondary);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-section h3 i {
+  font-size: 0.9rem;
+}
+
+.modal-section p {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.modal-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-section li {
+  color: var(--color-text-secondary);
+  padding: 0.4rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.modal-section li::before {
+  content: '\2022';
+  color: var(--color-accent-primary);
+  position: absolute;
+  left: 0;
+}
+
+/* Schedule in Modal */
+.modal-schedule {
+  background: var(--color-bg-tertiary);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.schedule-day {
+  margin-bottom: 1rem;
+}
+
+.schedule-day:last-child {
+  margin-bottom: 0;
+}
+
+.schedule-day h4 {
+  font-size: 0.9rem;
+  color: var(--color-accent-gold);
+  margin-bottom: 0.5rem;
+}
+
+.schedule-day ul {
+  margin-left: 0.5rem;
+}
+
+/* Venue Info */
+.venue-info {
+  background: var(--color-bg-tertiary);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--color-accent-primary);
+}
+
+.venue-info p {
+  margin-bottom: 0.5rem;
+}
+
+.venue-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* Story/Memory Section */
+.modal-story {
+  background: linear-gradient(135deg, rgba(147, 112, 219, 0.1) 0%, rgba(100, 200, 255, 0.05) 100%);
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid rgba(147, 112, 219, 0.2);
+}
+
+.modal-story p {
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   Responsive Styles
+   ========================================================================== */
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .hero-omp {
+    min-height: 45vh;
+  }
+
+  .omp-intro {
+    padding: 4rem 0;
+  }
+
+  .omp-intro .lead-text {
+    font-size: 1.25rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .timeline {
+    padding-left: 3rem;
+  }
+
+  .timeline-marker {
+    left: -3rem;
+  }
+
+  .timeline-content {
+    padding: 1.5rem 2rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .omp-modal-content {
+    max-height: 80vh;
+  }
+
+  .modal-location {
+    font-size: 1.75rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .omp-intro {
+    padding: 5rem 0;
+  }
+
+  .omp-timeline {
+    padding: 5rem 0;
+  }
+
+  .timeline {
+    max-width: 800px;
+  }
+
+  .omp-cta {
+    padding: 5rem 0;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+}

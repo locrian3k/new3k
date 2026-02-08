@@ -216,7 +216,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 					background: var(--clr-black);
 					text-align: center;
 				">
-				<a href="/about/3s/index.php">
+				<a href="/about/3scapes/index.php">
 					<img
 						src="/images/logo/3S_logo_transparent.png"
 						alt="3Scapes logo"
@@ -239,7 +239,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 					">
 					Our sister MUD, where the rules are different.
 				</p>
-				<a href="/about/3s/index.php">
+				<a href="/about/3scapes/index.php">
 					<button class="btn-secondary">Learn About 3Scapes</button>
 				</a>
 			</section>

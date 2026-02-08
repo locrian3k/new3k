@@ -5583,3 +5583,185 @@ footer {
 		justify-content: space-evenly;
 	}
 }
+
+/* ====================================================
+   OMP (Official MUD Party) Page Styles
+   ==================================================== */
+
+/* Introduction Section */
+.omp-intro {
+	padding: var(--space-2xl) var(--space-md);
+	background: linear-gradient(180deg, var(--clr-bg-secondary) 0%, var(--clr-bg-primary) 100%);
+}
+
+.omp-intro .intro-content {
+	max-width: 800px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.omp-intro .lead-text {
+	font-size: var(--fs-body-lg);
+	color: var(--clr-text-primary);
+	margin-bottom: var(--space-md);
+	line-height: 1.7;
+}
+
+.omp-intro p {
+	color: var(--clr-text-secondary);
+	line-height: 1.7;
+}
+
+/* Timeline Section */
+.omp-timeline {
+	padding: var(--space-2xl) var(--space-md);
+	background: var(--clr-bg-primary);
+}
+
+.omp-timeline .section-title {
+	text-align: center;
+	font-size: var(--fs-h2);
+	color: var(--clr-text-heading);
+	margin-bottom: var(--space-xl);
+}
+
+.timeline-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-md);
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+	.timeline-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 900px) {
+	.timeline-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.gathering-card {
+	background: var(--clr-bg-card);
+	border: 1px solid var(--clr-border-subtle);
+	border-radius: var(--radius-lg);
+	padding: var(--space-lg);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gathering-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+	border-color: var(--clr-accent-main);
+}
+
+.gathering-card-first {
+	background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+	border-color: var(--clr-accent-main);
+}
+
+.gathering-year {
+	font-size: var(--fs-h2);
+	font-weight: 700;
+	color: var(--clr-accent-main);
+	margin-bottom: var(--space-sm);
+}
+
+.gathering-info h3 {
+	font-size: var(--fs-body-lg);
+	color: var(--clr-text-heading);
+	margin-bottom: var(--space-xs);
+}
+
+.gathering-info p {
+	color: var(--clr-text-secondary);
+	font-size: var(--fs-body-small);
+	line-height: 1.5;
+	margin: 0;
+}
+
+.gathering-season {
+	color: var(--clr-accent-blue) !important;
+	font-weight: 600;
+	font-size: var(--fs-body-small) !important;
+	margin-bottom: var(--space-xs) !important;
+}
+
+.gathering-milestone {
+	color: var(--clr-accent-main) !important;
+	font-weight: 600;
+	margin-bottom: var(--space-xs) !important;
+}
+
+/* Statistics Section */
+.omp-stats {
+	padding: var(--space-2xl) var(--space-md);
+	background: var(--clr-bg-secondary);
+}
+
+.stats-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-lg);
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+	.stats-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+.stat-item {
+	text-align: center;
+}
+
+.stat-number {
+	display: block;
+	font-size: clamp(2rem, 5vw, 3rem);
+	font-weight: 700;
+	color: var(--clr-accent-main);
+	line-height: 1;
+	margin-bottom: var(--space-xs);
+}
+
+.stat-label {
+	color: var(--clr-text-secondary);
+	font-size: var(--fs-body-small);
+}
+
+/* CTA Section */
+.omp-cta {
+	padding: var(--space-2xl) var(--space-md);
+	background: linear-gradient(180deg, var(--clr-bg-primary) 0%, var(--clr-bg-secondary) 100%);
+	text-align: center;
+}
+
+.omp-cta .cta-content {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.omp-cta h2 {
+	font-size: var(--fs-h2);
+	color: var(--clr-text-heading);
+	margin-bottom: var(--space-md);
+}
+
+.omp-cta p {
+	color: var(--clr-text-secondary);
+	margin-bottom: var(--space-lg);
+	line-height: 1.7;
+}
+
+.omp-cta .cta-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-md);
+	justify-content: center;
+}

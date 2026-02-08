@@ -31,13 +31,19 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="intro-content">
           <p>
             In the past, a universal anomaly formed of primordial energy
-            pierced the dimension of 3Kingdoms. The resulting cataclysmic eruption of force caused a ripple effect, effectively copying the base universe itself.
+            pierced the dimension of 3Kingdoms. The resulting cataclysmic eruption of force
+            caused a ripple effect, effectively copying the base universe itself.
           </p>
           <p>
-            This massive upheaval gave birth to <span class="scapes-highlight">3Scapes</span>, an alternative dimension similar in many respects, but completely unique in its own ways. Communication across dimensions is possible, and you can retain your character identity in both worlds, but beyond that, everything else is distinct.
+            This massive upheaval gave birth to <span class="scapes-highlight">3Scapes</span>,
+            an alternative dimension similar in many respects, but completely unique in its own ways.
+            Communication across dimensions is possible, and you can retain your character identity
+            in both worlds, but beyond that, everything else is distinct.
           </p>
           <p>
-            Since <span class="scapes-highlight-blue">2009</span>, 3Scapes has grown into a vibrant community with exclusive content, its own administration, and a dedicated player base ready to welcome new explorers.
+            Since <span class="scapes-highlight-blue">2009</span>, 3Scapes has grown into a vibrant
+            community with exclusive content, its own administration, and a dedicated player base
+            ready to welcome new explorers.
           </p>
         </div>
       </div>
@@ -55,7 +61,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="timeline-content">
             <h3>The Cosmic Rift</h3>
             <p>
-              A dimensional anomaly tore through the fabric of reality, creating an exact copy of the 3Kingdoms universe at the moment of the rupture.
+              A dimensional anomaly tore through the fabric of reality, creating an exact copy
+              of the 3Kingdoms universe at the moment of the rupture.
             </p>
           </div>
         </div>
@@ -65,7 +72,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="timeline-content">
             <h3>Foundation Emerges</h3>
             <p>
-              The central hub transformed. What was once Pinnacle became Foundation, a new crossroads for the three realms in this parallel dimension.
+              The central hub transformed. What was once Pinnacle became Foundation, a new crossroads for the three
+              realms in this parallel dimension.
             </p>
           </div>
         </div>
@@ -75,7 +83,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="timeline-content">
             <h3>Divergent Paths</h3>
             <p>
-              The two dimensions began evolving separately. 3Scapes embraced infinite alts, faster progression, and unique endgame systems, forging its own identity.
+              The two dimensions began evolving separately. New areas, quests, and guild features emerged exclusively in
+              3Scapes, forging its own identity.
             </p>
           </div>
         </div>
@@ -85,7 +94,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="timeline-content">
             <h3>A Living World</h3>
             <p>
-              Today, 3Scapes thrives with its own community, traditions, and adventures. The parallel dimension has become a world unto itself.
+              Today, 3Scapes thrives with its own community, traditions, and adventures. The
+              parallel dimension has become a world unto itself.
             </p>
           </div>
         </div>
@@ -101,30 +111,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       </div>
 
       <div class="portal-grid">
-        <div class="portal-card">
-          <i class="fa-solid fa-users-rectangle card-icon"></i>
-          <h4>Infinite Alts</h4>
-          <p>
-            Create as many alternate characters as you want. Explore different guilds and playstyles without limits.
-          </p>
-        </div>
-
-        <div class="portal-card">
-          <i class="fa-solid fa-rocket card-icon"></i>
-          <h4>Faster Progression</h4>
-          <p>
-            Reach endgame content quicker. A streamlined path lets you experience more of what the game has to offer sooner.
-          </p>
-        </div>
-
-        <div class="portal-card">
-          <i class="fa-solid fa-layer-group card-icon"></i>
-          <h4>Endgame Depth</h4>
-          <p>
-            Unique progression systems await at higher levels, offering new ways to customize and strengthen your character.
-          </p>
-        </div>
-
         <div class="portal-card">
           <i class="fa-solid fa-shield-halved card-icon"></i>
           <h4>Exciting Guilds</h4>
@@ -159,10 +145,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
 
         <div class="portal-card">
-          <i class="fa-solid fa-briefcase card-icon"></i>
-          <h4>Expanded Options</h4>
+          <i class="fa-solid fa-wand-magic-sparkles card-icon"></i>
+          <h4>Unique Powers</h4>
           <p>
-            Unlock additional professions and character customization options as you progress through the game.
+            Guilds have developed exclusive abilities and advancement paths that differ
+            from their 3Kingdoms counterparts.
           </p>
         </div>
 
@@ -197,8 +184,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="step-number">2</div>
           <div class="step-content">
             <h4>Ask for Help</h4>
-            <p>Type <code>help newbie</code> or ask on the <code>newbie</code> channel. Our community loves helping new
-              adventurers!</p>
+            <p>Type <code>help newbie</code> or ask on the <code>newbie</code> channel. Our community loves helping new adventurers!</p>
           </div>
         </div>
 
@@ -206,8 +192,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="step-number">3</div>
           <div class="step-content">
             <h4>Complete the Tutorial</h4>
-            <p>Follow the tutorial and try your hand at quests. They're a great way to learn the world and earn rewards.
-            </p>
+            <p>Follow the tutorial and try your hand at quests. They're a great way to learn the world and earn rewards.</p>
           </div>
         </div>
 
@@ -231,14 +216,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
       <div class="features-cloud">
         <span class="cloud-tag size-lg">Three Realms</span>
-        <span class="cloud-tag size-md">Infinite Alts</span>
+        <span class="cloud-tag size-md">Exclusive Areas</span>
         <span class="cloud-tag size-sm">Solo Quests</span>
-        <span class="cloud-tag size-lg">Endgame Depth</span>
-        <span class="cloud-tag size-md">Faster Progression</span>
-        <span class="cloud-tag size-sm">Exclusive Areas</span>
         <span class="cloud-tag size-lg">Unique Guilds</span>
         <span class="cloud-tag size-md">Cross-Dimension Chat</span>
-        <span class="cloud-tag size-sm">More Professions</span>
+        <span class="cloud-tag size-sm">Shared Names</span>
         <span class="cloud-tag size-md">Active Since 2009</span>
         <span class="cloud-tag size-lg">Free Forever</span>
       </div>
@@ -251,8 +233,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="cta-content">
         <h2 class="cta-title">Ready to Explore Another Dimension?</h2>
         <p class="cta-text">
-          Step through the rift and discover a world that mirrors, yet defies, everything you know. Your parallel
-          adventure awaits.
+          Step through the rift and discover a world that mirrors, yet defies, everything you know. Your parallel adventure awaits.
         </p>
 
         <div class="cta-buttons">

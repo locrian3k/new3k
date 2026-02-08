@@ -51,7 +51,6 @@
 				</div>
 
 				<nav class="site-nav" aria-label="Primary">
-          <!-- TODO Make javascript close the hamburger menu if you click anywhere else on the page -->
 					<button
 						id="menu-toggle"
 						class="menu-toggle"

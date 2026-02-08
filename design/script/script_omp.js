@@ -8,10 +8,10 @@ const ompData = {
   '2013': {
     year: '2013',
     location: 'Chicago, IL',
-    dates: 'August 2-4, 2013',
+    dates: 'August 8-10, 2013',
     venue: {
-      name: 'Hampton Inn & Suites Chicago North Shore/Skokie',
-      address: '5201 Old Orchard Rd, Skokie, IL 60077'
+      name: 'Sheraton Suites Elk Grove Village',
+      address: 'Chicago, IL'
     },
     activities: [
       'Group dinners at local restaurants',
@@ -20,7 +20,7 @@ const ompData = {
       'Traditional 3K socializing'
     ],
     stories: 'The Windy City welcomed adventurers once again for a weekend of reconnecting with old friends and making new memories. Chicago proved to be a perennial favorite location for the community.',
-    photoCredits: ['Cherek']
+    photoCredits: []
   },
 
   '2012': {

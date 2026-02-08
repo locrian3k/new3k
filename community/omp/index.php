@@ -250,8 +250,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           While we may adventure in a virtual world, the connections we make are very real.
         </p>
         <div class="cta-buttons">
-          <a href="/connect/" class="btn-primary">Join the Adventure</a>
-          <a href="/community/" class="btn-secondary">Explore Community</a>
+          <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary">Join the Adventure</a>
+          <a href="/community/wholist.php" class="btn-secondary">See Who's Online</a>
         </div>
       </div>
     </div>

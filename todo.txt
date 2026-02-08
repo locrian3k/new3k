@@ -1,10 +1,7 @@
 TODO Look over 3k.org/help/index.php and create support/help/index.php
 
-TODO Create community/omp/index.php
+TODO Finish community/omp/index.php
 
 TODO Create community/wholist.php
 
 TODO When a player clicks on a realm from the home page, have the realm choice viewable
-
-TODO When a player flips a guild card, the large guild logo can still be seen momentarily
-

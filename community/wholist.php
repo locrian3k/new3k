@@ -3,46 +3,77 @@ $pageTitle = "Who's Online - 3Kingdoms";
 include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
 /**
- * WHOLIST DATA SOURCE OPTIONS:
+ * ==============================================================
+ * WHOLIST CONFIGURATION
+ * ==============================================================
  *
- * Option 1: Socket connection to MUD
- * ----------------------------------
- * $socket = fsockopen("3k.org", 3000, $errno, $errstr, 5);
- * fwrite($socket, "who\n");
- * $data = stream_get_contents($socket);
- * fclose($socket);
+ * The MUD's 'who' command is located at: /cmds/mortal/who
  *
- * Option 2: Read from MUD-generated data file
- * --------------------------------------------
- * $whoData = file_get_contents('/path/to/mud/who_data.json');
- * $players = json_decode($whoData, true);
- *
- * Option 3: Fetch from API endpoint
- * ---------------------------------
- * $whoData = file_get_contents('https://3k.org/api/who.json');
- * $players = json_decode($whoData, true);
- *
- * Option 4: Include MUD-generated HTML directly
- * ----------------------------------------------
- * The original site appears to use this method - the MUD generates
- * an HTML file that gets included or the PHP connects to the MUD
- * and parses the 'who' output.
+ * DATA SOURCE OPTIONS (uncomment ONE):
+ * ------------------------------------
  */
 
-// Placeholder function - replace with actual data source
-function getWholistData() {
-    // TODO: Implement actual data fetching from MUD
-    // For now, return sample structure
-    return [
-        'uptime' => 'Data unavailable',
-        'reboot' => 'Data unavailable',
-        'playerCount' => 0,
-        'timestamp' => date('D M d H:i:s Y T'),
-        'players' => []
-    ];
+// Option 1: Path to MUD-generated who file (most likely method)
+// Adjust path based on actual server directory structure
+// $WHO_DATA_FILE = '../data/who_list.html';      // Relative path
+// $WHO_DATA_FILE = '/mud/data/who_list.html';    // Absolute path
+// $WHO_DATA_FILE = '/home/3k/mud/data/who.html'; // Full server path
+
+// Option 2: Fetch from original 3k.org (current fallback)
+$FETCH_FROM_ORIGINAL = true;
+
+// Option 3: Direct socket connection to MUD
+// $MUD_HOST = 'localhost';
+// $MUD_PORT = 3000;
+
+/**
+ * ==============================================================
+ * DATA FETCHING FUNCTIONS
+ * ==============================================================
+ */
+
+// Try to read from local MUD-generated file
+function fetchFromLocalFile($filePath) {
+    if (!file_exists($filePath)) {
+        return null;
+    }
+
+    $html = @file_get_contents($filePath);
+    if ($html === false) {
+        return null;
+    }
+
+    return parseWholistHtml($html);
 }
 
-// Try to fetch real data from the original source
+// Try to fetch via socket connection to MUD
+function fetchFromMudSocket($host, $port) {
+    $socket = @fsockopen($host, $port, $errno, $errstr, 5);
+    if (!$socket) {
+        return null;
+    }
+
+    // Send who command (may need adjustment based on MUD protocol)
+    fwrite($socket, "who\n");
+
+    // Read response
+    $response = '';
+    stream_set_timeout($socket, 3);
+    while (!feof($socket)) {
+        $response .= fread($socket, 8192);
+        $info = stream_get_meta_data($socket);
+        if ($info['timed_out']) break;
+    }
+    fclose($socket);
+
+    if (empty($response)) {
+        return null;
+    }
+
+    return parseWholistHtml($response);
+}
+
+// Fallback: fetch from original 3k.org
 function fetchFromOriginalSource() {
     $url = 'https://www.3k.org/wholist.php';
 
@@ -62,7 +93,19 @@ function fetchFromOriginalSource() {
     return parseWholistHtml($html);
 }
 
-// Parse the HTML from original wholist
+// Return empty data structure
+function getEmptyWholistData() {
+    return [
+        'uptime' => '',
+        'reboot' => '',
+        'playerCount' => 0,
+        'timestamp' => date('D M d H:i:s Y T'),
+        'players' => [],
+        'rawHtml' => ''
+    ];
+}
+
+// Parse the HTML from MUD who output
 function parseWholistHtml($html) {
     $data = [
         'uptime' => '',
@@ -115,11 +158,31 @@ function parseWholistHtml($html) {
     return $data;
 }
 
-// Attempt to get data
-$whoData = fetchFromOriginalSource();
+/**
+ * ==============================================================
+ * FETCH DATA (tries sources in order of preference)
+ * ==============================================================
+ */
+$whoData = null;
 
+// Try Option 1: Local MUD file (uncomment and set path above)
+// if (isset($WHO_DATA_FILE)) {
+//     $whoData = fetchFromLocalFile($WHO_DATA_FILE);
+// }
+
+// Try Option 3: Socket connection (uncomment and set host/port above)
+// if (!$whoData && isset($MUD_HOST) && isset($MUD_PORT)) {
+//     $whoData = fetchFromMudSocket($MUD_HOST, $MUD_PORT);
+// }
+
+// Try Option 2: Fetch from original 3k.org
+if (!$whoData && $FETCH_FROM_ORIGINAL) {
+    $whoData = fetchFromOriginalSource();
+}
+
+// Final fallback: empty data
 if (!$whoData) {
-    $whoData = getWholistData();
+    $whoData = getEmptyWholistData();
 }
 ?>
 
@@ -206,7 +269,7 @@ if (!$whoData) {
                         <li>The MUD being in the process of rebooting</li>
                     </ul>
                     <p>Try refreshing in a few moments, or connect directly to see who's online:</p>
-                    <a href="/connect/" class="btn-primary">Connect to 3Kingdoms</a>
+                    <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary">Connect to 3Kingdoms</a>
                 </div>
             <?php endif; ?>
 
@@ -224,7 +287,7 @@ if (!$whoData) {
                 <h2>Ready to Join the Adventure?</h2>
                 <p>Connect now and become part of the 3Kingdoms community!</p>
                 <div class="cta-buttons">
-                    <a href="/connect/" class="btn-primary">Play Now</a>
+                    <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary">Play Now</a>
                     <a href="/about/" class="btn-secondary">Learn More</a>
                 </div>
             </div>

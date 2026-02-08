@@ -5436,7 +5436,6 @@ button.help-link {
 /* Statistics Section */
 .omp-stats {
   padding: 2.5rem 0;
-  background: linear-gradient(180deg, var(--clr-black) 0%, var(--clr-bg-main) 100%);
 }
 
 .stats-grid {

@@ -20,7 +20,9 @@ return [
     // 'static'    - Use the predefined categories below (current setup)
     // 'directory' - Scan a directory for help files
     // 'hybrid'    - Use static categories + scan for uncategorized files
-    'source' => 'hybrid',
+    // Set to 'hybrid' once help/cmds folders are uploaded to production server
+    // Set to 'static' to use only the predefined categories below
+    'source' => 'static',
 
     // ===========================================
     // CONTENT SOURCE (for modal display)
@@ -28,7 +30,9 @@ return [
     // Where to fetch help file content from:
     // 'local'    - Read from local directory (when on production server)
     // 'external' - Fetch from external URL (current 3k.org setup)
-    'content_source' => 'local',
+    // Set to 'local' once help/cmds folders are uploaded to production server
+    // Set to 'external' to fetch from 3k.org (current fallback)
+    'content_source' => 'external',
 
     // ===========================================
     // LOCAL DIRECTORY SETTINGS

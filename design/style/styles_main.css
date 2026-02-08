@@ -5412,7 +5412,7 @@ button.help-link {
 /* Introduction Section */
 .omp-intro {
   padding: 3rem 0;
-  background: var(--clr-bg-main);
+  background: var(--clr-black);
 }
 
 .omp-intro .intro-content {

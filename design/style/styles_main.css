@@ -2974,10 +2974,6 @@ main { margin-top: 5rem; }
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(150, 150, 150, 0.2);
 }
 
-.guild-card-eternal .guild-mystery {
-	font-style: italic;
-}
-
 /* Single card grid for Adventurer and Ascended */
 .guild-grid-single {
 	grid-template-columns: 1fr;
@@ -3219,10 +3215,6 @@ main { margin-top: 5rem; }
 	font-size: 0.95rem;
 	line-height: var(--lh-relaxed);
 	margin-bottom: var(--space-lg);
-}
-
-.guild-split-card p.guild-mystery {
-	font-style: italic;
 }
 
 .guild-split-requirements {

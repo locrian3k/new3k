@@ -350,7 +350,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <img src="/images/logo/guilds/guild_logo_eternal.png" alt="Eternal Guild" class="guild-split-logo" loading="lazy">
           <h3>Eternal</h3>
           <span class="guild-split-badge">???</span>
-          <p class="guild-mystery">The path to becoming Eternal is known only to those who walk it. This guild reveals itself when you reach the required milestone. No spoilers here - your journey will show the way.</p>
+          <p>The path to becoming Eternal is known only to those who walk it. This guild reveals itself when you reach the required milestone. No spoilers here - your journey will show the way.</p>
           <div class="guild-split-requirements">
             <span class="guild-tag">Secret</span>
             <span class="guild-tag">Discover In-Game</span>

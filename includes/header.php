@@ -75,7 +75,7 @@
 									<span class="arrow">Play</span>
 								</button>
 								<ul class="dropdown">
-									<li><a href="https://client.wemudtogether.com" target="_blank">Quick Connect</a></li>
+									<li><a href="https://client.wemudtogether.com" target="_blank">Quick Connect <i class="fas fa-external-link-alt"></i></a></li>
 									<li>
 										<a href="/connect/index.php">Connection Options</a>
 									</li>
@@ -97,7 +97,7 @@
 								</button>
 								<ul class="dropdown">
 									<li>
-										<a href="http://forums.3k.org" target="_blank">Forums</a>
+										<a href="http://forums.3k.org" target="_blank">Forums <i class="fas fa-external-link-alt"></i></a>
 									</li>
                   <li><a href="/community/wholist.php">Who's Online</a></li>
 								</ul>

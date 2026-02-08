@@ -433,6 +433,18 @@ a:hover {
 	cursor: pointer;
 }
 
+/* External link indicator */
+a .fa-external-link-alt {
+	font-size: 0.7em;
+	margin-left: 0.35em;
+	opacity: 0.6;
+	vertical-align: baseline;
+}
+
+a:hover .fa-external-link-alt {
+	opacity: 1;
+}
+
 /* Buttons */
 button {
 	font-family: var(--ff-body);

@@ -22,7 +22,7 @@ return [
     // 'hybrid'    - Use static categories + scan for uncategorized files
     // Set to 'hybrid' once help/cmds folders are uploaded to production server
     // Set to 'static' to use only the predefined categories below
-    'source' => 'static',
+    'source' => 'hybrid',
 
     // ===========================================
     // CONTENT SOURCE (for modal display)
@@ -32,7 +32,7 @@ return [
     // 'external' - Fetch from external URL (current 3k.org setup)
     // Set to 'local' once help/cmds folders are uploaded to production server
     // Set to 'external' to fetch from 3k.org (current fallback)
-    'content_source' => 'external',
+    'content_source' => 'local',
 
     // ===========================================
     // LOCAL DIRECTORY SETTINGS
@@ -45,6 +45,14 @@ return [
     // We need to go up to: WebDesign/ (where help/ and cmds/ folders are)
     'help_base_path' => dirname(__DIR__, 3) . '/',
 
+    // Folder names to ALWAYS exclude (at any nesting level)
+    // These are excluded regardless of other settings
+    'global_exclude_folders' => ['BACKUP', 'UNFINISHED', 'OLD', 'BAK', 'APPWIZ', 'WIZARD'],
+
+    // Specific file names to ALWAYS exclude (without extension)
+    // Add file names here to prevent them from appearing on the help page
+    'global_exclude_files' => [],
+
     // Help sources configuration
     // Each source defines a directory to scan and which subfolders to include/exclude
     'help_sources' => [
@@ -53,9 +61,9 @@ return [
             'path' => 'help/',
             'include_root_files' => true,  // Include files in the root of help/
             'subfolders' => [
-                // Include these subfolders (all files and folders EXCEPT those listed in 'exclude')
-                'mode' => 'exclude',  // 'include' = only these folders, 'exclude' = all except these
-                'list' => ['APPWIZ', 'BACKUP', 'WIZARD']  // Folders to exclude
+                // Include all subfolders (global_exclude_folders still applies)
+                'mode' => 'exclude',
+                'list' => []  // No additional exclusions needed - using global_exclude_folders
             ]
         ],
         // Commands folder
@@ -80,7 +88,7 @@ return [
     // ===========================================
 
     // Base URL for fetching/linking to help files
-    'external_url' => 'https://3k.org/help/',
+    //'external_url' => 'https://3k.org/help/',
 
     // URL suffix (file extension for external links)
     'url_suffix' => '.php',

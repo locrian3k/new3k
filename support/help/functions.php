@@ -81,6 +81,8 @@ function scanAllHelpSources($config) {
     $basePath = $config['help_base_path'] ?? '';
     $sources = $config['help_sources'] ?? [];
     $extension = $config['file_extension'] ?? '';
+    $globalExcludeFolders = $config['global_exclude_folders'] ?? [];
+    $globalExcludeFiles = $config['global_exclude_files'] ?? [];
 
     foreach ($sources as $sourceId => $sourceConfig) {
         $sourcePath = $basePath . ($sourceConfig['path'] ?? '');
@@ -91,7 +93,7 @@ function scanAllHelpSources($config) {
 
         // Scan root files if configured
         if (!empty($sourceConfig['include_root_files'])) {
-            $rootFiles = scanDirectoryForFiles($sourcePath, $extension);
+            $rootFiles = scanDirectoryForFiles($sourcePath, $extension, $globalExcludeFiles);
             $allFiles = array_merge($allFiles, $rootFiles);
         }
 
@@ -111,6 +113,11 @@ function scanAllHelpSources($config) {
                 continue;
             }
 
+            // Skip globally excluded folders
+            if (in_array($subdirName, $globalExcludeFolders)) {
+                continue;
+            }
+
             // Check if we should include this subfolder
             $shouldInclude = false;
             if ($mode === 'include') {
@@ -122,8 +129,8 @@ function scanAllHelpSources($config) {
             }
 
             if ($shouldInclude) {
-                // Recursively scan this subfolder
-                $subFiles = scanDirectoryRecursive($subdir, $extension);
+                // Recursively scan this subfolder (passing global excludes)
+                $subFiles = scanDirectoryRecursive($subdir, $extension, $globalExcludeFolders, $globalExcludeFiles);
                 $allFiles = array_merge($allFiles, $subFiles);
             }
         }
@@ -138,9 +145,10 @@ function scanAllHelpSources($config) {
  *
  * @param string $directory Path to the directory
  * @param string $extension File extension to look for (without dot), or empty for no extension
+ * @param array $excludeFiles File names to exclude (without extension)
  * @return array Associative array of filename => display name
  */
-function scanDirectoryForFiles($directory, $extension = '') {
+function scanDirectoryForFiles($directory, $extension = '', $excludeFiles = []) {
     $files = [];
 
     // Get all items in the directory
@@ -174,6 +182,11 @@ function scanDirectoryForFiles($directory, $extension = '') {
 
         $filename = pathinfo($filepath, PATHINFO_FILENAME);
 
+        // Skip excluded files
+        if (in_array($filename, $excludeFiles)) {
+            continue;
+        }
+
         // Use lowercase filename as display name
         $files[$filename] = strtolower($filename);
     }
@@ -186,13 +199,15 @@ function scanDirectoryForFiles($directory, $extension = '') {
  *
  * @param string $directory Path to the directory
  * @param string $extension File extension to look for
+ * @param array $globalExcludeFolders Folder names to always exclude
+ * @param array $globalExcludeFiles File names to always exclude (without extension)
  * @return array Associative array of filename => display name
  */
-function scanDirectoryRecursive($directory, $extension = '') {
+function scanDirectoryRecursive($directory, $extension = '', $globalExcludeFolders = [], $globalExcludeFiles = []) {
     $files = [];
 
     // Scan current directory
-    $files = array_merge($files, scanDirectoryForFiles($directory, $extension));
+    $files = array_merge($files, scanDirectoryForFiles($directory, $extension, $globalExcludeFiles));
 
     // Scan subdirectories
     $subdirs = glob($directory . '/*', GLOB_ONLYDIR);
@@ -204,7 +219,12 @@ function scanDirectoryRecursive($directory, $extension = '') {
             continue;
         }
 
-        $subFiles = scanDirectoryRecursive($subdir, $extension);
+        // Skip globally excluded folders
+        if (in_array($subdirName, $globalExcludeFolders)) {
+            continue;
+        }
+
+        $subFiles = scanDirectoryRecursive($subdir, $extension, $globalExcludeFolders, $globalExcludeFiles);
         $files = array_merge($files, $subFiles);
     }
 
@@ -222,6 +242,7 @@ function findHelpFile($topic, $config) {
     $basePath = $config['help_base_path'] ?? '';
     $sources = $config['help_sources'] ?? [];
     $extension = $config['file_extension'] ?? '';
+    $globalExclude = $config['global_exclude_folders'] ?? [];
 
     // Build the filename
     $filename = $topic;
@@ -260,6 +281,11 @@ function findHelpFile($topic, $config) {
                 continue;
             }
 
+            // Skip globally excluded folders
+            if (in_array($subdirName, $globalExclude)) {
+                continue;
+            }
+
             // Check if we should search this subfolder
             $shouldSearch = false;
             if ($mode === 'include') {
@@ -270,7 +296,7 @@ function findHelpFile($topic, $config) {
 
             if ($shouldSearch) {
                 // Search recursively in this subfolder
-                $found = findFileRecursive($subdir, $filename);
+                $found = findFileRecursive($subdir, $filename, $globalExclude);
                 if ($found !== false) {
                     return $found;
                 }
@@ -286,9 +312,10 @@ function findHelpFile($topic, $config) {
  *
  * @param string $directory Directory to search
  * @param string $filename Filename to find
+ * @param array $globalExclude Folder names to always exclude
  * @return string|false Full path if found, false otherwise
  */
-function findFileRecursive($directory, $filename) {
+function findFileRecursive($directory, $filename, $globalExclude = []) {
     // Check current directory
     $filepath = rtrim($directory, '/') . '/' . $filename;
     if (file_exists($filepath) && is_readable($filepath)) {
@@ -305,7 +332,12 @@ function findFileRecursive($directory, $filename) {
             continue;
         }
 
-        $found = findFileRecursive($subdir, $filename);
+        // Skip globally excluded folders
+        if (in_array($subdirName, $globalExclude)) {
+            continue;
+        }
+
+        $found = findFileRecursive($subdir, $filename, $globalExclude);
         if ($found !== false) {
             return $found;
         }

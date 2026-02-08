@@ -2,8 +2,7 @@
 $pageTitle = "The Gatherings - Official MUD Parties";
 include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 ?>
-<!-- OMP Dedicated Stylesheet -->
-<link rel="stylesheet" href="/design/style/styles_omp.css">
+<link rel="stylesheet" href="/design/style/styles_main.css">
 
 <!-- Main Content -->
 <main id="content">

@@ -3,29 +3,7 @@
    ========================================================================== */
 
 /* Hero Section */
-.hero-omp {
-  background: linear-gradient(135deg,
-    var(--clr-black) 0%,
-    var(--clr-bg-main) 50%,
-    var(--clr-black) 100%
-  );
-  min-height: 40vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-}
 
-.hero-omp::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(212, 74, 2, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 50%, rgba(247, 210, 75, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-}
 
 /* Container */
 .omp-container {
@@ -511,67 +489,50 @@
   color: var(--clr-text-secondary);
 }
 
-/* ==========================================================================
-   Responsive Styles
-   ========================================================================== */
-
 /* Tablet and up */
 @media (min-width: 768px) {
   .hero-omp {
     min-height: 45vh;
   }
-
   .omp-intro {
     padding: 4rem 0;
   }
-
   .omp-intro .lead-text {
     font-size: 1.25rem;
   }
-
   .stats-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
   }
-
   .stat-number {
     font-size: 3rem;
   }
-
   .section-title {
     font-size: 2rem;
   }
-
   .omp-timeline .timeline {
     padding-left: 3.5rem;
   }
-
   .omp-timeline .timeline::before {
     left: 9px;
   }
-
   .omp-timeline .timeline-marker {
     left: -3.5rem;
     margin-left: 1px;
   }
-
   .timeline-content {
     padding: 1.5rem 2rem;
   }
-
   .timeline-content h3 {
     font-size: 1.25rem;
   }
-
   .omp-cta .cta-buttons {
     flex-direction: row;
     justify-content: center;
   }
-
   .omp-modal-content {
     max-height: 80vh;
   }
-
   .modal-location {
     font-size: 1.75rem;
   }
@@ -582,19 +543,15 @@
   .omp-intro {
     padding: 5rem 0;
   }
-
   .omp-timeline {
     padding: 5rem 0;
   }
-
   .omp-timeline .timeline {
     max-width: 800px;
   }
-
   .omp-cta {
     padding: 5rem 0;
   }
-
   .omp-cta .cta-content h2 {
     font-size: 2rem;
   }

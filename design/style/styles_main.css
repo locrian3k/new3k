@@ -6182,16 +6182,9 @@ footer {
 	}
 }
 
-/* ==========================================================================
-   WHOLIST PAGE STYLES
-   ========================================================================== */
-
-/* Compact Hero for Wholist */
-.hero-compact {
-  min-height: 25vh;
-  padding: 4rem 1.5rem 2rem;
-}
-
+/* ------------------- */
+/* WHOLIST PAGE STYLES */
+/* ------------------- */
 /* Server Status Section */
 .wholist-status {
   padding: 2rem 0;
@@ -6201,7 +6194,7 @@ footer {
 .status-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: .5rem;
   text-align: center;
   max-width: 800px;
   margin: 0 auto;

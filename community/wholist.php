@@ -126,7 +126,7 @@ if (!$whoData) {
 <!-- Main Content -->
 <main id="content">
     <!-- Hero Section -->
-    <section class="hero hero-compact">
+    <section class="hero hero-who">
         <div class="hero-content">
             <h1 class="hero-title">Who's Online</h1>
             <p class="hero-subtitle">See who's adventuring in the realms right now</p>

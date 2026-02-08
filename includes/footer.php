@@ -6,7 +6,7 @@
 		      <div class="footer-nav-column">
 		        <h3>Get Playing</h3>
 		        <ul>
-		          <li><a href="https://client.wemudtogether.com" target="_blank">Quick Connect</a></li>
+		          <li><a href="https://client.wemudtogether.com" target="_blank">Quick Connect <i class="fas fa-external-link-alt"></i></a></li>
 		          <li>
 		            <a href="/connect/index.php">Connection Options</a>
 		          </li>
@@ -27,11 +27,11 @@
 		        <h3>Community</h3>
 		        <ul>
 		          <li><a href="/community/flyers/index.php">Download Flyers</a></li>
-		          <li><a href="http://forums.3k.org" target="_blank">Forums</a></li>
+		          <li><a href="http://forums.3k.org" target="_blank">Forums <i class="fas fa-external-link-alt"></i></a></li>
 		          <li><a href="/community/omp/index.php">Official Mud Parties</a></li>
 		          <li><a href="/community/wholist.php">Who's Online</a></li>
-		          <li><a href="https://wemudtogether.com" target="_blank">We Mud Together</a></li>
-		          <li><a href="http://3kwiki.com/wiki" target="_blank">Wiki</a></li>
+		          <li><a href="https://wemudtogether.com" target="_blank">We Mud Together <i class="fas fa-external-link-alt"></i></a></li>
+		          <li><a href="http://3kwiki.com/wiki" target="_blank">Wiki <i class="fas fa-external-link-alt"></i></a></li>
 		        </ul>
 		      </div>
 

@@ -214,7 +214,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-split-card">
           <img src="/images/logo/guilds/guild_logo_gentech.png" alt="Gentech Guild" class="guild-split-logo" loading="lazy">
           <h3>Gentech</h3>
-          <p>Refugees from a future sector war. Balance genetic enhancement and advanced technology. Perform experiments to acquire any power - the guild of choice.</p>
+          <p>Refugees from a future sector war. Balance genetic enhancement and advanced technology. Perform experiments to acquire any power, the guild of choice.</p>
           <div class="guild-split-requirements">
             <span class="guild-tag">Genetic</span>
             <span class="guild-tag">Experimental</span>
@@ -225,7 +225,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-split-card">
           <img src="/images/logo/guilds/guild_logo_jedi.png" alt="Jedi Guild" class="guild-split-logo" loading="lazy">
           <h3>Jedi</h3>
-          <p>No two Jedi advance the same way. Choose from 17 careers and 49 ability skills. Lightsabers, lightning, healing - all available if you train. Beware the Dark Side.</p>
+          <p>No two Jedi advance the same way. Choose from 17 careers and 49 ability skills. Lightsabers, lightning, healing, all available if you train. Beware the Dark Side.</p>
           <div class="guild-split-requirements">
             <span class="guild-tag">Star Wars</span>
             <span class="guild-tag">Force</span>
@@ -302,7 +302,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <div class="guild-split-card">
           <img src="/images/logo/guilds/guild_logo_psicorps.png" alt="Psicorps Guild" class="guild-split-logo" loading="lazy">
           <h3>Psicorps</h3>
-          <p>Secret Marine Corps division using Psionic Implant Modules. Highly configurable - swap powers anytime to match the situation. Tank, DPS, or anything between.</p>
+          <p>Secret Marine Corps division using Psionic Implant Modules. Highly configurable, swap powers anytime to match the situation. Tank, DPS, or anything between.</p>
           <div class="guild-split-requirements">
             <span class="guild-tag">Psionic</span>
             <span class="guild-tag">Military</span>
@@ -350,7 +350,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <img src="/images/logo/guilds/guild_logo_eternal.png" alt="Eternal Guild" class="guild-split-logo" loading="lazy">
           <h3>Eternal</h3>
           <span class="guild-split-badge">???</span>
-          <p>The path to becoming Eternal is known only to those who walk it. This guild reveals itself when you reach the required milestone. No spoilers here - your journey will show the way.</p>
+          <p>The path to becoming Eternal is known only to those who walk it. This guild reveals itself when you reach the required milestone. No spoilers here, your journey will show the way.</p>
           <div class="guild-split-requirements">
             <span class="guild-tag">Secret</span>
             <span class="guild-tag">Discover In-Game</span>

@@ -1115,8 +1115,6 @@ main { margin-top: 5rem; }
 	animation: fadeInUp 0.8s ease-out;
 }
 
-.hero-title-about { font-size: clamp(2rem, 6vw, 4rem); }
-
 .hero-subtitle {
 	font-family: var(--ff-body);
 	font-size: clamp(1.2rem, 3vw, 1.8rem);
@@ -2193,10 +2191,6 @@ main { margin-top: 5rem; }
 /* ------------------- */
 /* ABOUT PAGE          */
 /* ------------------- */
-.hero-title-about {
-	font-size: clamp(2rem, 6vw, 4rem);
-}
-
 .about-container {
 	max-width: 1000px;
 	margin: 0 auto;

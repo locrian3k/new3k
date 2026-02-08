@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   <!-- Hero Section -->
   <section class="hero hero-connect">
     <div class="hero-content">
-      <h1 class="hero-title hero-title-about">Connection Options</h1>
+      <h1 class="hero-title">Connection Options</h1>
       <p class="hero-subtitle">Choose Your Path to Adventure</p>
     </div>
   </section>

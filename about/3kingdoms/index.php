@@ -9,17 +9,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 			<!-- Hero Section -->
 			<section class="hero hero-about">
 				<div class="hero-content">
-					<h1 class="hero-title hero-title-about">About 3Kingdoms</h1>
+					<h1 class="hero-title">About 3Kingdoms</h1>
 					<p class="hero-subtitle">
 						Over 32 Years of Unparalleled Text-Based Adventure
 					</p>
-					<div class="hero-actions">
-						<button
-							class="btn-primary"
-							onclick="window.open('https://client.wemudtogether.com');">
-							Start Your Adventure
-						</button>
-					</div>
 				</div>
 			</section>
 

@@ -329,7 +329,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
                     SSH tunneling.
                   </p>
                   <a
-                    href="/connect_ssh.php"
+                    href="/connect/connect_ssh.php"
                     >SSH Tunneling Guide
                     <i class="fas fa-external-link-alt"></i
                   ></a>

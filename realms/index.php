@@ -18,22 +18,22 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   <!-- Realm Tabs Section -->
   <section class="realms-tabs-section">
     <div class="realm-tabs">
-      <button id="fantasy" class="realm-tab active" data-realm="fantasy" aria-selected="true">
+      <button id="fantasy-link" class="realm-tab active" data-realm="fantasy" aria-selected="true">
         <i class="fa-solid fa-hat-wizard"></i>
         <span>Fantasy</span>
       </button>
-      <button id="science" class="realm-tab" data-realm="science" aria-selected="false">
+      <button id="science-link" class="realm-tab" data-realm="science" aria-selected="false">
         <i class="fa-solid fa-atom"></i>
         <span>Science</span>
       </button>
-      <button id="chaos" class="realm-tab" data-realm="chaos" aria-selected="false">
+      <button id="chaos-link" class="realm-tab" data-realm="chaos" aria-selected="false">
         <i class="fa-solid fa-burst"></i>
         <span>Chaos</span>
       </button>
     </div>
 
     <!-- Fantasy Realm Content -->
-    <div class="realm-content active">
+    <div class="realm-content active" id="fantasy">
       <div class="realm-header fantasy">
         <img src="/images/logo/3k_fantasy_logo_transparent_small.png" alt="Fantasy Realm" class="realm-content-logo" />
         <h2 class="realm-content-title">The Fantasy Realm</h2>
@@ -114,7 +114,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     </div>
 
     <!-- Science Realm Content -->
-    <div class="realm-content">
+    <div class="realm-content" id="science">
       <div class="realm-header science">
         <img src="/images/logo/3k_science_logo_transparent_small.png" alt="Science Realm" class="realm-content-logo" />
         <h2 class="realm-content-title">The Science Realm</h2>
@@ -194,7 +194,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     </div>
 
     <!-- Chaos Realm Content -->
-    <div class="realm-content">
+    <div class="realm-content" id="chaos">
       <div class="realm-header chaos">
         <img src="/images/logo/3k_chaos_logo_transparent_small.png" alt="Chaos Realm" class="realm-content-logo" />
         <h2 class="realm-content-title">The Chaos Realm</h2>

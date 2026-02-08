@@ -68,12 +68,24 @@ function closeMenu() {
   primaryNavigation.setAttribute('data-state', "closed");
 }
 
-// Only close if screen is laptop and bigger
+// Handle clicks outside navigation elements
 document.addEventListener("click", function (e) {
   const toggle = e.target.closest(".dropdown-toggle");
   const isDesktop = window.matchMedia("(min-width: 992px)").matches;
+  const isMenuOpen = menuToggle.getAttribute('aria-expanded') === "true";
 
-  // Clicked outside → close all
+  // Check if click is outside the mobile menu and hamburger button
+  if (isMenuOpen && !isDesktop) {
+    const clickedInsideNav = e.target.closest('.primary-navigation');
+    const clickedOnToggle = e.target.closest('#menu-toggle');
+
+    // Close mobile menu if clicked outside nav and toggle button
+    if (!clickedInsideNav && !clickedOnToggle) {
+      closeMenu();
+    }
+  }
+
+  // Clicked outside dropdown toggle → close all dropdowns
   if (!toggle) {
     document.querySelectorAll(".has-dropdown.open").forEach(item => {
       item.classList.remove("open");

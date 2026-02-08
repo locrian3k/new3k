@@ -6426,3 +6426,361 @@ footer {
 		justify-content: space-evenly;
 	}
 }
+
+/* ==========================================================================
+   SSH TUNNELING PAGE STYLES
+   ========================================================================== */
+
+/* SSH Intro */
+.ssh-intro {
+  padding: 3rem 0;
+  background: var(--clr-bg-main);
+}
+
+.ssh-intro .intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ssh-intro .lead-text {
+  font-size: 1.1rem;
+  color: var(--clr-text-primary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.ssh-intro p {
+  color: var(--clr-text-primary);
+  opacity: 0.85;
+  line-height: 1.7;
+}
+
+/* SSH Sections */
+.ssh-section {
+  padding: 3rem 0;
+  background: var(--clr-bg-main);
+}
+
+.ssh-section-alt {
+  background: linear-gradient(180deg, var(--clr-black) 0%, var(--clr-bg-main) 100%);
+}
+
+.ssh-section h2 {
+  font-family: var(--ff-heading);
+  color: var(--clr-text-heading);
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Requirements Grid */
+.requirements-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.requirement-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--clr-border-subtle);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.requirement-icon {
+  font-size: 2rem;
+  color: var(--clr-accent-main);
+  margin-bottom: 1rem;
+}
+
+.requirement-card h3 {
+  font-family: var(--ff-heading);
+  color: var(--clr-text-heading);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.requirement-card p {
+  color: var(--clr-text-primary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.requirement-card a {
+  color: var(--clr-text-secondary);
+}
+
+.requirement-card a:hover {
+  color: var(--clr-accent-main);
+}
+
+/* Setup Steps */
+.setup-steps {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.setup-step {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--clr-border-subtle);
+}
+
+.setup-step:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--clr-accent-main);
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-content h3 {
+  font-family: var(--ff-heading);
+  color: var(--clr-text-heading);
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.step-content p {
+  color: var(--clr-text-primary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.step-content p:last-child {
+  margin-bottom: 0;
+}
+
+.config-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.config-list li {
+  color: var(--clr-text-primary);
+  padding: 0.35rem 0;
+  font-size: 0.95rem;
+}
+
+.config-list li strong {
+  color: var(--clr-text-heading);
+}
+
+.connection-info {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--clr-accent-main);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.connection-info code {
+  font-family: 'Courier New', monospace;
+  font-size: 1.25rem;
+  color: var(--clr-text-heading);
+  font-weight: 600;
+}
+
+/* Notes Grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.note-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 4px solid;
+}
+
+.note-warning {
+  border-color: var(--clr-accent-main);
+}
+
+.note-info {
+  border-color: var(--clr-accent-blue);
+}
+
+.note-tip {
+  border-color: var(--clr-text-heading);
+}
+
+.note-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.note-warning .note-icon {
+  color: var(--clr-accent-main);
+}
+
+.note-info .note-icon {
+  color: var(--clr-accent-blue);
+}
+
+.note-tip .note-icon {
+  color: var(--clr-text-heading);
+}
+
+.note-content h3 {
+  font-size: 1rem;
+  color: var(--clr-text-heading);
+  margin-bottom: 0.5rem;
+}
+
+.note-content p {
+  color: var(--clr-text-primary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* Considerations */
+.considerations-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.considerations-content > p {
+  color: var(--clr-text-primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.considerations-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.considerations-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--clr-border-subtle);
+  color: var(--clr-text-primary);
+}
+
+.considerations-list li:last-child {
+  border-bottom: none;
+}
+
+.considerations-list i {
+  color: var(--clr-text-secondary);
+  font-size: 1rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  width: 1.25rem;
+  text-align: center;
+}
+
+.disclaimer {
+  background: rgba(212, 74, 2, 0.1);
+  border: 1px solid rgba(212, 74, 2, 0.3);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.disclaimer strong {
+  color: var(--clr-accent-main);
+}
+
+/* SSH CTA */
+.ssh-cta {
+  padding: 3rem 0;
+  background: linear-gradient(180deg, var(--clr-bg-main) 0%, var(--clr-black) 100%);
+  text-align: center;
+}
+
+.ssh-cta .cta-content h2 {
+  font-family: var(--ff-heading);
+  color: var(--clr-text-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ssh-cta .cta-content p {
+  color: var(--clr-text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.ssh-cta .cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* SSH Page Responsive - Tablet+ */
+@media (min-width: 768px) {
+  .ssh-intro {
+    padding: 4rem 0;
+  }
+
+  .ssh-intro .lead-text {
+    font-size: 1.2rem;
+  }
+
+  .ssh-section {
+    padding: 4rem 0;
+  }
+
+  .ssh-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .requirements-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .notes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .note-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .note-icon {
+    font-size: 1.5rem;
+  }
+
+  .ssh-cta .cta-content h2 {
+    font-size: 1.75rem;
+  }
+}

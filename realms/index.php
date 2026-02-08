@@ -37,7 +37,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="realm-header fantasy">
         <img src="/images/logo/3k_fantasy_logo_transparent_small.png" alt="Fantasy Realm" class="realm-content-logo" />
         <h2 class="realm-content-title">The Fantasy Realm</h2>
-        <p class="realm-content-tagline">Where magic and myth come alive</p>
+        <p class="realm-content-tagline">Where magic and myth come alive.</p>
         <div class="realm-description">
           <p>
             From the dank swamps south of the thriving city of Wayhaven to the icy reaches of Niroth, this gargantuan
@@ -118,7 +118,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="realm-header science">
         <img src="/images/logo/3k_science_logo_transparent_small.png" alt="Science Realm" class="realm-content-logo" />
         <h2 class="realm-content-title">The Science Realm</h2>
-        <p class="realm-content-tagline">A post-apocalyptic future awaits</p>
+        <p class="realm-content-tagline">A post-apocalyptic future awaits.</p>
         <div class="realm-description">
           <p>
             Step through a portal into a realm waiting to be explored. From the shining cyber cities of New America to
@@ -198,7 +198,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="realm-header chaos">
         <img src="/images/logo/3k_chaos_logo_transparent_small.png" alt="Chaos Realm" class="realm-content-logo" />
         <h2 class="realm-content-title">The Chaos Realm</h2>
-        <p class="realm-content-tagline">Where reality bends and breaks</p>
+        <p class="realm-content-tagline">Where reality bends and breaks.</p>
         <div class="realm-description">
           <p>
             Through the swirling vortex of mist and nightmare that brushes the northern edge of Pinnacle, you find the

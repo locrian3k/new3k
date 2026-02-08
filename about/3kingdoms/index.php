@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 		<!-- Main Content -->
 		<main id="content">
 			<!-- Hero Section -->
-			<section class="hero hero-default">
+			<section class="hero hero-about">
 				<div class="hero-content">
 					<h1 class="hero-title hero-title-about">About 3Kingdoms</h1>
 					<p class="hero-subtitle">

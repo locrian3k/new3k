@@ -6,7 +6,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 <!-- Main Content -->
 <main id="content">
   <!-- Hero Section -->
-  <section class="hero hero-default">
+  <section class="hero hero-vafs">
     <div class="hero-content">
       <h1 class="hero-title">Support 3Kingdoms</h1>
       <p class="hero-subtitle">Voluntary Access Fees (VAFs)</p>

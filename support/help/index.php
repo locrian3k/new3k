@@ -23,7 +23,7 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
 <!-- Main Content -->
 <main id="content">
   <!-- Hero Section -->
-  <section class="hero hero-default">
+  <section class="hero hero-help">
     <div class="hero-content">
       <h1 class="hero-title">Help Files</h1>
       <p class="hero-subtitle">Your Guide to the Realms</p>

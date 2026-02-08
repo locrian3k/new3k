@@ -5,3 +5,5 @@ TODO Finish community/omp/index.php
 TODO Create community/wholist.php
 
 TODO When a player clicks on a realm from the home page, have the realm choice viewable
+
+TODO Make website searchable

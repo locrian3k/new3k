@@ -490,6 +490,27 @@
   color: var(--clr-text-primary);
 }
 
+/* Photo Credits */
+.modal-credits {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--clr-border-subtle);
+}
+
+.modal-credits p {
+  font-size: 0.85rem;
+  color: var(--clr-text-primary);
+  opacity: 0.7;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-credits i {
+  color: var(--clr-text-secondary);
+}
+
 /* ==========================================================================
    Responsive Styles
    ========================================================================== */

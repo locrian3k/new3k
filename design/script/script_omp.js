@@ -15,11 +15,12 @@ const ompData = {
     },
     activities: [
       'Group dinners at local restaurants',
-      'Gaming sessions and LAN parties',
+      'Gaming sessions',
       'Exploring Chicago attractions',
-      'Traditional 3K trivia competition'
+      'Traditional 3K socializing'
     ],
-    stories: 'The Windy City welcomed adventurers once again for a weekend of reconnecting with old friends and making new memories. Chicago proved to be a perennial favorite location for the community.'
+    stories: 'The Windy City welcomed adventurers once again for a weekend of reconnecting with old friends and making new memories. Chicago proved to be a perennial favorite location for the community.',
+    photoCredits: ['Cherek']
   },
 
   '2012': {
@@ -33,10 +34,11 @@ const ompData = {
     activities: [
       'Hotel hospitality suite gatherings',
       'Local restaurant excursions',
-      'Gaming tournaments',
+      'Gaming and socializing',
       'Late-night conversation sessions'
     ],
-    stories: "Michigan's capital city hosted a memorable gathering where players from across the continent came together. The Causeway Bay provided an excellent home base for the weekend's festivities."
+    stories: "Michigan's capital city hosted a memorable gathering where players from across the continent came together. The Causeway Bay provided an excellent home base for the weekend's festivities.",
+    photoCredits: ['Cherek']
   },
 
   '2011-summer': {
@@ -54,7 +56,8 @@ const ompData = {
       'Hotel suite socializing',
       'Classic 3K gaming sessions'
     ],
-    stories: 'The City of Brotherly Love extended its warm welcome to the 3K community. Players explored the rich history of Philadelphia while creating new memories of their own.'
+    stories: 'The City of Brotherly Love extended its warm welcome to the 3K community. Players explored the rich history of Philadelphia while creating new memories of their own.',
+    photoCredits: ['Cherek']
   },
 
   '2011-spring': {
@@ -69,10 +72,10 @@ const ompData = {
     activities: [
       'Silicon Valley exploration',
       'West Coast player meetups',
-      'Tech industry tours',
-      'California cuisine adventures'
+      'California cuisine adventures',
+      'Community bonding'
     ],
-    stories: 'A rare West Coast gathering brought players to the heart of Silicon Valley. This special spring edition allowed West Coast players who usually had to travel far to host their fellow adventurers.'
+    stories: 'A rare West Coast gathering brought players to the heart of Silicon Valley. This special spring edition allowed West Coast players who usually had to travel far to host their fellow adventurers for a change.'
   },
 
   '2010': {
@@ -81,7 +84,7 @@ const ompData = {
     dates: 'July 30 - August 1, 2010',
     venue: {
       name: "Crowne Plaza Chicago O'Hare",
-      address: "5440 N River Rd, Rosemont, IL 60018"
+      address: '5440 N River Rd, Rosemont, IL 60018'
     },
     activities: [
       'Deep dish pizza pilgrimages',
@@ -89,7 +92,8 @@ const ompData = {
       'Hotel suite parties',
       'MUD gaming marathons'
     ],
-    stories: "Chicago's convenient central location and excellent amenities made it a favorite destination. The Crowne Plaza O'Hare provided easy access for travelers flying in from across the country."
+    stories: "Chicago's convenient central location and excellent amenities made it a favorite destination. The Crowne Plaza O'Hare provided easy access for travelers flying in from across the country.",
+    photoCredits: ['Cherek']
   },
 
   '2009': {
@@ -98,7 +102,7 @@ const ompData = {
     dates: 'July 31 - August 2, 2009',
     venue: {
       name: 'Crowne Plaza Detroit Metro Airport',
-      address: 'Romulus, MI (Detroit Metro area)'
+      address: '8000 Merriman Road, Romulus, MI 48174'
     },
     activities: [
       'Detroit area exploration',
@@ -106,7 +110,8 @@ const ompData = {
       'Traditional OMP activities',
       'Community bonding sessions'
     ],
-    stories: 'Near the Detroit Metro Airport, players gathered for another Michigan meetup. The accessible location made it easy for adventurers to fly in from across North America.'
+    stories: 'Near the Detroit Metro Airport, players gathered for another Michigan meetup. The accessible location made it easy for adventurers to fly in from across North America.',
+    photoCredits: ['Cherek']
   },
 
   '2008': {
@@ -114,16 +119,17 @@ const ompData = {
     location: 'Indianapolis, IN',
     dates: 'August 1-3, 2008',
     venue: {
-      name: 'Crowne Plaza Indianapolis',
-      address: 'Indianapolis, IN'
+      name: 'Crowne Plaza Indianapolis Airport',
+      address: '2501 S High School Rd, Indianapolis, IN 46241'
     },
     activities: [
-      'Indianapolis Motor Speedway visits',
+      'Indianapolis Motor Speedway area',
       'Downtown Indianapolis exploration',
       'Hoosier hospitality experiences',
       'Gaming and socializing'
     ],
-    stories: 'The Crossroads of America lived up to its name, providing a central meeting point for players from all directions. Indianapolis offered a perfect blend of attractions and Midwestern hospitality.'
+    stories: 'The Crossroads of America lived up to its name, providing a central meeting point for players from all directions. Indianapolis offered a perfect blend of attractions and Midwestern hospitality.',
+    photoCredits: ['Cherek']
   },
 
   '2007': {
@@ -132,15 +138,33 @@ const ompData = {
     dates: 'August 3-5, 2007',
     venue: {
       name: "Crowne Plaza Chicago O'Hare",
-      address: "5440 N River Rd, Rosemont, IL 60018"
+      address: '5440 N River Rd, Rosemont, IL 60018'
+    },
+    schedule: {
+      friday: [
+        'Check-in and meet & greet',
+        'Dinner at Claim Jumper (7:30 PM)',
+        'Late night socializing'
+      ],
+      saturday: [
+        'Breakfast at hotel',
+        'Open activities and exploration',
+        'Group dinner',
+        'Evening festivities'
+      ],
+      sunday: [
+        'Farewell breakfast',
+        'Check-out and departures'
+      ]
     },
     activities: [
-      'Navy Pier excursions',
+      'Dinner at Claim Jumper restaurant',
       'Chicago-style dining',
       'Gaming tournaments',
       'Community celebrations'
     ],
-    stories: 'Another successful Chicago gathering brought the community together in the Windy City. The familiar venue and vibrant city provided the perfect backdrop for another memorable OMP.'
+    stories: 'Another successful Chicago gathering brought the community together in the Windy City. The familiar venue and vibrant city provided the perfect backdrop for another memorable OMP.',
+    photoCredits: ['Cherek', 'Hanse']
   },
 
   '2006': {
@@ -148,16 +172,34 @@ const ompData = {
     location: 'Williamsburg, VA',
     dates: 'August 4-6, 2006',
     venue: {
-      name: 'Crowne Plaza Williamsburg',
-      address: 'Williamsburg, VA'
+      name: 'Crowne Plaza Williamsburg at Fort Magruder',
+      address: '6945 Pocahontas Trail, Williamsburg, VA 23185'
+    },
+    schedule: {
+      friday: [
+        'Check-in and registration',
+        'Meet & greet in hospitality suite',
+        'Evening socializing'
+      ],
+      saturday: [
+        'Busch Gardens trip (optional)',
+        'Colonial Williamsburg exploration (optional)',
+        'Water Country USA (optional)',
+        'Group dinner and festivities'
+      ],
+      sunday: [
+        'Farewell gathering',
+        'Check-out'
+      ]
     },
     activities: [
-      'Colonial Williamsburg tours',
-      'Busch Gardens visits',
-      'Historical reenactment experiences',
+      'Busch Gardens theme park trip',
+      'Colonial Williamsburg historic tours',
+      'Water Country USA water park',
       'Evening social gatherings'
     ],
-    stories: 'Historic Williamsburg provided a unique and memorable backdrop for the gathering. Players explored Colonial America by day and gathered to share stories of their virtual adventures by night.'
+    stories: 'Historic Williamsburg provided a unique and memorable backdrop for the gathering. With options ranging from roller coasters at Busch Gardens to stepping back in time at Colonial Williamsburg, there was something for everyone.',
+    photoCredits: ['Cherek']
   },
 
   '2005': {
@@ -166,15 +208,33 @@ const ompData = {
     dates: 'August 5-7, 2005',
     venue: {
       name: 'Crowne Plaza Detroit Metro Airport',
-      address: 'Romulus, MI'
+      address: '8000 Merriman Rd, Romulus, MI 48174'
+    },
+    schedule: {
+      friday: [
+        'Check-in begins',
+        'Pizza party in suite (evening)',
+        'Socializing and gaming'
+      ],
+      saturday: [
+        'Henry Ford Museum / Greenfield Village trip',
+        'Downtown Detroit exploration (optional)',
+        'Group dinner',
+        'Evening activities'
+      ],
+      sunday: [
+        'Farewell breakfast',
+        'Departures'
+      ]
     },
     activities: [
-      'Henry Ford Museum visits',
+      'Henry Ford Museum visit',
       'Greenfield Village exploration',
-      'Detroit area attractions',
-      'Community gatherings'
+      'Pizza party',
+      'Detroit area sightseeing'
     ],
-    stories: 'Michigan hosted the community once again, with the Detroit area providing plenty of attractions for adventurers to explore between gaming sessions and social events.'
+    stories: 'Michigan hosted the community once again, with the Detroit area providing plenty of attractions. The Henry Ford Museum and Greenfield Village offered a fascinating glimpse into American history and innovation.',
+    photoCredits: ['Cherek', 'Elfstone', 'Hanse']
   },
 
   '2004': {
@@ -182,16 +242,34 @@ const ompData = {
     location: 'St. Louis, MO',
     dates: 'August 6-8, 2004',
     venue: {
-      name: 'Crowne Plaza St. Louis',
-      address: 'St. Louis, MO'
+      name: 'Crowne Plaza St. Louis Airport',
+      address: '11228 Lone Eagle Dr, Bridgeton, MO 63044'
+    },
+    schedule: {
+      friday: [
+        'Check-in and hospitality suite opens',
+        'Gateway Arch visit (optional)',
+        'Dinner at Trainwreck Saloon (6:30 PM)',
+        'Evening socializing'
+      ],
+      saturday: [
+        'Six Flags St. Louis trip',
+        'Cardinals vs Cubs baseball game (evening)',
+        'Late night gathering'
+      ],
+      sunday: [
+        'Farewell brunch',
+        'Departures'
+      ]
     },
     activities: [
-      'Gateway Arch visits',
-      'Mississippi riverfront exploration',
-      'Cardinals baseball games',
-      'St. Louis BBQ experiences'
+      'Gateway Arch sightseeing',
+      'Six Flags St. Louis theme park',
+      'Cardinals vs Cubs baseball game',
+      'Dinner at Trainwreck Saloon'
     ],
-    stories: 'The Gateway to the West opened its arms to welcome 3K adventurers. St. Louis offered iconic American landmarks and warm hospitality to match the community spirit.'
+    stories: 'The Gateway to the West opened its arms to welcome 3K adventurers. Highlights included a thrilling day at Six Flags and catching the classic Cardinals vs Cubs rivalry at Busch Stadium.',
+    photoCredits: ['Cherek', 'Elfstone', 'Hanse']
   },
 
   '2003': {
@@ -199,16 +277,34 @@ const ompData = {
     location: 'Pittsburgh, PA',
     dates: 'August 1-3, 2003',
     venue: {
-      name: 'Crowne Plaza Pittsburgh',
-      address: 'Pittsburgh, PA'
+      name: 'Crowne Plaza Pittsburgh South',
+      address: '164 Fort Couch Rd, Pittsburgh, PA 15241'
+    },
+    schedule: {
+      friday: [
+        'Check-in and meet & greet',
+        'Hospitality suite opens',
+        'Evening socializing'
+      ],
+      saturday: [
+        'Kennywood Amusement Park trip',
+        'Pittsburgh sightseeing (optional)',
+        'Group dinner',
+        'Evening festivities'
+      ],
+      sunday: [
+        'Farewell breakfast',
+        'Departures'
+      ]
     },
     activities: [
+      'Kennywood Amusement Park visit',
+      'Pittsburgh sightseeing',
       'Three Rivers exploration',
-      'Pittsburgh cultural attractions',
-      'Steelers country experiences',
       'Traditional OMP festivities'
     ],
-    stories: 'The Steel City forged new bonds among community members. Pittsburgh\'s unique character and friendly atmosphere made for an unforgettable gathering.'
+    stories: "The Steel City forged new bonds among community members. Kennywood Amusement Park, one of America's classic traditional parks, provided thrills and nostalgia for attendees.",
+    photoCredits: ['Elfstone', 'Hanse']
   },
 
   '2002': {
@@ -217,15 +313,34 @@ const ompData = {
     dates: 'August 2-4, 2002',
     venue: {
       name: "Marriott's Hunt Valley Inn",
-      address: 'Hunt Valley, MD (Baltimore area)'
+      address: '245 Shawan Rd, Hunt Valley, MD 21031'
+    },
+    schedule: {
+      friday: [
+        'Check-in and registration',
+        'Hospitality suite gathering',
+        'Dinner at nearby restaurant',
+        'Evening socializing'
+      ],
+      saturday: [
+        'Inner Harbor trip',
+        'National Aquarium visit',
+        'Maryland crab feast dinner',
+        'Evening activities'
+      ],
+      sunday: [
+        'Farewell brunch',
+        'Departures'
+      ]
     },
     activities: [
-      'Inner Harbor visits',
-      'National Aquarium tours',
-      'Maryland seafood feasts',
+      'Baltimore Inner Harbor visit',
+      'National Aquarium tour',
+      'Maryland crab feast',
       'Community celebrations'
     ],
-    stories: 'Charm City lived up to its name, charming visitors with its waterfront attractions and famous blue crabs. The Baltimore area provided a wonderful East Coast gathering spot.'
+    stories: "Charm City lived up to its name, charming visitors with its waterfront attractions and famous Maryland blue crabs. The Inner Harbor and National Aquarium were popular destinations for the group.",
+    photoCredits: ['Elfstone', 'Hanse']
   },
 
   '2001': {
@@ -236,14 +351,32 @@ const ompData = {
       name: 'Imperial Palace Hotel & Casino',
       address: '3535 Las Vegas Blvd S, Las Vegas, NV 89109'
     },
+    schedule: {
+      friday: [
+        'Check-in at Imperial Palace',
+        'Strip exploration',
+        'Group dinner',
+        'Casino and shows'
+      ],
+      saturday: [
+        'Pool party',
+        'Las Vegas attractions',
+        'Group dinner',
+        'Evening entertainment'
+      ],
+      sunday: [
+        'Farewell breakfast',
+        'Departures'
+      ]
+    },
     activities: [
       'Las Vegas Strip exploration',
-      'Casino gaming (for those of age)',
-      'World-class dining',
-      'Shows and entertainment',
-      'Pool parties'
+      'Casino gaming',
+      'Pool parties',
+      'World-class dining and shows'
     ],
-    stories: 'Sin City provided an unforgettable setting for one of the most memorable OMPs. What happens at the OMP stays at the OMP... mostly. The bright lights and endless entertainment of Vegas made this gathering legendary.'
+    stories: 'Sin City provided an unforgettable setting for one of the most legendary OMPs. Right on the Las Vegas Strip, the Imperial Palace put attendees in the heart of all the action. What happened at OMP Vegas... well, the memories live on.',
+    photoCredits: ['Elfstone', 'Hanse']
   },
 
   '2000': {
@@ -251,17 +384,32 @@ const ompData = {
     location: 'Cincinnati, OH',
     dates: 'August 4-6, 2000',
     venue: {
-      name: 'Hotel near Paramount\'s Kings Island',
-      address: 'Cincinnati/Mason, OH area'
+      name: 'Kings Island Resort (area hotel)',
+      address: 'Mason, OH (near Kings Island)'
+    },
+    schedule: {
+      friday: [
+        'Check-in and meet & greet',
+        'Hospitality suite opens',
+        'Evening socializing'
+      ],
+      saturday: [
+        "Paramount's Kings Island theme park all day",
+        'Evening gathering and dinner'
+      ],
+      sunday: [
+        'Farewell breakfast',
+        'Departures'
+      ]
     },
     activities: [
       "Paramount's Kings Island theme park",
       'Roller coaster adventures',
       'Cincinnati chili sampling',
-      'Millennium celebrations',
-      'Community bonding'
+      'Millennium celebrations'
     ],
-    stories: "As the new millennium began, the community gathered near Cincinnati's famous theme park. Roller coasters and shared adventures created memories that would last for years to come."
+    stories: "As the new millennium began, the community gathered near Cincinnati's famous theme park. Roller coasters and shared adventures created memories that would last for years to come. The Beast and Son of Beast were particular highlights.",
+    photoCredits: ['Elfstone']
   },
 
   '1999': {
@@ -272,13 +420,32 @@ const ompData = {
       name: 'The Palmer House Hilton',
       address: '17 E Monroe St, Chicago, IL 60603'
     },
+    schedule: {
+      friday: [
+        'Check-in at historic Palmer House',
+        'Hospitality suite opens',
+        'Downtown Chicago exploration',
+        'Group dinner'
+      ],
+      saturday: [
+        'Chicago sightseeing',
+        'Navy Pier (optional)',
+        'Group activities',
+        'Evening festivities'
+      ],
+      sunday: [
+        'Farewell breakfast',
+        'Departures'
+      ]
+    },
     activities: [
       'Historic Palmer House exploration',
       'Downtown Chicago sightseeing',
-      'Lake Michigan visits',
-      'Second annual gathering traditions'
+      'Navy Pier visit',
+      'Lake Michigan activities'
     ],
-    stories: 'The second official gathering took place at the legendary Palmer House Hilton, one of America\'s most historic hotels. Chicago\'s grandeur matched the growing ambitions of the community.'
+    stories: "The second official gathering took place at the legendary Palmer House Hilton, one of America's oldest and most prestigious hotels. Staying in such a grand historic venue added extra magic to the weekend. Chicago's grandeur matched the growing ambitions of the community.",
+    photoCredits: ['Elfstone']
   },
 
   '1998': {
@@ -286,17 +453,34 @@ const ompData = {
     location: 'Washington, DC',
     dates: 'August 7-9, 1998',
     venue: {
-      name: 'Washington, DC Area Hotel',
-      address: 'Washington, DC Metro Area'
+      name: 'Quality Hotel & Suites',
+      address: 'College Park/Beltsville, MD area'
+    },
+    schedule: {
+      friday: [
+        'Check-in and first meetings',
+        'Hospitality suite opens',
+        'Initial gathering - putting faces to names'
+      ],
+      saturday: [
+        'National Mall exploration',
+        'Smithsonian museums',
+        'Washington monuments',
+        'Group dinner and celebration'
+      ],
+      sunday: [
+        'Farewell gathering',
+        'Departures and promises to return'
+      ]
     },
     activities: [
       'National Mall exploration',
       'Smithsonian museum visits',
-      'Monument tours',
-      'The very first OMP activities',
-      'Historic community gathering'
+      'Washington Monument and memorials',
+      'The historic first gathering of 3K players'
     ],
-    stories: "Where it all began. The nation's capital hosted the very first Official MUD Party, bringing together players who had only known each other through text on a screen. For the first time, adventurers could put faces to the names they had quested alongside for years. This historic gathering established the tradition that would continue for decades to come."
+    stories: "Where it all began. The nation's capital hosted the very first Official MUD Party, bringing together players who had only known each other through text on a screen. For the first time, adventurers could put faces to the names they had quested alongside for years. This historic gathering established the tradition that would continue for over a decade. The excitement of finally meeting online friends in person was palpable, and lifelong friendships were forged that weekend.",
+    photoCredits: ['Elfstone']
   }
 };
 
@@ -340,8 +524,47 @@ function openModal(ompId) {
     `;
   }
 
-  // Activities section
-  if (data.activities && data.activities.length > 0) {
+  // Schedule section (if available)
+  if (data.schedule) {
+    bodyHTML += `
+      <div class="modal-section">
+        <h3><i class="fa-solid fa-calendar-days"></i> Schedule</h3>
+        <div class="modal-schedule">
+    `;
+
+    if (data.schedule.friday) {
+      bodyHTML += `
+        <div class="schedule-day">
+          <h4>Friday</h4>
+          <ul>${data.schedule.friday.map(item => `<li>${item}</li>`).join('')}</ul>
+        </div>
+      `;
+    }
+    if (data.schedule.saturday) {
+      bodyHTML += `
+        <div class="schedule-day">
+          <h4>Saturday</h4>
+          <ul>${data.schedule.saturday.map(item => `<li>${item}</li>`).join('')}</ul>
+        </div>
+      `;
+    }
+    if (data.schedule.sunday) {
+      bodyHTML += `
+        <div class="schedule-day">
+          <h4>Sunday</h4>
+          <ul>${data.schedule.sunday.map(item => `<li>${item}</li>`).join('')}</ul>
+        </div>
+      `;
+    }
+
+    bodyHTML += `
+        </div>
+      </div>
+    `;
+  }
+
+  // Activities section (only show if no schedule, to avoid redundancy)
+  if (data.activities && data.activities.length > 0 && !data.schedule) {
     bodyHTML += `
       <div class="modal-section">
         <h3><i class="fa-solid fa-calendar-check"></i> Activities</h3>
@@ -352,7 +575,7 @@ function openModal(ompId) {
     `;
   }
 
-  // Stories section
+  // Stories/Memories section
   if (data.stories) {
     bodyHTML += `
       <div class="modal-section">
@@ -360,6 +583,15 @@ function openModal(ompId) {
         <div class="modal-story">
           <p>${data.stories}</p>
         </div>
+      </div>
+    `;
+  }
+
+  // Photo credits section
+  if (data.photoCredits && data.photoCredits.length > 0) {
+    bodyHTML += `
+      <div class="modal-section modal-credits">
+        <p><i class="fa-solid fa-camera"></i> Photos contributed by: ${data.photoCredits.join(', ')}</p>
       </div>
     `;
   }

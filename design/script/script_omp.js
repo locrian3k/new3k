@@ -634,7 +634,7 @@ function openModal(ompId) {
         bodyHTML += `<p><strong>Includes:</strong> ${data.venue.amenities.join(', ')}</p>`;
       }
       if (data.venue.coverCharge) {
-        bodyHTML += `<p><strong>OMP Cover Charge:</strong> ${data.venue.coverCharge}</p>`;
+        bodyHTML += `<p><strong>OMP Cover Charge:</strong></p> <ul>${data.venue.coverCharge.map(item => `<li>${item}</li>`).join('')}</ul>`;
       }
       if (data.venue.bookingDeadline) {
         bodyHTML += `<p class="booking-deadline"><i class="fa-solid fa-clock"></i> Book by: ${data.venue.bookingDeadline}</p>`;
@@ -667,6 +667,14 @@ function openModal(ompId) {
         <div class="modal-schedule">
     `;
 
+      if (data.schedule.thursday) {
+      bodyHTML += `
+        <div class="schedule-day">
+          <h4>Thursday</h4>
+          <ul>${data.schedule.friday.map(item => `<li>${item}</li>`).join('')}</ul>
+        </div>
+      `;
+    }
     if (data.schedule.friday) {
       bodyHTML += `
         <div class="schedule-day">

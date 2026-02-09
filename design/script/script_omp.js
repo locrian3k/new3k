@@ -718,11 +718,25 @@ function openModal(ompId) {
       bodyHTML += `
         <div class="modal-section">
           <h3><i class="fa-solid ${sectionIcon}"></i> ${sectionTitle}</h3>
+      `;
+
+      if (hasDetailedActivities) {
+        // Use paragraphs for detailed explanatory content
+        bodyHTML += `
+          <div class="modal-about">
+            ${data.activities.map(activity => `<p>${activity}</p>`).join('')}
+          </div>
+        `;
+      } else {
+        // Use list for short activity items
+        bodyHTML += `
           <ul>
             ${data.activities.map(activity => `<li>${activity}</li>`).join('')}
           </ul>
-        </div>
-      `;
+        `;
+      }
+
+      bodyHTML += `</div>`;
     }
   }
 

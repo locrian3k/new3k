@@ -6016,6 +6016,17 @@ button.help-link {
   color: var(--clr-text-primary);
 }
 
+/* About This Event (detailed activities) */
+.modal-about p {
+  color: var(--clr-text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.modal-about p:last-child {
+  margin-bottom: 0;
+}
+
 /* Photo Credits */
 .modal-credits {
   margin-top: 1.5rem;

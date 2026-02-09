@@ -227,19 +227,19 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       document.getElementById(realm).classList.add('active');
 
-      // Update URL hash without scrolling
-      history.replaceState(null, null, '#' + realm);
+      // Update URL hash without scrolling (use realm- prefix to prevent auto-scroll on page load)
+      history.replaceState(null, null, '#realm-' + realm);
     });
   });
 
-  // Check for hash on page load
+  // Check for hash on page load (supports both #realm-fantasy and legacy #fantasy formats)
   var hash = window.location.hash.substring(1);
-  if (hash && document.getElementById(hash)) {
-    var targetTab = document.querySelector('.realm-tab[data-realm="' + hash + '"]');
+  var realmName = hash.startsWith('realm-') ? hash.substring(6) : hash;
+
+  if (realmName && document.getElementById(realmName)) {
+    var targetTab = document.querySelector('.realm-tab[data-realm="' + realmName + '"]');
     if (targetTab) {
       targetTab.click();
-      // Scroll to top of page instead of the hash target
-      window.scrollTo(0, 0);
     }
   }
 });

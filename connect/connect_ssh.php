@@ -42,7 +42,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
                     <h3>SSH Server Access</h3>
                     <p>
                         You'll need access to an SSH server to use as a "leap pad." This could be a personal server,
-                        a friend's server, or a shell account. Ask around on the MUD - someone may be able to help.
+                        a friend's server, or a shell account. Ask around on the MUD, someone may be able to help.
                     </p>
                 </div>
                 <div class="requirement-card">
@@ -53,7 +53,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
                     <p>
                         Download PuTTY (version 0.59 or greater) from
                         <a href="https://www.putty.org/" target="_blank" rel="noopener">putty.org</a>.
-                        It's a tiny, portable program with no installation required - just run the executable.
+                        It's a tiny, portable program with no installation required, just run the executable.
                     </p>
                 </div>
                 <div class="requirement-card">

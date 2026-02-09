@@ -6,8 +6,6 @@ TODO When a player clicks on a realm from the home page, have the realm choice v
 
 TODO Make website searchable
 
-TODO remove italics from eternal guild section
-
 TODO update all -'s to be commas
 
 TODO update all colors on admin page

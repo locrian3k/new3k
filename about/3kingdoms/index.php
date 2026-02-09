@@ -114,7 +114,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 								We mean just that. You are sharing 3Kingdoms with a vibrant
 								community of real people all around the world, with dozens to
 								over a hundred players online at any given time. Now, not
-								everyone is on at the same time - we all have real lives right?
+								everyone is on at the same time, we all have real lives right?
 								Rest assured, they will be back in a few hours to join you in
 								your adventures. You'll meet them, trade with them, join guilds
 								with them and down the road, go out on exciting adventures with

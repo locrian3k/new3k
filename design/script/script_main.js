@@ -238,6 +238,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var targetTab = document.querySelector('.realm-tab[data-realm="' + hash + '"]');
     if (targetTab) {
       targetTab.click();
+      // Scroll to top of page instead of the hash target
+      window.scrollTo(0, 0);
     }
   }
 });

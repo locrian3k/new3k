@@ -3609,6 +3609,14 @@ main { margin-top: 5rem; }
 	color: rgba(251, 251, 241, 0.5);
 }
 
+.paypal-form .form-hint {
+	display: block;
+	margin-top: 0.4rem;
+	font-size: var(--fs-body-small);
+	color: var(--clr-text-secondary);
+	opacity: 0.8;
+}
+
 .payment-note {
 	align-items: center;
 	justify-content: center;

@@ -110,6 +110,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <p class="realm-quests-link"><a href="/quests/index.php">View all quests <i class="fa-solid fa-arrow-right"></i></a></p>
         </div>
 
+        <div class="realm-nav-links">
+          <span>Explore other realms:</span>
+          <button class="realm-nav-btn science" data-realm="science">
+            <i class="fa-solid fa-atom"></i> Science
+          </button>
+          <button class="realm-nav-btn chaos" data-realm="chaos">
+            <i class="fa-solid fa-burst"></i> Chaos
+          </button>
+        </div>
+
       </div>
     </div>
 
@@ -190,6 +200,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <p class="realm-quests-link"><a href="/quests/index.php">View all quests <i class="fa-solid fa-arrow-right"></i></a></p>
         </div>
 
+        <div class="realm-nav-links">
+          <span>Explore other realms:</span>
+          <button class="realm-nav-btn fantasy" data-realm="fantasy">
+            <i class="fa-solid fa-hat-wizard"></i> Fantasy
+          </button>
+          <button class="realm-nav-btn chaos" data-realm="chaos">
+            <i class="fa-solid fa-burst"></i> Chaos
+          </button>
+        </div>
+
       </div>
     </div>
 
@@ -268,6 +288,16 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             </div>
           </div>
           <p class="realm-quests-link"><a href="/quests/index.php">View all quests <i class="fa-solid fa-arrow-right"></i></a></p>
+        </div>
+
+        <div class="realm-nav-links">
+          <span>Explore other realms:</span>
+          <button class="realm-nav-btn fantasy" data-realm="fantasy">
+            <i class="fa-solid fa-hat-wizard"></i> Fantasy
+          </button>
+          <button class="realm-nav-btn science" data-realm="science">
+            <i class="fa-solid fa-atom"></i> Science
+          </button>
         </div>
 
       </div>

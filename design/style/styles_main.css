@@ -2093,6 +2093,67 @@ main { margin-top: 5rem; }
 	color: var(--clr-accent-highlight);
 }
 
+/* Realm navigation links at bottom of each realm */
+.realm-nav-links {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-md);
+	margin-top: var(--space-xl);
+	padding-top: var(--space-lg);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.realm-nav-links span {
+	color: var(--clr-text-secondary);
+	font-size: var(--fs-body-small);
+}
+
+.realm-nav-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.6rem 1.2rem;
+	font-family: var(--ff-body);
+	font-size: var(--fs-body-small);
+	color: var(--clr-text-primary);
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: var(--br-md);
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.realm-nav-btn:hover {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.realm-nav-btn.fantasy:hover {
+	border-color: var(--clr-fantasy);
+	color: var(--clr-fantasy);
+}
+
+.realm-nav-btn.science:hover {
+	border-color: var(--clr-science);
+	color: var(--clr-science);
+}
+
+.realm-nav-btn.chaos:hover {
+	border-color: var(--clr-chaos);
+	color: var(--clr-chaos);
+}
+
+@media (max-width: 576px) {
+	.realm-nav-links {
+		flex-direction: column;
+		gap: var(--space-sm);
+	}
+
+	.realm-nav-links span {
+		margin-bottom: var(--space-xs);
+	}
+}
+
 /* Realm-specific quest card colors */
 #fantasy .realm-quest-card:hover {
 	border-color: var(--clr-fantasy);

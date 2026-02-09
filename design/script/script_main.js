@@ -242,6 +242,21 @@ document.addEventListener('DOMContentLoaded', function() {
       targetTab.click();
     }
   }
+
+  // Handle realm navigation buttons at bottom of each realm section
+  const realmNavBtns = document.querySelectorAll('.realm-nav-btn');
+  realmNavBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const realm = this.getAttribute('data-realm');
+      const targetTab = document.querySelector('.realm-tab[data-realm="' + realm + '"]');
+
+      if (targetTab) {
+        targetTab.click();
+        // Scroll to the tabs section so user can see the new realm
+        document.querySelector('.realms-tabs-section').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
 });
 
 

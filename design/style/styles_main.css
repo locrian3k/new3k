@@ -2099,7 +2099,7 @@ main { margin-top: 5rem; }
 	align-items: center;
 	justify-content: center;
 	gap: var(--space-md);
-	padding-top: var(--space-lg);
+	padding-bottom: var(--space-lg);
 }
 
 .realm-nav-links span {

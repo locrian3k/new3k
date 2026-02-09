@@ -585,6 +585,20 @@ const modalBody = modal?.querySelector('.omp-modal-body');
 const closeBtn = modal?.querySelector('.omp-modal-close');
 
 /**
+ * Helper function to render data as list or paragraph
+ * If data is an array, renders as <ul><li>...</li></ul>
+ * If data is a string, renders as <p>...</p>
+ */
+function renderListOrParagraph(data, label = null) {
+  if (Array.isArray(data)) {
+    const labelHTML = label ? `<p><strong>${label}</strong></p>` : '';
+    return `${labelHTML}<ul>${data.map(item => `<li>${item}</li>`).join('')}</ul>`;
+  } else {
+    return label ? `<p><strong>${label}</strong> ${data}</p>` : `<p>${data}</p>`;
+  }
+}
+
+/**
  * Open modal with OMP data
  */
 function openModal(ompId) {
@@ -625,11 +639,12 @@ function openModal(ompId) {
       if (data.venue.roomRate) {
         bodyHTML += `<p><strong>Room Rate:</strong> ${data.venue.roomRate}</p>`;
       }
-      if (data.venue.amenities && data.venue.amenities.length > 0) {
-        bodyHTML += `<p><strong>Includes:</strong> ${data.venue.amenities.join(', ')}</p>`;
+      if (data.venue.amenities) {
+        const amenitiesText = Array.isArray(data.venue.amenities) ? data.venue.amenities.join(', ') : data.venue.amenities;
+        bodyHTML += `<p><strong>Includes:</strong> ${amenitiesText}</p>`;
       }
       if (data.venue.coverCharge) {
-        bodyHTML += `<p><strong>OMP Cover Charge:</strong></p> <ul>${data.venue.coverCharge.map(item => `<li>${item}</li>`).join('')}</ul>`;
+        bodyHTML += renderListOrParagraph(data.venue.coverCharge, 'OMP Cover Charge:');
       }
       if (data.venue.bookingDeadline) {
         bodyHTML += `<p class="booking-deadline"><i class="fa-solid fa-clock"></i> Book by: ${data.venue.bookingDeadline}</p>`;
@@ -662,11 +677,11 @@ function openModal(ompId) {
         <div class="modal-schedule">
     `;
 
-      if (data.schedule.thursday) {
+    if (data.schedule.thursday) {
       bodyHTML += `
         <div class="schedule-day">
           <h4>Thursday</h4>
-          <ul>${data.schedule.friday.map(item => `<li>${item}</li>`).join('')}</ul>
+          ${renderListOrParagraph(data.schedule.thursday)}
         </div>
       `;
     }
@@ -674,7 +689,7 @@ function openModal(ompId) {
       bodyHTML += `
         <div class="schedule-day">
           <h4>Friday</h4>
-          <ul>${data.schedule.friday.map(item => `<li>${item}</li>`).join('')}</ul>
+          ${renderListOrParagraph(data.schedule.friday)}
         </div>
       `;
     }
@@ -682,7 +697,7 @@ function openModal(ompId) {
       bodyHTML += `
         <div class="schedule-day">
           <h4>Saturday</h4>
-          <ul>${data.schedule.saturday.map(item => `<li>${item}</li>`).join('')}</ul>
+          ${renderListOrParagraph(data.schedule.saturday)}
         </div>
       `;
     }
@@ -690,7 +705,7 @@ function openModal(ompId) {
       bodyHTML += `
         <div class="schedule-day">
           <h4>Sunday</h4>
-          <ul>${data.schedule.sunday.map(item => `<li>${item}</li>`).join('')}</ul>
+          ${renderListOrParagraph(data.schedule.sunday)}
         </div>
       `;
     }

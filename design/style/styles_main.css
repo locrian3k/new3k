@@ -5783,12 +5783,13 @@ button.help-link {
 }
 
 .omp-modal-close {
-  position: absolute;
+  position: sticky;
   top: 1rem;
-  right: 1rem;
+  margin-left: auto;
+  margin-right: 1rem;
   width: 36px;
   height: 36px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.8);
   border: 1px solid var(--clr-border-subtle);
   border-radius: 50%;
   color: var(--clr-text-primary);
@@ -5810,6 +5811,7 @@ button.help-link {
 
 .omp-modal-header {
   padding: 2rem 2rem 1.5rem;
+  margin-top: -36px;
   text-align: center;
   border-bottom: 1px solid var(--clr-border-subtle);
   background: linear-gradient(180deg, var(--clr-black) 0%, var(--clr-bg-main) 100%);
@@ -6012,8 +6014,13 @@ button.help-link {
 }
 
 .modal-story p {
-  font-style: italic;
   color: var(--clr-text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.modal-story p:last-child {
+  margin-bottom: 0;
 }
 
 /* About This Event (detailed activities) */

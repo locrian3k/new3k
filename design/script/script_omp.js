@@ -61,7 +61,7 @@ const ompData = {
   '2013': {
     year: '2013',
     location: 'Chicago, IL',
-    dates: 'August 8-10, 2013',
+    dates: 'August 8-10',
     venue: {
       name: 'Sheraton Suites Elk Grove Village',
       address: 'Chicago, IL',
@@ -79,7 +79,7 @@ const ompData = {
   '2012': {
     year: '2012',
     location: 'Lansing, MI',
-    dates: 'August 9-12, 2012',
+    dates: 'August 9-12',
     venue: {
       name: 'Okemos Conference Center',
       address: 'Okemos, MI',
@@ -138,41 +138,36 @@ const ompData = {
     ],
   },
 
-  '2011-summer': {
-    year: '2011',
-    season: 'Summer',
-    location: 'Philadelphia, PA',
-    dates: 'August 5-7, 2011',
-    venue: {
-      name: 'Crowne Plaza Philadelphia - Cherry Hill',
-      address: 'Cherry Hill, NJ (Philadelphia area)'
-    },
-    activities: [
-      'Historic Philadelphia tours',
-      'Group dinners in the city',
-      'Hotel suite socializing',
-      'Classic 3K gaming sessions'
-    ],
-    stories: 'The City of Brotherly Love extended its warm welcome to the 3K community. Players explored the rich history of Philadelphia while creating new memories of their own.',
-    photoCredits: ['Cherek']
-  },
-
   '2011-spring': {
     year: '2011',
     season: 'Spring',
     location: 'San Jose, CA',
-    dates: 'April 29 - May 1, 2011',
+    dates: 'April 14-16',
     venue: {
-      name: 'DoubleTree by Hilton',
-      address: 'San Jose, CA'
+      name: 'Clarion Hotel San Jose Airport',
+      address: 'San Jose, CA',
+      phone: '(408) 392-2419',
+      groupName: 'The Marble Group',
+      roomRate: '$79 double occupancy',
+      amenities: ['Free parking', 'Complimentary breakfast', 'Free WiFi', 'Shuttle'],
     },
-    activities: [
-      'Silicon Valley exploration',
-      'West Coast player meetups',
-      'California cuisine adventures',
-      'Community bonding'
-    ],
-    stories: 'A rare West Coast gathering brought players to the heart of Silicon Valley. This special spring edition allowed West Coast players who usually had to travel far to host their fellow adventurers for a change.'
+    showRideshare: true,
+  },
+
+  '2011-summer': {
+    year: '2011',
+    season: 'Spring',
+    location: 'Philadelphia, PA',
+    dates: 'August 4-6',
+    venue: {
+      name: 'DoubleTree Guest Suites',
+      address: 'Plymouth Meeting, PA',
+      phone: '(610) 897-4147',
+      groupName: 'The Marble Group',
+      roomRate: '$109 double occupancy',
+      amenities: ['Free parking', 'Complimentary breakfast', 'Free WiFi'],      
+    },
+    showRideshare: true,
   },
 
   '2010': {
@@ -781,9 +776,69 @@ function closeModal() {
 }
 
 /**
+ * Generate timeline HTML from ompData
+ */
+function generateTimeline() {
+  const timelineContainer = document.getElementById('omp-timeline');
+  if (!timelineContainer) return;
+
+  // Get all OMP keys and sort them (newest first)
+  const ompKeys = Object.keys(ompData).sort((a, b) => {
+    // Extract year for sorting (handle "2011-spring", "2011-summer" etc.)
+    const yearA = parseInt(a.split('-')[0]);
+    const yearB = parseInt(b.split('-')[0]);
+
+    if (yearA !== yearB) return yearB - yearA; // Descending by year
+
+    // If same year, sort by season (summer before spring alphabetically reversed)
+    if (a.includes('-') && b.includes('-')) {
+      return a < b ? 1 : -1; // "summer" comes before "spring"
+    }
+
+    return a.includes('-') ? -1 : 1;
+  });
+
+  let timelineHTML = '';
+
+  ompKeys.forEach((key, index) => {
+    const data = ompData[key];
+    const isFirst = key === '1998'; // Mark the first gathering
+    const isLast = index === ompKeys.length - 1;
+
+    // Build timeline item classes
+    let itemClasses = 'timeline-item';
+    if (isFirst || isLast) itemClasses += ' timeline-item-first';
+
+    // Build the description line (dates at venue)
+    let description = data.dates;
+    if (data.venue && data.venue.name) {
+      description += ` at ${data.venue.name}`;
+    }
+
+    timelineHTML += `
+      <div class="${itemClasses}" data-omp="${key}">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <span class="timeline-year">${data.year}</span>
+          ${data.season ? `<span class="timeline-season">${data.season}</span>` : ''}
+          ${isFirst ? '<span class="timeline-milestone">The First Gathering</span>' : ''}
+          <h3>${data.location}</h3>
+          <p>${description}</p>
+        </div>
+      </div>
+    `;
+  });
+
+  timelineContainer.innerHTML = timelineHTML;
+}
+
+/**
  * Initialize event listeners
  */
 function initOMP() {
+  // Generate timeline from data
+  generateTimeline();
+
   // Timeline item clicks
   const timelineItems = document.querySelectorAll('.timeline-item[data-omp]');
   timelineItems.forEach(item => {

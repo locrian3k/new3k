@@ -445,7 +445,7 @@ const ompData = {
       'Lake Michigan activities'
     ],
     stories: [
-      'Mudders from all over the world, rejoined for the second annual OMP in Northbrook, IL at the Raddison Hotel. Held on the weekend of July 20-21st, the 3K OMP involved over 150 people, from players to wizards and their friends who showed up to enjoy the festivites. For many of these people, they had only know each other via the text based MUD, and for others it was a reunion, of sorts, from the previous year.'
+      'Mudders from all over the world, rejoined for the second annual OMP in Northbrook, IL at the Raddison Hotel. Held on the weekend of July 20-21st, the 3K OMP involved over 150 people, from players to wizards and their friends who showed up to enjoy the festivites. For many of these people, they had only know each other via the text based MUD, and for others it was a reunion, of sorts, from the previous year.',
       'The night\'s entertainment consisted of games, such as a scavenger hunt, door prize raffle, an UNO Tourney and ended with a belly dance from our own Haplo. And who could forget Rastafan wearing the rub glove on his head yelling, "I\'m a squid."',
       'Prizes from the games and raffles ranged from quest points to lava lamps and the famed jar of marbles from the 1st OMP.',
       'Minor door prizes: Stuffed dogs for punting, Lava lamps, Electronic UNO games, Various books, OMP T-shirts', 

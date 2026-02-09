@@ -690,6 +690,12 @@ function openModal(ompId) {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 
+  // Reset scroll position to top
+  const modalContent = modal.querySelector('.omp-modal-content');
+  if (modalContent) {
+    modalContent.scrollTop = 0;
+  }
+
   // Focus trap for accessibility
   closeBtn?.focus();
 }

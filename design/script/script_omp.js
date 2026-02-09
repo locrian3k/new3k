@@ -341,247 +341,142 @@ const ompData = {
   '2004': {
     year: '2004',
     location: 'St. Louis, MO',
-    dates: 'August 6-8, 2004',
-    venue: {
-      name: 'Crowne Plaza St. Louis Airport',
-      address: '11228 Lone Eagle Dr, Bridgeton, MO 63044'
-    },
-    schedule: {
-      friday: [
-        'Check-in and hospitality suite opens',
-        'Gateway Arch visit (optional)',
-        'Dinner at Trainwreck Saloon (6:30 PM)',
-        'Evening socializing'
-      ],
-      saturday: [
-        'Six Flags St. Louis trip',
-        'Cardinals vs Cubs baseball game (evening)',
-        'Late night gathering'
-      ],
-      sunday: [
-        'Farewell brunch',
-        'Departures'
-      ]
-    },
-    activities: [
-      'Gateway Arch sightseeing',
-      'Six Flags St. Louis theme park',
-      'Cardinals vs Cubs baseball game',
-      'Dinner at Trainwreck Saloon'
+    dates: 'July',
+    stories: [
+      'St. Louis.... I was going to start with, "it was a hot and sticky weekend", but it wasn\'t. It was a cool and somewhat grey weekend.',
+      'This year, as in years past, we started by taking over the lobby. The hotel did not really like this at all, but what else is new. Any ways we quickly were moved to the conference room, which worked out extremely well, as we could drink, play our various games and just have a place to hang out without interrupting the Bible Group that was also in the hotel. For the most part, people just hung out at the hotel. Though a small group, led by Hobbes did get to see the Cardinals play and another group went to the horror known as Dave & Busters. (I say horror as I heard the service was just downright awful. I\'m glad the group I was with got lost).',
+      'You know you are an addict when 1) you bring a laptop to the OMP, 2) you are mudding from the OMP via a wireless connection. Yes, you heard me right. The great thing about this was, Polaris set up a webcam and shouted the link on the mud so that people could see the party in action.',
+      'Like years past, everyone always likes to hang out and play various games. This year we had the following: Phase 10, Munchkin, Settlers of Catan, Articulate, Axis and Allies, Risk, and of course, UNO.',
+      'Once again we had a big parking lot with plenty of space, so we decided to do Dog Punting. While it was a low turn out, it was definitely a lot of fun. After that we ran inside for the Uno Tourney. We had a record 35 people join in, what a lot of fun.',
+      'The main attraction... The OMP.',
+      'Like every other year we politely asked everyone to leave the room so that setup could begin. The door prizes had to be brought down from Pistil\'s room and the registration table set up.',
+      'Once this was done, the line started coming in. First stop was with Pistil and Tensor to submit your VAF. Next was Sorcha with the tickets and Vraal with the "stuff". Once you were done there you headed over to Nanook and Vryce to get a shirt, Takamori and Stalin were also here and there doing their share.',
+      'Once everyone was in, the food started arriving. While we had pizza again, we also had subs from Subway. Though they forgot a big thing regarding these, they didn\'t cut them. So handy Valletta to the rescue, she grabbed a plastic knife and went to town.',
+      'Once food was done with, Tensor explained how the tickets and buckets would work this year. I didn\'t think the buckets would be a good idea, but I\'ll admit I was wrong and Tensor was right, as he is always right. ;) Anyways, he went over step-by-step what to do with each piece of the ticket. Though some people outsmarted him. They wrote their names on the tickets, thus making life much easier. After this it was time to start the Scavenger Hunt. While there were only three teams this year, they were bigger then in previous years. There were also more physical/photo options, thus making it truly a fun time.',
+      'The last main part of the party.... the Door Prize Raffle. This year there were some really awesome prizes. From DVD Players to a brand new Dell. Truly one of the better OMP prize table in history.',
+      'The last bit of news... there are now only four people who have been to every single OMP. Are they addicted? Crazy? or just dedicated? You decided. They are : Pendras, Sorcha, Tensor and Vryce. Who will the next one off the list?'
     ],
-    stories: 'The Gateway to the West opened its arms to welcome 3K adventurers. Highlights included a thrilling day at Six Flags and catching the classic Cardinals vs Cubs rivalry at Busch Stadium.',
-    photoCredits: ['Cherek', 'Elfstone', 'Hanse']
+    photoCredits: ['Dalandra', 'Flair', 'Alan', 'Aijin', 'Pendras', 'Chewbacon', 'Thoreau', 'Wynn']
   },
 
   '2003': {
     year: '2003',
     location: 'Pittsburgh, PA',
-    dates: 'August 1-3, 2003',
-    venue: {
-      name: 'Crowne Plaza Pittsburgh South',
-      address: '164 Fort Couch Rd, Pittsburgh, PA 15241'
-    },
-    schedule: {
-      friday: [
-        'Check-in and meet & greet',
-        'Hospitality suite opens',
-        'Evening socializing'
-      ],
-      saturday: [
-        'Kennywood Amusement Park trip',
-        'Pittsburgh sightseeing (optional)',
-        'Group dinner',
-        'Evening festivities'
-      ],
-      sunday: [
-        'Farewell breakfast',
-        'Departures'
-      ]
-    },
-    activities: [
-      'Kennywood Amusement Park visit',
-      'Pittsburgh sightseeing',
-      'Three Rivers exploration',
-      'Traditional OMP festivities'
+    dates: 'August',
+    stories: [
+      'Pittsburgh... What the heck is in Pittsburgh?? Well the OMP, of course.',
+      'This year started out the same as the others. People started showing up on Thursday and taking over the hotel. This year we had the best hotel by far. The lobby was not near the rooms, and we were allowed into the conference room early. Thursday was a relatively mild evening. The only bad, well, odd thing about Pittsburgh is that you can\'t just go to a packy (liquor store) or grocery store to buy beer. You must get it from a distributor. Now how weird is that? Skinless found out where to go and saved us all.',
+      'On Friday a small group headed to Kennywood. It was a small, family styled park, but lots of fun. A few of us watched a certain Admin and his wife on Aero 360, and we swear we could hear him scream. Friday night was another night of food, drinking and game playing. Seems this year\'s big game of the weekend was Phase 10. Other games on the table that weekend were Fluxx, Settlers of Catan, Articulate, Cranium, Carcassonne, Munchkin, and of course, UNO.',
+      'Saturday morning, wow! So hung over, and so many people hung over. But what a big breakfast! Thanks again to the admin for getting us those breakfast buffet tickets. (Tensor & Rastafan take a bow.) Anyways, it was a quite kind of morning, mainly just eating, talking, and trying to wake up.',
+      'Dog Punting has returned! Yup, it was back, you missed it. That was another great thing about Pittsburgh: we had a decent sized parking lot to get this off the ground this year. Such fun!',
+      'After Punting we went right into the UNO Tourney. Others decided to join in on other games, while a few groups decided to hit the movies and lunch.',
+      'On Saturday, at 5pm, The OMP has begun.',
+      'Like OMPs in the past all mudders were kicked out of the room to allow us to set things up. Once the doors opened, we had people piling in left and right. This year the registration table had a few new faces on it (or at least people doing new jobs). You were greeted by Pistil and Tensor, given a "Thingie" by Vryce, a ticket or two by Sorcha, your photo snapped by Stalin, and then it was off to see Rastafan & Nanook to buy a t-shirt.',
+      'Once everyone was herded through the registration process (which took a full hour), food arrived. Pizza! And *gasp* soda! (Pop for you Michigan people.) And no, no one got lost in this venture. There were also other munchies including gummy bears, chips and dip (shh, don\'t be calling Vraal that), and even a birthday cake for Fiona (Happy Birthday!). Oh yes, we can\'t forget those Goodberries (Hugs and Kisses) from the priests.',
+      'Once the pizza was gone and everyone was full, Tensor laid down the law of the Scavenger Hunt! He gave out the rules, the cameras, and the lists. Then the teams dispersed. Those of us who did not go on the Hunt sat around talking and gaming. Rastafan and his group were playing Phase 10, another group was playing Fluxx, another was playing Settlers, and I\'m sure there were more out there.',
+      'The Hunt is over, and the winners have been awarded the points given out. Now is what everyone has been waiting for: the raffle. There were so many door prizes this year, everyone left with something. And yes, the Admission Marbles were raffled off again. How could we break that sacred tradition?',
+      'It was an extremely long OMP this year. I think we finally wrapped it all up around 12:30/1am. Once it was all done, people went back to their rooms or outside to smoke, and a few stayed in the lobby.'
     ],
-    stories: "The Steel City forged new bonds among community members. Kennywood Amusement Park, one of America's classic traditional parks, provided thrills and nostalgia for attendees.",
-    photoCredits: ['Elfstone', 'Hanse']
+    photoCredits: ['Tensor', 'Adalius', 'Haplo', 'Kishpa', 'Permas', 'Nessa', 'Pendras', 'Fiona', 'Rama', 'Aijin', 'Valletta']
   },
 
   '2002': {
     year: '2002',
     location: 'Baltimore, MD',
-    dates: 'August 2-4, 2002',
-    venue: {
-      name: "Marriott's Hunt Valley Inn",
-      address: '245 Shawan Rd, Hunt Valley, MD 21031'
-    },
-    schedule: {
-      friday: [
-        'Check-in and registration',
-        'Hospitality suite gathering',
-        'Dinner at nearby restaurant',
-        'Evening socializing'
-      ],
-      saturday: [
-        'Inner Harbor trip',
-        'National Aquarium visit',
-        'Maryland crab feast dinner',
-        'Evening activities'
-      ],
-      sunday: [
-        'Farewell brunch',
-        'Departures'
-      ]
-    },
-    activities: [
-      'Baltimore Inner Harbor visit',
-      'National Aquarium tour',
-      'Maryland crab feast',
-      'Community celebrations'
+    dates: 'August',
+    stories: [
+      'Another year, another OMP. This year started like any other OMP. People gathering in the lobby trying to find their friends. Of course the hotel wasn\'t too happy about this and tried, unsuccessfully, to get us to go into a meeting room. But well you can\'t break a creator of habit, so the lobby won.',
+      'Friday afternoon as people can wandering in a small group decided to head to Burke\'s Cafe, a local bar/restaurant. Little did we know there was a handful on site drinking and eating. Even our friends from Ireland, Druss and Sadness, joined in for some American cuisine.',
+      'A few people headed over to the to see the National Aquarium to see the dolphin show and the fishes. Everyone had a good time there, well except for Skinless. I\'ve also heard that a group of about 20 or so headed over to the Eastern House for dinner around this time. Boy Baltimore must be glad we are gone already.',
+      'One of the highlights for Friday night was the trip to Edgar\'s. Imagine if you can about 35 mudders all walking down the street following Rastafan. Then these same people all filing into a pool hall. I remember hearing one person in the bar/pool hall say "Oh sh*t" as we came walking in.',
+      'There were more activities for Friday night, mostly drinking, gaming and *gasp* a few people mudded.',
+      'Saturday, the day we all came to Baltimore for, the OMP. The day started as your typical Saturday, but it was not to stay that way.',
+      'Around 2:00pm the Uno Tourney was started upstairs in the meeting room. Things were going great. Had a few people playing other games and even Groosh teaching a few people how to play MahJong. Pendras even brought his Gamecube and let people use it. Then it started, the fire alarms. The first alarm sounded about 4:30pm, everyone who was in the meeting room rushed to the exit, which couldn\'t be found. Next you hear Rastafan yell "We are all gonna die!". Believe it or not no one died, even though we did have to walk down thirteen flights of stairs. The next hour was spent with all of us gathering in the lobby waiting to be let back upstairs. After this every time a fire alarm would sound, which they did about five more times that night, someone would call downstairs and ask if it was a real fire or a false alarm. Luckily they were all false alarms.',
+      'Soon we were all back in the room and we were getting ready to start the registration table. This year we decided to get Tensor. As you all know, at least you should know, Tensor hates AOL. So as a special entrance \'fee\', everyone presented Tensor with an AOL CD. Needless to say there were over 100 of these by the time the registration process was over.',
+      'After the registration process was complete we dove right into the pizza and soda, don\'t ask Rastafan or Tensor about this. Needless to say most of the pizza was gone by the time the soda\'s showed up.',
+      'The hunt! We didn\'t waste any time jumping into the hunt this year. We did a lot of changes. For one a few items were listed on the mud a few days before the OMP. This gave a few a chance to bring those items with them. (Which not everyone had!) Also we decided to make the hunt more physical.',
+      'Once the hunt was completed we started the raffle. This year everyone walked away with something. Also how can we forget the Admission Marbles from the first OMP.',
+      'Over all the OMP this year was a lot of fun. After the official part of the party was over almost everyone stayed in the conference room. From what I heard they were still there at 6am the next morning. This year was one of the \'closest\' OMP\'s to date. What I mean is everyone pretty much hung out together. You didn\'t have a bunch of little groups doing their own thing.',
+      'If you have anything you would like to add to this page please mudmail Vryce. Until next year, take care.'
     ],
-    stories: "Charm City lived up to its name, charming visitors with its waterfront attractions and famous Maryland blue crabs. The Inner Harbor and National Aquarium were popular destinations for the group.",
-    photoCredits: ['Elfstone', 'Hanse']
+    photoCredits: ['Tensor', 'Anya', 'Luci', 'Jamil', 'Adalius', 'Solo', 'Sadness']
   },
 
   '2001': {
     year: '2001',
     location: 'Las Vegas, NV',
-    dates: 'August 3-5, 2001',
-    venue: {
-      name: 'Imperial Palace Hotel & Casino',
-      address: '3535 Las Vegas Blvd S, Las Vegas, NV 89109'
-    },
-    schedule: {
-      friday: [
-        'Check-in at Imperial Palace',
-        'Strip exploration',
-        'Group dinner',
-        'Casino and shows'
-      ],
-      saturday: [
-        'Pool party',
-        'Las Vegas attractions',
-        'Group dinner',
-        'Evening entertainment'
-      ],
-      sunday: [
-        'Farewell breakfast',
-        'Departures'
-      ]
-    },
-    activities: [
-      'Las Vegas Strip exploration',
-      'Casino gaming',
-      'Pool parties',
-      'World-class dining and shows'
+    dates: 'June',
+    stories: [
+      'From around the states, along with a few straggler from the UK, Australia and Canada, we invaded The Orleans in Vegas. Unlike past years there was no central meeting place, but that didn\'t stop us from finding one another and enjoying our \'mudder\' ways.',
+      'Thursday night was mainly the night for meeting up, drinking, gambling... in general hanging out.',
+      'Friday started with a small group heading to Hoover Dam, one of the seven man made wonders of the world. While those few were getting educated an even larger group headed off to see Tomb Raider. Friday night approximately twenty four mudders gathered together to go to the Tournament of Kings at the Excalibur Hotel. Just imagine twenty mudders all sitting together rooting for their team, which was Ireland btw. All laughing, drinking, eating without forks or knifes and pounding on the table when their man was competing. (We won\'t mention that the other four or so sat somewhere else, thus having a different team to cheer for.) Go Ireland! While others went back to the hotel after the show others headed off to the New York New York hotel to ride the Manhattan Express. After that hair thrilling ride the few who could stomach it headed over to the Stratosphere to ride the worlds highest roller coaster, The High Roller. A whooping 112 stories up.',
+      'Saturday, the big day. The day everyone came to Vegas for. The OMP. While most were taking it easy after a long night, well morning, of drinking, a few brave souls decided to test their luck in the casino. While others just walked around. About 2pm about twenty or so mudders headed up to the meeting room to find out once again, who is the top UNO Player. After the Uno Tourney we went full swing into the OMP itself. You had Nanook there checking everyone in who passed through the doors, while Sorcha gave out the raffle tickets and finally Tensor there testing out his new camera getting shots of everyone. Last stop on this wonderful entrance was the shirt and hat table. Where Rastafan was peddling the goods. Once everyone was in and settled we went right into the Scavenger Hunt.',
+      'Once the hunt was over and the teams tallied we started on the door prizes. This year someone, thoughtfully, brought about 50 pounds of Starbucks coffee. (Just what every mudder needs on those late night exp romps.) We also, once again, raffled off the coveted Admission Marbles from the first OMP.',
+      'Once all the door prizes were given out, the admin were presented with a rare surprise. For their dedication to the mud and providing us with what we call \'home\', they were each presented with a baseball cap. Each stitched with their names on the back and "3K" and a dragon on the front.',
+      'Now that all the prizes were given out onto the big games. Being we were in Las Vegas, we might as well play the part. This year players could take a portion of their exp or quest points and try to win more playing Blackjack. Some players did fairly well with our biggest winner netting almost 8 mil exp. Our biggest quest point winner took home an additional 600 qp\'s. But while there are winners, there are losers. And trust us, with Tensor, Rastafan and Pistil (not to forget Nooster who stepped in there for a few rounds) dealing, there were plenty of losers.',
+      'After the Official OMP there were the un-official parties, like always. There was even a rumor that someone ordered ladies of the night. Of course, we can\'t substantiate any of that.',
+      'Over all it was a great weekend for all. Much to do and see. And plenty of food on those buffets.'
     ],
-    stories: 'Sin City provided an unforgettable setting for one of the most legendary OMPs. Right on the Las Vegas Strip, the Imperial Palace put attendees in the heart of all the action. What happened at OMP Vegas... well, the memories live on.',
-    photoCredits: ['Elfstone', 'Hanse']
+    photoCredits: ['Tensor', 'Kishpa', 'Vryce', 'Miette', 'Gelfry', 'Ghostrider', 'Aliena', 'Gaffman', 'Eriond', 'Chuckle']
   },
 
   '2000': {
     year: '2000',
     location: 'Cincinnati, OH',
-    dates: 'August 4-6, 2000',
-    venue: {
-      name: 'Kings Island Resort (area hotel)',
-      address: 'Mason, OH (near Kings Island)'
-    },
-    schedule: {
-      friday: [
-        'Check-in and meet & greet',
-        'Hospitality suite opens',
-        'Evening socializing'
-      ],
-      saturday: [
-        "Paramount's Kings Island theme park all day",
-        'Evening gathering and dinner'
-      ],
-      sunday: [
-        'Farewell breakfast',
-        'Departures'
-      ]
-    },
-    activities: [
-      "Paramount's Kings Island theme park",
-      'Roller coaster adventures',
-      'Cincinnati chili sampling',
-      'Millennium celebrations'
+    dates: 'July',
+    stories: [
+      'Once again, mudders from all over took over the lobby of a hotel. This year\'s victim was the Radisson Hotel at the Cincinnati Airport. At almost any given time you could find a tired, weary eyed mudder looking for someone to talk with. (And I\'m sure the other guests enjoyed hearing about our "killing" ways.)',
+      'Friday night there were a variety of unofficial activities going throughout the wee hours of the morning. From trips to to local bars, catching the opening screening of X-Men, heading down to Kentucky to an infamous Cletus Drunkenfest to hanging out at the hotel getting to know each other.',
+      'Saturday started off with dog punting on the back lawn. People gathered around to see who could punt the dog, or other stuffed animal, the farthest. Unfortunately the dog was the least to get punted. As everyone decided that the sheep was more appropriate. We don\'t know how, but Ropmas gets our special kick award. For he managed to get the poor little bear stuck on the roof. From there we moved indoors for the Uno Tourney. This year we had thirty wide eyed Uno hungry participants. Everyone who joined in played their hearts out, but there can be only one true Uno champ.',
+      'About 5:30PM the main party started. Everyone lined up outside the room so that they could walk by the registration table. The players had a great time returning marbles to Peeron that they all apparently found. Thus adding to his Marble collection. Peeron also introduced to us Marbozo. After Marbozo dinner arrived, pizza and pop for everyone. And something that was needed before the main event of the party, the Scavenger Hunt. While the teams ran around looking for hunt items the few that stayed behind enjoyed themselves playing Uno or Articulate. (Little bit of advice here, if you sit next to Tensor in Uno, he just loves getting Draw 4\'s, Draw 2\'s and Skips.) The Official Party winded down with the raffle. Many great prizes were on hand, from t-shirts to a giant long sword. Also who can forget the coveted Admission Marbles from the first OMP. They made their way back again this year, and got raffled off to one lucky winner.',
+      'Over all it was a fun weekend for all. Many new faces attended this year, along with many of the old. We also had a few new events, and hopefully they will become a permanent addition to the OMP\'s.'
     ],
-    stories: "As the new millennium began, the community gathered near Cincinnati's famous theme park. Roller coasters and shared adventures created memories that would last for years to come. The Beast and Son of Beast were particular highlights.",
-    photoCredits: ['Elfstone']
+    photoCredits: ['Bshadowl', 'Acidviper', 'Cylet', 'Dynon', 'Ladydeath', 'Jygro', 'Crolack', 'Randi', 'Jander', 'Defina', 'Gelfry']
   },
 
   '1999': {
     year: '1999',
     location: 'Chicago, IL',
-    dates: 'August 6-8, 1999',
-    venue: {
-      name: 'The Palmer House Hilton',
-      address: '17 E Monroe St, Chicago, IL 60603'
-    },
-    schedule: {
-      friday: [
-        'Check-in at historic Palmer House',
-        'Hospitality suite opens',
-        'Downtown Chicago exploration',
-        'Group dinner'
-      ],
-      saturday: [
-        'Chicago sightseeing',
-        'Navy Pier (optional)',
-        'Group activities',
-        'Evening festivities'
-      ],
-      sunday: [
-        'Farewell breakfast',
-        'Departures'
-      ]
-    },
+    dates: 'July',
     activities: [
       'Historic Palmer House exploration',
       'Downtown Chicago sightseeing',
       'Navy Pier visit',
       'Lake Michigan activities'
     ],
-    stories: "The second official gathering took place at the legendary Palmer House Hilton, one of America's oldest and most prestigious hotels. Staying in such a grand historic venue added extra magic to the weekend. Chicago's grandeur matched the growing ambitions of the community.",
-    photoCredits: ['Elfstone']
+    stories: [
+      'Mudders from all over the world, rejoined for the second annual OMP in Northbrook, IL at the Raddison Hotel. Held on the weekend of July 20-21st, the 3K OMP involved over 150 people, from players to wizards and their friends who showed up to enjoy the festivites. For many of these people, they had only know each other via the text based MUD, and for others it was a reunion, of sorts, from the previous year.'
+      'The night\'s entertainment consisted of games, such as a scavenger hunt, door prize raffle, an UNO Tourney and ended with a belly dance from our own Haplo. And who could forget Rastafan wearing the rub glove on his head yelling, "I\'m a squid."',
+      'Prizes from the games and raffles ranged from quest points to lava lamps and the famed jar of marbles from the 1st OMP.',
+      'Minor door prizes: Stuffed dogs for punting, Lava lamps, Electronic UNO games, Various books, OMP T-shirts', 
+      'Major Door Prizes: Nintendo 64 System, The Offical Admission Marbles from the First OMP',
+      'Game Winners: UNO Tournament - Malk, Jamil, Zoicite',
+      'Game Winners: Scavenger Hunt - Shadow, Tigereyes, Vryce'
+    ],
+    photoCredits: ['Rouille', 'Malaclypse', 'Unique', 'Aliena']
   },
 
   '1998': {
     year: '1998',
-    location: 'Washington, DC',
-    dates: 'August 7-9, 1998',
+    location: 'Fairfax, VA',
+    dates: 'June 20-21, 1998',
     venue: {
-      name: 'Quality Hotel & Suites',
-      address: 'College Park/Beltsville, MD area'
+      name: 'Comfort Inn',
+      address: 'Fairfax, VA'
     },
-    schedule: {
-      friday: [
-        'Check-in and first meetings',
-        'Hospitality suite opens',
-        'Initial gathering - putting faces to names'
-      ],
-      saturday: [
-        'National Mall exploration',
-        'Smithsonian museums',
-        'Washington monuments',
-        'Group dinner and celebration'
-      ],
-      sunday: [
-        'Farewell gathering',
-        'Departures and promises to return'
-      ]
-    },
-    activities: [
-      'National Mall exploration',
-      'Smithsonian museum visits',
-      'Washington Monument and memorials',
-      'The historic first gathering of 3K players'
+    stories: [
+      'Mudders from all over the world converged at the Comfort Inn, in Fairfax, VA for the first Three Kingdoms Official Mud Party. Held on the weekend of June 20-21st, the 3K OMP involved over 150 people, from players to wizards and their friends who showed up to enjoy the festivities. For many of these people, they had only know each other via the text based MUD, and so meeting each other face to face was quite a joy (or surprise).',
+      'The night\'s entertainment consisted of games, such as a scavenger hunt and a word puzzles, to a prize raffle and a "best buns" competion, judged by the ladies. Prizes from the games and raffles ranged from bonus stats and quest points to a zip drive and free games.',
+      'A good time was had by all, and already plans are being laid for the second 3K Official Mud Party ... keep July 1999 open, and stay tuned!',
+      'Several prizes were earned and won during the night. From take-home door prizes, donate by players and wizards such as a Zip drive, to T-shirts, to Mud-based awards.',
+      'Minor door prizes: Wyrd, Malk, Tuesdai, Cheyenne, Kinslayer, Spathi,Crusher, Lovecraft, Arkeen, Donovan, Alika,Faerl, Kramer,Rastafan, Janina, Calvin, Guest1, Cerberus, Zarine, Sikk,Talamon, Blythe,Fortunato, Ladydeath, Kellori, George,Jamil, Bianca, Stilgar, Quick, Faze',
+      'Major Door Prizes: Paperback Wheel of Time Series: Phantasy, Hardback Wheel of Time Series: Vraal, Witch Globe: Taffy, Pure Silver Cross: Herzog, The Official Tensor (tm) Lamp: Dreamer, Blockbuster Gift Certificates: Pain, Shadowspawn, Rakk, Zaretal, Vermillion, Dagger: Mickey, The Official Admission Marbles: Frogurt, The Guest Signature Lists including the special Western quest hint: Waytu, The "real" art (a framed painting by "some guy" as Tensor put it): Wylikat',
+      'Games Winners: Word Scramble - Vryce, Arkeen, Donovan, Kilbane, Ravill Starflame, Mickey, Arawn, Kitila',
+      'Game Winners: Find the Character - William, Wylikat, Dreamer, Laur, Arawn',
+      'Game Winners: Scavenger Hunt - Relkin, Kilbaine, Arkeen, Donovan, Ravill, Waytu, Crolack, Javneh, Tuesdai, Frogurt, Vryce, Groosh, Riptide, Demonspawn, Xanth, Tsornin, Odyssey',
+      'Special Contests: Best Buns - Tranzic. Imported from Sweden, this blonde charmer wiggled and bounced for the judges. Rumour has it that other PKers now have a bounty on his butt, not just his head.'
     ],
-    stories: "Where it all began. The nation's capital hosted the very first Official MUD Party, bringing together players who had only known each other through text on a screen. For the first time, adventurers could put faces to the names they had quested alongside for years. This historic gathering established the tradition that would continue for over a decade. The excitement of finally meeting online friends in person was palpable, and lifelong friendships were forged that weekend.",
-    photoCredits: ['Elfstone']
+    photoCredits: ['Geba', 'Arkeen', 'Ladydeath', 'Janina', 'Quizzle', 'Crolack']
   }
 };
 

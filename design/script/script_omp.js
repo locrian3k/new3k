@@ -129,7 +129,7 @@ const ompData = {
       ]
     },
     activities: [
-      'Wait, did that say Sunday? You bet it did. One of the great things about OMPs in the past has been the opportunity to play games - board games, RPGs, card games etc. - games that you normally wouldn\'t have in your closet, or have time for, or have other players to play with. To this end, for 2012, we\'re doing a couple things new:',
+      'Wait, did that say Sunday? You bet it did. One of the great things about OMPs in the past has been the opportunity to play games - board games, RPGs, card games etc. - games that you normally would\'t have in your closet, or have time for, or have other players to play with. To this end, for 2012, we\'re doing a couple things new:',
       '1) We\'re inviting local game masters and gamers to organize the gaming aspect that was mentioned above. Not only will you be able to really get your gaming on, but you will be able to do so with organization, participation and game availability never before seen at an OMP.',
       '2) We\'re expanding to Sunday also to allow for even more gaming goodness.',
       'That said, the OMP 2012 will be two parts of one great whole!',
@@ -706,16 +706,24 @@ function openModal(ompId) {
     `;
   }
 
-  // Activities section (only show if no schedule, to avoid redundancy)
-  if (data.activities && data.activities.length > 0 && !data.schedule) {
-    bodyHTML += `
-      <div class="modal-section">
-        <h3><i class="fa-solid fa-calendar-check"></i> Activities</h3>
-        <ul>
-          ${data.activities.map(activity => `<li>${activity}</li>`).join('')}
-        </ul>
-      </div>
-    `;
+  // Activities section
+  // Show if no schedule, OR if activities contain detailed content (long text indicates explanatory content)
+  if (data.activities && data.activities.length > 0) {
+    const hasDetailedActivities = data.activities.some(activity => activity.length > 100);
+
+    if (!data.schedule || hasDetailedActivities) {
+      const sectionTitle = hasDetailedActivities ? 'About This Event' : 'Activities';
+      const sectionIcon = hasDetailedActivities ? 'fa-circle-info' : 'fa-calendar-check';
+
+      bodyHTML += `
+        <div class="modal-section">
+          <h3><i class="fa-solid ${sectionIcon}"></i> ${sectionTitle}</h3>
+          <ul>
+            ${data.activities.map(activity => `<li>${activity}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
   }
 
   // Stories/Memories section

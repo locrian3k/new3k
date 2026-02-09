@@ -18,7 +18,7 @@ const ompData = {
       name: 'Crowne Plaza Detroit Metro Airport',
       address: '8000 Merriman Rd, Romulus, MI 48174',
       phone: '(734) 729-2600',
-      groupName: '3Kingdoms OMP 2026',
+      groupName: 'The Marble Group',
       roomRate: '$109/night (single/double occupancy)',
       amenities: ['Free parking', 'Complimentary breakfast', 'Free WiFi', 'Indoor pool', 'Fitness center'],
       coverCharge: '$25 per person (covers hospitality suite snacks & drinks)',
@@ -72,8 +72,6 @@ const ompData = {
       coverCharge: '$10/person at the door. Kids 12 and under free',     
     },
     showRideshare: true,
-    activities: [],
-    stories: 'The Windy City welcomed adventurers once again for a weekend of reconnecting with old friends and making new memories. Chicago proved to be a perennial favorite location for the community.',
   },
 
   '2012': {
@@ -173,160 +171,171 @@ const ompData = {
   '2010': {
     year: '2010',
     location: 'Chicago, IL',
-    dates: 'July 30 - August 1, 2010',
+    dates: 'August 12-14',
     venue: {
-      name: "Crowne Plaza Chicago O'Hare",
-      address: '5440 N River Rd, Rosemont, IL 60018'
+      name: "Sheraton Suites, Elkgrove Village",
+      address: 'Chicago, IL',
+      phone: '(800) 325-3535',
+      groupName: 'The Marble Group',
+      roomRate: '$79 up to Quad occupancy',
+      amenities: ['Free parking'],
     },
-    activities: [
-      'Deep dish pizza pilgrimages',
-      'Chicago skyline sightseeing',
-      'Hotel suite parties',
-      'MUD gaming marathons'
-    ],
-    stories: "Chicago's convenient central location and excellent amenities made it a favorite destination. The Crowne Plaza O'Hare provided easy access for travelers flying in from across the country.",
-    photoCredits: ['Cherek']
+    showRideshare: true,
   },
 
   '2009': {
     year: '2009',
     location: 'Romulus, MI',
-    dates: 'July 31 - August 2, 2009',
+    dates: 'August 5-8',
     venue: {
-      name: 'Crowne Plaza Detroit Metro Airport',
-      address: '8000 Merriman Road, Romulus, MI 48174'
+      name: 'Clarion Hotel - Detroit Metro Airport',
+      address: '8600 Merriman Road, Romulus, MI 48174',
+      phone: '(734) 728-7900',
+      groupName: 'The Marble Group',
+      roomRate: '$72/night',
+      amenities: ['Free parking', 'Free airport shuttle', 'Free Wifi', 'Free continental breakfast (hot breakfast only $6 more)'],      
     },
-    activities: [
-      'Detroit area exploration',
-      'Automotive heritage tours',
-      'Traditional OMP activities',
-      'Community bonding sessions'
-    ],
-    stories: 'Near the Detroit Metro Airport, players gathered for another Michigan meetup. The accessible location made it easy for adventurers to fly in from across North America.',
-    photoCredits: ['Cherek']
+    showRideshare: true,
   },
 
   '2008': {
     year: '2008',
     location: 'Indianapolis, IN',
-    dates: 'August 1-3, 2008',
+    dates: 'August 6-9',
     venue: {
-      name: 'Crowne Plaza Indianapolis Airport',
-      address: '2501 S High School Rd, Indianapolis, IN 46241'
+      name: 'Radisson Hotel Indianapolis Airport',
+      address: 'Indianapolis, IN',
+      phone: '(888) 201-1718',
+      groupName: 'The Marble Group',
+      roomRate: '$89/night',
+      amenities: ['Free parking', 'Free airport shuttle', 'Free Wifi'],       
     },
+    showRideshare: true,
     activities: [
-      'Indianapolis Motor Speedway area',
-      'Downtown Indianapolis exploration',
-      'Hoosier hospitality experiences',
-      'Gaming and socializing'
+      'Texas Holdem Tourney',
+      'Wizard Dinner',
+      'Euchre Tourney',
+      'Dog Punting',
+      'Uno Tourney',
+      'Marble Hunt'
     ],
-    stories: 'The Crossroads of America lived up to its name, providing a central meeting point for players from all directions. Indianapolis offered a perfect blend of attractions and Midwestern hospitality.',
-    photoCredits: ['Cherek']
+    schedule: {
+      thursday: [
+        'Free Day (no official scheduled activities)'
+      ],
+      friday: [
+        '1-4pm - Texas Holdem Tournament (Host: Riekl)',
+        '6-8pm - Wizard Dinner (Host: The Marble Group)',
+        '9pm-midnight - Euchre Tournament (Host: Rastafan)'
+      ],
+      saturday: [
+        '11am-noon - Dog Punting (Host: Darrkin)',
+        'noon-1pm - Free Time (nothing scheduled)',
+        '1-4pm - Uno Tournament (Host: Calaran)',
+        '4-5pm - Marble Hunt',
+        '5-7pm - OMP Registration, Marble turn-in, dinner, fun!',
+        '7-9:30pm - Scavenger hunt (Host: Riekl)',
+        '9:30-10pm - Scavenger hunt Judging',
+        '10pm-midnight - Game/tournament awards, door prizes, more fun!'
+      ],
+    },
   },
 
   '2007': {
     year: '2007',
     location: 'Chicago, IL',
-    dates: 'August 3-5, 2007',
+    dates: 'August 2-4',
     venue: {
-      name: "Crowne Plaza Chicago O'Hare",
-      address: '5440 N River Rd, Rosemont, IL 60018'
+      name: "Sheraton Suites, Elkgrove Village",
+      address: 'Chicago, IL',
+      phone: '(888) 627-7052',
+      groupName: 'The Marble Group',
+      roomRate: '$89.00 up to Quad occupancy',
+      amenities: ['Free parking'],      
     },
+    showRideshare: true,
+    activities: [
+      'Texas Holdem Tourney',
+      'Wizard Dinner',
+      'Euchre Tourney',
+      'Dog Punting',
+      'Uno Tourney',
+      'Marble Hunt'
+    ],    
     schedule: {
+      thursday: [
+        'Free Day (no official scheduled activities)'
+      ],
       friday: [
-        'Check-in and meet & greet',
-        'Dinner at Claim Jumper (7:30 PM)',
-        'Late night socializing'
+        '1-5pm - Texas Holdem Tournament (Host: Riekl)',
+        '5:30-7:30pm - Wizard Dinner (Host: Tensor/Rastafan)',
+        '8-10pm - Euchre Tournament (Host: Rastafan)'
       ],
       saturday: [
-        'Breakfast at hotel',
-        'Open activities and exploration',
-        'Group dinner',
-        'Evening festivities'
+        '11am-noon - Dog Punting (Host: Eriond)',
+        'noon-1pm - Free Time (nothing scheduled, go have lunch!)',
+        '1-3pm - Uno Tournament (Host: Riekl)',
+        '3-4pm - Marble Hunt',
+        '4-6pm - OMP Registration, Marble turn-in, dinner, fun!',
+        '6-8:30pm - Scavenger hunt',
+        '8:30-9pm - Judging',
+        '10pm-midnight - Game/tournament awards, door prizes, more fun!'
       ],
-      sunday: [
-        'Farewell breakfast',
-        'Check-out and departures'
-      ]
     },
-    activities: [
-      'Dinner at Claim Jumper restaurant',
-      'Chicago-style dining',
-      'Gaming tournaments',
-      'Community celebrations'
-    ],
-    stories: 'Another successful Chicago gathering brought the community together in the Windy City. The familiar venue and vibrant city provided the perfect backdrop for another memorable OMP.',
-    photoCredits: ['Cherek', 'Hanse']
+    photoCredits: ['Chewbackon', 'Elektra', 'Riekl', 'Molly', 'Icelady', 'Kwin', 'Pheonyx']
   },
 
   '2006': {
     year: '2006',
     location: 'Williamsburg, VA',
-    dates: 'August 4-6, 2006',
+    dates: 'August',
     venue: {
-      name: 'Crowne Plaza Williamsburg at Fort Magruder',
-      address: '6945 Pocahontas Trail, Williamsburg, VA 23185'
+      name: 'Best Western Patrick Henry Inn',
+      address: 'Williamsburg, VA'
     },
-    schedule: {
-      friday: [
-        'Check-in and registration',
-        'Meet & greet in hospitality suite',
-        'Evening socializing'
-      ],
-      saturday: [
-        'Busch Gardens trip (optional)',
-        'Colonial Williamsburg exploration (optional)',
-        'Water Country USA (optional)',
-        'Group dinner and festivities'
-      ],
-      sunday: [
-        'Farewell gathering',
-        'Check-out'
-      ]
-    },
-    activities: [
-      'Busch Gardens theme park trip',
-      'Colonial Williamsburg historic tours',
-      'Water Country USA water park',
-      'Evening social gatherings'
+    stories: [
+      'Nothing says "3K OMP" like a group of male mudders (are there any other kind?) clustered outside of a hotel entrance, some smoking, some flapping, but generally just disturbing the entire population of a city. Or in the case of 2006, a small town in the middle of Nowhere, Virginia called Williamsburg. This year, however, the hotel got smart and gave us our very own entire building to ransack, corralling us mostly away from their other clientele.',
+      'The name of the 2006 OMP should have been "Guess the Hotel!". We started off with reservations at the Clarion Hotel George Washington Inn, and then got moved somewhere else, and then back to the GWI, and finally ended up at the Best Western Patrick Henry Inn (notice a common theme of names here?). And this is where we were to leave our permanent mark for 2006.',
+      'Many people arrived Thursday, herding into our conference room/building like the good sheep that we are, and enjoying the company of the other early-arrivers. Pistil quickly brought out his cache of board and card games that take hours (and sometimes days) to complete, and this year saw the introduction of Hive and Risk: Godstorm along with old favorites like Axis & Allies, Set, Shogun, Settlers of Catan, Articulate, and of course, Euchre. The gameplay proceeded well into the wee hours of morning, as usual.',
+      'Friday saw the arrival of most of the rest of the attendees, all having found some way to make the 40 minute drive from the airport to the hotel. There was much playing of games, and thanks to several people who brought wireless networking equipment, we were able to get our laptops online in the conference room. The wireless also allowed Targ and Sorva to set up webcams for those not fortunate enough to attend to be able to watch the festivities. There was a projector hooked up to Zion\'s laptop as well, giving us all the opportunity to watch Rastafan get on 3K and proceed to try to kill Targ and others several times by setting a Cupid upon them. Ahhh, good times.',
+      'Friday evening, we had the euchre tournament, which ended in a tie between Bigfoot and Tryst. But in a tie-breaker match where they were allowed to pick their partner, Bigfoot took the win.',
+      'On Saturday, Riekl hosted the annual Dog Punting contest at 11 AM, which Kryllith won, and the ever-present Uno Tournament at 1 PM. Waya won the Best of the Best, and Azazel the Best of the Worst.',
+      'At 4 PM Saturday, the conference room was cleared of all but wizards, doors were locked, and curtains were drawn in order to set up for the Official OMP Event. Prizes were organized, ticket buckets labeled, bananas stacked (this will be explained in a moment), and nametags issued. At around 5 PM, people filtered back into the conference room to find a veritable cornucopia of door prizes, fruit, and free pizza. Soon afterwards, the Scavenger Hunt was announced and commenced. Hours later when the scores were finally tabulated (punctuated by an endless droning of the Lumberjack Song), the winner was the team of Sparkle, Affeinec, William, and Dreamer.',
+      'After the scavenger hunt, a new event was introduced this year: The Marble Hunt. Chewbacon ran around the conference building like a chicken with its head cut off, hiding over 100 marbles while everyone else was doing their scavenger hunting. It was announced that each marble found would equate to 1 free Quest Point on the mud, with the 2 large marbles worth 25 each. They were placed mostly in plain sight, ranging anywhere from bushes to payphone coin returns to light fixtures, but by the time it got started, it was almost too dark to do this hunt effectively. But despite the darkness, this seemed to be a huge hit with everyone, and in coming years, the hunt will be held earlier in the day.',
+      'Once the madness of the Marble Hunt was finished, the prize raffle began. This year\'s pile of prizes was enormous, and grand prizes included swords, Xbox\'s, Nintendo\'s, several GPS units, and various other yummy treats. Rastafan took home the marbles.',
+      'Total Attendance for the official event: 70, including 2 babies.',
+      'But all of this pales in comparison to the real Main Event of OMP 2006, Williamsburg: FREE BANANAS! Whether they were being thrown at a horse in a dark field, or whipped across a conference room like a boomerang, the enormous stack of free bananas played a major role in everyone\'s OMP 2006 experience.',
+      'And like the \'Wyoming!\' and \'558!\' of years past, this year brought a new buzzword to the very specific dialect of OMP inside jokes on 3 Kingdoms:',
+      'HUANNY!',
+      'noun - 1. The long, high-pitched sound made by a horse when a banana is hurled at its rear-end in a dark pasture.',
+      '[From Old Targish huannyen, to huanny, probably of imitative origin.]',
     ],
-    stories: 'Historic Williamsburg provided a unique and memorable backdrop for the gathering. With options ranging from roller coasters at Busch Gardens to stepping back in time at Colonial Williamsburg, there was something for everyone.',
-    photoCredits: ['Cherek']
+    photoCredits: ['Sorva', 'Zorbaine', 'Estarlol', 'Targ', 'Chewbacon', 'Riekl']
   },
 
   '2005': {
     year: '2005',
     location: 'Romulus, MI',
-    dates: 'August 5-7, 2005',
+    dates: 'August',
     venue: {
-      name: 'Crowne Plaza Detroit Metro Airport',
-      address: '8000 Merriman Rd, Romulus, MI 48174'
+      name: 'Detroit Metro Airport',
+      address: 'Romulus, MI'
     },
-    schedule: {
-      friday: [
-        'Check-in begins',
-        'Pizza party in suite (evening)',
-        'Socializing and gaming'
-      ],
-      saturday: [
-        'Henry Ford Museum / Greenfield Village trip',
-        'Downtown Detroit exploration (optional)',
-        'Group dinner',
-        'Evening activities'
-      ],
-      sunday: [
-        'Farewell breakfast',
-        'Departures'
-      ]
-    },
-    activities: [
-      'Henry Ford Museum visit',
-      'Greenfield Village exploration',
-      'Pizza party',
-      'Detroit area sightseeing'
+    stories: [
+      'This year\'s OMP was held just a few hundred yards from the Detroit Metro airport which allowed for easy transport.',
+      'The conference room was a good size for our group and we had little difficulty in having plenty of room for multiple games and mudding sessions. Yes people still fly thousands of miles to play 3k from OMP, luckily wireless internet was freely available from the hotel!',
+      'Thursday was a very slow day in the conference room, several people went to Cedar Point just a few hours away for a day of thrill seeking. There was enough left to get in a game of Risk 2210 (Original Risk was not even brought out this year, 2210 has taken over!). At another table a game of Texas Hold\'em also sprung up to entice the gamers.',
+      'Friday saw a great deal of gaming activity as more people arrived and those from Cedar Point returned. Euchre, Risk 2210, Axis & Allies, Shogun (wow what a long game!), and Articulate dominated the conference room. There were groups of people just chatting away, and of course the ever present mudders and OMP camera capturing it all for those poor souls who could not attend in person.',
+      'Friday night saw a fearsly competitive Euchre tournament with Rastafan coordinating the event and somehow not killing anyone with the 5000 "where do I go now??" questions.',
+      'Finally the main event was upon us, Saturday ! OMP !!',
+      'Saturday got off to a start with yet another game of Risk 2210, which was quickly interrupted as it was time for Dog Punting !! What an event, we had shoes flying, whiffs, and expert soccer trained punts. This was a very fun event and well coordinated! Upon the conclusion everyone shuffled back inside to get a quick bite to eat before the UNO tournament began.',
+      'UNO was a fairly drama free event, most everyone knew how to play and there was a shocking lack of (noticeable) cheating. A good time was had by all with the losers slowly filtering out to Axis & Allies and other strategy games which dominated the OMP free time.',
+      'Oops ! It\'s 4pm, everyone out for setup time! Everyone was kicked out of the conference room so the hosts could prepare for a fun filled evening. When everyone was let back in there were a lot of "ooh" and "ahh" and "MINE!" as eyes fell over the truly extraordinary door prizes to be won this year. There was a well organized line to submit your VAF and get your yellow (low end) and red (high end) prize tickets. You could also choose to enter the drawing for the 3k Marbles but you had to swear in blood that you would return next year with them. There were guild posters on the walls for everyone to sign in and show their guild patronage.',
+      'There was some time for chit chat as people put faces to names and forged friendships. There was more then enough food various pizza and sub offerings to suit anyone\'s taste, and unlike last year the subs were actually sliced! Shortly, it was time for the Scavenger Hunt! Teams were quickly formed and off they went, a bunch of half drunk mudders scavenging across a strange city for obscure items and pictures. Those not participating talked about going to a strip club, played Shogun and other strategic games, you might think it odd that discussion would occur or that the games would win out, but not if you knew mudders.',
+      'After the conclusion of the Scavenger judging (with some very odd scenes and pictures resulting!) it was time for the door prize drawings! The way it worked this year was everyone paid $10 and get one strip of red tickets, for $20 you got 2 strips. Everyone had one yellow ticket. You took your red tickets, writing your name on them and placed them into styrofoam buckets which you could not touch or see how many tickets were inside. The drawings were conducted with much ooh\'ing and aahing, some people winning multiple grand prizes, some not winning any. However everyone was guaranteed a prize and those were the yellow ticket items, many movies, books and other odds and ends prizes were up for grabs! Everyone was a winner except for the now famous \'558\' ticket holder. The winner of the 3k marbles was Riekl (and yes he brought them back in 2006!).',
+      'A very successful OMP both in fun had and in lack of police being called on us! See you all next year !'
     ],
-    stories: 'Michigan hosted the community once again, with the Detroit area providing plenty of attractions. The Henry Ford Museum and Greenfield Village offered a fascinating glimpse into American history and innovation.',
-    photoCredits: ['Cherek', 'Elfstone', 'Hanse']
+    photoCredits: ['Riekl', 'Miyurachi', 'Crolack']
   },
 
   '2004': {
@@ -752,11 +761,20 @@ function openModal(ompId) {
 
   // Stories/Memories section
   if (data.stories) {
+    let storiesHTML = '';
+    if (Array.isArray(data.stories)) {
+      // Array of paragraphs
+      storiesHTML = data.stories.map(p => `<p>${p}</p>`).join('');
+    } else {
+      // Single string
+      storiesHTML = `<p>${data.stories}</p>`;
+    }
+
     bodyHTML += `
       <div class="modal-section">
         <h3><i class="fa-solid fa-book-open"></i> Memories</h3>
         <div class="modal-story">
-          <p>${data.stories}</p>
+          ${storiesHTML}
         </div>
       </div>
     `;

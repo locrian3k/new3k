@@ -26,7 +26,7 @@
 		      <div class="footer-nav-column">
 		        <h3>Community</h3>
 		        <ul>
-		          <li><a href="/community/flyers/index.php">Download Flyers</a></li>
+		          <!-- <li><a href="/community/flyers/index.php">Download Flyers</a></li> -->
 		          <li><a href="http://forums.3k.org" target="_blank">Forums <i class="fas fa-external-link-alt"></i></a></li>
 		          <li><a href="/community/omp/index.php">Official Mud Parties</a></li>
 		          <li><a href="/community/wholist.php">Who's Online</a></li>

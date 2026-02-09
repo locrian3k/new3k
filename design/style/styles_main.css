@@ -2099,9 +2099,7 @@ main { margin-top: 5rem; }
 	align-items: center;
 	justify-content: center;
 	gap: var(--space-md);
-	margin-top: var(--space-xl);
 	padding-top: var(--space-lg);
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .realm-nav-links span {

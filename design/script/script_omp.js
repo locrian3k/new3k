@@ -679,7 +679,7 @@ function openModal(ompId) {
   if (data.photoCredits && data.photoCredits.length > 0) {
     bodyHTML += `
       <div class="modal-section modal-credits">
-        <p><i class="fa-solid fa-camera"></i> Photos contributed by: ${data.photoCredits.join(', ')}</p>
+        <p><i class="fa-solid fa-camera"></i> Many thanks to the following event photographers: ${data.photoCredits.join(', ')}</p>
       </div>
     `;
   }

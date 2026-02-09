@@ -64,34 +64,78 @@ const ompData = {
     dates: 'August 8-10, 2013',
     venue: {
       name: 'Sheraton Suites Elk Grove Village',
-      address: 'Chicago, IL'
+      address: 'Chicago, IL',
+      phone: '(800) 325-3535 or (847) 290-1600',
+      groupName: 'The Marble Group',
+      roomRate: '$89 up to Quad occupancy',
+      amenities: ['Free parking'],
+      coverCharge: '$10/person at the door. Kids 12 and under free',     
     },
-    activities: [
-      'Group dinners at local restaurants',
-      'Gaming sessions',
-      'Exploring Chicago attractions',
-      'Traditional 3K socializing'
-    ],
+    showRideshare: true,
+    activities: [],
     stories: 'The Windy City welcomed adventurers once again for a weekend of reconnecting with old friends and making new memories. Chicago proved to be a perennial favorite location for the community.',
-    photoCredits: []
   },
 
   '2012': {
     year: '2012',
     location: 'Lansing, MI',
-    dates: 'August 3-5, 2012',
+    dates: 'August 9-12, 2012',
     venue: {
-      name: 'Causeway Bay Hotel',
-      address: '6820 S Cedar St, Lansing, MI 48911'
+      name: 'Okemos Conference Center',
+      address: 'Okemos, MI',
+      phone: '(734) 729-2600',
+      groupName: 'The Marble Group',
+      roomRate: '$85 double occupancy',
+      amenities: ['Free parking', 'Complimentary breakfast', 'Free WiFi'],
+      coverCharge: [
+        '4-day Full-Access Pass: $50 per person (3K/3Sers & guests only)',
+        'Saturday & Sunday Gaming Pass: $20 per person',
+        'Saturday Only Gaming Pass: $15 per person',
+        'Sunday Only Gaming Pass: $10 per person',
+        '*Kids 12 and under are free with an adult (though they can\'t win prizes',
+        '*Family rates available - inquire for details',
+        '*If you VAF $75 or more in the upcoming OMP VAF drive, you\'ll get a 4-day Full-Access pass FREE! (on top of whatever else the OMP drive will be offering this year)'
+      ],     
+    },
+    schedule: {
+      thursday: [
+        '3K/3S Exclusive Attendance',
+        'Dog punting',
+        'Card games',
+        'Marble hunt',
+        'Poker'
+      ],
+      friday: [
+        '3K/3S Exclusive Attendance',
+        'Dog punting',
+        'Card games',
+        'Marble hunt',
+        'Poker',
+        'much more, plus door prizes!'        
+      ],
+      saturday: [
+        'Open gaming for everyone',
+        'Games',
+        'Games',
+        'More games',
+        'Discussions, workshops, vendors, and door prizes given away throughout both Saturday and Sunday'
+      ],
+      sunday: [
+        'Open gaming for everyone',
+        'Games',
+        'Games',
+        'More games',
+        'Discussions, workshops, vendors, and door prizes given away throughout both Saturday and Sunday'
+      ]
     },
     activities: [
-      'Hotel hospitality suite gatherings',
-      'Local restaurant excursions',
-      'Gaming and socializing',
-      'Late-night conversation sessions'
+      'Wait, did that say Sunday? You bet it did. One of the great things about OMPs in the past has been the opportunity to play games - board games, RPGs, card games etc. - games that you normally wouldn\'t have in your closet, or have time for, or have other players to play with. To this end, for 2012, we\'re doing a couple things new:',
+      '1) We\'re inviting local game masters and gamers to organize the gaming aspect that was mentioned above. Not only will you be able to really get your gaming on, but you will be able to do so with organization, participation and game availability never before seen at an OMP.',
+      '2) We\'re expanding to Sunday also to allow for even more gaming goodness.',
+      'That said, the OMP 2012 will be two parts of one great whole!',
+      'Thursday & Friday : The OMP as you always have known it - dog punting, card games, marble hunt, poker, lots of other stuff and of course, the awesome door prizes. This portion of the event is for 3K/3Sers and their guests only. To be clear, the main OMP event (door prizes, etc.) has historically been on Saturday night, this year it\'s on Friday night.',
+      'Saturday & Sunday : Games, games and more games. Plus, there will be discussions, workshops, vendors and door prizes given away throughout both days. Plus plenty of places to just hang out and socialize. This portion of the event is open to any and all gamers.',
     ],
-    stories: "Michigan's capital city hosted a memorable gathering where players from across the continent came together. The Causeway Bay provided an excellent home base for the weekend's festivities.",
-    photoCredits: ['Cherek']
   },
 
   '2011-summer': {

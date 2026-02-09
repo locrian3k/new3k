@@ -69,7 +69,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="timeline-content">
             <span class="timeline-year">2013</span>
             <h3>Chicago, IL</h3>
-            <p>August 2-4 at Hampton Inn & Suites</p>
+            <p>August 8-10 at Sheraton Suites Elk Grove Village</p>
           </div>
         </div>
 
@@ -79,7 +79,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <div class="timeline-content">
             <span class="timeline-year">2012</span>
             <h3>Lansing, MI</h3>
-            <p>August 3-5 at Causeway Bay Hotel</p>
+            <p>August 9-12 at Okemos Conference Center</p>
           </div>
         </div>
 

@@ -105,6 +105,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </div>
           <h3>Tensor</h3>
           <span class="archon-order order-guilds">Guilds</span>
+          <span class="archon-order order-retired">Retired</span>
           <p>
             Necromancers Guild, Raveloft, Ant Caves, Der'Thalas, Katin, Lonely Keep,
             and countless other areas and systems.
@@ -190,11 +191,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
 
         <div class="wizard-card">
-          <div class="wizard-icon order-guilds">
-            <i class="fa-solid"></i>
+          <div class="wizard-icon order-multi">
+            <i class="fa-solid fa-hat-wizard"></i>
           </div>
           <h3>Frank</h3>
-          <span class="wizard-order"></span>
+          <span class="wizard-order order-multi">Multi-Order</span>
           <p>Mage Guild, Guild maintenance, Realm development</p>
         </div>
 

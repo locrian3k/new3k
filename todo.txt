@@ -4,7 +4,6 @@ TODO update all -'s to be commas
 
 TODO hm help files and many more aren't loading?
 
-TODO go through images and remove what's not used
+TODO Add primer code
 
-TODO remove backup files
-
+TODO Ask about moving VAFs page out of support and into primary navigation (since it's the main reason current players visit the website)

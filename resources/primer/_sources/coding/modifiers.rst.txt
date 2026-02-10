@@ -1,0 +1,158 @@
+Modifiers
+=========
+
+.. note::
+  Pretty much this entire section is an advanced topic. They are only really needed when making complex code, or when making mudlib code that will be utilized by the general wizard public later on.
+
+Modifiers are keywords that can be used before global variables, functions, and the 'inherit' keyword.
+
+To use a modifier it is simply placed before the declaration:
+
+.. code-block::
+
+  //For variables:
+  <modifier> <type> <variable_name>;
+
+  //For inheritables:
+  <modifier> functions <type> inherit <inheritable file>;
+  <modifier> variables <type> inherit <inheritable file>;
+  <modifier> functions <modifier> variables <type> inherit <inherit_file>;
+
+  //For function prototypes:
+  <modifier> <type> function_name(<arguments);
+
+  //For functions:
+  <modifier> <type> function_name(<arguments>)
+  {
+    //Code
+  }
+
+Which modifiers can be used depends on what is being modified:
+
+Function Modifiers
+------------------
+
+private - Function can only be called from within the same file. Files that inherit this file cannot call this function.
+
+protected - Function can be called from within the object, or from files that inherit this file, but not with :code:`call_other()`.  Other files cannot call this function. Instead, closures or :code:`symbol_function()`  has to be used. This is preferred over 'static' as that is an older modifier.
+
+static - The function can be called from within the object or from files that inherit this file, normally or with :code:`call_other()`,  but the function cannot be called from other files. 'static' is not recommended in the new-driver.
+
+visible - This is the default modifier, and if you do not specify a modifier, this is what is used. Function can be called from any file. This can be overridden in inheritance by using a modifier on the inherit keyword.
+
+public - Similar to visible, but cannot be overriden by the inherit modifier.
+
+nomask - This function cannot be overridden by an inheriting file. Attempting to mask will result in an error.
+
+varargs - This allows a function to not require all arguments to be passed. Any arguments that are omitted will instead be  passed as value 0.
+
+deprecated - Using this will mark a function as deprecated. It will throw a warning to the log at compile time.
+
+Global Variable Modifiers
+-------------------------
+
+private - Variable can only be accessed inside this file. Not even files that inherit this file can access the variable.
+
+nosave - Variable is not saved when :code:`save_object()`  is called, nor does the driver attempt to restore when :code:`restore_object()`  is called.
+
+static - The old name for nosave. Now deprecated from use.
+
+protected - The variable can be accessed from files that inherit this file. Very similar to 'visible' but does not show up in :code:`variable_exists()`  function, and the modifier will show up in :code:`variable_list()`.
+
+visible - This is the default modifier, and if you do not specify a modifier, this is what is used. Variable can be accessed from any file that inherits this file.
+
+public - This declares the variable public. Using modifiers on the inherit keyword cannot override this. Useful to keep a variable 'visible' regardless of an inheritables modifiers.
+
+deprecated - A warning is issued if the variable is used.
+
+.. note::
+  It is bad practice to allow inheritables to directly access internal variables. Instead, decalre them as private and offer helper functions to set and query them instead to allow the code the maximum control over how they are interacted with.
+
+Inheritance Modifiers
+---------------------
+
+When you inherit a file, you can utilize a modifier to change how the functions, variables, or both are treated. It does not let you pick and choose which functions/variables are changed however, it will change any that it is allowed to. Some types, such as public variables, cannot be changed regardless of the modifier used with the inherit statement, as noted in the lists above.
+
+Specifically, using the 'public' modifier will never change a private or protected function/variable.
+
+The following table shows the result of function/variable modifiers, and the outcome of given inheritance modifiers on them:
+
+.. list-table:: **Inheritance Modification To Variables/Functions**
+  :header-rows: 1
+  :stub-columns: 1
+  :align: center
+
+  * - Function/Variable Modifier
+    - public
+    - visible
+    - static
+    - protected
+    - private
+  * - public
+    - public
+    - public
+    - public
+    - public
+    - public
+  * - visible
+    - public
+    - visible
+    - static
+    - protected
+    - private
+  * - static
+    - static
+    - static
+    - static
+    - protected
+    - private
+  * - protected
+    - protected
+    - protected
+    - protected
+    - protected
+    - protected
+  * - private
+    - private
+    - private
+    - private
+    - private
+    - private
+
+There is also one additional modifier for the inherit statement:
+
+virtual - Inherits the given object virtually. This only makes sense in a complex inherit tree where the file may be inherited twice. When virtual, the variables will only exist once.
+
+Example: A inherits B and C. B inherits D. C inherits D. Meaning D is inherited by two different files, both inherited by A.
+
+::
+
+  Virtual:                Non-Virtual:
+     A                        A
+    / \                      / \
+   B   C                    B   C
+    \ /                     |   |
+     D                      D   D
+
+As you can see, with the virtual modifier, D is only actually inherited once, meaning both chains use the same variables. In the non-virtual version, the variables end up being separate and can have different values depending on which branch you access them, B or C.
+
+This is a complicated subject, and not very important to know for most wizards, but if you are deep in the coding weeds, it might be important to know at that time.
+
+Default Modifier
+----------------
+
+The last bit with modifiers is you can set all variables or functions in your file to default to a specific modifier, rather than having to type it on each and every one by use of the 'default' keyword.
+
+.. code-block::
+
+  default private;
+
+This will make all variables and functions private unless they are specifically preceded with a modifier.
+
+.. code-block::
+
+  default private variables public functions;
+
+This will set only variables private, all functions shall be defaulted public.
+
+Only 'private', 'protected', 'visible', and 'public' can be used for both functions and variables. Functions also allow 'static'. No other modifiers can be used with the 'default' keyword.

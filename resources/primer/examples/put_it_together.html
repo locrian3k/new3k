@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Putting It Together &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Wizzing" href="../coding/wizzing.html" />
+    <link rel="prev" title="Coding A Monster" href="monster.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../coding/wizzing.html" title="Wizzing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="monster.html" title="Coding A Monster"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Putting It Together</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="putting-it-together">
+<h1>Putting It Together<a class="headerlink" href="#putting-it-together" title="Link to this heading">¶</a></h1>
+<p>At this point you’ve successfully coded a room, a monster, an object, an armor, and a weapon.</p>
+<p>You’ve made it so the monster carries the object, armor, and weapon on them.</p>
+<p>Now we need to make it so the room loads the monster. There’s two ways to do this, one is used almost exclusively, but the other may come in handy in rare occasions.</p>
+<p>The less-used method is to add the monster to the room in the <code class="code docutils literal notranslate"><span class="pre">create()</span></code>. The caveat to this is the monster will <em>ONLY</em> populate the room on loading, meaning it will not re-populate on reset, the entire room will have to unload from memory and be reloaded to get a new monster.</p>
+<p>The more-often used method is to add the monster in the <code class="code docutils literal notranslate"><span class="pre">reset()</span></code> function. This function is called by the driver on a preset interval, and nothing happens by default unless you specifically put code into this function. If you don’t have it, nothing magically repopulates.</p>
+<p>Also for note, the way 3Kingdoms is setup, as a driver option, is such that when you first load any object the driver calls <code class="code docutils literal notranslate"><span class="pre">create()</span></code>, which we learned when we started writing these files. However, as soon as <code class="code docutils literal notranslate"><span class="pre">create()</span></code> is done, it then immediatly calls <code class="code docutils literal notranslate"><span class="pre">reset()</span></code>. This is why if you add the monster in <code class="code docutils literal notranslate"><span class="pre">reset()</span></code> that it appears on the first load, and doesn’t have to wait until the first reset of the room to appear.</p>
+<p>As a reminder, this is how we left our room code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_room</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">room</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="n">set_light</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A Small Hovel&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a small hovel set into the foot of a large hill. It has been </span><span class="se">\</span>
+<span class="s2">  clearly dug from the fertile dirt in a roughly rectangular shape. </span><span class="se">\</span>
+<span class="s2">  The only light that trickles in comes from a small hole on the door. </span><span class="se">\</span>
+<span class="s2">  Rays from the sun cast upon the dirt floor exposing the emptiness of </span><span class="se">\</span>
+<span class="s2">  the structure, not even a piece of furniture can be found.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;fertile dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;wall&quot;</span><span class="p">,</span><span class="s2">&quot;walls&quot;</span><span class="p">,</span><span class="s2">&quot;floor&quot;</span><span class="p">,</span><span class="s2">&quot;ceiling&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The dirt is packed hard, and a deep brown. Otherwise, it&#39;s dirt.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;hovel&quot;</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;This hovel is empty. Just dirt for building material and a door.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;door&quot;</span><span class="p">,</span> <span class="s2">&quot;wood door&quot;</span><span class="p">,</span> <span class="s2">&quot;hole&quot;</span><span class="p">,</span> <span class="s2">&quot;small hole&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;small wood hole&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The wood door has a small wood hole cut about a third of the way &quot;</span>
+    <span class="s2">&quot;down from the top. It allows a trickle of light into the room and &quot;</span>
+    <span class="s2">&quot;provides a way for the occupant to see outside as there are no &quot;</span>
+    <span class="s2">&quot;windows&quot;</span><span class="o">.</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span><span class="s2">&quot;trickle of light&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The trickle of light filters from the hole in the door onto the &quot;</span>
+    <span class="s2">&quot;floor and provides a very slight illumination of the room.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_search_message</span><span class="p">(</span><span class="s2">&quot;You scan that dilligently but find nothing.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_search_item</span><span class="p">(({</span> <span class="s2">&quot;floor&quot;</span><span class="p">,</span> <span class="s2">&quot;dirt floor&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;You scour the floor but find nothing unusual.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_exit</span><span class="p">(</span><span class="n">MY_ROOMS</span><span class="o">+</span><span class="s2">&quot;second_room&quot;</span><span class="p">,</span><span class="s2">&quot;west&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>So now we’re going to use the <code class="code docutils literal notranslate"><span class="pre">add_clone()</span></code> that we used in the monster, and place it inside a <code class="code docutils literal notranslate"><span class="pre">reset()</span></code> call. However, as mentioned, <code class="code docutils literal notranslate"><span class="pre">add_clone()</span></code> has a different format inside a room:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">varargs</span> <span class="n">mixed</span> <span class="n">add_clone</span><span class="p">(</span><span class="n">string</span> <span class="n">path</span><span class="p">,</span><span class="nb">int</span> <span class="n">num</span><span class="p">,</span><span class="nb">int</span> <span class="n">perc_chance</span><span class="p">,</span><span class="n">status</span> <span class="n">return_obs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Similar to the monster version, we give it the filepath and the number we want it to clone (remembering that it will add <em>up</em> to that amount; meaning if you add 1 kobold but the previous kobold was still standing here, it wont add a 2nd), and return_obs to get the array of what was added.</p>
+<p>But this time we also have a ‘perc_chance’ argument. This is an inverse chance of it being cloned, and needs to be between 0-99. What this means simply is if you pass 20, that means there’s a 20% chance it <em>won’t</em> clone, and an 80% chance it will. The reason for this is that if you leave it blank, 0, it would never clone if it wasn’t inverted, and given the similarity to the monster call tied with the fact they are varargs functions, it’s too easy to accidentally put 0 there. So to make it more logical, it was done this way so that people didn’t accidentally turn off the clone completely left and right.</p>
+<p>Like the monster, we’re going to presume a ‘defs.h’ is included that has a MY_MONS define pointing to the folder with the kobold in it.</p>
+<p>All that said, lets add the reset function and the clone functions and make this room load a kobold!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_room</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">room</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+<span class="c1">#include &quot;defs.h&quot;</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="n">set_light</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A Small Hovel&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a small hovel set into the foot of a large hill. It has been </span><span class="se">\</span>
+<span class="s2">  clearly dug from the fertile dirt in a roughly rectangular shape. </span><span class="se">\</span>
+<span class="s2">  The only light that trickles in comes from a small hole on the door. </span><span class="se">\</span>
+<span class="s2">  Rays from the sun cast upon the dirt floor exposing the emptiness of </span><span class="se">\</span>
+<span class="s2">  the structure, not even a piece of furniture can be found.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;fertile dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;wall&quot;</span><span class="p">,</span><span class="s2">&quot;walls&quot;</span><span class="p">,</span><span class="s2">&quot;floor&quot;</span><span class="p">,</span><span class="s2">&quot;ceiling&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The dirt is packed hard, and a deep brown. Otherwise, it&#39;s dirt.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;hovel&quot;</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;This hovel is empty. Just dirt for building material and a door.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;door&quot;</span><span class="p">,</span> <span class="s2">&quot;wood door&quot;</span><span class="p">,</span> <span class="s2">&quot;hole&quot;</span><span class="p">,</span> <span class="s2">&quot;small hole&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;small wood hole&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The wood door has a small wood hole cut about a third of the way &quot;</span>
+    <span class="s2">&quot;down from the top. It allows a trickle of light into the room and &quot;</span>
+    <span class="s2">&quot;provides a way for the occupant to see outside as there are no &quot;</span>
+    <span class="s2">&quot;windows&quot;</span><span class="o">.</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span><span class="s2">&quot;trickle of light&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The trickle of light filters from the hole in the door onto the &quot;</span>
+    <span class="s2">&quot;floor and provides a very slight illumination of the room.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_search_message</span><span class="p">(</span><span class="s2">&quot;You scan that dilligently but find nothing.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_search_item</span><span class="p">(({</span> <span class="s2">&quot;floor&quot;</span><span class="p">,</span> <span class="s2">&quot;dirt floor&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;You scour the floor but find nothing unusual.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_exit</span><span class="p">(</span><span class="n">MY_ROOMS</span><span class="o">+</span><span class="s2">&quot;second_room&quot;</span><span class="p">,</span><span class="s2">&quot;west&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">reset</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">By</span> <span class="ow">not</span> <span class="n">passing</span> <span class="nb">any</span> <span class="n">of</span> <span class="n">the</span> <span class="n">other</span> <span class="n">variables</span><span class="p">,</span> <span class="n">we</span> <span class="n">are</span> <span class="n">telling</span> <span class="n">it</span> <span class="n">to</span> <span class="n">add</span>
+  <span class="o">//</span><span class="n">one</span> <span class="n">kobold</span><span class="p">,</span> <span class="k">if</span> <span class="n">there</span> <span class="n">are</span> <span class="n">none</span> <span class="n">here</span><span class="p">,</span> <span class="k">with</span> <span class="mi">100</span><span class="o">%</span> <span class="n">load</span> <span class="n">chance</span><span class="o">.</span>
+  <span class="n">add_clone</span><span class="p">(</span><span class="n">MY_MON</span><span class="o">+</span><span class="s2">&quot;kobold&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And that’s it, that’s all it took to add the kobold to the room every time it resets (presuming the prior one isn’t still there).</p>
+<p>You’re done. You’ve made an entire 1-room area. Congratulations!</p>
+<p>You can continue on with some more advanced topics if you wish by continuing the primer.</p>
+<p>If you feel like this is something up your alley and something you want to pursue further, check out <a class="reference internal" href="../coding/wizzing.html#wizzing"><span class="std std-ref">Wizzing</span></a> for a small blurb about what to expect as an applicant and neophyte wizard to see if it really is for you. Our ranks are always open in some fashion, usually just pending availability of someone to take on a new sponsoree.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="monster.html"
+                          title="previous chapter">Coding A Monster</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../coding/wizzing.html"
+                          title="next chapter">Wizzing</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../coding/wizzing.html" title="Wizzing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="monster.html" title="Coding A Monster"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Putting It Together</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

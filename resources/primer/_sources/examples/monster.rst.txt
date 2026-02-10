@@ -1,0 +1,276 @@
+Coding A Monster
+================
+
+Coding a monster is similar to writing all the files we've done so far, we inherit a file that does the heavy work, and we call to setup a bunch of stuff.
+
+However, as monsters are some of the more complex things you can write to get just the basic functionality, there's a lot more that goes into them.
+
+There's also different flavors, we have monsters, complex monsters, and super monsters to pull from. The biggest difference is that complex monsters allow reactions (the ability to talk and interact with characters), but they also add pick pocketing and hunting.
+
+For this example we'll be using just a standard monster. Lets start out as usual with the functions we're familiar with, but as this is a living object and not an inanimate one, we don't need to set the weight, composition, or value. Monsters also oddly don't support :code:`set_creator()`.
+
+.. code-block::
+
+  /* kobold.c
+     Adalius 250315
+     A small kobold to guard the hovel. */
+  #pragma strong_types
+
+  inherit "/obj/monster";
+
+  void create()
+  {
+    ::create();
+
+    set_name("kobold");
+    set_alias( ({ "disgusting kobold" }) );
+    set_short("A disgusting kobold");
+    set_long("\
+  A mangy, flea-infested kobold, roughly 3 foot tall, stands here with \
+  beady eyes staring directly at you. Matted fur covers its body \
+  with patches of dirt, mud, blood, and feces strewn about, visible \
+  through the holes in its pitiful clothes and armor. A small dagger \
+  is held clutched in its paw.");
+
+    set_realm("Fantasy");
+
+    return;
+  }
+
+Alright, we've fleshed the kobold out a bit, but now we need to start putting some numeric values behind it.
+
+To try and making coding easier, 3Kingdoms is setup such that if you set the level of a monster, it automatically does some calculations to set the AC, WC, hitpoints, XP, and a few other things. So simply picking a reasonable monster level to start with goes a long way. You can override some of these values, but generally only in an upward fashion.
+
+We can also set a race on the monster and a type (machine, demon, devil, elemental, animal, plant, etc) which is helpful for certain guild's powers, and we could set a gender if we really wanted. We can also set the alignment, slightly evil in this case.
+
+Other options at this point include if we want it to be aggressive (we do), and should it wimpy (we don't).
+
+.. code-block::
+
+  /* kobold.c
+     Adalius 250315
+     A small kobold to guard the hovel. */
+  #pragma strong_types
+
+  inherit "/obj/monster";
+
+  void create()
+  {
+    ::create();
+
+    set_name("kobold");
+    set_level(12);
+
+    set_alias( ({ "disgusting kobold" }) );
+    set_short("A disgusting kobold");
+    set_long("\
+  A mangy, flea-infested kobold, roughly 3 foot tall, stands here with \
+  beady eyes staring directly at you. Matted fur covers its body \
+  with patches of dirt, mud, blood, and feces strewn about, visible \
+  through the holes in its pitiful clothes and armor. A small dagger \
+  is held clutched in its paw.");
+
+    set_race("kobold");
+    set_type("animal");
+
+    set_al(-50);
+
+    set_aggressive(1);
+
+    set_realm("Fantasy");
+
+    return;
+  }
+
+Right now this is a pretty decent monster to look at, albeit incredibly small. He also has no real flavor to him as he doesn't chat or have any combat emotes yet either, so his melee is just straight melee. Lets rectify that by adding some chats, both for out of combat (in the event he doesn't aggro or is peaced), and in combat.
+
+We could even use the :code:`create_verbal()` that was defined in :ref:`Display Functions` to help write our chat formats so they format like a real 'say' command would...
+
+For the combat emotes, we're going to use what is called spell handlers. I know, it sounds like that would mean we're casting spells, which was its original intent, but because it is very flexible, you can make special melee hits via the same system. This requires us to use a small handful of functions related to spells.
+
+.. code-block::
+
+  /* kobold.c
+     Adalius 250315
+     A small kobold to guard the hovel. */
+  #pragma strong_types
+
+  inherit "/obj/monster";
+
+  void create()
+  {
+    ::create();
+
+    set_name("kobold");
+    set_level(12);
+
+    set_alias( ({ "disgusting kobold" }) );
+    set_short("A disgusting kobold");
+    set_long("\
+  A mangy, flea-infested kobold, roughly 3 foot tall, stands here with \
+  beady eyes staring directly at you. Matted fur covers its body \
+  with patches of dirt, mud, blood, and feces strewn about, visible \
+  through the holes in its pitiful clothes and armor. A small dagger \
+  is held clutched in its paw.");
+
+    set_race("kobold");
+    set_type("animal");
+
+    set_al(-50);
+
+    set_aggressive(1);
+
+    //To set our non-combat chats, we set the chance (n% per round) of
+    //it firing (if its not super low it WILL get spammy), then we
+    //tell it what options to pick from for chats.
+    load_chat(2,
+      ({ "The kobold paces around.",
+         "The kobold sniffs the air.",
+         "The kobold growls at you.",
+         "With an upturned snout, the kobold lets out a grunt." }));
+
+    //Loading combat chats is very similar, but we can also use create_verbal
+    //to make a 'Kobold says: <blah>' message.
+    load_a_chat(2,
+      ({ "The kobold howls at you, leaping back and forth.",
+         "The kobold feints.",
+         "Froth from the kobold's mouth flies as it snaps at you.",
+         create_verbal("Kobold","Grrrr. You should not have come here.") }));
+
+    //Next we are going to setup the 'spells' to give combat some flavor.
+    //The format for this is:
+    //set_spells(int chance, int|int* damages, string|string* types,
+    //           string*|string** messages, string* handlers, int* probs)
+    //We will set up one here and discuss it at the end of the code block.
+
+    set_spells(5, ({ 100, 500, 750 }), ({ "edged","edged","acid" }),
+      ({
+        "The kobold bites down hard on your arm!",
+        "With a slashing motion, the kobold's dagger cuts you!",
+        "EWWW! The kobold just peed on you! It burns!"
+      }),
+      ({
+        "The kobold bites down hard on $N$'s arm!",
+        "With a slashing motion, the kobold's dagger cuts $N$!",
+        "EWWW! The kobold just peed on $N$!"
+      }),
+      0,
+      ({ 4,3,1 }) );
+
+    set_realm("Fantasy");
+
+    return;
+  }
+
+Now the kobold has chats it can do while peaced and while fighting. It also has 3 'spell' attacks that will come up randomly.
+
+Let's break down that :code:`set_spells()` call so we can understand it better.
+
+  1. The first argument '5', tells the system that there's a 5% chance every combat round of firing one of the 3 defined spells. This is mandatory and must be between 1-100.
+  2. The second array argument tells the system that the 3 spells will attempt to cause 100, 500, and 750 points of damage respectively. This is mandatory. If you have only 1 spell, it can be an integer instead of an array.
+  3. The third array argument tells the system the damage types, edged, edged, acid respectively. This is mandatory. If you have only 1 spell, this can be a string instead of an array.
+  4. The next array is the messages the player will see, each one corresponds directly to one of the three spells. You can also use @:@ formatted ansi in these strings. There is a 2nd form defined further below.
+  5. The next array is the messages the room will see, and it replaces certain tokens (surrounded by $) with values from the target. $N$ is the target's name, $O$ would be their objective (him, her, their), $P$ is the possessive (his, hers, theirs), $R$ is the pronoun (he, she, they). You can also use @:@ formatted ansi in these strings. There is a 2nd form defined further below.
+  6. This can be 0 (meaning no spell handler functions), or an array. If it's an array, it needs to either be 0 (again meaning no handler), or a string with a function name. For example, if we wanted the 3rd spell, the kobold peeing, to also clone a damage over time object on them, we could have passed ({ 0, 0 , "do_pee" }). Then the driver would call do_pee(object target) and we could do our logic in that to clone a damage over time item and move it to them. If you only have 1 spell, this still needs to be in an array.
+  7. The final array is the chances of each spell firing. In the first argument we set the odds of *any* spell firing, this argument tells it how to proportion it over the options when it does fire. In this case, it will fire the 3 spells in a rough proportion of 4 : 3 : 1, meaning the first spell is 4 times more likely than the last, and 4:3 more likely than the 2nd, the 2nd is 3 times more likely that the last. If you have only one spell, this needs to be the array ({ 1 }).
+
+As mentioned there's a 2nd format for the fourth and fifth array arguments. In the event you have just a single spell, you can either pass two arrays, one with the message for the target, and one with the message for the room, just like we did above with multiple messages, or you can send a single array with two elements for the 4th argument, the first string would be the target's string, the 2nd would be the room's string, you would then pass 0 for the 5th argument. This method isn't used very often as consistency is cleaner.
+
+Lastly, we need to add the other items we cloned to the monster so that they will be dropped when it dies. We could be sneaky and make it so you don't see the items on the monster until it dies, but lets keep it simple and make it so they're clearly in its inventory from the get-go.
+
+To do this, we need to use the :code:`add_clone()` function. The implementation of :code:`add_clone()` is different in monsters than it is in rooms, but its similar. We'll discuss the room option in :ref:`Putting It Together`, but for now, the monster version is this:
+
+.. code-block::
+
+  varargs object* add_clone(string path, int num, status return_obs)
+
+So we pass the filename of what we want to clone onto the monster with 'path', we tell it how many copies with 'num', and if we pass 1 to 'return_obs', the function will return an array with all the objects it put on the monster (if any). This does respect :code:`set_unique()` so if an object you try to clone has a unique count, and that limit is reached, it won't add anything.
+
+On monsters, we normally use this code in the :code:`create()` so that its on them as soon as they load. Also, :code:`add_clone()` is smart, even though we have this in our blueprint, it won't clone objects onto a blueprint, it will only add them in a cloned monster.
+
+Another smart feature of :code:`add_clone()` is that it doesn't add 'num' copies outright. It tries to obtain 'num' total on the target. Meaning if we say we want 1 dagger (with that specific filepath), and it already has 1 or more daggers on it with that filepath, it will not add more.
+
+We also never included our 'defs.h' file discussed in :ref:`Include`, so lets pretend we made a defs.h that has a few defines, the one we need for this is MY_OBJS which will be the filepath to the area objects for this area.
+
+So lets add our squeaky toy, armor, and weapon to the kobold now.
+
+.. code-block::
+
+  /* kobold.c
+     Adalius 250315
+     A small kobold to guard the hovel. */
+  #pragma strong_types
+  #include "defs.h"
+
+  inherit "/obj/monster";
+
+  void create()
+  {
+    ::create();
+
+    set_name("kobold");
+    set_level(12);
+
+    set_alias( ({ "disgusting kobold" }) );
+    set_short("A disgusting kobold");
+    set_long("\
+  A mangy, flea-infested kobold, roughly 3 foot tall, stands here with \
+  beady eyes staring directly at you. Matted fur covers its body \
+  with patches of dirt, mud, blood, and feces strewn about, visible \
+  through the holes in its pitiful clothes and armor. A small dagger \
+  is held clutched in its paw.");
+
+    set_race("kobold");
+    set_type("animal");
+
+    set_al(-50);
+
+    set_aggressive(1);
+
+    //To set our non-combat chats, we set the chance (n% per round) of
+    //it firing (if its not super low it WILL get spammy), then we
+    //tell it what options to pick from for chats.
+    load_chat(2,
+      ({ "The kobold paces around.",
+         "The kobold sniffs the air.",
+         "The kobold growls at you.",
+         "With an upturned snout, the kobold lets out a grunt." }));
+
+    //Loading combat chats is very similar, but we can also use create_verbal
+    //to make a 'Kobold says: <blah>' message.
+    load_a_chat(2,
+      ({ "The kobold howls at you, leaping back and forth.",
+         "The kobold feints.",
+         "Froth from the kobold's mouth flies as it snaps at you.",
+         create_verbal("Kobold","Grrrr. You should not have come here.") }));
+
+    //Next we are going to setup the 'spells' to give combat some flavor.
+    //The format for this is:
+    //set_spells(int chance, int|int* damages, string|string* types,
+    //           string*|string** messages, string* handlers, int* probs)
+    //We will set up one here and discuss it at the end of the code block.
+
+    set_spells(5, ({ 100, 500, 750 }), ({ "edged","edged","acid" }),
+      ({
+        "The kobold bites down hard on your arm!",
+        "With a slashing motion, the kobold's dagger cuts you!",
+        "EWWW! The kobold just peed on you! It burns!"
+      }),
+      ({
+        "The kobold bites down hard on $N$'s arm!",
+        "With a slashing motion, the kobold's dagger cuts $N$!",
+        "EWWW! The kobold just peed on $N$!"
+      }),
+      0,
+      ({ 4,3,1 }) );
+
+    set_realm("Fantasy");
+
+    add_clone(MY_OBJS+"first_obj",1,0);
+    add_clone(MY_OBJS+"first_armor",1,0);
+    add_clone(MY_OBJS+"first_weapon",1,0);
+
+    return;
+  }
+
+There we have it, a fully functioning kobold monster with chats, attack emotes, and carrying our squeaky toy, cloak, and dagger. Now we need to put this all together by adding it to the room.

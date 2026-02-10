@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Preprocessor &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Inheritance" href="inheritance.html" />
+    <link rel="prev" title="Modifiers" href="modifiers.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="inheritance.html" title="Inheritance"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modifiers.html" title="Modifiers"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Preprocessor</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="preprocessor">
+<h1>Preprocessor<a class="headerlink" href="#preprocessor" title="Link to this heading">¶</a></h1>
+<p>Preprocessor directives are, as the name hints at, things the compiler reads and does <em>before</em> processing the file.</p>
+<p>These are a series of keywords that all start with #, are all lowercase, and must be at the very start of the line (seriously, not even whitespace before them!), that the driver reads and it indicates to the compiler certain actions it needs to take, certain things that are going to be defined, the rules for how you want it to process the file, and even conditional language.</p>
+<p>As a coder on 3Kingdoms, there is one of these you will use in <em>every</em> single file, one you will use in a good number of files, a handful you might never use, and a few you probably won’t ever use.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike actual code lines, you do not end any preprocessor directives with a semi colon.</p>
+</div>
+<section id="pragma">
+<h2>Pragma<a class="headerlink" href="#pragma" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#pragma &lt;option&gt;</span>
+<span class="c1">#pragma &lt;option1&gt;,&lt;option2&gt;,...,&lt;optionN&gt;</span>
+</pre></div>
+</div>
+<p>Pragma tells the compiler which options you wish to have it utilize when compiling. It can tell it how to handle type checking, if it should allow cloning, inheriting, or shadowing, etc.</p>
+<p>As most of the options are not used regularly, or even frequently, we are going to focus on the important ones:</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">strong_types</span></code> is the single most used pragma on 3Kingdoms. Every single file you write that ends in the .c extension should have this as the very first code line (comment blocks above it are fine). This tells the compiler that all functions have to be declared with a type of return and parameters.</p>
+<p>Forgetting to do this can make your ability to debug a major headache because the compiler won’t tell you if you accidentally assign a string to an int and then your code to modify it breaks holy hell.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">strict_types</span></code> can be used instead of strong_types but this will turn on the highest level of type checking and you will be forced to typecast all your <code class="code docutils literal notranslate"><span class="pre">call_other()</span></code>/ -&gt; function calls. Its generally overkill and strong_types is sufficient.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">weak_types</span></code> is the opposite of strict_types. It does no type checking at all. This should really never be used as you’re just asking for trouble, but sometimes when we’re debugging old code that didn’t have any #pragma set, we’ll do this until we can get around to fixing it.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">no_clone</span></code> tells the compiler this file cannot be cloned, it can only be loaded as a blueprint. Useful if you want to make sure nobody ever accidentally clones a daemon for example.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">no_inherit</span></code> tells the compiler this file cannot be inherited. Not a lot of reasons I can think of where this would be super useful.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">no_shadow</span></code> tells the compiler this file cannot be shadowed. Useful on a few key system objects, but otherwise not very useful at all as 3Kingdoms generally doesn’t use shadowing.</p>
+<p>The rest of the #pragma options are mostly used to turn on/off certain data types, runtime checks, compiler warnings, or things that are only available if the driver is compiled in debug mode. As they aren’t used, we can ignore them and you can always view the wizard man file for them if you are curious.</p>
+</section>
+<section id="include">
+<h2>Include<a class="headerlink" href="#include" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;file&gt;</span>
+</pre></div>
+</div>
+<p>Include tells the compiler to read a file, generally ending in ‘.h’ for ‘header file’, into this file. The compiler treats it as if that file was literally copy pasted where the #include line is, verbatim. This is useful if you have a definitions header file (often called defs.h) with common macros/routines/defines (as outlined below) that you want to copy into multiple files. You can also use this if you have a large block of text or a huge array of data that you want included in the file, but you don’t want to have to read through 500 extra lines when you look at the actual code. By using include you can separate the files physically but have the driver and compiler treat them as if they were a single file.</p>
+<p>There are two formats for include, one which references a filepath based on the local position (meaning ./blah.h is in this folder, ../blah.h is a folder up, /inc/blah.h is in /inc/, etc), and the second is a shortcut to include any file in the global include directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;filepath_from_local_position.h&quot;</span>
+
+<span class="c1">#include &lt;file_in_global_include_dir.h&gt;</span>
+</pre></div>
+</div>
+<p>Generally the files in the global include dir are mostly system defined information that might be needed by several systems, but a few files in there do contain helpful macros for shortening some of your code or data that can be changed by driver configuration, and using those include macros ensures that you’re getting the valid data based on what is being used.</p>
+<p>As mentioned above, include is useful for header files that you want to include in many places. Most wizards have a inc/ or include/ directory inside their home directory, and inside that is a defs.h file which has a ton of #define statements to shorten up how much typing they have to do, by making short defines (like TO, TP, ETP in the example above). Then there is usually a defs.h in their home directory that does nothing but <code class="code docutils literal notranslate"><span class="pre">#include</span> <span class="pre">./inc/defs.h</span></code>, and then every folder in their home dir, and every subfolder inside of those, also all have a defs.h which does <code class="code docutils literal notranslate"><span class="pre">#include</span> <span class="pre">../defs.h</span></code>. They may also contain #define code that pertains only to the folder they are in and the ones below it, like if its the top folder for an area they are coding, it might have defines that says <code class="code docutils literal notranslate"><span class="pre">#define</span> <span class="pre">MY_PATH</span> <span class="pre">(AREAS+&quot;this_area/&quot;)</span></code> along with <code class="code docutils literal notranslate"><span class="pre">#define</span> <span class="pre">MY_OBJS</span> <span class="pre">(MY_PATH+&quot;obj/&quot;)</span></code> and similar for monsters, rooms, etc.</p>
+<p>By doing so, you can house your global defines in your inc/ dir and ensure <strong>all</strong> your code has them included, and that anything in a given folder or below has any defines that are specifically useful for just that set of code. It’s a very powerful tool.</p>
+<p>It would look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>./
+├── inc/
+│   └── defs.h        //This file has all your *global* definitions for *all* your code.
+├── defs.h            //This file does #include ./inc/defs.h to get the global ones, nothing else.
+├── areas/
+│   ├── defs.h        //This file does #include ../defs.h to get the global ones, and then also might define things for all your areas, like a base path for each area name.
+│   ├── area1/
+│   │   ├── defs.h    //This file does #include ../defs.h to get the area ones, and then also might define things for just area1, like a base path for its monsters/objects/rooms.
+│   │   ├── mons/
+│   │   |  ├── defs.h //This file does #include ../defs.h to get the area1 ones, and then also might define things for just area1 monsters.
+|   |   ├── obj/
+│   │   |  ├── defs.h //This file does #include ../defs.h to get the area1 ones, and then also might define things for just area1 objects.
+│   │   └── rooms/
+│   │   |  ├── defs.h //This file does #include ../defs.h to get the area1 ones, and then also might define things for just area1 rooms.
+</pre></div>
+</div>
+</section>
+<section id="define">
+<h2>Define<a class="headerlink" href="#define" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define &lt;what&gt; &lt;as what&gt;</span>
+</pre></div>
+</div>
+<p>Using #define allows you to create what is called a macro, often stylized as MACRO since they are almost always done in capital letters.</p>
+<p>You can think of a define as a copy/paste the driver will do at compile time. If you define something called PLAYER_NAME with the value “Bob”, anywhere you type PLAYER_NAME in your code, the compiler will automatically replace it with “Bob” when it loads the file. This can also make it so you can define a macro to store the filepath of something, and then if you ever decide to move it to an entirely different folder you can change one #define and all the things that use that define for the filepath will automatically update on reload.</p>
+<p>Where macros get really powerful is they can also represent functions and take arguments, which can allow you to really shorten down a long function call into something managable.</p>
+<p>Here’s an example of some common define uses:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define MY_DIR &quot;/adalius/&quot;</span>
+
+<span class="o">//</span><span class="n">As</span> <span class="n">we</span> <span class="n">are</span> <span class="n">doing</span> <span class="n">an</span> <span class="n">operator</span><span class="p">,</span> <span class="n">to</span> <span class="n">ensure</span> <span class="n">order</span> <span class="n">of</span> <span class="n">operations</span> <span class="n">its</span> <span class="n">always</span>
+<span class="o">//</span><span class="n">a</span> <span class="n">good</span> <span class="n">idea</span> <span class="n">to</span> <span class="n">wrap</span> <span class="n">the</span> <span class="n">right</span> <span class="n">side</span> <span class="ow">in</span> <span class="p">()</span><span class="o">.</span>
+<span class="c1">#define MY_AREAS (MY_DIR + &quot;areas/&quot;)</span>
+
+<span class="c1">#define TO        this_object()</span>
+<span class="c1">#define TP        this_player()</span>
+<span class="o">//</span><span class="n">Notice</span> <span class="n">we</span> <span class="n">can</span> <span class="n">use</span> <span class="n">a</span> <span class="n">define</span> <span class="k">if</span> <span class="n">its</span> <span class="n">defined</span> <span class="n">ABOVE</span> <span class="n">when</span> <span class="n">we</span> <span class="n">use</span> <span class="n">it</span><span class="o">.</span>
+<span class="c1">#define ETP       environment(TP)</span>
+<span class="c1">#define CAP(XX)   capitalize(XX)</span>
+
+<span class="o">//</span><span class="n">Notice</span> <span class="n">we</span> <span class="n">can</span> <span class="n">go</span> <span class="n">over</span> <span class="n">a</span> <span class="n">line</span> <span class="n">by</span> <span class="n">using</span> <span class="n">the</span> \ <span class="n">operator</span> <span class="n">just</span> <span class="n">like</span> <span class="n">strings</span><span class="o">.</span>
+<span class="c1">#define NWRAP(XX)  (XX ? (to_int(XX-&gt;query_property_args(&quot;COLS&quot;)) ? \</span>
+                          <span class="n">to_int</span><span class="p">(</span><span class="n">XX</span><span class="o">-&gt;</span><span class="n">query_property_arg</span><span class="p">(</span><span class="s2">&quot;COLS&quot;</span><span class="p">))</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">75</span><span class="p">):</span><span class="mi">75</span><span class="p">)</span>
+
+<span class="o">//</span><span class="n">Ensures</span> <span class="n">a</span> <span class="n">number</span> <span class="n">passed</span> <span class="p">(</span><span class="n">XX</span><span class="p">)</span> <span class="ow">is</span> <span class="n">between</span> <span class="p">(</span><span class="n">YY</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">ZZ</span><span class="p">)</span>
+<span class="c1">#define CLAMP(XX,YY,ZZ) ((XX)&gt;(ZZ)?(ZZ):((XX)&lt;(YY)?(YY):(XX)))</span>
+
+<span class="o">//</span><span class="n">You</span> <span class="n">can</span> <span class="n">also</span> <span class="n">define</span> <span class="n">something</span> <span class="k">with</span> <span class="n">nothing</span> <span class="n">after</span> <span class="n">it</span><span class="o">.</span> <span class="n">The</span> <span class="n">compiler</span> <span class="n">will</span>
+<span class="o">//</span><span class="n">keep</span> <span class="n">track</span> <span class="n">that</span> <span class="n">it</span> <span class="n">was</span> <span class="n">created</span> <span class="ow">and</span> <span class="n">has</span> <span class="n">no</span> <span class="n">value</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">useful</span>
+<span class="o">//</span><span class="ow">in</span> <span class="n">conditionals</span><span class="o">...</span>
+<span class="c1">#define TOP_LEVEL_DEF</span>
+</pre></div>
+</div>
+<p>There are a few caveats to define, you can only reference another define inside a define if its declared before you use it. You cannot define something that is already defined as it will throw an error (how to avoid that is below in <a class="reference internal" href="control_structures.html#conditionals"><span class="std std-ref">Conditionals</span></a>). Defines are set at compile time so they cannot do anything dynamically other than a direct find/replace at compile time.</p>
+</section>
+<section id="preprocessor-conditionals">
+<h2>Preprocessor Conditionals<a class="headerlink" href="#preprocessor-conditionals" title="Link to this heading">¶</a></h2>
+<p>Preprocessor directives include a limited form of if/else in the form of conditionals</p>
+<p>They are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#if &lt;expr&gt;</span>
+<span class="c1">#else &lt;expr&gt;</span>
+<span class="c1">#elif &lt;expr&gt;</span>
+<span class="c1">#endif &lt;expr&gt;</span>
+
+<span class="c1">#ifdef &lt;macro name&gt;</span>
+<span class="c1">#ifndef &lt;macro name&gt;</span>
+</pre></div>
+</div>
+<p>Unlike if/else in regular code, in preprocessor you do not encapsulate the sections with {}. Instead you start the block with one of the #if/#ifdef/#ifndef directives, and end the entire thing with #endif. Everything between those two is essentially inside a giant {}.</p>
+<p>All the &lt;expr&gt; bits must be available to the driver at compile time, and whatever they evaluate to at compile time is how the if will be processed until the file is unloaded and reloaded. Consequently these conditionals are often used with empty or simply defined macros as the expression.</p>
+<p>#ifdef and #ifndef are directly tied to #define and check whether the &lt;macro name&gt; is defined or not. They can be used instead of #if. They most commonly are used with something defined like TOP_LEVEL_DEF above where it just checks if its defined or not, as it doesn’t care what it is defined as.</p>
+<p>A common problem with preprocessor directives and include files is that its easy to include a file twice in the same file by accident which can cause all the #define lines to break as they’re trying to define the same macro name twice. To get around that, include files frequently have something that looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ifndef ___MY_INCLUDE_FILE___</span>
+<span class="c1">#define ___MY_INCLUDE_FILE___</span>
+
+<span class="c1">#define MY_MACRO1 &lt;stuff&gt;</span>
+<span class="c1">#define MY_MACRO2 &lt;stuff&gt;</span>
+<span class="o">...</span>
+
+<span class="c1">#endif</span>
+</pre></div>
+</div>
+<p>What will happen now is the first time the include hits that file, it will define an empty macro ___MY_INCLUDE_FILE___ (we use a weird name to ensure nobody else accidentally uses it in a different file), then it will define the other macros since #ifndef was true at the start. When the code accidentally tries to include the same file later on, ___MY_INCLUDE_FILE___ is already defined, so the entire block is skipped and nothing is defined twice by accident.</p>
+<p>The code between the #if/ifdef/ifndef does not need to be preprocessor code however. It can be regular code. For instance, if we have a file that we want to print debug information but only when we’re in debug mode, we could do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define DEBUG 1</span>
+
+<span class="nb">int</span> <span class="n">my_func</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="c1">#if DEBUG</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The value of a is: &quot;</span> <span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="c1">#endif</span>
+  <span class="n">a</span> <span class="o">*=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="c1">#if DEBUG</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The value of a is: &quot;</span> <span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="c1">#endif</span>
+  <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When you run the program, you will see the value before and after it multiplies it. Once the code is ready for live, you simply change <code class="code docutils literal notranslate"><span class="pre">#define</span> <span class="pre">DEBUG</span> <span class="pre">1</span></code> to <code class="code docutils literal notranslate"><span class="pre">#define</span> <span class="pre">DEBUG</span> <span class="pre">0</span></code> and those print statements will be completely ignored by the compiler as if they were never there.</p>
+<p>Real examples of these are all over the mudlib, but a familiar example would be priest code. When a holiday occurs, a macro is toggled from 0 to 1 indicating which holiday it is, for example XMAS, and then the spell emotes properly load the Christmas ones when the file is reloaded, and will continue to do so until XMAS is set back to 0. This is more efficient than using an actual variable because the compiler skips all the non-relevant code, so it is never even loaded into memory. Using a regular variable and if() would mean all possible emote strings would be loaded into memory even though only one set would be used.</p>
+</section>
+<section id="predefined">
+<h2>Predefined<a class="headerlink" href="#predefined" title="Link to this heading">¶</a></h2>
+<p>The driver used by 3Kingdoms also defines a bunch of things at the driver level which can be access by any file in the mudlib, including ones you write. Most of these are not useful for any standard coder as they generally relate to very high level things (like is support for a certain feature turned on, is TLS supporting OPENSSL, what version is the driver, etc).</p>
+<p>That said, there are a few that sometimes can be helpful.</p>
+<p>If you write your own debugging code inside your file, __FILE__ will always give the name of the compiled file, __LINE__ will give the current line, __FUNCTION__ will report the function name it is located in, __DIR__ will give the directory of the file, __PATH__(n) will give the directory path without &lt;n&gt; trailing elements.</p>
+<p>Complex code sometime will also reference __MAX_EVAL_COST__ which is the maximum cycle time of any running code thread, __RESET_TIME__ is the default number of seconds between object resets, __CLEANUP_TIME__ is the same for object cleanup time.</p>
+<p>There’s also __INT_MAX__, __INT_MIN__, __FLOAT_MAX__, __FLOAT_MIN__ which are values tied to exactly what they say.</p>
+<p>There’s a whole bunch more and you’ll likely never use any of these unless you’re really digging deep in something, but the important part is they are there.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Preprocessor</a><ul>
+<li><a class="reference internal" href="#pragma">Pragma</a></li>
+<li><a class="reference internal" href="#include">Include</a></li>
+<li><a class="reference internal" href="#define">Define</a></li>
+<li><a class="reference internal" href="#preprocessor-conditionals">Preprocessor Conditionals</a></li>
+<li><a class="reference internal" href="#predefined">Predefined</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="modifiers.html"
+                          title="previous chapter">Modifiers</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="inheritance.html"
+                          title="next chapter">Inheritance</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="inheritance.html" title="Inheritance"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modifiers.html" title="Modifiers"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Preprocessor</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

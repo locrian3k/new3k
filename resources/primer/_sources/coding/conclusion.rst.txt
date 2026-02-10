@@ -1,0 +1,12 @@
+Conclusion
+==========
+
+At this point you have finished the entire primer. Congratulations!
+
+I hope you feel this entire document was a helpful view into how LPC and 3Kingdoms library specifically work from a low level coding standpoint.
+
+If you wish to proceed to wizzing, I wish you the best of luck and look forward to your application!
+
+If you found anything incorrect (typos, code, spelling, etc) please feel free to mudmail me in game with the page the issue is on and a brief description.
+
+Similarly, if there's other topics you would like to see covered, please reach out in the same manner and let me know!

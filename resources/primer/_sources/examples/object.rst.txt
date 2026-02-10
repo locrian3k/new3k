@@ -1,0 +1,247 @@
+Coding An Object
+================
+
+This is going to sound a little funny, but if you did :ref:`Coding A Room`, you already technically have coded an object! Remember way back to the start of this primer, objects in LPC are any file the driver can load. As such, rooms are objects too!
+
+So why a separate section? Because we actually have a base inheritable called an object, that is separate from rooms, that is the fundemental building block for most things players interact with in the world of 3Kingdoms.
+
+You pick up a flask of potion? That's an object. You wield a weapon? Its a weapon but it inherits the base object first! Armor? Same thing, inherits object before it becomes an armor!
+
+Does *everything* start inheriting the base object? Funnily enough, no! Rooms never inherit the base object as they're utilized in a different manner and their own thing. Monsters/NPCs/most followers don't either. Daemons (mentioned briefly before as non-cloneable files that hold code to be referenced by other things) also generally don't inherit objects (often, they don't inherit anything at all!).
+
+For this section, we're going to show you how to make primative objects, things that just inherit object and don't inherit anything more fancy. To do that, we're going to make a little trinket that can be dropped by a mob we'll code soon.
+
+To start with, just like we did in the room tutorial, we begin with our comment block and a call to inherit:
+
+.. code-block::
+
+  /* first_obj.c
+     Adalius 250315
+     A squeaky toy for our monster to drop. */
+  #pragma strong_types
+
+  inherit "/obj/object";
+
+Now we have just inherited access to a roughly 25kb 930-some line prebuilt object and everything it can do. Still amazing what that one little line of code can do, right?
+
+We also need to add a :code:`create()` just like in the room file, and also just like that file, we need to call the overloaded :code:`::create()` so the base object can do its magic.
+
+.. code-block::
+
+  /* first_obj.c
+     Adalius 250315
+     A squeaky toy for our monster to drop. */
+  #pragma strong_types
+
+  inherit "/obj/object";
+
+  void create()
+  {
+    ::create();
+    return;
+  }
+
+Next we need to do some things to identify our object. Specifically, we need the name, the aliases for it, a short description, and a long description. We're going to make a squeaky toy like a dog would chew on, so that should give us some direction.
+
+Names should always start with a lower case letter (as they are often shown in the format 'You drop a squeaky toy.' and would look funny as 'You drop A squeaky toy').
+
+Aliases are anything we want it to identify as, in this case we might want 'toy', 'squeaky toy', 'dog toy', 'chew toy'.
+
+Adding that to our code we end up with this:
+
+.. code-block::
+
+  /* first_obj.c
+     Adalius 250315
+     A squeaky toy for our monster to drop. */
+  #pragma strong_types
+
+  inherit "/obj/object";
+
+  void create()
+  {
+    ::create();
+
+    set_name("a squeaky toy");
+    set_alias( ({ "toy", "squeaky toy", "dog toy", "chew toy" }) );
+
+    set_short("A squeaky toy");
+    set_long("\
+    This is a squeaky toy like a dog would chew on. It is made out of \
+    some foreign plant stem, sewn shut with sinew twine at both ends. \
+    The stem is rubbery and holds its shape; even after squeezing it \
+    returns back to where it was. As you squeeze it the air is pushed \
+    out a small hole in the one end, making a shrill wheezing sound.");
+
+    return;
+  }
+
+At this point, you could be done if you wanted. It will clone (which, technically it would have cloned after the very first line but it would be useless), it has a short and long, you can manipulate it via its name or anything in :code:`set_alias()`, and due to the code that was inherited you can already drop, dispose, keep, and give the item away, amongst other things.
+
+However, we're going to keep going. Next, lets give this object a little bit of value so that they can sell it at a shop for a paltry sum. We also should give it some weight. It wouldn't hurt to give it a composition either, and maybe we should tell the driver who coded it and what realm its from...
+
+.. code-block::
+
+  /* first_obj.c
+     Adalius 250315
+     A squeaky toy for our monster to drop. */
+  #pragma strong_types
+
+  inherit "/obj/object";
+
+  void create()
+  {
+    ::create();
+
+    set_creator("Adalius");
+    set_realm("Fantasy");
+
+    set_name("a squeaky toy");
+    set_alias( ({ "toy", "squeaky toy", "dog toy", "chew toy" }) );
+
+    set_short("A squeaky toy");
+    set_long("\
+    This is a squeaky toy like a dog would chew on. It is made out of \
+    some foreign plant stem, sewn shut with sinew twine at both ends. \
+    The stem is rubbery and holds its shape; even after squeezing it \
+    returns back to where it was. As you squeeze it the air is pushed \
+    out a small hole in the one end, making a shrill wheezing sound.");
+
+    set_value(5);
+    //Weight is set in lbs, oz. If ony one arg is passed, it is lbs.
+    set_weight(0,8);
+
+    //Composition can be a string with 1 item or string* with multiple items.
+    set_composition( ({ "plant", "hide" }) );
+
+    return;
+  }
+
+Alright, now they can sell it, if a command uses composition it can check against that, and the driver knows who wrote it and for what realm.
+
+Next, wouldn't it be cool if they could 'squeak' the toy? To do that, we need to learn a new function...
+
+Init Function
+-------------
+
+This function is called on an object by the driver anytime a living (which means a player or monster) comes into contact with the object. So when a player enters a room, :code:`init()` is called in the room and everything *in* the room.
+
+When we want to add an action to something, this is where we generally would put the code to do so, which is the :code:`add_action()` function noted in :ref:`Action Functions`.
+
+An init must call the init above it in almost every situation to work properly, so we use the overload operator again and call :code:`::init();`
+
+So what would the :code:`init()` look like in our object to add a squeaky response to them? We'd need to add two parts, the :code:`init()` with the :code:`add_action()` call, and a :code:`do_squeak()` function that handles the action.
+
+.. code-block::
+
+  void init()
+  {
+    ::init();
+
+    add_action("do_squeak","squeak");
+    return;
+  }
+
+  //Action functions must be of type 'status' and return 1 on success or
+  //0 on failure. Its good practice to return notify_fail(msg) on failure
+  //as this ensures they see a failure message *and* it still counts as
+  //returning 0.
+
+  status do_squeak(string arg)
+  {
+    //If they don't pass what they want to squeak, we fail.
+    //We also check to see if what they passed is us by using id().
+    //id(arg) returns 1 if we identify as arg (by checking our name
+    //and our aliases), and 0 if not.
+    //By using notify_fail()/returning 0, it also gives any other object
+    //that has a 'squeak' action a chance to fire.
+
+    if(!arg || arg=="" || !id(arg))
+      return notify_fail("Squeak what?\n");
+
+    //At this point they must have passed an arg and we ID to it, so
+    //squeak away!
+
+    write("You squeak the toy. SQUEAK SQUEAK! That was fun!\n");
+
+    //Now we return 1 to indicate success. This means no other objects
+    //with a squeak action will have a chance to fire, as we beat them
+    //to it.
+    return 1;
+  }
+
+This code is all that is required to make the squeak action work. However, it should be noted that the players can use this action if the toy is in their inventory, or simply in the room with the toy (which is pretty reasonable).
+
+If we wanted to make it so they had to have the toy in their inventory, we would modify our :code:`init()` like this:
+
+.. code-block::
+
+  void init()
+  {
+    ::init();
+
+    if(this_player() != environment())
+      return;
+
+    add_action("do_squeak","squeak");
+    return;
+  }
+
+Now, if :code:`this_player()` (the living object that came into contact with us) is not our :code:`environment()` (the thing holding us), we don't give them the action. If they pick us up, :code:`init()` is fired again, they will be our :code:`environment()` and the action will be added.
+
+However, I don't think this is right, they should be able to squeak it on the floor, so lets use our original implementation. Now our completed file looks like:
+
+.. code-block::
+
+  /* first_obj.c
+     Adalius 250315
+     A squeaky toy for our monster to drop. */
+  #pragma strong_types
+
+  inherit "/obj/object";
+
+  void create()
+  {
+    ::create();
+
+    set_creator("Adalius");
+    set_realm("Fantasy");
+
+    set_name("a squeaky toy");
+    set_alias( ({ "toy", "squeaky toy", "dog toy", "chew toy" }) );
+
+    set_short("A squeaky toy");
+    set_long("\
+    This is a squeaky toy like a dog would chew on. It is made out of \
+    some foreign plant stem, sewn shut with sinew twine at both ends. \
+    The stem is rubbery and holds its shape; even after squeezing it \
+    returns back to where it was. As you squeeze it the air is pushed \
+    out a small hole in the one end, making a shrill wheezing sound.");
+
+    set_value(5);
+    set_weight(0,8);
+
+    set_composition( ({ "plant", "hide" }) );
+
+    return;
+  }
+
+    void init()
+  {
+    ::init();
+
+    add_action("do_squeak","squeak");
+    return;
+  }
+
+  status do_squeak(string arg)
+  {
+    if(!arg || arg=="" || !id(arg))
+      return notify_fail("Squeak what?\n");
+
+    write("You squeak the toy. SQUEAK SQUEAK! That was fun!\n");
+
+    return 1;
+  }
+
+Great, we've completed our first non-room object together!

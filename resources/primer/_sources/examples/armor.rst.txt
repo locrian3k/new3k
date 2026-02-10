@@ -1,0 +1,184 @@
+Coding An Armor
+===============
+
+Coding an armor is unsurpisingly a lot like coding a weapon. We inherit the proper file, it does most of the work, and we just do some basic setup code to get it up and running.
+
+So, as has been done prior, we start with our comment block and inherit. Since we're getting familar with the procedure, lets also generate our :code:`create()` right away.
+
+.. code-block::
+
+  /* first_armor.C
+     Adalius 250315
+     A small armor piece from a kobold. */
+  #pragma strong_types
+
+  //Both armor or armour work, armor is just an alias on 3Kingdoms.
+  inherit "/obj/armour";
+
+  void create()
+  {
+    ::create();
+    return;
+  }
+
+Step 1 done, and done.
+
+Next we need to decide what kind of armor we're going to make. We already figured out in the weapon file that this is probably going to be dropping from a kobold, so maybe a stinky leather cloak would be appropriate.
+
+Let's do the bulk of the setup in one fell swoop this time.
+
+We'll set the name, short, long, aliases, weight, composition, value, realm, and creator.
+
+.. code-block::
+
+  /* first_armor.C
+     Adalius 250315
+     A small armor piece from a kobold. */
+  #pragma strong_types
+
+  inherit "/obj/armour";
+
+  void create()
+  {
+    ::create();
+
+    set_name("a leather cloak");
+    set_alias( ({ "cloak", "leather cloak", "dingy leather cloak" }) );
+    set_short("A dingy leather cloak");
+    set_long("\
+   This cloak is made of poorly tanned leather, with small holes spanning \
+   the surface, all from areas cut through while scraping the flesh from \
+   the hide. It is stained with... well... it's probably best if you don't \
+   ask what. The smell is equally disturbing, but it looks as if it \
+   offered its prior owner a modicum of protection.");
+
+    set_weight(4);
+    set_value(2);
+    set_composition(({ "leather" }));
+
+    set_realm("Fantasy");
+    set_creator("Adalius");
+
+    return;
+  }
+
+Now we can add a type, and some AC protection.
+
+
+.. code-block::
+
+  /* first_armor.C
+     Adalius 250315
+     A small armor piece from a kobold. */
+  #pragma strong_types
+
+  inherit "/obj/armour";
+
+  void create()
+  {
+    ::create();
+
+    set_name("a leather cloak");
+    set_alias( ({ "cloak", "leather cloak", "dingy leather cloak" }) );
+    set_short("A dingy leather cloak");
+    set_long("\
+   This cloak is made of poorly tanned leather, with small holes spanning \
+   the surface, all from areas cut through while scraping the flesh from \
+   the hide. It is stained with... well... it's probably best if you don't \
+   ask what. The smell is equally disturbing, but it looks as if it \
+   offered its prior owner a modicum of protection.");
+
+    set_weight(4);
+    set_value(2);
+    set_composition(({ "leather" }));
+
+    set_realm("Fantasy");
+    set_creator("Adalius");
+
+    set_type("cloak");
+    set_ac(2,1,0,0,0,0,0,0,0,0);
+
+    return;
+  }
+
+At this point, its a fully functioning cloak. It can be worn, removed, etc.
+
+Let's introduce a new function that is specific to armor, the :code:`cant_wear()` function.
+
+This function will determine if someone can wear it. Given this is a stinky piece of leather, maybe someone with high charisma for their level wouldn't wear it...
+
+Let's narrow that down even further and say 'high for their level' means their charisma is more than 2x their level...
+
+.. code-block::
+
+  /* first_armor.C
+     Adalius 250315
+     A small armor piece from a kobold. */
+  #pragma strong_types
+
+  inherit "/obj/armour";
+
+  void create()
+  {
+    ::create();
+
+    set_name("a leather cloak");
+    set_alias( ({ "cloak", "leather cloak", "dingy leather cloak" }) );
+    set_short("A dingy leather cloak");
+    set_long("\
+   This cloak is made of poorly tanned leather, with small holes spanning \
+   the surface, all from areas cut through while scraping the flesh from \
+   the hide. It is stained with... well... it's probably best if you don't \
+   ask what. The smell is equally disturbing, but it looks as if it \
+   offered its prior owner a modicum of protection.");
+
+    set_weight(4);
+    set_value(2);
+    set_composition(({ "leather" }));
+
+    set_realm("Fantasy");
+    set_creator("Adalius");
+
+    set_type("cloak");
+    set_ac(2,1,0,0,0,0,0,0,0,0);
+
+    return;
+  }
+
+  status cant_wear(status silent)
+  {
+    //We can get the player's charisma by first grabbing our environment()
+    //since they have to be holding it to try to wear it, and then
+    //checking their query_cha() result. We can compare this to their
+    //query_player_level() result to see if they have too much cha to
+    //wear something so stinky...
+
+    if( environment()->query_cha() * 2 >
+        environment()->query_player_level() )
+    {
+      //They won't wear it, but now we need to see if the call was made
+      //silently (which can happen on quit, or other forced removals)
+
+      if(!silent) //It wasn't quiet/forced....
+        tell_object(environment(),
+          "That smells like piss and you won't put it on!\n");
+
+      //We return 1 to signify that we blocked it from being worn.
+      return 1;
+    }
+
+    //Otherwise, we return 0 for success and they wear it like normal.
+    return 0;
+  }
+
+Now, a few questions may have popped up in your head looking at this new function.
+
+  1. Why didn't we use :code:`this_player()`  instead of :code:`environment()`?
+
+  We did this because :code:`this_player()`  may not be defined, since you can have armor removed from you from more ways than just the 'remove' command, and if the source of it was other code where :code:`this_player()`  isn't defined, then it won't be defined here either, which results in an error trying to do a :code:`call_other()` on an undefined object.
+
+  2. If 1 is true and 0 is false in status, why did we return 0 for success?
+
+  We did this because of how function calls to non-existent functions work. Imagine if we didn't declare :code:`cant_wear()` at all. When the remove code calls :code:`this_object()- >cant_wear(silent);` it gets back 0 because the function isn't defined. If it isn't defined and returns 0, we want the default behavior to be to allow it to be worn. So instead, we structure it that if it isn't defined *or* it is defined and returns 0 it allows it, but returning 1 blocks it. Then the only way it can be blocked is if there is a function and it decides to return 1.
+
+At this point we have a nice little armor with some special code, I think it's time to move onto coding a monster to drop all this gear...

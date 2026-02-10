@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Coding An Object &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coding A Weapon" href="weapon.html" />
+    <link rel="prev" title="Coding A Room" href="room.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="weapon.html" title="Coding A Weapon"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="room.html" title="Coding A Room"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding An Object</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="coding-an-object">
+<h1>Coding An Object<a class="headerlink" href="#coding-an-object" title="Link to this heading">¶</a></h1>
+<p>This is going to sound a little funny, but if you did <a class="reference internal" href="room.html#coding-a-room"><span class="std std-ref">Coding A Room</span></a>, you already technically have coded an object! Remember way back to the start of this primer, objects in LPC are any file the driver can load. As such, rooms are objects too!</p>
+<p>So why a separate section? Because we actually have a base inheritable called an object, that is separate from rooms, that is the fundemental building block for most things players interact with in the world of 3Kingdoms.</p>
+<p>You pick up a flask of potion? That’s an object. You wield a weapon? Its a weapon but it inherits the base object first! Armor? Same thing, inherits object before it becomes an armor!</p>
+<p>Does <em>everything</em> start inheriting the base object? Funnily enough, no! Rooms never inherit the base object as they’re utilized in a different manner and their own thing. Monsters/NPCs/most followers don’t either. Daemons (mentioned briefly before as non-cloneable files that hold code to be referenced by other things) also generally don’t inherit objects (often, they don’t inherit anything at all!).</p>
+<p>For this section, we’re going to show you how to make primative objects, things that just inherit object and don’t inherit anything more fancy. To do that, we’re going to make a little trinket that can be dropped by a mob we’ll code soon.</p>
+<p>To start with, just like we did in the room tutorial, we begin with our comment block and a call to inherit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_obj</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">squeaky</span> <span class="n">toy</span> <span class="k">for</span> <span class="n">our</span> <span class="n">monster</span> <span class="n">to</span> <span class="n">drop</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/object&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now we have just inherited access to a roughly 25kb 930-some line prebuilt object and everything it can do. Still amazing what that one little line of code can do, right?</p>
+<p>We also need to add a <code class="code docutils literal notranslate"><span class="pre">create()</span></code> just like in the room file, and also just like that file, we need to call the overloaded <code class="code docutils literal notranslate"><span class="pre">::create()</span></code> so the base object can do its magic.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_obj</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">squeaky</span> <span class="n">toy</span> <span class="k">for</span> <span class="n">our</span> <span class="n">monster</span> <span class="n">to</span> <span class="n">drop</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/object&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next we need to do some things to identify our object. Specifically, we need the name, the aliases for it, a short description, and a long description. We’re going to make a squeaky toy like a dog would chew on, so that should give us some direction.</p>
+<p>Names should always start with a lower case letter (as they are often shown in the format ‘You drop a squeaky toy.’ and would look funny as ‘You drop A squeaky toy’).</p>
+<p>Aliases are anything we want it to identify as, in this case we might want ‘toy’, ‘squeaky toy’, ‘dog toy’, ‘chew toy’.</p>
+<p>Adding that to our code we end up with this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_obj</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">squeaky</span> <span class="n">toy</span> <span class="k">for</span> <span class="n">our</span> <span class="n">monster</span> <span class="n">to</span> <span class="n">drop</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/object&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;a squeaky toy&quot;</span><span class="p">);</span>
+  <span class="n">set_alias</span><span class="p">(</span> <span class="p">({</span> <span class="s2">&quot;toy&quot;</span><span class="p">,</span> <span class="s2">&quot;squeaky toy&quot;</span><span class="p">,</span> <span class="s2">&quot;dog toy&quot;</span><span class="p">,</span> <span class="s2">&quot;chew toy&quot;</span> <span class="p">})</span> <span class="p">);</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A squeaky toy&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a squeaky toy like a dog would chew on. It is made out of </span><span class="se">\</span>
+<span class="s2">  some foreign plant stem, sewn shut with sinew twine at both ends. </span><span class="se">\</span>
+<span class="s2">  The stem is rubbery and holds its shape; even after squeezing it </span><span class="se">\</span>
+<span class="s2">  returns back to where it was. As you squeeze it the air is pushed </span><span class="se">\</span>
+<span class="s2">  out a small hole in the one end, making a shrill wheezing sound.&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At this point, you could be done if you wanted. It will clone (which, technically it would have cloned after the very first line but it would be useless), it has a short and long, you can manipulate it via its name or anything in <code class="code docutils literal notranslate"><span class="pre">set_alias()</span></code>, and due to the code that was inherited you can already drop, dispose, keep, and give the item away, amongst other things.</p>
+<p>However, we’re going to keep going. Next, lets give this object a little bit of value so that they can sell it at a shop for a paltry sum. We also should give it some weight. It wouldn’t hurt to give it a composition either, and maybe we should tell the driver who coded it and what realm its from…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_obj</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">squeaky</span> <span class="n">toy</span> <span class="k">for</span> <span class="n">our</span> <span class="n">monster</span> <span class="n">to</span> <span class="n">drop</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/object&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_creator</span><span class="p">(</span><span class="s2">&quot;Adalius&quot;</span><span class="p">);</span>
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;a squeaky toy&quot;</span><span class="p">);</span>
+  <span class="n">set_alias</span><span class="p">(</span> <span class="p">({</span> <span class="s2">&quot;toy&quot;</span><span class="p">,</span> <span class="s2">&quot;squeaky toy&quot;</span><span class="p">,</span> <span class="s2">&quot;dog toy&quot;</span><span class="p">,</span> <span class="s2">&quot;chew toy&quot;</span> <span class="p">})</span> <span class="p">);</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A squeaky toy&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a squeaky toy like a dog would chew on. It is made out of </span><span class="se">\</span>
+<span class="s2">  some foreign plant stem, sewn shut with sinew twine at both ends. </span><span class="se">\</span>
+<span class="s2">  The stem is rubbery and holds its shape; even after squeezing it </span><span class="se">\</span>
+<span class="s2">  returns back to where it was. As you squeeze it the air is pushed </span><span class="se">\</span>
+<span class="s2">  out a small hole in the one end, making a shrill wheezing sound.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_value</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="o">//</span><span class="n">Weight</span> <span class="ow">is</span> <span class="nb">set</span> <span class="ow">in</span> <span class="n">lbs</span><span class="p">,</span> <span class="n">oz</span><span class="o">.</span> <span class="n">If</span> <span class="n">ony</span> <span class="n">one</span> <span class="n">arg</span> <span class="ow">is</span> <span class="n">passed</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">lbs</span><span class="o">.</span>
+  <span class="n">set_weight</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">Composition</span> <span class="n">can</span> <span class="n">be</span> <span class="n">a</span> <span class="n">string</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">item</span> <span class="ow">or</span> <span class="n">string</span><span class="o">*</span> <span class="k">with</span> <span class="n">multiple</span> <span class="n">items</span><span class="o">.</span>
+  <span class="n">set_composition</span><span class="p">(</span> <span class="p">({</span> <span class="s2">&quot;plant&quot;</span><span class="p">,</span> <span class="s2">&quot;hide&quot;</span> <span class="p">})</span> <span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Alright, now they can sell it, if a command uses composition it can check against that, and the driver knows who wrote it and for what realm.</p>
+<p>Next, wouldn’t it be cool if they could ‘squeak’ the toy? To do that, we need to learn a new function…</p>
+<section id="init-function-part-2">
+<h2>Init Function Part 2<a class="headerlink" href="#init-function-part-2" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some of this is duplicated from <a class="reference internal" href="../coding/functions.html#init-function"><span class="std std-ref">Init Function</span></a> back in the <a class="reference internal" href="../coding/functions.html#functions"><span class="std std-ref">Functions</span></a> section, but it’s important to now see how it works in action…</p>
+</div>
+<p>This function is called on an object by the driver anytime a living (which means a player or monster) comes into contact with the object. So when a player enters a room, <code class="code docutils literal notranslate"><span class="pre">init()</span></code> is called in the room and everything <em>in</em> the room.</p>
+<p>When we want to add an action to something, this is where we generally would put the code to do so, which is the <code class="code docutils literal notranslate"><span class="pre">add_action()</span></code> function noted in <a class="reference internal" href="../coding/driver_functions.html#action-functions"><span class="std std-ref">Action Functions</span></a>.</p>
+<p>An init must call the init above it in almost every situation to work properly, so we use the overload operator again and call <code class="code docutils literal notranslate"><span class="pre">::init();</span></code></p>
+<p>So what would the <code class="code docutils literal notranslate"><span class="pre">init()</span></code> look like in our object to add a squeaky response to them? We’d need to add two parts, the <code class="code docutils literal notranslate"><span class="pre">init()</span></code> with the <code class="code docutils literal notranslate"><span class="pre">add_action()</span></code> call, and a <code class="code docutils literal notranslate"><span class="pre">do_squeak()</span></code> function that handles the action.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>void init()
+{
+  ::init();
+
+  add_action(&quot;do_squeak&quot;,&quot;squeak&quot;);
+  return;
+}
+
+//Action functions must be of type &#39;status&#39; and return 1 on success or
+//0 on failure. Its good practice to return notify_fail(msg) on failure
+//as this ensures they see a failure message *and* it still counts as
+//returning 0.
+
+status do_squeak(string arg)
+{
+  //If they don&#39;t pass what they want to squeak, we fail.
+  //We also check to see if what they passed is us by using id().
+  //id(arg) returns 1 if we identify as arg (by checking our name
+  //and our aliases), and 0 if not.
+  //By using notify_fail()/returning 0, it also gives any other object
+  //that has a &#39;squeak&#39; action a chance to fire.
+
+  if(!arg || arg==&quot;&quot; || !id(arg))
+    return notify_fail(&quot;Squeak what?\n&quot;);
+
+  //At this point they must have passed an arg and we ID to it, so
+  //squeak away!
+
+  write(&quot;You squeak the toy. SQUEAK SQUEAK! That was fun!\n&quot;);
+
+  //Now we return 1 to indicate success. This means no other objects
+  //with a squeak action will have a chance to fire, as we beat them
+  //to it.
+  return 1;
+}
+</pre></div>
+</div>
+<p>This code is all that is required to make the squeak action work. However, it should be noted that the players can use this action if the toy is in their inventory, or simply in the room with the toy (which is pretty reasonable).</p>
+<p>If we wanted to make it so they had to have the toy in their inventory, we would modify our <code class="code docutils literal notranslate"><span class="pre">init()</span></code> like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">init</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">init</span><span class="p">();</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">this_player</span><span class="p">()</span> <span class="o">!=</span> <span class="n">environment</span><span class="p">())</span>
+    <span class="k">return</span><span class="p">;</span>
+
+  <span class="n">add_action</span><span class="p">(</span><span class="s2">&quot;do_squeak&quot;</span><span class="p">,</span><span class="s2">&quot;squeak&quot;</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now, if <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> (the living object that came into contact with us) is not our <code class="code docutils literal notranslate"><span class="pre">environment()</span></code> (the thing holding us), we don’t give them the action. If they pick us up, <code class="code docutils literal notranslate"><span class="pre">init()</span></code> is fired again, they will be our <code class="code docutils literal notranslate"><span class="pre">environment()</span></code> and the action will be added.</p>
+<p>However, I don’t think this is right, they should be able to squeak it on the floor, so lets use our original implementation. Now our completed file looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* first_obj.c
+   Adalius 250315
+   A squeaky toy for our monster to drop. */
+#pragma strong_types
+
+inherit &quot;/obj/object&quot;;
+
+void create()
+{
+  ::create();
+
+  set_creator(&quot;Adalius&quot;);
+  set_realm(&quot;Fantasy&quot;);
+
+  set_name(&quot;a squeaky toy&quot;);
+  set_alias( ({ &quot;toy&quot;, &quot;squeaky toy&quot;, &quot;dog toy&quot;, &quot;chew toy&quot; }) );
+
+  set_short(&quot;A squeaky toy&quot;);
+  set_long(&quot;\
+  This is a squeaky toy like a dog would chew on. It is made out of \
+  some foreign plant stem, sewn shut with sinew twine at both ends. \
+  The stem is rubbery and holds its shape; even after squeezing it \
+  returns back to where it was. As you squeeze it the air is pushed \
+  out a small hole in the one end, making a shrill wheezing sound.&quot;);
+
+  set_value(5);
+  set_weight(0,8);
+
+  set_composition( ({ &quot;plant&quot;, &quot;hide&quot; }) );
+
+  return;
+}
+
+  void init()
+{
+  ::init();
+
+  add_action(&quot;do_squeak&quot;,&quot;squeak&quot;);
+  return;
+}
+
+status do_squeak(string arg)
+{
+  if(!arg || arg==&quot;&quot; || !id(arg))
+    return notify_fail(&quot;Squeak what?\n&quot;);
+
+  write(&quot;You squeak the toy. SQUEAK SQUEAK! That was fun!\n&quot;);
+
+  return 1;
+}
+</pre></div>
+</div>
+<p>Great, we’ve completed our first non-room object together!</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Coding An Object</a><ul>
+<li><a class="reference internal" href="#init-function-part-2">Init Function Part 2</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="room.html"
+                          title="previous chapter">Coding A Room</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="weapon.html"
+                          title="next chapter">Coding A Weapon</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="weapon.html" title="Coding A Weapon"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="room.html" title="Coding A Room"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding An Object</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

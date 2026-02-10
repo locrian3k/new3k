@@ -1,0 +1,618 @@
+Operators
+=========
+
+Fundementals
+------------
+
+Operators are symbols used in coding that indicate an operation to be performed on one or more <var>iables.
+
+In LPC, all operators return a value, either the value of a <var>iable used in the operator call, or a boolean (status) value.
+
+All operators take one argument (called unary), or two arguments (called binary), except the ternary, that takes three (which coincidentally would be ternary, where it gets its name from as the only ternary operator).
+
+For that reason you can think of operators as a shorthand, for instance :code:`a + b` is essentially just :code:`add(a,b)`.
+
+In some languages (not LPC) you can even overload operators by redefining them using functions.
+
+As operators are normally just 1-3 characters, they can save on the amount of typing needed tremendously. :code:`a = b + c;` is slightly shorter than :code:`a = add(b,c);` and :code:`a += b;` is even shorter; but :code:`a <<= b;` is a lot shorter than :code:`a = bitwise_left_shift(a,b);`.
+
+List of Operators
+-----------------
+
+.. note::
+  The examples below are low level and not often good practice.
+  For instance, in the + example, you wouldn't normally add two hard coded strings as its a waste of cycles.
+
+When <type> is listed, value must be a valid type from :doc:`./types`.
+When <var> is listed, a <var>iable is required because the value is stored by the operator. When <expr> is listed, <var> can also be used in most cases, as its the same as if you assigned <expr> to <var>.
+What this means is things like:
+
+.. code-block::
+
+  name = "John " + "Smith";
+
+is equal to:
+
+.. code-block::
+
+  first = "John ";
+  last = "Smith";
+  name = first + last;
+
+
+In order of precedence (low to high):
+
+::
+
+  <expr1>, <expr2>    : Evaluate <expr1> then <expr2>, then return <expr2>.
+  <var> = <expr1>     : Evaluate <expr1>, then assign its value to <var>.
+  <var> += <expr1>    : Evaluate <expr1>, then add it to <var>, then assign the
+                        result to <var>. This is similar to
+                        '<var> = <var> + expr;'
+  <var> -= <expr1>    : Same as += above but subtracted from <var>.
+  <var> &= <expr1>    : Same as += above but bitwise-and of <var>.
+  <var> |= <expr1>    : Same as += above but bitwise-or of <var>.
+  <var> ^= <expr1>    : Same as += above but bitwise-xor of <var>.
+  <var> <<= <expr1>   : Same as += above but bitshift-left by <expr1> bits of
+                        <var>. Sign bit is not preserved.
+  <var> >>= <expr1>   : Same as += above but bitshift-right by <expr1> bits of
+                        <var>. Sign bit is preserved.
+  <var> >>>= <expr1>  : Same as += above but bitshift-right by <expr1> bits of
+                        <var>. Sign bit is not preserved.
+  <var> *= <expr1>    : Same as += above but multiplied with <var>.
+  <var> %= <expr1>    : Same as += above but modulo of <var>.
+  <var> /= <expr1>    : Same as += above but divided by <var>.
+  <var> &&= <expr1>   : Same as += above but boolean and with <var>.
+  <var> ||= <expr1>   : Same as += above but boolean or with <var>.
+  <expr1> ? <expr2> : <expr3> : Ternary-if. If <expr1> evaluates to true,
+                                <expr2> is evaluated and returned, otherwise
+                                <expr3> is evaluated and returned.
+  <expr1> || <expr2>  : Returns the logical-or of <expr1> and <expr2>.
+  <expr1> && <expr2>  : Returns the logical-and of <expr1> and <expr2>.
+  <expr1> | <expr2>   : Returns the bitwise-or of <expr1> and <expr2>.
+  <expr1> ^ <expr2>   : Returns the bitwise-xor of <expr1> and <expr2>.
+  <expr1> & <expr2>   : Returns the bitwise-and of <expr1> and <expr2>.
+  <expr1> == <expr2>  : Returns true if two values are equal. Valid for
+                        strings, numbers, objects, and closures.
+  <expr1> != <expr2>  : Returns true if two values are not equal. Valid for
+                        strings, numbers, objects, and closures.
+  <expr1> > <expr2>   : Returns true if <expr1> is greater than <expr2>. Valid
+                        for strings and numbers.
+  <expr1> >= <expr2>  : Returns true if <expr1> is greater than or equal to
+                        <expr2>. Valid for strings and numbers.
+  <expr1> < <expr2>   : Returns true if <expr1> is less than <expr2>. Valid for
+                        strings and numbers.
+  <expr1> <= <expr2>  : Returns true if <expr1> is less than or equal to
+                        <expr2>. Valid for strings and numbers.
+  <expr1> << <expr2>  : Shift <expr1> ← by <expr2> bits. Sign not preserved.
+  <expr1> >> <expr2>  : Shift <expr1> → by <expr2> bits. Sign of <expr1>
+                        preserved.
+  <expr1> >>> <expr2> : Shift <expr1> → by <expr2> bits. Sign not preserved
+                        but instead shifts in 0 bits.
+  <expr1> + <expr2>   : Addition. For numbers, its arithmetic. For strings, it
+                        is concatenation. If an array, <expr2> is appended to
+                        <expr1>. If mapping of equal width, they are merged,
+                        and in the event of duplicate keys, <expr2>'s value is
+                        preserved. If the mappings are unequal width, the
+                        result is <expr1> if non-empty, otherwise <expr2>.
+  <expr1> - <expr2>   : Subtraction. Valid for numbers, strings, arrays,
+                        mappings. For arrays and strings, all occurences of the
+                        elements respective characters in <expr2> are removed
+                        from <expr1> and the result returned. For mappings, all
+                        occurences of elements in <expr1> which have a matching
+                        key in <expr2> are removed and the result is returned.
+  <expr1> * <expr2>   : Multiplication. At least one value must be a number. If
+                        strings or arrays are multiplied by a number n (0+),
+                        the result will be the string or array repeated n
+                        times.
+  <expr1> % <expr2>   : Modulo operator of numeric arguments.
+  <expr1> / <expr2>   : Arithmatic division.
+  ++<var>             : Increment <var> and then return the value.
+  --<var>             : Decrement <var> and then return the value.
+  -<var>              : Return the negative value of <var>.
+  !<var>              : Return the logical 'not' of <var>.
+  ~<var>              : Return the boolean 'not' of <var>.
+  (<type>)<var>       : Return the value of <var> converted to <type> if possible.
+                        There exists functions to perform this and they should be
+                        utilized when possible as they may take into account
+                        conversions that the driver, doing strictly type-to-type
+                        conversion, does not.
+  ({<type>})<var>     : <var> is *presumed* to have the type <type>. This is
+                        declarative and does not actually change <var> in memory.
+  <var>++             : Return the current value of <var> and then increment it.
+  <var>--             : Return the current value of <var> and then decrement it.
+  <var>[<expr1>]      : Return the value of <var> held in index <expr1>. Valid for
+                        strings, arrays, mappings, and mixed.
+  <var>[<expr1>..<expr2>] : Return the value of <var> held in the range of
+                            indices <expr1> to <expr2>.
+  <expr1>-><func>(...) : Symbolic form of call_other(). <expr1> must be
+                         either a string or an object, which then has
+                         function <func> called, and the result is returned.
+  <base>::<func>(...) : For code that inherits other code, this format will
+                        call function <func> inside the inherited <base>
+                        instead of the local code. <base> can be a string
+                        pointing to the full pathname or an identifier
+                        containing the pure basename. If <base> is omitted
+                        then the last inherited function named <func> is
+                        called. The result of <func> is returned.
+  ({})                : A constructor for an array.
+  ([])                : A constructor for a mapping.
+
+Examples
+--------
+
+Assignment Operator
+^^^^^^^^^^^^^^^^^^^
+
+Operator: =
+
+.. note::
+  There is only one operator in the assignment category and it does one BIG job. It assigns whatever is on the right side, to the variable on the left side. Easy peasy.
+
+.. code-block::
+
+  //There are 3 apples.
+  apples = 3;
+  Result: apples == 3
+
+Arithmatic Operators
+^^^^^^^^^^^^^^^^^^^^
+
+Operators: +, -, \*, /, %, ++, --
+
+.. note::
+  Arithmatic operators are the most easily understood for most people because they're the same operators you use in normal mathmatics.
+
+.. code-block::
+
+  //We have 5 fruits and add 3 more. How many do we have?
+  fruits = 5 + 3;
+  Result: fruits == 8
+
+  //Operators work with functions instead of values or variables as well.
+  //Find out how many vegetables we have by adding our carrots and peas.
+  //With get_carrots() returning 2 and get_peas() returning 1:
+  vegetables = get_carrots() + get_peas();
+  Result: vegetables == 3
+
+  //We lost 3 fruits. How many do we have?
+  fruits = fruits - 3;
+  Result: fruits == 5
+
+  //How many more fruits than vegetables do we have?
+  difference = fruits - vegetables;
+  Result: difference == 2
+
+  //We counted wrong, we actually have 7 times as many fruits as veggies!
+  fruits = vegetables * 7;
+  Result: fruits == 21
+
+  //Lets give away half. How many should we give away?
+  //Notice: Dividing can result in truncation (essentially rounding down)!
+  fruits = fruits / 2;
+  Result: fruits == 10
+
+  //We have to split that many over 6 people evenly. How many are leftover?
+  leftover = fruits % 6;
+  Result: leftover = 4
+
+  //Prefix and postfix incrementors work similarly, but what they return is
+  //different. Prefix, meaning before the variable, does the work and
+  //returns the result, postfix returns the current value, and then does
+  //the work (saving it to the variable).
+  //Both have their uses depending on where and how you are implementing.
+
+  counter = 5;
+  write(counter++); //Displays 5.
+  Result: counter == 6
+
+  write(counter--); //Displays 6
+  Result: counter == 5
+
+  write(++counter); //Displays 6
+  Result: counter == 6
+
+  write(--counter); //Displays 5
+  Result: counter == 5
+
+
+Logical Operators
+^^^^^^^^^^^^^^^^^
+
+Operators: !, &&, ||
+
+.. note::
+  While these operators all work on variables and expressions, for the examples we are going to utilize simple true or false values for simplicity. These are most often used inside of control structures as the conditionals but can creatively be used as expressions as well.
+
+.. code-block::
+
+  !true;
+  Result: false
+
+  !false;
+  Result: true
+
+  true && true;
+  Result: true
+
+  true && false;
+  //Or...
+  false && true;
+  Result: false
+
+  false && false;
+  Result: false
+
+  true || true;
+  Result: true
+
+  true || false;
+  //Or...
+  false || true;
+  Result: true
+
+  false || false;
+  Result: false
+
+Relational Operators
+^^^^^^^^^^^^^^^^^^^^
+
+Operators:  \=\=, \!\=, \>, \>\=, \<, \<\=
+
+.. note::
+  Relational operators are also called comparison operators as they compare the values on each side to each other, but unlike logical operators they aren't simply looking at boolean (status) values of true/false, they're looking at the actual value of the underlying variable or expression. However, like logical operators, they return values of true (1) or false (0).
+
+.. code-block::
+
+  a = 1; b = 1;
+  a == b;
+  Result: true
+
+  a != b;
+  Result: false
+
+  b = 0;
+  a == b;
+  Result: false
+
+  a != b;
+  Result: true
+
+  a = 5;
+  b = 20;
+
+  a > b;
+  Result: true
+
+  a < b;
+  Result: false
+
+  a = 20;
+  a >= b;
+  Result: true
+
+  a <= b;
+  Result: true
+
+Bitwise Operators
+^^^^^^^^^^^^^^^^^
+
+Operators: ~, &, \|, ^, <<, >>, >>>
+
+.. note::
+  This is an advanced topic! You won't use these in your daily life writing LPC code.
+
+.. note::
+  These operators are called bitwise because they operate directly on the byte-code of the variable or expression they are passed. The results are therefore dependent on the drivers memory size for a given variable. For instance, using a boolean not (~) on a 32-bit integer will result in a 32-bit return even if the variable passed was only 8 bits. On a 64-bit integer, it will return a 64-bit result.
+
+.. code-block::
+
+  //Perform a boolean not, which in terms of bytes means flip every 0 to a
+  //1 and every 1 to a 0.
+  a = 0b00000000000000000000000000000001;
+  ~a;
+  Result: 0b11111111111111111111111111111110
+
+  //Bitwise and takes two bytecodes and for each position returns 1 for each
+  //bit if both bits are 1, otherwise it returns 0.
+  a = 0b10101010101010101010101010101010;
+  b = 0b11111111111111110000000000000000;
+  a & b;
+  Result: 0b10101010101010100000000000000000
+
+  //Bitwise or takes two bytecodes and for each position returns 1 if either
+  //bit is 1, otherwise it returns 0.
+  a = 0b10101010101010101010101010101010;
+  b = 0b11111111111111110000000000000000;
+  a & b;
+  Result: 0b11111111111111111010101010101010
+
+  //Bitwise xor takes two bytecodes and for each position returns 1 if either
+  //bit is 1 but not if both bits are 1, or returns 0 if both bits are 0.
+  a = 0b10101010101010101010101010101010;
+  b = 0b11111111111111110000000000000000;
+  a & b;
+  Result: 0b01010101010101011010101010101010
+
+  //Bitwise left shift moves everything <x> bits left and pads right with 0.
+  //Left shifts never preserve sign since the 2nd bit from the left gets
+  //moved over into the position of the sign bit (1st bit from the left).
+  a = 0b10101010101010101010101010101010;
+  a << 3;
+  Result: 0b01010101010101010101010101010000
+
+  //Bitwise signed right shift works the same way but pads to preserve the
+  //sign, positive or negative, of the original value.
+
+  //This value is positive.
+  a = 0b10101010101010101010101010101010;
+  a >> 3;
+  //So the result is positive.
+  Result: 0b11110101010101010101010101010101
+
+  //This value is negative.
+  a = 0b00101010101010101010101010101010;
+  a >> 3;
+  //So the result is negative.
+  Result: 0b00000101010101010101010101010101
+
+  //Bitwise unsigned right shift works the same as the signed right shift
+  //except it does not preserve the sign of the original value when the
+  //value is positive. If the value is negative it will typically stay
+  //negative however by virtue of the 0 padding.
+
+  //This value is positive.
+  a = 0b10101010101010101010101010101010;
+  a >> 3;
+  //This result is negative.
+  Result: 0b00010101010101010101010101010101
+
+  //This value is negative.
+  a = 0b00101010101010101010101010101010;
+  a >> 3;
+  //This result happens to be negative.
+  Result: 0b00000101010101010101010101010101
+
+Combination Operators
+^^^^^^^^^^^^^^^^^^^^^
+
+Operators: +=, -=, \*=, /=, %=, &&=, ||=, <<=, >>=, >>>=
+
+.. note::
+  These are called combination because they do two things at once. They perform an operator, and then they also perform an assignment.
+
+.. code-block::
+
+  //We want to add 6 more to the leftover from the previous example.
+  leftover += 6;
+  Result: leftover == 10
+
+  //Oops, 2 too many. Subtract 2.
+  leftover -= 2;
+  Result: leftover == 8
+
+  //We tripled our fruit!
+  fruits *= 3;
+  Result: fruits == 18
+
+  //But half were thrown away :(
+  fruits /= 2;
+  Result: fruits == 9
+
+  //Lets give away our leftovers to 3 more people and see how many
+  //are still left over afterwards.
+  leftover %= 3;
+  Result: leftover == 2
+
+  //Logic operations perform similar to their non-combination counterparts.
+  a = 1; b = 0;
+  a &&= b;
+  Result: a == 0
+
+  a = 1; b = 1;
+  a &&= b;
+  Result: a == 1
+
+  a = 1; b = 0;
+  a ||= b;
+  Result: a == 1
+
+  //Bitwise operators also function similar to their non-combination cohorts.
+  a = 0b00000001; b = 1;
+  a <<= b;
+  Result: a == 0b00000010
+
+  a >>= b;
+  Result: a == 0b00000001
+
+  //On the 32-bit driver, this appears to not function correctly as both
+  //it and the >>> operator appear to work identically to >>.
+  a >>>= b;
+  Result: a == 0b00000000
+
+Index Operators
+^^^^^^^^^^^^^^^
+
+Operators: [<index>], [<index1>..<index2>], [<index1>..],[..<index2>]
+
+.. note::
+  Index operators return elements from arrays or array-like variables, including strings and mappings.
+
+For strings and arrays, the indexes are numeric based, and start at 0. See :ref:`Strings <String>` and :ref:`Arrays <Array>` for more information.
+For mappings, indexes are actually keys. You can see more about how to
+reference them with the index operators in :ref:`Mappings` as their operation is different enough to not be shown here.
+
+When using numeric index operators there's a few special cases.
+When using '..' inside the operator, if <index1> is omitted, it starts at the beginning of the string/array, if <index2> is omitted it ends at the end of the string/array.
+You can also utilize a '<' symbol with an index to indicate count from the end rather than the beginning of the string/array. The '<' format can be used for either <index1> or <index2> in all formats of the operator.
+
+When using [<index>], the value of <index> must be inside the bounds of the string/array or an error will be thrown.
+When using any of the forms with the '..', the values passed will automatically be limited to the bounds of the string/array, as long as at least one of them starts inside the bounds.
+If <index1> is greater than <index2> or if both <index1> and <index2> are outside the bounds, an empty string/array ("" or ({}) respectively) will be returned.
+
+.. code-block::
+
+  string s;
+  s = "hello";
+  s[0..2];
+  Result: "hel"
+
+  s[1..2];
+  Result: "el"
+
+  s[2..];
+  Result: "llo"
+
+  s[..1];
+  Result: "he"
+
+  //If you use [<index>] on a string, instead of a substring it will return
+  //the ASCII code of the individual character.
+  s[<3];
+  Result: 108
+
+  //To get the proper string return you need to do a range like so:
+  s[<3.. <3];
+  Result: "l"
+
+  s[0..<3];
+  Result: "hel"
+
+  //Even if one is out of bounds, this still works...
+  s[0..20];
+  Result: "hello"
+
+  //But if both are out of bounds...
+  s[<20..<15];
+  Result: ""
+
+  //Arrays work very similarly.
+  a = ({ 3, 9, 27, 1, 12 });
+  a[1];
+  Result: 9
+
+  a[0..2];
+  Result: ({ 3, 9, 27 })
+
+  //Note: With arrays this notation returns the element unlike strings.
+  a[<1];
+  Result: ({ 12 })
+
+  a[<3..<1];
+  Result: ({ 27, 1, 12 })
+
+Typecast Operators
+^^^^^^^^^^^^^^^^^^
+
+Operators: (<type>), ({<type>})
+
+.. note::
+  Typecast operators change or mimic the type of a variable or expression. They can be used to force the compiler to try and evaluate a value into a different type to allow it to be passed to a function that doesn't take the original type, or to force the constrictions of the type upon it. Common uses include casting an integer as a float to do division as integers truncate but floats allow decimal precision.
+
+  The driver does, at times, do this automatically when it makes sense, but often times it needs to be explicitly called out to do so.
+
+.. code-block::
+
+  //Imagine a function that takes an integer value like 102, and returns
+  //a string like "one hundred two". If we pass a non-integer value like "a"
+  //to it, maybe we want it to return an empty string, which is 0. However
+  //the function is defined as returning a string and plain old 0 is an
+  //integer. So instead, we typecast the value to force it to be an empty
+  //string instead.
+  return (string)0;
+  Result: 0 //This looks the same as (int) 0 but believe me, it's not!
+
+Call Other Operator
+^^^^^^^^^^^^^^^^^^^
+
+Operator: ->
+
+.. note::
+  This operator is really just a shorthand version of a function that exists in the driver, :code:`call_other()`, but it exists because it is so commonly used that it saves a ton of time over using the actual function.
+
+To fully appreciate/understand this operator, it's important to understand both :ref:`Functions` and :ref:`Inheritance`.
+
+.. code-block::
+
+  //Lets use a function that returns an object, for example find_player()
+  //to locate the player Bob, and then we want to query how many spell
+  //points Bob has.
+
+  //Method 1:
+  sp = call_other(find_player("bob"),"query_sp");
+  Result: 232
+
+  //Method 2:
+  find_player("bob")->query_sp();
+  Result: 232
+
+  //As you can see it shortened that line up by 17 characters just in that
+  //little example. It is used, quite literally, hundreds of thousands of
+  //times in the mudlib and saves a massive amount of typing time and file
+  //space.
+
+.. warning::
+  The usage above in both instances is actually not a safe way to do it because we didn't verify that :code:`find_player("bob")` actually found Bob. What if he wasn't online? Then :code:`find_player()` would have returned the typecast (object)0, meaning an empty object, at which point both of the methods shown would result in an error for bad argument 1 to call_other()! This is why it's important to ensure you have good values from any function you call before utilizing it in another function.
+
+Scope Resolution Operator
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Operator: \:\:
+
+.. note:: The scope resolution operator is used very frequently in a few routine spots, and very rarely elsewhere. You may not fully understand it's importance and operation until you read :ref:`Inheritance`.
+
+Often called the overload operator, this operator allows you to call a function in a given inherited file, regardless of if it was the only file inherited, or if its one of multiple in a chain of :ref:`Inheritance`.
+
+If you are in a file that inherits another file, and both files define a function with the same name, the scope resolution operator allows you to call the function in the inherited file rather than the local file.
+
+Where this is most commonly used is in objects (including armour, weapons, etc), monsters, and rooms as those have global inhertiable files that almost all things inherit and when they are first loaded, they need to perform both the code in the inherited file and in the local file.
+
+To be frank, outside of the required usage with global inheritables, most wizards don't have to utilize any special versions of this operator unless they're fairly code saavy, so if you get to that point feel free to ask on the wizard line for more detailed instruction.
+
+Much of this is explained further on in the primer but as a brief annotated example:
+
+.. code-block::
+
+  //This is a room, so lets inherit the room inheritable.
+  inherit "/room/room";
+
+  //Now we need to run our create() function which is called on every
+  //single file when its first loaded by the driver.
+  void create()
+  {
+    //Before we do anything, we let the inheritable, /room/room, run its
+    //create().
+    ::create();
+
+    //Our other code for the room, like setting its short and long
+    //description, or if its lit or not, would all go here.
+    return;
+  }
+
+  //Now lets imagine we have a room that inherits room/room but *also*
+  //inherits another file we wrote ourselves. And we need our file
+  //to also get a crack at create()...
+  inherit "our_file";
+  inherit "/room/room";
+
+  void create()
+  {
+    //First lets give the global one a chance...
+    "/room/room"::create();
+    //Then let our file do its thing...
+    "our_file"::create();
+
+    //Now we can put the rest of our create code below...
+    //...
+    //...
+    return;
+  }
+
+As you can see above, the operator allows you to be specific about which inheritable should have the function called in it.
+
+If you are desparate, there is also glob type matches available, but only if the function takes no arguments (as of 3.2.1).
+
+.. code-block::
+
+  //Call my_function() in whatever file from my directory was inherited.
+  "/adalius/*"::my_function();

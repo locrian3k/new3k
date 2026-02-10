@@ -1,0 +1,35 @@
+.. 3K Coding Tutorial documentation master file, created by
+   sphinx-quickstart on Mon Mar 10 22:04:06 2025.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+3K Coding Primer
+================================
+
+Welcome to the `3Kingdoms <https://www.3k.org>`_ coding primer. This is a document designed to prepare potential wizards for the basics of LPC coding specific to the 3Kingdoms library and to serve as an example for those considering wizzing but unsure if they will be able to grasp the tasks at hand.
+
+.. toctree::
+   :caption: Contents:
+
+   coding/introduction
+   coding/LPC
+   coding/types
+   coding/variables
+   coding/operators
+   coding/mappings
+   coding/functions
+   coding/control_structures
+   coding/modifiers
+   coding/preprocessor
+   coding/inheritance
+   coding/codestyle
+   coding/driver_functions
+   examples/room
+   examples/object
+   examples/weapon
+   examples/armor
+   examples/monster
+   examples/put_it_together
+   coding/wizzing
+   coding/advanced
+   coding/conclusion

@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Coding A Monster &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Putting It Together" href="put_it_together.html" />
+    <link rel="prev" title="Coding An Armor" href="armor.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="put_it_together.html" title="Putting It Together"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="armor.html" title="Coding An Armor"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding A Monster</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="coding-a-monster">
+<h1>Coding A Monster<a class="headerlink" href="#coding-a-monster" title="Link to this heading">¶</a></h1>
+<p>Coding a monster is similar to writing all the files we’ve done so far, we inherit a file that does the heavy work, and we call to setup a bunch of stuff.</p>
+<p>However, as monsters are some of the more complex things you can write to get just the basic functionality, there’s a lot more that goes into them.</p>
+<p>There’s also different flavors, we have monsters, complex monsters, and super monsters to pull from. The biggest difference is that complex monsters allow reactions (the ability to talk and interact with characters), but they also add pick pocketing and hunting.</p>
+<p>For this example we’ll be using just a standard monster. Lets start out as usual with the functions we’re familiar with, but as this is a living object and not an inanimate one, we don’t need to set the weight, composition, or value. Monsters also oddly don’t support <code class="code docutils literal notranslate"><span class="pre">set_creator()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">kobold</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">small</span> <span class="n">kobold</span> <span class="n">to</span> <span class="n">guard</span> <span class="n">the</span> <span class="n">hovel</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/monster&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_alias</span><span class="p">(</span> <span class="p">({</span> <span class="s2">&quot;disgusting kobold&quot;</span> <span class="p">})</span> <span class="p">);</span>
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A disgusting kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">A mangy, flea-infested kobold, roughly 3 foot tall, stands here with </span><span class="se">\</span>
+<span class="s2">beady eyes staring directly at you. Matted fur covers its body </span><span class="se">\</span>
+<span class="s2">with patches of dirt, mud, blood, and feces strewn about, visible </span><span class="se">\</span>
+<span class="s2">through the holes in its pitiful clothes and armor. A small dagger </span><span class="se">\</span>
+<span class="s2">is held clutched in its paw.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Alright, we’ve fleshed the kobold out a bit, but now we need to start putting some numeric values behind it.</p>
+<p>To try and making coding easier, 3Kingdoms is setup such that if you set the level of a monster, it automatically does some calculations to set the AC, WC, hitpoints, XP, and a few other things. So simply picking a reasonable monster level to start with goes a long way. You can override some of these values, but generally only in an upward fashion.</p>
+<p>We can also set a race on the monster and a type (machine, demon, devil, elemental, animal, plant, etc) which is helpful for certain guild’s powers, and we could set a gender if we really wanted. We can also set the alignment, slightly evil in this case.</p>
+<p>Other options at this point include if we want it to be aggressive (we do), and should it wimpy (we don’t).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">kobold</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">small</span> <span class="n">kobold</span> <span class="n">to</span> <span class="n">guard</span> <span class="n">the</span> <span class="n">hovel</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/monster&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_level</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+
+  <span class="n">set_alias</span><span class="p">(</span> <span class="p">({</span> <span class="s2">&quot;disgusting kobold&quot;</span> <span class="p">})</span> <span class="p">);</span>
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A disgusting kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">A mangy, flea-infested kobold, roughly 3 foot tall, stands here with </span><span class="se">\</span>
+<span class="s2">beady eyes staring directly at you. Matted fur covers its body </span><span class="se">\</span>
+<span class="s2">with patches of dirt, mud, blood, and feces strewn about, visible </span><span class="se">\</span>
+<span class="s2">through the holes in its pitiful clothes and armor. A small dagger </span><span class="se">\</span>
+<span class="s2">is held clutched in its paw.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_race</span><span class="p">(</span><span class="s2">&quot;kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_type</span><span class="p">(</span><span class="s2">&quot;animal&quot;</span><span class="p">);</span>
+
+  <span class="n">set_al</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">);</span>
+
+  <span class="n">set_aggressive</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Right now this is a pretty decent monster to look at, albeit incredibly small. He also has no real flavor to him as he doesn’t chat or have any combat emotes yet either, so his melee is just straight melee. Lets rectify that by adding some chats, both for out of combat (in the event he doesn’t aggro or is peaced), and in combat.</p>
+<p>We could even use the <code class="code docutils literal notranslate"><span class="pre">create_verbal()</span></code> that was defined in <a class="reference internal" href="../coding/driver_functions.html#display-functions"><span class="std std-ref">Display Functions</span></a> to help write our chat formats so they format like a real ‘say’ command would…</p>
+<p>For the combat emotes, we’re going to use what is called spell handlers. I know, it sounds like that would mean we’re casting spells, which was its original intent, but because it is very flexible, you can make special melee hits via the same system. This requires us to use a small handful of functions related to spells.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">kobold</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">small</span> <span class="n">kobold</span> <span class="n">to</span> <span class="n">guard</span> <span class="n">the</span> <span class="n">hovel</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/monster&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_level</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+
+  <span class="n">set_alias</span><span class="p">(</span> <span class="p">({</span> <span class="s2">&quot;disgusting kobold&quot;</span> <span class="p">})</span> <span class="p">);</span>
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A disgusting kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">A mangy, flea-infested kobold, roughly 3 foot tall, stands here with </span><span class="se">\</span>
+<span class="s2">beady eyes staring directly at you. Matted fur covers its body </span><span class="se">\</span>
+<span class="s2">with patches of dirt, mud, blood, and feces strewn about, visible </span><span class="se">\</span>
+<span class="s2">through the holes in its pitiful clothes and armor. A small dagger </span><span class="se">\</span>
+<span class="s2">is held clutched in its paw.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_race</span><span class="p">(</span><span class="s2">&quot;kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_type</span><span class="p">(</span><span class="s2">&quot;animal&quot;</span><span class="p">);</span>
+
+  <span class="n">set_al</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">);</span>
+
+  <span class="n">set_aggressive</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">To</span> <span class="nb">set</span> <span class="n">our</span> <span class="n">non</span><span class="o">-</span><span class="n">combat</span> <span class="n">chats</span><span class="p">,</span> <span class="n">we</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">chance</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span> <span class="n">per</span> <span class="nb">round</span><span class="p">)</span> <span class="n">of</span>
+  <span class="o">//</span><span class="n">it</span> <span class="n">firing</span> <span class="p">(</span><span class="k">if</span> <span class="n">its</span> <span class="ow">not</span> <span class="nb">super</span> <span class="n">low</span> <span class="n">it</span> <span class="n">WILL</span> <span class="n">get</span> <span class="n">spammy</span><span class="p">),</span> <span class="n">then</span> <span class="n">we</span>
+  <span class="o">//</span><span class="n">tell</span> <span class="n">it</span> <span class="n">what</span> <span class="n">options</span> <span class="n">to</span> <span class="n">pick</span> <span class="kn">from</span><span class="w"> </span><span class="nn">for</span> <span class="n">chats</span><span class="o">.</span>
+  <span class="n">load_chat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">({</span> <span class="s2">&quot;The kobold paces around.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;The kobold sniffs the air.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;The kobold growls at you.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;With an upturned snout, the kobold lets out a grunt.&quot;</span> <span class="p">}));</span>
+
+  <span class="o">//</span><span class="n">Loading</span> <span class="n">combat</span> <span class="n">chats</span> <span class="ow">is</span> <span class="n">very</span> <span class="n">similar</span><span class="p">,</span> <span class="n">but</span> <span class="n">we</span> <span class="n">can</span> <span class="n">also</span> <span class="n">use</span> <span class="n">create_verbal</span>
+  <span class="o">//</span><span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="s1">&#39;Kobold says: &lt;blah&gt;&#39;</span> <span class="n">message</span><span class="o">.</span>
+  <span class="n">load_a_chat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">({</span> <span class="s2">&quot;The kobold howls at you, leaping back and forth.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;The kobold feints.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;Froth from the kobold&#39;s mouth flies as it snaps at you.&quot;</span><span class="p">,</span>
+       <span class="n">create_verbal</span><span class="p">(</span><span class="s2">&quot;Kobold&quot;</span><span class="p">,</span><span class="s2">&quot;Grrrr. You should not have come here.&quot;</span><span class="p">)</span> <span class="p">}));</span>
+
+  <span class="o">//</span><span class="n">Next</span> <span class="n">we</span> <span class="n">are</span> <span class="n">going</span> <span class="n">to</span> <span class="n">setup</span> <span class="n">the</span> <span class="s1">&#39;spells&#39;</span> <span class="n">to</span> <span class="n">give</span> <span class="n">combat</span> <span class="n">some</span> <span class="n">flavor</span><span class="o">.</span>
+  <span class="o">//</span><span class="n">The</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">this</span> <span class="ow">is</span><span class="p">:</span>
+  <span class="o">//</span><span class="n">set_spells</span><span class="p">(</span><span class="nb">int</span> <span class="n">chance</span><span class="p">,</span> <span class="nb">int</span><span class="o">|</span><span class="nb">int</span><span class="o">*</span> <span class="n">damages</span><span class="p">,</span> <span class="n">string</span><span class="o">|</span><span class="n">string</span><span class="o">*</span> <span class="n">types</span><span class="p">,</span>
+  <span class="o">//</span>           <span class="n">string</span><span class="o">*|</span><span class="n">string</span><span class="o">**</span> <span class="n">messages</span><span class="p">,</span> <span class="n">string</span><span class="o">*</span> <span class="n">handlers</span><span class="p">,</span> <span class="nb">int</span><span class="o">*</span> <span class="n">probs</span><span class="p">)</span>
+  <span class="o">//</span><span class="n">We</span> <span class="n">will</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">one</span> <span class="n">here</span> <span class="ow">and</span> <span class="n">discuss</span> <span class="n">it</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">code</span> <span class="n">block</span><span class="o">.</span>
+
+  <span class="n">set_spells</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">({</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">750</span> <span class="p">}),</span> <span class="p">({</span> <span class="s2">&quot;edged&quot;</span><span class="p">,</span><span class="s2">&quot;edged&quot;</span><span class="p">,</span><span class="s2">&quot;acid&quot;</span> <span class="p">}),</span>
+    <span class="p">({</span>
+      <span class="s2">&quot;The kobold bites down hard on your arm!&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;With a slashing motion, the kobold&#39;s dagger cuts you!&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;EWWW! The kobold just peed on you! It burns!&quot;</span>
+    <span class="p">}),</span>
+    <span class="p">({</span>
+      <span class="s2">&quot;The kobold bites down hard on $N$&#39;s arm!&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;With a slashing motion, the kobold&#39;s dagger cuts $N$!&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;EWWW! The kobold just peed on $N$!&quot;</span>
+    <span class="p">}),</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="p">({</span> <span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span> <span class="p">})</span> <span class="p">);</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now the kobold has chats it can do while peaced and while fighting. It also has 3 ‘spell’ attacks that will come up randomly.</p>
+<p>Let’s break down that <code class="code docutils literal notranslate"><span class="pre">set_spells()</span></code> call so we can understand it better.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The first argument ‘5’, tells the system that there’s a 5% chance every combat round of firing one of the 3 defined spells. This is mandatory and must be between 1-100.</p></li>
+<li><p>The second array argument tells the system that the 3 spells will attempt to cause 100, 500, and 750 points of damage respectively. This is mandatory. If you have only 1 spell, it can be an integer instead of an array.</p></li>
+<li><p>The third array argument tells the system the damage types, edged, edged, acid respectively. This is mandatory. If you have only 1 spell, this can be a string instead of an array.</p></li>
+<li><p>The next array is the messages the player will see, each one corresponds directly to one of the three spells. You can also use &#64;:&#64; formatted ansi in these strings. There is a 2nd form defined further below.</p></li>
+<li><p>The next array is the messages the room will see, and it replaces certain tokens (surrounded by $) with values from the target. $N$ is the target’s name, $O$ would be their objective (him, her, their), $P$ is the possessive (his, hers, theirs), $R$ is the pronoun (he, she, they). You can also use &#64;:&#64; formatted ansi in these strings. There is a 2nd form defined further below.</p></li>
+<li><p>This can be 0 (meaning no spell handler functions), or an array. If it’s an array, it needs to either be 0 (again meaning no handler), or a string with a function name. For example, if we wanted the 3rd spell, the kobold peeing, to also clone a damage over time object on them, we could have passed ({ 0, 0 , “do_pee” }). Then the driver would call do_pee(object target) and we could do our logic in that to clone a damage over time item and move it to them. If you only have 1 spell, this still needs to be in an array.</p></li>
+<li><p>The final array is the chances of each spell firing. In the first argument we set the odds of <em>any</em> spell firing, this argument tells it how to proportion it over the options when it does fire. In this case, it will fire the 3 spells in a rough proportion of 4 : 3 : 1, meaning the first spell is 4 times more likely than the last, and 4:3 more likely than the 2nd, the 2nd is 3 times more likely that the last. If you have only one spell, this needs to be the array ({ 1 }).</p></li>
+</ol>
+</div></blockquote>
+<p>As mentioned there’s a 2nd format for the fourth and fifth array arguments. In the event you have just a single spell, you can either pass two arrays, one with the message for the target, and one with the message for the room, just like we did above with multiple messages, or you can send a single array with two elements for the 4th argument, the first string would be the target’s string, the 2nd would be the room’s string, you would then pass 0 for the 5th argument. This method isn’t used very often as consistency is cleaner.</p>
+<p>Lastly, we need to add the other items we cloned to the monster so that they will be dropped when it dies. We could be sneaky and make it so you don’t see the items on the monster until it dies, but lets keep it simple and make it so they’re clearly in its inventory from the get-go.</p>
+<p>To do this, we need to use the <code class="code docutils literal notranslate"><span class="pre">add_clone()</span></code> function. The implementation of <code class="code docutils literal notranslate"><span class="pre">add_clone()</span></code> is different in monsters than it is in rooms, but its similar. We’ll discuss the room option in <a class="reference internal" href="put_it_together.html#putting-it-together"><span class="std std-ref">Putting It Together</span></a>, but for now, the monster version is this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">varargs</span> <span class="nb">object</span><span class="o">*</span> <span class="n">add_clone</span><span class="p">(</span><span class="n">string</span> <span class="n">path</span><span class="p">,</span> <span class="nb">int</span> <span class="n">num</span><span class="p">,</span> <span class="n">status</span> <span class="n">return_obs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So we pass the filename of what we want to clone onto the monster with ‘path’, we tell it how many copies with ‘num’, and if we pass 1 to ‘return_obs’, the function will return an array with all the objects it put on the monster (if any). This does respect <code class="code docutils literal notranslate"><span class="pre">set_unique()</span></code> so if an object you try to clone has a unique count, and that limit is reached, it won’t add anything.</p>
+<p>On monsters, we normally use this code in the <code class="code docutils literal notranslate"><span class="pre">create()</span></code> so that its on them as soon as they load. Also, <code class="code docutils literal notranslate"><span class="pre">add_clone()</span></code> is smart, even though we have this in our blueprint, it won’t clone objects onto a blueprint, it will only add them in a cloned monster.</p>
+<p>Another smart feature of <code class="code docutils literal notranslate"><span class="pre">add_clone()</span></code> is that it doesn’t add ‘num’ copies outright. It tries to obtain ‘num’ total on the target. Meaning if we say we want 1 dagger (with that specific filepath), and it already has 1 or more daggers on it with that filepath, it will not add more.</p>
+<p>We also never included our ‘defs.h’ file discussed in <a class="reference internal" href="../coding/preprocessor.html#include"><span class="std std-ref">Include</span></a>, so lets pretend we made a defs.h that has a few defines, the one we need for this is MY_OBJS which will be the filepath to the area objects for this area.</p>
+<p>So lets add our squeaky toy, armor, and weapon to the kobold now.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">kobold</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">small</span> <span class="n">kobold</span> <span class="n">to</span> <span class="n">guard</span> <span class="n">the</span> <span class="n">hovel</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+<span class="c1">#include &quot;defs.h&quot;</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/monster&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_level</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+
+  <span class="n">set_alias</span><span class="p">(</span> <span class="p">({</span> <span class="s2">&quot;disgusting kobold&quot;</span> <span class="p">})</span> <span class="p">);</span>
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A disgusting kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">A mangy, flea-infested kobold, roughly 3 foot tall, stands here with </span><span class="se">\</span>
+<span class="s2">beady eyes staring directly at you. Matted fur covers its body </span><span class="se">\</span>
+<span class="s2">with patches of dirt, mud, blood, and feces strewn about, visible </span><span class="se">\</span>
+<span class="s2">through the holes in its pitiful clothes and armor. A small dagger </span><span class="se">\</span>
+<span class="s2">is held clutched in its paw.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_race</span><span class="p">(</span><span class="s2">&quot;kobold&quot;</span><span class="p">);</span>
+  <span class="n">set_type</span><span class="p">(</span><span class="s2">&quot;animal&quot;</span><span class="p">);</span>
+
+  <span class="n">set_al</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">);</span>
+
+  <span class="n">set_aggressive</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">To</span> <span class="nb">set</span> <span class="n">our</span> <span class="n">non</span><span class="o">-</span><span class="n">combat</span> <span class="n">chats</span><span class="p">,</span> <span class="n">we</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">chance</span> <span class="p">(</span><span class="n">n</span><span class="o">%</span> <span class="n">per</span> <span class="nb">round</span><span class="p">)</span> <span class="n">of</span>
+  <span class="o">//</span><span class="n">it</span> <span class="n">firing</span> <span class="p">(</span><span class="k">if</span> <span class="n">its</span> <span class="ow">not</span> <span class="nb">super</span> <span class="n">low</span> <span class="n">it</span> <span class="n">WILL</span> <span class="n">get</span> <span class="n">spammy</span><span class="p">),</span> <span class="n">then</span> <span class="n">we</span>
+  <span class="o">//</span><span class="n">tell</span> <span class="n">it</span> <span class="n">what</span> <span class="n">options</span> <span class="n">to</span> <span class="n">pick</span> <span class="kn">from</span><span class="w"> </span><span class="nn">for</span> <span class="n">chats</span><span class="o">.</span>
+  <span class="n">load_chat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">({</span> <span class="s2">&quot;The kobold paces around.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;The kobold sniffs the air.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;The kobold growls at you.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;With an upturned snout, the kobold lets out a grunt.&quot;</span> <span class="p">}));</span>
+
+  <span class="o">//</span><span class="n">Loading</span> <span class="n">combat</span> <span class="n">chats</span> <span class="ow">is</span> <span class="n">very</span> <span class="n">similar</span><span class="p">,</span> <span class="n">but</span> <span class="n">we</span> <span class="n">can</span> <span class="n">also</span> <span class="n">use</span> <span class="n">create_verbal</span>
+  <span class="o">//</span><span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="s1">&#39;Kobold says: &lt;blah&gt;&#39;</span> <span class="n">message</span><span class="o">.</span>
+  <span class="n">load_a_chat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">({</span> <span class="s2">&quot;The kobold howls at you, leaping back and forth.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;The kobold feints.&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;Froth from the kobold&#39;s mouth flies as it snaps at you.&quot;</span><span class="p">,</span>
+       <span class="n">create_verbal</span><span class="p">(</span><span class="s2">&quot;Kobold&quot;</span><span class="p">,</span><span class="s2">&quot;Grrrr. You should not have come here.&quot;</span><span class="p">)</span> <span class="p">}));</span>
+
+  <span class="o">//</span><span class="n">Next</span> <span class="n">we</span> <span class="n">are</span> <span class="n">going</span> <span class="n">to</span> <span class="n">setup</span> <span class="n">the</span> <span class="s1">&#39;spells&#39;</span> <span class="n">to</span> <span class="n">give</span> <span class="n">combat</span> <span class="n">some</span> <span class="n">flavor</span><span class="o">.</span>
+  <span class="o">//</span><span class="n">The</span> <span class="nb">format</span> <span class="k">for</span> <span class="n">this</span> <span class="ow">is</span><span class="p">:</span>
+  <span class="o">//</span><span class="n">set_spells</span><span class="p">(</span><span class="nb">int</span> <span class="n">chance</span><span class="p">,</span> <span class="nb">int</span><span class="o">|</span><span class="nb">int</span><span class="o">*</span> <span class="n">damages</span><span class="p">,</span> <span class="n">string</span><span class="o">|</span><span class="n">string</span><span class="o">*</span> <span class="n">types</span><span class="p">,</span>
+  <span class="o">//</span>           <span class="n">string</span><span class="o">*|</span><span class="n">string</span><span class="o">**</span> <span class="n">messages</span><span class="p">,</span> <span class="n">string</span><span class="o">*</span> <span class="n">handlers</span><span class="p">,</span> <span class="nb">int</span><span class="o">*</span> <span class="n">probs</span><span class="p">)</span>
+  <span class="o">//</span><span class="n">We</span> <span class="n">will</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">one</span> <span class="n">here</span> <span class="ow">and</span> <span class="n">discuss</span> <span class="n">it</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">code</span> <span class="n">block</span><span class="o">.</span>
+
+  <span class="n">set_spells</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">({</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">750</span> <span class="p">}),</span> <span class="p">({</span> <span class="s2">&quot;edged&quot;</span><span class="p">,</span><span class="s2">&quot;edged&quot;</span><span class="p">,</span><span class="s2">&quot;acid&quot;</span> <span class="p">}),</span>
+    <span class="p">({</span>
+      <span class="s2">&quot;The kobold bites down hard on your arm!&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;With a slashing motion, the kobold&#39;s dagger cuts you!&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;EWWW! The kobold just peed on you! It burns!&quot;</span>
+    <span class="p">}),</span>
+    <span class="p">({</span>
+      <span class="s2">&quot;The kobold bites down hard on $N$&#39;s arm!&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;With a slashing motion, the kobold&#39;s dagger cuts $N$!&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;EWWW! The kobold just peed on $N$!&quot;</span>
+    <span class="p">}),</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="p">({</span> <span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span> <span class="p">})</span> <span class="p">);</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="n">add_clone</span><span class="p">(</span><span class="n">MY_OBJS</span><span class="o">+</span><span class="s2">&quot;first_obj&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">add_clone</span><span class="p">(</span><span class="n">MY_OBJS</span><span class="o">+</span><span class="s2">&quot;first_armor&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">add_clone</span><span class="p">(</span><span class="n">MY_OBJS</span><span class="o">+</span><span class="s2">&quot;first_weapon&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>There we have it, a fully functioning kobold monster with chats, attack emotes, and carrying our squeaky toy, cloak, and dagger. Now we need to put this all together by adding it to the room.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="armor.html"
+                          title="previous chapter">Coding An Armor</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="put_it_together.html"
+                          title="next chapter">Putting It Together</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="put_it_together.html" title="Putting It Together"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="armor.html" title="Coding An Armor"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding A Monster</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

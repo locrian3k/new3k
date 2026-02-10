@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modifiers &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Preprocessor" href="preprocessor.html" />
+    <link rel="prev" title="Control Structures" href="control_structures.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="preprocessor.html" title="Preprocessor"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="control_structures.html" title="Control Structures"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Modifiers</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="modifiers">
+<h1>Modifiers<a class="headerlink" href="#modifiers" title="Link to this heading">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pretty much this entire section is an advanced topic. They are only really needed when making complex code, or when making mudlib code that will be utilized by the general wizard public later on.</p>
+</div>
+<p>Modifiers are keywords that can be used before global variables, functions, and the ‘inherit’ keyword.</p>
+<p>To use a modifier it is simply placed before the declaration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">For</span> <span class="n">variables</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">variable_name</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="o">//</span><span class="n">For</span> <span class="n">inheritables</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="n">functions</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="n">inherit</span> <span class="o">&lt;</span><span class="n">inheritable</span> <span class="n">file</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="n">variables</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="n">inherit</span> <span class="o">&lt;</span><span class="n">inheritable</span> <span class="n">file</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="n">functions</span> <span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="n">variables</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="n">inherit</span> <span class="o">&lt;</span><span class="n">inherit_file</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="o">//</span><span class="n">For</span> <span class="n">function</span> <span class="n">prototypes</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="n">function_name</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span><span class="p">);</span>
+
+<span class="o">//</span><span class="n">For</span> <span class="n">functions</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="n">function_name</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Code</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Which modifiers can be used depends on what is being modified:</p>
+<section id="function-modifiers">
+<h2>Function Modifiers<a class="headerlink" href="#function-modifiers" title="Link to this heading">¶</a></h2>
+<p>private - Function can only be called from within the same file. Files that inherit this file cannot call this function.</p>
+<p>protected - Function can be called from within the object, or from files that inherit this file, but not with <code class="code docutils literal notranslate"><span class="pre">call_other()</span></code>.  Other files cannot call this function. Instead, closures or <code class="code docutils literal notranslate"><span class="pre">symbol_function()</span></code>  has to be used. This is preferred over ‘static’ as that is an older modifier.</p>
+<p>static - The function can be called from within the object or from files that inherit this file, normally or with <code class="code docutils literal notranslate"><span class="pre">call_other()</span></code>,  but the function cannot be called from other files. ‘static’ is not recommended in the new-driver.</p>
+<p>visible - This is the default modifier, and if you do not specify a modifier, this is what is used. Function can be called from any file. This can be overridden in inheritance by using a modifier on the inherit keyword.</p>
+<p>public - Similar to visible, but cannot be overriden by the inherit modifier.</p>
+<p>nomask - This function cannot be overridden by an inheriting file. Attempting to mask will result in an error.</p>
+<p>varargs - This allows a function to not require all arguments to be passed. Any arguments that are omitted will instead be  passed as value 0.</p>
+<p>deprecated - Using this will mark a function as deprecated. It will throw a warning to the log at compile time.</p>
+</section>
+<section id="global-variable-modifiers">
+<h2>Global Variable Modifiers<a class="headerlink" href="#global-variable-modifiers" title="Link to this heading">¶</a></h2>
+<p>private - Variable can only be accessed inside this file. Not even files that inherit this file can access the variable.</p>
+<p>nosave - Variable is not saved when <code class="code docutils literal notranslate"><span class="pre">save_object()</span></code>  is called, nor does the driver attempt to restore when <code class="code docutils literal notranslate"><span class="pre">restore_object()</span></code>  is called.</p>
+<p>static - The old name for nosave. Now deprecated from use.</p>
+<p>protected - The variable can be accessed from files that inherit this file. Very similar to ‘visible’ but does not show up in <code class="code docutils literal notranslate"><span class="pre">variable_exists()</span></code>  function, and the modifier will show up in <code class="code docutils literal notranslate"><span class="pre">variable_list()</span></code>.</p>
+<p>visible - This is the default modifier, and if you do not specify a modifier, this is what is used. Variable can be accessed from any file that inherits this file.</p>
+<p>public - This declares the variable public. Using modifiers on the inherit keyword cannot override this. Useful to keep a variable ‘visible’ regardless of an inheritables modifiers.</p>
+<p>deprecated - A warning is issued if the variable is used.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is bad practice to allow inheritables to directly access internal variables. Instead, decalre them as private and offer helper functions to set and query them instead to allow the code the maximum control over how they are interacted with.</p>
+</div>
+</section>
+<section id="inheritance-modifiers">
+<h2>Inheritance Modifiers<a class="headerlink" href="#inheritance-modifiers" title="Link to this heading">¶</a></h2>
+<p>When you inherit a file, you can utilize a modifier to change how the functions, variables, or both are treated. It does not let you pick and choose which functions/variables are changed however, it will change any that it is allowed to. Some types, such as public variables, cannot be changed regardless of the modifier used with the inherit statement, as noted in the lists above.</p>
+<p>Specifically, using the ‘public’ modifier will never change a private or protected function/variable.</p>
+<p>The following table shows the result of function/variable modifiers, and the outcome of given inheritance modifiers on them:</p>
+<table class="docutils align-center" id="id1">
+<caption><span class="caption-text"><strong>Inheritance Modification To Variables/Functions</strong></span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Function/Variable Modifier</p></th>
+<th class="head"><p>public</p></th>
+<th class="head"><p>visible</p></th>
+<th class="head"><p>static</p></th>
+<th class="head"><p>protected</p></th>
+<th class="head"><p>private</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>public</p></th>
+<td><p>public</p></td>
+<td><p>public</p></td>
+<td><p>public</p></td>
+<td><p>public</p></td>
+<td><p>public</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>visible</p></th>
+<td><p>public</p></td>
+<td><p>visible</p></td>
+<td><p>static</p></td>
+<td><p>protected</p></td>
+<td><p>private</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>static</p></th>
+<td><p>static</p></td>
+<td><p>static</p></td>
+<td><p>static</p></td>
+<td><p>protected</p></td>
+<td><p>private</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>protected</p></th>
+<td><p>protected</p></td>
+<td><p>protected</p></td>
+<td><p>protected</p></td>
+<td><p>protected</p></td>
+<td><p>protected</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>private</p></th>
+<td><p>private</p></td>
+<td><p>private</p></td>
+<td><p>private</p></td>
+<td><p>private</p></td>
+<td><p>private</p></td>
+</tr>
+</tbody>
+</table>
+<p>There is also one additional modifier for the inherit statement:</p>
+<p>virtual - Inherits the given object virtually. This only makes sense in a complex inherit tree where the file may be inherited twice. When virtual, the variables will only exist once.</p>
+<p>Example: A inherits B and C. B inherits D. C inherits D. Meaning D is inherited by two different files, both inherited by A.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Virtual</span><span class="p">:</span>                <span class="n">Non</span><span class="o">-</span><span class="n">Virtual</span><span class="p">:</span>
+   <span class="n">A</span>                        <span class="n">A</span>
+  <span class="o">/</span> \                      <span class="o">/</span> \
+ <span class="n">B</span>   <span class="n">C</span>                    <span class="n">B</span>   <span class="n">C</span>
+  \ <span class="o">/</span>                     <span class="o">|</span>   <span class="o">|</span>
+   <span class="n">D</span>                      <span class="n">D</span>   <span class="n">D</span>
+</pre></div>
+</div>
+<p>As you can see, with the virtual modifier, D is only actually inherited once, meaning both chains use the same variables. In the non-virtual version, the variables end up being separate and can have different values depending on which branch you access them, B or C.</p>
+<p>This is a complicated subject, and not very important to know for most wizards, but if you are deep in the coding weeds, it might be important to know at that time.</p>
+</section>
+<section id="default-modifier">
+<h2>Default Modifier<a class="headerlink" href="#default-modifier" title="Link to this heading">¶</a></h2>
+<p>The last bit with modifiers is you can set all variables or functions in your file to default to a specific modifier, rather than having to type it on each and every one by use of the ‘default’ keyword.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">default</span> <span class="n">private</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This will make all variables and functions private unless they are specifically preceded with a modifier.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">default</span> <span class="n">private</span> <span class="n">variables</span> <span class="n">public</span> <span class="n">functions</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This will set only variables private, all functions shall be defaulted public.</p>
+<p>Only ‘private’, ‘protected’, ‘visible’, and ‘public’ can be used for both functions and variables. Functions also allow ‘static’. No other modifiers can be used with the ‘default’ keyword.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Modifiers</a><ul>
+<li><a class="reference internal" href="#function-modifiers">Function Modifiers</a></li>
+<li><a class="reference internal" href="#global-variable-modifiers">Global Variable Modifiers</a></li>
+<li><a class="reference internal" href="#inheritance-modifiers">Inheritance Modifiers</a></li>
+<li><a class="reference internal" href="#default-modifier">Default Modifier</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="control_structures.html"
+                          title="previous chapter">Control Structures</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="preprocessor.html"
+                          title="next chapter">Preprocessor</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="preprocessor.html" title="Preprocessor"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="control_structures.html" title="Control Structures"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Modifiers</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+Variables
+=========
+
+Variables are a means of storing data during code execution in a programming language. LPC is no exeception.
+
+Variables have two major components:
+ * A :ref:`type <types>`
+ * A name
+
+As such declaring a variable is as simple as providing those two things in that order:
+
+.. code-block::
+
+  int a;
+  string s;
+  mapping my_mapping;
+
+If you have multiple variables that are all the same type, and if it doesn't look too messy, you can declare them all on a single line:
+
+.. code-block::
+
+  int a, b, c;
+  string s, my_string;
+
+You can also intialize variables in the declaration, but that generally goes against the code style utilized on 3Kingdoms and is frowned upon.
+
+.. code-block::
+
+  int a = 1, b = 2;
+  string s = "This is the initial value.";
+
+We also prefer that variables be defined at the top of functions because, especially in the older driver(s), their scope (see :ref:`Variable Scope`) is limited to the block they are defined in, and defining them at the top of the function avoids confusion.
+
+
+.. code-block::
+  void my_func()
+  {
+      int a; //Good, defined at top of function.
+
+      for (int i = 0; i < 10; i++) //Also ok, as this is a super common usage.
+      {
+          object b; //Normally bad form, as b now only exists inside the for loop.
+      }
+  }
+
+It should be pointed out in the above, the :code:`object b;` declaration is 100% legal and will work just fine. However, its scope is limited to only inside the for loop, and if you have lots of nested control structures, declaring multiple variables inside of them can make the code look cluttered and hard to follow or find where declarations are done. This is why we prefer doing it at the top of the function if possible.
+
+The purpose of a variable is to allow you to store, retrieve, and pass a value as the value likely changes during runtime.
+
+.. code-block::
+
+  int a;
+
+  //Lets say I have 50 quest points...
+  a = get_my_quest_points();
+
+  write("My questpoints are " + a + "\n");
+  Result: My questpoints are 50.
+
+  //We can then pass 'a' with the value of 50 to another function.
+  set_qp(a);
+
+There is no real restriction on variable names other than the name has to be alphanumeric and can contain _ (often used instead of spaces as spaces are not allowed).
+
+Best practice is to use all lowercase, and have the variable names logical to someone reading them, without making them excessively long. Abbreviate where you can. Throw-away variables just used for simple things like incrementers, counters, or very temporary storage can even be single letters.
+
+.. code-block::
+
+  int my_count; //Good
+  int c; //Also good if we're using it briefly or clearly.
+  string this_is_a_really_important_string; //I hate you.
+  string x; //If this is used in complex code, this is useless as a name.
+
+  mapping myMapping; //No camelcase please.
+  mapping my_mapping; //Great job, gold star!
+  mapping hit_tracker; //Even better as it tells me what it is for!
+
+Variables can also be prefaced with a few special symbols.
+
+The most common is '*'. This can be either attached to the end of the type or the start of the variable name and designates that the variable is a pointer, specifically that means it will be an array of whatever the type is.
+
+.. code-block::
+
+  string *x; //This is an array of strings.
+  string* y; //So is this, but the former is the preferred style.
+
+  string **z; //This looks wonky but its actually an array OF arrays of
+              //strings, i.e. a nested array. This also only works on newer
+              //driver versions.
+
+
+The next is '&' as outlined in the following section.
+
+Variable Passing
+----------------
+
+.. note::
+  This section is a bit of an advanced topic. As touched on in :ref:`Types`, 98% of the code you write will use variables passed by value, and knowing how to pass by reference is not necessary for most anything you will be doing as a wizard starting out.
+
+By default, variables passed to functions are passed by value, meaning when you pass variable a to function :code:`my_func()` like :code:`my_func(a);` the driver is grabbing the value of a and sending that to :code:`my_func()`, it is *not* sending the actual variable in memory for a.
+
+The alternative to that is passing by reference. To do this we use '&' in front of the variable name. In the same example, :code:`my_func(&a)` tells the driver don't look up the value, pass the actual memory location of a to the function.
+
+.. code-block::
+
+  string a;
+  a = "Hello world!";
+
+  my_func(a);  //This gets passed the text "Hello world!"
+  my_func(&a); //This gets passed the memory address where "Hello world!"
+               //is stored.
+
+Whats the difference? Great question. Lets pretend we have a function that capitalizes all the letters in a string passed to it. If we pass by value, the variable remains unchanged because the function capitalized a copy of the value of the variable. If we pass by reference, the actual variable is changed because we manipulated the data stored in memory for that variable, not just a copy.
+
+To better illustrate:
+
+.. code-block::
+
+  string a;
+  a = "hello";
+
+  capitalize_all(a);
+  write(a);
+  Result: "hello"
+
+  //Just to show it is actually doing what it should however:
+  write(capitalize_all(a));
+  Result: "HELLO"
+  write(a);
+  Result: "hello"
+
+  //As you can see it didn't actually change the value stored in 'a', it just
+  //used a copy of the value, did its magic, and returned it, without
+  //touching the actual stored value.
+
+  //If we want to actually make 'a' capitalized, the normal way is to assign
+  //the variable to the result...
+  a = capitalize_all(a);
+  write(a);
+  Result: "HELLO"
+
+  //However we can also pass by reference.
+  a = "hello";
+  capitalize(&a);
+  write(a);
+  Result: "HELLO"
+
+Passing by reference can be a powerful tool, but also a very dangerous one since you're given total control of the stored value to the function being called.
+
+For that reason, and because it can confuse some less saavy coders, it isn't often used, outside of a few functions which specify that the values are passed by reference, which indicate as such in their 'man' page files on the actual MUD.
+
+Variable Scope
+--------------
+
+Variables have a feature known as scope, which defines at what 'layer' in the code they exist, and which bits of code can see them.
+
+Generally scope isn't a major issue, but if you start having variables with similar names in heirarchial scopes (for instance a global and function variable with the same name) you will get errors for trying to redeclare the same variable with the same name.
+
+You also will run into problems if you try to access a variable outside its scope, such as a variable declared in one function being called in a separate function, or declared in a for loop being called in the parent function. The compiler won't like that as, from what it can tell, the variable doesn't even exist as you're calling it in a scope higher up the chain.
+
+.. note::
+  Older drivers did not enforce scope outside of the global/function level. This means if you declared a variable inside a function it is accessible anywhere in the function, if you declare it inside nested braces, it is still avaiable in the entire function. This changed in the newer drivers and now scope is properly enforced.
+
+Global Variables
+^^^^^^^^^^^^^^^^
+
+Global variables are defined near the top of the file, after :ref:`preprocessor <Preprocessor>` directives and :ref:`inhertiance <Inheritance>` statements. They may or may not be initialized in their declaration statement, but they are accessible directly by any code inside the entire file they reside.
+
+By creating :ref:`functions <Functions>` which set or return the value of a global variable, you can also expose the global variable to other external files and functions. These are usually simple one-line functions as well so they're easy to add.
+
+Function Level Variables
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+These variables are defined at the top of the inside of an individual :ref:`function <Functions>`. They are only visible/accessible inside that function and nowhere else.
+
+Local Variables
+^^^^^^^^^^^^^^^
+
+These are variables defined inside {} braces even further inside the function braces, or in the case of a loop structure, in the conditional (). These variables live only inside their set of {} or their control loop and cannot be accessed anywhere else, not even in the function that holds the control loop.

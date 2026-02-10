@@ -1,0 +1,27 @@
+Introduction
+============
+
+3Kingdoms
+---------
+
+3Kingdoms is based on the `LDMud <https://www.ldmud.eu/>`_ driver, an offshoot of the original LPMud driver, which is capable of compiling LPC (Lars Pensjö C), a C-like coding language commonly used for MUDs.
+
+As it is C-like it supports some features and structures found in C/C++, but also many that are exclusive to LPC.
+
+This primer is meant as a high level overview of the basics of LPC (and coding in general), as well as some specific coding practices and examples that exist on 3Kingdoms.
+
+Code Example Notation
+---------------------
+
+Inside code blocks in this primer, especially inside :ref:`Operators`, you may see code samples that demonstrate their use and then show 'Result: ' with the value. Please be aware that in some instances what is being shown is pseudocode that will not actually compile in the driver, and in the actual driver, you will not see the result shown because you are not running code that displays the result to you. The code provided is creating that result in memory temporarily or, if assigned to a variable, for the lifetime of the variable, but you will not see that value output to your terminal without calling a function to also display the result.
+
+What To Expect
+--------------
+
+I wrote this primer to try and walk you through every step of learning to code in LPC on 3Kingdoms from the beginning. LPC is a very beginner friendly language if you can wrap your head around its core concepts. As such, this is structured to try and walk someone from learning what LPC is, to what types are so you can be ready to understand variables, operators, and functions before going onto even more technical topics.
+
+Ultimately, after getting through the primer on coding, you can advance to the chapters with specific examples on how to get started writing a simple area, and if that doesn't seem overwhelming, then maybe you're ready to apply for wizardhood!
+
+If, however, you find some of this is a little over your head, that doesn't mean you won't make it as a wizard, it just means you're going to need to be open to asking for help and having a willingness to learn, as most of us are very willing to teach those who will listen.
+
+At the end of reading this primer, everything is absolutely beyond you and you can't grasp any of it, then maybe I'd say wizzing might not be up your alley, and that's ok too.

@@ -1,0 +1,121 @@
+Inheritance
+===========
+
+If you think about some of the code you interact with as a player, you might realize that there's a *lot* of stuff that has, at its core, the same functionality amongst all of the similar stuff. For instance, every room has a short, long, exits, light on/off, things you can look at or examine, so on and so forth.
+
+To replicate the code amongst every single item there's only 3 real options:
+  1. Copy and paste the core code into every single file that needs it. Good gravy that would make the MUD take up a ton of space with an insane amount of replicated code, and would make every file gigantic when loaded into memory, so we get hit both on space and memory at once!
+  2. #include the code from a single file for each type of stuff. This is better as not every file has the same code replicated on disk space, but in memory every file sure does, so we're still getting hit on memory!
+  3. Use inheritance. The code physically only exists once, and only one copy is loaded into memory regardless of how many objects inherit it.
+
+By using inheritance we get the benefits of minimal disk usage and minimal memory usage, no matter if 1 file inherits the original code, or 5,000 files inherit it. That original code is still loaded once. However, every file that inherits it gets its own copy of the variables, which is important!
+
+In some programming languages this is referred to as classes, but the way its implemented in LPC is not entirely the same as any other language that I'm aware of. Its somewhat watered down and simplified to make the coding experience easier (and more tailored to how MUDs actually use inheritance in practice).
+
+To inherit a file is extremely easy:
+
+.. code-block::
+
+  //You can end the file in .c or not, the driver doesn't care.
+  inherit "file_path";
+
+That's it. One simple little line.
+
+Stop and really reflect on how cool that is. At the time of writing this, the inheritable room file used by *every* room in 3Kingdoms is around 36kb and 1395 lines of code. By simply doing :code:`inherit "/room/room";` your code now has access to *every* function and variable defined in that file (subject to :ref:`modifiers <Modifiers>`). You typed 21 characters and access 36kb of code without breaking a sweat. Pretty cool, huh?
+
+Since the driver only loads copies of the variables into memory for each file that inherits, it also drastically cuts down on the memory usage as it doesn't need to hold copies of the same function for every single file inheriting, which is tremendously efficient.
+
+As the underlying code sometimes has things you will need to reference, this is where the :: :ref:`operator <Operators>` comes into play. By using that before a function name, you are telling the compiler to call the function referenced but inside the inherited file, instead of the local file.
+
+Most commonly this is done in functions like :code:`create()` as when your file is loaded, :code:`create()` is automatically called in your file, but not the inherited file, so you'll do :code:`::create();` *inside* your :code:`create()` to give the inheritable a chance to run its code, which looks like this:
+
+.. code-block::
+
+  void create()
+  {
+    ::create();
+
+    //Now you can do all *your* create code here.
+    <code>
+    return;
+  }
+
+  //You can also pass arguments if desired:
+  void drop(status arg)
+  {
+    ::drop(arg);
+    return;
+  }
+
+Sometimes this is critical as there may be things in the inherited function that *have* to fire before your code can, and not doing that can really muck it up.
+
+Multiple Inheritance
+--------------------
+
+Another feature of inheritance that is useful in certain cases is that you can inherit multiple different files at the same time. This comes with its own caveats, and is used in a few select areas in the core mudlib, but not very often in individual wizards code.
+
+When you do multiple inheritance, you need to sometimes modify how you use the :: operator so that it points to the correct file. You can put the path of the inherited file, or the name, in quotes before :: to specify. This method also allows wildcards "?" and "*" to represent single characters and any character, respectively.
+
+.. code-block::
+
+  inherit "foo";
+  inherit "bar";
+  inherit "baz";
+  inherit "ball";
+
+  void create()
+  {
+    //Calls *both* bar::create() and baz::create()
+    "ba?"::create();
+
+    //Calls bar::create(), baz::create(), and ball::create()
+    "ba*"::create();
+
+    //Calls create() in *every* inherited file
+    "*"::create();
+
+    //Calls ball::create() as it was the last file inherited
+    ::create();
+
+    //You can only pass arguments for the :: format with nothing to the
+    //left, or if the string to the left has no wildcards.
+    ::create(arg);
+    "baz"::create(arg);
+
+    //This will not work:
+    "ba*"::create(arg);
+
+    return;
+  }
+
+.. warning::
+  As mentioned briefly above, it is important to realize that modifiers can impact what you have access to in the inheritable file. Generally you can access anything as everything defaults to public/visible/etc. However, anything that is declared as private will not be visible at all in your file.
+
+Overloading
+-----------
+
+Overloading is not what happens when you put too much code in your file and it looks like its 300 pages long (thats called bloat), but overloading is directly related to inheritance.
+
+Imagine if you will that your file inherits a file named 'A'. File 'A' defines a function called :code:`calculate_cost()`. Your file *also* defines a function called :code:`calculate_cost()`. Your function is said to have overloaded A's function, because it quite literally is loaded/given preference *OVER* A's function.
+
+You already witnessed this in the examples above, we were overloading :code:`create()` in both of those examples, as they were already defined in the inherited object(s) and we had to use :code:`::`` to call their version.
+
+You cannot overload a function in an inherited file if the function is modified with the 'nomask' :ref:`modifier <Modifiers>`.
+
+When the driver is asked to call a function in any file, whether it inherits anything else or not, it always starts looking for the function in the top of the stack. If D inherits C inherits B inherits A, D is the top of the stack as nothing inherits it, so the driver will call the function in D first *if* it exists. If it doesn't, then it will try C, then B, then A if it is found. If none of them contain the function, then it simply returns 0.
+
+For this reason, if you want your function to be the *only* function that is called, and you don't want to run the function in any of the inherited files, you simply need to *not* use :code:`::function()` in your function and none of functions you overload will ever be called.
+
+So how do you know if you should call the inherited function with :: or not? Like how do you know to do :code:`::create()` in a room, or a weapon? Generally nothing in the code itself tells you. You either have to go read the file that you want to inherit to see what the function actually does, or you'll hope a man file on how to code the type of thing you're coding tells you if you need to (or shows it via example).
+
+Predefined Inheritables
+-----------------------
+
+3Kingdoms has, over the years, generated a good size library of predefined inheritables to make our wizards time more productive by not replicating code. These include rooms, weapons, armor, objects, monsters, containers (bags, etc), boxes (house boxes, guild boxes), food, drink, guns, scrolls, torches, and more.
+
+To access these you simply 'inherit' the file into your file, using the proper filepath to point at the predefined file you want.
+
+For details on what each file can do, you either read the file in whole to see what it all includes, or some more used ones have 'man' files that can be read as a wizard to get details on what you need/don't need/are able to call/set/do with them.
+
+.. note::
+  One important note for 99.9% of the predefined inheritables is you should not be directly accessing any of the variables there-in in your code. You should be using the appropriate provided functions, usually in the form of :code:`set_<var>()` or :code:`query_<var>()` to access them. This is intentional and not doing so can result in wonky outcomes.

@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Coding A Weapon &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coding An Armor" href="armor.html" />
+    <link rel="prev" title="Coding An Object" href="object.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="armor.html" title="Coding An Armor"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="object.html" title="Coding An Object"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding A Weapon</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="coding-a-weapon">
+<h1>Coding A Weapon<a class="headerlink" href="#coding-a-weapon" title="Link to this heading">¶</a></h1>
+<p>Coding a weapon really isn’t all that different from coding an object when you get right down to it. The only real difference is there’s a few special functions that make weapons act how they do, and lucky for you, they’re in the inheritable so you mainly just have to call the right things to set them up!</p>
+<p>Let’s start, as always, with our comment block and inherit statement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_weapon</span><span class="o">.</span><span class="n">C</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">weapon</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/weapon&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Tada. The heavy lifting is now complete.</p>
+<p>Any guesses what comes next? If you said <code class="code docutils literal notranslate"><span class="pre">create()</span></code> you’re correct!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_weapon</span><span class="o">.</span><span class="n">C</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">weapon</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/weapon&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Awesome. I’m thinking since we’re going to be making a monster that’s in a hovel, and has a squeaky toy, maybe it should be a kobold. A stereotypical weapon for a kobold would be a dagger, so lets make one of those…</p>
+<p>Now we need to do some of the same things that were done in the object, housekeeping if you will…</p>
+<p>Lets add the name, aliases, short, long, value, weight, composition, realm, and creator.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_weapon</span><span class="o">.</span><span class="n">C</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">weapon</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/weapon&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;a rusty dagger&quot;</span><span class="p">);</span>
+  <span class="n">set_alias</span><span class="p">(({</span> <span class="s2">&quot;rusty dagger&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">,</span> <span class="s2">&quot;knife&quot;</span><span class="p">,</span> <span class="s2">&quot;blade&quot;</span> <span class="p">}));</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A rusty dagger&quot;</span><span class="p">);</span>
+  <span class="o">//</span><span class="n">Notice</span> <span class="n">we</span> <span class="n">have</span> <span class="n">to</span> <span class="n">escape</span> <span class="p">(</span>\<span class="p">)</span> <span class="n">the</span> <span class="n">quotation</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">length</span> <span class="n">since</span>
+  <span class="o">//</span><span class="n">quotes</span> <span class="n">are</span> <span class="n">used</span> <span class="n">to</span> <span class="n">encapsulate</span> <span class="n">the</span> <span class="n">whole</span> <span class="n">string</span><span class="o">...</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a dagger, roughly 6</span><span class="se">\&quot;</span><span class="s2"> in length from cross-guard to point. </span><span class="se">\</span>
+<span class="s2">  The hilt is plain, as is the pommel. This was clearly made as cheap </span><span class="se">\</span>
+<span class="s2">  as possible, and the blade is flecked with rust and dried blood. </span><span class="se">\</span>
+<span class="s2">  Whoever owns it didn&#39;t take very good care of it, aside from the </span><span class="se">\</span>
+<span class="s2">  dingy condition the edge is partially dull.&quot;</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">If</span> <span class="n">we</span> <span class="n">only</span> <span class="k">pass</span> <span class="mi">1</span> <span class="n">number</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">lbs</span><span class="o">.</span>
+  <span class="n">set_weight</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">set_value</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="n">set_composition</span><span class="p">(({</span> <span class="s2">&quot;steel&quot;</span><span class="p">,</span> <span class="s2">&quot;metal&quot;</span> <span class="p">}));</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+  <span class="n">set_creator</span><span class="p">(</span><span class="s2">&quot;Adalius&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Excellent. Now we have a workable dagger. Next we need to set some things specific to weapons, namely a type and the WC.
+Its important to note that for 3Kingdoms, when coding AC or WC values, they go in the order:</p>
+<blockquote>
+<div><p>Edged, Blunt, Fire, Ice, Acid, Electric, Mind, Energy, Poison, Radiation</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_weapon</span><span class="o">.</span><span class="n">C</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">weapon</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/weapon&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;a rusty dagger&quot;</span><span class="p">);</span>
+  <span class="n">set_alias</span><span class="p">(({</span> <span class="s2">&quot;rusty dagger&quot;</span><span class="p">,</span> <span class="s2">&quot;dagger&quot;</span><span class="p">,</span> <span class="s2">&quot;knife&quot;</span><span class="p">,</span> <span class="s2">&quot;blade&quot;</span> <span class="p">}));</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A rusty dagger&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a dagger, roughly 6</span><span class="se">\&quot;</span><span class="s2"> in length from cross-guard to point. </span><span class="se">\</span>
+<span class="s2">  The hilt is plain, as is the pommel. This was clearly made as cheap </span><span class="se">\</span>
+<span class="s2">  as possible, and the blade is flecked with rust and dried blood. </span><span class="se">\</span>
+<span class="s2">  Whoever owns it didn&#39;t take very good care of it, aside from the </span><span class="se">\</span>
+<span class="s2">  dingy condition the edge is partially dull.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_weight</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">set_value</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="n">set_composition</span><span class="p">(({</span> <span class="s2">&quot;steel&quot;</span><span class="p">,</span> <span class="s2">&quot;metal&quot;</span> <span class="p">}));</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+  <span class="n">set_creator</span><span class="p">(</span><span class="s2">&quot;Adalius&quot;</span><span class="p">);</span>
+
+  <span class="n">set_type</span><span class="p">(</span><span class="s2">&quot;dagger&quot;</span><span class="p">);</span>
+  <span class="n">set_wcs</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Pretty good, pretty good! I think this will work fine as a nice simple weapon drop. Now, there are a lot of other functions that we could get into, things that make it no-break, or give it specials, or change the damage emotes depending on how hard it hits, but for a beginner weapon, this should be sufficient.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="object.html"
+                          title="previous chapter">Coding An Object</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="armor.html"
+                          title="next chapter">Coding An Armor</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="armor.html" title="Coding An Armor"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="object.html" title="Coding An Object"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding A Weapon</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

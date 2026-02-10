@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Code Style &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Driver Functions" href="driver_functions.html" />
+    <link rel="prev" title="Inheritance" href="inheritance.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="driver_functions.html" title="Driver Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="inheritance.html" title="Inheritance"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Code Style</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="code-style">
+<h1>Code Style<a class="headerlink" href="#code-style" title="Link to this heading">¶</a></h1>
+<p>The nature of 3Kingdoms is that over time wizards come and go. As such, we have generally adopted a coding style that is easy for new coders and seasoned coders alike to read and interact with. It does not follow the conventions that are seen in professional coding jobs or specific employers/contractors/governments/etc try to utilize, but we find its easy to train, easy to read, and easy to maintain. Maintenance is the critical part as, speaking empirically based on the data, odds are someone else will maintain your code eventually.</p>
+<p>What follows is directly from the codestyle man file that wizards have access to:</p>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">¶</a></h2>
+<p>This is a style guide to help acclimate you to the most common code style
+used on 3Kingdoms codebase. These might not be the styles you prefer to use
+if you have coding experience, but in order to make code easily readable
+by future wizards, many of whom often have limited coding knowledge, this is
+the preferred styles to be utilized by as many wizards as possible. There
+are also some best practices included in this listing that are more practical
+things as opposed to style things.</p>
+<p>As such, I ask that you try your best to follow the styles outlined
+here-in regardless of your own personal preference because this is, at its
+core, a group maintained project and the continued mixing of styles makes
+it more and more difficult to maintain with each generation.</p>
+<p>So, without further ado:</p>
+</section>
+<section id="styles-editor-settings">
+<h2>Styles: Editor Settings<a class="headerlink" href="#styles-editor-settings" title="Link to this heading">¶</a></h2>
+<p>Make sure your editor uses spaces, not tabs.</p>
+<p>Indent levels should be two spaces per level.</p>
+<p>Make sure your editor uses linefeed as its end-of-line character. If it uses
+a carriage return, you will see a lot of ‘^M’ characters in your file.</p>
+<p>If your editor has a ruler, set it to 80 characters and keep all lines under
+that length whenever possible.</p>
+</section>
+<section id="styles-folder-structure">
+<h2>Styles: Folder Structure<a class="headerlink" href="#styles-folder-structure" title="Link to this heading">¶</a></h2>
+<p>Inside your directory, you can set up your file layout however you like.</p>
+<p>However, the following is recommended:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">defs</span><span class="o">.</span><span class="n">h</span>                     <span class="o">-</span><span class="n">A</span> <span class="n">linked</span> <span class="n">header</span> <span class="n">file</span> <span class="p">(</span><span class="n">explained</span> <span class="n">below</span><span class="p">)</span><span class="o">.</span>
+<span class="o">./.</span><span class="n">bin</span><span class="o">/</span>                      <span class="o">-</span><span class="n">Your</span> <span class="n">command</span> <span class="n">files</span><span class="o">.</span>
+<span class="o">./</span><span class="n">areas</span><span class="o">/</span>
+        <span class="n">defs</span><span class="o">.</span><span class="n">h</span>               <span class="o">-</span><span class="n">A</span> <span class="n">linked</span> <span class="n">header</span> <span class="n">file</span> <span class="p">(</span><span class="n">explained</span> <span class="n">below</span><span class="p">)</span><span class="o">.</span>
+        <span class="n">areaname</span><span class="o">/</span>
+                 <span class="n">defs</span><span class="o">.</span><span class="n">h</span>      <span class="o">-</span><span class="n">A</span> <span class="n">linked</span> <span class="n">header</span> <span class="n">file</span> <span class="p">(</span><span class="n">explained</span> <span class="n">below</span><span class="p">)</span><span class="o">.</span>
+                 <span class="n">docs</span><span class="o">/</span>       <span class="o">-</span><span class="n">Text</span> <span class="n">files</span> <span class="p">(</span><span class="n">proposal</span><span class="p">,</span> <span class="n">notes</span><span class="p">,</span> <span class="n">qinfo</span><span class="p">,</span> <span class="n">etc</span><span class="p">)</span><span class="o">.</span>
+                 <span class="n">missions</span><span class="o">/</span>   <span class="o">-</span><span class="n">Only</span> <span class="k">if</span> <span class="n">you</span> <span class="n">have</span> <span class="n">mission</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">area</span><span class="o">.</span>
+                 <span class="n">mon</span><span class="o">/</span>        <span class="o">-</span><span class="n">Holds</span> <span class="nb">all</span> <span class="n">your</span> <span class="n">monster</span> <span class="n">files</span><span class="o">.</span>
+                 <span class="n">obj</span><span class="o">/</span>        <span class="o">-</span><span class="n">Holds</span> <span class="nb">all</span> <span class="n">your</span> <span class="n">objects</span> <span class="p">(</span><span class="n">including</span> <span class="n">weapons</span><span class="o">/</span><span class="n">armor</span><span class="p">)</span><span class="o">.</span>
+                 <span class="n">rooms</span><span class="o">/</span>      <span class="o">-</span><span class="n">Holds</span> <span class="nb">all</span> <span class="n">your</span> <span class="n">room</span> <span class="n">files</span><span class="o">.</span>
+<span class="o">./</span><span class="n">doc</span><span class="o">/</span>                       <span class="o">-</span><span class="n">Documentation</span> <span class="n">on</span> <span class="n">your</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">general</span><span class="o">.</span>
+<span class="o">./</span><span class="n">include</span><span class="o">/</span>                   <span class="o">-</span><span class="n">Your</span> <span class="k">global</span> <span class="n">include</span> <span class="n">files</span><span class="o">.</span>
+        <span class="n">defs</span><span class="o">.</span><span class="n">h</span>               <span class="o">-</span><span class="n">The</span> <span class="n">root</span> <span class="n">linked</span> <span class="n">header</span> <span class="n">file</span> <span class="p">(</span><span class="n">explained</span> <span class="n">below</span><span class="p">)</span><span class="o">.</span>
+<span class="o">./</span><span class="n">logs</span><span class="o">/</span>                      <span class="o">-</span><span class="n">Any</span> <span class="n">log</span> <span class="n">files</span> <span class="n">your</span> <span class="n">code</span> <span class="n">generates</span><span class="o">.</span>
+<span class="o">./</span><span class="n">private</span><span class="o">/</span>                   <span class="o">-</span><span class="n">A</span> <span class="n">private</span> <span class="n">folder</span> <span class="n">that</span> <span class="n">no</span> <span class="n">one</span> <span class="k">else</span> <span class="o">*</span><span class="n">should</span><span class="o">*</span> <span class="n">view</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Please avoid the use of capital letters or symbols in folder or file names.</p>
+</section>
+<section id="styles-file-structure">
+<h2>Styles: File Structure<a class="headerlink" href="#styles-file-structure" title="Link to this heading">¶</a></h2>
+<p>All .c files should have the same basic structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+  <span class="n">filename</span><span class="o">.</span><span class="n">c</span>
+  <span class="n">Yourname</span> <span class="n">YYMMDD</span>
+  <span class="n">Description</span> <span class="n">of</span> <span class="n">what</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">is</span><span class="o">.</span>
+<span class="o">*/</span>
+<span class="c1">#pragma strong_types  //So type checking is enforced.</span>
+<span class="c1">#include &quot;defs.h&quot;     //So it uses the linked header file.</span>
+                      <span class="o">//</span><span class="n">Note</span><span class="p">:</span> <span class="n">If</span> <span class="n">your</span> <span class="n">defs</span><span class="o">.</span><span class="n">h</span> <span class="n">has</span> <span class="o">*</span><span class="n">actual</span><span class="o">*</span> <span class="n">functions</span> <span class="n">defined</span>
+                      <span class="o">//</span>      <span class="n">inside</span><span class="p">,</span> <span class="n">it</span> <span class="o">*</span><span class="n">cannot</span><span class="o">*</span> <span class="n">be</span> <span class="n">included</span> <span class="o">*</span><span class="n">before</span><span class="o">*</span>
+                      <span class="o">//</span>      <span class="n">you</span> <span class="n">inherit</span> <span class="n">anything</span><span class="o">.</span> <span class="n">In</span> <span class="n">which</span> <span class="n">case</span> <span class="n">this</span>
+                      <span class="o">//</span>      <span class="c1">#include must be moved *after* the inherit</span>
+                      <span class="o">//</span>      <span class="n">section</span> <span class="n">below</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="c1">#define statements&gt;  //Any file specific #define or precompiler directives.</span>
+
+<span class="n">inherit</span> <span class="o">&lt;</span><span class="n">source</span><span class="o">&gt;</span><span class="p">;</span>     <span class="o">//</span><span class="n">Inherit</span> <span class="nb">any</span> <span class="n">files</span> <span class="n">needed</span><span class="p">,</span> <span class="k">if</span> <span class="n">applicable</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="k">global</span> <span class="n">variables</span><span class="o">&gt;</span>    <span class="o">//</span><span class="n">Define</span> <span class="nb">any</span> <span class="k">global</span> <span class="n">level</span> <span class="n">variables</span> <span class="n">here</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="nb">object</span>
+                      <span class="o">//</span><span class="n">uses</span> <span class="n">save_object</span><span class="p">()</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">they</span> <span class="n">are</span> <span class="s1">&#39;nosave&#39;</span> <span class="k">if</span> <span class="n">you</span>
+                      <span class="o">//</span><span class="n">do</span> <span class="ow">not</span> <span class="n">want</span> <span class="n">them</span> <span class="n">to</span> <span class="n">be</span> <span class="n">saved</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">function</span> <span class="n">prototypes</span><span class="o">&gt;</span> <span class="o">//</span><span class="n">Prototypes</span> <span class="k">for</span> <span class="nb">any</span> <span class="n">functions</span> <span class="n">to</span> <span class="n">be</span> <span class="n">defined</span> <span class="n">further</span>
+                      <span class="o">//</span><span class="n">down</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">file</span><span class="p">,</span> <span class="n">but</span> <span class="n">need</span> <span class="n">to</span> <span class="n">be</span> <span class="n">declared</span> <span class="n">so</span> <span class="n">they</span>
+                      <span class="o">//</span><span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">before</span> <span class="n">declaration</span><span class="o">.</span>
+
+<span class="o">//</span><span class="n">From</span> <span class="n">this</span> <span class="n">point</span> <span class="n">on</span> <span class="n">the</span> <span class="n">functions</span> <span class="n">needed</span> <span class="n">may</span> <span class="n">change</span> <span class="n">but</span> <span class="n">the</span> <span class="n">most</span> <span class="n">common</span> <span class="n">ones</span>
+<span class="o">//</span><span class="k">for</span> <span class="n">rooms</span><span class="p">,</span> <span class="n">armor</span><span class="p">,</span> <span class="n">weapons</span><span class="p">,</span> <span class="n">monsters</span><span class="p">,</span> <span class="n">etc</span> <span class="n">are</span> <span class="n">generally</span> <span class="n">these</span><span class="p">,</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">order</span><span class="p">:</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+  <span class="o">&lt;</span><span class="n">Your</span> <span class="n">create</span> <span class="n">code</span><span class="o">&gt;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">init</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">init</span><span class="p">();</span>
+  <span class="o">&lt;</span><span class="n">Your</span> <span class="n">init</span> <span class="n">code</span><span class="o">&gt;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">reset</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">&lt;</span><span class="n">Your</span> <span class="n">reset</span> <span class="n">code</span><span class="o">&gt;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">&lt;</span><span class="n">Any</span><span class="o">/</span><span class="nb">all</span> <span class="n">other</span> <span class="n">required</span> <span class="n">functions</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Do <em>not</em> upload any files to the server with a space in the filename! It will break things and have to be fixed via FTP.</p>
+</section>
+<section id="styles-precompiler-directives">
+<h2>Styles: Precompiler Directives<a class="headerlink" href="#styles-precompiler-directives" title="Link to this heading">¶</a></h2>
+<p>All code should have <code class="code docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">strong_types</span></code> as the first line (after any comment blocks) in each file.</p>
+<p>If you <code class="code docutils literal notranslate"><span class="pre">#define</span></code> a filepath or string, and then use another <code class="code docutils literal notranslate"><span class="pre">#define</span></code> to add to
+that previous <code class="code docutils literal notranslate"><span class="pre">#define</span></code>, it should be enclosed in ().</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define MY_PATH  &quot;/players/adalius/&quot;</span>
+<span class="c1">#define MY_AREAS (MY_PATH+&quot;areas/&quot;)</span>
+<span class="c1">#define MY_ROOM  (MY_AREAS+&quot;room/&quot;)</span>
+</pre></div>
+</div>
+<p>If you do not do this, and you then try to use call_other() or the ‘-&gt;’
+operator, the function may fail due to order of operations (-&gt; comes before +).</p>
+<p>It is recommended that you make a central defs.h file in your ./include/
+directory. This should house all your common definitions and macros that can
+be shared amongst all your code. It’s easiest to do this before you write any
+code but can also be done afterwards. In your home folder you would then make
+another defs.h file that simply has:</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;./include/defs.h&quot;</span></code></p>
+<p>Then in each and every subdir containing executable code, you would make
+additional defs.h with the first line being:</p>
+<p><code class="code docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;../defs.h&quot;</span></code></p>
+<p>These buried files can also include any additional macros or defines that have
+not previously been <code class="code docutils literal notranslate"><span class="pre">#define</span></code>’d but need to be available for <em>all</em> subdirs from
+this point on.</p>
+<p>This central defs.h in your ./include/ would contain common defines like your
+filepath to your directory, your areas directory, etc, as well as common macros
+like <code class="code docutils literal notranslate"><span class="pre">#define</span> <span class="pre">TP</span> <span class="pre">this_player()</span></code> or <code class="code docutils literal notranslate"><span class="pre">#define</span> <span class="pre">ETO</span> <span class="pre">environment()</span></code>, etc.</p>
+<p>Defines (<code class="code docutils literal notranslate"><span class="pre">#define</span></code>) should be in UPPERCASE to distinguish them from normal
+variables. Using a <code class="code docutils literal notranslate"><span class="pre">#define</span></code> like myvar is too easily confused with a variable
+local to the file in question.</p>
+</section>
+<section id="styles-naming-conventions">
+<h2>Styles: Naming Conventions<a class="headerlink" href="#styles-naming-conventions" title="Link to this heading">¶</a></h2>
+<p>If a file is inheritable, it often times (but not always) makes sense to start
+or end the filename with inh_ or _inh to indicate it’s designed to be an
+inheritable.</p>
+<p>When it comes to room files, the entrance to your area from outside the area,
+or at least the primary entrance or entrance closest to the realms if theres
+multiple linked areas, should be named ‘entrance.c’ to make it easily found.</p>
+<p>Variables and functions should all be lowercase with <em>VERY</em> limited exception.
+Generally the only time a name should have uppercase is if it is something
+that you want to call attention to so it isn’t accidentally called by a wizard.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="n">IAMAPLAYERKILLER</span><span class="p">;</span>
+<span class="n">status</span> <span class="n">query_IAMAPLAYERKILLER</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">IAMAPLAYERKILLER</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>Spaces should be replaced with underscores.</p>
+<p>All variables that are used multiple times/places should have meaningful names.
+Single use or counters are fine to have simpler names, like ‘i’, ‘t’, ‘x’.</p>
+<p>Function names should have a name that at least alludes to what it does.
+If the function returns a queried value, it should start with query_, if it
+sets a value, it should start with set_, if it clears a variable, it should
+start with clear_, if it resets it to a default value, it should start with
+reset_, if it’s used with add_action() as the target of a player action, it
+should start with do_. Having a function called “no_mode()” might make sense
+if you wrote it, but to a wizard not familiar with the code, it could do
+a hundred different things. Does it return 1 if there is no mode? Does it set
+the mode to 0? Does it print a message to the player saying “You have no
+mode.”? It is completely unclear from the name.</p>
+<p>That said, function and variable names should also not be ungodly long as they get unwieldy when you need to manually ‘call’ them or when they are so long they break to a new line in the debug log when they throw an error.</p>
+</section>
+<section id="styles-types">
+<h2>Styles: Types<a class="headerlink" href="#styles-types" title="Link to this heading">¶</a></h2>
+<p>All variables and functions should have proper types. If you followed the
+precompiler directives above, strong_types should enforce this.</p>
+<p>Despite being listed as ‘DEPRECATED’, ‘status’ should still be used as the
+variable or function type when the value is either true (1) or false (0)
+because this designates to the reader that the value is not expected to be
+anything other than those values, which ‘int’ does not clearly indicate.</p>
+<p>If your function is not meant to return anything, define it as ‘void’. Do not
+define it as some other type and return an empty (0) value for all your
+returns. This will drive someone mad.</p>
+<p>Do not use ‘mixed’ data types unless you truly need ‘mixed’ data types as any
+future coder looking at your code will have to trace it through all the calls
+to determine what type it is, and the compiler can’t enforce any real type
+checking since it could be anything. *There are acceptable times for this!</p>
+<p>Float is not a precise type. What that means is if you do mathmatical
+operations on a float, it can lose precision (and thus not be the expected
+value after multiple operations). For this reason you should not be using
+float to store large precise values like experience, guild experience, etc.
+A better option (until we are on 64 bit) is to use ipairs (see ‘man ipairs’).</p>
+</section>
+<section id="styles-brackets">
+<h2>Styles: Brackets<a class="headerlink" href="#styles-brackets" title="Link to this heading">¶</a></h2>
+<p>Brackets should be alone on the line, indented to the appropriate location.</p>
+<p>For instance, this is preferred:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">my_function</span><span class="p">(</span><span class="n">string</span> <span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">arg</span> <span class="o">&amp;&amp;</span> <span class="n">arg</span><span class="o">==</span><span class="s2">&quot;two&quot;</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">arg</span> <span class="o">=</span> <span class="s2">&quot;three&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="n">arg</span> <span class="o">=</span> <span class="s2">&quot;four&quot;</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As opposed to the alternate undesirable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">my_function</span><span class="p">(</span><span class="n">string</span> <span class="n">arg</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">arg</span> <span class="o">&amp;&amp;</span> <span class="n">arg</span><span class="o">==</span><span class="s2">&quot;two&quot;</span><span class="p">){</span>
+    <span class="n">arg</span> <span class="o">=</span> <span class="s2">&quot;three&quot;</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="n">arg</span> <span class="o">=</span> <span class="s2">&quot;four&quot;</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see it’s much easier to line up brackets in the first example to try
+and find where one may be missing. This also allows IDEs to collapse the
+bracketed area and the collapse symbol will appear at the start of an empty
+line as opposed to the end of a function name where it could be missed.</p>
+</section>
+<section id="styles-variables">
+<h2>Styles: Variables<a class="headerlink" href="#styles-variables" title="Link to this heading">¶</a></h2>
+<p>Remove any variable declarations that you do not use. It’s wasteful to declare
+them if they aren’t used, and it can also be bewildering if the reader sees
+it declared, but can’t find where it’s assigned anywhere.</p>
+<p>It pleases those of us with OCD if the variables are listed by type and name
+alphabetically, and if pointers are listed after standard variables.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">d</span><span class="p">;</span>
+<span class="nb">object</span> <span class="n">obj</span><span class="p">;</span>
+<span class="n">status</span> <span class="n">x</span><span class="p">;</span>
+<span class="n">string</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">str_array</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Do not define a variable if you’re only going to use it once. Heck, in some
+cases even twice (possibly even three times, depending on the cost of the call)
+might not be enough of a reason to define a variable. You have to balance the
+increased memory allocation to define &amp; carry the variable against the CPU cost
+of processing the call that you’re assigning to the variable. Storing an array
+to use it twice might make sense, but storing a players level probably doesn’t.</p>
+</section>
+<section id="styles-functions">
+<h2>Styles: Functions<a class="headerlink" href="#styles-functions" title="Link to this heading">¶</a></h2>
+<p>Void functions should still have a <code class="code docutils literal notranslate"><span class="pre">return;</span></code> at the end clearly demarking where
+the function terminates.</p>
+<p>Simple functions such as single line set or query functions should be written
+fully on a single line when possible:</p>
+<blockquote>
+<div><p><code class="code docutils literal notranslate"><span class="pre">string</span> <span class="pre">query_name()</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">name;</span> <span class="pre">}</span></code></p>
+</div></blockquote>
+<p>And not written as such:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">query_name</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The function type declaration should be on the same line as the function name.</p>
+<p>Like this:</p>
+<p><code class="code docutils literal notranslate"><span class="pre">object</span> <span class="pre">query_patrol_obj()</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">patrol_obj;</span> <span class="pre">}</span></code></p>
+<p>Not like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">object</span>
+<span class="n">query_patrol_obj</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">patrol_obj</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="styles-strings">
+<h2>Styles: Strings<a class="headerlink" href="#styles-strings" title="Link to this heading">¶</a></h2>
+<p>When joining multiple strings and variables together, its easier to read when
+done with a <code class="code docutils literal notranslate"><span class="pre">(s)printf()</span></code> rather than concatinating them with ‘+’. Plus this
+allows you to control formatting better.</p>
+<p>You can continue open strings onto a new line by use of a ‘' at the end of
+the line. This can be useful if you want to use your editors ruler when
+setting up a long string, or if you want to see the formatting in place
+without the indentation of the current code around it. Note: It must be the last character on the line!</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">This allows me to see exactly where the lines will be given my current ruler </span><span class="se">\</span>
+<span class="s2">but its important I remember to put a space before the slash if I want it to </span><span class="se">\</span>
+<span class="s2">have a space before the word I start on the next line otherwise it will conc</span><span class="se">\</span>
+<span class="s2">atinate them together.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Any time a string is written to a single player, it should be wrapped to the
+players COLS setting if the length of the string exceeds 40-50 characters.
+This can be done with the addition of a few lines of code.
+Firstly, in your ./include/defs.h you would need the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define TP this_player()</span>
+<span class="c1">#define WRAP      (TP?(to_int(TP-&gt;query_property_arg(&quot;COLS&quot;))?\</span>
+                      <span class="n">to_int</span><span class="p">(</span><span class="n">TP</span><span class="o">-&gt;</span><span class="n">query_property_arg</span><span class="p">(</span><span class="s2">&quot;COLS&quot;</span><span class="p">))</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">75</span><span class="p">):</span><span class="mi">75</span><span class="p">)</span>
+<span class="c1">#define WRAPP(XX) ((XX)?(to_int((XX)-&gt;query_property_arg(&quot;COLS&quot;))?\</span>
+                        <span class="n">to_int</span><span class="p">((</span><span class="n">XX</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">query_property_arg</span><span class="p">(</span><span class="s2">&quot;COLS&quot;</span><span class="p">))</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="mi">75</span><span class="p">):</span><span class="mi">75</span><span class="p">)</span>
+<span class="c1">#define PWRAP(XX)     printf(&quot;%-=*s&quot;,WRAP,(XX))</span>
+<span class="c1">#define SWRAPP(XX,YY) sprintf(&quot;%-=*s&quot;,WRAPP((YY)),(XX))</span>
+</pre></div>
+</div>
+<p>You can then use <code class="code docutils literal notranslate"><span class="pre">PWRAP(&quot;Your</span> <span class="pre">string</span> <span class="pre">here&quot;)</span></code> to display it, wrapped, to the
+current <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> <em>or</em> you can use <code class="code docutils literal notranslate"><span class="pre">SWRAPP(&quot;Your</span> <span class="pre">string</span> <span class="pre">here&quot;,(object)who)</span></code>
+to wrap your string per (object)who’s COLS setting and return the string to
+send to <code class="code docutils literal notranslate"><span class="pre">tell_object()</span></code> or some other location with.</p>
+<p>Decorative strings such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*****************</span><span class="p">{</span><span class="n">Guild</span> <span class="n">Help</span> <span class="n">Headers</span><span class="p">}</span><span class="o">*****************</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>or</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">===============|---------------</span><span class="p">]</span> <span class="n">Progress</span> <span class="n">Bars</span>
+</pre></div>
+</div>
+<p>should not be shown to players who have the SCREENREADER property set.</p>
+<p>You can test this by doing <code class="code docutils literal notranslate"><span class="pre">player-&gt;query_property(&quot;SCREENREADER&quot;)</span></code> and
+displaying just the simple text (or percentage in the case of progress bars)
+to anyone where that function call returns 1.</p>
+<p>Remember, if you manually wrap anything in a <code class="code docutils literal notranslate"><span class="pre">set_long()</span></code> by including
+even a single ‘\n’, you are responsible for wrapping the <em>entire</em> thing.
+<code class="code docutils literal notranslate"><span class="pre">set_long()</span></code> will <em>only</em> autowrap if it senses NO ‘\n’ in the entire
+string passed to it.</p>
+<p>Standard for all of 3Kingdoms is single spacing between sentences.</p>
+</section>
+<section id="styles-general-programming">
+<h2>Styles: General Programming<a class="headerlink" href="#styles-general-programming" title="Link to this heading">¶</a></h2>
+<p>Document. Document. Document. Comment your code. It’s almost a statistical
+certainty that someone else is going to be stuck maintaining it eventually
+and if you don’t want them talking about how you were dumber than a sack of
+potatoes because your code doesn’t make any damn sense, then use comments
+to make it clear to future observers. Hell, it’ll even help YOU if you go back
+and try to figure out what you did during a rum bender 3 years later.</p>
+<p>If you are going to use nested arrays/mappings, please create interface
+functions to make it easier to use and more-readable, plus you don’t have
+to remember which sub-index is what if you name the functions properly.</p>
+<blockquote>
+<div><p><code class="code docutils literal notranslate"><span class="pre">int</span> <span class="pre">get_index_mobcount(string</span> <span class="pre">index)</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">m[index][5];</span> <span class="pre">}</span></code></p>
+</div></blockquote>
+<p>results in…</p>
+<blockquote>
+<div><p><code class="code docutils literal notranslate"><span class="pre">printf(&quot;There</span> <span class="pre">are</span> <span class="pre">%d</span> <span class="pre">mobs.\n&quot;,get_index_mobcount(2));</span></code></p>
+</div></blockquote>
+<p>versus the less obvious…</p>
+<blockquote>
+<div><p><code class="code docutils literal notranslate"><span class="pre">printf(&quot;There</span> <span class="pre">are</span> <span class="pre">%d</span> <span class="pre">mobs.\n&quot;,m[index][5]);</span></code></p>
+</div></blockquote>
+<p>When using an if or if/else structure and you only have a single line of
+code after either the if or the else, do not use brackets. Simply do the code
+as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span><span class="p">)</span>
+  <span class="n">single_line_of_code</span><span class="p">;</span>
+<span class="k">else</span>
+  <span class="n">also_single_line_of_code</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Learn the terenary operator, it can save you lines of code when you just need
+to do a quick inline if/else. For example you can replace this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">print_output</span><span class="p">(</span><span class="n">string</span> <span class="n">obj</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">member</span><span class="p">(({</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;i&quot;</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="s2">&quot;u&quot;</span><span class="p">}),</span><span class="n">lower_case</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="mf">0..0</span><span class="p">]))</span><span class="o">!=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;You have an </span><span class="si">%s</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">obj</span><span class="p">);</span>
+  <span class="k">else</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;You have a </span><span class="si">%s</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">obj</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Can be rewritten as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>void print_output(string obj)
+{
+  printf(&quot;You have a%s %s.\n&quot;,
+    (member(({&quot;a&quot;,&quot;e&quot;,&quot;i&quot;,&quot;o&quot;,&quot;u&quot;}),lower_case(obj[0..0]))!=-1 ? &quot;n&quot; : &quot;&quot;),
+    obj);
+  return;
+}
+</pre></div>
+</div>
+</section>
+<section id="styles-in-closing">
+<h2>Styles: In Closing<a class="headerlink" href="#styles-in-closing" title="Link to this heading">¶</a></h2>
+<p>The above are all things to consider when writing code here on the MUD, and for
+the most part are only <em>strong</em> recommendations, but by following them your
+code will be easier to read, easier to maintain, and prevent causing headaches
+to others down the road.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Code Style</a><ul>
+<li><a class="reference internal" href="#purpose">Purpose</a></li>
+<li><a class="reference internal" href="#styles-editor-settings">Styles: Editor Settings</a></li>
+<li><a class="reference internal" href="#styles-folder-structure">Styles: Folder Structure</a></li>
+<li><a class="reference internal" href="#styles-file-structure">Styles: File Structure</a></li>
+<li><a class="reference internal" href="#styles-precompiler-directives">Styles: Precompiler Directives</a></li>
+<li><a class="reference internal" href="#styles-naming-conventions">Styles: Naming Conventions</a></li>
+<li><a class="reference internal" href="#styles-types">Styles: Types</a></li>
+<li><a class="reference internal" href="#styles-brackets">Styles: Brackets</a></li>
+<li><a class="reference internal" href="#styles-variables">Styles: Variables</a></li>
+<li><a class="reference internal" href="#styles-functions">Styles: Functions</a></li>
+<li><a class="reference internal" href="#styles-strings">Styles: Strings</a></li>
+<li><a class="reference internal" href="#styles-general-programming">Styles: General Programming</a></li>
+<li><a class="reference internal" href="#styles-in-closing">Styles: In Closing</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="inheritance.html"
+                          title="previous chapter">Inheritance</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="driver_functions.html"
+                          title="next chapter">Driver Functions</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="driver_functions.html" title="Driver Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="inheritance.html" title="Inheritance"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Code Style</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

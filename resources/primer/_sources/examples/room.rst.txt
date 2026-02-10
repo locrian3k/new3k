@@ -1,0 +1,264 @@
+Coding A Room
+=============
+
+Coding a room on 3Kingdoms can be one of the simplist things to do, which is why we start new wizards out with a small area focused first on making the room and then filling it.
+
+To begin with, we need to remember the things that were mentioned in :ref:`Code Style` and understand some of the basic concepts we learned throughout the primer.
+
+Notably, we'll be dealing with :ref:`pragma`, :ref:`inheritance`, the :ref:`overload operator <Scope Resolution Operator>` (::), how to handle long :ref:`strings <String>` with either auto-concatenation or the line-continuation character, and how to :ref:`call functions <Calling Functions>`
+
+To start with, we need to first make our comment header, set our pragma, and inherit the global room file.
+
+.. code-block::
+
+  /* first_room.c
+     Adalius 250315
+     A first room example. */
+  #pragma strong_types
+
+  inherit "/room/room";
+
+This pulls in a lot of pre-generated room code that handles everything from setting/displaying the short and long descriptions, to adding/removing/displaying exits, light levels, and more.
+
+While this single line of code won't do much, as its a dark room with no exits, no descriptions, no actions, no searchables, or anything else, it *will* actually load just fine.
+
+Next we need to define a create() function that will be called the first time the room is loaded:
+
+.. code-block::
+
+  /* first_room.c
+     Adalius 250315
+     A first room example. */
+  #pragma strong_types
+
+  inherit "/room/room";
+
+  void create()
+  {
+    //Remember to call create in the inherited room file so it can do
+    //its normal setup routine...
+    ::create();
+
+    return;
+  }
+
+Now when our room file is first loaded, the driver calls :code:`create()` in our file, which before anything else happens, calls :code:`::create()` in the "/room/room" file we inherited.
+
+Next we need to do a couple things. Let's tell the driver what realm it belongs to, lets add some light by calling :code:`set_light(1)` and maybe a short and long description with :code:`set_short()` and :code:`set_long()`.
+
+.. code-block::
+
+  /* first_room.c
+     Adalius 250315
+     A first room example. */
+  #pragma strong_types
+
+  inherit "/room/room";
+
+  void create()
+  {
+    ::create();
+
+    set_realm("Fantasy");
+
+    set_light(1);
+
+    set_short("A Small Hovel");
+    set_long("\
+    This is a small hovel set into the foot of a large hill. It has been \
+    clearly dug from the fertile dirt in a roughly rectangular shape. \
+    The only light that trickles in comes from a small hole on the door. \
+    Rays from the sun cast upon the dirt floor exposing the emptiness of \
+    the structure, not even a piece of furniture can be found.");
+
+    return;
+  }
+
+At this point we have a room that we can actually stand in, see the short and long description, and do so without a torch because it has light.
+
+Next we should add some flavor, lets add some items that can be looked at or examined using the :code:`add_item(string *what, string desc)` function. As you can see it takes an array of strings for 'what', these are the things you can 'look at', and when they are looked at, it will return the 'desc' string as the result.
+
+For example:
+
+.. code-block::
+
+  add_item(({ "dirt", "fertile dirt", "wall","walls","floor","ceiling" }),
+    "The dirt is packed hard, and a deep brown. Otherwise, it's dirt.");
+
+Now when the player looks at or examines anything in the 'what', they see the 'desc'.
+
+Putting that into our code we get:
+
+.. code-block::
+
+  /* first_room.c
+     Adalius 250315
+     A first room example. */
+  #pragma strong_types
+
+  inherit "/room/room";
+
+  void create()
+  {
+    ::create();
+
+    set_realm("Fantasy");
+
+    set_light(1);
+
+    set_short("A Small Hovel");
+    set_long("\
+    This is a small hovel set into the foot of a large hill. It has been \
+    clearly dug from the fertile dirt in a roughly rectangular shape. \
+    The only light that trickles in comes from a small hole on the door. \
+    Rays from the sun cast upon the dirt floor exposing the emptiness of \
+    the structure, not even a piece of furniture can be found.");
+
+    add_item(({ "dirt", "fertile dirt", "wall","walls","floor","ceiling" }),
+      "The dirt is packed hard, and a deep brown. Otherwise, it's dirt.");
+    add_item(({ "hovel", "home" }),
+      "This hovel is empty. Just dirt for building material and a door.");
+    add_item(({ "door", "wood door", "hole", "small hole",
+                "small wood hole" }),
+      "The wood door has a small wood hole cut about a third of the way "
+      "down from the top. It allows a trickle of light into the room and "
+      "provides a way for the occupant to see outside as there are no "
+      "windows".);
+    add_item(({ "light","trickle of light" }),
+      "The trickle of light filters from the hole in the door onto the "
+      "floor and provides a very slight illumination of the room.");
+
+    return;
+  }
+
+With four function calls we've added a lot of depth to the room by creating things the player can look at.
+
+Next we need to add some things they can search as well using :code:`add_search_item(string *what, string desc)`. Its the same format as :code:`add_item()` but instead of being triggered by 'look at' or 'examine' it is triggered by 'search'.
+
+.. code-block::
+
+  add_search_item(({ "floor", "dirt floor" }),
+    "You scour the floor but find nothing unusual.");
+
+We can also change the default search message so that it displays something other than 'You find nothing of interest.' by using :code:`set_search_mess(string what)`.
+
+.. code-block::
+
+  set_search_message("You scan that dilligently but find nothing.");
+
+Putting those together, our file now looks like:
+
+.. code-block::
+
+  /* first_room.c
+     Adalius 250315
+     A first room example. */
+  #pragma strong_types
+
+  inherit "/room/room";
+
+  void create()
+  {
+    ::create();
+
+    set_realm("Fantasy");
+
+    set_light(1);
+
+    set_short("A Small Hovel");
+    set_long("\
+    This is a small hovel set into the foot of a large hill. It has been \
+    clearly dug from the fertile dirt in a roughly rectangular shape. \
+    The only light that trickles in comes from a small hole on the door. \
+    Rays from the sun cast upon the dirt floor exposing the emptiness of \
+    the structure, not even a piece of furniture can be found.");
+
+    add_item(({ "dirt", "fertile dirt", "wall","walls","floor","ceiling" }),
+      "The dirt is packed hard, and a deep brown. Otherwise, it's dirt.");
+    add_item(({ "hovel", "home" }),
+      "This hovel is empty. Just dirt for building material and a door.");
+    add_item(({ "door", "wood door", "hole", "small hole",
+                "small wood hole" }),
+      "The wood door has a small wood hole cut about a third of the way "
+      "down from the top. It allows a trickle of light into the room and "
+      "provides a way for the occupant to see outside as there are no "
+      "windows".);
+    add_item(({ "light","trickle of light" }),
+      "The trickle of light filters from the hole in the door onto the "
+      "floor and provides a very slight illumination of the room.");
+
+    set_search_message("You scan that dilligently but find nothing.");
+
+    add_search_item(({ "floor", "dirt floor" }),
+      "You scour the floor but find nothing unusual.");
+
+    return;
+  }
+
+At this point we have a fully defined room, there's things to look at, things to search, it has light, the only quasi-mandatory thing we're missing is an exit. To do that we use :code:`add_exit(string dest, string dir)`. 'dest' is the filename of the room to go to, and 'dir' is the direction they need to type.
+
+Directions do not need to be cardinal. You could put 'kazoo' for the 'dir', and when the player types 'kazoo' it will move them to 'dest'.
+
+of note, you can also make an exit hidden to the player by simply preprending the 'dir' with '@'. For instance, '@north' will make a hidden north exit. Nothing will stop the player from going that direction however, it's hidden not blocked.
+
+.. note::
+  We also have a system called 'dirfuncs' that allows more granular control over exits, such as blocking them if a monster is present or the player lacks an object, or really anything you can imagine. 'dirfuncs' are a little more elaborate and beyond the scope here, but if you decide to pursue wizzing, be aware they exist and feel free to inquire if they could be helpful in your area.
+
+We aren't going to code the second room in this primer, but lets make an exit to a hypothetical one, and lets pretend from our :ref:`preprocessor <Define>` training that we have a #define called MY_ROOMS that points to the folder with the rooms for this area.
+
+.. code-block::
+
+  add_exit(MY_ROOMS+"second_room","west");
+
+Now lets merge that into our room file:
+
+.. code-block::
+
+  /* first_room.c
+     Adalius 250315
+     A first room example. */
+  #pragma strong_types
+
+  inherit "/room/room";
+
+  void create()
+  {
+    ::create();
+
+    set_realm("Fantasy");
+
+    set_light(1);
+
+    set_short("A Small Hovel");
+    set_long("\
+    This is a small hovel set into the foot of a large hill. It has been \
+    clearly dug from the fertile dirt in a roughly rectangular shape. \
+    The only light that trickles in comes from a small hole on the door. \
+    Rays from the sun cast upon the dirt floor exposing the emptiness of \
+    the structure, not even a piece of furniture can be found.");
+
+    add_item(({ "dirt", "fertile dirt", "wall","walls","floor","ceiling" }),
+      "The dirt is packed hard, and a deep brown. Otherwise, it's dirt.");
+    add_item(({ "hovel", "home" }),
+      "This hovel is empty. Just dirt for building material and a door.");
+    add_item(({ "door", "wood door", "hole", "small hole",
+                "small wood hole" }),
+      "The wood door has a small wood hole cut about a third of the way "
+      "down from the top. It allows a trickle of light into the room and "
+      "provides a way for the occupant to see outside as there are no "
+      "windows".);
+    add_item(({ "light","trickle of light" }),
+      "The trickle of light filters from the hole in the door onto the "
+      "floor and provides a very slight illumination of the room.");
+
+    set_search_message("You scan that dilligently but find nothing.");
+
+    add_search_item(({ "floor", "dirt floor" }),
+      "You scour the floor but find nothing unusual.");
+
+    add_exit(MY_ROOMS+"second_room","west");
+
+    return;
+  }
+
+And there you have it, a fully functional room with an exit. To make an exit bi-directional, in the room that it links to you simply put another :code:`add_exit()` call with the destination pointing to this room.

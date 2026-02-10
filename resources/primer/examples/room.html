@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Coding A Room &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coding An Object" href="object.html" />
+    <link rel="prev" title="Driver Functions" href="../coding/driver_functions.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="object.html" title="Coding An Object"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../coding/driver_functions.html" title="Driver Functions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding A Room</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="coding-a-room">
+<h1>Coding A Room<a class="headerlink" href="#coding-a-room" title="Link to this heading">¶</a></h1>
+<p>Coding a room on 3Kingdoms can be one of the simplist things to do, which is why we start new wizards out with a small area focused first on making the room and then filling it.</p>
+<p>To begin with, we need to remember the things that were mentioned in <a class="reference internal" href="../coding/codestyle.html#code-style"><span class="std std-ref">Code Style</span></a> and understand some of the basic concepts we learned throughout the primer.</p>
+<p>Notably, we’ll be dealing with <a class="reference internal" href="../coding/preprocessor.html#pragma"><span class="std std-ref">Pragma</span></a>, <a class="reference internal" href="../coding/inheritance.html#inheritance"><span class="std std-ref">Inheritance</span></a>, the <a class="reference internal" href="../coding/operators.html#scope-resolution-operator"><span class="std std-ref">overload operator</span></a> (::), how to handle long <a class="reference internal" href="../coding/types.html#string"><span class="std std-ref">strings</span></a> with either auto-concatenation or the line-continuation character, and how to <a class="reference internal" href="../coding/functions.html#calling-functions"><span class="std std-ref">call functions</span></a></p>
+<p>To start with, we need to first make our comment header, set our pragma, and inherit the global room file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_room</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">room</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This pulls in a lot of pre-generated room code that handles everything from setting/displaying the short and long descriptions, to adding/removing/displaying exits, light levels, and more.</p>
+<p>While this single line of code won’t do much, as its a dark room with no exits, no descriptions, no actions, no searchables, or anything else, it <em>will</em> actually load just fine.</p>
+<p>Next we need to define a create() function that will be called the first time the room is loaded:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_room</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">room</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Remember</span> <span class="n">to</span> <span class="n">call</span> <span class="n">create</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">inherited</span> <span class="n">room</span> <span class="n">file</span> <span class="n">so</span> <span class="n">it</span> <span class="n">can</span> <span class="n">do</span>
+  <span class="o">//</span><span class="n">its</span> <span class="n">normal</span> <span class="n">setup</span> <span class="n">routine</span><span class="o">...</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now when our room file is first loaded, the driver calls <code class="code docutils literal notranslate"><span class="pre">create()</span></code> in our file, which before anything else happens, calls <code class="code docutils literal notranslate"><span class="pre">::create()</span></code> in the “/room/room” file we inherited.</p>
+<p>Next we need to do a couple things. Let’s tell the driver what realm it belongs to, lets add some light by calling <code class="code docutils literal notranslate"><span class="pre">set_light(1)</span></code> and maybe a short and long description with <code class="code docutils literal notranslate"><span class="pre">set_short()</span></code> and <code class="code docutils literal notranslate"><span class="pre">set_long()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_room</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">room</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="n">set_light</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A Small Hovel&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a small hovel set into the foot of a large hill. It has been </span><span class="se">\</span>
+<span class="s2">  clearly dug from the fertile dirt in a roughly rectangular shape. </span><span class="se">\</span>
+<span class="s2">  The only light that trickles in comes from a small hole on the door. </span><span class="se">\</span>
+<span class="s2">  Rays from the sun cast upon the dirt floor exposing the emptiness of </span><span class="se">\</span>
+<span class="s2">  the structure, not even a piece of furniture can be found.&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At this point we have a room that we can actually stand in, see the short and long description, and do so without a torch because it has light.</p>
+<p>Next we should add some flavor, lets add some items that can be looked at or examined using the <code class="code docutils literal notranslate"><span class="pre">add_item(string</span> <span class="pre">*what,</span> <span class="pre">string</span> <span class="pre">desc)</span></code> function. As you can see it takes an array of strings for ‘what’, these are the things you can ‘look at’, and when they are looked at, it will return the ‘desc’ string as the result.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;fertile dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;wall&quot;</span><span class="p">,</span><span class="s2">&quot;walls&quot;</span><span class="p">,</span><span class="s2">&quot;floor&quot;</span><span class="p">,</span><span class="s2">&quot;ceiling&quot;</span> <span class="p">}),</span>
+  <span class="s2">&quot;The dirt is packed hard, and a deep brown. Otherwise, it&#39;s dirt.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now when the player looks at or examines anything in the ‘what’, they see the ‘desc’.</p>
+<p>Putting that into our code we get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_room</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">room</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="n">set_light</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A Small Hovel&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a small hovel set into the foot of a large hill. It has been </span><span class="se">\</span>
+<span class="s2">  clearly dug from the fertile dirt in a roughly rectangular shape. </span><span class="se">\</span>
+<span class="s2">  The only light that trickles in comes from a small hole on the door. </span><span class="se">\</span>
+<span class="s2">  Rays from the sun cast upon the dirt floor exposing the emptiness of </span><span class="se">\</span>
+<span class="s2">  the structure, not even a piece of furniture can be found.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;fertile dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;wall&quot;</span><span class="p">,</span><span class="s2">&quot;walls&quot;</span><span class="p">,</span><span class="s2">&quot;floor&quot;</span><span class="p">,</span><span class="s2">&quot;ceiling&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The dirt is packed hard, and a deep brown. Otherwise, it&#39;s dirt.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;hovel&quot;</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;This hovel is empty. Just dirt for building material and a door.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;door&quot;</span><span class="p">,</span> <span class="s2">&quot;wood door&quot;</span><span class="p">,</span> <span class="s2">&quot;hole&quot;</span><span class="p">,</span> <span class="s2">&quot;small hole&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;small wood hole&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The wood door has a small wood hole cut about a third of the way &quot;</span>
+    <span class="s2">&quot;down from the top. It allows a trickle of light into the room and &quot;</span>
+    <span class="s2">&quot;provides a way for the occupant to see outside as there are no &quot;</span>
+    <span class="s2">&quot;windows&quot;</span><span class="o">.</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span><span class="s2">&quot;trickle of light&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The trickle of light filters from the hole in the door onto the &quot;</span>
+    <span class="s2">&quot;floor and provides a very slight illumination of the room.&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With four function calls we’ve added a lot of depth to the room by creating things the player can look at.</p>
+<p>Next we need to add some things they can search as well using <code class="code docutils literal notranslate"><span class="pre">add_search_item(string</span> <span class="pre">*what,</span> <span class="pre">string</span> <span class="pre">desc)</span></code>. Its the same format as <code class="code docutils literal notranslate"><span class="pre">add_item()</span></code> but instead of being triggered by ‘look at’ or ‘examine’ it is triggered by ‘search’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_search_item</span><span class="p">(({</span> <span class="s2">&quot;floor&quot;</span><span class="p">,</span> <span class="s2">&quot;dirt floor&quot;</span> <span class="p">}),</span>
+  <span class="s2">&quot;You scour the floor but find nothing unusual.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We can also change the default search message so that it displays something other than ‘You find nothing of interest.’ by using <code class="code docutils literal notranslate"><span class="pre">set_search_mess(string</span> <span class="pre">what)</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">set_search_message</span><span class="p">(</span><span class="s2">&quot;You scan that dilligently but find nothing.&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Putting those together, our file now looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_room</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">room</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="n">set_light</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A Small Hovel&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a small hovel set into the foot of a large hill. It has been </span><span class="se">\</span>
+<span class="s2">  clearly dug from the fertile dirt in a roughly rectangular shape. </span><span class="se">\</span>
+<span class="s2">  The only light that trickles in comes from a small hole on the door. </span><span class="se">\</span>
+<span class="s2">  Rays from the sun cast upon the dirt floor exposing the emptiness of </span><span class="se">\</span>
+<span class="s2">  the structure, not even a piece of furniture can be found.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;fertile dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;wall&quot;</span><span class="p">,</span><span class="s2">&quot;walls&quot;</span><span class="p">,</span><span class="s2">&quot;floor&quot;</span><span class="p">,</span><span class="s2">&quot;ceiling&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The dirt is packed hard, and a deep brown. Otherwise, it&#39;s dirt.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;hovel&quot;</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;This hovel is empty. Just dirt for building material and a door.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;door&quot;</span><span class="p">,</span> <span class="s2">&quot;wood door&quot;</span><span class="p">,</span> <span class="s2">&quot;hole&quot;</span><span class="p">,</span> <span class="s2">&quot;small hole&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;small wood hole&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The wood door has a small wood hole cut about a third of the way &quot;</span>
+    <span class="s2">&quot;down from the top. It allows a trickle of light into the room and &quot;</span>
+    <span class="s2">&quot;provides a way for the occupant to see outside as there are no &quot;</span>
+    <span class="s2">&quot;windows&quot;</span><span class="o">.</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span><span class="s2">&quot;trickle of light&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The trickle of light filters from the hole in the door onto the &quot;</span>
+    <span class="s2">&quot;floor and provides a very slight illumination of the room.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_search_message</span><span class="p">(</span><span class="s2">&quot;You scan that dilligently but find nothing.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_search_item</span><span class="p">(({</span> <span class="s2">&quot;floor&quot;</span><span class="p">,</span> <span class="s2">&quot;dirt floor&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;You scour the floor but find nothing unusual.&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At this point we have a fully defined room, there’s things to look at, things to search, it has light, the only quasi-mandatory thing we’re missing is an exit. To do that we use <code class="code docutils literal notranslate"><span class="pre">add_exit(string</span> <span class="pre">dest,</span> <span class="pre">string</span> <span class="pre">dir)</span></code>. ‘dest’ is the filename of the room to go to, and ‘dir’ is the direction they need to type.</p>
+<p>Directions do not need to be cardinal. You could put ‘kazoo’ for the ‘dir’, and when the player types ‘kazoo’ it will move them to ‘dest’.</p>
+<p>of note, you can also make an exit hidden to the player by simply preprending the ‘dir’ with ‘&#64;’. For instance, <a class="reference external" href="mailto:'&#37;&#52;&#48;north">‘<span>&#64;</span>north</a>’ will make a hidden north exit. Nothing will stop the player from going that direction however, it’s hidden not blocked.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We also have a system called ‘dirfuncs’ that allows more granular control over exits, such as blocking them if a monster is present or the player lacks an object, or really anything you can imagine. ‘dirfuncs’ are a little more elaborate and beyond the scope here, but if you decide to pursue wizzing, be aware they exist and feel free to inquire if they could be helpful in your area.</p>
+</div>
+<p>We aren’t going to code the second room in this primer, but lets make an exit to a hypothetical one, and lets pretend from our <a class="reference internal" href="../coding/preprocessor.html#define"><span class="std std-ref">preprocessor</span></a> training that we have a #define called MY_ROOMS that points to the folder with the rooms for this area.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_exit</span><span class="p">(</span><span class="n">MY_ROOMS</span><span class="o">+</span><span class="s2">&quot;second_room&quot;</span><span class="p">,</span><span class="s2">&quot;west&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Now lets merge that into our room file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_room</span><span class="o">.</span><span class="n">c</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">first</span> <span class="n">room</span> <span class="n">example</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+
+  <span class="n">set_light</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A Small Hovel&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2">  This is a small hovel set into the foot of a large hill. It has been </span><span class="se">\</span>
+<span class="s2">  clearly dug from the fertile dirt in a roughly rectangular shape. </span><span class="se">\</span>
+<span class="s2">  The only light that trickles in comes from a small hole on the door. </span><span class="se">\</span>
+<span class="s2">  Rays from the sun cast upon the dirt floor exposing the emptiness of </span><span class="se">\</span>
+<span class="s2">  the structure, not even a piece of furniture can be found.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;fertile dirt&quot;</span><span class="p">,</span> <span class="s2">&quot;wall&quot;</span><span class="p">,</span><span class="s2">&quot;walls&quot;</span><span class="p">,</span><span class="s2">&quot;floor&quot;</span><span class="p">,</span><span class="s2">&quot;ceiling&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The dirt is packed hard, and a deep brown. Otherwise, it&#39;s dirt.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;hovel&quot;</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;This hovel is empty. Just dirt for building material and a door.&quot;</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;door&quot;</span><span class="p">,</span> <span class="s2">&quot;wood door&quot;</span><span class="p">,</span> <span class="s2">&quot;hole&quot;</span><span class="p">,</span> <span class="s2">&quot;small hole&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;small wood hole&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The wood door has a small wood hole cut about a third of the way &quot;</span>
+    <span class="s2">&quot;down from the top. It allows a trickle of light into the room and &quot;</span>
+    <span class="s2">&quot;provides a way for the occupant to see outside as there are no &quot;</span>
+    <span class="s2">&quot;windows&quot;</span><span class="o">.</span><span class="p">);</span>
+  <span class="n">add_item</span><span class="p">(({</span> <span class="s2">&quot;light&quot;</span><span class="p">,</span><span class="s2">&quot;trickle of light&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;The trickle of light filters from the hole in the door onto the &quot;</span>
+    <span class="s2">&quot;floor and provides a very slight illumination of the room.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_search_message</span><span class="p">(</span><span class="s2">&quot;You scan that dilligently but find nothing.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_search_item</span><span class="p">(({</span> <span class="s2">&quot;floor&quot;</span><span class="p">,</span> <span class="s2">&quot;dirt floor&quot;</span> <span class="p">}),</span>
+    <span class="s2">&quot;You scour the floor but find nothing unusual.&quot;</span><span class="p">);</span>
+
+  <span class="n">add_exit</span><span class="p">(</span><span class="n">MY_ROOMS</span><span class="o">+</span><span class="s2">&quot;second_room&quot;</span><span class="p">,</span><span class="s2">&quot;west&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And there you have it, a fully functional room with an exit. To make an exit bi-directional, in the room that it links to you simply put another <code class="code docutils literal notranslate"><span class="pre">add_exit()</span></code> call with the destination pointing to this room.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../coding/driver_functions.html"
+                          title="previous chapter">Driver Functions</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="object.html"
+                          title="next chapter">Coding An Object</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="object.html" title="Coding An Object"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../coding/driver_functions.html" title="Driver Functions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding A Room</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

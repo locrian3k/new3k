@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Coding An Armor &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coding A Monster" href="monster.html" />
+    <link rel="prev" title="Coding A Weapon" href="weapon.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="monster.html" title="Coding A Monster"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="weapon.html" title="Coding A Weapon"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding An Armor</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="coding-an-armor">
+<h1>Coding An Armor<a class="headerlink" href="#coding-an-armor" title="Link to this heading">¶</a></h1>
+<p>Coding an armor is unsurpisingly a lot like coding a weapon. We inherit the proper file, it does most of the work, and we just do some basic setup code to get it up and running.</p>
+<p>So, as has been done prior, we start with our comment block and inherit. Since we’re getting familar with the procedure, lets also generate our <code class="code docutils literal notranslate"><span class="pre">create()</span></code> right away.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_armor</span><span class="o">.</span><span class="n">C</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">small</span> <span class="n">armor</span> <span class="n">piece</span> <span class="kn">from</span><span class="w"> </span><span class="nn">a</span> <span class="n">kobold</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="o">//</span><span class="n">Both</span> <span class="n">armor</span> <span class="ow">or</span> <span class="n">armour</span> <span class="n">work</span><span class="p">,</span> <span class="n">armor</span> <span class="ow">is</span> <span class="n">just</span> <span class="n">an</span> <span class="n">alias</span> <span class="n">on</span> <span class="mi">3</span><span class="n">Kingdoms</span><span class="o">.</span>
+<span class="n">inherit</span> <span class="s2">&quot;/obj/armour&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Step 1 done, and done.</p>
+<p>Next we need to decide what kind of armor we’re going to make. We already figured out in the weapon file that this is probably going to be dropping from a kobold, so maybe a stinky leather cloak would be appropriate.</p>
+<p>Let’s do the bulk of the setup in one fell swoop this time.</p>
+<p>We’ll set the name, short, long, aliases, weight, composition, value, realm, and creator.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_armor</span><span class="o">.</span><span class="n">C</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">small</span> <span class="n">armor</span> <span class="n">piece</span> <span class="kn">from</span><span class="w"> </span><span class="nn">a</span> <span class="n">kobold</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/armour&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;a leather cloak&quot;</span><span class="p">);</span>
+  <span class="n">set_alias</span><span class="p">(</span> <span class="p">({</span> <span class="s2">&quot;cloak&quot;</span><span class="p">,</span> <span class="s2">&quot;leather cloak&quot;</span><span class="p">,</span> <span class="s2">&quot;dingy leather cloak&quot;</span> <span class="p">})</span> <span class="p">);</span>
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A dingy leather cloak&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2"> This cloak is made of poorly tanned leather, with small holes spanning </span><span class="se">\</span>
+<span class="s2"> the surface, all from areas cut through while scraping the flesh from </span><span class="se">\</span>
+<span class="s2"> the hide. It is stained with... well... it&#39;s probably best if you don&#39;t </span><span class="se">\</span>
+<span class="s2"> ask what. The smell is equally disturbing, but it looks as if it </span><span class="se">\</span>
+<span class="s2"> offered its prior owner a modicum of protection.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_weight</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+  <span class="n">set_value</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">set_composition</span><span class="p">(({</span> <span class="s2">&quot;leather&quot;</span> <span class="p">}));</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+  <span class="n">set_creator</span><span class="p">(</span><span class="s2">&quot;Adalius&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we can add a type, and some AC protection.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">first_armor</span><span class="o">.</span><span class="n">C</span>
+   <span class="n">Adalius</span> <span class="mi">250315</span>
+   <span class="n">A</span> <span class="n">small</span> <span class="n">armor</span> <span class="n">piece</span> <span class="kn">from</span><span class="w"> </span><span class="nn">a</span> <span class="n">kobold</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#pragma strong_types</span>
+
+<span class="n">inherit</span> <span class="s2">&quot;/obj/armour&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="n">set_name</span><span class="p">(</span><span class="s2">&quot;a leather cloak&quot;</span><span class="p">);</span>
+  <span class="n">set_alias</span><span class="p">(</span> <span class="p">({</span> <span class="s2">&quot;cloak&quot;</span><span class="p">,</span> <span class="s2">&quot;leather cloak&quot;</span><span class="p">,</span> <span class="s2">&quot;dingy leather cloak&quot;</span> <span class="p">})</span> <span class="p">);</span>
+  <span class="n">set_short</span><span class="p">(</span><span class="s2">&quot;A dingy leather cloak&quot;</span><span class="p">);</span>
+  <span class="n">set_long</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\</span>
+<span class="s2"> This cloak is made of poorly tanned leather, with small holes spanning </span><span class="se">\</span>
+<span class="s2"> the surface, all from areas cut through while scraping the flesh from </span><span class="se">\</span>
+<span class="s2"> the hide. It is stained with... well... it&#39;s probably best if you don&#39;t </span><span class="se">\</span>
+<span class="s2"> ask what. The smell is equally disturbing, but it looks as if it </span><span class="se">\</span>
+<span class="s2"> offered its prior owner a modicum of protection.&quot;</span><span class="p">);</span>
+
+  <span class="n">set_weight</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+  <span class="n">set_value</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">set_composition</span><span class="p">(({</span> <span class="s2">&quot;leather&quot;</span> <span class="p">}));</span>
+
+  <span class="n">set_realm</span><span class="p">(</span><span class="s2">&quot;Fantasy&quot;</span><span class="p">);</span>
+  <span class="n">set_creator</span><span class="p">(</span><span class="s2">&quot;Adalius&quot;</span><span class="p">);</span>
+
+  <span class="n">set_type</span><span class="p">(</span><span class="s2">&quot;cloak&quot;</span><span class="p">);</span>
+  <span class="n">set_ac</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>At this point, its a fully functioning cloak. It can be worn, removed, etc.</p>
+<p>Let’s introduce a new function that is specific to armor, the <code class="code docutils literal notranslate"><span class="pre">cant_wear()</span></code> function.</p>
+<p>This function will determine if someone can wear it. Given this is a stinky piece of leather, maybe someone with high charisma for their level wouldn’t wear it…</p>
+<p>Let’s narrow that down even further and say ‘high for their level’ means their charisma is more than 2x their level…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* first_armor.C
+   Adalius 250315
+   A small armor piece from a kobold. */
+#pragma strong_types
+
+inherit &quot;/obj/armour&quot;;
+
+void create()
+{
+  ::create();
+
+  set_name(&quot;a leather cloak&quot;);
+  set_alias( ({ &quot;cloak&quot;, &quot;leather cloak&quot;, &quot;dingy leather cloak&quot; }) );
+  set_short(&quot;A dingy leather cloak&quot;);
+  set_long(&quot;\
+ This cloak is made of poorly tanned leather, with small holes spanning \
+ the surface, all from areas cut through while scraping the flesh from \
+ the hide. It is stained with... well... it&#39;s probably best if you don&#39;t \
+ ask what. The smell is equally disturbing, but it looks as if it \
+ offered its prior owner a modicum of protection.&quot;);
+
+  set_weight(4);
+  set_value(2);
+  set_composition(({ &quot;leather&quot; }));
+
+  set_realm(&quot;Fantasy&quot;);
+  set_creator(&quot;Adalius&quot;);
+
+  set_type(&quot;cloak&quot;);
+  set_ac(2,1,0,0,0,0,0,0,0,0);
+
+  return;
+}
+
+status cant_wear(status silent)
+{
+  //We can get the player&#39;s charisma by first grabbing our environment()
+  //since they have to be holding it to try to wear it, and then
+  //checking their query_cha() result. We can compare this to their
+  //query_player_level() result to see if they have too much cha to
+  //wear something so stinky...
+
+  if( environment()-&gt;query_cha() * 2 &gt;
+      environment()-&gt;query_player_level() )
+  {
+    //They won&#39;t wear it, but now we need to see if the call was made
+    //silently (which can happen on quit, or other forced removals)
+
+    if(!silent) //It wasn&#39;t quiet/forced....
+      tell_object(environment(),
+        &quot;That smells like piss and you won&#39;t put it on!\n&quot;);
+
+    //We return 1 to signify that we blocked it from being worn.
+    return 1;
+  }
+
+  //Otherwise, we return 0 for success and they wear it like normal.
+  return 0;
+}
+</pre></div>
+</div>
+<p>Now, a few questions may have popped up in your head looking at this new function.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Why didn’t we use <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>  instead of <code class="code docutils literal notranslate"><span class="pre">environment()</span></code>?</p></li>
+</ol>
+<p>We did this because <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>  may not be defined, since you can have armor removed from you from more ways than just the ‘remove’ command, and if the source of it was other code where <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>  isn’t defined, then it won’t be defined here either, which results in an error trying to do a <code class="code docutils literal notranslate"><span class="pre">call_other()</span></code> on an undefined object.</p>
+<ol class="arabic simple" start="2">
+<li><p>If 1 is true and 0 is false in status, why did we return 0 for success?</p></li>
+</ol>
+<p>We did this because of how function calls to non-existent functions work. Imagine if we didn’t declare <code class="code docutils literal notranslate"><span class="pre">cant_wear()</span></code> at all. When the remove code calls <code class="code docutils literal notranslate"><span class="pre">this_object()-</span> <span class="pre">&gt;cant_wear(silent);</span></code> it gets back 0 because the function isn’t defined. If it isn’t defined and returns 0, we want the default behavior to be to allow it to be worn. So instead, we structure it that if it isn’t defined <em>or</em> it is defined and returns 0 it allows it, but returning 1 blocks it. Then the only way it can be blocked is if there is a function and it decides to return 1.</p>
+</div></blockquote>
+<p>At this point we have a nice little armor with some special code, I think it’s time to move onto coding a monster to drop all this gear…</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="weapon.html"
+                          title="previous chapter">Coding A Weapon</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="monster.html"
+                          title="next chapter">Coding A Monster</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="monster.html" title="Coding A Monster"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="weapon.html" title="Coding A Weapon"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Coding An Armor</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

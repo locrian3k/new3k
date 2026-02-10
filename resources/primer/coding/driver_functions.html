@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Driver Functions &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coding A Room" href="../examples/room.html" />
+    <link rel="prev" title="Code Style" href="codestyle.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../examples/room.html" title="Coding A Room"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="codestyle.html" title="Code Style"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Driver Functions</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="driver-functions">
+<h1>Driver Functions<a class="headerlink" href="#driver-functions" title="Link to this heading">¶</a></h1>
+<p>Driver functions are two flavors, efuns (external functions) and sefuns (simulated external functions).</p>
+<p>In a nutshell, both efuns and sefuns are functions that your code can call, even though they aren’t declared in your file, in anything you inherit, or anything you #include. They are basically like ‘global’ functions that everything has access to.</p>
+<p>The difference between the two is efuns are in the driver itself, and sefuns are in a file on the MUD that can be added to/edited/removed from by wizards with high enough access. Over the multiple decades of 3Kingdoms being around, a <em>lot</em> of sefuns have been written to save wizards time, to interact with our numerous custom systems (skills, quests, etc), and to provide methods to perform things that happen often enough that everyone should just have access to a central function that performs them.</p>
+<p>From your perspective as a coder, it really doesn’t matter of they’re an efun or an sefun when you use them. It only matters if you want to change how they function as sefuns can be changed (with sufficient reason, and only by the most senior wizards with access), efuns require editing the driver and recompiling.</p>
+<p>The list of efuns/sefuns is incredibly long and some of the functions you will use a <em>lot</em>, others you might only use very rarely. I’ve tried to limit the list to ones that I think are worth discussing.</p>
+<p>The format for the functions below may include [] around arguments. That indicates they are optional. I also use ‘array’ as a datatype rather than mixed to be clear that it needs an array for the argument (regardless of underlying type).</p>
+<section id="action-functions">
+<h2>Action Functions<a class="headerlink" href="#action-functions" title="Link to this heading">¶</a></h2>
+<p>These functions are used either to setup an action for a player, to force a player to do an action, or to notify them they failed an action (and allow other actions with the same name an attempt to fire).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">add_action(string</span> <span class="pre">func,</span> <span class="pre">string</span> <span class="pre">cmd)</span></code> - Generally called inside <code class="code docutils literal notranslate"><span class="pre">init()</span></code>, this adds the action ‘cmd’ to the user, and when they type ‘cmd’, it calls the function ‘func’ with any extra text passed as a string argument to that function.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">force_living(string</span> <span class="pre">what,</span> <span class="pre">object</span> <span class="pre">who)</span></code> - Forces ‘who’ to perform command ‘what’. Abuse of this is very very punishable.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">notify_fail(string</span> <span class="pre">what)</span></code> - This is used in actions to provide a better failure message than ‘What?’.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="ansi-functions">
+<h2>ANSI Functions<a class="headerlink" href="#ansi-functions" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>ANSI colors on 3Kingdoms are setup to handle two methods of labeling:</dt><dd><ol class="arabic simple">
+<li><p>Normal : &#64;color:text&#64;</p></li>
+<li><p>Two-part : &#64;color#text1#text2&#64;</p></li>
+</ol>
+</dd>
+</dl>
+<p>The first is used to display &lt;text&gt; in &lt;color&gt; to the end reader.
+The second is used for ‘ansi partial’, in which case &lt;text1&gt; will be in &lt;color&gt;, &lt;text2&gt; will not. If they have ‘ansi full’, then both will be in &lt;color&gt;.
+Both of these formats can be combined inside other strings, for instance <code class="code docutils literal notranslate"><span class="pre">&quot;&#64;red:Hello&#64;</span> <span class="pre">there</span> <span class="pre">partner!&quot;</span></code> will only put ‘Hello’ in red, everything else will be the players standard color. You can also do it multiple times, <code class="code docutils literal notranslate"><span class="pre">&quot;&#64;red:Hello&#64;</span> <span class="pre">there</span> <span class="pre">&#64;green:partner&#64;!&quot;</span></code> is completely valid.</p>
+<p>By not utilizing raw ANSI escape codes, this structure ensures that each player will see the colors as they have them individually set in their terminal if they have overridden the default colors.</p>
+<p>To process these formatted strings however, they must be sent through <code class="code docutils literal notranslate"><span class="pre">to_ansi()</span></code> below, which returns a string* array that can be parsed by most of the functions below. Whenever you see ‘complex_ansi’, that means the output from <code class="code docutils literal notranslate"><span class="pre">to_ansi()</span></code> should be put into that argument.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_say(string</span> <span class="pre">color,</span> <span class="pre">string</span> <span class="pre">str1,</span> <span class="pre">string</span> <span class="pre">str2,</span> <span class="pre">object|object*</span> <span class="pre">exceptions)</span></code> - Sends a colored string in two-part ANSI to the environment of <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>, except those player(s) specified in exceptions.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_say(string*</span> <span class="pre">complex_ansi,</span> <span class="pre">object|object*</span> <span class="pre">exceptions)</span></code> - Sends a colored string in normal ANSI to the environment of <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>, except those player(s) specified in exceptions.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_shout(string</span> <span class="pre">color,</span> <span class="pre">string</span> <span class="pre">str1,</span> <span class="pre">string</span> <span class="pre">str2,</span> <span class="pre">object|object*</span> <span class="pre">exceptions)</span></code> - Sends a colored string in two-part ANSI to all users, except those player(s) specified in exceptions.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_shout(string*</span> <span class="pre">complex_ansi,</span> <span class="pre">object|object*</span> <span class="pre">exceptions)</span></code> - Sends a colored string in normal ANSI to all users, except those player(s) specified in exceptions.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_string(string</span> <span class="pre">color,</span> <span class="pre">string</span> <span class="pre">str[,</span> <span class="pre">object</span> <span class="pre">who])</span></code> - Returns an ansified string (containing actual ANSI escape characters) ansifie’d to the preferences of who, or <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> if who is not specified.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_string(string*</span> <span class="pre">complex_ansi,[,</span> <span class="pre">object</span> <span class="pre">who])</span></code> - Returns an ansified string (containing actual ANSI escape characters) ansifie’d to the preferences of who, or <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> if who is not specified.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_tell_object(string</span> <span class="pre">color,</span> <span class="pre">object</span> <span class="pre">ob,</span> <span class="pre">string</span> <span class="pre">str1,</span> <span class="pre">string</span> <span class="pre">str2)</span></code> - Tells object ‘ob’ a message in ansi two-part coloring.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_tell_object(string*</span> <span class="pre">complex_ansi,</span> <span class="pre">object</span> <span class="pre">ob)</span></code> - Tells object ‘ob’ a message in ANSI two-part coloring.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_tell_room(string</span> <span class="pre">color,</span> <span class="pre">object</span> <span class="pre">room,</span> <span class="pre">string</span> <span class="pre">str1,</span> <span class="pre">string</span> <span class="pre">str2,</span> <span class="pre">object|object*</span> <span class="pre">exceptions)</span></code> - Sends an ANSI two-part string to all players in room except those in exceptions.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_tell_room(string*</span> <span class="pre">complex_ansi,</span> <span class="pre">object</span> <span class="pre">room,</span> <span class="pre">object|object*</span> <span class="pre">exceptions)</span></code> - Sends a normal ANSI string to all players in room except those in exceptions.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_write(string</span> <span class="pre">color,</span> <span class="pre">string</span> <span class="pre">str1,</span> <span class="pre">string</span> <span class="pre">str2)</span></code> - Displays a two-part ANSI string to <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansi_write(string*</span> <span class="pre">complex_ansi)</span></code> - Displays a normal ANSI string to <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ansistrlen(string</span> <span class="pre">str)</span></code> - Returns the length of an ANSI formatted string (normal or two-part) ignoring the ANSI formatting. i.e. “&#64;hired:Hi&#64;” would be 2 characters long, not 8.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">no_ansi(string</span> <span class="pre">str)</span></code> - Removes normal and two-part ANSI formatting tags from a string. i.e. “&#64;hired:Hi&#64;” -&gt; “Hi”</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">remove_ansi(string</span> <span class="pre">str)</span></code> - Removes actual ANSI escape codes from a rendered text.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">to_ansi(string</span> <span class="pre">str)</span></code> - Takes a string with normal or two-part ANSI codes and returns a string* (referred to as complex_ansi in this section) that can be parsed by the ansi functions.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">unansi(string</span> <span class="pre">*complex_ansi)</span></code> - The reverse of <code class="code docutils literal notranslate"><span class="pre">to_ansi()</span></code>, takes a complex_ansi string* and returns the string that was originally sent to <code class="code docutils literal notranslate"><span class="pre">to_ansi()</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="array-functions">
+<h2>Array Functions<a class="headerlink" href="#array-functions" title="Link to this heading">¶</a></h2>
+<p>These functions are used on arrays, and the first 3 of them also work on mappings.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">filter(mapping|array</span> <span class="pre">arg,</span> <span class="pre">string|closure</span> <span class="pre">func)</span></code> - For each element in arg, call func(elem), if it returns true the element is kept, if not it is removed, and the filtered mapping/array is returned. For mappings, it also passes values to the function and the format depends on if the width of the mapping is 1 or &gt; 1.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">map(mapping|array</span> <span class="pre">arg,</span> <span class="pre">string|closure</span> <span class="pre">func)</span></code> - For each element in arg, call func(elem), the result then replaces the original element. Like <code class="code docutils literal notranslate"><span class="pre">filter()</span></code>, for mappings the values are passed as well based on width.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">member(mapping|array</span> <span class="pre">arg,</span> <span class="pre">mixed</span> <span class="pre">item)</span></code> - For mappings, returns 1 if item is a key in arg, 0 if not. For arrays, returns the first index of item in arg, or -1 if it is not in arg.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">member(string</span> <span class="pre">arg,</span> <span class="pre">int</span> <span class="pre">item)</span></code> - Returns the first incident of character code item in string arg, or -1 if none found.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">reverse_array(array</span> <span class="pre">arg)</span></code> - Takes an array and returns it in reverse order.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">shuffle_array(array</span> <span class="pre">arg)</span></code> - Takes an array, applies a Fisher-Yates shuffle, and returns the random array. O(n) runtime so it gets expensive on really large arrays.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sort_array(array</span> <span class="pre">arg,</span> <span class="pre">string|closure</span> <span class="pre">func)</span></code> - Passes two elements, a &amp; b, to the function func(a, b). If func(a,b) returns a value &gt; 0, the items are in the wrong order and swapped. If it returns a value &lt; 1, the items are correct and not swapped.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sum_array(int*</span> <span class="pre">arg)</span></code> - Returns the sum of an integer array.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">unique_array(object</span> <span class="pre">*arg,</span> <span class="pre">string</span> <span class="pre">func,</span> <span class="pre">mixed</span> <span class="pre">skip)</span></code> - This returns an array of arrays by calling func(elem) for each elem of arg. If func(elem) returns a value equal to skip, it is ignored, otherwise it is grouped with every other elem that returned the same value from func(elem). All groups are then added as individual arrays to a parent array and returned.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">unique_member(array</span> <span class="pre">arg,</span> <span class="pre">mixed|array</span> <span class="pre">elem)</span></code> - Returns 1 if elem only exists once in arg, 0 if it is duplicated in arg, and if it isn’t in arg at all returns -1.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="display-functions">
+<h2>Display Functions<a class="headerlink" href="#display-functions" title="Link to this heading">¶</a></h2>
+<p>These are functions that either format text for display, or actually display to the player (without ANSI coloring).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">comma_and(string*</span> <span class="pre">arg)</span></code> - Depending on array size, returns:  1 element (e): “e”, 2 element: “e1 and e2”, 3+ element: “e1, e2, …, eN and eN+1”. Can accept any element data type that can be converted with <code class="code docutils literal notranslate"><span class="pre">to_string()</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">comma_switch(int</span> <span class="pre">arg)</span></code> - Converts an integer to a comma-separated integer. I.e. 2902382 -&gt; “2,902,382”.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">create_verbal(string</span> <span class="pre">who,</span> <span class="pre">string</span> <span class="pre">msg,</span> <span class="pre">string</span> <span class="pre">out,</span> <span class="pre">string</span> <span class="pre">action,</span> <span class="pre">string</span> <span class="pre">label)</span></code> - Creates a properly formatted communication message (wrapped similar to ‘say’ output) from who saying msg. It defaults to ‘says’ or the value of action, label is the color, and out can override if you want the string returned or displayed via say/write/tell_room.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">number_switch(int</span> <span class="pre">num)</span></code> - Converts an integer into the word format for the number. I.e. 203 -&gt; “two hundred three”.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">roman_switch(int</span> <span class="pre">num)</span></code> - Converts an integer into roman numerals. I.e. 47 -&gt; “XLVII”.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">say(string</span> <span class="pre">str[,</span> <span class="pre">object|object*</span> <span class="pre">exclude])</span></code> - Prints str to everyone in the environment of <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> or in this room, if provided, it will not show it to anyone in exclude. If exclude is not provided, it is <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>, if it is a single object, that object and <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> are excluded, if it is an array, ONLY those in exclude are excluded.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">shout(string</span> <span class="pre">str[,</span> <span class="pre">object|object*</span> <span class="pre">exclude])</span></code> - Prints str to everyone in the environment of <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> or in this room, if provided, it will not show it to anyone in exclude. If exclude is not provided, it is <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>, if exclude is provided whether single object or array, <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> is not excluded unless it is in exclude.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">tell_object(object</span> <span class="pre">ob,</span> <span class="pre">string</span> <span class="pre">str)</span></code> - Displays str to ob.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">tell_room(string|object</span> <span class="pre">ob,</span> <span class="pre">string</span> <span class="pre">str[,</span> <span class="pre">object|object*</span> <span class="pre">exclude])</span></code> - Works similar to say except sends it to the room/filepath ob rather than this room or environment of <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">word_wrap(string</span> <span class="pre">str,</span> <span class="pre">int</span> <span class="pre">cols,</span> <span class="pre">object</span> <span class="pre">who,</span> <span class="pre">status</span> <span class="pre">ovrd)</span></code> - Takes a string str, and then tries to wrap it to the COLS of who, unless who is not defined then it tries to find who, if it cannot find who at all, it defaults to the integer cols. If you pass 1 for ovrd, it wraps it to cols regardless of who and any COLS setting who has. This works with ansi strings (before to_ansi()) and wraps based on the tags being removed so it properly renders when colored.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">write(string</span> <span class="pre">str)</span></code> - Writes the message str to <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>. No one else sees it.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="filename-functions">
+<h2>Filename Functions<a class="headerlink" href="#filename-functions" title="Link to this heading">¶</a></h2>
+<p>These are functions that relate to the filenames of given objects.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">base_name(object</span> <span class="pre">ob)</span></code> - Returns the filename of the blueprint of ob. If ob is not a cloned object (i.e. a room, daemon, etc), it returns the file path as expected, if ob is cloned, it removes the ‘#&lt;clone_number&gt;’ from the end of the filepath.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">file_name([object</span> <span class="pre">ob])</span></code> - Returns the filename of the current object (<code class="code docutils literal notranslate"><span class="pre">this_object()</span></code>) or, if passed, ob. If the object is cloned, it includes the ‘#&lt;clone_number&gt;’ at the end of the filepath.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">object_name([object</span> <span class="pre">ob])</span></code> - Exactly the same as <code class="code docutils literal notranslate"><span class="pre">file_name()</span></code> but in the newer driver, <code class="code docutils literal notranslate"><span class="pre">file_name()</span></code> is deprecated and we are urged to use this instead.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="inventory-functions">
+<h2>Inventory Functions<a class="headerlink" href="#inventory-functions" title="Link to this heading">¶</a></h2>
+<p>These functions allow you to look into a targets inventory, or see what the object containing the target is.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">all_inventory([object</span> <span class="pre">target])</span></code> - If not passed a target, it uses <code class="code docutils literal notranslate"><span class="pre">this_object()</span></code>. otherwise it uses the target. This function returns an array of all the objects contained within the target. Used when you need to manually process an inventory. This is just a shallow inventory, so if target has a bag with stuff in it, this will only report the bag, not the stuff.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">deep_inventory([object</span> <span class="pre">target])</span></code> - Similar to <code class="code docutils literal notranslate"><span class="pre">all_inventory()</span></code> but recursively gets all items inside containers as well.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">environment([object</span> <span class="pre">ob])</span></code> - If ob is not passed, it returns the environment of <code class="code docutils literal notranslate"><span class="pre">this_object()</span></code>. otherwise the environment of ob. The environment is the object that ob is currently inside. For instance, if the player has a sword, the environment of the sword is the player. The environment of the player is the room. The environment of the room is generally nothing (0).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="math-functions">
+<h2>Math Functions<a class="headerlink" href="#math-functions" title="Link to this heading">¶</a></h2>
+<p>These are all normal mathmatic functions.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">ceil(int|float</span> <span class="pre">arg)</span></code> - Rounds arg up to the next whole number and returns it as a float. For integers this is the same as <code class="code docutils literal notranslate"><span class="pre">to_float(arg)</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">cos(int|float</span> <span class="pre">arg)</span></code> - Returns the float cosine of arg.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">floor(int|float</span> <span class="pre">arg)</span></code> - Same as ceil() but rounds down.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">max(string|string*|int|int*|float|float*</span> <span class="pre">arg[,</span> <span class="pre">arg2,</span> <span class="pre">..,</span> <span class="pre">argN])</span></code> - If passed an array only one argument is needed, otherwise at least 2 values of similar type (int &amp; int, int &amp; float, float &amp; float, string &amp; string, etc) are required. The highest value is returned.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">max_member(int*</span> <span class="pre">arr)</span></code> - Returns the index of the highest valued item. You must then use the index to get the actual value of the item.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">min(string|string*|int|int*|float|float*</span> <span class="pre">arg[,</span> <span class="pre">arg2,</span> <span class="pre">..,</span> <span class="pre">argN])</span></code> - Same as <code class="code docutils literal notranslate"><span class="pre">max()</span></code> but finds the minimum value.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">pow(int|float</span> <span class="pre">base,</span> <span class="pre">int|float</span> <span class="pre">exp)</span></code> - Returns the float value of base raised to the exp power.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">random(int</span> <span class="pre">n)</span></code> - Returns a value between 0 and n-1. I.e. <code class="code docutils literal notranslate"><span class="pre">random(4)</span></code> can return 0,1,2,3.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sin(int|float</span> <span class="pre">arg)</span></code> - Returns the float sin of arg.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sqrt(int|float</span> <span class="pre">arg)</span></code> - Returns the float square root of arg.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">tan(int|float</span> <span class="pre">arg)</span></code> - Returns the float tangent of arg.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="object-functions">
+<h2>Object Functions<a class="headerlink" href="#object-functions" title="Link to this heading">¶</a></h2>
+<p>These are all functions directly related to objects (the type).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">creator([object</span> <span class="pre">ob])</span></code> - Returns the creator (name of wizard or domain) of the object. If no ob, then it uses <code class="code docutils literal notranslate"><span class="pre">this_object()</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">clone_object(string</span> <span class="pre">path</span> <span class="pre">|object</span> <span class="pre">template)</span></code> - If path is passed, it loads the file and returns the cloned object of path. If template is passed, it clones template and returns that object. Note that if path fails to load, it will return 0 so make sure you verify before doing actions on the return.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">destruct(object</span> <span class="pre">ob)</span></code> - Completely destroys an object and removes it. This can be dangerous if used incorrectly so make sure ob is what you want to destruct before you do it.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">find_object(string</span> <span class="pre">str)</span></code> - Finds and returns the object with the object_name str. If no object is loaded with that object_name, it returns 0. The str can be ‘file#&lt;clone_id&gt;’ to find a specific clone.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">load_object(string</span> <span class="pre">file)</span></code> - Attempts to load an object from file and returns the loaded object (or 0 if it failed to load). Note that the object returns is the blueprint, not a clone of the blueprint.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">move_object(string|object</span> <span class="pre">item,</span> <span class="pre">string|object</span> <span class="pre">dest)</span></code> - Moves item into dest. If item or dest is a string, the driver uses <code class="code docutils literal notranslate"><span class="pre">find_object()</span></code> to find something with item or dest as the object_name.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">present(string|object</span> <span class="pre">what,</span> <span class="pre">object</span> <span class="pre">ob)</span></code> - If what is an object, it returns what if what is located inside ob, otherwise it returns 0. If what is a string, it returns the object that identifies to what inside ob, or 0 if nothing inside ob identifies to what. There are other formats of this which allow finding the ‘n-th’ copy, or allowing abbreviations.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">previous_object(int</span> <span class="pre">n)</span></code> - Returns the object that called the current function. If n is provided, it goes back n levels. For instance, if fila A called file B called file C, <code class="code docutils literal notranslate"><span class="pre">previous_object()</span></code> is B, <code class="code docutils literal notranslate"><span class="pre">previous_object(1)</span></code> is A.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">set_light(int</span> <span class="pre">n)</span></code> - <em>Adds</em> n light to the object (including rooms). If negative, removes it. Note that it does not set the light level <em>to</em> n. The reason is there may already be other items adding/removing light, and the result is cumulative.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">this_object()</span></code> - One of the most important efuns there is. This represents the current object the code is being called from. In any code you write, <code class="code docutils literal notranslate"><span class="pre">this_object()</span></code>.will always represent the loaded form of that code. If your code is something that can be cloned, <code class="code docutils literal notranslate"><span class="pre">this_object()</span></code>.will reflect <em>that</em> specific clone.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="player-functions">
+<h2>Player Functions<a class="headerlink" href="#player-functions" title="Link to this heading">¶</a></h2>
+<p>These are functions that return players or the existence there-of.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">all_users()</span></code> - Returns an object* array of all users, both interactive and linkdead.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">find_player(string</span> <span class="pre">str)</span></code> - Finds a player, even if invisible or linkdead, with the name str. Does not find anything other than players (meaning not monsters, wizards however <em>are</em> considered players).</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> - One of the most important efuns there is. This represents the player who issued the command. This means if have an action from <code class="code docutils literal notranslate"><span class="pre">add_action()</span></code> (defined below), <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> will be the person that actually typed the command. However, its important to know that there are times where <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> might be a monster, or might be empty (meaning a value of 0).</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">user_exists(string</span> <span class="pre">str)</span></code> - Checks for a save file for a player named str and returns true (1) if one is found. They do not need to be logged on, so long as their save file exists this will return true.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">users()</span></code> - Returns an object* array of all interactive (non-LD) users.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="regexp-functions">
+<h2>Regexp Functions<a class="headerlink" href="#regexp-functions" title="Link to this heading">¶</a></h2>
+<p>These functions utilize regular expressions. In the newer driver their use is dependent on the underlying system PCRE installed.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">regexp(string*</span> <span class="pre">arr,</span> <span class="pre">string</span> <span class="pre">pattern)</span></code> - Returns a string* array of all items in arr that match the regexp patter.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">regexplode(string</span> <span class="pre">arg,</span> <span class="pre">string</span> <span class="pre">pattern)</span></code> - Similar to <code class="code docutils literal notranslate"><span class="pre">explode()</span></code> but takes a regular expression as a delimiter. Returns a string* array.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">regreplace(string</span> <span class="pre">arg,</span> <span class="pre">string</span> <span class="pre">pattern,</span> <span class="pre">closure|string</span> <span class="pre">repl,</span> <span class="pre">int</span> <span class="pre">flags)</span></code> - Parses through arg looking for pattern, if it finds it, it replaces it with repl (or the result of repl if a closure). The flag is a bitmask, bit 0 means repeat as often as it matches, bit 1 means patterns are ‘ex’ compatible. Returns the modified string (or original if no modifications made).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="string-functions">
+<h2>String Functions<a class="headerlink" href="#string-functions" title="Link to this heading">¶</a></h2>
+<p>These functions manipulate strings.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">capitalize(string</span> <span class="pre">str[,</span> <span class="pre">int</span> <span class="pre">flag])</span></code> - Converts the first character in str to upper case. If flag is 1, it capitalizes the first letter of each word in str. If flag is 2, it capitalizes every letter in the entire str.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">explode(string</span> <span class="pre">str,</span> <span class="pre">string</span> <span class="pre">delimter)</span></code> - Takes str and every time it sees delimter, it breaks it into chunks and adds it to an array. The array is then returned. I.e. “Hello friend” with delimiter ‘ ‘ -&gt; ({ “Hello”, “friend” })</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">implode(string</span> <span class="pre">*arr,</span> <span class="pre">string</span> <span class="pre">delimter)</span></code> - Basically undoes explode. Pass an array of strings (anything not a string is ignored), joins each element with the next by placing delimiter between them, and returns the string. I.e. ({ “Hello”,”friend” }) with delimiter ‘ ‘ -&gt; “Hello friend”</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">lower_case(string</span> <span class="pre">str)</span></code> - Converts all characters in str to lower case.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">proper_case(string</span> <span class="pre">str)</span></code> - Attempts to capitalize str based on the rules that would be used to capitalize the title of a book. “a tale of two cities” -&gt; “A Tale of Two Cities”</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">string_in(string</span> <span class="pre">str,</span> <span class="pre">string</span> <span class="pre">substr)</span></code> - Returns 1 if substr is found inside str, otherwise 0.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">strlen(string</span> <span class="pre">str)</span></code> - Returns the length of str. Note that if str contains ANSI tags (&#64;:&#64; or &#64;#&#64;) it will include those in its count. For proper length of ANSI formatted text, use <code class="code docutils literal notranslate"><span class="pre">ansistrlen()</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">strrstr(string</span> <span class="pre">str,</span> <span class="pre">string</span> <span class="pre">str_for[,</span> <span class="pre">int</span> <span class="pre">pos])</span></code> - Returns the index of the first occurance of str_for found in str, starting at the end of str, or from position pos if provided, backwards. If str_for is not found in str, -1 is returned. If pos is negative, it is counted from the end of str. I.e. pos == 2 -&gt; Start at character 2 and work backwards. pos == -2 -&gt; Start at 2 from the end and work backwards.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">strstr(string</span> <span class="pre">str,</span> <span class="pre">string</span> <span class="pre">str_for[,</span> <span class="pre">int</span> <span class="pre">pos])</span></code> - Identical to <code class="code docutils literal notranslate"><span class="pre">strrstr()</span></code> except it searches forward instead of backward.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">subs(string</span> <span class="pre">str,</span> <span class="pre">string</span> <span class="pre">find,</span> <span class="pre">string</span> <span class="pre">repl[,</span> <span class="pre">status</span> <span class="pre">first])</span></code> - Returns str with every copy of find replaced with repl. If the argument first is passed as non-zero, only the first occurancce of find is replaced.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">trim(string</span> <span class="pre">str[,</span> <span class="pre">int</span> <span class="pre">where,</span> <span class="pre">int|string</span> <span class="pre">ch])</span></code> - Removes all leading and trailing characters ch from the string str and returns the modified string. If ch is passed it can be a either a single integer ASCII code or a string of character(s), if it is not passed it removes any whitespace. If where is passed, it can be 1 (remove leading only), 2 (remove trailing only), 3 or 0 (remove both leading and trailing).</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">upper_case(string</span> <span class="pre">str)</span></code> - Converts all characters in str to uppercase. I.e. “heya” -&gt; “HEYA”</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="time-functions">
+<h2>Time Functions<a class="headerlink" href="#time-functions" title="Link to this heading">¶</a></h2>
+<p>These are functions with deal with time and displaying time.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">ctime([int</span> <span class="pre">time])</span></code> - Returns a string containing time (or server time if time is not passed) in the format ‘%ddds% %mmms% %dd% %hh%:%min%:%ss% %yyyy%’ like ‘Fri Jul 17 19:13:33 1992’.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ctime_format(string</span> <span class="pre">format[,</span> <span class="pre">int</span> <span class="pre">time])</span></code> - Exactly like <code class="code docutils literal notranslate"><span class="pre">ctime()</span></code> except you can specify the desired output format.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">time()</span></code> - Returns the number of seconds elapsed since January 1st, 1970, 0:0:0 GMT (Unix epoch).</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">time_span(int</span> <span class="pre">start,</span> <span class="pre">int</span> <span class="pre">end[,</span> <span class="pre">status</span> <span class="pre">brief])</span></code> - Returns the time span in English between start and end, for example ‘1 minute 20 seconds’. If brief is passed as 1, ‘1M 20S’ would be returned instead.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">time_stamp(int</span> <span class="pre">time[,</span> <span class="pre">status</span> <span class="pre">show_seconds])</span></code> - Basically shorthand for <code class="code docutils literal notranslate"><span class="pre">ctime_format(&quot;%yyyy%/%mm%/%dd%</span> <span class="pre">%hh%:%min%&quot;,time)</span></code>. If show_seconds is passed as 1, then the seconds are appended to the time.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="utility-functions">
+<h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Link to this heading">¶</a></h2>
+<p>These are functions that didn’t really fit anywhere else…</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">copy(mapping|array</span> <span class="pre">arg)</span></code> - Returns a shallow copy of arg. As mappings/arrays are by reference, this creates a new mapping/array with the same values and returns it. However, if the mapping/array contains other mappings/arrays, those remain by reference!</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">deep_copy(mapping|array</span> <span class="pre">arg)</span></code> - Exactly the same as <code class="code docutils literal notranslate"><span class="pre">copy()`</span></code> but nested mappings/arrays are actually copied and not passed by reference. This function is more computationally expensive than <code class="code docutils literal notranslate"><span class="pre">copy()</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">replace_program([string</span> <span class="pre">program])</span></code> - If you have a file A that inherits file B, and file A does not define any functions or variables not defined inside B, you can call <code class="code docutils literal notranslate"><span class="pre">replace_program()</span></code> at the end of <code class="code docutils literal notranslate"><span class="pre">create()</span></code> which will then, after running all your code, replace A with B from that point on, which provides a significant memory savings.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">restore_object(string</span> <span class="pre">file)</span></code> - Restores the values of an objects variables from a file created by <code class="code docutils literal notranslate"><span class="pre">save_object()</span></code>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">save_object(string</span> <span class="pre">file)</span></code> - Saves the current object’s variables, excluding those modified by static or nosave, into the file specified, with extension ‘.o’ automatically appended. It returns 0 on success, and non-zero on a non-fatal error. Note that if your file inherits other files, unless you specify a modifier in the inherit keyword, your save file will include saving all variables declared in any inheritable up the chain from your file (normally this is desired).</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="variable-functions">
+<h2>Variable Functions<a class="headerlink" href="#variable-functions" title="Link to this heading">¶</a></h2>
+<p>These functions tell you something about a variable, or convert it (much like typecasting).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">is_clone(string|object</span> <span class="pre">ob)</span></code> - Returns 1 if the object or filepath given in ob is a clone. It does this by checking if the filename contains ‘#’.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">is_digit(int|string</span> <span class="pre">str)</span></code> - Returns true if str is a digit. If an integer, it looks to see if it is the ASCII value of a digit (48 to 57 representing 0-9). If a string, it must only be a single character, in which case it checks if that character is 0-9. If a string longer than 1 character is provided, even if its visually a valid number, this will return 0 as it checks for a single digit.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">is_player(object</span> <span class="pre">ob)</span></code> - Returns true if ob is a player. Useful for discerning if a living object is a player or monster.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">is_wizard(object</span> <span class="pre">ob[,</span> <span class="pre">status</span> <span class="pre">app])</span></code> - Returns true of ob is a wizard (level 510+). If app is passed as 1, it will also return true if ob is level 500.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">living(object</span> <span class="pre">ob)</span></code> - Returns true if ob is living (i.e. has <code class="code docutils literal notranslate"><span class="pre">enabled_commands()</span></code> called from inside of ob). This is generally true for players <em>and</em> monsters.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">sizeof(array|string|mapping</span> <span class="pre">arg)</span></code> - For arrays, returns the number of elements, for strings, returns the number of characters (similar to <code class="code docutils literal notranslate"><span class="pre">strlen()</span></code>), for mappings, returns the number of keys.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">to_float(int|float|string</span> <span class="pre">arg)</span></code> - Ints are extended to floats, strings are converted to the first value that doesn’t belong to a float, and floats are just returned as is.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">to_int(int|float|string</span> <span class="pre">arg)</span></code> - Ints are returned as is, floats are truncated, strings with leading digits are converted up to the first non-digit.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">to_object(string|object|closure</span> <span class="pre">arg)</span></code> - For strings, a matching object_name is attempted to be found and returned if it is or 0 if not. For bound closures, it returns the object holding the closure. Objects and 0 are both returned as is.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">to_string(int|float|object|array|symbol|string|closure</span> <span class="pre">arg)</span></code> - Arg is converted into a string and returned. CLosures are converted to an appropiate name (mostly for debugging). Arrays are considered exploded strings, and are thus imploded to the first 0 or non-number entry. to_string( ({ 49, 50 }) ) -&gt; “12”.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="sprintf-and-printf-functions">
+<h2>Sprintf And Printf Functions<a class="headerlink" href="#sprintf-and-printf-functions" title="Link to this heading">¶</a></h2>
+<p>Sprintf (and printf) are special functions which allow an <em>insane</em> amount of custom formatting of a given string, allowing you to directly parse in variable values in differnet formats, or generate tables, repetative text, or other things. However, because they are so powerful, their instructions contain a LOT of format codes and similar, and its best to simply review the man pages for each once you are a wizard.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">sprintf(string</span> <span class="pre">fmt,</span> <span class="pre">mixed</span> <span class="pre">var1[...])</span></code> - Takes a format string, using the valid arguments listed in the man page, and replaces each argument format string [AFS] found inside fmt, with the corresponding variable passed to the function, in order. I.e. the first AFS is for the first variable, the 2nd for the 2nd, so on. It returns the formatted string.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">printf(string</span> <span class="pre">fmt,</span> <span class="pre">mixed</span> <span class="pre">var1[...])</span></code> - Exactly the same as <code class="code docutils literal notranslate"><span class="pre">sprintf()</span></code> but it then displays it to the user. A similar albeit more expensive way to do the same would be <code class="code docutils literal notranslate"><span class="pre">write(sprintf())</span></code>;</p></li>
+</ul>
+</div></blockquote>
+<p>A brief example of its power:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%#-40.3s</span><span class="s2">&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;one</span><span class="se">\n</span><span class="s2">two</span><span class="se">\n</span><span class="s2">three</span><span class="se">\n</span><span class="s2">four</span><span class="se">\n</span><span class="s2">five</span><span class="se">\n</span><span class="s2">six</span><span class="se">\n</span><span class="s2">seven</span><span class="se">\n</span><span class="s2">eight</span><span class="se">\n</span><span class="s2">nine</span><span class="se">\n</span><span class="s2">ten</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+  <span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;one          five         nine</span><span class="se">\n</span><span class="s2">&quot;</span>
+          <span class="s2">&quot;two          six          ten</span><span class="se">\n</span><span class="s2">&quot;</span>
+          <span class="s2">&quot;three        seven        </span><span class="se">\n</span><span class="s2">&quot;</span>
+          <span class="s2">&quot;four         eight        &quot;</span>
+
+<span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;%|7s&quot;</span><span class="p">,</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+  <span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;  foo  &quot;</span>
+
+<span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;%|9&#39;-+&#39;s&quot;</span><span class="p">,</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+  <span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;-+-foo-+-&quot;</span>
+
+<span class="n">sprintf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%12.4e</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span><span class="mf">123.5</span><span class="p">,</span> <span class="s2">&quot;Atoms&quot;</span><span class="p">)</span>
+  <span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;  1.2350e+02 Atoms&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="sscanf">
+<h2>Sscanf<a class="headerlink" href="#sscanf" title="Link to this heading">¶</a></h2>
+<p>This function is a special utility for dealing with strings. Its used to parse a given string to see if it matches a provided format string, but the format string can contain capture groups similar to AFS in <code class="code docutils literal notranslate"><span class="pre">sprintf()</span></code>, and if it finds them, it assigns the matched values to the provided variables var1 .. varN, one variable per capture group. It then returns the number of matches found.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">sscanf(string</span> <span class="pre">str,</span> <span class="pre">string</span> <span class="pre">fmt,</span> <span class="pre">mixed</span> <span class="pre">var1[,...])</span></code> - Scan str to match fmt which contains capture groups. Any matched capture group is saved to the passed variables in order of occurance. The number of matches is returned.</p></li>
+</ul>
+</div></blockquote>
+<p>As an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">what</span><span class="p">,</span> <span class="n">who</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">res</span><span class="p">;</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">sscanf</span><span class="p">(</span><span class="s2">&quot;throw frisbee to rover&quot;</span><span class="p">,</span> <span class="s2">&quot;throw </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">what</span><span class="p">,</span> <span class="n">who</span><span class="p">);</span>
+
+<span class="n">Result</span><span class="p">:</span>
+  <span class="n">res</span> <span class="o">==</span> <span class="mi">2</span>
+  <span class="n">what</span> <span class="o">==</span> <span class="s2">&quot;frisbee&quot;</span>
+  <span class="n">who</span> <span class="o">==</span> <span class="s2">&quot;rover&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Driver Functions</a><ul>
+<li><a class="reference internal" href="#action-functions">Action Functions</a></li>
+<li><a class="reference internal" href="#ansi-functions">ANSI Functions</a></li>
+<li><a class="reference internal" href="#array-functions">Array Functions</a></li>
+<li><a class="reference internal" href="#display-functions">Display Functions</a></li>
+<li><a class="reference internal" href="#filename-functions">Filename Functions</a></li>
+<li><a class="reference internal" href="#inventory-functions">Inventory Functions</a></li>
+<li><a class="reference internal" href="#math-functions">Math Functions</a></li>
+<li><a class="reference internal" href="#object-functions">Object Functions</a></li>
+<li><a class="reference internal" href="#player-functions">Player Functions</a></li>
+<li><a class="reference internal" href="#regexp-functions">Regexp Functions</a></li>
+<li><a class="reference internal" href="#string-functions">String Functions</a></li>
+<li><a class="reference internal" href="#time-functions">Time Functions</a></li>
+<li><a class="reference internal" href="#utility-functions">Utility Functions</a></li>
+<li><a class="reference internal" href="#variable-functions">Variable Functions</a></li>
+<li><a class="reference internal" href="#sprintf-and-printf-functions">Sprintf And Printf Functions</a></li>
+<li><a class="reference internal" href="#sscanf">Sscanf</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="codestyle.html"
+                          title="previous chapter">Code Style</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../examples/room.html"
+                          title="next chapter">Coding A Room</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../examples/room.html" title="Coding A Room"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="codestyle.html" title="Code Style"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Driver Functions</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+LPC
+===
+
+Wikipedia
+---------
+
+Wikipedia defines `LPC <https://en.wikipedia.org/wiki/LPMud>`_ as:
+
+LPMud, abbreviated LP, is a family of multi-user dungeon (MUD) server software. Its first instance, the original LPMud game driver, was developed in 1989 by Lars Pensjö (the LP in LPMud). LPMud was innovative in its separation of the MUD infrastructure into a virtual machine (termed the driver) and a development framework written in the programming language LPC (termed the mudlib).
+
+History
+-------
+
+In 1989, Lars Pensjö created LPMud.
+In 1991, Amylaar took over the development and created version 3.2 of the LPMud driver. This is the driver that 3Kingdoms was originally running.
+In 1997, Mateese modernized and cleaned up the LPMud driver, but renamed it LDMud as he would carry the work forward. He kept the version numbering going from LPMud, so LDMud's first version was 3.2.2. At the time of writing (March, 2025), this is the driver that 3Kingdoms runs (3.2.15).
+In 2008, other coders, most notable Gnomi, took over development of LDMud.
+In 2017, the first major version of new development (3.5.0) was released.
+In 2025, 3Kingdoms completed its first pass at implementing driver (3.6.7), the first implementation of 64-bit for 3Kingdoms.
+
+Architecture
+------------
+
+LPMud is essentially a virtual machine; a fancy way of saying a piece of software that takes code, compiles it, and runs it, sort of like a software version of a mini-computer on another computer.
+
+The driver source is compiled into an executable on the server whenever back-end changes are needed to be made. The compiled executable is then run on the server and loads the mudlib, which is the collection of mud-side files provided with the driver or made by the wizarding staff. These files are compiled on demand by the driver which also provides some level of interaction with the operating system, working both as a middle-man and a safety net preventing common issues like infinite recursion errors or memory handling.
+
+Generally the driver is compiled rarely, and the compiled version is then the version that is run over and over every time reboot hits with no changes on the driver-side. As wizards are coding on the MUD-side, there are changes there all the time but those don't impact the actual driver itself.
+
+LPC is an `object-oriented programming language <https://en.wikipedia.org/wiki/Object-oriented_programming>`_ which allows wizards to focus on programming objects rather than dealing with underlying logic. In a nutshell, this means code is containerized to a degree, and that the code in the file directly pertains to the object it represents and little, if anything, else. However the code in a file can interact with the code in other files through a method known as a function call which is discussed further on in the primer, but its important to know that a single file can talk to multiple other files and vice versa.
+
+LPC supports:
+   * :ref:`Operators` (arithmetic, boolean, and other symbols like +, -, /, >>, etc.)
+   * :ref:`Variables` (various types including int, float, status, string, arrays, mappings, closures)
+   * :ref:`Functions` (void or type-returning)
+   * :ref:`Control Structures` (for loops, while loops, switches, foreach loops, etc)
+   * :ref:`Inheritance`
+   * :ref:`Preprocessor Directives <preprocessor>`
+
+Layout
+------
+
+LPC is structured very similar to C.
+
+As such whitespace is generally ignored, unlike languages like Python where whitespace indenting is critical to indicate sections.
+
+Like some other languages, and unlike others, code lines must end with a ; or they will not be valid. If the driver cannot find a ; at the end of a line, it assumes it continues onto the next line and treats everything as one big glob until it finds a ;, which usually means massive breakage.
+
+LPC also allows comments in two styles, line and block.
+
+  1. A line comment starts with // and tells the compiler to ignore that line completely during compilation. You can put a message behind it to document your code, or use it to remove a line of code from processing, useful when debugging or if something breaks.
+  2. A block comment starts on one line with /\* and continues one or more lines until it reaches the closing of the block with \*/. Everything between them is ignored.
+
+For example:
+
+.. code-block::
+
+  //This line will not be seen by the compiler. I can use it to tell you
+  //that you are awesome. Notice for multiple lines I need to use the
+  //line comment symbol at the start of each one.
+
+  //We can also comment out code so it doesn't fire like so:
+  //print("Hello world!");
+
+  /* Block comments work similarly to line comments but you'll Notice
+     I don't need to put the symbol at the start of every line. They are
+     commonly used when defining a large chunk of text to be commented
+     out, or when trying to remove an entire block of code. For instance
+     if we wanted to remove this entire if structure which you will
+     learn about later: */
+
+  /*
+    if(test)
+    {
+      print("This is a multiple line chunk of code!");
+      print("But none of it will run since it's in a comment block!");
+    }
+  */
+
+If you are familiar with C-esque coding languages, this primer should be somewhat familiar for you. If you have never coded or looked at code, I'm hopeful it will provide enough insight to get you on your way to coding on 3Kingdoms.

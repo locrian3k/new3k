@@ -1,0 +1,132 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LPC" href="LPC.html" />
+    <link rel="prev" title="3K Coding Primer" href="../index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="LPC.html" title="LPC"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="3K Coding Primer"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
+<section id="kingdoms">
+<h2>3Kingdoms<a class="headerlink" href="#kingdoms" title="Link to this heading">¶</a></h2>
+<p>3Kingdoms is based on the <a class="reference external" href="https://www.ldmud.eu/">LDMud</a> driver, an offshoot of the original LPMud driver, which is capable of compiling LPC (Lars Pensjö C), a C-like coding language commonly used for MUDs.</p>
+<p>As it is C-like it supports some features and structures found in C/C++, but also many that are exclusive to LPC.</p>
+<p>This primer is meant as a high level overview of the basics of LPC (and coding in general), as well as some specific coding practices and examples that exist on 3Kingdoms.</p>
+</section>
+<section id="code-example-notation">
+<h2>Code Example Notation<a class="headerlink" href="#code-example-notation" title="Link to this heading">¶</a></h2>
+<p>Inside code blocks in this primer, especially inside <a class="reference internal" href="operators.html#operators"><span class="std std-ref">Operators</span></a>, you may see code samples that demonstrate their use and then show ‘Result: ‘ with the value. Please be aware that in some instances what is being shown is pseudocode that will not actually compile in the driver, and in the actual driver, you will not see the result shown because you are not running code that displays the result to you. The code provided is creating that result in memory temporarily or, if assigned to a variable, for the lifetime of the variable, but you will not see that value output to your terminal without calling a function to also display the result.</p>
+</section>
+<section id="what-to-expect">
+<h2>What To Expect<a class="headerlink" href="#what-to-expect" title="Link to this heading">¶</a></h2>
+<p>I wrote this primer to try and walk you through every step of learning to code in LPC on 3Kingdoms from the beginning. LPC is a very beginner friendly language if you can wrap your head around its core concepts. As such, this is structured to try and walk someone from learning what LPC is, to what types are so you can be ready to understand variables, operators, and functions before going onto even more technical topics.</p>
+<p>Ultimately, after getting through the primer on coding, you can advance to the chapters with specific examples on how to get started writing a simple area, and if that doesn’t seem overwhelming, then maybe you’re ready to apply for wizardhood!</p>
+<p>If, however, you find some of this is a little over your head, that doesn’t mean you won’t make it as a wizard, it just means you’re going to need to be open to asking for help and having a willingness to learn, as most of us are very willing to teach those who will listen.</p>
+<p>At the end of reading this primer, if everything is absolutely beyond you and you can’t grasp any of it, then maybe I’d say wizzing might not be up your alley, and that’s ok too.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#kingdoms">3Kingdoms</a></li>
+<li><a class="reference internal" href="#code-example-notation">Code Example Notation</a></li>
+<li><a class="reference internal" href="#what-to-expect">What To Expect</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../index.html"
+                          title="previous chapter">3K Coding Primer</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="LPC.html"
+                          title="next chapter">LPC</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="LPC.html" title="LPC"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="3K Coding Primer"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

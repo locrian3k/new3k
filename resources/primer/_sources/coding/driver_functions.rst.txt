@@ -1,0 +1,266 @@
+Driver Functions
+================
+
+Driver functions are two flavors, efuns (external functions) and sefuns (simulated external functions).
+
+In a nutshell, both efuns and sefuns are functions that your code can call, even though they aren't declared in your file, in anything you inherit, or anything you #include. They are basically like 'global' functions that everything has access to.
+
+The difference between the two is efuns are in the driver itself, and sefuns are in a file on the MUD that can be added to/edited/removed from by wizards with high enough access. Over the multiple decades of 3Kingdoms being around, a *lot* of sefuns have been written to save wizards time, to interact with our numerous custom systems (skills, quests, etc), and to provide methods to perform things that happen often enough that everyone should just have access to a central function that performs them.
+
+From your perspective as a coder, it really doesn't matter of they're an efun or an sefun when you use them. It only matters if you want to change how they function as sefuns can be changed (with sufficient reason, and only by the most senior wizards with access), efuns require editing the driver and recompiling.
+
+The list of efuns/sefuns is incredibly long and some of the functions you will use a *lot*, others you might only use very rarely. I've tried to limit the list to ones that I think are worth discussing.
+
+The format for the functions below may include \[\] around arguments. That indicates they are optional. I also use 'array' as a datatype rather than mixed to be clear that it needs an array for the argument (regardless of underlying type).
+
+Action Functions
+----------------
+
+These functions are used either to setup an action for a player, to force a player to do an action, or to notify them they failed an action (and allow other actions with the same name an attempt to fire).
+
+  * :code:`add_action(string func, string cmd)` - Generally called inside :code:`init()`, this adds the action 'cmd' to the user, and when they type 'cmd', it calls the function 'func' with any extra text passed as a string argument to that function.
+  * :code:`force_living(string what, object who)` - Forces 'who' to perform command 'what'. Abuse of this is very very punishable.
+  * :code:`notify_fail(string what)` - This is used in actions to provide a better failure message than 'What?'.
+
+ANSI Functions
+--------------
+
+ANSI colors on 3Kingdoms are setup to handle two methods of labeling:
+  1. Normal : @color:text@
+  2. Two-part : @color#text1#text2@
+
+The first is used to display <text> in <color> to the end reader.
+The second is used for 'ansi partial', in which case <text1> will be in <color>, <text2> will not. If they have 'ansi full', then both will be in <color>.
+Both of these formats can be combined inside other strings, for instance :code:`"@red:Hello@ there partner!"` will only put 'Hello' in red, everything else will be the players standard color. You can also do it multiple times, :code:`"@red:Hello@ there @green:partner@!"` is completely valid.
+
+By not utilizing raw ANSI escape codes, this structure ensures that each player will see the colors as they have them individually set in their terminal if they have overridden the default colors.
+
+To process these formatted strings however, they must be sent through :code:`to_ansi()` below, which returns a string* array that can be parsed by most of the functions below. Whenever you see 'complex_ansi', that means the output from :code:`to_ansi()` should be put into that argument.
+
+  * :code:`ansi_say(string color, string str1, string str2, object|object* exceptions)` - Sends a colored string in two-part ANSI to the environment of :code:`this_player()`, except those player(s) specified in exceptions.
+  * :code:`ansi_say(string* complex_ansi, object|object* exceptions)` - Sends a colored string in normal ANSI to the environment of :code:`this_player()`, except those player(s) specified in exceptions.
+  * :code:`ansi_shout(string color, string str1, string str2, object|object* exceptions)` - Sends a colored string in two-part ANSI to all users, except those player(s) specified in exceptions.
+  * :code:`ansi_shout(string* complex_ansi, object|object* exceptions)` - Sends a colored string in normal ANSI to all users, except those player(s) specified in exceptions.
+  * :code:`ansi_string(string color, string str[, object who])` - Returns an ansified string (containing actual ANSI escape characters) ansifie'd to the preferences of who, or :code:`this_player()` if who is not specified.
+  * :code:`ansi_string(string* complex_ansi,[, object who])` - Returns an ansified string (containing actual ANSI escape characters) ansifie'd to the preferences of who, or :code:`this_player()` if who is not specified.
+  * :code:`ansi_tell_object(string color, object ob, string str1, string str2)` - Tells object 'ob' a message in ansi two-part coloring.
+  * :code:`ansi_tell_object(string* complex_ansi, object ob)` - Tells object 'ob' a message in ANSI two-part coloring.
+  * :code:`ansi_tell_room(string color, object room, string str1, string str2, object|object* exceptions)` - Sends an ANSI two-part string to all players in room except those in exceptions.
+  * :code:`ansi_tell_room(string* complex_ansi, object room, object|object* exceptions)` - Sends a normal ANSI string to all players in room except those in exceptions.
+  * :code:`ansi_write(string color, string str1, string str2)` - Displays a two-part ANSI string to :code:`this_player()`
+  * :code:`ansi_write(string* complex_ansi)` - Displays a normal ANSI string to :code:`this_player()`
+  * :code:`ansistrlen(string str)` - Returns the length of an ANSI formatted string (normal or two-part) ignoring the ANSI formatting. i.e. "@hired:Hi@" would be 2 characters long, not 8.
+  * :code:`no_ansi(string str)` - Removes normal and two-part ANSI formatting tags from a string. i.e. "@hired:Hi@" -> "Hi"
+  * :code:`remove_ansi(string str)` - Removes actual ANSI escape codes from a rendered text.
+  * :code:`to_ansi(string str)` - Takes a string with normal or two-part ANSI codes and returns a string* (referred to as complex_ansi in this section) that can be parsed by the ansi functions.
+  * :code:`unansi(string *complex_ansi)` - The reverse of :code:`to_ansi()`, takes a complex_ansi string* and returns the string that was originally sent to :code:`to_ansi()`.
+
+Array Functions
+---------------
+
+These functions are used on arrays, and the first 3 of them also work on mappings.
+
+  * :code:`filter(mapping|array arg, string|closure func)` - For each element in arg, call func(elem), if it returns true the element is kept, if not it is removed, and the filtered mapping/array is returned. For mappings, it also passes values to the function and the format depends on if the width of the mapping is 1 or > 1.
+  * :code:`map(mapping|array arg, string|closure func)` - For each element in arg, call func(elem), the result then replaces the original element. Like :code:`filter()`, for mappings the values are passed as well based on width.
+  * :code:`member(mapping|array arg, mixed item)` - For mappings, returns 1 if item is a key in arg, 0 if not. For arrays, returns the first index of item in arg, or -1 if it is not in arg.
+  * :code:`member(string arg, int item)` - Returns the first incident of character code item in string arg, or -1 if none found.
+  * :code:`reverse_array(array arg)` - Takes an array and returns it in reverse order.
+  * :code:`shuffle_array(array arg)` - Takes an array, applies a Fisher-Yates shuffle, and returns the random array. O(n) runtime so it gets expensive on really large arrays.
+  * :code:`sort_array(array arg, string|closure func)` - Passes two elements, a & b, to the function func(a, b). If func(a,b) returns a value > 0, the items are in the wrong order and swapped. If it returns a value < 1, the items are correct and not swapped.
+  * :code:`sum_array(int* arg)` - Returns the sum of an integer array.
+  * :code:`unique_array(object *arg, string func, mixed skip)` - This returns an array of arrays by calling func(elem) for each elem of arg. If func(elem) returns a value equal to skip, it is ignored, otherwise it is grouped with every other elem that returned the same value from func(elem). All groups are then added as individual arrays to a parent array and returned.
+  * :code:`unique_member(array arg, mixed|array elem)` - Returns 1 if elem only exists once in arg, 0 if it is duplicated in arg, and if it isn't in arg at all returns -1.
+
+Display Functions
+-----------------
+
+These are functions that either format text for display, or actually display to the player (without ANSI coloring).
+
+  * :code:`comma_and(string* arg)` - Depending on array size, returns:  1 element (e): "e", 2 element: "e1 and e2", 3+ element: "e1, e2, ..., eN and eN+1". Can accept any element data type that can be converted with :code:`to_string()`.
+  * :code:`comma_switch(int arg)` - Converts an integer to a comma-separated integer. I.e. 2902382 -> "2,902,382".
+  * :code:`create_verbal(string who, string msg, string out, string action, string label)` - Creates a properly formatted communication message (wrapped similar to 'say' output) from who saying msg. It defaults to 'says' or the value of action, label is the color, and out can override if you want the string returned or displayed via say/write/tell_room.
+  * :code:`number_switch(int num)` - Converts an integer into the word format for the number. I.e. 203 -> "two hundred three".
+  * :code:`roman_switch(int num)` - Converts an integer into roman numerals. I.e. 47 -> "XLVII".
+  * :code:`say(string str[, object|object* exclude])` - Prints str to everyone in the environment of :code:`this_player()` or in this room, if provided, it will not show it to anyone in exclude. If exclude is not provided, it is :code:`this_player()`, if it is a single object, that object and :code:`this_player()` are excluded, if it is an array, ONLY those in exclude are excluded.
+  * :code:`shout(string str[, object|object* exclude])` - Prints str to everyone in the environment of :code:`this_player()` or in this room, if provided, it will not show it to anyone in exclude. If exclude is not provided, it is :code:`this_player()`, if exclude is provided whether single object or array, :code:`this_player()` is not excluded unless it is in exclude.
+  * :code:`tell_object(object ob, string str)` - Displays str to ob.
+  * :code:`tell_room(string|object ob, string str[, object|object* exclude])` - Works similar to say except sends it to the room/filepath ob rather than this room or environment of :code:`this_player()`.
+  * :code:`word_wrap(string str, int cols, object who, status ovrd)` - Takes a string str, and then tries to wrap it to the COLS of who, unless who is not defined then it tries to find who, if it cannot find who at all, it defaults to the integer cols. If you pass 1 for ovrd, it wraps it to cols regardless of who and any COLS setting who has. This works with ansi strings (before to_ansi()) and wraps based on the tags being removed so it properly renders when colored.
+  * :code:`write(string str)` - Writes the message str to :code:`this_player()`. No one else sees it.
+
+Filename Functions
+------------------
+
+These are functions that relate to the filenames of given objects.
+
+  * :code:`base_name(object ob)` - Returns the filename of the blueprint of ob. If ob is not a cloned object (i.e. a room, daemon, etc), it returns the file path as expected, if ob is cloned, it removes the '#<clone_number>' from the end of the filepath.
+  * :code:`file_name([object ob])` - Returns the filename of the current object (:code:`this_object()`) or, if passed, ob. If the object is cloned, it includes the '#<clone_number>' at the end of the filepath.
+  * :code:`object_name([object ob])` - Exactly the same as :code:`file_name()` but in the newer driver, :code:`file_name()` is deprecated and we are urged to use this instead.
+
+Inventory Functions
+-------------------
+
+These functions allow you to look into a targets inventory, or see what the object containing the target is.
+
+  * :code:`all_inventory([object target])` - If not passed a target, it uses :code:`this_object()`. otherwise it uses the target. This function returns an array of all the objects contained within the target. Used when you need to manually process an inventory. This is just a shallow inventory, so if target has a bag with stuff in it, this will only report the bag, not the stuff.
+  * :code:`deep_inventory([object target])` - Similar to :code:`all_inventory()` but recursively gets all items inside containers as well.
+  * :code:`environment([object ob])` - If ob is not passed, it returns the environment of :code:`this_object()`. otherwise the environment of ob. The environment is the object that ob is currently inside. For instance, if the player has a sword, the environment of the sword is the player. The environment of the player is the room. The environment of the room is generally nothing (0).
+
+Math Functions
+--------------
+
+These are all normal mathmatic functions.
+
+  * :code:`ceil(int|float arg)` - Rounds arg up to the next whole number and returns it as a float. For integers this is the same as :code:`to_float(arg)`.
+  * :code:`cos(int|float arg)` - Returns the float cosine of arg.
+  * :code:`floor(int|float arg)` - Same as ceil() but rounds down.
+  * :code:`max(string|string*|int|int*|float|float* arg[, arg2, .., argN])` - If passed an array only one argument is needed, otherwise at least 2 values of similar type (int & int, int & float, float & float, string & string, etc) are required. The highest value is returned.
+  * :code:`max_member(int* arr)` - Returns the index of the highest valued item. You must then use the index to get the actual value of the item.
+  * :code:`min(string|string*|int|int*|float|float* arg[, arg2, .., argN])` - Same as :code:`max()` but finds the minimum value.
+  * :code:`pow(int|float base, int|float exp)` - Returns the float value of base raised to the exp power.
+  * :code:`random(int n)` - Returns a value between 0 and n-1. I.e. :code:`random(4)` can return 0,1,2,3.
+  * :code:`sin(int|float arg)` - Returns the float sin of arg.
+  * :code:`sqrt(int|float arg)` - Returns the float square root of arg.
+  * :code:`tan(int|float arg)` - Returns the float tangent of arg.
+
+Object Functions
+----------------
+
+These are all functions directly related to objects (the type).
+
+  * :code:`creator([object ob])` - Returns the creator (name of wizard or domain) of the object. If no ob, then it uses :code:`this_object()`.
+  * :code:`clone_object(string path |object template)` - If path is passed, it loads the file and returns the cloned object of path. If template is passed, it clones template and returns that object. Note that if path fails to load, it will return 0 so make sure you verify before doing actions on the return.
+  * :code:`destruct(object ob)` - Completely destroys an object and removes it. This can be dangerous if used incorrectly so make sure ob is what you want to destruct before you do it.
+  * :code:`find_object(string str)` - Finds and returns the object with the object_name str. If no object is loaded with that object_name, it returns 0. The str can be 'file#<clone_id>' to find a specific clone.
+  * :code:`load_object(string file)` - Attempts to load an object from file and returns the loaded object (or 0 if it failed to load). Note that the object returns is the blueprint, not a clone of the blueprint.
+  * :code:`move_object(string|object item, string|object dest)` - Moves item into dest. If item or dest is a string, the driver uses :code:`find_object()` to find something with item or dest as the object_name.
+  * :code:`present(string|object what, object ob)` - If what is an object, it returns what if what is located inside ob, otherwise it returns 0. If what is a string, it returns the object that identifies to what inside ob, or 0 if nothing inside ob identifies to what. There are other formats of this which allow finding the 'n-th' copy, or allowing abbreviations.
+  * :code:`previous_object(int n)` - Returns the object that called the current function. If n is provided, it goes back n levels. For instance, if fila A called file B called file C, :code:`previous_object()` is B, :code:`previous_object(1)` is A.
+  * :code:`set_light(int n)` - *Adds* n light to the object (including rooms). If negative, removes it. Note that it does not set the light level *to* n. The reason is there may already be other items adding/removing light, and the result is cumulative.
+  * :code:`this_object()` - One of the most important efuns there is. This represents the current object the code is being called from. In any code you write, :code:`this_object()`.will always represent the loaded form of that code. If your code is something that can be cloned, :code:`this_object()`.will reflect *that* specific clone.
+
+Player Functions
+----------------
+
+These are functions that return players or the existence there-of.
+
+  * :code:`all_users()` - Returns an object* array of all users, both interactive and linkdead.
+  * :code:`find_player(string str)` - Finds a player, even if invisible or linkdead, with the name str. Does not find anything other than players (meaning not monsters, wizards however *are* considered players).
+  * :code:`this_player()` - One of the most important efuns there is. This represents the player who issued the command. This means if have an action from :code:`add_action()` (defined below), :code:`this_player()` will be the person that actually typed the command. However, its important to know that there are times where :code:`this_player()` might be a monster, or might be empty (meaning a value of 0).
+  * :code:`user_exists(string str)` - Checks for a save file for a player named str and returns true (1) if one is found. They do not need to be logged on, so long as their save file exists this will return true.
+  * :code:`users()` - Returns an object* array of all interactive (non-LD) users.
+
+Regexp Functions
+----------------
+
+These functions utilize regular expressions. In the newer driver their use is dependent on the underlying system PCRE installed.
+
+  * :code:`regexp(string* arr, string pattern)` - Returns a string* array of all items in arr that match the regexp patter.
+  * :code:`regexplode(string arg, string pattern)` - Similar to :code:`explode()` but takes a regular expression as a delimiter. Returns a string* array.
+  * :code:`regreplace(string arg, string pattern, closure|string repl, int flags)` - Parses through arg looking for pattern, if it finds it, it replaces it with repl (or the result of repl if a closure). The flag is a bitmask, bit 0 means repeat as often as it matches, bit 1 means patterns are 'ex' compatible. Returns the modified string (or original if no modifications made).
+
+String Functions
+----------------
+
+These functions manipulate strings.
+
+  * :code:`capitalize(string str[, int flag])` - Converts the first character in str to upper case. If flag is 1, it capitalizes the first letter of each word in str. If flag is 2, it capitalizes every letter in the entire str.
+  * :code:`explode(string str, string delimter)` - Takes str and every time it sees delimter, it breaks it into chunks and adds it to an array. The array is then returned. I.e. "Hello friend" with delimiter ' ' -> ({ "Hello", "friend" })
+  * :code:`implode(string *arr, string delimter)` - Basically undoes explode. Pass an array of strings (anything not a string is ignored), joins each element with the next by placing delimiter between them, and returns the string. I.e. ({ "Hello","friend" }) with delimiter ' ' -> "Hello friend"
+  * :code:`lower_case(string str)` - Converts all characters in str to lower case.
+  * :code:`proper_case(string str)` - Attempts to capitalize str based on the rules that would be used to capitalize the title of a book. "a tale of two cities" -> "A Tale of Two Cities"
+  * :code:`string_in(string str, string substr)` - Returns 1 if substr is found inside str, otherwise 0.
+  * :code:`strlen(string str)` - Returns the length of str. Note that if str contains ANSI tags (@:@ or @#@) it will include those in its count. For proper length of ANSI formatted text, use :code:`ansistrlen()`.
+  * :code:`strrstr(string str, string str_for[, int pos])` - Returns the index of the first occurance of str_for found in str, starting at the end of str, or from position pos if provided, backwards. If str_for is not found in str, -1 is returned. If pos is negative, it is counted from the end of str. I.e. pos == 2 -> Start at character 2 and work backwards. pos == -2 -> Start at 2 from the end and work backwards.
+  * :code:`strstr(string str, string str_for[, int pos])` - Identical to :code:`strrstr()` except it searches forward instead of backward.
+  * :code:`subs(string str, string find, string repl[, status first])` - Returns str with every copy of find replaced with repl. If the argument first is passed as non-zero, only the first occurancce of find is replaced.
+  * :code:`trim(string str[, int where, int|string ch])` - Removes all leading and trailing characters ch from the string str and returns the modified string. If ch is passed it can be a either a single integer ASCII code or a string of character(s), if it is not passed it removes any whitespace. If where is passed, it can be 1 (remove leading only), 2 (remove trailing only), 3 or 0 (remove both leading and trailing).
+  * :code:`upper_case(string str)` - Converts all characters in str to uppercase. I.e. "heya" -> "HEYA"
+
+Time Functions
+--------------
+
+These are functions with deal with time and displaying time.
+
+  * :code:`ctime([int time])` - Returns a string containing time (or server time if time is not passed) in the format '%ddds% %mmms% %dd% %hh%:%min%:%ss% %yyyy%' like 'Fri Jul 17 19:13:33 1992'.
+  * :code:`ctime_format(string format[, int time])` - Exactly like :code:`ctime()` except you can specify the desired output format.
+  * :code:`time()` - Returns the number of seconds elapsed since January 1st, 1970, 0:0:0 GMT (Unix epoch).
+  * :code:`time_span(int start, int end[, status brief])` - Returns the time span in English between start and end, for example '1 minute 20 seconds'. If brief is passed as 1, '1M 20S' would be returned instead.
+  * :code:`time_stamp(int time[, status show_seconds])` - Basically shorthand for :code:`ctime_format("%yyyy%/%mm%/%dd% %hh%:%min%",time)`. If show_seconds is passed as 1, then the seconds are appended to the time.
+
+Utility Functions
+-----------------
+
+These are functions that didn't really fit anywhere else...
+
+  * :code:`copy(mapping|array arg)` - Returns a shallow copy of arg. As mappings/arrays are by reference, this creates a new mapping/array with the same values and returns it. However, if the mapping/array contains other mappings/arrays, those remain by reference!
+  * :code:`deep_copy(mapping|array arg)` - Exactly the same as :code:`copy()`` but nested mappings/arrays are actually copied and not passed by reference. This function is more computationally expensive than :code:`copy()`.
+  * :code:`replace_program([string program])` - If you have a file A that inherits file B, and file A does not define any functions or variables not defined inside B, you can call :code:`replace_program()` at the end of :code:`create()` which will then, after running all your code, replace A with B from that point on, which provides a significant memory savings.
+  * :code:`restore_object(string file)` - Restores the values of an objects variables from a file created by :code:`save_object()`.
+  * :code:`save_object(string file)` - Saves the current object's variables, excluding those modified by static or nosave, into the file specified, with extension '.o' automatically appended. It returns 0 on success, and non-zero on a non-fatal error. Note that if your file inherits other files, unless you specify a modifier in the inherit keyword, your save file will include saving all variables declared in any inheritable up the chain from your file (normally this is desired).
+
+Variable Functions
+------------------
+
+These functions tell you something about a variable, or convert it (much like typecasting).
+
+  * :code:`is_clone(string|object ob)` - Returns 1 if the object or filepath given in ob is a clone. It does this by checking if the filename contains '#'.
+  * :code:`is_digit(int|string str)` - Returns true if str is a digit. If an integer, it looks to see if it is the ASCII value of a digit (48 to 57 representing 0-9). If a string, it must only be a single character, in which case it checks if that character is 0-9. If a string longer than 1 character is provided, even if its visually a valid number, this will return 0 as it checks for a single digit.
+  * :code:`is_player(object ob)` - Returns true if ob is a player. Useful for discerning if a living object is a player or monster.
+  * :code:`is_wizard(object ob[, status app])` - Returns true of ob is a wizard (level 510+). If app is passed as 1, it will also return true if ob is level 500.
+  * :code:`living(object ob)` - Returns true if ob is living (i.e. has :code:`enabled_commands()` called from inside of ob). This is generally true for players *and* monsters.
+  * :code:`sizeof(array|string|mapping arg)` - For arrays, returns the number of elements, for strings, returns the number of characters (similar to :code:`strlen()`), for mappings, returns the number of keys.
+  * :code:`to_float(int|float|string arg)` - Ints are extended to floats, strings are converted to the first value that doesn't belong to a float, and floats are just returned as is.
+  * :code:`to_int(int|float|string arg)` - Ints are returned as is, floats are truncated, strings with leading digits are converted up to the first non-digit.
+  * :code:`to_object(string|object|closure arg)` - For strings, a matching object_name is attempted to be found and returned if it is or 0 if not. For bound closures, it returns the object holding the closure. Objects and 0 are both returned as is.
+  * :code:`to_string(int|float|object|array|symbol|string|closure arg)` - Arg is converted into a string and returned. CLosures are converted to an appropiate name (mostly for debugging). Arrays are considered exploded strings, and are thus imploded to the first 0 or non-number entry. to_string( ({ 49, 50 }) ) -> "12".
+
+Sprintf And Printf Functions
+----------------------------
+
+Sprintf (and printf) are special functions which allow an *insane* amount of custom formatting of a given string, allowing you to directly parse in variable values in differnet formats, or generate tables, repetative text, or other things. However, because they are so powerful, their instructions contain a LOT of format codes and similar, and its best to simply review the man pages for each once you are a wizard.
+
+  * :code:`sprintf(string fmt, mixed var1[...])` - Takes a format string, using the valid arguments listed in the man page, and replaces each argument format string [AFS] found inside fmt, with the corresponding variable passed to the function, in order. I.e. the first AFS is for the first variable, the 2nd for the 2nd, so on. It returns the formatted string.
+  * :code:`printf(string fmt, mixed var1[...])` - Exactly the same as :code:`sprintf()` but it then displays it to the user. A similar albeit more expensive way to do the same would be :code:`write(sprintf())`;
+
+A brief example of its power:
+
+.. code-block::
+
+  sprintf("%#-40.3s",
+    "one\ntwo\nthree\nfour\nfive\nsix\nseven\neight\nnine\nten\n")
+
+    Result: "one          five         nine\n"
+            "two          six          ten\n"
+            "three        seven        \n"
+            "four         eight        "
+
+  sprintf("%|7s","foo")
+    Result: "  foo  "
+
+  sprintf("%|9'-+'s","foo")
+    Result: "-+-foo-+-"
+
+  sprintf("%12.4e %s",123.5, "Atoms")
+    Result: "  1.2350e+02 Atoms"
+
+Sscanf
+------
+
+This function is a special utility for dealing with strings. Its used to parse a given string to see if it matches a provided format string, but the format string can contain capture groups similar to AFS in :code:`sprintf()`, and if it finds them, it assigns the matched values to the provided variables var1 .. varN, one variable per capture group. It then returns the number of matches found.
+
+  * :code:`sscanf(string str, string fmt, mixed var1[,...])` - Scan str to match fmt which contains capture groups. Any matched capture group is saved to the passed variables in order of occurance. The number of matches is returned.
+
+As an example:
+
+.. code-block::
+
+  string what, who;
+  int res;
+
+  res = sscanf("throw frisbee to rover", "throw %s to %s", what, who);
+
+  Result:
+    res == 2
+    what == "frisbee"
+    who == "rover"

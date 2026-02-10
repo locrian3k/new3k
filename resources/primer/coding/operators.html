@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Operators &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mappings" href="mappings.html" />
+    <link rel="prev" title="Variables" href="variables.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="mappings.html" title="Mappings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="variables.html" title="Variables"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Operators</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="operators">
+<h1>Operators<a class="headerlink" href="#operators" title="Link to this heading">¶</a></h1>
+<section id="fundementals">
+<h2>Fundementals<a class="headerlink" href="#fundementals" title="Link to this heading">¶</a></h2>
+<p>Operators are symbols used in coding that indicate an operation to be performed on one or more &lt;var&gt;iables.</p>
+<p>In LPC, all operators return a value, either the value of a &lt;var&gt;iable used in the operator call, or a boolean (status) value.</p>
+<p>All operators take one argument (called unary), or two arguments (called binary), except the ternary, that takes three (which coincidentally would be ternary, where it gets its name from as the only ternary operator).</p>
+<p>For that reason you can think of operators as a shorthand, for instance <code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code> is essentially just <code class="code docutils literal notranslate"><span class="pre">add(a,b)</span></code>.</p>
+<p>In some languages (not LPC) you can even overload operators by redefining them using functions.</p>
+<p>As operators are normally just 1-3 characters, they can save on the amount of typing needed tremendously. <code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">c;</span></code> is slightly shorter than <code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">add(b,c);</span></code> and <code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">+=</span> <span class="pre">b;</span></code> is even shorter; but <code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;&lt;=</span> <span class="pre">b;</span></code> is a lot shorter than <code class="code docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">bitwise_left_shift(a,b);</span></code>.</p>
+</section>
+<section id="list-of-operators">
+<h2>List of Operators<a class="headerlink" href="#list-of-operators" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The examples below are low level and not often good practice.
+For instance, in the + example, you wouldn’t normally add two hard coded strings as its a waste of cycles.</p>
+</div>
+<p>When &lt;type&gt; is listed, value must be a valid type from <a class="reference internal" href="types.html"><span class="doc">Types</span></a>.
+When &lt;var&gt; is listed, a &lt;var&gt;iable is required because the value is stored by the operator. When &lt;expr&gt; is listed, &lt;var&gt; can also be used in most cases, as its the same as if you assigned &lt;expr&gt; to &lt;var&gt;.
+What this means is things like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;John &quot;</span> <span class="o">+</span> <span class="s2">&quot;Smith&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>is equal to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="s2">&quot;John &quot;</span><span class="p">;</span>
+<span class="n">last</span> <span class="o">=</span> <span class="s2">&quot;Smith&quot;</span><span class="p">;</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">last</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In order of precedence (low to high):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;expr1&gt;, &lt;expr2&gt;    : Evaluate &lt;expr1&gt; then &lt;expr2&gt;, then return &lt;expr2&gt;.
+&lt;var&gt; = &lt;expr1&gt;     : Evaluate &lt;expr1&gt;, then assign its value to &lt;var&gt;.
+&lt;var&gt; += &lt;expr1&gt;    : Evaluate &lt;expr1&gt;, then add it to &lt;var&gt;, then assign the
+                      result to &lt;var&gt;. This is similar to
+                      &#39;&lt;var&gt; = &lt;var&gt; + expr;&#39;
+&lt;var&gt; -= &lt;expr1&gt;    : Same as += above but subtracted from &lt;var&gt;.
+&lt;var&gt; &amp;= &lt;expr1&gt;    : Same as += above but bitwise-and of &lt;var&gt;.
+&lt;var&gt; |= &lt;expr1&gt;    : Same as += above but bitwise-or of &lt;var&gt;.
+&lt;var&gt; ^= &lt;expr1&gt;    : Same as += above but bitwise-xor of &lt;var&gt;.
+&lt;var&gt; &lt;&lt;= &lt;expr1&gt;   : Same as += above but bitshift-left by &lt;expr1&gt; bits of
+                      &lt;var&gt;. Sign bit is not preserved.
+&lt;var&gt; &gt;&gt;= &lt;expr1&gt;   : Same as += above but bitshift-right by &lt;expr1&gt; bits of
+                      &lt;var&gt;. Sign bit is preserved.
+&lt;var&gt; &gt;&gt;&gt;= &lt;expr1&gt;  : Same as += above but bitshift-right by &lt;expr1&gt; bits of
+                      &lt;var&gt;. Sign bit is not preserved.
+&lt;var&gt; *= &lt;expr1&gt;    : Same as += above but multiplied with &lt;var&gt;.
+&lt;var&gt; %= &lt;expr1&gt;    : Same as += above but modulo of &lt;var&gt;.
+&lt;var&gt; /= &lt;expr1&gt;    : Same as += above but divided by &lt;var&gt;.
+&lt;var&gt; &amp;&amp;= &lt;expr1&gt;   : Same as += above but boolean and with &lt;var&gt;.
+&lt;var&gt; ||= &lt;expr1&gt;   : Same as += above but boolean or with &lt;var&gt;.
+&lt;expr1&gt; ? &lt;expr2&gt; : &lt;expr3&gt; : Ternary-if. If &lt;expr1&gt; evaluates to true,
+                              &lt;expr2&gt; is evaluated and returned, otherwise
+                              &lt;expr3&gt; is evaluated and returned.
+&lt;expr1&gt; || &lt;expr2&gt;  : Returns the logical-or of &lt;expr1&gt; and &lt;expr2&gt;.
+&lt;expr1&gt; &amp;&amp; &lt;expr2&gt;  : Returns the logical-and of &lt;expr1&gt; and &lt;expr2&gt;.
+&lt;expr1&gt; | &lt;expr2&gt;   : Returns the bitwise-or of &lt;expr1&gt; and &lt;expr2&gt;.
+&lt;expr1&gt; ^ &lt;expr2&gt;   : Returns the bitwise-xor of &lt;expr1&gt; and &lt;expr2&gt;.
+&lt;expr1&gt; &amp; &lt;expr2&gt;   : Returns the bitwise-and of &lt;expr1&gt; and &lt;expr2&gt;.
+&lt;expr1&gt; == &lt;expr2&gt;  : Returns true if two values are equal. Valid for
+                      strings, numbers, objects, and closures.
+&lt;expr1&gt; != &lt;expr2&gt;  : Returns true if two values are not equal. Valid for
+                      strings, numbers, objects, and closures.
+&lt;expr1&gt; &gt; &lt;expr2&gt;   : Returns true if &lt;expr1&gt; is greater than &lt;expr2&gt;. Valid
+                      for strings and numbers.
+&lt;expr1&gt; &gt;= &lt;expr2&gt;  : Returns true if &lt;expr1&gt; is greater than or equal to
+                      &lt;expr2&gt;. Valid for strings and numbers.
+&lt;expr1&gt; &lt; &lt;expr2&gt;   : Returns true if &lt;expr1&gt; is less than &lt;expr2&gt;. Valid for
+                      strings and numbers.
+&lt;expr1&gt; &lt;= &lt;expr2&gt;  : Returns true if &lt;expr1&gt; is less than or equal to
+                      &lt;expr2&gt;. Valid for strings and numbers.
+&lt;expr1&gt; &lt;&lt; &lt;expr2&gt;  : Shift &lt;expr1&gt; ← by &lt;expr2&gt; bits. Sign not preserved.
+&lt;expr1&gt; &gt;&gt; &lt;expr2&gt;  : Shift &lt;expr1&gt; → by &lt;expr2&gt; bits. Sign of &lt;expr1&gt;
+                      preserved.
+&lt;expr1&gt; &gt;&gt;&gt; &lt;expr2&gt; : Shift &lt;expr1&gt; → by &lt;expr2&gt; bits. Sign not preserved
+                      but instead shifts in 0 bits.
+&lt;expr1&gt; + &lt;expr2&gt;   : Addition. For numbers, its arithmetic. For strings, it
+                      is concatenation. If an array, &lt;expr2&gt; is appended to
+                      &lt;expr1&gt;. If mapping of equal width, they are merged,
+                      and in the event of duplicate keys, &lt;expr2&gt;&#39;s value is
+                      preserved. If the mappings are unequal width, the
+                      result is &lt;expr1&gt; if non-empty, otherwise &lt;expr2&gt;.
+&lt;expr1&gt; - &lt;expr2&gt;   : Subtraction. Valid for numbers, strings, arrays,
+                      mappings. For arrays and strings, all occurences of the
+                      elements respective characters in &lt;expr2&gt; are removed
+                      from &lt;expr1&gt; and the result returned. For mappings, all
+                      occurences of elements in &lt;expr1&gt; which have a matching
+                      key in &lt;expr2&gt; are removed and the result is returned.
+&lt;expr1&gt; * &lt;expr2&gt;   : Multiplication. At least one value must be a number. If
+                      strings or arrays are multiplied by a number n (0+),
+                      the result will be the string or array repeated n
+                      times.
+&lt;expr1&gt; % &lt;expr2&gt;   : Modulo operator of numeric arguments.
+&lt;expr1&gt; / &lt;expr2&gt;   : Arithmatic division.
+++&lt;var&gt;             : Increment &lt;var&gt; and then return the value.
+--&lt;var&gt;             : Decrement &lt;var&gt; and then return the value.
+-&lt;var&gt;              : Return the negative value of &lt;var&gt;.
+!&lt;var&gt;              : Return the logical &#39;not&#39; of &lt;var&gt;.
+~&lt;var&gt;              : Return the boolean &#39;not&#39; of &lt;var&gt;.
+(&lt;type&gt;)&lt;var&gt;       : Return the value of &lt;var&gt; converted to &lt;type&gt; if possible.
+                      There exists functions to perform this and they should be
+                      utilized when possible as they may take into account
+                      conversions that the driver, doing strictly type-to-type
+                      conversion, does not.
+({&lt;type&gt;})&lt;var&gt;     : &lt;var&gt; is *presumed* to have the type &lt;type&gt;. This is
+                      declarative and does not actually change &lt;var&gt; in memory.
+&lt;var&gt;++             : Return the current value of &lt;var&gt; and then increment it.
+&lt;var&gt;--             : Return the current value of &lt;var&gt; and then decrement it.
+&lt;var&gt;[&lt;expr1&gt;]      : Return the value of &lt;var&gt; held in index &lt;expr1&gt;. Valid for
+                      strings, arrays, mappings, and mixed.
+&lt;var&gt;[&lt;expr1&gt;..&lt;expr2&gt;] : Return the value of &lt;var&gt; held in the range of
+                          indices &lt;expr1&gt; to &lt;expr2&gt;.
+&lt;expr1&gt;-&gt;&lt;func&gt;(...) : Symbolic form of call_other(). &lt;expr1&gt; must be
+                       either a string or an object, which then has
+                       function &lt;func&gt; called, and the result is returned.
+&lt;base&gt;::&lt;func&gt;(...) : For code that inherits other code, this format will
+                      call function &lt;func&gt; inside the inherited &lt;base&gt;
+                      instead of the local code. &lt;base&gt; can be a string
+                      pointing to the full pathname or an identifier
+                      containing the pure basename. If &lt;base&gt; is omitted
+                      then the last inherited function named &lt;func&gt; is
+                      called. The result of &lt;func&gt; is returned.
+({})                : A constructor for an array.
+([])                : A constructor for a mapping.
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<section id="assignment-operator">
+<h3>Assignment Operator<a class="headerlink" href="#assignment-operator" title="Link to this heading">¶</a></h3>
+<p>Operator: =</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is only one operator in the assignment category and it does one BIG job. It assigns whatever is on the right side, to the variable on the left side. Easy peasy.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">There</span> <span class="n">are</span> <span class="mi">3</span> <span class="n">apples</span><span class="o">.</span>
+<span class="n">apples</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">apples</span> <span class="o">==</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</section>
+<section id="arithmatic-operators">
+<h3>Arithmatic Operators<a class="headerlink" href="#arithmatic-operators" title="Link to this heading">¶</a></h3>
+<p>Operators: +, -, *, /, %, ++, –</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Arithmatic operators are the most easily understood for most people because they’re the same operators you use in normal mathmatics.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//We have 5 fruits and add 3 more. How many do we have?
+fruits = 5 + 3;
+Result: fruits == 8
+
+//Operators work with functions instead of values or variables as well.
+//Find out how many vegetables we have by adding our carrots and peas.
+//With get_carrots() returning 2 and get_peas() returning 1:
+vegetables = get_carrots() + get_peas();
+Result: vegetables == 3
+
+//We lost 3 fruits. How many do we have?
+fruits = fruits - 3;
+Result: fruits == 5
+
+//How many more fruits than vegetables do we have?
+difference = fruits - vegetables;
+Result: difference == 2
+
+//We counted wrong, we actually have 7 times as many fruits as veggies!
+fruits = vegetables * 7;
+Result: fruits == 21
+
+//Lets give away half. How many should we give away?
+//Notice: Dividing can result in truncation (essentially rounding down)!
+fruits = fruits / 2;
+Result: fruits == 10
+
+//We have to split that many over 6 people evenly. How many are leftover?
+leftover = fruits % 6;
+Result: leftover = 4
+
+//Prefix and postfix incrementors work similarly, but what they return is
+//different. Prefix, meaning before the variable, does the work and
+//returns the result, postfix returns the current value, and then does
+//the work (saving it to the variable).
+//Both have their uses depending on where and how you are implementing.
+
+counter = 5;
+write(counter++); //Displays 5.
+Result: counter == 6
+
+write(counter--); //Displays 6
+Result: counter == 5
+
+write(++counter); //Displays 6
+Result: counter == 6
+
+write(--counter); //Displays 5
+Result: counter == 5
+</pre></div>
+</div>
+</section>
+<section id="logical-operators">
+<h3>Logical Operators<a class="headerlink" href="#logical-operators" title="Link to this heading">¶</a></h3>
+<p>Operators: !, &amp;&amp;, ||</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While these operators all work on variables and expressions, for the examples we are going to utilize simple true or false values for simplicity. These are most often used inside of control structures as the conditionals but can creatively be used as expressions as well.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!true;
+Result: false
+
+!false;
+Result: true
+
+true &amp;&amp; true;
+Result: true
+
+true &amp;&amp; false;
+//Or...
+false &amp;&amp; true;
+Result: false
+
+false &amp;&amp; false;
+Result: false
+
+true || true;
+Result: true
+
+true || false;
+//Or...
+false || true;
+Result: true
+
+false || false;
+Result: false
+</pre></div>
+</div>
+</section>
+<section id="relational-operators">
+<h3>Relational Operators<a class="headerlink" href="#relational-operators" title="Link to this heading">¶</a></h3>
+<p>Operators:  ==, !=, &gt;, &gt;=, &lt;, &lt;=</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Relational operators are also called comparison operators as they compare the values on each side to each other, but unlike logical operators they aren’t simply looking at boolean (status) values of true/false, they’re looking at the actual value of the underlying variable or expression. However, like logical operators, they return values of true (1) or false (0).</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">true</span>
+
+<span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">true</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">true</span>
+
+<span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">&gt;=</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">true</span>
+
+<span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+</section>
+<section id="bitwise-operators">
+<h3>Bitwise Operators<a class="headerlink" href="#bitwise-operators" title="Link to this heading">¶</a></h3>
+<p>Operators: ~, &amp;, |, ^, &lt;&lt;, &gt;&gt;, &gt;&gt;&gt;</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an advanced topic! You won’t use these in your daily life writing LPC code.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These operators are called bitwise because they operate directly on the byte-code of the variable or expression they are passed. The results are therefore dependent on the drivers memory size for a given variable. For instance, using a boolean not (~) on a 32-bit integer will result in a 32-bit return even if the variable passed was only 8 bits. On a 64-bit integer, it will return a 64-bit result.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Perform</span> <span class="n">a</span> <span class="n">boolean</span> <span class="ow">not</span><span class="p">,</span> <span class="n">which</span> <span class="ow">in</span> <span class="n">terms</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="n">means</span> <span class="n">flip</span> <span class="n">every</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">a</span>
+<span class="o">//</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">every</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">a</span> <span class="mf">0.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mb">0b00000000000000000000000000000001</span><span class="p">;</span>
+<span class="o">~</span><span class="n">a</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mb">0b11111111111111111111111111111110</span>
+
+<span class="o">//</span><span class="n">Bitwise</span> <span class="ow">and</span> <span class="n">takes</span> <span class="n">two</span> <span class="n">bytecodes</span> <span class="ow">and</span> <span class="k">for</span> <span class="n">each</span> <span class="n">position</span> <span class="n">returns</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">each</span>
+<span class="o">//</span><span class="n">bit</span> <span class="k">if</span> <span class="n">both</span> <span class="n">bits</span> <span class="n">are</span> <span class="mi">1</span><span class="p">,</span> <span class="n">otherwise</span> <span class="n">it</span> <span class="n">returns</span> <span class="mf">0.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mb">0b10101010101010101010101010101010</span><span class="p">;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mb">0b11111111111111110000000000000000</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mb">0b10101010101010100000000000000000</span>
+
+<span class="o">//</span><span class="n">Bitwise</span> <span class="ow">or</span> <span class="n">takes</span> <span class="n">two</span> <span class="n">bytecodes</span> <span class="ow">and</span> <span class="k">for</span> <span class="n">each</span> <span class="n">position</span> <span class="n">returns</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">either</span>
+<span class="o">//</span><span class="n">bit</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">,</span> <span class="n">otherwise</span> <span class="n">it</span> <span class="n">returns</span> <span class="mf">0.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mb">0b10101010101010101010101010101010</span><span class="p">;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mb">0b11111111111111110000000000000000</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mb">0b11111111111111111010101010101010</span>
+
+<span class="o">//</span><span class="n">Bitwise</span> <span class="n">xor</span> <span class="n">takes</span> <span class="n">two</span> <span class="n">bytecodes</span> <span class="ow">and</span> <span class="k">for</span> <span class="n">each</span> <span class="n">position</span> <span class="n">returns</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">either</span>
+<span class="o">//</span><span class="n">bit</span> <span class="ow">is</span> <span class="mi">1</span> <span class="n">but</span> <span class="ow">not</span> <span class="k">if</span> <span class="n">both</span> <span class="n">bits</span> <span class="n">are</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">or</span> <span class="n">returns</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">both</span> <span class="n">bits</span> <span class="n">are</span> <span class="mf">0.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mb">0b10101010101010101010101010101010</span><span class="p">;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mb">0b11111111111111110000000000000000</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mb">0b01010101010101011010101010101010</span>
+
+<span class="o">//</span><span class="n">Bitwise</span> <span class="n">left</span> <span class="n">shift</span> <span class="n">moves</span> <span class="n">everything</span> <span class="o">&lt;</span><span class="n">x</span><span class="o">&gt;</span> <span class="n">bits</span> <span class="n">left</span> <span class="ow">and</span> <span class="n">pads</span> <span class="n">right</span> <span class="k">with</span> <span class="mf">0.</span>
+<span class="o">//</span><span class="n">Left</span> <span class="n">shifts</span> <span class="n">never</span> <span class="n">preserve</span> <span class="n">sign</span> <span class="n">since</span> <span class="n">the</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">bit</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">left</span> <span class="n">gets</span>
+<span class="o">//</span><span class="n">moved</span> <span class="n">over</span> <span class="n">into</span> <span class="n">the</span> <span class="n">position</span> <span class="n">of</span> <span class="n">the</span> <span class="n">sign</span> <span class="n">bit</span> <span class="p">(</span><span class="mi">1</span><span class="n">st</span> <span class="n">bit</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">left</span><span class="p">)</span><span class="o">.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mb">0b10101010101010101010101010101010</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mb">0b01010101010101010101010101010000</span>
+
+<span class="o">//</span><span class="n">Bitwise</span> <span class="n">signed</span> <span class="n">right</span> <span class="n">shift</span> <span class="n">works</span> <span class="n">the</span> <span class="n">same</span> <span class="n">way</span> <span class="n">but</span> <span class="n">pads</span> <span class="n">to</span> <span class="n">preserve</span> <span class="n">the</span>
+<span class="o">//</span><span class="n">sign</span><span class="p">,</span> <span class="n">positive</span> <span class="ow">or</span> <span class="n">negative</span><span class="p">,</span> <span class="n">of</span> <span class="n">the</span> <span class="n">original</span> <span class="n">value</span><span class="o">.</span>
+
+<span class="o">//</span><span class="n">This</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">positive</span><span class="o">.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mb">0b10101010101010101010101010101010</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">;</span>
+<span class="o">//</span><span class="n">So</span> <span class="n">the</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">positive</span><span class="o">.</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mb">0b11110101010101010101010101010101</span>
+
+<span class="o">//</span><span class="n">This</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">negative</span><span class="o">.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mb">0b00101010101010101010101010101010</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">;</span>
+<span class="o">//</span><span class="n">So</span> <span class="n">the</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">negative</span><span class="o">.</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mb">0b00000101010101010101010101010101</span>
+
+<span class="o">//</span><span class="n">Bitwise</span> <span class="n">unsigned</span> <span class="n">right</span> <span class="n">shift</span> <span class="n">works</span> <span class="n">the</span> <span class="n">same</span> <span class="k">as</span> <span class="n">the</span> <span class="n">signed</span> <span class="n">right</span> <span class="n">shift</span>
+<span class="o">//</span><span class="k">except</span> <span class="n">it</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">preserve</span> <span class="n">the</span> <span class="n">sign</span> <span class="n">of</span> <span class="n">the</span> <span class="n">original</span> <span class="n">value</span> <span class="n">when</span> <span class="n">the</span>
+<span class="o">//</span><span class="n">value</span> <span class="ow">is</span> <span class="n">positive</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">negative</span> <span class="n">it</span> <span class="n">will</span> <span class="n">typically</span> <span class="n">stay</span>
+<span class="o">//</span><span class="n">negative</span> <span class="n">however</span> <span class="n">by</span> <span class="n">virtue</span> <span class="n">of</span> <span class="n">the</span> <span class="mi">0</span> <span class="n">padding</span><span class="o">.</span>
+
+<span class="o">//</span><span class="n">This</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">positive</span><span class="o">.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mb">0b10101010101010101010101010101010</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">;</span>
+<span class="o">//</span><span class="n">This</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">negative</span><span class="o">.</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mb">0b00010101010101010101010101010101</span>
+
+<span class="o">//</span><span class="n">This</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">negative</span><span class="o">.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mb">0b00101010101010101010101010101010</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">;</span>
+<span class="o">//</span><span class="n">This</span> <span class="n">result</span> <span class="n">happens</span> <span class="n">to</span> <span class="n">be</span> <span class="n">negative</span><span class="o">.</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mb">0b00000101010101010101010101010101</span>
+</pre></div>
+</div>
+</section>
+<section id="combination-operators">
+<h3>Combination Operators<a class="headerlink" href="#combination-operators" title="Link to this heading">¶</a></h3>
+<p>Operators: +=, -=, *=, /=, %=, &amp;&amp;=, ||=, &lt;&lt;=, &gt;&gt;=, &gt;&gt;&gt;=</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These are called combination because they do two things at once. They perform an operator, and then they also perform an assignment.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//We want to add 6 more to the leftover from the previous example.
+leftover += 6;
+Result: leftover == 10
+
+//Oops, 2 too many. Subtract 2.
+leftover -= 2;
+Result: leftover == 8
+
+//We tripled our fruit!
+fruits *= 3;
+Result: fruits == 18
+
+//But half were thrown away :(
+fruits /= 2;
+Result: fruits == 9
+
+//Lets give away our leftovers to 3 more people and see how many
+//are still left over afterwards.
+leftover %= 3;
+Result: leftover == 2
+
+//Logic operations perform similar to their non-combination counterparts.
+a = 1; b = 0;
+a &amp;&amp;= b;
+Result: a == 0
+
+a = 1; b = 1;
+a &amp;&amp;= b;
+Result: a == 1
+
+a = 1; b = 0;
+a ||= b;
+Result: a == 1
+
+//Bitwise operators also function similar to their non-combination cohorts.
+a = 0b00000001; b = 1;
+a &lt;&lt;= b;
+Result: a == 0b00000010
+
+a &gt;&gt;= b;
+Result: a == 0b00000001
+
+//On the 32-bit driver, this appears to not function correctly as both
+//it and the &gt;&gt;&gt; operator appear to work identically to &gt;&gt;.
+a &gt;&gt;&gt;= b;
+Result: a == 0b00000000
+</pre></div>
+</div>
+</section>
+<section id="index-operators">
+<h3>Index Operators<a class="headerlink" href="#index-operators" title="Link to this heading">¶</a></h3>
+<p>Operators: [&lt;index&gt;], [&lt;index1&gt;..&lt;index2&gt;], [&lt;index1&gt;..],[..&lt;index2&gt;]</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Index operators return elements from arrays or array-like variables, including strings and mappings.</p>
+</div>
+<p>For strings and arrays, the indexes are numeric based, and start at 0. See <a class="reference internal" href="types.html#string"><span class="std std-ref">Strings</span></a> and <a class="reference internal" href="types.html#array"><span class="std std-ref">Arrays</span></a> for more information.
+For mappings, indexes are actually keys. You can see more about how to
+reference them with the index operators in <a class="reference internal" href="mappings.html#mappings"><span class="std std-ref">Mappings</span></a> as their operation is different enough to not be shown here.</p>
+<p>When using numeric index operators there’s a few special cases.
+When using ‘..’ inside the operator, if &lt;index1&gt; is omitted, it starts at the beginning of the string/array, if &lt;index2&gt; is omitted it ends at the end of the string/array.
+You can also utilize a ‘&lt;’ symbol with an index to indicate count from the end rather than the beginning of the string/array. The ‘&lt;’ format can be used for either &lt;index1&gt; or &lt;index2&gt; in all formats of the operator.</p>
+<p>When using [&lt;index&gt;], the value of &lt;index&gt; must be inside the bounds of the string/array or an error will be thrown.
+When using any of the forms with the ‘..’, the values passed will automatically be limited to the bounds of the string/array, as long as at least one of them starts inside the bounds.
+If &lt;index1&gt; is greater than &lt;index2&gt; or if both &lt;index1&gt; and &lt;index2&gt; are outside the bounds, an empty string/array (”” or ({}) respectively) will be returned.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="p">;</span>
+<span class="n">s</span><span class="p">[</span><span class="mf">0..2</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;hel&quot;</span>
+
+<span class="n">s</span><span class="p">[</span><span class="mf">1..2</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;el&quot;</span>
+
+<span class="n">s</span><span class="p">[</span><span class="mf">2.</span><span class="o">.</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;llo&quot;</span>
+
+<span class="n">s</span><span class="p">[</span><span class="o">.</span><span class="mf">.1</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;he&quot;</span>
+
+<span class="o">//</span><span class="n">If</span> <span class="n">you</span> <span class="n">use</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">index</span><span class="o">&gt;</span><span class="p">]</span> <span class="n">on</span> <span class="n">a</span> <span class="n">string</span><span class="p">,</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">a</span> <span class="n">substring</span> <span class="n">it</span> <span class="n">will</span> <span class="k">return</span>
+<span class="o">//</span><span class="n">the</span> <span class="n">ASCII</span> <span class="n">code</span> <span class="n">of</span> <span class="n">the</span> <span class="n">individual</span> <span class="n">character</span><span class="o">.</span>
+<span class="n">s</span><span class="p">[</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">108</span>
+
+<span class="o">//</span><span class="n">To</span> <span class="n">get</span> <span class="n">the</span> <span class="n">proper</span> <span class="n">string</span> <span class="k">return</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">do</span> <span class="n">a</span> <span class="nb">range</span> <span class="n">like</span> <span class="n">so</span><span class="p">:</span>
+<span class="n">s</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">3.</span><span class="o">.</span> <span class="o">&lt;</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;l&quot;</span>
+
+<span class="n">s</span><span class="p">[</span><span class="mf">0.</span><span class="o">.&lt;</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;hel&quot;</span>
+
+<span class="o">//</span><span class="n">Even</span> <span class="k">if</span> <span class="n">one</span> <span class="ow">is</span> <span class="n">out</span> <span class="n">of</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">this</span> <span class="n">still</span> <span class="n">works</span><span class="o">...</span>
+<span class="n">s</span><span class="p">[</span><span class="mf">0..20</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span>
+
+<span class="o">//</span><span class="n">But</span> <span class="k">if</span> <span class="n">both</span> <span class="n">are</span> <span class="n">out</span> <span class="n">of</span> <span class="n">bounds</span><span class="o">...</span>
+<span class="n">s</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">20.</span><span class="o">.&lt;</span><span class="mi">15</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+
+<span class="o">//</span><span class="n">Arrays</span> <span class="n">work</span> <span class="n">very</span> <span class="n">similarly</span><span class="o">.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span> <span class="p">});</span>
+<span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">9</span>
+
+<span class="n">a</span><span class="p">[</span><span class="mf">0..2</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="p">({</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">27</span> <span class="p">})</span>
+
+<span class="o">//</span><span class="n">Note</span><span class="p">:</span> <span class="n">With</span> <span class="n">arrays</span> <span class="n">this</span> <span class="n">notation</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">element</span> <span class="n">unlike</span> <span class="n">strings</span><span class="o">.</span>
+<span class="n">a</span><span class="p">[</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="p">({</span> <span class="mi">12</span> <span class="p">})</span>
+
+<span class="n">a</span><span class="p">[</span><span class="o">&lt;</span><span class="mf">3.</span><span class="o">.&lt;</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="p">({</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span> <span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="typecast-operators">
+<h3>Typecast Operators<a class="headerlink" href="#typecast-operators" title="Link to this heading">¶</a></h3>
+<p>Operators: (&lt;type&gt;), ({&lt;type&gt;})</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Typecast operators change or mimic the type of a variable or expression. They can be used to force the compiler to try and evaluate a value into a different type to allow it to be passed to a function that doesn’t take the original type, or to force the constrictions of the type upon it. Common uses include casting an integer as a float to do division as integers truncate but floats allow decimal precision.</p>
+<p>The driver does, at times, do this automatically when it makes sense, but often times it needs to be explicitly called out to do so.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Imagine</span> <span class="n">a</span> <span class="n">function</span> <span class="n">that</span> <span class="n">takes</span> <span class="n">an</span> <span class="n">integer</span> <span class="n">value</span> <span class="n">like</span> <span class="mi">102</span><span class="p">,</span> <span class="ow">and</span> <span class="n">returns</span>
+<span class="o">//</span><span class="n">a</span> <span class="n">string</span> <span class="n">like</span> <span class="s2">&quot;one hundred two&quot;</span><span class="o">.</span> <span class="n">If</span> <span class="n">we</span> <span class="k">pass</span> <span class="n">a</span> <span class="n">non</span><span class="o">-</span><span class="n">integer</span> <span class="n">value</span> <span class="n">like</span> <span class="s2">&quot;a&quot;</span>
+<span class="o">//</span><span class="n">to</span> <span class="n">it</span><span class="p">,</span> <span class="n">maybe</span> <span class="n">we</span> <span class="n">want</span> <span class="n">it</span> <span class="n">to</span> <span class="k">return</span> <span class="n">an</span> <span class="n">empty</span> <span class="n">string</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="mf">0.</span> <span class="n">However</span>
+<span class="o">//</span><span class="n">the</span> <span class="n">function</span> <span class="ow">is</span> <span class="n">defined</span> <span class="k">as</span> <span class="n">returning</span> <span class="n">a</span> <span class="n">string</span> <span class="ow">and</span> <span class="n">plain</span> <span class="n">old</span> <span class="mi">0</span> <span class="ow">is</span> <span class="n">an</span>
+<span class="o">//</span><span class="n">integer</span><span class="o">.</span> <span class="n">So</span> <span class="n">instead</span><span class="p">,</span> <span class="n">we</span> <span class="n">typecast</span> <span class="n">the</span> <span class="n">value</span> <span class="n">to</span> <span class="n">force</span> <span class="n">it</span> <span class="n">to</span> <span class="n">be</span> <span class="n">an</span> <span class="n">empty</span>
+<span class="o">//</span><span class="n">string</span> <span class="n">instead</span><span class="o">.</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">0</span> <span class="o">//</span><span class="n">This</span> <span class="n">looks</span> <span class="n">the</span> <span class="n">same</span> <span class="k">as</span> <span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="mi">0</span> <span class="n">but</span> <span class="n">believe</span> <span class="n">me</span><span class="p">,</span> <span class="n">it</span><span class="s1">&#39;s not!</span>
+</pre></div>
+</div>
+</section>
+<section id="call-other-operator">
+<h3>Call Other Operator<a class="headerlink" href="#call-other-operator" title="Link to this heading">¶</a></h3>
+<p>Operator: -&gt;</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This operator is really just a shorthand version of a function that exists in the driver, <code class="code docutils literal notranslate"><span class="pre">call_other()</span></code>, but it exists because it is so commonly used that it saves a ton of time over using the actual function.</p>
+</div>
+<p>To fully appreciate/understand this operator, it’s important to understand both <a class="reference internal" href="functions.html#functions"><span class="std std-ref">Functions</span></a> and <a class="reference internal" href="inheritance.html#inheritance"><span class="std std-ref">Inheritance</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Lets</span> <span class="n">use</span> <span class="n">a</span> <span class="n">function</span> <span class="n">that</span> <span class="n">returns</span> <span class="n">an</span> <span class="nb">object</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span> <span class="n">find_player</span><span class="p">()</span>
+<span class="o">//</span><span class="n">to</span> <span class="n">locate</span> <span class="n">the</span> <span class="n">player</span> <span class="n">Bob</span><span class="p">,</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">we</span> <span class="n">want</span> <span class="n">to</span> <span class="n">query</span> <span class="n">how</span> <span class="n">many</span> <span class="n">spell</span>
+<span class="o">//</span><span class="n">points</span> <span class="n">Bob</span> <span class="n">has</span><span class="o">.</span>
+
+<span class="o">//</span><span class="n">Method</span> <span class="mi">1</span><span class="p">:</span>
+<span class="n">sp</span> <span class="o">=</span> <span class="n">call_other</span><span class="p">(</span><span class="n">find_player</span><span class="p">(</span><span class="s2">&quot;bob&quot;</span><span class="p">),</span><span class="s2">&quot;query_sp&quot;</span><span class="p">);</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">232</span>
+
+<span class="o">//</span><span class="n">Method</span> <span class="mi">2</span><span class="p">:</span>
+<span class="n">find_player</span><span class="p">(</span><span class="s2">&quot;bob&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">query_sp</span><span class="p">();</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">232</span>
+
+<span class="o">//</span><span class="n">As</span> <span class="n">you</span> <span class="n">can</span> <span class="n">see</span> <span class="n">it</span> <span class="n">shortened</span> <span class="n">that</span> <span class="n">line</span> <span class="n">up</span> <span class="n">by</span> <span class="mi">17</span> <span class="n">characters</span> <span class="n">just</span> <span class="ow">in</span> <span class="n">that</span>
+<span class="o">//</span><span class="n">little</span> <span class="n">example</span><span class="o">.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">used</span><span class="p">,</span> <span class="n">quite</span> <span class="n">literally</span><span class="p">,</span> <span class="n">hundreds</span> <span class="n">of</span> <span class="n">thousands</span> <span class="n">of</span>
+<span class="o">//</span><span class="n">times</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">mudlib</span> <span class="ow">and</span> <span class="n">saves</span> <span class="n">a</span> <span class="n">massive</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">typing</span> <span class="n">time</span> <span class="ow">and</span> <span class="n">file</span>
+<span class="o">//</span><span class="n">space</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The usage above in both instances is actually not a safe way to do it because we didn’t verify that <code class="code docutils literal notranslate"><span class="pre">find_player(&quot;bob&quot;)</span></code> actually found Bob. What if he wasn’t online? Then <code class="code docutils literal notranslate"><span class="pre">find_player()</span></code> would have returned the typecast (object)0, meaning an empty object, at which point both of the methods shown would result in an error for bad argument 1 to call_other()! This is why it’s important to ensure you have good values from any function you call before utilizing it in another function.</p>
+</div>
+</section>
+<section id="scope-resolution-operator">
+<h3>Scope Resolution Operator<a class="headerlink" href="#scope-resolution-operator" title="Link to this heading">¶</a></h3>
+<p>Operator: ::</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The scope resolution operator is used very frequently in a few routine spots, and very rarely elsewhere. You may not fully understand it’s importance and operation until you read <a class="reference internal" href="inheritance.html#inheritance"><span class="std std-ref">Inheritance</span></a>.</p>
+</div>
+<p>Often called the overload operator, this operator allows you to call a function in a given inherited file, regardless of if it was the only file inherited, or if its one of multiple in a chain of <a class="reference internal" href="inheritance.html#inheritance"><span class="std std-ref">Inheritance</span></a>.</p>
+<p>If you are in a file that inherits another file, and both files define a function with the same name, the scope resolution operator allows you to call the function in the inherited file rather than the local file.</p>
+<p>Where this is most commonly used is in objects (including armour, weapons, etc), monsters, and rooms as those have global inhertiable files that almost all things inherit and when they are first loaded, they need to perform both the code in the inherited file and in the local file.</p>
+<p>To be frank, outside of the required usage with global inheritables, most wizards don’t have to utilize any special versions of this operator unless they’re fairly code saavy, so if you get to that point feel free to ask on the wizard line for more detailed instruction.</p>
+<p>Much of this is explained further on in the primer but as a brief annotated example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">room</span><span class="p">,</span> <span class="n">so</span> <span class="n">lets</span> <span class="n">inherit</span> <span class="n">the</span> <span class="n">room</span> <span class="n">inheritable</span><span class="o">.</span>
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+
+<span class="o">//</span><span class="n">Now</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">run</span> <span class="n">our</span> <span class="n">create</span><span class="p">()</span> <span class="n">function</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">called</span> <span class="n">on</span> <span class="n">every</span>
+<span class="o">//</span><span class="n">single</span> <span class="n">file</span> <span class="n">when</span> <span class="n">its</span> <span class="n">first</span> <span class="n">loaded</span> <span class="n">by</span> <span class="n">the</span> <span class="n">driver</span><span class="o">.</span>
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Before</span> <span class="n">we</span> <span class="n">do</span> <span class="n">anything</span><span class="p">,</span> <span class="n">we</span> <span class="n">let</span> <span class="n">the</span> <span class="n">inheritable</span><span class="p">,</span> <span class="o">/</span><span class="n">room</span><span class="o">/</span><span class="n">room</span><span class="p">,</span> <span class="n">run</span> <span class="n">its</span>
+  <span class="o">//</span><span class="n">create</span><span class="p">()</span><span class="o">.</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="o">//</span><span class="n">Our</span> <span class="n">other</span> <span class="n">code</span> <span class="k">for</span> <span class="n">the</span> <span class="n">room</span><span class="p">,</span> <span class="n">like</span> <span class="n">setting</span> <span class="n">its</span> <span class="n">short</span> <span class="ow">and</span> <span class="n">long</span>
+  <span class="o">//</span><span class="n">description</span><span class="p">,</span> <span class="ow">or</span> <span class="k">if</span> <span class="n">its</span> <span class="n">lit</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">,</span> <span class="n">would</span> <span class="nb">all</span> <span class="n">go</span> <span class="n">here</span><span class="o">.</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="n">Now</span> <span class="n">lets</span> <span class="n">imagine</span> <span class="n">we</span> <span class="n">have</span> <span class="n">a</span> <span class="n">room</span> <span class="n">that</span> <span class="n">inherits</span> <span class="n">room</span><span class="o">/</span><span class="n">room</span> <span class="n">but</span> <span class="o">*</span><span class="n">also</span><span class="o">*</span>
+<span class="o">//</span><span class="n">inherits</span> <span class="n">another</span> <span class="n">file</span> <span class="n">we</span> <span class="n">wrote</span> <span class="n">ourselves</span><span class="o">.</span> <span class="n">And</span> <span class="n">we</span> <span class="n">need</span> <span class="n">our</span> <span class="n">file</span>
+<span class="o">//</span><span class="n">to</span> <span class="n">also</span> <span class="n">get</span> <span class="n">a</span> <span class="n">crack</span> <span class="n">at</span> <span class="n">create</span><span class="p">()</span><span class="o">...</span>
+<span class="n">inherit</span> <span class="s2">&quot;our_file&quot;</span><span class="p">;</span>
+<span class="n">inherit</span> <span class="s2">&quot;/room/room&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">First</span> <span class="n">lets</span> <span class="n">give</span> <span class="n">the</span> <span class="k">global</span> <span class="n">one</span> <span class="n">a</span> <span class="n">chance</span><span class="o">...</span>
+  <span class="s2">&quot;/room/room&quot;</span><span class="p">::</span><span class="n">create</span><span class="p">();</span>
+  <span class="o">//</span><span class="n">Then</span> <span class="n">let</span> <span class="n">our</span> <span class="n">file</span> <span class="n">do</span> <span class="n">its</span> <span class="n">thing</span><span class="o">...</span>
+  <span class="s2">&quot;our_file&quot;</span><span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="o">//</span><span class="n">Now</span> <span class="n">we</span> <span class="n">can</span> <span class="n">put</span> <span class="n">the</span> <span class="n">rest</span> <span class="n">of</span> <span class="n">our</span> <span class="n">create</span> <span class="n">code</span> <span class="n">below</span><span class="o">...</span>
+  <span class="o">//...</span>
+  <span class="o">//...</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see above, the operator allows you to be specific about which inheritable should have the function called in it.</p>
+<p>If you are desparate, there is also glob type matches available, but only if the function takes no arguments (as of 3.2.1).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Call</span> <span class="n">my_function</span><span class="p">()</span> <span class="ow">in</span> <span class="n">whatever</span> <span class="n">file</span> <span class="kn">from</span><span class="w"> </span><span class="nn">my</span> <span class="n">directory</span> <span class="n">was</span> <span class="n">inherited</span><span class="o">.</span>
+<span class="s2">&quot;/adalius/*&quot;</span><span class="p">::</span><span class="n">my_function</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Operators</a><ul>
+<li><a class="reference internal" href="#fundementals">Fundementals</a></li>
+<li><a class="reference internal" href="#list-of-operators">List of Operators</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#assignment-operator">Assignment Operator</a></li>
+<li><a class="reference internal" href="#arithmatic-operators">Arithmatic Operators</a></li>
+<li><a class="reference internal" href="#logical-operators">Logical Operators</a></li>
+<li><a class="reference internal" href="#relational-operators">Relational Operators</a></li>
+<li><a class="reference internal" href="#bitwise-operators">Bitwise Operators</a></li>
+<li><a class="reference internal" href="#combination-operators">Combination Operators</a></li>
+<li><a class="reference internal" href="#index-operators">Index Operators</a></li>
+<li><a class="reference internal" href="#typecast-operators">Typecast Operators</a></li>
+<li><a class="reference internal" href="#call-other-operator">Call Other Operator</a></li>
+<li><a class="reference internal" href="#scope-resolution-operator">Scope Resolution Operator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="variables.html"
+                          title="previous chapter">Variables</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="mappings.html"
+                          title="next chapter">Mappings</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="mappings.html" title="Mappings"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="variables.html" title="Variables"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Operators</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

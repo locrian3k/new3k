@@ -1,0 +1,294 @@
+Advanced Coding Topics
+======================
+
+There are a great deal of things in LPC, and in the 3Kingdoms mudlib, that are past what is needed to start your wizarding career here. Some of those topics are extremely indepth, and some are a little easier to grasp. In this section we're going to touch on a few, and dabble a little more indepth in a few with some solid examples.
+
+None of this is required to know to start as a new wizard, so don't feel you have to understand or grasp everything in this section to be successful.
+
+Command Hook
+------------
+
+When we use :code:`add_action()` to grab the players input to parse for an action, there is a special format of it that allows us to capture *all* the text the player types.
+
+This is known as a command hook and is how most of the commands in the game actually function, such as mud-wide commands, guild object commands, and even souls.
+
+To do this, an object that is in contact with the player must call :code:`add_action()` inside of an :code:`init()`, just like any other :code:`add_action()`. However the arguments are changed slightly.
+
+.. note::
+  Tecccccchnnnically you can add_action() in more places than just :code:`init()` but :code:`init()` is the most common place to do so as it is called whenever anything living (i.e. player or mob) comes in contact with the object containing the :code:`init()` code.
+
+Instead of :code:`add_action(function,verb)` we instead do :code:`add_action(function,"", 1)`.
+
+The command being "" means it will capture anything the player types, and passing 1 as the third argument tells the parser to treat anything after the verb (in this case an empty string) as an argument to the function. Since the verb is empty, this means *anything* the player types is now an argument to the function.
+
+Consequently...
+
+.. code-block::
+
+  //This call...
+  add_action("cmd_hook","",1);
+
+  //Can be captured by this function.
+  status cmd_hook(string arg)
+  {
+    if(!arg || arg=="") return 0;
+
+    printf("You issued the command '%s'.\n",arg);
+
+    return 0;
+  }
+
+.. warning::
+  Notice we returned 0 at the end. If we return 1, the driver considers the command closed and does not try to find any other add actions for that verb. In this case, all our commands would be captured, we'd see the message that we issued the command but that would be it and we would be unable to do anything, not even 'quit'! So its good practice to make sure you have a 'backdoor' when first programming something with the hook to allow you to exit if the command is a specific command, like 'bailmeout'. If added properly, you can have the code destruct the object with the command hook thus freeing you from being trapped, otherwise the only solution is another wizard to dest the object or you!
+
+Heart Beat
+----------
+
+Heart beat is, essentially, just what the name implies. By turning it on in an object, the driver will call the :code:`heart_beat()` function in object every round (normally 2 seconds).
+
+Heart beats consume resources, so proper management is crucial. There are files that need a heart beat from the second the game reboots until it reboots again, other things need it intermittently, and things like monsters generally only need it when there's a player in the room (some are even set to keep their heart beat a few rounds after the player leaves so they can wander off away before the player returns).
+
+Writing a heart beat is incredibly simple as you just need to define the function, do your checks to ensure it needs to stay on, and then process whatever you need to process.
+
+As an example, lets say we have a daemon file that we want to process data on players, and we add the players randomly as needed, but the processing is expensive so we only process the queue once a heart beat.
+
+To set this example up, lets say we call :code:`process_player(object p)` in the daemon, passing the player as 'p'. This adds them to an array acting as a queue. Then every HB we process the players in the queue by passing them to :code:`do_process(object p)` which does the processing and then removes them from the global queue.
+
+I won't show the entire file, just the pertinent bits to demonstrate the heart beat, which with proper management, would look like this:
+
+.. code-block::
+
+  //Define a global var.
+  object *p_to_proc = ({});
+
+  void do_process(object p)
+  {
+    //Perform some processing on player p here...
+
+    //After processing, remove them from the queue.
+    p_to_proc -= ({ p });
+
+    //We could check the size here and turn off the heart beat if its 0
+    //but given that we do that in heart_beat() anyway, its not necessary.
+
+    return;
+  }
+
+  void process_player(object p)
+  {
+    //If they aren't already in the queue, add them.
+    if(!member(p_to_proc,p))
+      p_to_proc += ({ p });
+
+    //Turn on our heart_beat in case its off.
+    set_heart_beat(1);
+    return;
+  }
+
+  void heart_beat()
+  {
+    object p;
+    //As we are storing an array of objects, if an object is destructed then it becomes (object)0
+    //so we should clean our array to make sure no destructed objects are still inside of it.
+    p_to_proc -= ({ 0 });
+
+    //If there's nobody to process, turn off our HB and exit.
+    if(!sizeof(p_to_proc))
+    {
+      set_heart_beat(0);
+      return;
+    }
+
+    foreach(p : p_to_proc)
+      do_process(p);
+
+    return;
+  }
+
+When we call :code:`process_player()` with a player object, it adds it to the queue if it isn't already in there, and turns the heart beat on.
+
+We don't only turn the HB on if the member call is valid, because if they are already *in* the queue, then there's still something in there to process so we want to make sure the HB is on.
+
+Then the driver will call the HB and if the queue is empty it turns itself off, otherwise it processes every player in the queue.
+
+With this method there will be one extra HB call as the array won't be empty until the next pass, but that's not a big deal. The bigger issue is making sure the HB isn't running every single round if it only needs to run some of the time, a single wasted HB is minor in the big scheme of things.
+
+.. warning::
+  When you call a function from inside a heart_beat(), 99.9% of the time :code:`this_player()` is empty (i.e. 0). So make sure if you are calling a function from the heart beat, that the function is coded in a manner that it isn't using :code:`this_player()` for anything. This is also important if you have any of your own code that may be called from a heart beat in that file or a different file as well.
+
+.. warning::
+  This also means you can't use functions that inherently use :code:`this_player()` such as :code:`write()` or :code:`printf()`. If you need to send messages to players from a heart beat, you must do so by directly addressing the player object such as :code:`tell_object()`.
+
+Call Outs
+---------
+
+We touched briefly on call-outs in the :ref:`Control Structures` section. As mentioned, they are a means of running code in a given amount of time from the current moment. They also are a means of breaking a large execution block into smaller chunks. Things that take a lot of compute cycles can run out of time as the driver allocates a certain number of cycles to a given execution, however each call-out gets its own limit so it can treat it as a separate run and thus avoid the computation limits.
+
+A good example of this is the bless boon. Because of how stat adjustments are handled in the mudlib, blessing 70 players can actually rack up so much cycle debt that it fails to finish running, meaning some players don't get blessed. To get around this, we moved to a system that blesses each player in 1 second intervals. So if there's 70 players, it will issue call outs, 1 player at a time, for +1, +2, +3, ... +70 seconds from now. Splitting the load in 70 much smaller pieces and not hitting the limits.
+
+There are ways to remove the limits for certain code, but its generally reserved for mission critical core code and not something we do when we can work around it by actually divving the load up.
+
+You might be asking if we're on newer hardware, or the cloud, why do we need the limits at all? If we didn't have them, the driver would have no protection against code that would bog it down. When we get massive mudlag spikes right now, sometimes that's because of code that is heavily processing but *juuuuust* coming in under the limit. If that limit wasn't there, you'd likely see things bogging down a lot more. Instead, it throws an error and we get told it hit the limit so we can then work on optimizing.
+
+In any event, call-outs are one way of getting around that, as well as jut a general way of doing something at a preset time from now. They aren't good for doing something like 'run this code at 3PM server time'. They are great for doing something like 'run this code in 15 minutes from now'.
+
+The format for a call-out is as follows:
+
+.. code-block::
+
+  void call_out(string|closure f, int delay, mixed arg, ...)
+
+What this will do is in 'delay' seconds (minimum of 1), it will call the function 'f' in :code:`this_object()`, and pass the argument arg, and any other arguments to the right of arg, to 'f'. Function 'f' must be public or static, it cannot work on private of protected functions.
+
+In the modern drivers, the call-out will remember the values of :code:`this_player()` so you can use :code:`say()`/:code:`write()`. The older versions did not have that functionality so you may see older code where the player is passed as an argument.
+
+There is some built in protection from stacked call-outs running out of processing time as well. To do this, it adds up all the call-outs from a given file for the current second. If it exceeds the limits, it drops them. This is why the bless rewrite spreads them out on individual seconds of time.
+
+However, `rabbits <https://youtu.be/IESEcsjDcmM?si=ysh52DODaH5mDASC&t=398>`_, or multiplying call-outs that can eat up all the memory, caused when one call-out creates two or more call-outs, which then do the same like a nuclear chain reaction, can still happen and kill the driver. This is why call-outs need to be done with care.
+
+A good coding practice is to check if your call-out already exists before executing if you only want one copy of it to be running at a time.
+
+Imagine if in our daemon example above for heart beats, if instead of a heart beat we called a function called :code:`process_queue()` on a given call_out schedule. Say every 2 minutes. In doing so we want to make sure only one call-out is pending at any time as well. We could modify the code to look like this:
+
+.. code-block::
+
+  //Define a global var.
+  object *p_to_proc = ({});
+
+  void process_player(object p)
+  {
+    //If they aren't already in the queue, add them.
+    if(!member(p_to_proc,p))
+      p_to_proc += ({ p });
+
+    //See if there's already a call-out pending, if so we won't initiate
+    //another one. If there isn't one, add one in 120 seconds.
+    if(find_call_out("process_queue")==-1)
+      call_out("process_queue",120);
+
+    return;
+  }
+
+  void process_queue()
+  {
+    object p;
+
+    //First thing first, make sure there's no pending call-outs
+    //as we are going to process the entire queue so there's no need
+    //for any future ones at this point.
+
+    //This is a special case of the while() loop where the expr actually
+    //does the work, without anything inside the body of the loop.
+    while(remove_call_out("process_queue")!=-1);
+
+    //Next lets clear out any empty object references.
+    p_to_proc -= ({ 0 });
+
+    //If there's nobody to process, exit.
+    if(!sizeof(p_to_proc))
+      return;
+
+    foreach(p : p_to_proc)
+      process_player(p);
+
+    return;
+  }
+
+This will give us essentially the same function as the heart beat, but it will fire 2 minutes after a player is added (in case multiples get added in that time), and will not fire at all when nobody is in the queue. So it should be quite a bit better than the heart beat as the HB can fire every 2 seconds if a player is added every 2 seconds individually, making the queue kind of useless.
+
+Efun Closures
+-------------
+
+These are one type of closure, and are the same as what you've seen used in :ref:`Closure`, where they use the format :code:`#'func_name/*'*/`. What makes it an efun closure is if the function name passed is the name of an efun (external function); i.e. one that is housed in the driver not the mudlib.
+
+Lfun Closures
+-------------
+
+These are *identical* to Efun Closures *except* they point to a local function, which is to say a function defined in the same file as the closure. In practical terms, there is no difference in how they are used or how they work from the coders point of view.
+
+Lambda Closures
+---------------
+
+Lambda closures are a special type of closure, similar to a lambda function in LISP. It's bound to the creating object, so it can reference global variables located in the same file that created it.
+
+You've already familiarized yourself with normal :ref:`Closure`, which store a pointer to a function inside of a variable. Lambda closures are similar, but they can store not just a pointer to a function, but an actual function in whole, as in the entire code for it.
+
+The trade off is they're very complicated to read. Here's an example of a lambda closure being used as the closure passed to a filter() call. It filters the inventory of a room, and returns anything in the room that isn't living, excluding the object this code resides in.
+
+.. code-block::
+
+  filter((all_inventory(ETO) - ({ TO })),
+    lambda(({ 'arg }),({ #'&&,({#'!,({ #'living, 'arg })}),
+          ({#'!,({ #'call_other,'arg, "query_npc" })})})));
+
+Everything inside the lambda() function is a lambda closure.
+
+What you're looking at there is a series of arrays, nested, to perform a series of events. The first array specifies that our variable is 'arg', this is the same as if we did my_function(arg). Then we are defining the code that is going to be run using that argument.
+
+If we work from inside out, we have:
+  * ({ #'living, 'arg }) - This calls living(arg) and returns the result.
+  * ({#'!,({ #'living, 'arg })}) - This takes the result of the bit above, and passes it to !, so it logically flips the result (1 -> 0, 0 -> 1).
+  * ({ #'call_other,'arg, "query_npc" }) - This translates to call_other(arg,"query_npc") or arg->query_npc() and returns the result.
+  * ({#'!,({ #'call_other,'arg, "query_npc" })}) - Similar to 2 above, this does ! to the result and flips it.
+  * ({ #'&&,({#'!,({ #'living, 'arg })}), ({#'!,({ #'call_other,'arg, "query_npc" })})}) - This takes the results above, after they have been run through the ! operator, and runs them through the && operator.
+
+Everything you see above, as complicated as it looks, is essentially the same as:
+
+.. code-block::
+
+  status is_inanimate(object arg)
+  {
+    return (!living(arg) && !arg->query_npc());
+  }
+
+  filter((all_inventory(environment()) - ({ this_object()}) ),
+         #'is_inanimate/*'*/);
+
+The reason lambdas exist is they can essentially be used for dynamic code. However in practice they're just really ugly ways of writing code, so you won't find much use of them (if any) on 3Kingdoms at all.
+
+Inline Closures
+---------------
+
+Unlike lambda closures, inline closures are actually *super* useful. Where you can use closures, you can normally use inline closures, and they allow you to create a function *in* the spot you'd normally pass a closure linked to another function.
+
+What that means is if you need to do something super easy like check if someone is over a certain level, rather than having to write an entire function and then use a closure or string to pass it to another function, like filter, you can instead write the check *inside* the argument.
+
+It's perhaps easier if shown via example:
+
+.. code-block::
+
+  //Normal Method:
+  object *result;
+
+  status is_bigger(object p) { return p->query_player_level() > 50; }
+
+  result = filter(users(),#'is_bigger/*'*/);
+
+  //Inline Closure Method:
+  object *result;
+
+  result = filter(users(),
+              (: return $1->query_player_level() > 50; :));
+
+As you can see its a little bit simpler and removes having to code an entire function just to do a quick evaluation.
+
+There are two formats of inline closure as well, one is a single line expression, the other can be multiple lines of actual code. The distinguishing feature is whether there is a ; at the end of any lines. If there is, you must 'return' the value you want to use, in the former it is automatically treated as a return.
+
+.. code-block::
+
+  //Single Line:
+  (: ($1 * 2) > 42 :)
+
+  //Multiple Line:
+  (: return ($1 * 2) > 42; :)
+
+  //Demonstration of what multi-line can do:
+  (:
+     string *s;
+     s = map(users(), (: $1->query_name() :));
+     return s[random(sizeof(s))] + ($1 * 2);
+  :)
+
+As you can see, in the multiline, you can even nest other inline closures inside of it.
+
+Of all the closures, efun/lfun are probably the most common, followed by inline.

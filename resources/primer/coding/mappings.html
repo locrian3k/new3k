@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mappings &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functions" href="functions.html" />
+    <link rel="prev" title="Operators" href="operators.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="functions.html" title="Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="operators.html" title="Operators"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Mappings</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="mappings">
+<h1>Mappings<a class="headerlink" href="#mappings" title="Link to this heading">¶</a></h1>
+<p>Mappings are a very powerful, very commonly used variable type and allow you to do some pretty cool things if you design them properly. They’re so cool they even got their own page!</p>
+<p>Every mapping is wrapped in ([ ]) to designate it, much like arrays are wrapped in ({ }).</p>
+<p>A mapping is made up of at least two parts, a key and a value. A key must have at least one value, but can have many more if needed.</p>
+<p>The general format for a mapping is: ([ key : value0; value1; value2; …; valueN ]) and each value place is referred to as a column.</p>
+<p>Keys can be of any <a class="reference internal" href="types.html#types"><span class="std std-ref">type</span></a> that qualify for <a class="reference internal" href="types.html#mixed"><span class="std std-ref">mixed</span></a>.</p>
+<p>Values can be any valid type, including arrays or other mappings.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the event you use arrays or mappings as values inside a mapping, you can make your life easier by writing functions that grab individual column values from the mapping, otherwise the stacked index operators can become very overwhelming; you end up with things like map[key,4][0][1].</p>
+</div>
+<p>There are also size limits imposed by the driver, which are configurable when the driver is compiled. At time of this writing, the limits for mappings on the 64-bit driver are 100,000 keys in a single mapping, and 30,000 values per key. Keep this in mind if you are designing something that is extremely data heavy.</p>
+<section id="mapping-declaration">
+<h2>Mapping Declaration<a class="headerlink" href="#mapping-declaration" title="Link to this heading">¶</a></h2>
+<p>To begin with, you declare a mapping like most variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-initialization">
+<h2>Mapping Initialization<a class="headerlink" href="#mapping-initialization" title="Link to this heading">¶</a></h2>
+<p>You can then initialize it to an empty mapping:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">([]);</span>
+</pre></div>
+</div>
+<p>You can also initialize it to preset values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">([</span> <span class="s2">&quot;alpha&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span> <span class="p">:</span> <span class="mi">2</span> <span class="p">]);</span>
+</pre></div>
+</div>
+<p>It is considered good practice to comment with the format of the mapping above the declaration so future readers can see how its laid out.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="p">([</span> <span class="n">alpha_name</span> <span class="p">:</span> <span class="n">pos_in_alphabet</span> <span class="p">])</span>
+<span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+
+<span class="o">//</span><span class="n">If</span> <span class="n">you</span> <span class="n">have</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">of</span> <span class="n">elements</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">even</span> <span class="n">provide</span> <span class="n">a</span> <span class="n">numbering</span> <span class="n">scheme</span>
+<span class="o">//</span><span class="n">to</span> <span class="n">make</span> <span class="n">it</span> <span class="n">easier</span> <span class="n">when</span> <span class="n">referencing</span> <span class="n">them</span> <span class="n">later</span> <span class="ow">in</span> <span class="n">code</span> <span class="n">by</span> <span class="p">[</span><span class="n">key</span><span class="p">,</span><span class="n">index</span><span class="p">]</span>
+<span class="o">//</span>                       <span class="mi">0</span>           <span class="mi">1</span>      <span class="mi">2</span>      <span class="mi">3</span>
+<span class="o">//</span><span class="p">([</span> <span class="n">alpha_name</span> <span class="p">:</span> <span class="n">pos_in_alphabet</span><span class="p">,</span> <span class="n">votes</span><span class="p">,</span> <span class="n">likes</span><span class="p">,</span> <span class="n">usage</span> <span class="p">])</span>
+<span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>There is also a function <code class="code docutils literal notranslate"><span class="pre">mkmapping()</span></code> which does much of the same for initializing, but its generally not used as this format is much faster; its only real use case if you already have large arrays of keys and equally sized arrays for each column of values.</p>
+<p>Finally there is <code class="code docutils literal notranslate"><span class="pre">m_allocate(n,</span> <span class="pre">width)</span></code> which will generate a mapping with anticipated number of keys &lt;n&gt; and a width (column of values).</p>
+<p><code class="code docutils literal notranslate"><span class="pre">m_allocate(5,</span> <span class="pre">2);</span></code> would make an empty mapping that, for memory footprint purposes, anticipates 5 keys soon, and each key will have two values.</p>
+<p>The only purpose of this really is if you’re going to be dumping data into a mapping and you know fairly close to how many keys you will be utilizing so the driver can allocate a nice contiguous block right from the start, otherwise since mappings can grow/shrink dynamically, it may have to relocate the entire chunk in memory if it runs out of space.</p>
+<p>You can also create an empty mapping with a preset width by using the ([:width ]); format.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">([:</span><span class="mi">5</span><span class="p">]);</span> <span class="o">//</span><span class="n">An</span> <span class="n">empty</span> <span class="n">mapping</span> <span class="k">with</span> <span class="mi">5</span> <span class="n">columns</span><span class="o">.</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">m_allocate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span> <span class="o">//</span><span class="n">Functionally</span> <span class="n">the</span> <span class="n">same</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-addition">
+<h2>Mapping Addition<a class="headerlink" href="#mapping-addition" title="Link to this heading">¶</a></h2>
+<p>Adding a new key to a mapping is very simple.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">+=</span> <span class="p">([</span> <span class="n">new_key</span> <span class="p">:</span> <span class="n">new_value</span><span class="p">,</span> <span class="n">new_value2</span><span class="p">,</span> <span class="o">...</span> <span class="p">]);</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-subtraction">
+<h2>Mapping Subtraction<a class="headerlink" href="#mapping-subtraction" title="Link to this heading">¶</a></h2>
+<p>To delete a key completely from a mapping you can do it multiple ways:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">-=</span> <span class="p">([</span> <span class="n">key</span> <span class="p">]);</span>
+<span class="n">m</span> <span class="o">-=</span> <span class="p">([</span> <span class="n">key1</span><span class="p">,</span> <span class="n">key2</span><span class="p">,</span> <span class="n">key3</span><span class="p">,</span> <span class="o">...</span> <span class="p">]);</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">m_delete</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">key</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The man files will tell you that you don’t need to do the assignment like m = m_delete(m,key) because mappings are by reference. In practice, however, this is incorrect. m_delete(m,key) does not actually change the underlying mapping m. This may be due to a compiler setting in the driver, but I am unsure.</p>
+</div>
+</section>
+<section id="mapping-indexing">
+<h2>Mapping Indexing<a class="headerlink" href="#mapping-indexing" title="Link to this heading">¶</a></h2>
+<p>Accessing a value stored in a mapping is done using the <a class="reference internal" href="operators.html#index-operators"><span class="std std-ref">Index Operators</span></a> much like an array.</p>
+<p>To access the first value (column 0), no column value need be passed. To access any other values for a given key, you must pass the column index in addition to the key.
+You also can pass column ranges as well just like arrays.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mapping m;
+m = ([ &quot;Tom&quot;: 5; 4; &quot;red&quot; ]);
+
+m[&quot;Tom&quot;];
+Result: 5
+
+m[&quot;Tom&quot;,2];
+Result: &quot;red&quot;
+
+//Note that for index ranges, it returns an array. **This only works on newer driver versions!
+m[&quot;Tom&quot;,0..1];
+Result: ({ 5, 4 })
+</pre></div>
+</div>
+<p>If there is no such key in the mapping it will simply return 0.
+If there is no such key in the mapping and you pass a value for the column number greater than 0, it will return an ‘Illegal index’ error.</p>
+<p>Sometimes you might need to know all the keys of a mapping. Keys are also called indexes, so we can use a function called <code class="code docutils literal notranslate"><span class="pre">m_indices()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+<span class="o">//</span><span class="n">The</span> <span class="n">keys</span> <span class="n">will</span> <span class="n">be</span> <span class="n">an</span> <span class="n">array</span><span class="p">,</span> <span class="n">so</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">we</span> <span class="n">use</span> <span class="o">*</span>
+<span class="n">string</span> <span class="o">*</span><span class="n">keys</span><span class="p">;</span>
+
+<span class="o">//</span><span class="p">([</span> <span class="n">name</span><span class="p">:</span> <span class="n">age</span> <span class="p">])</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">([</span> <span class="s2">&quot;Bob&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">;</span> <span class="s2">&quot;Tom&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">;</span> <span class="s2">&quot;Frank&quot;</span> <span class="p">:</span> <span class="mi">6</span> <span class="p">])</span>
+
+<span class="n">keys</span> <span class="o">=</span> <span class="n">m_indices</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">keys</span> <span class="o">==</span> <span class="p">({</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;Frank&quot;</span> <span class="p">})</span>
+</pre></div>
+</div>
+<p>Similarly, you might want just the values (not very useful in my opinion, but I’m sure there’s reasons…) so there also exists <code class="code docutils literal notranslate"><span class="pre">m_values()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mapping m;
+//The vals will be an array, so make sure we use *
+int *vals;
+
+//([ name: age ])
+m = ([ &quot;Bob&quot;: 10; &quot;Tom&quot;: 22; &quot;Frank&quot; : 6 ])
+
+vals = m_values(m);
+Result: vals == ({ 10, 22, 6 })
+
+//This also would work if you had multiple values per key, but note
+//that the above method will always return column 0 whether its the
+//only column or not.
+
+vals = m_values(m,0);
+Result: vals == ({ 10, 22, 6 })
+
+//If we pass a column number higher than the mapping contains, BOOM!
+vals = m_values(m,4);
+Result: Illegal index 4 to m_values(): should be in 0..0
+</pre></div>
+</div>
+</section>
+<section id="mapping-key-existence">
+<h2>Mapping Key Existence<a class="headerlink" href="#mapping-key-existence" title="Link to this heading">¶</a></h2>
+<p>The easiest way to check for a mapping key’s existence, based on the above, is to simply index it. If it returns 0, then it isn’t in the mapping.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This only works if you are sure that the value stored in column 0 can never be 0. If it can be, then this method is unreliable.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mapping m;
+m = ([ &quot;Tom&quot;: 5; 4; &quot;red&quot; ]);
+
+m[&quot;Bob&quot;];
+Result: 0
+
+m[&quot;Bob&quot;,1];
+Result: Illegal index error!
+</pre></div>
+</div>
+<p>However, the value stored in column 0 can often <em>be</em> 0 even if the key exists. So to check if a key doesn’t exist without relying on checking for 0, you can also use the <code class="code docutils literal notranslate"><span class="pre">member()</span></code> function which will return 1 if the key exists, and 0 if it doesn’t, even if [key,0] <em>is</em> 0.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">member</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">);</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">member</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">);</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-copy">
+<h2>Mapping Copy<a class="headerlink" href="#mapping-copy" title="Link to this heading">¶</a></h2>
+<p>Since mappings are technically by reference, simply passing the mapping to another function that might change the values isn’t always the greatest idea. If you want to provide a function with its own copy of the data held inside the mapping rather than the mapping reference itself, use <code class="code docutils literal notranslate"><span class="pre">copy()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">([</span> <span class="s2">&quot;Tom&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="s2">&quot;red&quot;</span> <span class="p">]);</span>
+
+<span class="o">//</span><span class="n">This</span> <span class="n">ensures</span> <span class="nb">any</span> <span class="n">external</span> <span class="n">code</span> <span class="n">calling</span> <span class="n">to</span> <span class="n">view</span> <span class="n">the</span> <span class="n">mapping</span> <span class="ow">is</span>
+<span class="o">//</span><span class="n">getting</span> <span class="n">a</span> <span class="n">copy</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">original</span><span class="o">.</span>
+<span class="n">mapping</span> <span class="n">query_mapping</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">copy</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-size">
+<h2>Mapping Size<a class="headerlink" href="#mapping-size" title="Link to this heading">¶</a></h2>
+<p>There’s a few ways to judge how big a mapping is, and part of the question is how are you measuring it. Do you want to know how many key:value pairs (which is the same as how many keys) exist? Or do you want to know how wide it is (the number of columns)?</p>
+<p>Luckily there exists functions for both cases.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">sizeof()</span></code> which is useful on lots of variable types returns how many keys there are.
+<code class="code docutils literal notranslate"><span class="pre">widthof()</span></code> returns how many columns the mapping has.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">([</span> <span class="s2">&quot;Tom&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">;</span> <span class="mi">4</span><span class="p">;</span> <span class="s2">&quot;red&quot;</span> <span class="p">]);</span>
+
+<span class="n">sizeof</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="o">//</span><span class="n">Note</span> <span class="n">that</span> <span class="n">this</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">number</span> <span class="n">of</span> <span class="n">columns</span> <span class="n">even</span> <span class="n">though</span> <span class="n">columns</span>
+<span class="o">//</span><span class="n">are</span> <span class="mi">0</span> <span class="n">index</span><span class="o">.</span> <span class="n">So</span> <span class="n">the</span> <span class="n">column</span> <span class="n">numbers</span> <span class="n">are</span> <span class="n">always</span> <span class="mf">0.</span><span class="o">.</span><span class="p">(</span><span class="n">widthof</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">widthof</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</section>
+<section id="mapping-iteration">
+<h2>Mapping Iteration<a class="headerlink" href="#mapping-iteration" title="Link to this heading">¶</a></h2>
+<p>Mappings are not ordered lists, they are essentially kept in a random order. It may not appear this way if you interact with them long enough, you’ll notice they tend to be in the same order you entered them in, but that is not a guaranteed thing.</p>
+<p>As such, it doesn’t always make sense to iterate over them, but sometimes you need to. For instance if you want to output a list of every key and value pair in a nice formatted manner.</p>
+<p>You also need to determine if you care about the order of the output. If you do, you’ll need to grab the keys (indices) first and sort those, then iterate over that list to access the data.</p>
+<p>Then lastly you’ll need to determine if you want to access the data in a loop, if you want to pass every key:value(s) to a function to filter the results, or if you want to pass them to a function to change the mapping itself.</p>
+<p>Lets start with a simple iteration using a for loop and a <code class="code docutils literal notranslate"><span class="pre">foreach()</span></code> loop. Foreach also allows us to get the key and values in one swift motion. Loops can also be found in <a class="reference internal" href="control_structures.html#control-structures"><span class="std std-ref">Control Structures</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mapping m;
+int i, s;
+string *indices;
+
+//([ name : age; grade ])
+m = ([ &quot;Bob&quot;: 10; 4, &quot;Tom&quot;: 12; 6, &quot;Frank&quot; : 7; 1 ])
+
+//Get how many keys there are.
+s = sizeof(m);
+indices = m_indices(m);
+
+//Loop over them in a normal for loop.
+for(i = 0; i &lt; s; i++)
+{
+  printf(&quot;%s is %d in grade %d.\n&quot;,
+    indices[i], m[indices[i],0], m[indices[i],1]);
+}
+
+Result:
+  Bob is 10 in grade 4.
+  Tom is 12 in grade 6.
+  Frank is 7 in grade 1.
+
+//Using the same m above, lets use a foreach() to see how its simpler.
+string key;
+int a, b;
+
+foreach(key, a, b : m)
+{
+  printf(&quot;%s is %d in grade %d.\n&quot;, key, a, b);
+}
+
+Result:
+  Bob is 10 in grade 4.
+  Tom is 12 in grade 6.
+  Frank is 7 in grade 1.
+
+//Now what if we wanted to sort them alphabetically first?
+
+//We already grabbed the indices above so lets order that array.
+indices = sort_array(indices, #&#39;&gt;/*&#39;*/);
+
+//Now loop through with the foreach again.
+foreach(key : indices)
+{
+  //Because we&#39;re iterating the indices array not the mapping, we can&#39;t
+  //automatically get the values, so we&#39;ll have to index them.
+  printf(&quot;%s is %d in grade %d.\n&quot;, key, m[key], m[key,1]);
+}
+
+Result:
+  Bob is 10 in grade 4.
+  Frank is 7 in grade 1.
+  Tom is 12 in grade 6.
+
+//What if we want to filter the mapping to exclude people under age 10?
+
+//First we would need a function to check the age.
+status under_10(string key, int *vals) { return vals[0] &lt; 10; }
+
+m = filter(m, #&#39;under_10/*&#39;*/);
+
+Result: m == ([ &quot;Bob&quot;: 10; 4, &quot;Tom&quot;: 12; 6 ])
+
+//Now lets try using map(). This function gets the key/value pairs, and
+//passes them to a function you specify. The result of that function
+//is then applied to the mapping&#39;s index [key,0], overwriting what
+//was there. This isn&#39;t always useful on multi-value mappings but on
+//single column mappings it can be used a lot. Or it can generate
+//a new mapping for you with a single column of data based on the
+//function return.
+
+//In this case lets have it generate a completely new mapping in
+//the format ([ name : grade ])
+
+//First make the function to pass the grade back.
+int get_grade(string key, int *vals) { return vals[1]; }
+
+mapping new;
+new = map(m, #&#39;get_grade/*&#39;*/);
+
+Result: new == ([&quot;Bob&quot;: 4, &quot;Tom&quot;: 6 ])
+</pre></div>
+</div>
+<p>As you can see, mappings are extremely versitile and can give you a lot of power when you need to keep track of things by an indexed value. Many things in the MUD use mappings to track data, or to aggregate it for display.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Mappings</a><ul>
+<li><a class="reference internal" href="#mapping-declaration">Mapping Declaration</a></li>
+<li><a class="reference internal" href="#mapping-initialization">Mapping Initialization</a></li>
+<li><a class="reference internal" href="#mapping-addition">Mapping Addition</a></li>
+<li><a class="reference internal" href="#mapping-subtraction">Mapping Subtraction</a></li>
+<li><a class="reference internal" href="#mapping-indexing">Mapping Indexing</a></li>
+<li><a class="reference internal" href="#mapping-key-existence">Mapping Key Existence</a></li>
+<li><a class="reference internal" href="#mapping-copy">Mapping Copy</a></li>
+<li><a class="reference internal" href="#mapping-size">Mapping Size</a></li>
+<li><a class="reference internal" href="#mapping-iteration">Mapping Iteration</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="operators.html"
+                          title="previous chapter">Operators</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="functions.html"
+                          title="next chapter">Functions</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="functions.html" title="Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="operators.html" title="Operators"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Mappings</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

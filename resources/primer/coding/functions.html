@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Functions &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Control Structures" href="control_structures.html" />
+    <link rel="prev" title="Mappings" href="mappings.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="control_structures.html" title="Control Structures"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mappings.html" title="Mappings"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Functions</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h1>
+<p>Functions are a structure that can be called in code, may optionally take one or more arguments, and returns a value whose type must match the function declaration, unless the function is declared void in which case nothing is returned.</p>
+<p>The purpose of a function is to give structure to code and to containerize code that might be called repeatedly. In general, almost all code must be contained inside functions. The exceptions to this are <a class="reference internal" href="preprocessor.html#preprocessor"><span class="std std-ref">pre-processor directives</span></a>, <a class="reference internal" href="inheritance.html#inheritance"><span class="std std-ref">inheritance statements</span></a>, <a class="reference internal" href="variables.html#global-variables"><span class="std std-ref">global variable</span></a> declarations, and <a class="reference internal" href="#prototypes"><span class="std std-ref">function prototypes</span></a>.</p>
+<p>Variables inside functions are strictly limited by their <a class="reference internal" href="variables.html#variable-scope"><span class="std std-ref">Variable Scope</span></a>.</p>
+<p>It is important that a function that returns a value does so matching the return type specified in its declaration or you will throw an error for an ‘Unexpected type’. Simply, if you say you’re going to return an integer and instead return a float, the driver is not going to be happy.</p>
+<section id="declaring-functions">
+<h2>Declaring Functions<a class="headerlink" href="#declaring-functions" title="Link to this heading">¶</a></h2>
+<p>Functions take the following declarative form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">For</span> <span class="n">functions</span> <span class="k">with</span> <span class="n">no</span> <span class="n">arguments</span> <span class="n">that</span> <span class="k">return</span> <span class="n">a</span> <span class="n">value</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">function_name</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span><span class="n">Must</span> <span class="n">be</span> <span class="n">of</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="n">For</span> <span class="n">functions</span> <span class="k">with</span> <span class="n">argument</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">that</span> <span class="k">return</span> <span class="n">a</span> <span class="n">value</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">function_name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">arg</span> <span class="nb">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">arg</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">arg</span> <span class="n">type2</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">arg2</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span><span class="n">Must</span> <span class="n">be</span> <span class="n">of</span> <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="n">If</span> <span class="n">a</span> <span class="n">function</span> <span class="ow">is</span> <span class="n">void</span> <span class="n">then</span> <span class="n">it</span> <span class="n">returns</span> <span class="n">nothing</span> <span class="n">so</span> <span class="n">the</span> <span class="k">return</span> <span class="ow">is</span>
+<span class="o">//</span><span class="n">a</span> <span class="n">little</span> <span class="n">different</span><span class="p">;</span> <span class="ow">and</span> <span class="n">technically</span> <span class="n">optional</span> <span class="n">but</span> <span class="n">it</span><span class="s1">&#39;s good</span>
+<span class="o">//</span><span class="n">practice</span> <span class="n">to</span> <span class="n">include</span> <span class="n">the</span> <span class="k">return</span> <span class="n">to</span> <span class="n">be</span> <span class="n">explicit</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">modifier</span><span class="o">&gt;</span> <span class="n">void</span> <span class="o">&lt;</span><span class="n">function_name</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+  <span class="k">return</span><span class="p">;</span> <span class="o">//</span><span class="n">Void</span> <span class="n">so</span> <span class="n">we</span> <span class="n">literally</span> <span class="k">return</span> <span class="n">nothing</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>&lt;modifier&gt; is one or more special keywords that limit the functions scope, allow it to accept variable numbers of arguments, or limit its masking. See <a class="reference internal" href="modifiers.html#modifiers"><span class="std std-ref">Modifiers</span></a> for more details.</p>
+<p>&lt;type&gt; must be a valid type as listed in <a class="reference internal" href="types.html#types"><span class="std std-ref">types</span></a>.</p>
+</section>
+<section id="calling-functions">
+<h2>Calling Functions<a class="headerlink" href="#calling-functions" title="Link to this heading">¶</a></h2>
+<p>To call a function that is in the same code file (or a file that is included with the #include <a class="reference internal" href="preprocessor.html#preprocessor"><span class="std std-ref">preprocessor directive</span></a>), you simply type the function name and any arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_function</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To call a function inside another object, you need to use either <code class="code docutils literal notranslate"><span class="pre">call_other()</span></code> or the -&gt; <a class="reference internal" href="operators.html#operators"><span class="std std-ref">operator</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">some_other_obj</span><span class="o">-&gt;</span><span class="n">its_function</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+<span class="o">//</span><span class="n">Or</span><span class="o">...</span>
+<span class="n">call_other</span><span class="p">(</span><span class="n">some_other_obj</span><span class="p">,</span><span class="s2">&quot;its_function&quot;</span><span class="p">,</span><span class="n">args</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If we are using the #pragma strict_types <a class="reference internal" href="preprocessor.html#preprocessor"><span class="std std-ref">preprocessor directive</span></a>, then we need to also type-cast any calls to other objects as such:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+
+<span class="o">//</span><span class="n">Presuming</span> <span class="n">its_function</span><span class="p">()</span> <span class="ow">is</span> <span class="n">defined</span> <span class="n">to</span> <span class="k">return</span> <span class="n">a</span> <span class="n">string</span> <span class="nb">type</span><span class="o">...</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">some_other_obj</span><span class="o">-&gt;</span><span class="n">its_function</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+<span class="o">//</span><span class="n">Or</span><span class="o">...</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="n">call_other</span><span class="p">(</span><span class="n">some_other_obj</span><span class="p">,</span><span class="s2">&quot;its_function&quot;</span><span class="p">,</span><span class="n">args</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>A fun feature of the 64-bit driver is that we can ‘flatten’ arrays when passed as an argument. What this means is you pass an array as an argument, if you put ‘…’ after it, rather than sending the array as a single big argument, it will send each element as a separate argument.</p>
+<p>For instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Given</span> <span class="n">the</span> <span class="n">following</span> <span class="n">array</span><span class="o">...</span>
+<span class="n">string</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="p">({</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span> <span class="p">});</span>
+
+<span class="o">//</span><span class="n">The</span> <span class="s1">&#39;normal&#39;</span> <span class="n">way</span><span class="p">:</span>
+<span class="n">void</span> <span class="n">my_func</span><span class="p">(</span><span class="n">string</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">string</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">;</span>
+
+  <span class="n">a</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span><span class="p">;</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span><span class="p">;</span>
+  <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">my_func</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">a</span> <span class="o">==</span> <span class="s2">&quot;a!&quot;</span><span class="p">,</span> <span class="n">b</span> <span class="o">==</span> <span class="s2">&quot;b!&quot;</span><span class="p">,</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;c!&quot;</span>
+
+<span class="o">//</span><span class="n">Using</span> <span class="n">array</span> <span class="n">flattening</span><span class="o">.</span>
+
+<span class="n">void</span> <span class="n">my_func2</span><span class="p">(</span><span class="n">string</span> <span class="n">a</span><span class="p">,</span> <span class="n">string</span> <span class="n">b</span><span class="p">,</span> <span class="n">string</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">a</span> <span class="o">+=</span> <span class="s2">&quot;!&quot;</span><span class="p">;</span>
+  <span class="n">b</span> <span class="o">+=</span> <span class="s2">&quot;!&quot;</span><span class="p">;</span>
+  <span class="n">c</span> <span class="o">+=</span> <span class="s2">&quot;!&quot;</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">my_func</span><span class="p">(</span><span class="n">s</span><span class="o">...</span><span class="p">);</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">a</span> <span class="o">==</span> <span class="s2">&quot;a!&quot;</span><span class="p">,</span> <span class="n">b</span> <span class="o">==</span> <span class="s2">&quot;b!&quot;</span><span class="p">,</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;c!&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="prototypes">
+<h2>Prototypes<a class="headerlink" href="#prototypes" title="Link to this heading">¶</a></h2>
+<p>When the driver loads a code file, it does so linearly, from top to bottom. First it processes any <a class="reference internal" href="preprocessor.html#preprocessor"><span class="std std-ref">pre-processor directives</span></a>, then it essentially goes down the file in order plopping things in memory as it needs to. It isn’t actually executing any code at this time, its just preparing it.</p>
+<p>A problem can arise if you try to call a function that hasn’t been defined yet. This will break:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">do_something</span><span class="p">();</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">do_something</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">//&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To get around this, we have two options:</p>
+<p>First, We can define the function before the function that calls it. Sometimes this is fine, but sometimes it can make the code look disorganized.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">do_something</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">//&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">status</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">do_something</span><span class="p">();</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Second, we can use a prototype to tell the driver there will eventually be a function with a given type, name, and argument(s) if applicable, its a single line and is often easy to put a bunch of them towards the top of the file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">prototype</span><span class="o">.</span> <span class="n">Notice</span> <span class="n">it</span> <span class="n">has</span> <span class="n">no</span> <span class="p">{}</span> <span class="n">to</span> <span class="n">define</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">code</span>
+<span class="o">//</span><span class="ow">and</span> <span class="n">ends</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">semi</span><span class="o">-</span><span class="n">colon</span><span class="o">.</span>
+<span class="n">void</span> <span class="n">do_something</span><span class="p">();</span>
+
+<span class="n">status</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">do_something</span><span class="p">();</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">do_something</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">//&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Since the driver works in a linear fashion, it sees the prototype and allocates some memory for it, then when it comes across the call in <code class="code docutils literal notranslate"><span class="pre">main()</span></code> it knows that it’s legitimate and doesn’t throw an error.</p>
+<p>Another purpose of declaring prototypes is when you are writing a file that you intend for something else to inherit later on, you might require that future file to override a specific function, but you don’t want it to do anything in the inheritable itself. By prototyping it, you can still use it in all your code as if it existed, and rely on the person writing the file that inherits it to flesh the function out appropriately (presuming they know that because you properly documented it somewhere!).</p>
+</section>
+<section id="recursive-functions">
+<h2>Recursive Functions<a class="headerlink" href="#recursive-functions" title="Link to this heading">¶</a></h2>
+<p>Recursive functions are functions that call themselves. This is common when a function wants to process things in chunks, the first call can have the function break it into chunks, then it calls itself with each chunk to break it down further. It can also be used when the final result is depdenent on results it gets in intermediary steps.</p>
+<p>A good example of this is a factorial function to calculate the factorial of an integer.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>int factorial(int x)
+{
+  //Can&#39;t factorial a negative number.
+  if(x &lt; 0) return 0;
+
+  //Factorial of 1 or 0 is 1.
+  if(x == 1 || !x) return 1;
+
+  //Otherwise return the value times the value one less than itself.
+  return x * factorial(x-1);
+}
+</pre></div>
+</div>
+<p>This function will essentially loop.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="n">will</span> <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="n">returns</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="n">returns</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">returns</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>So if you then substitute the function call with the result over and over you’ll see the function ends up doing 4 * 3 * 2 * 1 and you get the correct answer, 24.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Recursive functions can be powerful, but they can also lead to a system crash. Notice in the factorial eventually the argument, due to the x-1 bit, will reach 1 or 0. If a recursive function doesn’t have a way to guarantee it will eventually end, you will have an infinite recursion, a series of function calls that never end, but will consume resources until the system crashes. This is BAD! There are safety checks built into the driver but they are not fool-proof and do not catch everything that could go wrong, so be careful!</p>
+</div>
+</section>
+</section>
+<section id="important-functions">
+<h1>Important Functions<a class="headerlink" href="#important-functions" title="Link to this heading">¶</a></h1>
+<section id="create-function">
+<h2>Create Function<a class="headerlink" href="#create-function" title="Link to this heading">¶</a></h2>
+<p>The function <code class="code docutils literal notranslate"><span class="pre">create()</span></code> is a special function that is called by the driver whenever an object is created (i.e. loaded into memory). This function is where you want to put any code that needs to be run when the object is first created, such as initializing variables, setting up default states, etc.</p>
+<p>Note that its called only once when the object is loaded into memory, and this applies to both the blueprint and the clone. So, for instance, if you have the unloaded file ‘ball.c’ from earlier, and you clone it, <code class="code docutils literal notranslate"><span class="pre">create()</span></code> will be called once in the blueprint when the file is first loaded, then again in the cloned copy when it is first made. If you then clone the file subsequent times, it will not be called in the blueprint again, but it will be called in <em>each</em> clone as it is created.</p>
+<p>It is called on <em>all</em> loadable objects, whether they inherit something or not.</p>
+<p>If you want to call the code inside anything that this object inherits, remember you need to explicitly call it using <code class="code docutils literal notranslate"><span class="pre">::create();</span></code> inside your own <code class="code docutils literal notranslate"><span class="pre">create()</span></code> function.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">my_var</span><span class="p">;</span>
+<span class="n">status</span> <span class="n">is_active</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span> <span class="o">//</span><span class="n">Call</span> <span class="n">the</span> <span class="n">inherited</span> <span class="n">create</span><span class="p">()</span> <span class="n">first</span> <span class="n">so</span> <span class="n">it</span> <span class="n">can</span> <span class="n">do</span> <span class="nb">any</span> <span class="n">setup</span> <span class="n">work</span><span class="o">.</span>
+
+  <span class="o">//</span><span class="n">Initialize</span> <span class="n">variables</span><span class="o">.</span>
+  <span class="n">my_var</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="n">is_active</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="init-function">
+<h2>Init Function<a class="headerlink" href="#init-function" title="Link to this heading">¶</a></h2>
+<p>The function <code class="code docutils literal notranslate"><span class="pre">init()</span></code> is another special function that is called by the driver whenever a living object (player or mob) comes into contact with the object containing the <code class="code docutils literal notranslate"><span class="pre">init()</span></code> function. This is where you want to put any code that needs to be run when a player or mob interacts with the object, such as adding commands via <code class="code docutils literal notranslate"><span class="pre">add_action()</span></code>.</p>
+<p>Note that unlike <code class="code docutils literal notranslate"><span class="pre">create()</span></code>, which is called only once per object load, <code class="code docutils literal notranslate"><span class="pre">init()</span></code> is called every time a living object comes into contact with the object. This means if a player enters a room containing an object with an <code class="code docutils literal notranslate"><span class="pre">init()</span></code> function, it will be called for that player. If another player enters the same room, it will be called again for that player.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> is the <code class="code docutils literal notranslate"><span class="pre">living()</span></code> that caused the <code class="code docutils literal notranslate"><span class="pre">init()`</span></code> to be called.</p>
+<p>This also means if a player enters a room with a monster and 12 items on the floor, the <code class="code docutils literal notranslate"><span class="pre">init()</span></code> function is called on the player once for each living item in the room (in this case the single monster) with the monster set to <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>, as well as once on the monster and once on each of the 12 items in the room with the player set to <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code>.</p>
+<p>When adding actions, if its on an object in a room or otherwise in a situation where another living could be calling <code class="code docutils literal notranslate"><span class="pre">init()</span></code>, it’s also good practice to ensure that <code class="code docutils literal notranslate"><span class="pre">this_player()</span></code> is indeed a player and not a monster, as generally monsters can’t use the command anyway so its wasted overhead.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">init</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">init</span><span class="p">();</span> <span class="o">//</span><span class="n">Call</span> <span class="n">the</span> <span class="n">inherited</span> <span class="n">init</span><span class="p">()</span> <span class="n">first</span> <span class="n">so</span> <span class="n">it</span> <span class="n">can</span> <span class="n">do</span> <span class="nb">any</span> <span class="n">setup</span> <span class="n">work</span><span class="o">.</span>
+
+  <span class="o">//</span><span class="n">Only</span> <span class="n">add</span> <span class="n">actions</span> <span class="k">for</span> <span class="n">players</span><span class="p">,</span> <span class="ow">not</span> <span class="n">mobs</span><span class="o">.</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">is_player</span><span class="p">(</span><span class="n">this_player</span><span class="p">()))</span>
+    <span class="n">add_action</span><span class="p">(</span><span class="s2">&quot;do_action&quot;</span><span class="p">,</span><span class="s2">&quot;action&quot;</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="reset-function">
+<h2>Reset Function<a class="headerlink" href="#reset-function" title="Link to this heading">¶</a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">reset()</span></code> function is called at two major junctions in an objects lifespan; after <code class="code docutils literal notranslate"><span class="pre">create()</span></code> is finished running, so once not long after the object is loaded/cloned, and then periodically thereafter based on the reset interval.</p>
+<p>For this reason, <code class="code docutils literal notranslate"><span class="pre">reset()</span></code> is where you want to put any code that needs to be run periodically to refresh the state of the object, such as respawning items/monsters in a room, resetting variables, etc.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">reset()</span></code> is <em>generally</em> not defined in any inheritables, so you normally do not need to do a <code class="code docutils literal notranslate"><span class="pre">::reset();</span></code> call inside your own <code class="code docutils literal notranslate"><span class="pre">reset()</span></code> function, but it’s good practice to check the inherited code first to be sure.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">reset</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Respawn</span> <span class="n">a</span> <span class="n">monster</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">already</span> <span class="n">present</span><span class="o">.</span> <span class="n">add_clone</span><span class="p">()</span> <span class="ow">in</span> <span class="n">rooms</span> <span class="n">already</span>
+  <span class="o">//</span><span class="n">checks</span> <span class="k">for</span> <span class="n">existing</span> <span class="n">presence</span> <span class="n">so</span> <span class="n">no</span> <span class="n">need</span> <span class="n">to</span> <span class="n">do</span> <span class="n">so</span> <span class="n">here</span><span class="o">.</span>
+  <span class="n">add_clone</span><span class="p">(</span><span class="s2">&quot;goblin.c&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">Lets</span> <span class="n">also</span> <span class="n">reset</span> <span class="n">the</span> <span class="n">variable</span> <span class="n">that</span> <span class="n">tracks</span> <span class="k">if</span> <span class="n">they</span> <span class="n">found</span> <span class="n">the</span> <span class="n">secret</span>
+  <span class="o">//</span><span class="n">door</span> <span class="n">by</span> <span class="n">searching</span> <span class="n">the</span> <span class="n">wall</span><span class="o">...</span>
+  <span class="n">found_secret_door</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Functions</a><ul>
+<li><a class="reference internal" href="#declaring-functions">Declaring Functions</a></li>
+<li><a class="reference internal" href="#calling-functions">Calling Functions</a></li>
+<li><a class="reference internal" href="#prototypes">Prototypes</a></li>
+<li><a class="reference internal" href="#recursive-functions">Recursive Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#important-functions">Important Functions</a><ul>
+<li><a class="reference internal" href="#create-function">Create Function</a></li>
+<li><a class="reference internal" href="#init-function">Init Function</a></li>
+<li><a class="reference internal" href="#reset-function">Reset Function</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="mappings.html"
+                          title="previous chapter">Mappings</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="control_structures.html"
+                          title="next chapter">Control Structures</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="control_structures.html" title="Control Structures"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mappings.html" title="Mappings"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Functions</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

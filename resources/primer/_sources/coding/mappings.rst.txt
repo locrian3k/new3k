@@ -1,0 +1,330 @@
+Mappings
+========
+
+Mappings are a very powerful, very commonly used variable type and allow you to do some pretty cool things if you design them properly. They're so cool they even got their own page!
+
+Every mapping is wrapped in ([ ]) to designate it, much like arrays are wrapped in ({ }).
+
+A mapping is made up of at least two parts, a key and a value. A key must have at least one value, but can have many more if needed.
+
+The general format for a mapping is: ([ key : value0; value1; value2; ...; valueN ]) and each value place is referred to as a column.
+
+Keys can be of any :ref:`type <Types>` that qualify for :ref:`mixed <Mixed>`.
+
+Values can be any valid type, including arrays or other mappings.
+
+.. note::
+  In the event you use arrays or mappings as values inside a mapping, you can make your life easier by writing functions that grab individual column values from the mapping, otherwise the stacked index operators can become very overwhelming; you end up with things like map[key,4][0][1].
+
+There are also size limits imposed by the driver, which are configurable when the driver is compiled. At time of this writing, the limits for mappings on the 64-bit driver are 100,000 keys in a single mapping, and 30,000 values per key. Keep this in mind if you are designing something that is extremely data heavy.
+
+Mapping Declaration
+-------------------
+
+To begin with, you declare a mapping like most variables:
+
+.. code-block::
+
+  mapping m;
+
+Mapping Initialization
+----------------------
+
+You can then initialize it to an empty mapping:
+
+.. code-block::
+
+  mapping m;
+  m = ([]);
+
+You can also initialize it to preset values:
+
+.. code-block::
+
+  mapping m;
+  m = ([ "alpha" : 1, "beta" : 2 ]);
+
+It is considered good practice to comment with the format of the mapping above the declaration so future readers can see how its laid out.
+
+.. code-block::
+
+  //([ alpha_name : pos_in_alphabet ])
+  mapping m;
+
+  //If you have a lot of elements, you can even provide a numbering scheme
+  //to make it easier when referencing them later in code by [key,index]
+  //                       0           1      2      3
+  //([ alpha_name : pos_in_alphabet, votes, likes, usage ])
+  mapping m;
+
+
+There is also a function :code:`mkmapping()` which does much of the same for initializing, but its generally not used as this format is much faster; its only real use case if you already have large arrays of keys and equally sized arrays for each column of values.
+
+Finally there is :code:`m_allocate(n, width)` which will generate a mapping with anticipated number of keys <n> and a width (column of values).
+
+:code:`m_allocate(5, 2);` would make an empty mapping that, for memory footprint purposes, anticipates 5 keys soon, and each key will have two values.
+
+The only purpose of this really is if you're going to be dumping data into a mapping and you know fairly close to how many keys you will be utilizing so the driver can allocate a nice contiguous block right from the start, otherwise since mappings can grow/shrink dynamically, it may have to relocate the entire chunk in memory if it runs out of space.
+
+You can also create an empty mapping with a preset width by using the ([:width ]); format.
+
+.. code-block::
+
+  mapping m;
+  m = ([:5]); //An empty mapping with 5 columns.
+  m = m_allocate(0,5); //Functionally the same.
+
+Mapping Addition
+----------------
+
+Adding a new key to a mapping is very simple.
+
+.. code-block::
+
+  m += ([ new_key : new_value, new_value2, ... ]);
+
+Mapping Subtraction
+-------------------
+
+To delete a key completely from a mapping you can do it multiple ways:
+
+.. code-block::
+
+  m -= ([ key ]);
+  m -= ([ key1, key2, key3, ... ]);
+  m = m_delete(m,key);
+
+.. warning::
+  The man files will tell you that you don't need to do the assignment like m = m_delete(m,key) because mappings are by reference. In practice, however, this is incorrect. m_delete(m,key) does not actually change the underlying mapping m. This may be due to a compiler setting in the driver, but I am unsure.
+
+Mapping Indexing
+----------------
+
+Accessing a value stored in a mapping is done using the :ref:`Index Operators` much like an array.
+
+To access the first value (column 0), no column value need be passed. To access any other values for a given key, you must pass the column index in addition to the key.
+You also can pass column ranges as well just like arrays.
+
+.. code-block::
+
+  mapping m;
+  m = ([ "Tom": 5; 4; "red" ]);
+
+  m["Tom"];
+  Result: 5
+
+  m["Tom",2];
+  Result: "red"
+
+  //Note that for index ranges, it returns an array. **This only works on newer driver versions!
+  m["Tom",0..1];
+  Result: ({ 5, 4 })
+
+If there is no such key in the mapping it will simply return 0.
+If there is no such key in the mapping and you pass a value for the column number greater than 0, it will return an 'Illegal index' error.
+
+Sometimes you might need to know all the keys of a mapping. Keys are also called indexes, so we can use a function called :code:`m_indices()`.
+
+.. code-block::
+
+  mapping m;
+  //The keys will be an array, so make sure we use *
+  string *keys;
+
+  //([ name: age ])
+  m = ([ "Bob": 10; "Tom": 22; "Frank" : 6 ])
+
+  keys = m_indices(m);
+  Result: keys == ({ "Bob", "Tom", "Frank" })
+
+Similarly, you might want just the values (not very useful in my opinion, but I'm sure there's reasons...) so there also exists :code:`m_values()`.
+
+.. code-block::
+
+  mapping m;
+  //The vals will be an array, so make sure we use *
+  int *vals;
+
+  //([ name: age ])
+  m = ([ "Bob": 10; "Tom": 22; "Frank" : 6 ])
+
+  vals = m_values(m);
+  Result: vals == ({ 10, 22, 6 })
+
+  //This also would work if you had multiple values per key, but note
+  //that the above method will always return column 0 whether its the
+  //only column or not.
+
+  vals = m_values(m,0);
+  Result: vals == ({ 10, 22, 6 })
+
+  //If we pass a column number higher than the mapping contains, BOOM!
+  vals = m_values(m,4);
+  Result: Illegal index 4 to m_values(): should be in 0..0
+
+
+Mapping Key Existence
+---------------------
+
+The easiest way to check for a mapping key's existence, based on the above, is to simply index it. If it returns 0, then it isn't in the mapping.
+
+.. note::
+  This only works if you are sure that the value stored in column 0 can never be 0. If it can be, then this method is unreliable.
+
+.. code-block::
+
+  mapping m;
+  m = ([ "Tom": 5; 4; "red" ]);
+
+  m["Bob"];
+  Result: 0
+
+  m["Bob",1];
+  Result: Illegal index error!
+
+However, the value stored in column 0 can often *be* 0 even if the key exists. So to check if a key doesn't exist without relying on checking for 0, you can also use the :code:`member()` function which will return 1 if the key exists, and 0 if it doesn't, even if [key,0] *is* 0.
+
+.. code-block::
+
+  member(m, "Bob");
+  Result: 0
+
+  member(m, "Tom");
+  Result: 1
+
+Mapping Copy
+------------
+
+Since mappings are technically by reference, simply passing the mapping to another function that might change the values isn't always the greatest idea. If you want to provide a function with its own copy of the data held inside the mapping rather than the mapping reference itself, use :code:`copy()`.
+
+.. code-block::
+
+  mapping m;
+  m = ([ "Tom": 5; 4; "red" ]);
+
+  //This ensures any external code calling to view the mapping is
+  //getting a copy not the original.
+  mapping query_mapping() { return copy(m); }
+
+Mapping Size
+------------
+
+There's a few ways to judge how big a mapping is, and part of the question is how are you measuring it. Do you want to know how many key:value pairs (which is the same as how many keys) exist? Or do you want to know how wide it is (the number of columns)?
+
+Luckily there exists functions for both cases.
+
+:code:`sizeof()` which is useful on lots of variable types returns how many keys there are.
+:code:`widthof()` returns how many columns the mapping has.
+
+.. code-block::
+
+  mapping m;
+  m = ([ "Tom": 5; 4; "red" ]);
+
+  sizeof(m);
+  Result: 1
+
+  //Note that this returns the actual number of columns even though columns
+  //are 0 index. So the column numbers are always 0..(widthof()-1)
+  widthof(m);
+  Result: 3
+
+Mapping Iteration
+-----------------
+
+Mappings are not ordered lists, they are essentially kept in a random order. It may not appear this way if you interact with them long enough, you'll notice they tend to be in the same order you entered them in, but that is not a guaranteed thing.
+
+As such, it doesn't always make sense to iterate over them, but sometimes you need to. For instance if you want to output a list of every key and value pair in a nice formatted manner.
+
+You also need to determine if you care about the order of the output. If you do, you'll need to grab the keys (indices) first and sort those, then iterate over that list to access the data.
+
+Then lastly you'll need to determine if you want to access the data in a loop, if you want to pass every key:value(s) to a function to filter the results, or if you want to pass them to a function to change the mapping itself.
+
+Lets start with a simple iteration using a for loop and a :code:`foreach()` loop. Foreach also allows us to get the key and values in one swift motion. Loops can also be found in :ref:`Control Structures`.
+
+.. code-block::
+
+  mapping m;
+  int i, s;
+  string *indices;
+
+  //([ name : age; grade ])
+  m = ([ "Bob": 10; 4, "Tom": 12; 6, "Frank" : 7; 1 ])
+
+  //Get how many keys there are.
+  s = sizeof(m);
+  indices = m_indices(m);
+
+  //Loop over them in a normal for loop.
+  for(i = 0; i < s; i++)
+  {
+    printf("%s is %d in grade %d.\n",
+      indices[i], m[indices[i],0], m[indices[i],1]);
+  }
+
+  Result:
+    Bob is 10 in grade 4.
+    Tom is 12 in grade 6.
+    Frank is 7 in grade 1.
+
+  //Using the same m above, lets use a foreach() to see how its simpler.
+  string key;
+  int a, b;
+
+  foreach(key, a, b : m)
+  {
+    printf("%s is %d in grade %d.\n", key, a, b);
+  }
+
+  Result:
+    Bob is 10 in grade 4.
+    Tom is 12 in grade 6.
+    Frank is 7 in grade 1.
+
+  //Now what if we wanted to sort them alphabetically first?
+
+  //We already grabbed the indices above so lets order that array.
+  indices = sort_array(indices, #'>/*'*/);
+
+  //Now loop through with the foreach again.
+  foreach(key : indices)
+  {
+    //Because we're iterating the indices array not the mapping, we can't
+    //automatically get the values, so we'll have to index them.
+    printf("%s is %d in grade %d.\n", key, m[key], m[key,1]);
+  }
+
+  Result:
+    Bob is 10 in grade 4.
+    Frank is 7 in grade 1.
+    Tom is 12 in grade 6.
+
+  //What if we want to filter the mapping to exclude people under age 10?
+
+  //First we would need a function to check the age.
+  status under_10(string key, int *vals) { return vals[0] < 10; }
+
+  m = filter(m, #'under_10/*'*/);
+
+  Result: m == ([ "Bob": 10; 4, "Tom": 12; 6 ])
+
+  //Now lets try using map(). This function gets the key/value pairs, and
+  //passes them to a function you specify. The result of that function
+  //is then applied to the mapping's index [key,0], overwriting what
+  //was there. This isn't always useful on multi-value mappings but on
+  //single column mappings it can be used a lot. Or it can generate
+  //a new mapping for you with a single column of data based on the
+  //function return.
+
+  //In this case lets have it generate a completely new mapping in
+  //the format ([ name : grade ])
+
+  //First make the function to pass the grade back.
+  int get_grade(string key, int *vals) { return vals[1]; }
+
+  mapping new;
+  new = map(m, #'get_grade/*'*/);
+
+  Result: new == (["Bob": 4, "Tom": 6 ])
+
+As you can see, mappings are extremely versitile and can give you a lot of power when you need to keep track of things by an indexed value. Many things in the MUD use mappings to track data, or to aggregate it for display.

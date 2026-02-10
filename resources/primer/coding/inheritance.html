@@ -1,0 +1,214 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Inheritance &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Code Style" href="codestyle.html" />
+    <link rel="prev" title="Preprocessor" href="preprocessor.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="codestyle.html" title="Code Style"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="preprocessor.html" title="Preprocessor"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Inheritance</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="inheritance">
+<h1>Inheritance<a class="headerlink" href="#inheritance" title="Link to this heading">¶</a></h1>
+<p>If you think about some of the code you interact with as a player, you might realize that there’s a <em>lot</em> of stuff that has, at its core, the same functionality amongst all of the similar stuff. For instance, every room has a short, long, exits, light on/off, things you can look at or examine, so on and so forth.</p>
+<dl class="simple">
+<dt>To replicate the code amongst every single item there’s only 3 real options:</dt><dd><ol class="arabic simple">
+<li><p>Copy and paste the core code into every single file that needs it. Good gravy that would make the MUD take up a ton of space with an insane amount of replicated code, and would make every file gigantic when loaded into memory, so we get hit both on space and memory at once!</p></li>
+<li><p>#include the code from a single file for each type of stuff. This is better as not every file has the same code replicated on disk space, but in memory every file sure does, so we’re still getting hit on memory!</p></li>
+<li><p>Use inheritance. The code physically only exists once, and only one copy is loaded into memory regardless of how many objects inherit it.</p></li>
+</ol>
+</dd>
+</dl>
+<p>By using inheritance we get the benefits of minimal disk usage and minimal memory usage, no matter if 1 file inherits the original code, or 5,000 files inherit it. That original code is still loaded once. However, every file that inherits it gets its own copy of the variables, which is important!</p>
+<p>In some programming languages this is referred to as classes, but the way its implemented in LPC is not entirely the same as any other language that I’m aware of. Its somewhat watered down and simplified to make the coding experience easier (and more tailored to how MUDs actually use inheritance in practice).</p>
+<p>To inherit a file is extremely easy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">You</span> <span class="n">can</span> <span class="n">end</span> <span class="n">the</span> <span class="n">file</span> <span class="ow">in</span> <span class="o">.</span><span class="n">c</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">,</span> <span class="n">the</span> <span class="n">driver</span> <span class="n">doesn</span><span class="s1">&#39;t care.</span>
+<span class="n">inherit</span> <span class="s2">&quot;file_path&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>That’s it. One simple little line.</p>
+<p>Stop and really reflect on how cool that is. At the time of writing this, the inheritable room file used by <em>every</em> room in 3Kingdoms is around 36kb and 1395 lines of code. By simply doing <code class="code docutils literal notranslate"><span class="pre">inherit</span> <span class="pre">&quot;/room/room&quot;;</span></code> your code now has access to <em>every</em> function and variable defined in that file (subject to <a class="reference internal" href="modifiers.html#modifiers"><span class="std std-ref">modifiers</span></a>). You typed 21 characters and access 36kb of code without breaking a sweat. Pretty cool, huh?</p>
+<p>Since the driver only loads copies of the variables into memory for each file that inherits, it also drastically cuts down on the memory usage as it doesn’t need to hold copies of the same function for every single file inheriting, which is tremendously efficient.</p>
+<p>As the underlying code sometimes has things you will need to reference, this is where the :: <a class="reference internal" href="operators.html#operators"><span class="std std-ref">operator</span></a> comes into play. By using that before a function name, you are telling the compiler to call the function referenced but inside the inherited file, instead of the local file.</p>
+<p>Most commonly this is done in functions like <code class="code docutils literal notranslate"><span class="pre">create()</span></code> as when your file is loaded, <code class="code docutils literal notranslate"><span class="pre">create()</span></code> is automatically called in your file, but not the inherited file, so you’ll do <code class="code docutils literal notranslate"><span class="pre">::create();</span></code> <em>inside</em> your <code class="code docutils literal notranslate"><span class="pre">create()</span></code> to give the inheritable a chance to run its code, which looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="o">//</span><span class="n">Now</span> <span class="n">you</span> <span class="n">can</span> <span class="n">do</span> <span class="nb">all</span> <span class="o">*</span><span class="n">your</span><span class="o">*</span> <span class="n">create</span> <span class="n">code</span> <span class="n">here</span><span class="o">.</span>
+  <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="n">You</span> <span class="n">can</span> <span class="n">also</span> <span class="k">pass</span> <span class="n">arguments</span> <span class="k">if</span> <span class="n">desired</span><span class="p">:</span>
+<span class="n">void</span> <span class="n">drop</span><span class="p">(</span><span class="n">status</span> <span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="p">::</span><span class="n">drop</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Sometimes this is critical as there may be things in the inherited function that <em>have</em> to fire before your code can, and not doing that can really muck it up.</p>
+<section id="multiple-inheritance">
+<h2>Multiple Inheritance<a class="headerlink" href="#multiple-inheritance" title="Link to this heading">¶</a></h2>
+<p>Another feature of inheritance that is useful in certain cases is that you can inherit multiple different files at the same time. This comes with its own caveats, and is used in a few select areas in the core mudlib, but not very often in individual wizards code.</p>
+<p>When you do multiple inheritance, you need to sometimes modify how you use the :: operator so that it points to the correct file. You can put the path of the inherited file, or the name, in quotes before :: to specify. This method also allows wildcards “?” and “*” to represent single characters and any character, respectively.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inherit</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="n">inherit</span> <span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+<span class="n">inherit</span> <span class="s2">&quot;baz&quot;</span><span class="p">;</span>
+<span class="n">inherit</span> <span class="s2">&quot;ball&quot;</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">create</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Calls</span> <span class="o">*</span><span class="n">both</span><span class="o">*</span> <span class="n">bar</span><span class="p">::</span><span class="n">create</span><span class="p">()</span> <span class="ow">and</span> <span class="n">baz</span><span class="p">::</span><span class="n">create</span><span class="p">()</span>
+  <span class="s2">&quot;ba?&quot;</span><span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="o">//</span><span class="n">Calls</span> <span class="n">bar</span><span class="p">::</span><span class="n">create</span><span class="p">(),</span> <span class="n">baz</span><span class="p">::</span><span class="n">create</span><span class="p">(),</span> <span class="ow">and</span> <span class="n">ball</span><span class="p">::</span><span class="n">create</span><span class="p">()</span>
+  <span class="s2">&quot;ba*&quot;</span><span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="o">//</span><span class="n">Calls</span> <span class="n">create</span><span class="p">()</span> <span class="ow">in</span> <span class="o">*</span><span class="n">every</span><span class="o">*</span> <span class="n">inherited</span> <span class="n">file</span>
+  <span class="s2">&quot;*&quot;</span><span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="o">//</span><span class="n">Calls</span> <span class="n">ball</span><span class="p">::</span><span class="n">create</span><span class="p">()</span> <span class="k">as</span> <span class="n">it</span> <span class="n">was</span> <span class="n">the</span> <span class="n">last</span> <span class="n">file</span> <span class="n">inherited</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">();</span>
+
+  <span class="o">//</span><span class="n">You</span> <span class="n">can</span> <span class="n">only</span> <span class="k">pass</span> <span class="n">arguments</span> <span class="k">for</span> <span class="n">the</span> <span class="p">::</span> <span class="nb">format</span> <span class="k">with</span> <span class="n">nothing</span> <span class="n">to</span> <span class="n">the</span>
+  <span class="o">//</span><span class="n">left</span><span class="p">,</span> <span class="ow">or</span> <span class="k">if</span> <span class="n">the</span> <span class="n">string</span> <span class="n">to</span> <span class="n">the</span> <span class="n">left</span> <span class="n">has</span> <span class="n">no</span> <span class="n">wildcards</span><span class="o">.</span>
+  <span class="p">::</span><span class="n">create</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+  <span class="s2">&quot;baz&quot;</span><span class="p">::</span><span class="n">create</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+
+  <span class="o">//</span><span class="n">This</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">work</span><span class="p">:</span>
+  <span class="s2">&quot;ba*&quot;</span><span class="p">::</span><span class="n">create</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As mentioned briefly above, it is important to realize that modifiers can impact what you have access to in the inheritable file. Generally you can access anything as everything defaults to public/visible/etc. However, anything that is declared as private will not be visible at all in your file.</p>
+</div>
+</section>
+<section id="overloading">
+<h2>Overloading<a class="headerlink" href="#overloading" title="Link to this heading">¶</a></h2>
+<p>Overloading is not what happens when you put too much code in your file and it looks like its 300 pages long (thats called bloat), but overloading is directly related to inheritance.</p>
+<p>Imagine if you will that your file inherits a file named ‘A’. File ‘A’ defines a function called <code class="code docutils literal notranslate"><span class="pre">calculate_cost()</span></code>. Your file <em>also</em> defines a function called <code class="code docutils literal notranslate"><span class="pre">calculate_cost()</span></code>. Your function is said to have overloaded A’s function, because it quite literally is loaded/given preference <em>OVER</em> A’s function.</p>
+<p>You already witnessed this in the examples above, we were overloading <code class="code docutils literal notranslate"><span class="pre">create()</span></code> in both of those examples, as they were already defined in the inherited object(s) and we had to use <code class="code docutils literal notranslate"><span class="pre">::`</span></code> to call their version.</p>
+<p>You cannot overload a function in an inherited file if the function is modified with the ‘nomask’ <a class="reference internal" href="modifiers.html#modifiers"><span class="std std-ref">modifier</span></a>.</p>
+<p>When the driver is asked to call a function in any file, whether it inherits anything else or not, it always starts looking for the function in the top of the stack. If D inherits C inherits B inherits A, D is the top of the stack as nothing inherits it, so the driver will call the function in D first <em>if</em> it exists. If it doesn’t, then it will try C, then B, then A if it is found. If none of them contain the function, then it simply returns 0.</p>
+<p>For this reason, if you want your function to be the <em>only</em> function that is called, and you don’t want to run the function in any of the inherited files, you simply need to <em>not</em> use <code class="code docutils literal notranslate"><span class="pre">::function()</span></code> in your function and none of functions you overload will ever be called.</p>
+<p>So how do you know if you should call the inherited function with :: or not? Like how do you know to do <code class="code docutils literal notranslate"><span class="pre">::create()</span></code> in a room, or a weapon? Generally nothing in the code itself tells you. You either have to go read the file that you want to inherit to see what the function actually does, or you’ll hope a man file on how to code the type of thing you’re coding tells you if you need to (or shows it via example).</p>
+</section>
+<section id="predefined-inheritables">
+<h2>Predefined Inheritables<a class="headerlink" href="#predefined-inheritables" title="Link to this heading">¶</a></h2>
+<p>3Kingdoms has, over the years, generated a good size library of predefined inheritables to make our wizards time more productive by not replicating code. These include rooms, weapons, armor, objects, monsters, containers (bags, etc), boxes (house boxes, guild boxes), food, drink, guns, scrolls, torches, and more.</p>
+<p>To access these you simply ‘inherit’ the file into your file, using the proper filepath to point at the predefined file you want.</p>
+<p>For details on what each file can do, you either read the file in whole to see what it all includes, or some more used ones have ‘man’ files that can be read as a wizard to get details on what you need/don’t need/are able to call/set/do with them.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One important note for 99.9% of the predefined inheritables is you should not be directly accessing any of the variables there-in in your code. You should be using the appropriate provided functions, usually in the form of <code class="code docutils literal notranslate"><span class="pre">set_&lt;var&gt;()</span></code> or <code class="code docutils literal notranslate"><span class="pre">query_&lt;var&gt;()</span></code> to access them. This is intentional and not doing so can result in wonky outcomes.</p>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Inheritance</a><ul>
+<li><a class="reference internal" href="#multiple-inheritance">Multiple Inheritance</a></li>
+<li><a class="reference internal" href="#overloading">Overloading</a></li>
+<li><a class="reference internal" href="#predefined-inheritables">Predefined Inheritables</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="preprocessor.html"
+                          title="previous chapter">Preprocessor</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="codestyle.html"
+                          title="next chapter">Code Style</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="codestyle.html" title="Code Style"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="preprocessor.html" title="Preprocessor"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Inheritance</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

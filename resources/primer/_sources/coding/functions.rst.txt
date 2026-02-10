@@ -1,0 +1,293 @@
+Functions
+=========
+
+Functions are a structure that can be called in code, may optionally take one or more arguments, and returns a value whose type must match the function declaration, unless the function is declared void in which case nothing is returned.
+
+The purpose of a function is to give structure to code and to containerize code that might be called repeatedly. In general, almost all code must be contained inside functions. The exceptions to this are :ref:`pre-processor directives <preprocessor>`, :ref:`inheritance statements <inheritance>`, :ref:`global variable <Global Variables>` declarations, and :ref:`function prototypes <Prototypes>`.
+
+Variables inside functions are strictly limited by their :ref:`Variable Scope`.
+
+It is important that a function that returns a value does so matching the return type specified in its declaration or you will throw an error for an 'Unexpected type'. Simply, if you say you're going to return an integer and instead return a float, the driver is not going to be happy.
+
+Declaring Functions
+-------------------
+
+Functions take the following declarative form:
+
+.. code-block::
+
+  //For functions with no arguments that return a value.
+
+  <modifier> <type> <function_name>()
+  {
+    <code>
+    return <value>; //Must be of <type>
+  }
+
+  //For functions with argument(s) that return a value.
+
+  <modifier> <type> <function_name>(<arg type> <arg>, <arg type2> <arg2>, ...)
+  {
+    <code>
+    return <value>; //Must be of <type>
+  }
+
+  //If a function is void then it returns nothing so the return is
+  //a little different; and technically optional but it's good
+  //practice to include the return to be explicit.
+
+  <modifier> void <function_name>()
+  {
+    <code>
+    return; //Void so we literally return nothing.
+  }
+
+<modifier> is one or more special keywords that limit the functions scope, allow it to accept variable numbers of arguments, or limit its masking. See :ref:`Modifiers` for more details.
+
+<type> must be a valid type as listed in :ref:`types <Types>`.
+
+Calling Functions
+-----------------
+
+To call a function that is in the same code file (or a file that is included with the #include :ref:`preprocessor directive <preprocessor>`), you simply type the function name and any arguments:
+
+.. code-block::
+
+  my_function(args);
+
+To call a function inside another object, you need to use either :code:`call_other()` or the -> :ref:`operator <operators>`.
+
+.. code-block::
+
+  some_other_obj->its_function(args);
+  //Or...
+  call_other(some_other_obj,"its_function",args);
+
+If we are using the #pragma strict_types :ref:`preprocessor directive <preprocessor>`, then we need to also type-cast any calls to other objects as such:
+
+.. code-block::
+
+  string s;
+
+  //Presuming its_function() is defined to return a string type...
+  s = (string)some_other_obj->its_function(args);
+  //Or...
+  s = (string)call_other(some_other_obj,"its_function",args);
+
+A fun feature of the 64-bit driver is that we can 'flatten' arrays when passed as an argument. What this means is you pass an array as an argument, if you put '...' after it, rather than sending the array as a single big argument, it will send each element as a separate argument.
+
+For instance:
+
+.. code-block::
+
+  //Given the following array...
+  string *s = ({ "a", "b", "c" });
+
+  //The 'normal' way:
+  void my_func(string *s)
+  {
+    string a,b,c;
+
+    a = s[0] + "!";
+    b = s[1] + "!";
+    c = s[2] + "!";
+    return;
+  }
+
+  my_func(s);
+  Result: a == "a!", b == "b!", c == "c!"
+
+  //Using array flattening.
+
+  void my_func2(string a, string b, string c)
+  {
+    a += "!";
+    b += "!";
+    c += "!";
+    return;
+  }
+
+  my_func(s...);
+  Result: a == "a!", b == "b!", c == "c!"
+
+Prototypes
+----------
+
+When the driver loads a code file, it does so linearly, from top to bottom. First it processes any :ref:`pre-processor directives <preprocessor>`, then it essentially goes down the file in order plopping things in memory as it needs to. It isn't actually executing any code at this time, its just preparing it.
+
+A problem can arise if you try to call a function that hasn't been defined yet. This will break:
+
+.. code-block::
+
+  status main()
+  {
+    do_something();
+    return 1;
+  }
+
+  void do_something()
+  {
+    //<code>;
+    return;
+  }
+
+To get around this, we have two options:
+
+First, We can define the function before the function that calls it. Sometimes this is fine, but sometimes it can make the code look disorganized.
+
+.. code-block::
+
+  void do_something()
+  {
+    //<code>;
+    return;
+  }
+
+  status main()
+  {
+    do_something();
+    return 1;
+  }
+
+Second, we can use a prototype to tell the driver there will eventually be a function with a given type, name, and argument(s) if applicable, its a single line and is often easy to put a bunch of them towards the top of the file.
+
+.. code-block::
+
+  //This is the prototype. Notice it has no {} to define the actual code
+  //and ends in a semi-colon.
+  void do_something();
+
+  status main()
+  {
+    do_something();
+    return 1;
+  }
+
+  void do_something()
+  {
+    //<code>;
+    return;
+  }
+
+Since the driver works in a linear fashion, it sees the prototype and allocates some memory for it, then when it comes across the call in :code:`main()` it knows that it's legitimate and doesn't throw an error.
+
+Another purpose of declaring prototypes is when you are writing a file that you intend for something else to inherit later on, you might require that future file to override a specific function, but you don't want it to do anything in the inheritable itself. By prototyping it, you can still use it in all your code as if it existed, and rely on the person writing the file that inherits it to flesh the function out appropriately (presuming they know that because you properly documented it somewhere!).
+
+Recursive Functions
+-------------------
+
+Recursive functions are functions that call themselves. This is common when a function wants to process things in chunks, the first call can have the function break it into chunks, then it calls itself with each chunk to break it down further. It can also be used when the final result is depdenent on results it gets in intermediary steps.
+
+A good example of this is a factorial function to calculate the factorial of an integer.
+
+.. code-block::
+
+  int factorial(int x)
+  {
+    //Can't factorial a negative number.
+    if(x < 0) return 0;
+
+    //Factorial of 1 or 0 is 1.
+    if(x == 1 || !x) return 1;
+
+    //Otherwise return the value times the value one less than itself.
+    return x * factorial(x-1);
+  }
+
+This function will essentially loop. ::
+
+  factorial(4) will return 4 * factorial(3)
+  factorial(3) returns 3 * factorial(2)
+  factorial(2) returns 2 * factorial(1)
+  factorial(1) returns 1
+
+So if you then substitute the function call with the result over and over you'll see the function ends up doing 4 * 3 * 2 * 1 and you get the correct answer, 24.
+
+.. warning::
+  Recursive functions can be powerful, but they can also lead to a system crash. Notice in the factorial eventually the argument, due to the x-1 bit, will reach 1 or 0. If a recursive function doesn't have a way to guarantee it will eventually end, you will have an infinite recursion, a series of function calls that never end, but will consume resources until the system crashes. This is BAD! There are safety checks built into the driver but they are not fool-proof and do not catch everything that could go wrong, so be careful!
+
+Important Functions
+===================
+
+Create Function
+---------------
+
+The function :code:`create()` is a special function that is called by the driver whenever an object is created (i.e. loaded into memory). This function is where you want to put any code that needs to be run when the object is first created, such as initializing variables, setting up default states, etc.
+
+Note that its called only once when the object is loaded into memory, and this applies to both the blueprint and the clone. So, for instance, if you have the unloaded file 'ball.c' from earlier, and you clone it, :code:`create()` will be called once in the blueprint when the file is first loaded, then again in the cloned copy when it is first made. If you then clone the file subsequent times, it will not be called in the blueprint again, but it will be called in *each* clone as it is created.
+
+It is called on *all* loadable objects, whether they inherit something or not.
+
+If you want to call the code inside anything that this object inherits, remember you need to explicitly call it using :code:`::create();` inside your own :code:`create()` function.
+
+Example:
+
+.. code-block::
+
+  int my_var;
+  status is_active;
+
+  void create()
+  {
+    ::create(); //Call the inherited create() first so it can do any setup work.
+
+    //Initialize variables.
+    my_var = 10;
+    is_active = 1;
+
+    return;
+  }
+
+Init Function
+-------------
+
+The function :code:`init()` is another special function that is called by the driver whenever a living object (player or mob) comes into contact with the object containing the :code:`init()` function. This is where you want to put any code that needs to be run when a player or mob interacts with the object, such as adding commands via :code:`add_action()`.
+
+Note that unlike :code:`create()`, which is called only once per object load, :code:`init()` is called every time a living object comes into contact with the object. This means if a player enters a room containing an object with an :code:`init()` function, it will be called for that player. If another player enters the same room, it will be called again for that player.
+
+:code:`this_player()` is the :code:`living()` that caused the :code:`init()`` to be called.
+
+This also means if a player enters a room with a monster and 12 items on the floor, the :code:`init()` function is called on the player once for each living item in the room (in this case the single monster) with the monster set to :code:`this_player()`, as well as once on the monster and once on each of the 12 items in the room with the player set to :code:`this_player()`.
+
+When adding actions, if its on an object in a room or otherwise in a situation where another living could be calling :code:`init()`, it's also good practice to ensure that :code:`this_player()` is indeed a player and not a monster, as generally monsters can't use the command anyway so its wasted overhead.
+
+Example:
+
+.. code-block::
+
+  void init()
+  {
+    ::init(); //Call the inherited init() first so it can do any setup work.
+
+    //Only add actions for players, not mobs.
+    if(is_player(this_player()))
+      add_action("do_action","action");
+
+    return;
+  }
+
+Reset Function
+--------------
+
+The :code:`reset()` function is called at two major junctions in an objects lifespan; after :code:`create()` is finished running, so once not long after the object is loaded/cloned, and then periodically thereafter based on the reset interval.
+
+For this reason, :code:`reset()` is where you want to put any code that needs to be run periodically to refresh the state of the object, such as respawning items/monsters in a room, resetting variables, etc.
+
+:code:`reset()` is *generally* not defined in any inheritables, so you normally do not need to do a :code:`::reset();` call inside your own :code:`reset()` function, but it's good practice to check the inherited code first to be sure.
+
+Example:
+
+.. code-block::
+
+  void reset()
+  {
+    //Respawn a monster if not already present. add_clone() in rooms already
+    //checks for existing presence so no need to do so here.
+    add_clone("goblin.c",1);
+
+    //Lets also reset the variable that tracks if they found the secret
+    //door by searching the wall...
+    found_secret_door = 0;
+
+    return;
+  }

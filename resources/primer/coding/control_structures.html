@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Control Structures &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Modifiers" href="modifiers.html" />
+    <link rel="prev" title="Functions" href="functions.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modifiers.html" title="Modifiers"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="functions.html" title="Functions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Control Structures</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="control-structures">
+<h1>Control Structures<a class="headerlink" href="#control-structures" title="Link to this heading">¶</a></h1>
+<p>Control structures are keywords that affect the flow of the program. There are a few varieties:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Jump (ex: goto, continue, break)</p></li>
+<li><p>Conditionals (ex: if/else, switch)</p></li>
+<li><p>Loops (ex: for, foreach, while, do-while)</p></li>
+<li><p>Calls (ex: calling a function, call_out)</p></li>
+<li><p>Halts (ex: return)</p></li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using if/else, for, foreach, while, or do while, if you are only running a single line of code you do not need to encapsulate it in {}. However, if it is more than one line, then all lines need to be inside the brackets for each section.</p>
+</div>
+<section id="jumps">
+<h2>Jumps<a class="headerlink" href="#jumps" title="Link to this heading">¶</a></h2>
+<p>True jumps are used in some programming languages that allow labels and usually use a keyword like ‘goto’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">label</span> <span class="n">Start</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is an endless loop&quot;</span><span class="p">);</span>
+  <span class="n">goto</span> <span class="n">Start</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>LPC does not support anything like this, so, in the words of Forrest Gump, that’s all I have to say bout that…</p>
+<p>What LPC does support however, are the ‘break’ and ‘continue’ statements which, in a way act like a jump, but only to the end or start of a <a class="reference internal" href="#loops"><span class="std std-ref">loop</span></a> or <a class="reference internal" href="#switch"><span class="std std-ref">switch</span></a>.</p>
+<p>‘continue’ can only be used in <a class="reference internal" href="#loops"><span class="std std-ref">loops</span></a> and causes the code for that loop cycle to stop at that point, and jump back to the top of the loop. When it gets to the top, it treats it as if its just another pass through, meaning it will grab the next element in the iteration or cycle through the expressions in a <code class="code docutils literal notranslate"><span class="pre">for()</span></code> no different than if the code had reached the end of the loop block naturally.</p>
+<p>‘break’ can be used in <a class="reference internal" href="#loops"><span class="std std-ref">loops</span></a> or <a class="reference internal" href="#switch"><span class="std std-ref">switches</span></a> and is used as an escape clause. When the code reaches a break, it exits the entire code block and continues on with whatever code came after the control structure it was in.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please pay attention to the detail that break and continue cannot be used outside loops (and switch for ‘break’). You cannot use them in ifs or anything else. If you need to ‘continue’ in an if, you probably should be using a loop, and if you need to ‘break’ in an if, there’s a better way to structure your code to not need it.</p>
+</div>
+</section>
+<section id="conditionals">
+<h2>Conditionals<a class="headerlink" href="#conditionals" title="Link to this heading">¶</a></h2>
+<p>Conditionals are ways to essentially put forks in the road that is the code execution path, allowing it to go one of multiple ways depending on a conditional expression.</p>
+<p>A conditional expression is a single expression or group of expressions that can ultimately be evaluated to true or false. Things like <code class="code docutils literal notranslate"><span class="pre">var</span> <span class="pre">==</span> <span class="pre">1</span></code> are a conditional expression. You can also use functions as conditional expressions, if they return any value other than 0 they are treated as true, and 0 is false. A void function will therefore always be false (and not of much use).</p>
+<p>Conditional expressions can also be multiple individual expressions joined together using the <a class="reference internal" href="operators.html#logical-operators"><span class="std std-ref">logical operators</span></a> like &amp;&amp; for ‘and’ and || for ‘or’, such as <code class="code docutils literal notranslate"><span class="pre">var</span> <span class="pre">==</span> <span class="pre">1</span> <span class="pre">||</span> <span class="pre">var2</span> <span class="pre">==</span> <span class="pre">3</span></code>.</p>
+<section id="if-else">
+<h3>If Else<a class="headerlink" href="#if-else" title="Link to this heading">¶</a></h3>
+<p>The most common is the if/else block, which must start with an if block, and may or maynot contain an else block, or even more elaborate, an else if block. In any event, the if must come first, the else (if any) must come last, else-ifs must be in the middle (if any), and there can be 0-1 else blocks, and 0+ else if blocks.</p>
+<p>The format for if blocks is straightforward.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">conditional_expression</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Code</span> <span class="k">if</span> <span class="n">conditional_expression</span> <span class="ow">is</span> <span class="n">true</span><span class="o">.</span>
+<span class="p">}</span>
+<span class="o">//</span><span class="n">Next</span> <span class="ow">is</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">if</span> <span class="n">desired</span><span class="p">)</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">conditional_expression2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Code</span> <span class="k">if</span> <span class="n">conditional_expression2</span> <span class="ow">is</span> <span class="n">true</span><span class="o">.</span>
+<span class="p">}</span>
+<span class="o">//</span><span class="n">There</span> <span class="n">can</span> <span class="n">be</span> <span class="n">more</span> <span class="n">than</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="k">if</span> <span class="n">needed</span>
+<span class="o">//</span><span class="n">Otherwise</span> <span class="n">there</span> <span class="n">can</span> <span class="n">be</span> <span class="n">an</span> <span class="k">else</span> <span class="n">block</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="p">(</span><span class="n">optionally</span><span class="p">)</span>
+<span class="k">else</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Code</span> <span class="k">if</span> <span class="nb">all</span> <span class="n">above</span> <span class="n">expressions</span> <span class="n">were</span> <span class="n">false</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here’s some examples showing how if can be alone, with an else, with an else if, or with both.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">A</span> <span class="n">single</span> <span class="k">if</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">line</span> <span class="n">of</span> <span class="n">code</span> <span class="n">after</span><span class="p">:</span>
+<span class="k">if</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi Bob!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="o">//</span><span class="n">A</span> <span class="n">single</span> <span class="k">if</span> <span class="k">with</span> <span class="mi">2</span><span class="o">+</span> <span class="n">lines</span> <span class="n">of</span> <span class="n">code</span><span class="p">:</span>
+<span class="k">if</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi Bob!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">bob</span><span class="o">-&gt;</span><span class="n">shake_hand</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="n">An</span> <span class="k">if</span> <span class="k">else</span> <span class="n">block</span><span class="p">,</span> <span class="mi">1</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">the</span> <span class="k">if</span> <span class="n">but</span> <span class="mi">2</span><span class="o">+</span> <span class="n">lines</span> <span class="ow">in</span> <span class="n">the</span> <span class="k">else</span><span class="p">:</span>
+<span class="k">if</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi Bob!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="p">{</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I don&#39;t know you! Stranger danger!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">stranger</span><span class="o">-&gt;</span><span class="n">push_away</span><span class="p">();</span>
+  <span class="n">adult</span><span class="o">-&gt;</span><span class="n">call_for_help</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="o">//</span><span class="n">An</span> <span class="k">if</span> <span class="k">else</span> <span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+<span class="k">if</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi Bob!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Sue&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi mom!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="o">//</span><span class="n">An</span> <span class="k">if</span><span class="o">/</span><span class="k">else</span> <span class="k">if</span><span class="o">/</span><span class="k">else</span> <span class="n">block</span><span class="p">:</span>
+<span class="k">if</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Bob&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi Bob!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Sue&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hi mom!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="p">{</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I don&#39;t know you! Stranger danger!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+  <span class="n">stranger</span><span class="o">-&gt;</span><span class="n">push_away</span><span class="p">();</span>
+  <span class="n">adult</span><span class="o">-&gt;</span><span class="n">call_for_help</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="switch">
+<h3>Switch<a class="headerlink" href="#switch" title="Link to this heading">¶</a></h3>
+<p>Another conditional is the <code class="code docutils literal notranslate"><span class="pre">switch()</span></code> function.</p>
+<p>Switch takes a variable as an argument and then has several ‘case’ keywords followed, generally, by a ‘default’ keyword. The variable is tested against each case, in order from top bottom until it finds a match. If no match is found, the ‘default’ case is executed.</p>
+<p>The generic format for a switch is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">case</span> <span class="n">expr_n</span><span class="p">:</span>
+  <span class="k">case</span> <span class="n">expr_n1</span><span class="p">:</span>
+  <span class="k">case</span> <span class="n">expr_n2</span><span class="p">:</span>
+  <span class="n">default</span><span class="p">:</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>‘expr_n’ and similar have to either be all integer values, or all string values. The exceptions are if they are all string values, a single case can have the value 0 to represent an empty string, and for integer values, the expr_n can also be in the format x..y where x &lt; y, which literally means the case is valid for all values between x and y, inclusive.</p>
+<p>Switch in LPC allows what is called fall-through or waterfalling. What this means is that when it matches a case, it executes that code, and then it does the same in every single case below it until it either hits ‘break’ or the ‘default’ case.</p>
+<p>Where this can be useful as an example is in a situation where you wanted to scale an item based on the players level. You could do something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">query_level</span><span class="p">())</span>
+<span class="p">{</span>
+  <span class="k">case</span> <span class="mf">150..200</span><span class="p">:</span>
+    <span class="n">increase_ac</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+  <span class="k">case</span> <span class="mf">120..149</span><span class="p">:</span>
+    <span class="n">increase_ac</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+  <span class="k">case</span> <span class="mf">50..119</span><span class="p">:</span>
+    <span class="n">set_light</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">case</span> <span class="mf">1..49</span><span class="p">:</span>
+    <span class="n">set_value</span><span class="p">(</span><span class="n">query_value</span><span class="p">()</span><span class="o">+</span><span class="mi">50</span><span class="p">);</span>
+  <span class="n">default</span><span class="p">:</span>
+    <span class="o">//</span><span class="n">Something</span> <span class="n">broke</span> <span class="k">as</span> <span class="n">level</span> <span class="n">cant</span> <span class="n">be</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">over</span> <span class="mi">200</span> <span class="ow">in</span> <span class="n">this</span>
+    <span class="o">//</span><span class="n">example</span> <span class="n">so</span> <span class="n">do</span> <span class="n">nothing</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the player is level 175, the first case is true and it adds 5 ac, the 2nd case is not true, but it fell-through because the case above was true so it adds 5 more ac, the 3rd case is false but it is still falling through from the 1st case so it adds 1 light, and the last case is also false but its <em>still</em> waterfalling so the value is increased by 50. Default does not get called because switch found a match to at least one case.</p>
+<p>However if the player level is 51, then only case 3 is true, so it adds 1 light and falls-through to increase the value in the case below.</p>
+<p>If the level was 205, only the default case would fire and nothing would happen.</p>
+<p>What if you want the cases to be exact match and only exact match? Simple, you end any case you don’t want to allow fallthrough with ‘break’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">(</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">query_level</span><span class="p">())</span>
+<span class="p">{</span>
+  <span class="k">case</span> <span class="mf">150..200</span><span class="p">:</span>
+    <span class="n">increase_ac</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+  <span class="k">case</span> <span class="mf">120..149</span><span class="p">:</span>
+    <span class="n">increase_ac</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mf">50..119</span><span class="p">:</span>
+    <span class="n">set_light</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mf">1..49</span><span class="p">:</span>
+    <span class="n">set_value</span><span class="p">(</span><span class="n">query_value</span><span class="p">()</span><span class="o">+</span><span class="mi">50</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="n">default</span><span class="p">:</span>
+    <span class="o">//</span><span class="n">Something</span> <span class="n">broke</span> <span class="k">as</span> <span class="n">level</span> <span class="n">cant</span> <span class="n">be</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">over</span> <span class="mi">200</span> <span class="ow">in</span> <span class="n">this</span>
+    <span class="o">//</span><span class="n">example</span> <span class="n">so</span> <span class="n">do</span> <span class="n">nothing</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notice the first case doesn’t have a break so it will still fallthrough in this instance.</p>
+<p>For level 175, it will increase the ac by 5, then do it again, then it sees a break and stops there.</p>
+<p>For level 55, it adds light and thats it, because it sees a break before it can fallthrough.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are familiar with C or some other languages, they allow code inside the swtich but outside of case structures, like switch(expr) while (expr2) { case 1: … case 2:… }. That format is not allowed in LPC. After the opening braces for the switch, it must immediately be able to find a case keyword or it will not operate correctly.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Of note, on the newer drivers, because of the <a class="reference internal" href="variables.html#variable-scope"><span class="std std-ref">Variable Scope</span></a>, if you declare a variable inside a case statement, it has a local scope to that case, so you can’t declare it in case 1 and use it in case 2 as case 2 will have no knowledge of it.</p>
+</div>
+</section>
+</section>
+<section id="loops">
+<h2>Loops<a class="headerlink" href="#loops" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>Loops come in a few flavors in LPC:</dt><dd><ol class="arabic simple">
+<li><p>The <code class="code docutils literal notranslate"><span class="pre">for()</span></code> loop which manipulates a variable every loop until a conditional is met.</p></li>
+<li><p>The <code class="code docutils literal notranslate"><span class="pre">foreach()</span></code> loop which iterates for each item in an array, string, mapping, struct, or integer range.</p></li>
+<li><p>The <code class="code docutils literal notranslate"><span class="pre">while()</span></code> loop which iterates until the conditional is true, and never runs if its false at the time it is run.</p></li>
+<li><p>The <code class="code docutils literal notranslate"><span class="pre">do-while()</span></code> loop which iterates until the conditional is true, but will run at least once even if it is false at run.</p></li>
+</ol>
+</dd>
+</dl>
+<section id="for-loop">
+<h3>For Loop<a class="headerlink" href="#for-loop" title="Link to this heading">¶</a></h3>
+<p>For loops take three arguments, a initial condition, a conditional expression, and a manipulative expression.</p>
+<p>The structure is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="n">init</span><span class="p">;</span> <span class="n">expr2</span><span class="p">;</span> <span class="n">expr3</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Code</span> <span class="n">to</span> <span class="n">perform</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">loop</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>‘init’ is usually a series of one or more expressions, separated by commas. Often times its a single assignment expression, or a declaration where the value defaults to 0. If its a declaration, the scope of the variable declared is local to the loop and it will not exist outside the loop.</p>
+<p>‘expr2’ is a conditional expression, the for loop will run as long as it returns a non-zero result.</p>
+<p>‘expr3’ is the manipulative expression, every time the loop cycles back to the start, whether from reaching the end or a ‘continue’, it is executed. This means it is not executed the first time the loop enters, and it is also primarily used as the means to change the value of the variable noted in ‘init’ so that ‘expr2’ will, at some point, return a 0 value to avoid an infinite loop.</p>
+<p>This is a basic example which will print the numbers from 0 to 5.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">Result</span><span class="p">:</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="mi">5</span>
+</pre></div>
+</div>
+<p>Also, if you are using a for loop to iterate over some ‘thing’ and you don’t care about the order its processed in (forward or backwards that is), a very fast way to do it is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">thing</span><span class="p">);</span> <span class="n">i</span><span class="o">--</span><span class="p">;</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Do</span> <span class="n">your</span> <span class="n">processing</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is very quick because it counts down from the maximum size, the decrement is run on the first run since its in ‘expr2’ not ‘expr3’, and we don’t care about ‘expr3’ because ‘expr2’ will eventually return 0 on its own <em>and</em> does the manipulation.</p>
+<p>Another great way to iterate over things however is…</p>
+</section>
+<section id="foreach-loop">
+<h3>Foreach Loop<a class="headerlink" href="#foreach-loop" title="Link to this heading">¶</a></h3>
+<p>A foreach loop is passed 2 ‘chunks’, the chunks are dependent on what you’re processing, but they are separated by a :. On the left is one or more variables you want to hold data, on the right is the expression that holds the array, string, or mapping you wish to iterate over.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the right side <em>has</em> to be an array, string, mapping, or integer range <em>or</em> an expression that evaluates to one of those things. You can’t iterate over an individual object, or a closure, for example.</p>
+</div>
+<p>The generic format comes in three styles:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">foreach</span><span class="p">(</span><span class="n">var</span> <span class="p">:</span> <span class="n">expr</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Code</span>
+<span class="p">}</span>
+
+<span class="n">foreach</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">val2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">valN</span> <span class="p">:</span> <span class="n">mapping</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Code</span>
+<span class="p">}</span>
+
+<span class="n">foreach</span><span class="p">((</span><span class="nb">int</span><span class="p">)</span> <span class="n">var</span> <span class="p">:</span> <span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="n">expr1</span> <span class="o">..</span> <span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="n">expr2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Code</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the left side of the argument is separated from the right by a colon : in all formats.</p>
+<p>The format of the left side is dependent on the type on the right hand side and what you want to do.</p>
+<p>If the right side is an array, the left side should be a single variable with the same type as the elements of the array. I.e. if the array is full of integers, the variable needs to be an int, if the array is objects, the variable needs to be an object.</p>
+<p>If the right side is a string, the left side should be an integer as it will end up storing the ASCII code for each character.</p>
+<p>If the right side is a mapping, the left side needs to be at least one variable of the same type as the keys of the mapping. Optionally, additional variables matching the data type of each column of the mapping can be provided. There does not need to be a variable for every single column, however you must have a variable for the key, and you cannot skip columns, so if you want a variable to hold column 2, you also need one for the key, column 0, and column 1. The variables must be separated with commas and in the order key, col1, col2, …, colN.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Again, as outlined in <a class="reference internal" href="variables.html#variable-scope"><span class="std std-ref">Variable Scope</span></a>, on the newer drivers if you declare the variables IN the foreach expression (i.e. inside the parentheses or brackets), it is local to the loop and cannot be accessed from outside the loop.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">foreach</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span> <span class="p">:</span> <span class="p">({</span> <span class="s2">&quot;Apple&quot;</span> <span class="p">,</span> <span class="s2">&quot;Pear&quot;</span><span class="p">,</span> <span class="s2">&quot;Banana&quot;</span> <span class="p">}))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mf">0..0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">Result</span><span class="p">:</span>
+  <span class="n">A</span>
+  <span class="n">P</span>
+  <span class="n">B</span>
+
+<span class="n">foreach</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="p">:</span> <span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mf">0..0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">Result</span><span class="p">:</span>
+  <span class="mi">72</span>
+  <span class="mi">101</span>
+  <span class="mi">108</span>
+  <span class="mi">108</span>
+  <span class="mi">111</span>
+
+<span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">([</span> <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;Frank&quot;</span><span class="p">:</span> <span class="mi">12</span> <span class="p">])</span>
+<span class="n">foreach</span><span class="p">(</span><span class="n">string</span> <span class="n">key</span><span class="p">,</span> <span class="nb">int</span> <span class="n">i</span> <span class="p">:</span> <span class="n">m</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Key: &quot;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s2">&quot; Age: &quot;</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">Result</span><span class="p">:</span>
+  <span class="n">Key</span><span class="p">:</span> <span class="n">Bob</span> <span class="n">Age</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">Key</span><span class="p">:</span> <span class="n">Tom</span> <span class="n">Age</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="n">Key</span><span class="p">:</span> <span class="n">Frank</span> <span class="n">Age</span><span class="p">:</span> <span class="mi">12</span>
+
+<span class="o">//</span><span class="n">As</span> <span class="n">noted</span><span class="p">,</span> <span class="n">you</span> <span class="n">dont</span> <span class="n">have</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">anything</span> <span class="n">more</span> <span class="n">than</span> <span class="n">the</span> <span class="n">key</span>
+<span class="o">//</span><span class="k">if</span> <span class="n">you</span> <span class="n">only</span> <span class="n">need</span> <span class="n">the</span> <span class="n">keys</span><span class="o">...</span>
+<span class="n">foreach</span><span class="p">(</span><span class="n">string</span> <span class="n">key</span> <span class="p">:</span> <span class="n">m</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Key: &quot;</span> <span class="o">+</span> <span class="n">key</span><span class="p">);</span>
+
+<span class="n">Result</span><span class="p">:</span>
+  <span class="n">Key</span><span class="p">:</span> <span class="n">Bob</span>
+  <span class="n">Key</span><span class="p">:</span> <span class="n">Tom</span>
+  <span class="n">Key</span><span class="p">:</span> <span class="n">Frank</span>
+
+<span class="o">//</span><span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">integer</span> <span class="nb">range</span> <span class="nb">format</span><span class="o">.</span>
+<span class="n">foreach</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="p">:</span> <span class="mf">5..7</span><span class="p">)</span>
+  <span class="n">printf</span><span class="p">((</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">Result</span><span class="p">:</span>
+  <span class="mi">10</span>
+  <span class="mi">12</span>
+  <span class="mi">14</span>
+</pre></div>
+</div>
+<p>What happens if you add/remove/change a value of an array/mapping/string on the right hand side while inside the loop? That depends on what the right side is…</p>
+<dl>
+<dt>If the right side is a mapping:</dt><dd><p>The keys iterated over are the keys that were present at the very start of the loop.
+If a key is deleted during the loop, it will be skipped by the loop.
+If a new key is added during the loop, it will be ignored by the loop.
+If the values of a key that hasn’t been iterated over already are changed, when it is iterated the new values for the columns will be used.
+If the values of a key that has been iterated over are changed, the underlying mapping will also be changed, but since its already been iterated, you likely won’t see it in the loop.</p>
+</dd>
+<dt>If the right side is an array:</dt><dd><p>If an element is changed, it will be reflected in that elements iteration.
+As an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">});</span>
+<span class="n">foreach</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="p">:</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">Result</span><span class="p">:</span>
+  <span class="mi">1</span>
+  <span class="mi">5</span>
+</pre></div>
+</div>
+</dd>
+<dt>If the right side is a string:</dt><dd><p>Nothing happens inside the loop, but the variable being iterated is changed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span><span class="p">;</span>
+<span class="n">foreach</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="p">:</span> <span class="n">s</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Change</span> <span class="n">the</span> <span class="mi">3</span><span class="n">rd</span> <span class="n">letter</span> <span class="n">to</span> <span class="s1">&#39;e&#39;</span>
+  <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">101</span><span class="p">;</span>
+  <span class="o">//</span><span class="n">This</span> <span class="n">displays</span> <span class="n">integers</span> <span class="k">as</span> <span class="n">their</span> <span class="n">ASCII</span> <span class="n">code</span> <span class="n">characters</span>
+  <span class="o">//</span><span class="n">I</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="mi">72</span> <span class="n">prints</span> <span class="s1">&#39;H&#39;</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%c</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">Result</span><span class="p">:</span>
+  <span class="n">H</span>
+  <span class="n">e</span>
+  <span class="n">l</span>
+  <span class="n">l</span>
+  <span class="n">o</span>
+  <span class="n">Heelo</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Foreach is an excellent way to iterate over an array or mapping and a welcome addition as the older drivers, way back in the early 2000’s and before, did not have the foreach structure so everything had to be iterated using counters and for loops, accessing each element either numerically or by indexing the array of indices of the mapping.</p>
+</section>
+<section id="while-loop">
+<h3>While Loop<a class="headerlink" href="#while-loop" title="Link to this heading">¶</a></h3>
+<p>A while loop is a very simple construct:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="n">expr_is_true</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Do</span> <span class="n">this</span> <span class="n">code</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As demonstrated, it literally runs the code inside the braces so long as expr_is_true returns a non-0 result.</p>
+<p>If you’re astute, you’ll realize this could very easily become an infinite loop, and you’re right. In fact, there are certain cases where an infinite loops are used in programming. Some older games (maybe even modern ones) use them as a way to handle their cycle, so the loop processes <em>all</em> the game logic and just starts again, never leaving the loop until a manual exit is requested.</p>
+<p>An infinite loop in 3Kingdoms is generally a bad thing however, so its good to be cautious about your expression to try and assure it will exit at some point.</p>
+<p>A good example is when we ask a player to enter an email address. If its invalid, the while loop might keep making them enter it over and over until the response is either valid, or a quit code like ‘~q’ is entered.</p>
+<p>Here’s an example of a while loop that will count from 0 to 5, and you can compare it to the loop in the <a class="reference internal" href="#for-loop"><span class="std std-ref">For Loop</span></a> section above to see how you can get the same result from different methods.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">i</span><span class="p">;</span>
+<span class="k">while</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">Result</span><span class="p">:</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="mi">5</span>
+</pre></div>
+</div>
+<p>It’s important to realize that if the expr_is_true is false right from the get-go, the while loop will not run, not even once.</p>
+<p>If you want to make sure the loop runs at <em>least</em> one time, you need the…</p>
+</section>
+<section id="do-while-loop">
+<h3>Do While Loop<a class="headerlink" href="#do-while-loop" title="Link to this heading">¶</a></h3>
+<p>A do-while loop is only marginally more complex than a while loop. We basically flip it upside down…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">do</span>
+<span class="p">{</span>
+  <span class="o">//</span><span class="n">Code</span> <span class="n">to</span> <span class="n">run</span> <span class="n">at</span> <span class="n">least</span> <span class="n">once</span><span class="o">.</span>
+<span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="n">expr_is_true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Just like a while loop, this can also result in infite loops for the same reason. In fact, it’s basically exactly the same as a while loop in every single regard, except that it will always run the code inside the braces at least one time.</p>
+</section>
+</section>
+<section id="calls">
+<h2>Calls<a class="headerlink" href="#calls" title="Link to this heading">¶</a></h2>
+<p>Calls are a method of ‘handing-off’ control, generally before getting it returned.</p>
+<p>The first method to cede control is calling a function, whether local or not, both of which are outlined in <a class="reference internal" href="functions.html#functions"><span class="std std-ref">Functions</span></a>.</p>
+<p>LPC is processed, generally, in a very linear fashion. When you call a function from inside your code, the processing of your code essentially stops, the driver sends whatever data you asked to send to the other function (if any) to that function, then it begins to run and do its little dance for you. If it calls any functions, the same process happens there, it stops and waits for that function to finish its business. On and on it goes.</p>
+<p>Once the deepest function finishes, it returns up to the function that called it, which then eventually returns up to the function that called it, so on and so forth until it reaches the top level, your code, which then carries on its merry way until it either ends or calls something else.</p>
+<p>Another way to cede control without stopping your program completely is to use what is called a call-out. Call-outs <em>can</em> be problematic if implemented wrong, and are not something newbie wizards should be seeking to use without talking to a senior staff member who understands both their implementation and the risks involved.</p>
+<p>For the record, I myself accidentally made what is known as a rabbit, it was a call-out that referenced the same function that created it, which because of the computational speed, resulted in hundreds of thousands of these call-outs being made essentially at the same time, which actually crashed the entire MUD.</p>
+<p>As for what call-outs actually do? They allow you to tell the driver to call a particular function, with whatever arguments you decide (or don’t decide) to send, and to do so in a given number of integer seconds, 0 or more. The driver then puts these into a timer queue and returns control to your code, meaning your code halts for just a fraction of a fraction of a second, and the code you requested will be run on its own in the future when you told the driver to do it.</p>
+<p>The implementation of a call-out is beyond this section of the primer, but it is a type of call that cedes control so it felt worth mentioning here. More information can be found in <a class="reference internal" href="advanced.html#call-outs"><span class="std std-ref">Call Outs</span></a> in the advanced section.</p>
+</section>
+<section id="halts">
+<h2>Halts<a class="headerlink" href="#halts" title="Link to this heading">¶</a></h2>
+<p>The only real way to halt a section of code is to use ‘return’. Just like you would in a normal function to return a value, or to signify the end of code in a void function, using return anywhere returns control to the function one level up from your code. There is no ‘exit’, ‘halt’, or ‘quit’ keywords to end your program because ultimately that is all up to the driver and when it uses anything along those lines, that means its shutdown time. Instead you are not really ‘ending’ your code, but merely handing processing back to whatever called your code in the first place, hence ‘return’.</p>
+<p>However, if your function is not declared void, you will still need to return a value or the compiler will error. For this reason, some coders use a particular value to return indicating an error. If that isn’t necessary, generally returning 0 is sufficient for a status or integer function, and (string)0 or “” from a string fuction (depending on how the function calling it uses the return) is sufficient.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Control Structures</a><ul>
+<li><a class="reference internal" href="#jumps">Jumps</a></li>
+<li><a class="reference internal" href="#conditionals">Conditionals</a><ul>
+<li><a class="reference internal" href="#if-else">If Else</a></li>
+<li><a class="reference internal" href="#switch">Switch</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loops">Loops</a><ul>
+<li><a class="reference internal" href="#for-loop">For Loop</a></li>
+<li><a class="reference internal" href="#foreach-loop">Foreach Loop</a></li>
+<li><a class="reference internal" href="#while-loop">While Loop</a></li>
+<li><a class="reference internal" href="#do-while-loop">Do While Loop</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#calls">Calls</a></li>
+<li><a class="reference internal" href="#halts">Halts</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="functions.html"
+                          title="previous chapter">Functions</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="modifiers.html"
+                          title="next chapter">Modifiers</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modifiers.html" title="Modifiers"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="functions.html" title="Functions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Control Structures</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

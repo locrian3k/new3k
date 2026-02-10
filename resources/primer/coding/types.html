@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Types &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>window.MathJax = {"chtml": {"displayAlign": "left"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Variables" href="variables.html" />
+    <link rel="prev" title="LPC" href="LPC.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="variables.html" title="Variables"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="LPC.html" title="LPC"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Types</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="types">
+<h1>Types<a class="headerlink" href="#types" title="Link to this heading">¶</a></h1>
+<section id="introduction-to-types">
+<h2>Introduction to Types<a class="headerlink" href="#introduction-to-types" title="Link to this heading">¶</a></h2>
+<p>Types are a designation that tell the compiler what kind of data is going to be stored in a variable or returned from a function.</p>
+<p>Types allow the compiler to both determine how much memory to allocate for storage and how to handle the data held within.</p>
+<p>Not all types are interchangable. The driver is able to convert certain types to other types, but not all types can be converted. For instance an integer can be converted to a string, as converting 3 to “3” just requires quoting it. Converting an array to an integer can’t be done because there’s no direct method to convert ({ “alpha”, “beta” }) to an integer value.</p>
+<p>Consequently, the coder needs to be aware of the types of the data they are using to ensure they aren’t trying to save one type to another incompatible type as this will throw a conversion error.</p>
+<p>Additionally, the coder must be aware of the limits of the types they are using. For instance, on 32-bit, integers are signed and limited to roughly +/- 2.3 billion, but on 64-bit that number increases to roughly 9.2 quintillion.</p>
+</section>
+<section id="type-uses">
+<h2>Type Uses<a class="headerlink" href="#type-uses" title="Link to this heading">¶</a></h2>
+<p>To designate a type, there’s three general ways to do so depending on the intended purpose.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Declare a variable as a given type.</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Depending on the <a class="reference internal" href="preprocessor.html#preprocessor"><span class="std std-ref">Preprocessor Directives</span></a>, this will normally bind the variable to be the stated type to ensure it only holds and reacts in the manner of that type.</p></li>
+<li><p>To declare a variable, or variables, as a given type, you simply do:</p></li>
+</ol>
+<blockquote>
+<div><p><code class="code docutils literal notranslate"><span class="pre">&lt;type&gt;</span> <span class="pre">&lt;variable</span> <span class="pre">name&gt;;</span></code>
+or
+<code class="code docutils literal notranslate"><span class="pre">&lt;type&gt;</span> <span class="pre">&lt;var1&gt;,</span> <span class="pre">&lt;var2&gt;,...;</span></code></p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">a</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+<span class="nb">object</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Declare a function as a given type.</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Same as 1(a) above, this will bind a function’s return value to a given type.</p></li>
+<li><p>To declare a function as a given type, you precede the function name with the type.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">query_name</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">&quot;Steve&quot;</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Typecast a variable as a given type.</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>This is explained in <a class="reference internal" href="operators.html#typecast-operators"><span class="std std-ref">Typecast Operators</span></a>, but it allows you to temporarily override a variable or function return type to a different type (if conversion is possible).</p></li>
+<li><p>To typecast a variable, you use the typecast operator with the desired type inside.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="n">get_price</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">price_of_item</span><span class="p">;}</span> <span class="o">//</span><span class="mf">5.23</span> <span class="k">for</span> <span class="n">example</span><span class="o">.</span>
+<span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="n">get_price</span><span class="p">();</span>
+<span class="n">Result</span><span class="p">:</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="types-descriptions">
+<h2>Types &amp; Descriptions<a class="headerlink" href="#types-descriptions" title="Link to this heading">¶</a></h2>
+<section id="int">
+<h3>Int<a class="headerlink" href="#int" title="Link to this heading">¶</a></h3>
+<p>An integer, i.e. a whole number including its negative counterpart, but no fractions/decimals; 32-bit or 64-bit depending on the driver, signed (meaning positive or negative).</p>
+<p>For example: 0, -5, 230425, -92994124 are all valid integers.  1.5, -3.2, 1230123.023123 are not as they are :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>Float`s.</p>
+</section>
+<section id="status">
+<h3>Status<a class="headerlink" href="#status" title="Link to this heading">¶</a></h3>
+<p>Status is similar to ‘boolean’ data types in other languages which signify they can hold only true or false values. However in LDMud, status is actually an alias for int. This means instead of true or false it stores 1 or 0.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The caveat is that because its really an int, it can actually store anything an integer can, but it’s highly frowned upon to let anything other than 1 or 0 be stored or returned from a status. So don’t be that person! Only use it for 1 or 0 values!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is listed as deprecated but its still highly suggested to use status as it makes it clear to any maintainers that the value should be treated as true/false.</p>
+</div>
+</section>
+<section id="float">
+<h3>Float<a class="headerlink" href="#float" title="Link to this heading">¶</a></h3>
+<p>Floats are the same as in other languages, sometimes called Single (32-bit) or Double (64-bit), and hold decimal values. To that end, 1 is an integer, 1. or 1.0 is a floating point 1. Note that the ending 0 is optional to denote a float (i.e. 3.0 is the same as 3.)</p>
+<p>Floats are generally stored in the range <span class="math notranslate nohighlight">\(1e-38\)</span> to <span class="math notranslate nohighlight">\(1e38\)</span> on 32-bit systems and <span class="math notranslate nohighlight">\(2.22507e-308\)</span> and <span class="math notranslate nohighlight">\(1.79769e308\)</span> on 64-bit systems, signed for both.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While on 32-bit it seemed tempting to use float instead of int to avoid the much smaller range available, it comes with a price. Since the mantissa can’t represent <em>all</em> values between 1.0 and 2.0, you run the risk of any math being done that would require the mantissa to end in that missing space will subsequently result in a wrong number. In practice this is similar to a truncation error. The end result is you can’t rely on the values for critical things like experience points or guild experience points as points could be lost during any math or conversions. Hence, critical stuff sticks to using integers and abides by the bounding. Why is explained more in the <a class="reference internal" href="#advanced-topic-floats"><span class="std std-ref">Advanced Topic - Floats</span></a> section.</p>
+</div>
+</section>
+<section id="string">
+<h3>String<a class="headerlink" href="#string" title="Link to this heading">¶</a></h3>
+<p>String data types store text. Unlike C and some other languages, they are not arrays of characters or pointers to strings, they are true strings.</p>
+<p>Strings are also mutable, meaning they can be changed whenever the code needs to change them.</p>
+<p>To make a string, you generally start and end the value with double quotes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">x</span><span class="p">;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;This is a normal string.&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If you want to write long strings you have two options, you can put the value on each line with “‘s around it (this is called auto-concatenation and is an option we have turned on in the driver), or you can use the line-continuation character ‘' like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>string x;
+x = &quot;Imagine if this string was really long and ran to the end of &quot;
+    &quot;the editor and I needed to break it up to keep it readable so &quot;
+    &quot;I can split it up like this and the compiler will automatically &quot;
+    &quot;join them together even though I don&#39;t use the + operator!&quot;;
+
+//Alternately you can use the line continuation operator *but* you must
+//realize that the subsequent lines include any whitespace/indenting!
+x = &quot;I still have to use an opening quotation mark however I don&#39;t need \
+another one until I get to the closing line but I have to make sure my \
+string starts at the far left edge or it will include extra spaces!&quot;;
+
+//An alternate format some people use to make it easier to view formats:
+x = &quot;\
+By starting the first line all the way to the left you can use this \
+method to line things up exactly how you want. Great for if you&#39;re \
+making a sign in a string or something for a room description. \
+Like:\
+          ------------------\
+          |   Welcome to   |\
+          |   3Kingdoms    |\
+          ------------------\
+                   |\
+                   |\
+                   |\
+You can also\ninclude hard breaks by\nadding newline characters!&quot;;
+</pre></div>
+</div>
+<p>As demonstrated above, strings can also include special characters. Most of the available characters are not used on 3Kingdoms as they can mess with peoples displays or not display correctly at all.</p>
+<p>The most common ones that are used:</p>
+<dl class="simple">
+<dt>\n - Newline. Similar to hitting enter in a word editor it starts everything</dt><dd><p>after it on the next line. You will also often use these to end strings
+that are displayed to the player to provide a blank line for visual
+separation.</p>
+</dd>
+</dl>
+<p>\t - Tab. Just like hitting tab on your keyboard.</p>
+<dl class="simple">
+<dt>\” - If you want to put a double quote inside your string, you need to</dt><dd><p>escape it with a \ at the front or the compiler will think it’s the end
+of the string and throw an error for everything after it.</p>
+</dd>
+</dl>
+<p>You may also need to precede special characters in certain strings with a \ to bypass parsing that is done by the driver. For example to put a &#64; inside an ansi string, which uses &#64;color:text&#64; style formatting, you would need to escape it with \&#64;.</p>
+<p>Strings can be manipulated with some operators, see <a class="reference internal" href="operators.html#arithmatic-operators"><span class="std std-ref">Arithmatic Operators</span></a>.</p>
+<p>Strings can also be treated like an array with access to individual elements using the <a class="reference internal" href="operators.html#index-operators"><span class="std std-ref">Index Operators</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span>
+<span class="n">s</span><span class="p">[</span><span class="mf">2..4</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;llo&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="object">
+<h3>Object<a class="headerlink" href="#object" title="Link to this heading">¶</a></h3>
+<p>Objects in LPC are pointers, meaning their variables don’t actually hold the object itself, but instead hold a pointer to its location in memory. What is a pointer? Its named after its design, it “points” to a location in memory. Think about it like your address, I can assign the color of your house to a string, I can store your phone number to an integer, but I can’t store your actual house to an object, however I can store your address which, when I look it up, “points” to your house. It’s the same concept, a pointer points to an address in memory rather than holding the value of what is at that address. Thus, if a single object is assigned to multiple variables, they all are actually pointing to the exact same piece of memory and anything done to one variable that changes the underlying object will be immediately evident in all of the other variables pointing to the same object.</p>
+<p>Additionally, because they are pointers, objects are always passed by reference, even without the reference symbol.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>98% of what you code will deal with passing by value. Passing by reference is a slightly more advanced topic covered in <a class="reference internal" href="variables.html#variable-passing"><span class="std std-ref">Variable Passing</span></a> in <a class="reference internal" href="variables.html#variables"><span class="std std-ref">Variables</span></a>.</p>
+</div>
+<p>That said, what is an object? In LPC an object is any piece of code loaded into memory. Yes, anything. It could be a player, a monster, a weapon, all of which could be blueprints or cloned objects.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Another note so soon?! Yes! A blueprint is the base code that is loaded in memory when an object is accessed. A cloned object is a copy of the blueprint. For instance, if I code a ball object, called ball.c, the actual code itself can be loaded into memory to ensure its valid. That code is the blueprint. It doesn’t mean I have a copy of the physical ball that I can put in my inventory because it’s just a blueprint. If I then clone the ball.c file, I now have a cloned copy which I can interact with and put in my inventory, drop in the room, etc. This is why they’re called blueprints, as they’re the instructions in memory to use to build the actual cloned copy/copies the players and MUD as a whole can interact with.</p>
+</div>
+<p>It could also be things that generally aren’t cloned ever, like a room file, or a daemon (a special file that is used to hold functions and/or data but generally is never cloned or ‘physically’ handled by any players/monsters/etc).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Egads, a third note?! An important distinction to note is that sometimes when we discuss objects we mean anything that can be loaded as a concept, other times we mean it as the object data type. If we’re referring to something that we are returning from a function, or calling a function in, we are referring to a variable or return that is an object data type. If I say you can do something on any object, I mean that as the concept of an object.</p>
+</div>
+</section>
+<section id="array">
+<h3>Array<a class="headerlink" href="#array" title="Link to this heading">¶</a></h3>
+<p>Unlike other types listed in this file, arrays are not a type, but instead are a collection of values of a given type.</p>
+<p>Arrays are pointers to a vector of values, similar to collections, lists, vectors, and other terms in other languages. However, unlike some languages, arrays in LPC are mutable meaning they can be changed at run-time. So you can add, remove, or change the order of the array in code.</p>
+<p>Ok, what does that mean in simple terms? Imagine you wanted to keep a list of the names of common household pets. Those values are strings. You’d first pick the type you want to use, and then a variable name, and you’d declare it as a pointer by using ‘*’. Then you will use the array constructor to make your initialization, either empty or filled depending on your needs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">*</span><span class="n">pets</span><span class="p">;</span>
+<span class="n">pets</span> <span class="o">=</span> <span class="p">({</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;fish&quot;</span> <span class="p">});</span>
+</pre></div>
+</div>
+<p>Notice each value in the array must be of the same type that the array itself is declared, in this case string.</p>
+<p>Also, the declaration could be ‘string* &lt;var&gt;’ instead of ‘string *&lt;var&gt;’, but the latter is more common on 3Kingdoms and is the preferred style.</p>
+<p>Elements can be accessed using the <a class="reference internal" href="operators.html#index-operators"><span class="std std-ref">Index Operators</span></a>, but the indexes must be integer values or an integer preceeded by ‘&lt;’ such as ‘&lt;2’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pets</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">Result</span><span class="p">:</span> <span class="s2">&quot;cat&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As mentioned in <a class="reference internal" href="#string"><span class="std std-ref">String</span></a>, strings are not arrays of characters like in some languages, HOWEVER, we can still access them as if they were. You can use the index operator on a string to access a subset of the string. Note, however, that accessing it via [n] will return the integer ASCII value of the single character at position ‘n’, but [n..n] will return a string encapsulation of the single character at position ‘n’.</p>
+</div>
+</section>
+<section id="mapping">
+<h3>Mapping<a class="headerlink" href="#mapping" title="Link to this heading">¶</a></h3>
+<p>Mappings are similar in nature to dictionaries in other languages. They consist of a key and one or more values. Using the key, you can access an individual value or all the values under that key. This is useful if you wanted to store data linked to the key. For instance if you have an area with a donation booth, you could track by player name or ID how many times they’ve donated and the total they’ve donated.</p>
+<p>To use a mapping you use the ([ ]) to surround the key/values. You separate the key from the values with ‘:’ and the values from each other with ‘;’, using ‘,’ to signify the end of that set of value(s) (i.e. that row).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="n">m</span><span class="p">;</span>
+<span class="o">//</span><span class="p">([</span> <span class="n">Player_name</span> <span class="p">:</span> <span class="n">donations</span><span class="p">;</span> <span class="n">times_donated</span><span class="p">])</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">([</span> <span class="s2">&quot;Steve&quot;</span> <span class="p">:</span> <span class="mi">12</span><span class="p">;</span> <span class="mi">3</span><span class="p">,</span>
+       <span class="s2">&quot;Bob&quot;</span> <span class="p">:</span> <span class="mi">20</span><span class="p">;</span> <span class="mi">2</span> <span class="p">]);</span>
+</pre></div>
+</div>
+<p>You can then access the elements using the <a class="reference internal" href="operators.html#index-operators"><span class="std std-ref">Index Operators</span></a> just like arrays, but unlike arrays the values can be non-integers as the entire point of a mapping is to use a key.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Of particular note is that the keys can be just about any type of data. Most often they are numeric or strings just for ease of use but they can be any data type that can also fall under the <a class="reference internal" href="#mixed"><span class="std std-ref">Mixed</span></a> data type.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//The mapping has a width of 2 (because it has 2 values for each key).
+//If we don&#39;t specify which sub-element, it defaults to 0.
+m[&quot;Steve&quot;];
+Result: 12
+
+//We could also explicitly access that same element...
+m[&quot;Steve&quot;,0];
+Result: 12
+
+//Or we could access the 2nd value (but remember, 0-based index!)...
+m[&quot;Steve&quot;,1];
+Result: 3
+</pre></div>
+</div>
+<p>To learn more about mappings check out <a class="reference internal" href="mappings.html#mappings"><span class="std std-ref">Mappings</span></a> which goes into detail about all the operations you can do with mappings.</p>
+</section>
+<section id="closure">
+<h3>Closure<a class="headerlink" href="#closure" title="Link to this heading">¶</a></h3>
+<p>A closure is a reference to executable code, either local functions, efuns, or runtime functions (called lambda closures).</p>
+<p>Essentially what that means is while almost all other data types store values in a variable, or a reference to the memory a value is held in for objects, closures hold references to actual functions instead of values.</p>
+<p>What this means is you can store a function in a closure, and then call the function from a variable. This means you can make dynamic code that can choose which function to call from a selection of closures, rather than having to hard-code everything.</p>
+<p>Most coders will use closures in a few specific areas, namely sort, map, and filter functions. Saavy coders also find other uses for closures that are less common but quite cool when implemented correctly.</p>
+<p>Closures are denoted on the value side of an operator by #’. However, with the single quote, it’s good practice to end the closure with /*’*/ so that editors don’t see a dangling quote. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">closure</span> <span class="n">c</span><span class="p">;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="c1">#&#39;query_sps;  //Bad format, will break editor syntax highlighting.</span>
+<span class="n">c</span> <span class="o">=</span> <span class="c1">#&#39;query_sps/*&#39;*/; //Good format!</span>
+</pre></div>
+</div>
+<p>Closures can also reference <a class="reference internal" href="operators.html#operators"><span class="std std-ref">Operators</span></a> as such:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">closure</span> <span class="n">c</span><span class="p">;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="c1">#&#39;&gt;/*&#39;*/; //This is a closure pointing to the greater than operator.</span>
+</pre></div>
+</div>
+<p>Combining the above, this is how we would use a closure in a sort function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">closure</span> <span class="n">c</span><span class="p">;</span>
+<span class="n">string</span> <span class="o">*</span><span class="n">alphas</span><span class="p">;</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="c1">#&#39;&gt;/*&#39;*/;</span>
+
+<span class="n">alphas</span> <span class="o">=</span> <span class="p">({</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="p">});</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">sort_array</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+
+<span class="o">//</span><span class="n">An</span> <span class="n">alternate</span> <span class="nb">format</span> <span class="n">without</span> <span class="n">using</span> <span class="n">the</span> <span class="n">closure</span> <span class="n">variable</span> <span class="ow">is</span><span class="p">:</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">sort_array</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span><span class="c1">#&#39;&gt;/*&#39;*/);</span>
+
+<span class="n">Result</span><span class="p">:</span> <span class="p">({</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span> <span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="mixed">
+<h3>Mixed<a class="headerlink" href="#mixed" title="Link to this heading">¶</a></h3>
+<p>A mixed variable is a variable that can hold any of the following: int, string, object, array, mapping, float, closure.</p>
+<p>Mixed variables are useful where you might need something to hold a type that you aren’t positive of at runtime, or a return from a function that is also mixed, or when coding in older drivers before the advent of the <a class="reference internal" href="#union"><span class="std std-ref">Union</span></a> type.</p>
+<p>They are declared and used much like you’d expect…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mixed</span> <span class="n">m</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">i</span><span class="p">;</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="s2">&quot;Hello, I am a string&quot;</span><span class="p">;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">//</span><span class="n">Now</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">integer</span><span class="o">.</span>
+
+<span class="o">//</span><span class="n">For</span> <span class="n">non</span><span class="o">-</span><span class="n">mixed</span> <span class="n">types</span><span class="p">,</span> <span class="n">that</span> <span class="n">would</span> <span class="n">be</span> <span class="n">a</span> <span class="n">problem</span><span class="o">.</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">i</span> <span class="o">=</span> <span class="s2">&quot;Hello, I am a string&quot;</span><span class="p">;</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">Error</span> <span class="o">-</span> <span class="n">Bad</span> <span class="n">assignment</span> <span class="p">(</span><span class="nb">int</span> <span class="n">vs</span> <span class="n">string</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="newer-types">
+<h2>Newer Types<a class="headerlink" href="#newer-types" title="Link to this heading">¶</a></h2>
+<p><strong>For newer drivers, namely 3.6.7 or above (possibly some slightly earlier drivers as well) the following types also exist:</strong></p>
+<section id="bytes">
+<h3>Bytes<a class="headerlink" href="#bytes" title="Link to this heading">¶</a></h3>
+<p>Bytes are byte sequences. They’re very similar to strings but can store ASCII characters (like strings), escape sequences (like strings, except \u and \U), but can also store unicode sequences. For that reason, they’re used primarily for storing unicode encoded strings which is not generally something we do at 3Kingdoms. It is unknown if this will get utilized much if at all.</p>
+<p>To denote a string is a byte sequence, you preface the string with ‘b’, such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bytes</span> <span class="n">b_string</span><span class="p">;</span>
+<span class="n">b_string</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;This is a byte string. I know it looks similar to a string!&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="struct">
+<h3>Struct<a class="headerlink" href="#struct" title="Link to this heading">¶</a></h3>
+<p>Structs are a collection of values. They work like a much more complex version of a mapping, but also designed to be more specific for the end-use. Effectively they store a fixed number of values called ‘members’, but allows you to access each member by its given name.</p>
+<p>They have a much different declaration as they need both the struct keyword and the name of the struct class and finally the variable to store one in.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//Create a struct of struct class &#39;Foo&#39; named &#39;var&#39;.
+struct Foo var;
+
+//Declare a function that takes a struct of type &#39;Foo&#39; as an argument:
+void fun(struct Foo arg);
+
+//You can also declare a function to return a struct but in doing so
+//you don&#39;t need to declare the struct class in the return type.
+struct fun2(arg);
+</pre></div>
+</div>
+<p>Structs have to be defined at the top level of an object.</p>
+<p>To declare a struct, you use the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">ClassName</span> <span class="p">{</span>
+  <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">/</span><span class="n">member</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="o">&lt;</span><span class="nb">type</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">variable2</span><span class="o">/</span><span class="n">member2</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="o">...</span>
+<span class="p">};</span>
+
+<span class="o">//</span><span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="n">struct</span> <span class="n">to</span> <span class="n">store</span> <span class="n">an</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="n">coordinate</span> <span class="n">pair</span><span class="p">:</span>
+<span class="n">struct</span> <span class="n">Coordinate</span> <span class="p">{</span>
+  <span class="nb">int</span> <span class="n">x</span><span class="p">;</span>
+  <span class="nb">int</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>To access the contents of a struct you first must create a struct of that class into a variable using the format at the top of this section. Then you can access the variables/members using the -&gt; or . operators.</p>
+<p>The . operator will throw an error if the member/variable doesn’t exist. The -&gt; operator will simply return 0 if it doesn’t exist.</p>
+<p>These operator formats also work for both retrieving the value and, with the help of the = operator, setting the value.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>struct Coordinate my_coords;
+my_coords.x = 5;
+my_coords-&gt;(y) = 10;
+Result: Coordinates are 5,10.
+
+my_coords-&gt;(non_exist);
+Result: 0
+
+my_coords.non_exist;
+Result: Error!
+</pre></div>
+</div>
+<p>Another format that is useful is the literal declaration. In the example above, if we made a function that was to move a monster to a given set of coordinates passed as a struct, and if we stored the desired x and y coordinates as integers, we would need a way to signal to the function that we aren’t just passing integer values. For that, we use the literals, denoted by &lt;&gt;.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="o">//</span><span class="n">Note</span> <span class="n">the</span> <span class="n">nested</span> <span class="p">()</span> <span class="n">to</span> <span class="n">ensure</span> <span class="n">the</span> <span class="n">inner</span> <span class="p">()</span> <span class="ow">is</span> <span class="n">computed</span> <span class="n">into</span> <span class="n">a</span> <span class="n">struct</span>
+<span class="o">//</span><span class="n">before</span> <span class="n">passing</span> <span class="n">it</span><span class="o">.</span> <span class="n">Without</span> <span class="n">those</span> <span class="n">you</span> <span class="n">would</span> <span class="n">be</span> <span class="n">passing</span> <span class="n">two</span> <span class="n">values</span><span class="p">,</span>
+<span class="o">//&lt;</span><span class="n">Coordinate</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="ow">and</span> <span class="n">mixed</span><span class="o">/</span><span class="n">unknown</span> <span class="n">y</span><span class="o">.</span>
+<span class="n">monster_mover</span><span class="o">-&gt;</span><span class="n">move</span><span class="p">(</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">Coordinate</span><span class="o">&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="union">
+<h3>Union<a class="headerlink" href="#union" title="Link to this heading">¶</a></h3>
+<p>Unions are a great way to ensure type safety in the driver by allowing us to use ‘mixed’ less than we used to.</p>
+<p>A union is not a data type in the traditional sense, instead its the ability to join multiple data types together, basically telling the driver that a variable, function argument, or function return, can be one of any of the given types and still be valid.</p>
+<p>To decalre a union we use the pipe ‘|’ character. Note that this is also the bitwise OR operator, which makes sense in a way as we are literally saying this variable/function can be of this type OR that type (or a 3rd type, …).</p>
+<p>As an example, lets say we want a variable to hold either an integer or a string, and another one that can hold an array of integers or an array of objects. Then we’ll define a function that can return a string or an object and takes a string or object as its argument.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="o">|</span><span class="n">string</span> <span class="n">var1</span><span class="p">;</span>
+<span class="nb">int</span><span class="o">*|</span><span class="nb">object</span><span class="o">*</span> <span class="n">var2</span><span class="p">;</span>
+
+<span class="n">string</span><span class="o">|</span><span class="nb">object</span> <span class="n">my_function</span><span class="p">(</span><span class="n">string</span><span class="o">|</span><span class="nb">object</span> <span class="n">arg</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Unions can also allow a non-mixed array to store different types. Normally a string array can only hold strings, an integer array can only hold ints, etc. We would use a mixed array to hold different types, but that also means it could store other non-desired values like an object or closure. By using unions we can restrict it to only the types we want.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Notice</span> <span class="n">we</span> <span class="n">encapsulate</span> <span class="n">the</span> <span class="n">types</span> <span class="ow">in</span> <span class="o">&lt;&gt;</span> <span class="n">to</span> <span class="n">indicate</span> <span class="n">the</span> <span class="n">array</span> <span class="n">can</span> <span class="n">hold</span>
+<span class="o">//</span><span class="n">integers</span> <span class="ow">or</span> <span class="n">strings</span> <span class="n">at</span> <span class="n">the</span> <span class="n">same</span> <span class="n">time</span><span class="o">.</span>
+<span class="o">&lt;</span><span class="nb">int</span><span class="o">|</span><span class="n">string</span><span class="o">&gt;*</span> <span class="n">arr</span><span class="p">;</span>
+
+<span class="o">//</span><span class="n">All</span> <span class="n">of</span> <span class="n">these</span> <span class="n">work</span><span class="o">.</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">});</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">({</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span> <span class="p">});</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;carrot&quot;</span> <span class="p">});</span>
+
+<span class="o">//</span><span class="n">Without</span> <span class="n">those</span> <span class="o">&lt;&gt;</span><span class="p">,</span> <span class="n">the</span> <span class="n">array</span> <span class="n">instead</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">string</span> <span class="n">array</span> <span class="ow">or</span> <span class="n">an</span> <span class="n">integer</span>
+<span class="o">//</span><span class="n">array</span><span class="p">,</span> <span class="n">but</span> <span class="n">cannot</span> <span class="n">hold</span> <span class="n">both</span> <span class="n">types</span> <span class="n">at</span> <span class="n">once</span><span class="o">...</span>
+<span class="nb">int</span><span class="o">*|</span><span class="n">string</span><span class="o">*</span> <span class="n">arr</span><span class="p">;</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="p">({</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">});</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">({</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span> <span class="p">});</span>
+
+<span class="o">//</span><span class="n">This</span> <span class="n">will</span> <span class="n">throw</span> <span class="n">an</span> <span class="n">error</span><span class="o">.</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">({</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">2</span> <span class="p">});</span>
+
+<span class="o">//</span><span class="n">In</span> <span class="n">the</span> <span class="n">event</span> <span class="n">you</span> <span class="n">ever</span> <span class="n">need</span> <span class="n">to</span> <span class="n">nest</span> <span class="n">the</span> <span class="o">&lt;&gt;</span><span class="p">,</span> <span class="n">there</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">white</span> <span class="n">space</span>
+<span class="o">//</span><span class="n">between</span> <span class="n">each</span> <span class="n">pair</span> <span class="n">so</span> <span class="n">it</span> <span class="n">isnt</span> <span class="n">confused</span> <span class="k">for</span> <span class="o">&lt;&lt;</span> <span class="ow">or</span> <span class="o">&gt;&gt;.</span>
+<span class="o">&lt;</span> <span class="o">&lt;</span><span class="nb">int</span><span class="o">|</span><span class="n">string</span><span class="o">&gt;*|</span><span class="nb">object</span> <span class="o">&gt;*</span> <span class="n">arr</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Unions are a very powerful way to enforce type adherance without using mixed.</p>
+</section>
+</section>
+<section id="type-functions">
+<h2>Type Functions<a class="headerlink" href="#type-functions" title="Link to this heading">¶</a></h2>
+<p>One other thing of note are that there are special functions called type functions. You’ll understand functions more once you get into <a class="reference internal" href="functions.html#functions"><span class="std std-ref">Functions</span></a>, but briefly, these functions take a single variable as an argument, and return 1 (for true) or 0 (for false) if the variable is the type associated witht that function.</p>
+<p>These functions are:</p>
+<table class="docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">bytesp(arg)</span></code></p></td>
+<td><ul class="simple">
+<li><p>Is the variable type bytes?</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">closurep(arg)</span></code></p></td>
+<td><ul class="simple">
+<li><p>Is the variable type closure?</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">floatp(arg)</span></code></p></td>
+<td><ul class="simple">
+<li><p>Is the variable type float?</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">mappingp(arg)</span></code></p></td>
+<td><ul class="simple">
+<li><p>Is the variable type mapping?</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">objectp(arg)</span></code></p></td>
+<td><ul class="simple">
+<li><p>Is the variable type object?</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">intp(arg)</span></code></p></td>
+<td><ul class="simple">
+<li><p>Is the variable type int?</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">stringp(arg)</span></code></p></td>
+<td><ul class="simple">
+<li><p>Is the variable type string?</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="code docutils literal notranslate"><span class="pre">structp(arg)</span></code></p></td>
+<td><ul class="simple">
+<li><p>Is the variable type struct?</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="code docutils literal notranslate"><span class="pre">symbolp(arg)</span></code></p></td>
+<td><ul class="simple">
+<li><p>Is the variable type symbol?</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note there is no function for <code class="code docutils literal notranslate"><span class="pre">mixedp()</span></code> because you can use all the above on a mixed to see what it holds (i.e. if it has an int, intp() will be true; if its a float, floatp() will be true).</p>
+<p>There is also no <code class="code docutils literal notranslate"><span class="pre">arrayp()</span></code> becuase arrays can be different types as well, however we can tell if something is an array by using:</p>
+<p><code class="code docutils literal notranslate"><span class="pre">pointerp(arg)</span></code> - Is the variable type pointer? Arrays are pointers so this will be true for all arrays.</p>
+<p>Lastly, this one tells us if the variable was passed by reference (you must pass the variable to this function by reference oddly enough).</p>
+<p><code class="code docutils literal notranslate"><span class="pre">referencep(&amp;arg)</span></code> - Is the variable passed to the current function by reference?</p>
+</section>
+<section id="advanced-topics-types">
+<h2>Advanced Topics - Types<a class="headerlink" href="#advanced-topics-types" title="Link to this heading">¶</a></h2>
+<section id="advanced-topic-integers">
+<h3>Advanced Topic - Integers<a class="headerlink" href="#advanced-topic-integers" title="Link to this heading">¶</a></h3>
+<p>Integers can be preceeded to signify their method of rendering.
+All of the following represent the same value (decimal 43):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="n">b</span><span class="p">:</span> <span class="n">Binary</span>      <span class="n">Example</span><span class="p">:</span> <span class="mb">0b00101011</span>
+<span class="mi">0</span><span class="n">o</span><span class="p">:</span> <span class="n">Octal</span>       <span class="n">Example</span><span class="p">:</span> <span class="mo">0o53</span>
+<span class="n">Ox</span><span class="p">:</span> <span class="n">Hexidecimal</span> <span class="n">Example</span><span class="p">:</span> <span class="mh">0x2B</span>
+</pre></div>
+</div>
+<p>They can also be used with single quotes to return an ASCII
+character value:
+‘+’ is ASCII code 43, so ‘+’ + 2 == 45</p>
+</section>
+<section id="advanced-topic-floats">
+<h3>Advanced Topic - Floats<a class="headerlink" href="#advanced-topic-floats" title="Link to this heading">¶</a></h3>
+<p>The formula used for 32-bit floats with sign ‘s’, exponent ‘e’, and mantissa ‘m’ is as follows:</p>
+<div class="math notranslate nohighlight">
+\[(-1)^s * 2^{e-127} * (1.m)\]</div>
+<p>For 64-bit floats it is:</p>
+<div class="math notranslate nohighlight">
+\[(-1)^s * 2^{e-1023} * (1.m)\]</div>
+<p>Internally they are stored as 1 bit for the sign, 8 or 11 bits (32-bit or 64-bit) for the exponent, and 23 or 52 bits (32-bit or 64-bit) for the fraction (or mantissa).</p>
+<p>In both of these formulas, the mantissa ‘m’ is an integer value represented by the 23 or 52 bits used to store it. This means the largest values for ‘m’ are 8,388,607 in 32-bit or 9,007,199,254,740,991 in 64-bit. The formula essentially puts a decimal point in front of the mantissa, and then adds 1, for the term ‘1.m’. Meaning a value of 12345678 would become 1.12345678.</p>
+<p>Consequently, the mantissa will always be between 1.0 and <em>almost</em> 2.0 but never all the way to 2.0; 1.9007… in 64-bit in fact, meaning that the values that can be represented cannot be all possible decimal values as there is clearly 1 - 0.9007… of unused space in the mantissa, or even more in 32-bit.</p>
+</section>
+<section id="advanced-topic-symbols">
+<h3>Advanced Topic - Symbols<a class="headerlink" href="#advanced-topic-symbols" title="Link to this heading">¶</a></h3>
+<p>Symbols are identifier names or what is called a quoted string.</p>
+<p>They are used for computing lambda closures which is beyond the scope of this primer. They are, for most run of the mill LPC coders, black voodoo.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Types</a><ul>
+<li><a class="reference internal" href="#introduction-to-types">Introduction to Types</a></li>
+<li><a class="reference internal" href="#type-uses">Type Uses</a></li>
+<li><a class="reference internal" href="#types-descriptions">Types &amp; Descriptions</a><ul>
+<li><a class="reference internal" href="#int">Int</a></li>
+<li><a class="reference internal" href="#status">Status</a></li>
+<li><a class="reference internal" href="#float">Float</a></li>
+<li><a class="reference internal" href="#string">String</a></li>
+<li><a class="reference internal" href="#object">Object</a></li>
+<li><a class="reference internal" href="#array">Array</a></li>
+<li><a class="reference internal" href="#mapping">Mapping</a></li>
+<li><a class="reference internal" href="#closure">Closure</a></li>
+<li><a class="reference internal" href="#mixed">Mixed</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#newer-types">Newer Types</a><ul>
+<li><a class="reference internal" href="#bytes">Bytes</a></li>
+<li><a class="reference internal" href="#struct">Struct</a></li>
+<li><a class="reference internal" href="#union">Union</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#type-functions">Type Functions</a></li>
+<li><a class="reference internal" href="#advanced-topics-types">Advanced Topics - Types</a><ul>
+<li><a class="reference internal" href="#advanced-topic-integers">Advanced Topic - Integers</a></li>
+<li><a class="reference internal" href="#advanced-topic-floats">Advanced Topic - Floats</a></li>
+<li><a class="reference internal" href="#advanced-topic-symbols">Advanced Topic - Symbols</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="LPC.html"
+                          title="previous chapter">LPC</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="variables.html"
+                          title="next chapter">Variables</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="variables.html" title="Variables"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="LPC.html" title="LPC"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Types</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,483 @@
+Control Structures
+==================
+
+Control structures are keywords that affect the flow of the program. There are a few varieties:
+
+  1. Jump (ex: goto, continue, break)
+  2. Conditionals (ex: if/else, switch)
+  3. Loops (ex: for, foreach, while, do-while)
+  4. Calls (ex: calling a function, call_out)
+  5. Halts (ex: return)
+
+.. note::
+  When using if/else, for, foreach, while, or do while, if you are only running a single line of code you do not need to encapsulate it in {}. However, if it is more than one line, then all lines need to be inside the brackets for each section.
+
+Jumps
+-----
+
+True jumps are used in some programming languages that allow labels and usually use a keyword like 'goto'.
+
+.. code-block::
+
+  label Start:
+    print("This is an endless loop");
+    goto Start;
+
+LPC does not support anything like this, so, in the words of Forrest Gump, that's all I have to say bout that...
+
+What LPC does support however, are the 'break' and 'continue' statements which, in a way act like a jump, but only to the end or start of a :ref:`loop <Loops>` or :ref:`switch <Switch>`.
+
+'continue' can only be used in :ref:`loops <Loops>` and causes the code for that loop cycle to stop at that point, and jump back to the top of the loop. When it gets to the top, it treats it as if its just another pass through, meaning it will grab the next element in the iteration or cycle through the expressions in a :code:`for()` no different than if the code had reached the end of the loop block naturally.
+
+'break' can be used in :ref:`loops <Loops>` or :ref:`switches <Switch>` and is used as an escape clause. When the code reaches a break, it exits the entire code block and continues on with whatever code came after the control structure it was in.
+
+.. warning::
+  Please pay attention to the detail that break and continue cannot be used outside loops (and switch for 'break'). You cannot use them in ifs or anything else. If you need to 'continue' in an if, you probably should be using a loop, and if you need to 'break' in an if, there's a better way to structure your code to not need it.
+
+Conditionals
+------------
+
+Conditionals are ways to essentially put forks in the road that is the code execution path, allowing it to go one of multiple ways depending on a conditional expression.
+
+A conditional expression is a single expression or group of expressions that can ultimately be evaluated to true or false. Things like :code:`var == 1` are a conditional expression. You can also use functions as conditional expressions, if they return any value other than 0 they are treated as true, and 0 is false. A void function will therefore always be false (and not of much use).
+
+Conditional expressions can also be multiple individual expressions joined together using the :ref:`logical operators <Logical Operators>` like && for 'and' and \|\| for 'or', such as :code:`var == 1 || var2 == 3`.
+
+If Else
+^^^^^^^
+
+The most common is the if/else block, which must start with an if block, and may or maynot contain an else block, or even more elaborate, an else if block. In any event, the if must come first, the else (if any) must come last, else-ifs must be in the middle (if any), and there can be 0-1 else blocks, and 0+ else if blocks.
+
+The format for if blocks is straightforward.
+
+.. code-block::
+
+  if (conditional_expression)
+  {
+    //Code if conditional_expression is true.
+  }
+  //Next is else if (if desired)
+  else if (conditional_expression2)
+  {
+    //Code if conditional_expression2 is true.
+  }
+  //There can be more than else if(...) if needed
+  //Otherwise there can be an else block at the end (optionally)
+  else
+  {
+    //Code if all above expressions were false.
+  }
+
+Here's some examples showing how if can be alone, with an else, with an else if, or with both.
+
+.. code-block::
+
+  //A single if with 1 line of code after:
+  if(name == "Bob")
+    print("Hi Bob!\n");
+
+  //A single if with 2+ lines of code:
+  if(name == "Bob")
+  {
+    print("Hi Bob!\n");
+    bob->shake_hand();
+  }
+
+  //An if else block, 1 line in the if but 2+ lines in the else:
+  if(name == "Bob")
+    print("Hi Bob!\n");
+  else
+  {
+    print("I don't know you! Stranger danger!\n");
+    stranger->push_away();
+    adult->call_for_help();
+  }
+
+  //An if else if block:
+  if(name == "Bob")
+    print("Hi Bob!\n");
+  else if(name == "Sue")
+    print("Hi mom!\n");
+
+  //An if/else if/else block:
+  if(name == "Bob")
+    print("Hi Bob!\n");
+  else if(name == "Sue")
+    print("Hi mom!\n");
+  else
+  {
+    print("I don't know you! Stranger danger!\n");
+    stranger->push_away();
+    adult->call_for_help();
+  }
+
+Switch
+^^^^^^
+
+Another conditional is the :code:`switch()` function.
+
+Switch takes a variable as an argument and then has several 'case' keywords followed, generally, by a 'default' keyword. The variable is tested against each case, in order from top bottom until it finds a match. If no match is found, the 'default' case is executed.
+
+The generic format for a switch is:
+
+.. code-block::
+
+  switch(arg)
+  {
+    case expr_n:
+    case expr_n1:
+    case expr_n2:
+    default:
+  }
+
+'expr_n' and similar have to either be all integer values, or all string values. The exceptions are if they are all string values, a single case can have the value 0 to represent an empty string, and for integer values, the expr_n can also be in the format x..y where x < y, which literally means the case is valid for all values between x and y, inclusive.
+
+Switch in LPC allows what is called fall-through or waterfalling. What this means is that when it matches a case, it executes that code, and then it does the same in every single case below it until it either hits 'break' or the 'default' case.
+
+Where this can be useful as an example is in a situation where you wanted to scale an item based on the players level. You could do something like this:
+
+.. code-block::
+
+  switch(player->query_level())
+  {
+    case 150..200:
+      increase_ac(0,0,0,0,0,0,0,5);
+    case 120..149:
+      increase_ac(0,0,0,0,0,0,0,5);
+    case 50..119:
+      set_light(1);
+    case 1..49:
+      set_value(query_value()+50);
+    default:
+      //Something broke as level cant be 0 or over 200 in this
+      //example so do nothing.
+  }
+
+If the player is level 175, the first case is true and it adds 5 ac, the 2nd case is not true, but it fell-through because the case above was true so it adds 5 more ac, the 3rd case is false but it is still falling through from the 1st case so it adds 1 light, and the last case is also false but its *still* waterfalling so the value is increased by 50. Default does not get called because switch found a match to at least one case.
+
+However if the player level is 51, then only case 3 is true, so it adds 1 light and falls-through to increase the value in the case below.
+
+If the level was 205, only the default case would fire and nothing would happen.
+
+What if you want the cases to be exact match and only exact match? Simple, you end any case you don't want to allow fallthrough with 'break'.
+
+.. code-block::
+
+  switch(player->query_level())
+  {
+    case 150..200:
+      increase_ac(0,0,0,0,0,0,0,5);
+    case 120..149:
+      increase_ac(0,0,0,0,0,0,0,5);
+      break;
+    case 50..119:
+      set_light(1);
+      break;
+    case 1..49:
+      set_value(query_value()+50);
+      break;
+    default:
+      //Something broke as level cant be 0 or over 200 in this
+      //example so do nothing.
+  }
+
+Notice the first case doesn't have a break so it will still fallthrough in this instance.
+
+For level 175, it will increase the ac by 5, then do it again, then it sees a break and stops there.
+
+For level 55, it adds light and thats it, because it sees a break before it can fallthrough.
+
+.. warning::
+  If you are familiar with C or some other languages, they allow code inside the swtich but outside of case structures, like switch(expr) while (expr2) { case 1: ... case 2:... }. That format is not allowed in LPC. After the opening braces for the switch, it must immediately be able to find a case keyword or it will not operate correctly.
+
+.. note::
+  Of note, on the newer drivers, because of the :ref:`Variable Scope`, if you declare a variable inside a case statement, it has a local scope to that case, so you can't declare it in case 1 and use it in case 2 as case 2 will have no knowledge of it.
+
+Loops
+-----
+
+Loops come in a few flavors in LPC:
+  1. The :code:`for()` loop which manipulates a variable every loop until a conditional is met.
+  2. The :code:`foreach()` loop which iterates for each item in an array, string, mapping, struct, or integer range.
+  3. The :code:`while()` loop which iterates until the conditional is true, and never runs if its false at the time it is run.
+  4. The :code:`do-while()` loop which iterates until the conditional is true, but will run at least once even if it is false at run.
+
+For Loop
+^^^^^^^^
+
+For loops take three arguments, a initial condition, a conditional expression, and a manipulative expression.
+
+The structure is:
+
+.. code-block::
+
+  for(init; expr2; expr3)
+  {
+    //Code to perform in the loop
+  }
+
+'init' is usually a series of one or more expressions, separated by commas. Often times its a single assignment expression, or a declaration where the value defaults to 0. If its a declaration, the scope of the variable declared is local to the loop and it will not exist outside the loop.
+
+'expr2' is a conditional expression, the for loop will run as long as it returns a non-zero result.
+
+'expr3' is the manipulative expression, every time the loop cycles back to the start, whether from reaching the end or a 'continue', it is executed. This means it is not executed the first time the loop enters, and it is also primarily used as the means to change the value of the variable noted in 'init' so that 'expr2' will, at some point, return a 0 value to avoid an infinite loop.
+
+This is a basic example which will print the numbers from 0 to 5.
+
+.. code-block::
+
+  for(int i; i < 6; i++)
+    print(i+"\n");
+
+  Result:
+  0
+  1
+  2
+  3
+  4
+  5
+
+Also, if you are using a for loop to iterate over some 'thing' and you don't care about the order its processed in (forward or backwards that is), a very fast way to do it is:
+
+.. code-block::
+
+  for(i = sizeof(thing); i--; )
+  {
+    //Do your processing
+  }
+
+This is very quick because it counts down from the maximum size, the decrement is run on the first run since its in 'expr2' not 'expr3', and we don't care about 'expr3' because 'expr2' will eventually return 0 on its own *and* does the manipulation.
+
+Another great way to iterate over things however is...
+
+Foreach Loop
+^^^^^^^^^^^^
+
+A foreach loop is passed 2 'chunks', the chunks are dependent on what you're processing, but they are separated by a :. On the left is one or more variables you want to hold data, on the right is the expression that holds the array, string, or mapping you wish to iterate over.
+
+.. note::
+  Note that the right side *has* to be an array, string, mapping, or integer range *or* an expression that evaluates to one of those things. You can't iterate over an individual object, or a closure, for example.
+
+The generic format comes in three styles:
+
+.. code-block::
+
+  foreach(var : expr)
+  {
+    //Code
+  }
+
+  foreach(key, val, val2, ..., valN : mapping)
+  {
+    //Code
+  }
+
+  foreach((int) var : (int)expr1 .. (int)expr2)
+  {
+    //Code
+  }
+
+Note that the left side of the argument is separated from the right by a colon : in all formats.
+
+The format of the left side is dependent on the type on the right hand side and what you want to do.
+
+If the right side is an array, the left side should be a single variable with the same type as the elements of the array. I.e. if the array is full of integers, the variable needs to be an int, if the array is objects, the variable needs to be an object.
+
+If the right side is a string, the left side should be an integer as it will end up storing the ASCII code for each character.
+
+If the right side is a mapping, the left side needs to be at least one variable of the same type as the keys of the mapping. Optionally, additional variables matching the data type of each column of the mapping can be provided. There does not need to be a variable for every single column, however you must have a variable for the key, and you cannot skip columns, so if you want a variable to hold column 2, you also need one for the key, column 0, and column 1. The variables must be separated with commas and in the order key, col1, col2, ..., colN.
+
+.. note::
+  Again, as outlined in :ref:`Variable Scope`, on the newer drivers if you declare the variables IN the foreach expression (i.e. inside the parentheses or brackets), it is local to the loop and cannot be accessed from outside the loop.
+
+.. code-block::
+
+  foreach(string s : ({ "Apple" , "Pear", "Banana" }))
+    print(s[0..0] + "\n");
+
+  Result:
+    A
+    P
+    B
+
+  foreach(int i : "Hello")
+    print(s[0..0] + "\n");
+
+  Result:
+    72
+    101
+    108
+    108
+    111
+
+  mapping m;
+  m = ([ "Bob" : 1, "Tom": 5, "Frank": 12 ])
+  foreach(string key, int i : m)
+    print("Key: " + key + " Age: " + i + "\n");
+
+  Result:
+    Key: Bob Age: 1
+    Key: Tom Age: 5
+    Key: Frank Age: 12
+
+  //As noted, you dont have to specify anything more than the key
+  //if you only need the keys...
+  foreach(string key : m)
+    print("Key: " + key);
+
+  Result:
+    Key: Bob
+    Key: Tom
+    Key: Frank
+
+  //This is the integer range format.
+  foreach(int i: 5..7)
+    printf((i * 2) + "\n");
+
+  Result:
+    10
+    12
+    14
+
+What happens if you add/remove/change a value of an array/mapping/string on the right hand side while inside the loop? That depends on what the right side is...
+
+If the right side is a mapping:
+  The keys iterated over are the keys that were present at the very start of the loop.
+  If a key is deleted during the loop, it will be skipped by the loop.
+  If a new key is added during the loop, it will be ignored by the loop.
+  If the values of a key that hasn't been iterated over already are changed, when it is iterated the new values for the columns will be used.
+  If the values of a key that has been iterated over are changed, the underlying mapping will also be changed, but since its already been iterated, you likely won't see it in the loop.
+
+If the right side is an array:
+  If an element is changed, it will be reflected in that elements iteration.
+  As an example:
+
+  .. code-block::
+
+    int *a = ({ 1, 2, 3 });
+    foreach(int i : a)
+    {
+      a[1] = 5;
+      print(i+"\n");
+    }
+
+    Result:
+      1
+      5
+
+If the right side is a string:
+  Nothing happens inside the loop, but the variable being iterated is changed.
+
+  .. code-block::
+
+    string s = "Hello";
+    foreach(int i: s)
+    {
+      //Change the 3rd letter to 'e'
+      s[2] = 101;
+      //This displays integers as their ASCII code characters
+      //I.e. 72 prints 'H'
+      printf("%c\n",i);
+    }
+    print(s + "\n");
+
+    Result:
+      H
+      e
+      l
+      l
+      o
+      Heelo
+
+Foreach is an excellent way to iterate over an array or mapping and a welcome addition as the older drivers, way back in the early 2000's and before, did not have the foreach structure so everything had to be iterated using counters and for loops, accessing each element either numerically or by indexing the array of indices of the mapping.
+
+While Loop
+^^^^^^^^^^
+
+A while loop is a very simple construct:
+
+.. code-block::
+
+  while(expr_is_true)
+  {
+    //Do this code.
+  }
+
+As demonstrated, it literally runs the code inside the braces so long as expr_is_true returns a non-0 result.
+
+If you're astute, you'll realize this could very easily become an infinite loop, and you're right. In fact, there are certain cases where an infinite loops are used in programming. Some older games (maybe even modern ones) use them as a way to handle their cycle, so the loop processes *all* the game logic and just starts again, never leaving the loop until a manual exit is requested.
+
+An infinite loop in 3Kingdoms is generally a bad thing however, so its good to be cautious about your expression to try and assure it will exit at some point.
+
+A good example is when we ask a player to enter an email address. If its invalid, the while loop might keep making them enter it over and over until the response is either valid, or a quit code like '~q' is entered.
+
+Here's an example of a while loop that will count from 0 to 5, and you can compare it to the loop in the :ref:`For Loop` section above to see how you can get the same result from different methods.
+
+.. code-block::
+
+  int i;
+  while(i < 6)
+    print(i+"\n");
+
+  Result:
+  0
+  1
+  2
+  3
+  4
+  5
+
+It's important to realize that if the expr_is_true is false right from the get-go, the while loop will not run, not even once.
+
+If you want to make sure the loop runs at *least* one time, you need the...
+
+Do While Loop
+^^^^^^^^^^^^^
+
+A do-while loop is only marginally more complex than a while loop. We basically flip it upside down...
+
+.. code-block::
+
+  do
+  {
+    //Code to run at least once.
+  } while(expr_is_true);
+
+Just like a while loop, this can also result in infite loops for the same reason. In fact, it's basically exactly the same as a while loop in every single regard, except that it will always run the code inside the braces at least one time.
+
+.. code-block::
+  int i = 6;
+
+  do
+  {
+    print(i+"\n");
+  } while(i<6);
+
+  Result:
+  6
+
+Calls
+-----
+
+Calls are a method of 'handing-off' control, generally before getting it returned.
+
+The first method to cede control is calling a function, whether local or not, both of which are outlined in :ref:`Functions`.
+
+LPC is processed, generally, in a very linear fashion. When you call a function from inside your code, the processing of your code essentially stops, the driver sends whatever data you asked to send to the other function (if any) to that function, then it begins to run and do its little dance for you. If it calls any functions, the same process happens there, it stops and waits for that function to finish its business. On and on it goes.
+
+Once the deepest function finishes, it returns up to the function that called it, which then eventually returns up to the function that called it, so on and so forth until it reaches the top level, your code, which then carries on its merry way until it either ends or calls something else.
+
+Another way to cede control without stopping your program completely is to use what is called a call-out. Call-outs *can* be problematic if implemented wrong, and are not something newbie wizards should be seeking to use without talking to a senior staff member who understands both their implementation and the risks involved.
+
+For the record, I myself accidentally made what is known as a rabbit, it was a call-out that referenced the same function that created it, which because of the computational speed, resulted in hundreds of thousands of these call-outs being made essentially at the same time, which actually crashed the entire MUD.
+
+As for what call-outs actually do? They allow you to tell the driver to call a particular function, with whatever arguments you decide (or don't decide) to send, and to do so in a given number of integer seconds, 0 or more. The driver then puts these into a timer queue and returns control to your code, meaning your code halts for just a fraction of a fraction of a second, and the code you requested will be run on its own in the future when you told the driver to do it.
+
+The implementation of a call-out is beyond this section of the primer, but it is a type of call that cedes control so it felt worth mentioning here. More information can be found in :ref:`Call Outs` in the advanced section.
+
+Halts
+-----
+
+The only real way to halt a section of code is to use 'return'. Just like you would in a normal function to return a value, or to signify the end of code in a void function, using return anywhere returns control to the function one level up from your code. There is no 'exit', 'halt', or 'quit' keywords to end your program because ultimately that is all up to the driver and when it uses anything along those lines, that means its shutdown time. Instead you are not really 'ending' your code, but merely handing processing back to whatever called your code in the first place, hence 'return'.
+
+However, if your function is not declared void, you will still need to return a value or the compiler will error. For this reason, some coders use a particular value to return indicating an error. If that isn't necessary, generally returning 0 is sufficient for a status or integer function, and (string)0 or "" from a string fuction (depending on how the function calling it uses the return) is sufficient.

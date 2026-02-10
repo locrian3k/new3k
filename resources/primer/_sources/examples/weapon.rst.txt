@@ -1,0 +1,120 @@
+Coding A Weapon
+===============
+
+Coding a weapon really isn't all that different from coding an object when you get right down to it. The only real difference is there's a few special functions that make weapons act how they do, and lucky for you, they're in the inheritable so you mainly just have to call the right things to set them up!
+
+Let's start, as always, with our comment block and inherit statement:
+
+.. code-block::
+
+  /* first_weapon.C
+     Adalius 250315
+     A first weapon example. */
+  #pragma strong_types
+
+  inherit "/obj/weapon";
+
+Tada. The heavy lifting is now complete.
+
+Any guesses what comes next? If you said :code:`create()` you're correct!
+
+.. code-block::
+
+  /* first_weapon.C
+     Adalius 250315
+     A first weapon example. */
+  #pragma strong_types
+
+  inherit "/obj/weapon";
+
+  void create()
+  {
+    ::create();
+    return;
+  }
+
+Awesome. I'm thinking since we're going to be making a monster that's in a hovel, and has a squeaky toy, maybe it should be a kobold. A stereotypical weapon for a kobold would be a dagger, so lets make one of those...
+
+Now we need to do some of the same things that were done in the object, housekeeping if you will...
+
+Lets add the name, aliases, short, long, value, weight, composition, realm, and creator.
+
+.. code-block::
+
+  /* first_weapon.C
+     Adalius 250315
+     A first weapon example. */
+  #pragma strong_types
+
+  inherit "/obj/weapon";
+
+  void create()
+  {
+    ::create();
+
+    set_name("a rusty dagger");
+    set_alias(({ "rusty dagger", "dagger", "knife", "blade" }));
+
+    set_short("A rusty dagger");
+    //Notice we have to escape (\) the quotation in the length since
+    //quotes are used to encapsulate the whole string...
+    set_long("\
+    This is a dagger, roughly 6\" in length from cross-guard to point. \
+    The hilt is plain, as is the pommel. This was clearly made as cheap \
+    as possible, and the blade is flecked with rust and dried blood. \
+    Whoever owns it didn't take very good care of it, aside from the \
+    dingy condition the edge is partially dull.");
+
+    //If we only pass 1 number, it is lbs.
+    set_weight(1);
+    set_value(5);
+    set_composition(({ "steel", "metal" }));
+
+    set_realm("Fantasy");
+    set_creator("Adalius");
+
+    return;
+  }
+
+Excellent. Now we have a workable dagger. Next we need to set some things specific to weapons, namely a type and the WC.
+Its important to note that for 3Kingdoms, when coding AC or WC values, they go in the order:
+  Edged, Blunt, Fire, Ice, Acid, Electric, Mind, Energy, Poison, Radiation
+
+.. code-block::
+
+  /* first_weapon.C
+     Adalius 250315
+     A first weapon example. */
+  #pragma strong_types
+
+  inherit "/obj/weapon";
+
+  void create()
+  {
+    ::create();
+
+    set_name("a rusty dagger");
+    set_alias(({ "rusty dagger", "dagger", "knife", "blade" }));
+
+    set_short("A rusty dagger");
+    set_long("\
+    This is a dagger, roughly 6\" in length from cross-guard to point. \
+    The hilt is plain, as is the pommel. This was clearly made as cheap \
+    as possible, and the blade is flecked with rust and dried blood. \
+    Whoever owns it didn't take very good care of it, aside from the \
+    dingy condition the edge is partially dull.");
+
+    set_weight(1);
+    set_value(5);
+    set_composition(({ "steel", "metal" }));
+
+    set_realm("Fantasy");
+    set_creator("Adalius");
+
+    set_type("dagger");
+    set_wcs(2,0,0,0,0,0,0,0,0,0);
+
+    return;
+  }
+
+Pretty good, pretty good! I think this will work fine as a nice simple weapon drop. Now, there are a lot of other functions that we could get into, things that make it no-break, or give it specials, or change the damage emotes depending on how hard it hits, but for a beginner weapon, this should be sufficient.

@@ -1,0 +1,515 @@
+Types
+=====
+
+Introduction to Types
+---------------------
+
+Types are a designation that tell the compiler what kind of data is going to be stored in a variable or returned from a function.
+
+Types allow the compiler to both determine how much memory to allocate for storage and how to handle the data held within.
+
+Not all types are interchangable. The driver is able to convert certain types to other types, but not all types can be converted. For instance an integer can be converted to a string, as converting 3 to "3" just requires quoting it. Converting an array to an integer can't be done because there's no direct method to convert ({ "alpha", "beta" }) to an integer value.
+
+Consequently, the coder needs to be aware of the types of the data they are using to ensure they aren't trying to save one type to another incompatible type as this will throw a conversion error.
+
+Additionally, the coder must be aware of the limits of the types they are using. For instance, on 32-bit, integers are signed and limited to roughly +/- 2.3 billion, but on 64-bit that number increases to roughly 9.2 quintillion.
+
+Type Uses
+---------
+
+To designate a type, there's three general ways to do so depending on the intended purpose.
+
+  1. Declare a variable as a given type.
+
+    a. Depending on the :ref:`Preprocessor Directives <Preprocessor>`, this will normally bind the variable to be the stated type to ensure it only holds and reacts in the manner of that type.
+    b. To declare a variable, or variables, as a given type, you simply do:
+
+      :code:`<type> <variable name>;`
+      or
+      :code:`<type> <var1>, <var2>,...;`
+
+    .. code-block::
+
+      string a;
+      int b, c;
+      object x, y, z;
+
+  2. Declare a function as a given type.
+
+    a. Same as 1(a) above, this will bind a function's return value to a given type.
+    b. To declare a function as a given type, you precede the function name with the type.
+
+    .. code-block::
+
+      string query_name() { return "Steve"; }
+
+  3. Typecast a variable as a given type.
+
+    a. This is explained in :ref:`Typecast Operators`, but it allows you to temporarily override a variable or function return type to a different type (if conversion is possible).
+    b. To typecast a variable, you use the typecast operator with the desired type inside.
+
+    .. code-block::
+
+      float get_price() { return price_of_item;} //5.23 for example.
+      (int)get_price();
+      Result: 5
+
+Types & Descriptions
+--------------------
+
+Int
+^^^
+
+An integer, i.e. a whole number including its negative counterpart, but no fractions/decimals; 32-bit or 64-bit depending on the driver, signed (meaning positive or negative).
+
+For example: 0, -5, 230425, -92994124 are all valid integers.  1.5, -3.2, 1230123.023123 are not as they are :ref:`Float`s.
+
+Status
+^^^^^^
+
+Status is similar to 'boolean' data types in other languages which signify they can hold only true or false values. However in LDMud, status is actually an alias for int. This means instead of true or false it stores 1 or 0.
+
+.. warning::
+  The caveat is that because its really an int, it can actually store anything an integer can, but it's highly frowned upon to let anything other than 1 or 0 be stored or returned from a status. So don't be that person! Only use it for 1 or 0 values!
+
+.. note::
+  This is listed as deprecated but its still highly suggested to use status as it makes it clear to any maintainers that the value should be treated as true/false.
+
+Float
+^^^^^
+
+Floats are the same as in other languages, sometimes called Single (32-bit) or Double (64-bit), and hold decimal values. To that end, 1 is an integer, 1. or 1.0 is a floating point 1. Note that the ending 0 is optional to denote a float (i.e. 3.0 is the same as 3.)
+
+Floats are generally stored in the range :math:`1e-38` to :math:`1e38` on 32-bit systems and :math:`2.22507e-308` and :math:`1.79769e308` on 64-bit systems, signed for both.
+
+.. warning::
+  While on 32-bit it seemed tempting to use float instead of int to avoid the much smaller range available, it comes with a price. Since the mantissa can't represent *all* values between 1.0 and 2.0, you run the risk of any math being done that would require the mantissa to end in that missing space will subsequently result in a wrong number. In practice this is similar to a truncation error. The end result is you can't rely on the values for critical things like experience points or guild experience points as points could be lost during any math or conversions. Hence, critical stuff sticks to using integers and abides by the bounding. Why is explained more in the :ref:`Advanced Topic - Floats` section.
+
+String
+^^^^^^
+
+String data types store text. Unlike C and some other languages, they are not arrays of characters or pointers to strings, they are true strings.
+
+Strings are also mutable, meaning they can be changed whenever the code needs to change them.
+
+To make a string, you generally start and end the value with double quotes:
+
+.. code-block::
+
+  string x;
+  x = "This is a normal string.";
+
+If you want to write long strings you have two options, you can put the value on each line with "'s around it (this is called auto-concatenation and is an option we have turned on in the driver), or you can use the line-continuation character '\' like so:
+
+.. code-block::
+
+  string x;
+  x = "Imagine if this string was really long and ran to the end of "
+      "the editor and I needed to break it up to keep it readable so "
+      "I can split it up like this and the compiler will automatically "
+      "join them together even though I don't use the + operator!";
+
+  //Alternately you can use the line continuation operator *but* you must
+  //realize that the subsequent lines include any whitespace/indenting!
+  x = "I still have to use an opening quotation mark however I don't need \
+  another one until I get to the closing line but I have to make sure my \
+  string starts at the far left edge or it will include extra spaces!";
+
+  //An alternate format some people use to make it easier to view formats:
+  x = "\
+  By starting the first line all the way to the left you can use this \
+  method to line things up exactly how you want. Great for if you're \
+  making a sign in a string or something for a room description. \
+  Like:\
+            ------------------\
+            |   Welcome to   |\
+            |   3Kingdoms    |\
+            ------------------\
+                     |\
+                     |\
+                     |\
+  You can also\ninclude hard breaks by\nadding newline characters!";
+
+As demonstrated above, strings can also include special characters. Most of the available characters are not used on 3Kingdoms as they can mess with peoples displays or not display correctly at all.
+
+The most common ones that are used:
+
+\\n - Newline. Similar to hitting enter in a word editor it starts everything
+     after it on the next line. You will also often use these to end strings
+     that are displayed to the player to provide a blank line for visual
+     separation.
+
+\\t - Tab. Just like hitting tab on your keyboard.
+
+\\" - If you want to put a double quote inside your string, you need to
+      escape it with a \\ at the front or the compiler will think it's the end
+      of the string and throw an error for everything after it.
+
+You may also need to precede special characters in certain strings with a \\ to bypass parsing that is done by the driver. For example to put a @ inside an ansi string, which uses @color:text@ style formatting, you would need to escape it with \\@.
+
+Strings can be manipulated with some operators, see :ref:`Arithmatic Operators`.
+
+Strings can also be treated like an array with access to individual elements using the :ref:`Index Operators`.
+
+.. code-block::
+
+  string s;
+  s = "Hello world!";
+  s[2..4];
+  Result: "llo"
+
+Object
+^^^^^^
+
+Objects in LPC are pointers, meaning their variables don't actually hold the object itself, but instead hold a pointer to its location in memory. What is a pointer? Its named after its design, it "points" to a location in memory. Think about it like your address, I can assign the color of your house to a string, I can store your phone number to an integer, but I can't store your actual house to an object, however I can store your address which, when I look it up, "points" to your house. It's the same concept, a pointer points to an address in memory rather than holding the value of what is at that address. Thus, if a single object is assigned to multiple variables, they all are actually pointing to the exact same piece of memory and anything done to one variable that changes the underlying object will be immediately evident in all of the other variables pointing to the same object.
+
+Additionally, because they are pointers, objects are always passed by reference, even without the reference symbol.
+
+.. note::
+  98% of what you code will deal with passing by value. Passing by reference is a slightly more advanced topic covered in :ref:`Variable Passing` in :ref:`Variables`.
+
+That said, what is an object? In LPC an object is any piece of code loaded into memory. Yes, anything. It could be a player, a monster, a weapon, all of which could be blueprints or cloned objects.
+
+.. note::
+  Another note so soon?! Yes! A blueprint is the base code that is loaded in memory when an object is accessed. A cloned object is a copy of the blueprint. For instance, if I code a ball object, called ball.c, the actual code itself can be loaded into memory to ensure its valid. That code is the blueprint. It doesn't mean I have a copy of the physical ball that I can put in my inventory because it's just a blueprint. If I then clone the ball.c file, I now have a cloned copy which I can interact with and put in my inventory, drop in the room, etc. This is why they're called blueprints, as they're the instructions in memory to use to build the actual cloned copy/copies the players and MUD as a whole can interact with.
+
+It could also be things that generally aren't cloned ever, like a room file, or a daemon (a special file that is used to hold functions and/or data but generally is never cloned or 'physically' handled by any players/monsters/etc).
+
+.. note::
+  Egads, a third note?! An important distinction to note is that sometimes when we discuss objects we mean anything that can be loaded as a concept, other times we mean it as the object data type. If we're referring to something that we are returning from a function, or calling a function in, we are referring to a variable or return that is an object data type. If I say you can do something on any object, I mean that as the concept of an object.
+
+Array
+^^^^^
+
+Unlike other types listed in this file, arrays are not a type, but instead are a collection of values of a given type.
+
+Arrays are pointers to a vector of values, similar to collections, lists, vectors, and other terms in other languages. However, unlike some languages, arrays in LPC are mutable meaning they can be changed at run-time. So you can add, remove, or change the order of the array in code.
+
+Ok, what does that mean in simple terms? Imagine you wanted to keep a list of the names of common household pets. Those values are strings. You'd first pick the type you want to use, and then a variable name, and you'd declare it as a pointer by using '*'. Then you will use the array constructor to make your initialization, either empty or filled depending on your needs.
+
+.. code-block::
+
+  string *pets;
+  pets = ({ "dog", "cat", "fish" });
+
+Notice each value in the array must be of the same type that the array itself is declared, in this case string.
+
+Also, the declaration could be 'string* <var>' instead of 'string \*<var>', but the latter is more common on 3Kingdoms and is the preferred style.
+
+Elements can be accessed using the :ref:`Index Operators`, but the indexes must be integer values or an integer preceeded by '<' such as '<2'.
+
+.. code-block::
+
+  pets[1];
+  Result: "cat"
+
+.. note::
+  As mentioned in :ref:`String`, strings are not arrays of characters like in some languages, HOWEVER, we can still access them as if they were. You can use the index operator on a string to access a subset of the string. Note, however, that accessing it via [n] will return the integer ASCII value of the single character at position 'n', but [n..n] will return a string encapsulation of the single character at position 'n'.
+
+Mapping
+^^^^^^^
+
+Mappings are similar in nature to dictionaries in other languages. They consist of a key and one or more values. Using the key, you can access an individual value or all the values under that key. This is useful if you wanted to store data linked to the key. For instance if you have an area with a donation booth, you could track by player name or ID how many times they've donated and the total they've donated.
+
+To use a mapping you use the ([ ]) to surround the key/values. You separate the key from the values with ':' and the values from each other with ';', using ',' to signify the end of that set of value(s) (i.e. that row).
+
+.. code-block::
+
+  mapping m;
+  //([ Player_name : donations; times_donated])
+  m = ([ "Steve" : 12; 3,
+         "Bob" : 20; 2 ]);
+
+You can then access the elements using the :ref:`Index Operators` just like arrays, but unlike arrays the values can be non-integers as the entire point of a mapping is to use a key.
+
+.. note::
+
+  Of particular note is that the keys can be just about any type of data. Most often they are numeric or strings just for ease of use but they can be any data type that can also fall under the :ref:`Mixed` data type.
+
+.. code-block::
+
+  //The mapping has a width of 2 (because it has 2 values for each key).
+  //If we don't specify which sub-element, it defaults to 0.
+  m["Steve"];
+  Result: 12
+
+  //We could also explicitly access that same element...
+  m["Steve",0];
+  Result: 12
+
+  //Or we could access the 2nd value (but remember, 0-based index!)...
+  m["Steve",1];
+  Result: 3
+
+To learn more about mappings check out :ref:`Mappings` which goes into detail about all the operations you can do with mappings.
+
+Closure
+^^^^^^^
+
+A closure is a reference to executable code, either local functions, efuns, or runtime functions (called lambda closures).
+
+Essentially what that means is while almost all other data types store values in a variable, or a reference to the memory a value is held in for objects, closures hold references to actual functions instead of values.
+
+What this means is you can store a function in a closure, and then call the function from a variable. This means you can make dynamic code that can choose which function to call from a selection of closures, rather than having to hard-code everything.
+
+Most coders will use closures in a few specific areas, namely sort, map, and filter functions. Saavy coders also find other uses for closures that are less common but quite cool when implemented correctly.
+
+Closures are denoted on the value side of an operator by #'. However, with the single quote, it's good practice to end the closure with /\*'\*/ so that editors don't see a dangling quote. For example:
+
+.. code-block::
+
+  closure c;
+  c = #'query_sps;  //Bad format, will break editor syntax highlighting.
+  c = #'query_sps/*'*/; //Good format!
+
+Closures can also reference :ref:`Operators` as such:
+
+.. code-block::
+
+  closure c;
+  c = #'>/*'*/; //This is a closure pointing to the greater than operator.
+
+Combining the above, this is how we would use a closure in a sort function:
+
+.. code-block::
+
+  closure c;
+  string *alphas;
+
+  c = #'>/*'*/;
+
+  alphas = ({ "b", "d", "c", "a" });
+  alphas = sort_array(alphas,c);
+
+  //An alternate format without using the closure variable is:
+  alphas = sort_array(alphas,#'>/*'*/);
+
+  Result: ({ "a", "b", "c", "d" })
+
+Mixed
+^^^^^
+
+A mixed variable is a variable that can hold any of the following: int, string, object, array, mapping, float, closure.
+
+Mixed variables are useful where you might need something to hold a type that you aren't positive of at runtime, or a return from a function that is also mixed, or when coding in older drivers before the advent of the :ref:`Union` type.
+
+They are declared and used much like you'd expect...
+
+.. code-block::
+
+  mixed m;
+  int i;
+
+  m = "Hello, I am a string";
+  m = 1; //Now it is an integer.
+
+  //For non-mixed types, that would be a problem.
+  i = 1;
+  i = "Hello, I am a string";
+  Result: Error - Bad assignment (int vs string)
+
+Newer Types
+-----------
+
+**For newer drivers, namely 3.6.7 or above (possibly some slightly earlier drivers as well) the following types also exist:**
+
+Bytes
+^^^^^
+
+Bytes are byte sequences. They're very similar to strings but can store ASCII characters (like strings), escape sequences (like strings, except \\u and \\U), but can also store unicode sequences. For that reason, they're used primarily for storing unicode encoded strings which is not generally something we do at 3Kingdoms. It is unknown if this will get utilized much if at all.
+
+To denote a string is a byte sequence, you preface the string with 'b', such as:
+
+.. code-block::
+
+  bytes b_string;
+  b_string = b"This is a byte string. I know it looks similar to a string!";
+
+Struct
+^^^^^^
+
+Structs are a collection of values. They work like a much more complex version of a mapping, but also designed to be more specific for the end-use. Effectively they store a fixed number of values called 'members', but allows you to access each member by its given name.
+
+They have a much different declaration as they need both the struct keyword and the name of the struct class and finally the variable to store one in.
+
+.. code-block::
+
+  //Create a struct of struct class 'Foo' named 'var'.
+  struct Foo var;
+
+  //Declare a function that takes a struct of type 'Foo' as an argument:
+  void fun(struct Foo arg);
+
+  //You can also declare a function to return a struct but in doing so
+  //you don't need to declare the struct class in the return type.
+  struct fun2(arg);
+
+Structs have to be defined at the top level of an object.
+
+To declare a struct, you use the following format:
+
+.. code-block::
+
+  struct ClassName {
+    <type> <variable/member>;
+    <type> <variable2/member2>;
+    ...
+  };
+
+  //For example, to make a struct to store an x,y coordinate pair:
+  struct Coordinate {
+    int x;
+    int y;
+  };
+
+To access the contents of a struct you first must create a struct of that class into a variable using the format at the top of this section. Then you can access the variables/members using the -> or . operators.
+
+The . operator will throw an error if the member/variable doesn't exist. The -> operator will simply return 0 if it doesn't exist.
+
+These operator formats also work for both retrieving the value and, with the help of the = operator, setting the value.
+
+.. code-block::
+
+  struct Coordinate my_coords;
+  my_coords.x = 5;
+  my_coords->(y) = 10;
+  Result: Coordinates are 5,10.
+
+  my_coords->(non_exist);
+  Result: 0
+
+  my_coords.non_exist;
+  Result: Error!
+
+Another format that is useful is the literal declaration. In the example above, if we made a function that was to move a monster to a given set of coordinates passed as a struct, and if we stored the desired x and y coordinates as integers, we would need a way to signal to the function that we aren't just passing integer values. For that, we use the literals, denoted by <>.
+
+.. code-block::
+
+  int x,y;
+  x = 20;
+  y = 5;
+
+  //Note the nested () to ensure the inner () is computed into a struct
+  //before passing it. Without those you would be passing two values,
+  //<Coordinate> x, and mixed/unknown y.
+  monster_mover->move( (<Coordinate> x, y) );
+
+Union
+^^^^^
+
+Unions are a great way to ensure type safety in the driver by allowing us to use 'mixed' less than we used to.
+
+A union is not a data type in the traditional sense, instead its the ability to join multiple data types together, basically telling the driver that a variable, function argument, or function return, can be one of any of the given types and still be valid.
+
+To decalre a union we use the pipe '|' character. Note that this is also the bitwise OR operator, which makes sense in a way as we are literally saying this variable/function can be of this type OR that type (or a 3rd type, ...).
+
+As an example, lets say we want a variable to hold either an integer or a string, and another one that can hold an array of integers or an array of objects. Then we'll define a function that can return a string or an object and takes a string or object as its argument.
+
+.. code-block::
+
+  int|string var1;
+  int*|object* var2;
+
+  string|object my_function(string|object arg);
+
+Unions can also allow a non-mixed array to store different types. Normally a string array can only hold strings, an integer array can only hold ints, etc. We would use a mixed array to hold different types, but that also means it could store other non-desired values like an object or closure. By using unions we can restrict it to only the types we want.
+
+.. code-block::
+
+  //Notice we encapsulate the types in <> to indicate the array can hold
+  //integers or strings at the same time.
+  <int|string>* arr;
+
+  //All of these work.
+  arr = ({ 1, 2, 3 });
+  arr = ({ "a", "b", "c" });
+  arr = ({ 1, "2", 3, "carrot" });
+
+  //Without those <>, the array instead is a string array or an integer
+  //array, but cannot hold both types at once...
+  int*|string* arr;
+
+  arr = ({ 1, 2, 3 });
+  arr = ({ "a", "b", "c" });
+
+  //This will throw an error.
+  arr = ({ "a", 1, "b", 2 });
+
+  //In the event you ever need to nest the <>, there needs to be white space
+  //between each pair so it isnt confused for << or >>.
+  < <int|string>*|object >* arr;
+
+Unions are a very powerful way to enforce type adherance without using mixed.
+
+Type Functions
+--------------
+
+One other thing of note are that there are special functions called type functions. You'll understand functions more once you get into :ref:`Functions`, but briefly, these functions take a single variable as an argument, and return 1 (for true) or 0 (for false) if the variable is the type associated witht that function.
+
+These functions are:
+
+.. table::
+  :align: left
+
+  =====================  ===============================
+  :code:`bytesp(arg)`    - Is the variable type bytes?
+  :code:`closurep(arg)`  - Is the variable type closure?
+  :code:`floatp(arg)`    - Is the variable type float?
+  :code:`mappingp(arg)`  - Is the variable type mapping?
+  :code:`objectp(arg)`   - Is the variable type object?
+  :code:`intp(arg)`      - Is the variable type int?
+  :code:`stringp(arg)`   - Is the variable type string?
+  :code:`structp(arg)`   - Is the variable type struct?
+  :code:`symbolp(arg)`   - Is the variable type symbol?
+  =====================  ===============================
+
+Note there is no function for :code:`mixedp()` because you can use all the above on a mixed to see what it holds (i.e. if it has an int, intp() will be true; if its a float, floatp() will be true).
+
+There is also no :code:`arrayp()` becuase arrays can be different types as well, however we can tell if something is an array by using:
+
+:code:`pointerp(arg)` - Is the variable type pointer? Arrays are pointers so this will be true for all arrays.
+
+Lastly, this one tells us if the variable was passed by reference (you must pass the variable to this function by reference oddly enough).
+
+:code:`referencep(&arg)` - Is the variable passed to the current function by reference?
+
+Advanced Topics - Types
+-----------------------
+
+Advanced Topic - Integers
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Integers can be preceeded to signify their method of rendering.
+All of the following represent the same value (decimal 43)::
+
+  0b: Binary      Example: 0b00101011
+  0o: Octal       Example: 0o53
+  Ox: Hexidecimal Example: 0x2B
+
+They can also be used with single quotes to return an ASCII
+character value:
+'+' is ASCII code 43, so '+' + 2 == 45
+
+Advanced Topic - Floats
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The formula used for 32-bit floats with sign 's', exponent 'e', and mantissa 'm' is as follows:
+
+.. math:: (-1)^s * 2^{e-127} * (1.m)
+
+For 64-bit floats it is:
+
+.. math:: (-1)^s * 2^{e-1023} * (1.m)
+
+Internally they are stored as 1 bit for the sign, 8 or 11 bits (32-bit or 64-bit) for the exponent, and 23 or 52 bits (32-bit or 64-bit) for the fraction (or mantissa).
+
+In both of these formulas, the mantissa 'm' is an integer value represented by the 23 or 52 bits used to store it. This means the largest values for 'm' are 8,388,607 in 32-bit or 9,007,199,254,740,991 in 64-bit. The formula essentially puts a decimal point in front of the mantissa, and then adds 1, for the term '1.m'. Meaning a value of 12345678 would become 1.12345678.
+
+Consequently, the mantissa will always be between 1.0 and *almost* 2.0 but never all the way to 2.0; 1.9007... in 64-bit in fact, meaning that the values that can be represented cannot be all possible decimal values as there is clearly 1 - 0.9007... of unused space in the mantissa, or even more in 32-bit.
+
+Advanced Topic - Symbols
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Symbols are identifier names or what is called a quoted string.
+
+They are used for computing lambda closures which is beyond the scope of this primer. They are, for most run of the mill LPC coders, black voodoo.

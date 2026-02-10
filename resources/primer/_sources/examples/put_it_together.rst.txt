@@ -1,0 +1,145 @@
+Putting It Together
+===================
+
+At this point you've successfully coded a room, a monster, an object, an armor, and a weapon.
+
+You've made it so the monster carries the object, armor, and weapon on them.
+
+Now we need to make it so the room loads the monster. There's two ways to do this, one is used almost exclusively, but the other may come in handy in rare occasions.
+
+The less-used method is to add the monster to the room in the :code:`create()`. The caveat to this is the monster will *ONLY* populate the room on loading, meaning it will not re-populate on reset, the entire room will have to unload from memory and be reloaded to get a new monster.
+
+The more-often used method is to add the monster in the :code:`reset()` function. This function is called by the driver on a preset interval, and nothing happens by default unless you specifically put code into this function. If you don't have it, nothing magically repopulates.
+
+Also for note, the way 3Kingdoms is setup, as a driver option, is such that when you first load any object the driver calls :code:`create()`, which we learned when we started writing these files. However, as soon as :code:`create()` is done, it then immediatly calls :code:`reset()`. This is why if you add the monster in :code:`reset()` that it appears on the first load, and doesn't have to wait until the first reset of the room to appear.
+
+As a reminder, this is how we left our room code:
+
+.. code-block::
+
+  /* first_room.c
+     Adalius 250315
+     A first room example. */
+  #pragma strong_types
+
+  inherit "/room/room";
+
+  void create()
+  {
+    ::create();
+
+    set_realm("Fantasy");
+
+    set_light(1);
+
+    set_short("A Small Hovel");
+    set_long("\
+    This is a small hovel set into the foot of a large hill. It has been \
+    clearly dug from the fertile dirt in a roughly rectangular shape. \
+    The only light that trickles in comes from a small hole on the door. \
+    Rays from the sun cast upon the dirt floor exposing the emptiness of \
+    the structure, not even a piece of furniture can be found.");
+
+    add_item(({ "dirt", "fertile dirt", "wall","walls","floor","ceiling" }),
+      "The dirt is packed hard, and a deep brown. Otherwise, it's dirt.");
+    add_item(({ "hovel", "home" }),
+      "This hovel is empty. Just dirt for building material and a door.");
+    add_item(({ "door", "wood door", "hole", "small hole",
+                "small wood hole" }),
+      "The wood door has a small wood hole cut about a third of the way "
+      "down from the top. It allows a trickle of light into the room and "
+      "provides a way for the occupant to see outside as there are no "
+      "windows".);
+    add_item(({ "light","trickle of light" }),
+      "The trickle of light filters from the hole in the door onto the "
+      "floor and provides a very slight illumination of the room.");
+
+    set_search_message("You scan that dilligently but find nothing.");
+
+    add_search_item(({ "floor", "dirt floor" }),
+      "You scour the floor but find nothing unusual.");
+
+    add_exit(MY_ROOMS+"second_room","west");
+
+    return;
+  }
+
+So now we're going to use the :code:`add_clone()` that we used in the monster, and place it inside a :code:`reset()` call. However, as mentioned, :code:`add_clone()` has a different format inside a room:
+
+.. code-block::
+
+  varargs mixed add_clone(string path,int num,int perc_chance,status return_obs)
+
+Similar to the monster version, we give it the filepath and the number we want it to clone (remembering that it will add *up* to that amount; meaning if you add 1 kobold but the previous kobold was still standing here, it wont add a 2nd), and return_obs to get the array of what was added.
+
+But this time we also have a 'perc_chance' argument. This is an inverse chance of it being cloned, and needs to be between 0-99. What this means simply is if you pass 20, that means there's a 20% chance it *won't* clone, and an 80% chance it will. The reason for this is that if you leave it blank, 0, it would never clone if it wasn't inverted, and given the similarity to the monster call tied with the fact they are varargs functions, it's too easy to accidentally put 0 there. So to make it more logical, it was done this way so that people didn't accidentally turn off the clone completely left and right.
+
+Like the monster, we're going to presume a 'defs.h' is included that has a MY_MONS define pointing to the folder with the kobold in it.
+
+All that said, lets add the reset function and the clone functions and make this room load a kobold!
+
+.. code-block::
+
+  /* first_room.c
+     Adalius 250315
+     A first room example. */
+  #pragma strong_types
+  #include "defs.h"
+
+  inherit "/room/room";
+
+  void create()
+  {
+    ::create();
+
+    set_realm("Fantasy");
+
+    set_light(1);
+
+    set_short("A Small Hovel");
+    set_long("\
+    This is a small hovel set into the foot of a large hill. It has been \
+    clearly dug from the fertile dirt in a roughly rectangular shape. \
+    The only light that trickles in comes from a small hole on the door. \
+    Rays from the sun cast upon the dirt floor exposing the emptiness of \
+    the structure, not even a piece of furniture can be found.");
+
+    add_item(({ "dirt", "fertile dirt", "wall","walls","floor","ceiling" }),
+      "The dirt is packed hard, and a deep brown. Otherwise, it's dirt.");
+    add_item(({ "hovel", "home" }),
+      "This hovel is empty. Just dirt for building material and a door.");
+    add_item(({ "door", "wood door", "hole", "small hole",
+                "small wood hole" }),
+      "The wood door has a small wood hole cut about a third of the way "
+      "down from the top. It allows a trickle of light into the room and "
+      "provides a way for the occupant to see outside as there are no "
+      "windows".);
+    add_item(({ "light","trickle of light" }),
+      "The trickle of light filters from the hole in the door onto the "
+      "floor and provides a very slight illumination of the room.");
+
+    set_search_message("You scan that dilligently but find nothing.");
+
+    add_search_item(({ "floor", "dirt floor" }),
+      "You scour the floor but find nothing unusual.");
+
+    add_exit(MY_ROOMS+"second_room","west");
+
+    return;
+  }
+
+  void reset()
+  {
+    //By not passing any of the other variables, we are telling it to add
+    //one kobold, if there are none here, with 100% load chance.
+    add_clone(MY_MON+"kobold",1);
+    return;
+  }
+
+And that's it, that's all it took to add the kobold to the room every time it resets (presuming the prior one isn't still there).
+
+You're done. You've made an entire 1-room area. Congratulations!
+
+You can continue on with some more advanced topics if you wish by continuing the primer.
+
+If you feel like this is something up your alley and something you want to pursue further, check out :ref:`Wizzing` for a small blurb about what to expect as an applicant and neophyte wizard to see if it really is for you. Our ranks are always open in some fashion, usually just pending availability of someone to take on a new sponsoree.

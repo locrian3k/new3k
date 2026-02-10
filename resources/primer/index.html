@@ -1,43 +1,288 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3K Coding Primer - Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=https://wemudtogether.com/3KCodePrimer/">
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
-            color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .container {
-            padding: 2rem;
-        }
-        h1 {
-            color: #ffcc00;
-            margin-bottom: 1rem;
-        }
-        a {
-            color: #ffcc00;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>3K Coding Primer</h1>
-        <p>Redirecting to the coding primer...</p>
-        <p>If you are not redirected automatically, <a href="https://wemudtogether.com/3KCodePrimer/">click here</a>.</p>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3K Coding Primer &#8212; 3K Coding Primer 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=2bf1fcf8" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css?v=26fd7037" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="coding/introduction.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="coding/introduction.html" title="Introduction"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">3K Coding Primer</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="k-coding-primer">
+<h1>3K Coding Primer<a class="headerlink" href="#k-coding-primer" title="Link to this heading">¶</a></h1>
+<p>Welcome to the <a class="reference external" href="https://www.3k.org">3Kingdoms</a> coding primer. This is a document designed to prepare potential wizards for the basics of LPC coding specific to the 3Kingdoms library and to serve as an example for those considering wizzing but unsure if they will be able to grasp the tasks at hand.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="coding/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/introduction.html#kingdoms">3Kingdoms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/introduction.html#code-example-notation">Code Example Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/introduction.html#what-to-expect">What To Expect</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/LPC.html">LPC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/LPC.html#wikipedia">Wikipedia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/LPC.html#history">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/LPC.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/LPC.html#layout">Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/types.html">Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/types.html#introduction-to-types">Introduction to Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/types.html#type-uses">Type Uses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/types.html#types-descriptions">Types &amp; Descriptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#int">Int</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#status">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#float">Float</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#string">String</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#object">Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#array">Array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#mapping">Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#closure">Closure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#mixed">Mixed</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coding/types.html#newer-types">Newer Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#bytes">Bytes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#struct">Struct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#union">Union</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coding/types.html#type-functions">Type Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/types.html#advanced-topics-types">Advanced Topics - Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#advanced-topic-integers">Advanced Topic - Integers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#advanced-topic-floats">Advanced Topic - Floats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/types.html#advanced-topic-symbols">Advanced Topic - Symbols</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/variables.html">Variables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/variables.html#variable-passing">Variable Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/variables.html#variable-scope">Variable Scope</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coding/variables.html#global-variables">Global Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/variables.html#function-level-variables">Function Level Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/variables.html#local-variables">Local Variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/operators.html">Operators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/operators.html#fundementals">Fundementals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/operators.html#list-of-operators">List of Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/operators.html#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#assignment-operator">Assignment Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#arithmatic-operators">Arithmatic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#logical-operators">Logical Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#relational-operators">Relational Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#bitwise-operators">Bitwise Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#combination-operators">Combination Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#index-operators">Index Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#typecast-operators">Typecast Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#call-other-operator">Call Other Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/operators.html#scope-resolution-operator">Scope Resolution Operator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/mappings.html">Mappings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/mappings.html#mapping-declaration">Mapping Declaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/mappings.html#mapping-initialization">Mapping Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/mappings.html#mapping-addition">Mapping Addition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/mappings.html#mapping-subtraction">Mapping Subtraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/mappings.html#mapping-indexing">Mapping Indexing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/mappings.html#mapping-key-existence">Mapping Key Existence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/mappings.html#mapping-copy">Mapping Copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/mappings.html#mapping-size">Mapping Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/mappings.html#mapping-iteration">Mapping Iteration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/functions.html">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/functions.html#declaring-functions">Declaring Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/functions.html#calling-functions">Calling Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/functions.html#prototypes">Prototypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/functions.html#recursive-functions">Recursive Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/functions.html#important-functions">Important Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/functions.html#create-function">Create Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/functions.html#init-function">Init Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/functions.html#reset-function">Reset Function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/control_structures.html">Control Structures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/control_structures.html#jumps">Jumps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/control_structures.html#conditionals">Conditionals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coding/control_structures.html#if-else">If Else</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/control_structures.html#switch">Switch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coding/control_structures.html#loops">Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="coding/control_structures.html#for-loop">For Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/control_structures.html#foreach-loop">Foreach Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/control_structures.html#while-loop">While Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding/control_structures.html#do-while-loop">Do While Loop</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coding/control_structures.html#calls">Calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/control_structures.html#halts">Halts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/modifiers.html">Modifiers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/modifiers.html#function-modifiers">Function Modifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/modifiers.html#global-variable-modifiers">Global Variable Modifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/modifiers.html#inheritance-modifiers">Inheritance Modifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/modifiers.html#default-modifier">Default Modifier</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/preprocessor.html">Preprocessor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/preprocessor.html#pragma">Pragma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/preprocessor.html#include">Include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/preprocessor.html#define">Define</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/preprocessor.html#preprocessor-conditionals">Preprocessor Conditionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/preprocessor.html#predefined">Predefined</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/inheritance.html">Inheritance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/inheritance.html#multiple-inheritance">Multiple Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/inheritance.html#overloading">Overloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/inheritance.html#predefined-inheritables">Predefined Inheritables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/codestyle.html">Code Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#purpose">Purpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-editor-settings">Styles: Editor Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-folder-structure">Styles: Folder Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-file-structure">Styles: File Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-precompiler-directives">Styles: Precompiler Directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-naming-conventions">Styles: Naming Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-types">Styles: Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-brackets">Styles: Brackets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-variables">Styles: Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-functions">Styles: Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-strings">Styles: Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-general-programming">Styles: General Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/codestyle.html#styles-in-closing">Styles: In Closing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/driver_functions.html">Driver Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#action-functions">Action Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#ansi-functions">ANSI Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#array-functions">Array Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#display-functions">Display Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#filename-functions">Filename Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#inventory-functions">Inventory Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#math-functions">Math Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#object-functions">Object Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#player-functions">Player Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#regexp-functions">Regexp Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#string-functions">String Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#time-functions">Time Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#utility-functions">Utility Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#variable-functions">Variable Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#sprintf-and-printf-functions">Sprintf And Printf Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/driver_functions.html#sscanf">Sscanf</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/room.html">Coding A Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/object.html">Coding An Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/object.html#init-function">Init Function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/weapon.html">Coding A Weapon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/armor.html">Coding An Armor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/monster.html">Coding A Monster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/put_it_together.html">Putting It Together</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding/wizzing.html">Wizzing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding/advanced.html">Advanced Coding Topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding/advanced.html#command-hook">Command Hook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/advanced.html#heart-beat">Heart Beat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/advanced.html#call-outs">Call Outs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/advanced.html#efun-closures">Efun Closures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/advanced.html#lfun-closures">Lfun Closures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/advanced.html#lambda-closures">Lambda Closures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding/advanced.html#inline-closures">Inline Closures</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding/conclusion.html">Conclusion</a></li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="coding/introduction.html"
+                          title="next chapter">Introduction</a></p>
+  </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
     </div>
-</body>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="coding/introduction.html" title="Introduction"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">3K Coding Primer 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">3K Coding Primer</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, Adalius.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    </div>
+  </body>
 </html>

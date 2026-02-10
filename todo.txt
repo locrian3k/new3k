@@ -1,5 +1,3 @@
-TODO Make website searchable
-
 TODO update all -'s to be commas
 
 TODO hm help files and many more aren't loading?

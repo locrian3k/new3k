@@ -131,7 +131,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <h3>Kikipopo</h3>
           <span class="archon-order order-ethos">Ethos</span>
           <p>
-            Knights Guild, Knight recode, Bailout Quest, Section Z, and community management.
+            Knights Guild, Bailout Quest, Section Z, and community management.
           </p>
         </div>
 
@@ -187,7 +187,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <h3>Flaxen</h3>
           <span class="wizard-order order-mudlib">Mudlib</span>
           <span class="wizard-order order-areas">Areas</span>
-          <p>Sii Guild, Crafting, Missions, Professions</p>
+          <p>Sii Guild, Kayos Wars, Crafting, Missions, Professions</p>
         </div>
 
         <div class="wizard-card">

@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   <!-- Hero Section -->
   <section class="hero hero-admin">
     <div class="hero-content">
-      <h1 class="hero-title">The Administration</h1>
+      <h1 class="hero-title"><span class="mobile-only">The Admin</span><span class="desktop-only">The Administration</span></h1>
       <p class="hero-subtitle">The Wizards Behind the Realms</p>
     </div>
   </section>

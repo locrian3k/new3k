@@ -4577,6 +4577,18 @@ main { margin-top: 5rem; }
 	color: var(--clr-text-heading);
 }
 
+.archon-icon.order-multi {
+	border: none;
+	background:
+		linear-gradient(rgba(25, 52, 85, 0.8), rgba(25, 52, 85, 0.8)) padding-box,
+		linear-gradient(135deg, var(--clr-accent-blue), var(--clr-fantasy), var(--clr-text-secondary), var(--clr-chaos)) border-box;
+	border: 2px solid transparent;
+}
+
+.archon-icon.order-multi i {
+	color: var(--clr-text-heading);
+}
+
 .archon-card h3 {
 	font-family: var(--ff-heading);
 	font-size: var(--fs-h3);

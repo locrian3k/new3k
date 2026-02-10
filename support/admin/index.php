@@ -125,7 +125,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
 
         <div class="archon-card">
-          <div class="archon-icon order-ethos">
+          <div class="archon-icon order-multi">
             <i class="fa-solid fa-scale-balanced"></i>
           </div>
           <h3>Kikipopo</h3>
@@ -136,7 +136,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
 
         <div class="archon-card">
-          <div class="archon-icon order-areas">
+          <div class="archon-icon order-multi">
             <i class="fa-solid fa-map"></i>
           </div>
           <h3>Adalius</h3>
@@ -149,8 +149,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
 
         <div class="archon-card">
-          <div class="archon-icon order-admin">
-            <i class="fa-solid fa-tower-observation"></i>
+          <div class="archon-icon order-multi">
+            <i class="fa-solid fa-scale-balanced"></i>
           </div>
           <h3>Turnhold</h3>
           <span class="archon-order order-ethos">Ethos</span>
@@ -181,7 +181,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
 
         <div class="wizard-card">
-          <div class="wizard-icon order-mudlib">
+          <div class="wizard-icon order-multi">
             <i class="fa-solid fa-terminal"></i>
           </div>
           <h3>Flaxen</h3>
@@ -200,7 +200,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         </div>
 
         <div class="wizard-card">
-          <div class="wizard-icon order-guilds">
+          <div class="wizard-icon order-multi">
             <i class="fa-solid fa-shield-halved"></i>
           </div>
           <h3>Crolack</h3>

@@ -1706,7 +1706,8 @@ main { margin-top: 5rem; }
 
 .realm-tab[data-realm="science"] { border: .25px solid var(--clr-science); }
 .realm-tab[data-realm="science"]:hover,
-.realm-tab[data-realm="science"].active {
+.realm-tab[data-realm="science"].active,
+.realm-nav-btn.science {
 	color: var(--clr-science);
 	border-color: var(--clr-science);
 	box-shadow: var(--glow-science);
@@ -1714,7 +1715,8 @@ main { margin-top: 5rem; }
 
 .realm-tab[data-realm="chaos"] { border: .25px solid var(--clr-chaos); }
 .realm-tab[data-realm="chaos"]:hover,
-.realm-tab[data-realm="chaos"].active {
+.realm-tab[data-realm="chaos"].active,
+.realm-nav-btn.chaos {
 	color: var(--clr-chaos);
 	border-color: var(--clr-chaos);
 	box-shadow: var(--glow-chaos);
@@ -2529,7 +2531,8 @@ main { margin-top: 5rem; }
 	margin-bottom: var(--space-xl);
 }
 
-.connection-server-info code {
+.connection-server-info code,
+.realm-quests-link code {
 	background: rgba(247, 210, 75, 0.1);
 	color: var(--clr-text-heading);
 	padding: 0.3rem 0.7rem;

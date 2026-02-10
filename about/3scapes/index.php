@@ -13,8 +13,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <h1 class="hero-title">3Scapes</h1>
       <p class="hero-subtitle">A Parallel Dimension Awaits</p>
       <div class="hero-actions">
-        <a href class="btn-primary">
-          Enter the Rift
+        <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary">
+          Enter the Rift <i class="fas fa-external-link-alt"></i>
         </a>
       </div>
     </div>

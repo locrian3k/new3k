@@ -8,7 +8,5 @@ TODO Last 3 bubbles on 3scapes page don't move
 
 TODO Enter the Rift button just reloads page (take it to client.wemudtogether.com)
 
-TODO Make padding around guild adventurer box smaller in mobile size (the number 5 is on its own line as is) - make padding smaller on all other guild boxes too
-
 TODO hm help files and many more aren't loading?
 

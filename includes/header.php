@@ -24,6 +24,7 @@
 			referrerpolicy="no-referrer" />
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="stylesheet" href="/design/style/styles_main.css" />
+		<link rel="stylesheet" href="/design/style/styles_search.css" />
 	</head>
 
 	<body>
@@ -51,6 +52,16 @@
 				</div>
 
 				<nav class="site-nav" aria-label="Primary">
+					<!-- Search Toggle Button -->
+					<button
+						id="search-toggle"
+						class="search-toggle"
+						aria-label="Open search"
+						aria-expanded="false"
+						aria-controls="search-modal">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</button>
+
 					<button
 						id="menu-toggle"
 						class="menu-toggle"
@@ -119,4 +130,8 @@
 					</div>
 				</nav>
 			</div>
+
+			<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/search-modal.php'; ?>
 		</header>
+
+		<script src="/design/script/script_search.js"></script>

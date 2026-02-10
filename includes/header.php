@@ -52,12 +52,6 @@
 				</div>
 
 				<nav class="site-nav" aria-label="Primary">
-					<!-- VAFs Button -->
-					<a href="/support/vafs/index.php" class="vafs-btn" aria-label="Support Us - VAFs">
-						<i class="fa-solid fa-heart"></i>
-						<span class="vafs-btn-text">VAFs</span>
-					</a>
-
 					<!-- Search Toggle Button -->
 					<button
 						id="search-toggle"
@@ -67,6 +61,12 @@
 						aria-controls="search-modal">
 						<i class="fa-solid fa-magnifying-glass"></i>
 					</button>
+
+					<!-- VAF Button -->
+					<a href="/support/vafs/index.php" class="vafs-btn" aria-label="Support Us - VAF">
+						<i class="fa-solid fa-heart"></i>
+						<span class="vafs-btn-text">VAF</span>
+					</a>
 
 					<button
 						id="menu-toggle"

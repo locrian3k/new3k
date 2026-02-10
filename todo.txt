@@ -4,8 +4,6 @@ TODO update all -'s to be commas
 
 TODO update all colors on admin page
 
-TODO add spacing on whosonline page above stats
-
 TODO VAFs page is too wide for mobile
 
 TODO Last 3 bubbles on 3scapes page don't move

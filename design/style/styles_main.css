@@ -4003,6 +4003,21 @@ main { margin-top: 5rem; }
 	}
 }
 
+/* VAFs - Small Mobile (480px) */
+@media (max-width: 480px) {
+	.payment-card {
+		padding: var(--space-lg);
+	}
+
+	.payment-header h3 {
+		font-size: 1.1rem;
+	}
+
+	.payment-price {
+		font-size: 1.75rem;
+	}
+}
+
 /* ------------------- */
 /* CONTACT PAGE        */
 /* ------------------- */
@@ -4316,6 +4331,21 @@ main { margin-top: 5rem; }
 	.contact-cta .cta-buttons {
 		flex-direction: column;
 		align-items: center;
+	}
+}
+
+/* Contact Page - Small Mobile (480px) */
+@media (max-width: 480px) {
+	.contact-card {
+		padding: var(--space-lg);
+	}
+
+	.contact-icon {
+		font-size: 1.75rem;
+	}
+
+	.contact-card h3 {
+		font-size: 1.1rem;
 	}
 }
 
@@ -6125,7 +6155,7 @@ button.help-link {
 /* ------------------- */
 /* Server Status Section */
 .wholist-status {
-  padding: 4rem 0 2rem;
+  padding: 5rem 0 2rem;
   background: linear-gradient(180deg, var(--clr-black) 0%, var(--clr-bg-main) 100%);
 }
 

@@ -191,7 +191,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         <a href="https://client.wemudtogether.com" target="_blank" class="btn-primary">
           Play Now
         </a>
-        <a href="/connect/index.php" class="btn-secondary">Connection Options</a>
+        <a href="/support/admin/index.php" class="btn-secondary">Meet the Admin</a>
       </div>
     </div>
   </section>

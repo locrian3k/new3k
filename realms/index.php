@@ -107,7 +107,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <p>Prove your worth as a warrior by taking on the orc menace threatening the peaceful villages.</p>
             </div>
           </div>
-          <p class="realm-quests-link"><a href="/quests/index.php">View all quests <i class="fa-solid fa-arrow-right"></i></a></p>
+          <p class="realm-quests-link">Type <code>questlist</code> in-game for a full list of quests.</p>
         </div>
 
         <div class="realm-nav-links">
@@ -197,7 +197,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <p>A perfect starting quest for new agents looking to prove themselves in the field.</p>
             </div>
           </div>
-          <p class="realm-quests-link"><a href="/quests/index.php">View all quests <i class="fa-solid fa-arrow-right"></i></a></p>
+          <p class="realm-quests-link">Type <code>questlist</code> in-game for a full list of quests.</p>
         </div>
 
         <div class="realm-nav-links">
@@ -287,7 +287,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
               <p>The purple menace must be stopped. A fan-favorite quest that's exactly what it sounds like.</p>
             </div>
           </div>
-          <p class="realm-quests-link"><a href="/quests/index.php">View all quests <i class="fa-solid fa-arrow-right"></i></a></p>
+          <p class="realm-quests-link">Type <code>questlist</code> in-game for a full list of quests.</p>
         </div>
 
         <div class="realm-nav-links">

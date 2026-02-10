@@ -1697,7 +1697,8 @@ main { margin-top: 5rem; }
 
 .realm-tab[data-realm="fantasy"] { border: .25px solid var(--clr-fantasy); }
 .realm-tab[data-realm="fantasy"]:hover,
-.realm-tab[data-realm="fantasy"].active {
+.realm-tab[data-realm="fantasy"].active,
+.realm-nav-btn.fantasy {
 	color: var(--clr-fantasy);
 	border-color: var(--clr-fantasy);
 	box-shadow: var(--glow-fantasy);

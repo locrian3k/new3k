@@ -290,7 +290,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           <p class="realm-quests-link">Type <code>questlist</code> in-game for a full list of quests.</p>
         </div>
 
-        <div class="realm-nav-links">
+        <div class="realm-nav-links realms-tabs">
           <span>Explore other realms:</span>
           <button class="realm-nav-btn fantasy" data-realm="fantasy">
             <i class="fa-solid fa-hat-wizard"></i> Fantasy

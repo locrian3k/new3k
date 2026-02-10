@@ -83,11 +83,23 @@ document.addEventListener('keydown', function(e) {
   // Only trap focus on mobile when menu is open
   if (!isMenuOpen || isDesktop) return;
 
-  // Get all focusable elements in the mobile menu
-  const focusableElements = primaryNavigation.querySelectorAll(
+  // Get only visible/tabbable focusable elements in the mobile menu
+  // Exclude links inside closed dropdowns
+  const allFocusable = primaryNavigation.querySelectorAll(
     'a[href], button:not([disabled])'
   );
-  const focusableArray = Array.from(focusableElements);
+
+  const focusableArray = Array.from(allFocusable).filter(el => {
+    // Check if element is inside a closed dropdown
+    const parentDropdown = el.closest('.has-dropdown');
+    if (parentDropdown && !parentDropdown.classList.contains('open')) {
+      // If inside a dropdown, only include the toggle button, not the dropdown links
+      const isDropdownLink = el.closest('.dropdown');
+      if (isDropdownLink) return false;
+    }
+    return true;
+  });
+
   const firstElement = focusableArray[0];
   const lastElement = focusableArray[focusableArray.length - 1];
 
@@ -96,12 +108,12 @@ document.addEventListener('keydown', function(e) {
     e.preventDefault();
     menuToggle.focus();
   }
-  // Shift+Tab on menu toggle → go to last menu item
+  // Shift+Tab on menu toggle → go to last visible menu item
   else if (e.shiftKey && document.activeElement === menuToggle) {
     e.preventDefault();
     lastElement.focus();
   }
-  // Tab on last element → go to menu toggle (close button)
+  // Tab on last visible element → go to menu toggle (close button)
   else if (!e.shiftKey && document.activeElement === lastElement) {
     e.preventDefault();
     menuToggle.focus();

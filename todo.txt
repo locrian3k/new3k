@@ -4,9 +4,5 @@ TODO update all -'s to be commas
 
 TODO update all colors on admin page
 
-TODO Last 3 bubbles on 3scapes page don't move
-
-TODO Enter the Rift button just reloads page (take it to client.wemudtogether.com)
-
 TODO hm help files and many more aren't loading?
 

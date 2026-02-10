@@ -34,7 +34,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     <div class="connect-container">
       <h2 class="section-title">Connection Methods</h2>
       <p class="section-subtitle">
-        Multiple ways to connect - choose what works best for you<br /><em
+        Multiple ways to connect, choose what works best for you<br /><em
           style="
             font-size: var(--fs-body-small);
             color: var(--clr-accent-highlight);
@@ -82,7 +82,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
                   <li>
                     MUD Image Protocol (MIP) support for enhanced visuals
                   </li>
-                  <li>Automatic updates - always on the latest version</li>
+                  <li>Automatic updates, always on the latest version</li>
                   <li>Works behind most firewalls</li>
                   <li>
                     Perfect for trying 3Kingdoms before committing to a full

@@ -58,7 +58,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     <div class="guilds-container">
       <div class="section-header">
         <h2 class="section-title">Core Guilds</h2>
-        <p class="section-subtitle">Quick-start guilds designed for casual players - faster advancement with level caps</p>
+        <p class="section-subtitle">Quick-start guilds designed for casual players, faster advancement with level caps</p>
       </div>
 
       <div class="guild-split guild-split-quad">

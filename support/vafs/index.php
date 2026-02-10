@@ -74,7 +74,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <i class="fa-solid fa-infinity"></i>
             <h3>Never Expire</h3>
           </div>
-          <p>Your VAF credits remain available forever - use them whenever you want</p>
+          <p>Your VAF credits remain available forever, use them whenever you want</p>
         </div>
       </div>
 
@@ -279,7 +279,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
             <i class="fa-solid fa-rotate"></i>
             <h3>Reselectable Enhancements</h3>
           </div>
-          <p class="rewards-desc">Use these anytime you need them - perfect for character adjustments</p>
+          <p class="rewards-desc">Use these anytime you need them, perfect for character adjustments</p>
           <ul class="rewards-list">
             <li><i class="fa-solid fa-check"></i> Remove one scar</li>
             <li><i class="fa-solid fa-check"></i> Reset alignment to true neutral</li>

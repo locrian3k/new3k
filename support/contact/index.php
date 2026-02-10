@@ -158,7 +158,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           </div>
           <h3>Newbie Channel</h3>
           <code>newbie &lt;message&gt;</code>
-          <p>Ask questions on the newbie channel - experienced players are always willing to help newcomers.</p>
+          <p>Ask questions on the newbie channel, experienced players are always willing to help newcomers.</p>
         </div>
 
         <div class="ingame-card">

@@ -3604,8 +3604,9 @@ main { margin-top: 5rem; }
 	gap: var(--space-sm);
 }
 
-.square {
-  width: 80%;
+.square.payment-btn {
+  width: 77%;
+  max-width: 18.75rem;
 }
 
 /* PayPal Form */

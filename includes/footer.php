@@ -6,10 +6,8 @@
 		      <div class="footer-nav-column">
 		        <h3>Get Playing</h3>
 		        <ul>
+              <li><a href="/connect/index.php">Connection Options</a></li>
 		          <li><a href="https://client.wemudtogether.com" target="_blank">Quick Connect <i class="fas fa-external-link-alt"></i></a></li>
-		          <li>
-		            <a href="/connect/index.php">Connection Options</a>
-		          </li>
 		        </ul>
 		      </div>
 
@@ -38,11 +36,11 @@
           <div class="footer-nav-column">
             <h3>Support</h3>
             <ul>
+              <li><a href="/resources/primer/index.html" target="_blank">3K Coding Primer</a></li>
               <li><a href="/support/admin/index.php">Admin</a></li>
               <li><a href="/support/contact/index.php">Contact</a></li>
               <li><a href="/support/help/index.php">Help Files</a></li>
               <li><a href="/support/vafs/index.php">VAFs (Support Us)</a></li>
-              <li><a href="/resources/primer/index.html" target="_blank">3K Coding Primer</a></li>
             </ul>
           </div>          
 		    </div>

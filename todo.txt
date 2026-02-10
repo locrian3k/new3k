@@ -10,7 +10,5 @@ TODO Enter the Rift button just reloads page (take it to client.wemudtogether.co
 
 TODO Make padding around guild adventurer box smaller in mobile size (the number 5 is on its own line as is) - make padding smaller on all other guild boxes too
 
-TODO Make a quests page?
-
 TODO hm help files and many more aren't loading?
 

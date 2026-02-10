@@ -3306,6 +3306,13 @@ main { margin-top: 5rem; }
 	gap: var(--space-xs);
 }
 
+/* Guilds Page - Mobile (under 768px) */
+@media (max-width: 767px) {
+	.guild-split-card {
+		padding: var(--space-md);
+	}
+}
+
 /* Guilds Page - Tablet (768px) */
 @media (min-width: 768px) {
 	.guild-grid,

@@ -99,85 +99,93 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
       <div class="payment-grid">
         <!-- Square Option -->
         <div class="payment-card payment-featured">
-          <div class="payment-header">
-            <div class="payment-logo-text"><i class="fa-solid fa-square"></i> Square</div>
-            <span class="payment-badge">Recommended</span>
+          <div class="payment-card-content">
+            <div class="payment-header">
+              <div class="payment-logo-text"><i class="fa-solid fa-square"></i> Square</div>
+              <span class="payment-badge">Recommended</span>
+            </div>
+            <h3>Square Storefront</h3>
+            <p>
+              Visit our secure Square storefront for quick and easy VAF credit purchases.
+              Select your game (3Kingdoms or 3Scapes) and package size.
+            </p>
+            <div class="payment-steps">
+              <div class="step">
+                <span class="step-num">1</span>
+                <span>Choose your game & package</span>
+              </div>
+              <div class="step">
+                <span class="step-num">2</span>
+                <span>Complete secure checkout</span>
+              </div>
+              <div class="step">
+                <span class="step-num">3</span>
+                <span>Use <code>mail VAFS</code> in-game with your transaction ID</span>
+              </div>
+            </div>
           </div>
-          <h3>Square Storefront</h3>
-          <p>
-            Visit our secure Square storefront for quick and easy VAF credit purchases.
-            Select your game (3Kingdoms or 3Scapes) and package size.
-          </p>
-          <div class="payment-steps">
-            <div class="step">
-              <span class="step-num">1</span>
-              <span>Choose your game & package</span>
-            </div>
-            <div class="step">
-              <span class="step-num">2</span>
-              <span>Complete secure checkout</span>
-            </div>
-            <div class="step">
-              <span class="step-num">3</span>
-              <span>Use <code>mail VAFS</code> in-game with your transaction ID</span>
-            </div>
+          <div class="payment-card-action">
+            <a href="https://squareup.com/market/the-marble-group-inc" target="_blank" class="btn-primary square payment-btn">
+              <i class="fa-solid fa-external-link-alt"></i>
+              Visit Square Store
+            </a>
           </div>
-          <a href="https://squareup.com/market/the-marble-group-inc" target="_blank" class="btn-primary square payment-btn">
-            <i class="fa-solid fa-external-link-alt"></i>
-            Visit Square Store
-          </a>
         </div>
 
         <!-- PayPal Option - Hosted Button (Current) -->
         <div class="payment-card">
-          <div class="payment-header">
-            <div class="payment-logo-text"><i class="fa-brands fa-paypal"></i> PayPal</div>
-          </div>
-          <h3>PayPal Checkout</h3>
-          <p>
-            Use PayPal for a familiar checkout experience. Select your VAF package
-            and enter your character name to have credits applied automatically.
-          </p>
+          <div class="payment-card-content">
+            <div class="payment-header">
+              <div class="payment-logo-text"><i class="fa-brands fa-paypal"></i> PayPal</div>
+            </div>
+            <h3>PayPal Checkout</h3>
+            <p>
+              Use PayPal for a familiar checkout experience. Select your VAF package
+              and enter your character name to have credits applied automatically.
+            </p>
 
-          <div class="paypal-form-container">
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
-              <input type="hidden" name="cmd" value="_s-xclick">
-              <input type="hidden" name="hosted_button_id" value="76H7AUJNZEWXJ">
+            <div class="paypal-form-container">
+              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="76H7AUJNZEWXJ">
 
-              <div class="form-group">
-                <label for="vaf-package">Select VAF Package</label>
-                <select name="os0" id="vaf-package" class="form-select">
-                  <optgroup label="3Kingdoms">
-                    <option value="25 3Kingdoms VAF Credits $25.00 USD">25 Credits - $25</option>
-                    <option value="50 3Kingdoms VAF Credits $50.00 USD">50 Credits - $50</option>
-                    <option value="100 3Kingdoms VAF Credits $100.00 USD">100 Credits - $100</option>
-                    <option value="125 3Kingdoms VAF Credits $125.00 USD">125 Credits - $125</option>
-                    <option value="400 3Kingdoms VAF Credits $400.00 USD">400 Credits - $400</option>
-                  </optgroup>
-                  <optgroup label="3Scapes">
-                    <option value="25 3Scapes VAF Credits $25.00 USD">25 Credits - $25</option>
-                    <option value="50 3Scapes VAF Credits $50.00 USD">50 Credits - $50</option>
-                    <option value="100 3Scapes VAF Credits $100.00 USD">100 Credits - $100</option>
-                    <option value="125 3Scapes VAF Credits $125.00 USD">125 Credits - $125</option>
-                    <option value="400 3Scapes VAF Credits $400.00 USD">400 Credits - $400</option>
-                  </optgroup>
-                </select>
-                <input type="hidden" name="on0" value="Select VAF option">
-              </div>
+                <div class="form-group">
+                  <label for="vaf-package">Select VAF Package</label>
+                  <select name="os0" id="vaf-package" class="form-select">
+                    <optgroup label="3Kingdoms">
+                      <option value="25 3Kingdoms VAF Credits $25.00 USD">25 Credits - $25</option>
+                      <option value="50 3Kingdoms VAF Credits $50.00 USD">50 Credits - $50</option>
+                      <option value="100 3Kingdoms VAF Credits $100.00 USD">100 Credits - $100</option>
+                      <option value="125 3Kingdoms VAF Credits $125.00 USD">125 Credits - $125</option>
+                      <option value="400 3Kingdoms VAF Credits $400.00 USD">400 Credits - $400</option>
+                    </optgroup>
+                    <optgroup label="3Scapes">
+                      <option value="25 3Scapes VAF Credits $25.00 USD">25 Credits - $25</option>
+                      <option value="50 3Scapes VAF Credits $50.00 USD">50 Credits - $50</option>
+                      <option value="100 3Scapes VAF Credits $100.00 USD">100 Credits - $100</option>
+                      <option value="125 3Scapes VAF Credits $125.00 USD">125 Credits - $125</option>
+                      <option value="400 3Scapes VAF Credits $400.00 USD">400 Credits - $400</option>
+                    </optgroup>
+                  </select>
+                  <input type="hidden" name="on0" value="Select VAF option">
+                </div>
 
-              <div class="form-group">
-                <label for="char-name">Character Name</label>
-                <input type="text" name="os1" id="char-name" maxlength="150" class="form-input"
-                  placeholder="Enter any of your characters">
-                <input type="hidden" name="on1" value="Character Name">
-              </div>
+                <div class="form-group">
+                  <label for="char-name">Character Name</label>
+                  <input type="text" name="os1" id="char-name" maxlength="150" class="form-input"
+                    placeholder="Enter any of your characters">
+                  <input type="hidden" name="on1" value="Character Name">
+                </div>
 
-              <input type="hidden" name="currency_code" value="USD">
-              <button type="submit" class="btn-secondary payment-btn">
-                <i class="fa-brands fa-paypal"></i>
-                Pay with PayPal
-              </button>
-            </form>
+                <input type="hidden" name="currency_code" value="USD">
+                <div class="payment-card-action">
+                  <button type="submit" class="btn-secondary payment-btn">
+                    <i class="fa-brands fa-paypal"></i>
+                    Pay with PayPal
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
 
@@ -196,49 +204,53 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
         ?>
         <!--
         <div class="payment-card">
-          <div class="payment-header">
-            <div class="payment-logo-text"><i class="fa-brands fa-paypal"></i> PayPal</div>
-          </div>
-          <h3>PayPal Checkout</h3>
-          <p>
-            Use PayPal for a familiar checkout experience. Enter your desired VAF amount and character name. Remember: $1 = 1 VAF Credit.
-          </p>
+          <div class="payment-card-content">
+            <div class="payment-header">
+              <div class="payment-logo-text"><i class="fa-brands fa-paypal"></i> PayPal</div>
+            </div>
+            <h3>PayPal Checkout</h3>
+            <p>
+              Use PayPal for a familiar checkout experience. Enter your desired VAF amount and character name. Remember: $1 = 1 VAF Credit.
+            </p>
 
-          <div class="paypal-form-container">
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
-              <input type="hidden" name="cmd" value="_xclick">
-              <input type="hidden" name="business" value="paypal@3k.org">
-              <input type="hidden" name="item_name" value="3Kingdoms VAF Credit">
-              <input type="hidden" name="no_shipping" value="1">
-              <input type="hidden" name="no_note" value="1">
-              <input type="hidden" name="currency_code" value="USD">
-              <input type="hidden" name="tax" value="0.00">
-              <input type="hidden" name="lc" value="US">
-              <input type="hidden" name="bn" value="PP-BuyNowBF">
+            <div class="paypal-form-container">
+              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="paypal@3k.org">
+                <input type="hidden" name="item_name" value="3Kingdoms VAF Credit">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="no_note" value="1">
+                <input type="hidden" name="currency_code" value="USD">
+                <input type="hidden" name="tax" value="0.00">
+                <input type="hidden" name="lc" value="US">
+                <input type="hidden" name="bn" value="PP-BuyNowBF">
 
-              <div class="form-group">
-                <label for="vaf-game">Select Game</label>
-                <select name="item_name" id="vaf-game" class="form-select">
-                  <option value="3Kingdoms VAF Credit">3Kingdoms</option>
-                  <option value="3Scapes VAF Credit">3Scapes</option>
-                </select>
-              </div>
+                <div class="form-group">
+                  <label for="vaf-game">Select Game</label>
+                  <select name="item_name" id="vaf-game" class="form-select">
+                    <option value="3Kingdoms VAF Credit">3Kingdoms</option>
+                    <option value="3Scapes VAF Credit">3Scapes</option>
+                  </select>
+                </div>
 
-              <div class="form-group">
-                <label for="vaf-amount">Amount (USD)</label>
-                <input type="number" name="amount" id="vaf-amount" min="1" step="1" class="form-input" placeholder="Enter amount ($1 = 1 credit)" required>
-              </div>
+                <div class="form-group">
+                  <label for="vaf-amount">Amount (USD)</label>
+                  <input type="number" name="amount" id="vaf-amount" min="1" step="1" class="form-input" placeholder="Enter amount ($1 = 1 credit)" required>
+                </div>
 
-              <div class="form-group">
-                <label for="char-name-alt">Character Name</label>
-                <input type="text" name="custom" id="char-name-alt" maxlength="200" class="form-input" placeholder="Enter any of your characters" required>
-              </div>
+                <div class="form-group">
+                  <label for="char-name-alt">Character Name</label>
+                  <input type="text" name="custom" id="char-name-alt" maxlength="200" class="form-input" placeholder="Enter any of your characters" required>
+                </div>
 
-              <button type="submit" class="btn-secondary payment-btn">
-                <i class="fa-brands fa-paypal"></i>
-                Pay with PayPal
-              </button>
-            </form>
+                <div class="payment-card-action">
+                  <button type="submit" class="btn-secondary payment-btn">
+                    <i class="fa-brands fa-paypal"></i>
+                    Pay with PayPal
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
         -->

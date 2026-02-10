@@ -241,7 +241,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           improving the game, consider applying to become a wizard.
         </p>
         <p>
-          To get started, check out the <strong><a href="/resources/primer/index.html">3K Coding Primer</a></strong>,
+          To get started, check out the <strong><a href="/resources/primer/index.html" target="_blank">3K Coding Primer</a></strong>,
           a comprehensive guide written by Adalius that covers everything from LPC basics
           to building your own areas, monsters, and more.
         </p>
@@ -250,7 +250,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
           order to learn more about the application process.
         </p>
         <div class="join-actions">
-          <a href="/resources/primer/index.html" class="btn-primary">
+          <a href="/resources/primer/index.html"  target="_blank" class="btn-primary">
             <i class="fa-solid fa-book"></i>
             Read the Primer
           </a>

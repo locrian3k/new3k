@@ -1,7 +1,3 @@
-TODO Look over 3k.org/help/index.php and create support/help/index.php
-
-TODO Finish community/omp/index.php
-
 TODO Make website searchable
 
 TODO update all -'s to be commas
@@ -10,5 +6,19 @@ TODO update all colors on admin page
 
 TODO add spacing on whosonline page above stats
 
-TODO remove italics font from stories on omp page.
+TODO VAFs page is too wide for mobile
+
+TODO Last 3 bubbles on 3scapes page don't move
+
+TODO Enter the Rift button just reloads page (take it to client.wemudtogether.com)
+
+TODO Make padding around guild adventurer box smaller in mobile size (the number 5 is on its own line as is) - make padding smaller on all other guild boxes too
+
+TODO Make a quests page?
+
+TODO ADMINISTRATION on admin page is too wide on mobile
+
+TODO Cards on contact page are similar to VAFs page, extend more to the right than they should.
+
+TODO hm help files and many more aren't loading?
 

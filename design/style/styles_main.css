@@ -4743,13 +4743,13 @@ main { margin-top: 5rem; }
 }
 
 .join-card {
-	max-width: 800px;
+	max-width: 50rem;
 	margin: 0 auto;
 	text-align: center;
 	padding: var(--space-xl);
 	background: rgba(255, 255, 255, 0.03);
 	border: 2px solid rgba(255, 255, 255, 0.1);
-	border-radius: 8px;
+	border-radius: 0.5rem;
 }
 
 .join-card h2 {
@@ -4820,7 +4820,7 @@ main { margin-top: 5rem; }
 	}
 
 	.archon-card {
-		max-width: 260px;
+		max-width: 16.25rem;
 		flex: 0 1 calc(50% - var(--space-lg));
 	}
 }
@@ -4872,7 +4872,7 @@ main { margin-top: 5rem; }
 /* HELP PAGE           */
 /* ------------------- */
 .help-container {
-	max-width: 1200px;
+	max-width: 75rem;
 	margin: 0 auto;
 	padding: 0 var(--space-lg);
 }
@@ -4886,7 +4886,7 @@ main { margin-top: 5rem; }
 }
 
 .search-box {
-	max-width: 600px;
+	max-width: 37.5rem;
 	margin: 0 auto;
 	position: relative;
 	display: flex;
@@ -4938,7 +4938,7 @@ main { margin-top: 5rem; }
 }
 
 .search-hint {
-	max-width: 600px;
+	max-width: 37.5rem;
 	margin: var(--space-md) auto 0;
 	text-align: center;
 	color: var(--clr-text-secondary);
@@ -4987,8 +4987,8 @@ main { margin-top: 5rem; }
 }
 
 .category-icon {
-	width: 50px;
-	height: 50px;
+	width: 3.125rem;
+	height: 3.125rem;
 	background: rgba(255, 255, 255, 0.1);
 	border: 2px solid var(--clr-accent-main);
 	border-radius: 50%;
@@ -5024,7 +5024,7 @@ main { margin-top: 5rem; }
 	background: rgba(255, 204, 0, 0.15);
 	color: var(--clr-text-heading);
 	padding: 0.3rem 0.8rem;
-	border-radius: 20px;
+	border-radius: 1.25rem;
 	font-size: var(--fs-body-small);
 	font-weight: 600;
 	white-space: nowrap;
@@ -5053,7 +5053,7 @@ main { margin-top: 5rem; }
 	background: rgba(255, 204, 0, 0.15);
 	border-color: var(--clr-accent-main);
 	color: var(--clr-text-heading);
-	transform: translateY(-2px);
+	transform: translateY(-0.125rem);
 }
 
 /* No Results */
@@ -5171,16 +5171,16 @@ button.help-link {
 .help-modal-container {
 	position: relative;
 	width: 95%;
-	max-width: 900px;
+	max-width: 56.25rem;
 	max-height: 85vh;
 	background: var(--clr-black);
 	border: 2px solid var(--clr-accent-main);
-	border-radius: 12px;
+	border-radius: 0.75rem;
 	display: flex;
 	flex-direction: column;
-	transform: scale(0.9) translateY(20px);
+	transform: scale(0.9) translateY(1.25rem);
 	transition: transform 0.3s ease;
-	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1.5625rem 3.125rem -0.75rem rgba(0, 0, 0, 0.5);
 }
 
 .help-modal.open .help-modal-container {
@@ -5206,10 +5206,10 @@ button.help-link {
 .help-modal-close {
 	background: rgba(255, 255, 255, 0.1);
 	border: 1px solid rgba(255, 255, 255, 0.2);
-	border-radius: 8px;
+	border-radius: 0.5rem;
 	color: var(--clr-text-primary);
-	width: 40px;
-	height: 40px;
+	width: 2.5rem;
+	height: 2.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -5227,7 +5227,7 @@ button.help-link {
 	flex: 1;
 	overflow-y: auto;
 	padding: var(--space-lg);
-	min-height: 200px;
+	min-height: 12.5rem;
 }
 
 .help-modal-loading,
@@ -5408,7 +5408,7 @@ button.help-link {
 @media (max-width: 768px) {
 	.help-modal-container {
 		width: 92%;
-		max-width: 350px;
+		max-width: 21.875rem;
 		max-height: 85vh;
 		margin: var(--space-sm);
 	}
@@ -5479,7 +5479,7 @@ button.help-link {
 /* Larger screens get wider modal - Desktop (1200px)*/
 @media (min-width: 1200px) {
 	.help-modal-container {
-		max-width: 1000px;
+		max-width: 62.5rem;
 	}
 }
 
@@ -5489,7 +5489,7 @@ button.help-link {
 /* ------------------- */
 /* Container */
 .omp-container {
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -5501,7 +5501,7 @@ button.help-link {
 }
 
 .omp-intro .intro-content {
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
   text-align: center;
 }
@@ -5579,7 +5579,7 @@ button.help-link {
 /* Timeline Layout */
 .omp-timeline .timeline {
   position: relative;
-  max-width: 700px;
+  max-width: 43.75rem;
   margin: 0 auto;
   padding-left: 2.5rem;
 }
@@ -5608,7 +5608,7 @@ button.help-link {
 .omp-timeline .timeline-item:hover .timeline-content {
   background: rgba(0, 0, 0, 0.3);
   border-color: var(--clr-accent-main);
-  transform: translateX(5px);
+  transform: translateX(0.3125rem);
 }
 
 .omp-timeline .timeline-item:hover .timeline-marker::after {
@@ -5718,7 +5718,7 @@ button.help-link {
 
 .omp-cta .cta-content p {
   color: var(--clr-text-primary);
-  max-width: 600px;
+  max-width: 37.5rem;
   margin: 0 auto 2rem;
   line-height: 1.7;
 }
@@ -5732,7 +5732,7 @@ button.help-link {
 
 .omp-cta .cta-buttons .btn-primary,
 .omp-cta .cta-buttons .btn-secondary {
-  min-width: 200px;
+  min-width: 12.5rem;
 }
 
 /* ==========================================================================
@@ -5764,15 +5764,15 @@ button.help-link {
 
 .omp-modal-content {
   background: var(--clr-bg-main);
-  border-radius: 16px;
-  max-width: 700px;
+  border-radius: 1rem;
+  max-width: 43.75rem;
   width: 100%;
   max-height: calc(100vh - var(--header-height, 5rem) - 3rem);
   overflow-y: auto;
   position: relative;
   border: 1px solid var(--clr-border-subtle);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  transform: translateY(20px);
+  box-shadow: 0 1.5625rem 3.125rem rgba(0, 0, 0, 0.5);
+  transform: translateY(1.25rem);
   transition: transform 0.3s ease;
   margin: auto;
 }
@@ -5786,8 +5786,8 @@ button.help-link {
   top: 1rem;
   margin-left: auto;
   margin-right: 1rem;
-  width: 36px;
-  height: 36px;
+  width: 2.25rem;
+  height: 2.25rem;
   background: rgba(0, 0, 0, 0.8);
   border: 1px solid var(--clr-border-subtle);
   border-radius: 50%;
@@ -5810,11 +5810,11 @@ button.help-link {
 
 .omp-modal-header {
   padding: 2rem 2rem 1.5rem;
-  margin-top: -36px;
+  margin-top: -2.25rem;
   text-align: center;
   border-bottom: 1px solid var(--clr-border-subtle);
   background: linear-gradient(180deg, var(--clr-black) 0%, var(--clr-bg-main) 100%);
-  border-radius: 16px 16px 0 0;
+  border-radius: 1rem 1rem 0 0;
 }
 
 .modal-year {
@@ -5824,7 +5824,7 @@ button.help-link {
   color: var(--clr-text-heading);
   background: rgba(247, 210, 75, 0.2);
   padding: 0.3rem 1rem;
-  border-radius: 20px;
+  border-radius: 1.25rem;
   margin-bottom: 0.75rem;
 }
 
@@ -6109,7 +6109,7 @@ button.help-link {
     padding: 5rem 0;
   }
   .omp-timeline .timeline {
-    max-width: 800px;
+    max-width: 50rem;
   }
   .omp-cta {
     padding: 5rem 0;
@@ -6125,7 +6125,7 @@ button.help-link {
 /* ------------------- */
 /* Server Status Section */
 .wholist-status {
-  padding: 2rem 0;
+  padding: 4rem 0 2rem;
   background: linear-gradient(180deg, var(--clr-black) 0%, var(--clr-bg-main) 100%);
 }
 
@@ -6134,7 +6134,7 @@ button.help-link {
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
   text-align: center;
-  max-width: 500px;
+  max-width: 31.25rem;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -6177,7 +6177,7 @@ button.help-link {
 }
 
 .player-table-wrapper {
-  max-width: 900px;
+  max-width: 56.25rem;
   margin: 0 auto;
   overflow-x: auto;
 }
@@ -6201,7 +6201,7 @@ button.help-link {
 }
 
 .player-table td:first-child {
-  width: 60px;
+  width: 3.75rem;
   text-align: center;
   font-weight: 700;
   color: var(--clr-text-heading);
@@ -6231,7 +6231,7 @@ button.help-link {
 .wholist-empty {
   text-align: center;
   padding: 3rem 1.5rem;
-  max-width: 600px;
+  max-width: 37.5rem;
   margin: 0 auto;
 }
 
@@ -6322,7 +6322,7 @@ button.help-link {
   }
 
   .status-grid {
-    max-width: 700px;
+    max-width: 43.75rem;
     gap: 2rem;
     padding: 0;
   }
@@ -6351,7 +6351,7 @@ button.help-link {
   }
 
   .player-table th:first-child {
-    width: 80px;
+    width: 5rem;
     text-align: center;
   }
 
@@ -6381,7 +6381,7 @@ footer {
 /* Footer Navigation Grid */
 .footer-nav {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(9.375rem, 1fr));
 	gap: 1rem;
 	margin-bottom: 3rem;
 	padding: 1rem 0 2rem;
@@ -6540,7 +6540,7 @@ footer {
 }
 
 .ssh-intro .intro-content {
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
   text-align: center;
 }
@@ -6581,14 +6581,14 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  max-width: 1000px;
+  max-width: 62.5rem;
   margin: 0 auto;
 }
 
 .requirement-card {
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid var(--clr-border-subtle);
-  border-radius: 12px;
+  border-radius: 0.75rem;
   padding: 1.5rem;
   text-align: center;
 }
@@ -6623,7 +6623,7 @@ footer {
 
 /* Setup Steps */
 .setup-steps {
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
 }
 
@@ -6643,8 +6643,8 @@ footer {
 
 .step-number {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   background: var(--clr-accent-main);
   color: white;
   font-weight: 700;
@@ -6677,7 +6677,7 @@ footer {
   padding: 0;
   margin: 1rem 0;
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   padding: 1rem 1.25rem;
 }
 
@@ -6694,7 +6694,7 @@ footer {
 .connection-info {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid var(--clr-accent-main);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   padding: 1rem;
   text-align: center;
   margin: 1rem 0;
@@ -6712,7 +6712,7 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  max-width: 1000px;
+  max-width: 62.5rem;
   margin: 0 auto;
 }
 
@@ -6720,7 +6720,7 @@ footer {
   display: flex;
   gap: 1rem;
   padding: 1.25rem;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   background: rgba(0, 0, 0, 0.2);
   border-left: 4px solid;
 }
@@ -6770,7 +6770,7 @@ footer {
 
 /* Considerations */
 .considerations-content {
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
 }
 
@@ -6811,7 +6811,7 @@ footer {
 .disclaimer {
   background: rgba(212, 74, 2, 0.1);
   border: 1px solid rgba(212, 74, 2, 0.3);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   padding: 1rem 1.25rem;
   font-size: 0.9rem;
   text-align: center;

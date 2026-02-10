@@ -66,7 +66,52 @@ function openMenu() {
 function closeMenu() {
   menuToggle.setAttribute('aria-expanded', "false");
   primaryNavigation.setAttribute('data-state', "closed");
+  // Close all open dropdowns when menu closes
+  document.querySelectorAll(".has-dropdown.open").forEach(item => {
+    item.classList.remove("open");
+    item.querySelector(".dropdown-toggle")?.setAttribute("aria-expanded", "false");
+  });
 }
+
+// Focus trap for mobile menu
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Tab') return;
+
+  const isMenuOpen = menuToggle.getAttribute('aria-expanded') === "true";
+  const isDesktop = window.matchMedia("(min-width: 992px)").matches;
+
+  // Only trap focus on mobile when menu is open
+  if (!isMenuOpen || isDesktop) return;
+
+  // Get all focusable elements in the mobile menu
+  const focusableElements = primaryNavigation.querySelectorAll(
+    'a[href], button:not([disabled])'
+  );
+  const focusableArray = Array.from(focusableElements);
+  const firstElement = focusableArray[0];
+  const lastElement = focusableArray[focusableArray.length - 1];
+
+  // Shift+Tab on first element → go to menu toggle (close button)
+  if (e.shiftKey && document.activeElement === firstElement) {
+    e.preventDefault();
+    menuToggle.focus();
+  }
+  // Shift+Tab on menu toggle → go to last menu item
+  else if (e.shiftKey && document.activeElement === menuToggle) {
+    e.preventDefault();
+    lastElement.focus();
+  }
+  // Tab on last element → go to menu toggle (close button)
+  else if (!e.shiftKey && document.activeElement === lastElement) {
+    e.preventDefault();
+    menuToggle.focus();
+  }
+  // Tab on menu toggle → go to first menu item
+  else if (!e.shiftKey && document.activeElement === menuToggle) {
+    e.preventDefault();
+    firstElement.focus();
+  }
+});
 
 // Handle clicks outside navigation elements
 document.addEventListener("click", function (e) {

@@ -214,6 +214,17 @@ function parseHelpFile($content, $config = []) {
     $body = implode("\n", $bodyLines);
     $body = trim($body);
 
+    // Remove decorative "Topic:" sections (different from header: metadata)
+    // Format: @color:::::...:::::\n    Topic: name\n:::::...::::@\n
+    // These are decorative headers that duplicate the header: metadata
+    // Pattern 1: Lines that are just colons with optional @color prefix/suffix
+    $body = preg_replace('/^@?[a-z]*:*::{4,}:*@?\s*$/im', '', $body);
+    // Pattern 2: Lines with "Topic:" preceded by whitespace (indented topic lines)
+    $body = preg_replace('/^\s+Topic:\s*[^\n]+$/im', '', $body);
+    // Clean up any resulting multiple blank lines
+    $body = preg_replace('/\n{3,}/', "\n\n", $body);
+    $body = trim($body);
+
     // Extract "See Also:" from body content if present
     $bodySeeAlso = [];
     if (preg_match('/@?yellow:?\'?See\s+Also:\s*([^@\']+)\'?@?|See\s+Also:\s*(.+)$/im', $body, $seeAlsoMatch)) {

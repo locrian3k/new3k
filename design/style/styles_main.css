@@ -5053,7 +5053,7 @@ main { margin-top: 5rem; }
 	color: var(--clr-text-heading);
 }
 
-.search-hint {
+.help-container.search-hint {
 	max-width: 37.5rem;
 	margin: var(--space-sm) auto 0;
 	text-align: center;

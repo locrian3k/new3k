@@ -45,7 +45,7 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
           <i class="fa-solid fa-times"></i>
         </button>
       </div>
-      <p class="search-hint">
+      <p class="help-tip">
         <i class="fa-solid fa-lightbulb"></i>
         Tip: In-game, type <code>help &lt;topic&gt;</code> to access these files directly!
       </p>

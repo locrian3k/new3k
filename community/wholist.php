@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
  * WHOLIST CONFIGURATION
  * ==============================================================
  *
- * The MUD's 'who' command is located at: /cmds/mortal/who
+ * 'who' command located at: /cmds/mortal/who
  *
  * DATA SOURCE OPTIONS (uncomment ONE):
  * ------------------------------------

@@ -19,7 +19,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     <div class="omp-container">
       <div class="intro-content">
         <p class="lead-text">
-          Since 1998, 3Kingdoms players have gathered once a year at an official MUD party.
+          Since 1998, 3Kingdoms players have gathered once a year at an official MUD party (aka OMP).
           Players from as far as Australia and Sweden have journeyed to the United States
           to meet the people they've adventured with online.
         </p>

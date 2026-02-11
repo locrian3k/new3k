@@ -80,7 +80,12 @@ return [
 
     // File extension for local help files (without the dot)
     // The MUD's help files are typically plain text with no extension
+    // Use empty string for extensionless files, or 'c' for .c source files
     'file_extension' => '',
+
+    // Additional file extensions to search (for .c files with embedded help)
+    // These files contain help content in a help() function
+    'additional_extensions' => ['c'],
 
     // ===========================================
     // EXTERNAL URL SETTINGS
@@ -88,7 +93,7 @@ return [
     // ===========================================
 
     // Base URL for fetching/linking to help files
-    //'external_url' => 'https://3k.org/help/',
+    'external_url' => 'https://3k.org/help/',
 
     // URL suffix (file extension for external links)
     'url_suffix' => '.php',

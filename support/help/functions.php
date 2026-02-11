@@ -81,6 +81,7 @@ function scanAllHelpSources($config) {
     $basePath = $config['help_base_path'] ?? '';
     $sources = $config['help_sources'] ?? [];
     $extension = $config['file_extension'] ?? '';
+    $additionalExtensions = $config['additional_extensions'] ?? [];
     $globalExcludeFolders = $config['global_exclude_folders'] ?? [];
     $globalExcludeFiles = $config['global_exclude_files'] ?? [];
 
@@ -95,6 +96,12 @@ function scanAllHelpSources($config) {
         if (!empty($sourceConfig['include_root_files'])) {
             $rootFiles = scanDirectoryForFiles($sourcePath, $extension, $globalExcludeFiles);
             $allFiles = array_merge($allFiles, $rootFiles);
+
+            // Also scan for additional extensions (like .c files)
+            foreach ($additionalExtensions as $addExt) {
+                $addFiles = scanDirectoryForFiles($sourcePath, $addExt, $globalExcludeFiles);
+                $allFiles = array_merge($allFiles, $addFiles);
+            }
         }
 
         // Handle subfolders
@@ -132,6 +139,12 @@ function scanAllHelpSources($config) {
                 // Recursively scan this subfolder (passing global excludes)
                 $subFiles = scanDirectoryRecursive($subdir, $extension, $globalExcludeFolders, $globalExcludeFiles);
                 $allFiles = array_merge($allFiles, $subFiles);
+
+                // Also scan for additional extensions (like .c files)
+                foreach ($additionalExtensions as $addExt) {
+                    $addFiles = scanDirectoryRecursive($subdir, $addExt, $globalExcludeFolders, $globalExcludeFiles);
+                    $allFiles = array_merge($allFiles, $addFiles);
+                }
             }
         }
     }
@@ -246,22 +259,36 @@ function findHelpFile($topic, $config) {
     $basePath = $config['help_base_path'] ?? '';
     $sources = $config['help_sources'] ?? [];
     $extension = $config['file_extension'] ?? '';
+    $additionalExtensions = $config['additional_extensions'] ?? [];
     $globalExclude = $config['global_exclude_folders'] ?? [];
 
     // Build possible filenames to try:
     // 1. Original topic name (e.g., "!" or "?")
     // 2. URL-encoded version (e.g., "%21" or "%3F") for Windows filesystem compatibility
-    $filenamesToTry = [$topic];
+    $baseNames = [$topic];
     $encodedTopic = rawurlencode($topic);
     if ($encodedTopic !== $topic) {
-        $filenamesToTry[] = $encodedTopic;
+        $baseNames[] = $encodedTopic;
     }
 
-    // Add extension if configured
-    if (!empty($extension)) {
-        $filenamesToTry = array_map(function($f) use ($extension) {
-            return $f . '.' . $extension;
-        }, $filenamesToTry);
+    // Build list of filenames with all possible extensions
+    $filenamesToTry = [];
+
+    // Add extensionless versions if no main extension is configured
+    if (empty($extension)) {
+        $filenamesToTry = array_merge($filenamesToTry, $baseNames);
+    } else {
+        // Add versions with main extension
+        foreach ($baseNames as $base) {
+            $filenamesToTry[] = $base . '.' . $extension;
+        }
+    }
+
+    // Add versions with additional extensions (like .c)
+    foreach ($additionalExtensions as $addExt) {
+        foreach ($baseNames as $base) {
+            $filenamesToTry[] = $base . '.' . $addExt;
+        }
     }
 
     foreach ($sources as $sourceId => $sourceConfig) {
@@ -401,8 +428,71 @@ function readLocalHelpFile($topic, $config) {
         ];
     }
 
+    // Check if this is a .c file - extract help from help() function
+    if (pathinfo($realFilePath, PATHINFO_EXTENSION) === 'c') {
+        $content = extractHelpFromCFile($content);
+        if ($content === false) {
+            return [
+                'success' => false,
+                'error' => 'No help content found in source file'
+            ];
+        }
+    }
+
     return [
         'success' => true,
         'content' => $content
     ];
+}
+
+/**
+ * Extract help content from a .c source file
+ *
+ * Parses the help() function and extracts the return string content.
+ * Handles multi-line strings concatenated with newlines.
+ *
+ * @param string $content The raw .c file content
+ * @return string|false The extracted help text, or false if not found
+ */
+function extractHelpFromCFile($content) {
+    // Look for string help() function and its return statement
+    // Pattern matches: string help() { return "..."; }
+    // The help text is typically a series of concatenated strings
+
+    // First, find the help() function
+    if (!preg_match('/string\s+help\s*\(\s*\)\s*\{/s', $content, $funcMatch, PREG_OFFSET_CAPTURE)) {
+        return false;
+    }
+
+    $funcStart = $funcMatch[0][1] + strlen($funcMatch[0][0]);
+
+    // Find the return statement
+    $funcBody = substr($content, $funcStart);
+
+    // Extract everything between "return" and the closing ";}"
+    if (!preg_match('/return\s*([\s\S]*?)\s*;\s*\}/s', $funcBody, $returnMatch)) {
+        return false;
+    }
+
+    $returnContent = $returnMatch[1];
+
+    // Parse the concatenated strings
+    // Format is typically: "line1\n" "line2\n" "line3\n"
+    $helpText = '';
+
+    // Match all quoted strings (handling escaped quotes)
+    preg_match_all('/"((?:[^"\\\\]|\\\\.)*)"/s', $returnContent, $stringMatches);
+
+    if (!empty($stringMatches[1])) {
+        foreach ($stringMatches[1] as $str) {
+            // Process escape sequences
+            $str = str_replace('\\n', "\n", $str);
+            $str = str_replace('\\t', "\t", $str);
+            $str = str_replace('\\"', '"', $str);
+            $str = str_replace('\\\\', '\\', $str);
+            $helpText .= $str;
+        }
+    }
+
+    return !empty($helpText) ? $helpText : false;
 }

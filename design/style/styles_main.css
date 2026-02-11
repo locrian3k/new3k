@@ -5055,10 +5055,11 @@ main { margin-top: 5rem; }
 
 .search-hint {
 	max-width: 37.5rem;
-	margin: var(--space-md) auto 0;
+	margin: var(--space-sm) auto 0;
 	text-align: center;
 	color: var(--clr-text-secondary);
 	font-size: var(--fs-body-small);
+	line-height: 1.5;
 }
 
 .search-hint i {
@@ -5067,11 +5068,13 @@ main { margin-top: 5rem; }
 }
 
 .search-hint code {
+	display: inline;
 	background: rgba(255, 255, 255, 0.1);
 	padding: 0.15rem 0.4rem;
 	border-radius: 4px;
 	font-family: monospace;
 	color: var(--clr-text-heading);
+	white-space: nowrap;
 }
 
 /* Help Categories Section */

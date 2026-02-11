@@ -77,6 +77,18 @@ if ($contentSource === 'local') {
         exit;
     }
 
+    // Check if this is a .c file - extract help from help() function
+    if (pathinfo($realFilePath, PATHINFO_EXTENSION) === 'c') {
+        $rawContent = extractHelpFromCFile($rawContent);
+        if ($rawContent === false) {
+            echo json_encode([
+                'success' => false,
+                'error' => 'No help content found in source file'
+            ]);
+            exit;
+        }
+    }
+
     // Parse the 3K help file format (pass config for topic validation)
     $parsed = parseHelpFile($rawContent, $config);
 

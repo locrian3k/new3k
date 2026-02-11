@@ -182,10 +182,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
 
         <div class="wizard-card">
           <div class="wizard-icon order-multi">
-            <i class="fa-solid fa-terminal"></i>
+            <i class="fa-solid fa-map"></i>
           </div>
           <h3>Flaxen</h3>
-          <span class="wizard-order order-mudlib">Mudlib</span>
           <span class="wizard-order order-areas">Areas</span>
           <p>Sii Guild, Kayos Wars, Crafting, Missions, Professions</p>
         </div>

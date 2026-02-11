@@ -51,7 +51,7 @@ return [
 
     // Specific file names to ALWAYS exclude (without extension)
     // Add file names here to prevent them from appearing on the help page
-    'global_exclude_files' => ['?', '1', '2', '3', '4', '5'],
+    'global_exclude_files' => ['?', '1', '2', '3', '4', '5', '47', '3ksendfile', 'considerx'],
 
     // Help sources configuration
     // Each source defines a directory to scan and which subfolders to include/exclude

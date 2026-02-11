@@ -430,7 +430,7 @@ function readLocalHelpFile($topic, $config) {
 
     // Check if this is a .c file - extract help from help() function
     if (pathinfo($realFilePath, PATHINFO_EXTENSION) === 'c') {
-        $content = extractHelpFromCFile($content);
+        $content = extractHelpFromCFile($content, $basePath . '/');
         if ($content === false) {
             return [
                 'success' => false,
@@ -450,11 +450,13 @@ function readLocalHelpFile($topic, $config) {
  *
  * Parses the help() function and extracts the return string content.
  * Handles multi-line strings concatenated with newlines.
+ * Also handles redirects where help() calls another file's help().
  *
  * @param string $content The raw .c file content
+ * @param string $basePath Base path for resolving redirects (optional)
  * @return string|false The extracted help text, or false if not found
  */
-function extractHelpFromCFile($content) {
+function extractHelpFromCFile($content, $basePath = '') {
     // Look for string help() function and its return statement
     // Pattern matches: string help() { return "..."; }
     // The help text is typically a series of concatenated strings
@@ -469,12 +471,31 @@ function extractHelpFromCFile($content) {
     // Find the return statement
     $funcBody = substr($content, $funcStart);
 
-    // Extract everything between "return" and the closing ";}"
+    // Extract everything between "return" and the closing "}"
     if (!preg_match('/return\s*([\s\S]*?)\s*;\s*\}/s', $funcBody, $returnMatch)) {
         return false;
     }
 
-    $returnContent = $returnMatch[1];
+    $returnContent = trim($returnMatch[1]);
+
+    // Check if this is a redirect to another file's help()
+    // Format: "/cmds/mortal/hwho"->help()
+    if (preg_match('/^"([^"]+)"->help\(\)$/', $returnContent, $redirectMatch)) {
+        $redirectPath = $redirectMatch[1];
+        // Convert MUD path to filesystem path
+        // /cmds/mortal/hwho -> cmds/mortal/hwho.c
+        $redirectPath = ltrim($redirectPath, '/') . '.c';
+
+        if (!empty($basePath) && file_exists($basePath . $redirectPath)) {
+            $redirectContent = file_get_contents($basePath . $redirectPath);
+            if ($redirectContent !== false) {
+                // Recursively extract help from the redirected file
+                return extractHelpFromCFile($redirectContent, $basePath);
+            }
+        }
+        // If we can't resolve the redirect, return false
+        return false;
+    }
 
     // Parse the concatenated strings
     // Format is typically: "line1\n" "line2\n" "line3\n"

@@ -79,7 +79,7 @@ if ($contentSource === 'local') {
 
     // Check if this is a .c file - extract help from help() function
     if (pathinfo($realFilePath, PATHINFO_EXTENSION) === 'c') {
-        $rawContent = extractHelpFromCFile($rawContent);
+        $rawContent = extractHelpFromCFile($rawContent, $basePath . '/');
         if ($rawContent === false) {
             echo json_encode([
                 'success' => false,

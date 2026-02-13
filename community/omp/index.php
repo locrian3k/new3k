@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
   <section class="hero hero-omp">
     <div class="hero-content">
       <h1 class="hero-title">The Gatherings</h1>
-      <p class="hero-subtitle">Official MUD Parties Since 1998</p>
+      <p class="hero-subtitle">Official MUD Parties (OMPs) Since 1998</p>
     </div>
   </section>
 
@@ -56,11 +56,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
     </div>
   </section>
 
-  <!-- Gatherings Timeline -->
+  <!-- OMP Timeline -->
   <section class="omp-timeline">
     <div class="omp-container">
       <h2 class="section-title">A History of Gatherings</h2>
-      <p class="section-subtitle">Click on any gathering to learn more about its stories and memories</p>
+      <p class="section-subtitle">Click on any gathering (aka <abbr title="Official MUD Parties">OMPs</abbr>) to learn more about its stories and memories</p>
 
       <!-- Timeline generated dynamically from script_omp.js -->
       <div class="timeline" id="omp-timeline"></div>

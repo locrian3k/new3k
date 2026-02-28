@@ -1,0 +1,205 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<TITLE>Clan World - 3 days without a Nuclear Disaster!</TITLE>
+<!-- LINK rel="stylesheet" type="text/css" href="http://www.3k.org/new3k.css" -->
+<style>
+
+A {
+	COLOR: #ffcc33; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+PRE {
+	COLOR: #ffffff; TEXT-DECORATION: none; font-size: 90%; 
+}
+
+</style>
+
+<SCRIPT language=JavaScript>
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+<!----------------------
+var HELPWin=null;
+function wopen1(sub_url){
+	HELPWin=window.open(sub_url,'windowopen1','toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=no,resizable=1,width=620,height=540');
+if(navigator.appVersion.charAt(0)==2){
+HELPWin=window.open(sub_url,'windowopen1','toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=no,resizable=1,width=620,height=540');}
+//focusNN3.0~
+if(navigator.appVersion.charAt(0)>=3){HELPWin.focus()}
+};
+//----------------->
+</SCRIPT>
+
+</HEAD>
+
+<BODY text=#ffff99 vLink=#ffff99 aLink=#ff9900 link=#ffff99 bgColor=#000000 leftMargin=0 topMargin=0 onload="MM_preloadImages('http://www.3k.org/images/3k_logon_on.gif','http://www.3k.org/images/3k_whosonline_on.gif','http://www.3k.org/images/3k_gallery_on.gif','http://www.3k.org/images/3k_OMP_on.gif','http://www.3k.org/images/3k_portal_on.gif')" marginheight="0" marginwidth="0">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#000000 border=0>
+  <TBODY>
+  <TR>
+    <TD width=*>&nbsp;</TD>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width=768 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD width=31 height=73><IMG height=1 src="http://www.3k.org/images/spacer_invis.gif" width=31></TD>
+          <TD width=74 height=73><A onmouseover="MM_swapImage('3k_logon','','http://www.3k.org/images/3k_logon_on.gif',1)" 
+            onmouseout=MM_swapImgRestore() href="telnet://3k.org:3000"><IMG height=73
+			src="http://www.3k.org/images/3k_logon_off.gif" width=74 border=0 name=3k_logon></A></TD>
+          <TD width=67 height=73><A onmouseover="MM_swapImage('3k_wholist','','http://www.3k.org/images/3k_whosonline_on.gif',1)" 
+            onmouseout=MM_swapImgRestore() href="http://www.3k.org/wholist.php"><IMG height=73
+			src="http://www.3k.org/images/3k_whosonline_off.gif" width=67 border=0 name=3k_wholist></A></TD>
+          <TD width=68 height=73><A onmouseover="MM_swapImage('3k_gallery','','http://www.3k.org/images/3k_gallery_on.gif',1)" 
+            onmouseout=MM_swapImgRestore() href="http://www.3k.org/gallery.php"><IMG height=73 
+            src="http://www.3k.org/images/3k_gallery_off.gif" width=68 border=0 name=3k_gallery></A></TD>
+          <TD width=70 height=73><A 
+            onmouseover="MM_swapImage('3k_OMP','','http://www.3k.org/images/3k_OMP_on.gif',1)" 
+            onmouseout=MM_swapImgRestore() href="http://www.3k.org/omp.php"><IMG height=73 
+            src="http://www.3k.org/images/3k_OMP_off.gif" width=70 border=0 name=3k_OMP></A></TD>
+          <TD width=69 height=73><A 
+            onmouseover="MM_swapImage('3k_portal','','http://www.3k.org/images/3k_portal_on.gif',1)" 
+            onmouseout=MM_swapImgRestore() href="http://www.3k.org/client.php"><IMG height=73 
+            src="http://www.3k.org/images/3k_portal_off.gif" width=70 border=0 name=3k_portal></A></TD>
+          <TD width=14 height=73><IMG height=1 src="http://www.3k.org/images/spacer_invis.gif" width=14></TD>
+          <TD height=73 width=128><a href="http://www.themarblegroup.com" border=0><IMG height=73 
+            src="http://www.3k.org/images/marble.gif" width=128 border="0"></a></TD>
+          <TD width=200 height=73><IMG height=73 src="http://www.3k.org/images/3k_logo_top_blue.gif" width=200></TD>
+  		  <td width=46><IMG height=1 src="http://www.3k.org/images/spacer_invis.gif" width=46></td></TR></TBODY></TABLE></TD>
+    <TD width=*>&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" background="http://www.3k.org/images/horizontal_bar_blue.gif" border=0>
+  <TBODY>
+  <TR>
+    <TD width=*>&nbsp;</TD>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width=768 align=center border=0>
+        <TBODY>
+        <TR>
+		  <TD width=522 height=39><IMG height=1 src="http://www.3k.org/images/spacer_invis.gif" width=522></TD>
+          <TD width=200 height=39><IMG height=39 src="http://www.3k.org/images/3k_logo_middle_blue.gif" width=200></TD>
+		  <td width=46><IMG height=1 src="http://www.3k.org/images/spacer_invis.gif" width=46></td>
+		</TR></TBODY></TABLE></TD>
+    <TD width=*>&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" background="http://www.3k.org/images/background_nav_blue.gif" border=0>
+  <TBODY>
+  <TR>
+    <TD width=*>&nbsp;</TD>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width=768 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top width="191"><IMG height=1 src="http://www.3k.org/images/spacer_invis.gif" width=191><br>
+		    <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 100%"><FONT 
+            face="Verdana, Arial, Helvetica, sans-serif" size=2><A 
+            href="http://www.3k.org/history.php">About 3K</A></FONT></P>
+            <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 100%"><FONT 
+            face="Verdana, Arial, Helvetica, sans-serif" size=2><A 
+            href="http://www.3k.org/guilds.php">Guilds</A></FONT></P>
+            <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 100%"><FONT 
+            face="Verdana, Arial, Helvetica, sans-serif" size=2><A 
+            href="http://www.3k.org/quests.php">Quests</A></FONT></P>
+            <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 100%"><FONT 
+            face="Verdana, Arial, Helvetica, sans-serif" size=2><A 
+            href="http://www.3k.org/clanworld.php">Clan World</A></FONT></P>
+            <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 100%"><FONT 
+            face="Verdana, Arial, Helvetica, sans-serif" size=2><A 
+            href="http://www.3k.org/help.php">FAQ and Help</A></FONT></P>
+            <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 100%"><FONT 
+            face="Verdana, Arial, Helvetica, sans-serif" size=2><A 
+            href="http://www.3k.org/contact.php">Contact Us</A></FONT></P>
+            <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 100%"><FONT 
+            face="Verdana, Arial, Helvetica, sans-serif" size=2><A href="http://www.3k.org/">Home</A></FONT> 
+            </P></TD>
+		  <td width=331><IMG height=1 src="http://www.3k.org/images/spacer_invis.gif" width=331><br>
+		  <center><FONT face="Verdana, Arial, Helvetica, sans-serif"
+            color=#ffffff size=5>
+			Clan World</font></center></td>
+          <TD vAlign=top width=200 height=95><IMG height=88 src="http://www.3k.org/images/3k_logo_bottom_blue.gif" width=200></TD>
+		  <td width=46><IMG height=1 src="http://www.3k.org/images/spacer_invis.gif" width=46></td></TR></TBODY></TABLE></TD>
+    <TD width=*>&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" 
+background="http://www.3k.org/images/background_grid_blue.gif" border=0>
+  <TBODY>
+  <TR>
+    <TD width=*>&nbsp;</TD>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width=765 align=center border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width=109><IMG height=1 src="http://www.3k.org/images/spacer_invis.gif" width=109><br>
+		      <br>&nbsp;<br><FONT SIZE="2">Help Support 3K</FONT><br>
+			  <p>
+			  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			  	<input type="hidden" name="cmd" value="_xclick">
+				<input type="hidden" name="business" value="paypal@3k.org">
+				<input type="hidden" name="item_name" value="Three Kingdoms">
+				<input type="image" src="http://images.paypal.com/images/lgo/logo3v.gif" 
+				  border="0" name="submit" alt="Quick link to send in your VAF via Paypal!"> 
+			  </form>	
+			  </p>
+		  </TD>
+          <TD width=15>
+            <P align=left><BR><IMG height=1 
+            src="http://www.3k.org/images/spacer_invis.gif" 
+width=15><BR></P></TD>
+              <TD width=641><FONT face="Verdana, Arial, Helvetica, sans-serif" 
+            color=#ffffff size=2>
+                <p>When tired with the everyday stress of the regular mud, nothing 
+                  spells relief like cold-hearted blood and killing. Players group 
+                  together in clans behind their respective leaders, and when 
+                  the votes tally up, declare an all out war on each other, battling 
+                  in a variety of voted on arenas and climaxing with a grand finale 
+                  inside a bloodcavern, a one room arena with no doors and no 
+                  escape. But unlike player killing, you lose nothing. Clanworld 
+                  has no effect on your character for the regular mud(other than 
+                  perhaps socially). 
+                <p>If you are interested in joining a clan, come to the Clan Room 
+                  just north of login and post your request to become involved. 
+                  Another good way is to contact a Clan Leader or Clan Recruiter 
+                  directly, especially if you know them through your own guild. 
+                  <BR>
+				  <BR>
+                  <A HREF="./clanlist.php">Current Clans of Three Kingdoms</A>
+                  <br>
+                </font>
+				<P align="right"><!-- Clanworld Daemon Information --></P> 
+                <P align=left><BR><BR></P>
+</TD></TR></TBODY></TABLE></TD>
+    <TD width=*>&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE height=2 cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD bgColor=#000099 height=2><IMG height=2 
+      src="images/spacer_invis.gif" 
+width=1></TD></TR></TBODY></TABLE><BR>
+
+<DIV align=center><FONT face="Verdana, Arial, Helvetica, sans-serif" 
+size=1>Content, source, aesthetics & originality Copyright © 1993-2003 The Marble Group Inc.<br><br>
+</FONT></DIV>
+<BR>
+</BODY></HTML>

@@ -13,16 +13,15 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
  * ------------------------------------
  */
 
-// Option 1: Path to MUD-generated who file (most likely method)
-// Adjust path based on actual server directory structure
-// $WHO_DATA_FILE = '../data/who_list.html';      // Relative path
-// $WHO_DATA_FILE = '/mud/data/who_list.html';    // Absolute path
-// $WHO_DATA_FILE = '/home/3k/mud/data/who.html'; // Full server path
+// Option 1: Path to MUD-generated who file
+// The MUD writes this file every 5 minutes to the shared directory.
+// Update this path to wherever the MUD's shared directory is mapped.
+$WHO_DATA_FILE = $_SERVER['DOCUMENT_ROOT'] . '/data/wholist/who_list2.html';
 
-// Option 2: Fetch from original 3k.org (current fallback)
+// Fallback: If the local file is unavailable, fetch from 3k.org automatically
 $FETCH_FROM_ORIGINAL = true;
 
-// Option 3: Direct socket connection to MUD
+// Option 2: Direct socket connection to MUD
 // $MUD_HOST = 'localhost';
 // $MUD_PORT = 3000;
 
@@ -165,18 +164,18 @@ function parseWholistHtml($html) {
  */
 $whoData = null;
 
-// Try Option 1: Local MUD file (uncomment and set path above)
-// if (isset($WHO_DATA_FILE)) {
-//     $whoData = fetchFromLocalFile($WHO_DATA_FILE);
-// }
+// Try Option 1: Local MUD file
+if (isset($WHO_DATA_FILE)) {
+    $whoData = fetchFromLocalFile($WHO_DATA_FILE);
+}
 
 // Try Option 3: Socket connection (uncomment and set host/port above)
 // if (!$whoData && isset($MUD_HOST) && isset($MUD_PORT)) {
 //     $whoData = fetchFromMudSocket($MUD_HOST, $MUD_PORT);
 // }
 
-// Try Option 2: Fetch from original 3k.org
-if (!$whoData && $FETCH_FROM_ORIGINAL) {
+// Try Option 2: Fetch from original 3k.org (fallback)
+if (!$whoData && isset($FETCH_FROM_ORIGINAL) && $FETCH_FROM_ORIGINAL) {
     $whoData = fetchFromOriginalSource();
 }
 

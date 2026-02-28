@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<TITLE>3 Kingdoms LP-MUD Home Page</TITLE>
+<META NAME="keywords", CONTENTS="3-kingdoms, 3, kingdoms, three, mud, lpmud, adventure, game, role playing, role-playing, role, hack, slash, dungeon">
+</HEAD>
+<BODY BGCOLOR=#ffffff
+      BACKGROUND="../images/sky_blue_bk.jpg"
+      TEXT=#000000
+      LINK=#000000
+      VLINK=#000000
+      ALINK=#000000>
+<table border = 0
+       cellspacing = 0
+       cellpadding = 2
+       width = 100% >
+<tr><td align = left
+        valign= top
+        width = 150>
+<A HREF="http://3k.org">
+  <img src="../images/sword6.jpg"
+       alt="Welcome to 3 Kingdoms"
+       height=50
+       width =150
+       border=0></a>
+<A HREF="telnet://marble.3k.org:5000">
+  <img src="../images/link_login.gif"
+       alt="Log into 3 Kingdoms"
+       border = 0></a>
+<A HREF="client.html">
+  <img src="../images/link_client.gif"
+       alt="The 3Klient"
+       border = 0></a>
+<A HREF="guilds.html">
+    <img src="../images/link_guilds.gif"
+       alt="The Guilds of 3 Kingdoms"
+       border = 0></a>
+<A HREF="omp.html">
+  <img src="../images/link_omp.gif"
+       alt="Mud Party Information"
+       border = 0></a>
+<A HREF="news.html">
+  <img src="../images/link_news.gif"
+       alt="News and Rumors from the 3 Kingdoms"
+       border = 0></a>
+<A HREF="history.html">
+  <img src="../images/link_history.gif"
+       alt="Tales from 3K's Past"
+       border = 0></a>
+<A HREF="/cgi-bin/help">
+  <img src="../images/link_help.gif"
+       alt="3K's Online Help Files"
+       border = 0></a>
+<A HREF="gallery.html">
+  <img src="../images/link_gallery.gif"
+       alt="Image Galleries"
+       border = 0></a>
+<A HREF="player_links.html">
+  <img src="../images/link_players.gif"
+       alt="Player Home Pages"
+       border = 0></a>
+<A HREF="user_activity.html">
+  <img src="../images/link_user_info.gif"
+       alt="Player Activity Data"
+       border = 0></a>
+<A HREF="mud_related.html">
+  <img src="../images/link_mud_related.gif"
+       alt="Mud Related Links"
+       border = 0></a>
+  </td>
+<td align = left>
+
+<CENTER><B><I><FONT SIZE="+2" COLOR="Blue">3 Kingdoms Players</FONT></I></B>

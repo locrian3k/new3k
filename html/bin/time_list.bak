@@ -1,0 +1,36 @@
+// writes html file for current uptime/reboot
+// automatically updates every 2 minutes
+
+#include <security.h>
+inherit ACCESS;
+
+#define TIMECLOCK "/obj/timeclock"
+#define SHUTDOWN  "/obj/shut"
+
+
+string out;
+
+
+void main() { 
+
+    out = "";
+    out += "<br><br>\n";
+    out += sprintf("<b>Uptime is: %s<br>Reboot in: %s</b><br><br>\n",
+      ( find_object(TIMECLOCK) ? TIMECLOCK->query_uptime() : "Unknown" ),
+      ( find_object(SHUTDOWN) ? SHUTDOWN->query_real_time_left() : "Unknown") );
+
+
+    out += "<br><br>This list is updated every 2 minutes.\n";
+
+
+    unguarded("html", #'rm, ({ "/html/time_list.html" }));
+    unguarded("html", #'write_file, ({ "/html/time_list.html", out }));
+
+    call_out("main",120);
+}
+
+void create() { main(); }
+
+
+
+

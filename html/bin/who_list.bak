@@ -1,0 +1,118 @@
+// who_list.c
+// writes html file for current mud who list
+// automatically updates every 5 minutes
+// 01-05-98 : nanook @ 3k 
+//
+// 08-03-99 : updated to show uptime by nanook @ 3k.
+
+#include <security.h>
+inherit ACCESS;
+
+#define TIMECLOCK "/obj/timeclock"
+#define SHUTDOWN  "/obj/shut"
+
+mapping FOLK;
+string out;
+
+void string_list(object dude) {
+  string temp, letter, name, url;
+  if(!dude || dude->query_invis()) return;
+  
+  name = (string)dude->query_real_name();
+  if(lower_case(name) == "logon") return;
+  
+  url = (string)dude->query_webpage();
+
+  letter = name[0..0];
+  if((int)dude->query_player_level()>500) letter = "wizards";
+  
+  name = capitalize(name);
+  if(name[0..4]=="Guest") return;
+  
+  if(url && (strlen(url)<4 || url[0..3]!="http")) url="http://"+url;
+
+  if(url) temp = sprintf("<a href=%s target=_top>%s</a>",url,name);
+  else temp = name;
+
+  if(!member(FOLK,letter)) FOLK += ([ letter : temp ]);
+  else FOLK[letter]+=" "+temp;
+  }
+
+void make_table(string a) {
+  if(!a) return;
+  out += "<tr><td align=center>\n"
+         "  <font size=4 color=\"blue\">"+capitalize(a)+"</font></td>\n"
+         "  <td>"+FOLK[a]+"</td></tr>\n";
+  }
+             
+
+void main() { 
+  object *dudes;
+  string *order;
+
+  FOLK = ([]);
+  dudes = users_sorted();
+
+  filter_array(dudes,#'string_list);
+
+  order = m_indices(FOLK);
+  order = sort_array(order,#'>);
+
+  out = unguarded("html", #'read_file, ({ "/html/bin/head.html" }));
+
+  out += "<br><br>\n";
+
+  out += sprintf("<b>Uptime is: %s<br>Reboot in: %s</b><br><br>\n",
+    ( find_object(TIMECLOCK) ? TIMECLOCK->query_uptime() : "Unknown" ),
+    ( find_object(SHUTDOWN) ? SHUTDOWN->query_real_time_left() : "Unknown") );
+
+  out += sprintf("<B>%d Users Currently on 3 Kingdoms (%s EST)</B></CENTER>\n"
+    "<hr><br>\n",sizeof(dudes),ctime(time()));
+  
+  out += "<table border = 0>\n";
+  
+  make_table("wizards");
+  order -= ({"wizards"});
+  filter_array(order,#'make_table);
+  
+  out += "</table>\n";
+  out += "<br><br>This list is updated every 5 minutes.\n";
+  out += "</td></tr>\n"
+/*
+         "<tr><td colspan = 2\n"
+         "        align = left>\n"
+         "<hr><font size=2>\n"
+         "<A HREF=\"http://www.apache.org/\">\n"
+         "  <IMG SRC=\"images/apache_pb.gif\"\n"
+         "    HEIGHT=32 WIDTH=259 \n"
+         "    ALT=\"Powered by Apache\"\n"
+         "    BORDER=0 align = right></A>\n"
+         "Comments about these pages: \n"
+         "<A HREF=\"mailto:webmaster@marble.3k.org\">\n"
+         "webmaster@marble.3k.org</A>\n"
+         "<BR>\n"
+         "<A HREF=\"new/register.html\">\n"
+         "  Registration</A> requests: \n"
+         "  <A HREF=\"mailto:register@marble.3k.org\">\n"
+         "  register@marble.3k.org\n"
+         "  </A><BR>\n"
+         "All other questions and comments: \n"
+         "<A HREF=\"mailto:mud@marble.3k.org\">\n"
+         "  mud@marble.3k.org\n"
+         "  </A><BR></font>\n"
+         "  </td></tr>\n"
+*/
+         "</table>\n"
+         "</BODY>\n"
+         "</HTML>\n";
+         
+  unguarded("html", #'rm, ({ "/html/wholist/who_list.html" }));
+  unguarded("html", #'write_file, ({ "/html/wholist/who_list.html", out }));
+  
+  call_out("main",300);
+  }
+  
+void create() { main(); }
+  
+
+

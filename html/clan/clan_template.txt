@@ -1,0 +1,20 @@
+ <p align="left">When tired with the everyday stress of the regular mud, nothing 
+   spells relief like cold-hearted blood and killing. Players group 
+   together in clans behind their respective leaders, and when 
+   the votes tally up, declare an all out war on each other, battling 
+   in a variety of voted on arenas and climaxing with a grand finale 
+   inside a bloodcavern, a one room arena with no doors and no 
+   escape. But unlike player killing, you lose nothing. Clanworld 
+   has no effect on your character for the regular mud(other than 
+   perhaps socially).</p>
+ <p align="left">If you are interested in joining a clan, come to the Clan Room 
+   just north of login and post your request to become involved. 
+   Another good way is to contact a Clan Leader or Clan Recruiter 
+   directly, especially if you know them through your own guild. 
+   <BR>
+       <BR>
+  <A HREF="./clanlist.php">Current Clans of Three Kingdoms</A><BR>
+   <A HREF="http://www.public.asu.edu/~mtoschi/cwsounds.zip">NEW Download ClanWorld Portal Soundpack(v1.0)</A>
+   <br></p>
+ </font>
+     <P align="left"><!-- Clanworld Daemon Information --></P>

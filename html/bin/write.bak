@@ -1,0 +1,39 @@
+// write.c
+// Security fix by Lagman, Aug 98
+//   Changed rm privilege from Html to html.
+//   Not sure if it will work.
+
+#pragma strict_types
+#include <security.h>
+inherit ACCESS;
+
+object rast;
+
+void tell_rast(string what)
+{
+  if( 0 && rast=find_player("rastafan") )
+    tell_object(rast,what);
+}
+
+status write_graph(string histogram, string usergraph, string weeklist)
+{
+  if (file_name(previous_object()) != "players/lagman/graph/monitor")
+  {
+    tell_rast(file_name(previous_object())+"\n");
+    return 0;
+  }
+  tell_rast( unguarded("html", #'rm, ({ "/html/histogram.html" }))+"\n" );
+  tell_rast( unguarded("html", #'rm, ({ "/html/usergraph.html" }))+"\n" );
+  tell_rast( unguarded("html", #'rm, ({ "/html/weeklist.html" }))+"\n" );
+
+  histogram = (string)"/html/bin/ansi_to_html"->convert(histogram, "Histogram");
+  usergraph = (string)"/html/bin/ansi_to_html"->convert(usergraph, "User Graph");
+  weeklist = (string)"/html/bin/ansi_to_html"->convert(weeklist,"Week List");
+
+  unguarded("html", #'write_file, ({ "/html/histogram.html", histogram }));
+  unguarded("html", #'write_file, ({ "/html/usergraph.html", usergraph }));
+  unguarded("html", #'write_file, ({ "/html/weeklist.html", weeklist }));
+
+  return 1;
+}
+

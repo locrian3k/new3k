@@ -1,0 +1,11 @@
+Please do not touch the files in this dir.
+Both of the files are needed for the website.
+
+Ownership of the dir needs to be mud:mud or they
+will not delete themselves.
+
+wholist.html is generated every 5 minutes by /html/bin/wholist.c
+          
+uptime.inc is generated every minute by /html/bin/uptime.c
+
+

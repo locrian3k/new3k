@@ -19,7 +19,7 @@ return [
     // ===========================================
     // 'static'  - Use only the predefined categories below
     // 'hybrid'  - Use static categories + scan helpdocs for uncategorized files
-    'source' => 'static',
+    'source' => 'hybrid',
 
     // ===========================================
     // HELPDOCS FILE (MUD-generated help content)

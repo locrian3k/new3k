@@ -17,79 +17,21 @@ return [
     // ===========================================
     // HELP FILE SOURCE CONFIGURATION
     // ===========================================
-    // 'static'    - Use the predefined categories below (current setup)
-    // 'directory' - Scan a directory for help files
-    // 'hybrid'    - Use static categories + scan for uncategorized files
-    // Set to 'hybrid' once help/cmds folders are uploaded to production server
-    // Set to 'static' to use only the predefined categories below
-    'source' => 'hybrid',
+    // 'static'  - Use only the predefined categories below
+    // 'hybrid'  - Use static categories + scan helpdocs for uncategorized files
+    'source' => 'static',
 
     // ===========================================
-    // CONTENT SOURCE (for modal display)
+    // HELPDOCS FILE (MUD-generated help content)
     // ===========================================
-    // Where to fetch help file content from:
-    // 'local'    - Read from local directory (when on production server)
-    // 'external' - Fetch from external URL (current 3k.org setup)
-    // Set to 'local' once help/cmds folders are uploaded to production server
-    // Set to 'external' to fetch from 3k.org (current fallback)
-    'content_source' => 'local',
-
-    // ===========================================
-    // LOCAL DIRECTORY SETTINGS
-    // (Used when content_source is 'local' or source is 'directory'/'hybrid')
-    // ===========================================
-
-    // Base path for help files (parent directory containing help and cmds folders)
-    // This calculates the path relative to this config file's location
-    // config.php is in: new3k/support/help/
-    // We need to go up to: WebDesign/ (where help/ and cmds/ folders are)
-    'help_base_path' => dirname(__DIR__, 3) . '/',
-
-    // Folder names to ALWAYS exclude (at any nesting level)
-    // These are excluded regardless of other settings
-    'global_exclude_folders' => ['BACKUP', 'UNFINISHED', 'OLD', 'BAK', 'APPWIZ', 'WIZARD'],
-
-    // Specific file names to ALWAYS exclude (without extension)
-    // Add file names here to prevent them from appearing on the help page
-    'global_exclude_files' => ['?', '1', '2', '3', '4', '5', '47', '3ksendfile', 'considerx'],
-
-    // Help sources configuration
-    // Each source defines a directory to scan and which subfolders to include/exclude
-    'help_sources' => [
-        // Main help folder
-        'help' => [
-            'path' => 'help/',
-            'include_root_files' => true,  // Include files in the root of help/
-            'subfolders' => [
-                // Include all subfolders (global_exclude_folders still applies)
-                'mode' => 'exclude',
-                'list' => []  // No additional exclusions needed - using global_exclude_folders
-            ]
-        ],
-        // Commands folder
-        'cmds' => [
-            'path' => 'cmds/',
-            'include_root_files' => false,  // Don't include root files in cmds/
-            'subfolders' => [
-                // Only include specific subfolders
-                'mode' => 'include',  // Only include folders in the list
-                'list' => ['himort', 'mortal']  // Folders to include
-            ]
-        ]
-    ],
-
-    // File extension for local help files (without the dot)
-    // The MUD's help files are typically plain text with no extension
-    // Use empty string for extensionless files, or 'c' for .c source files
-    'file_extension' => '',
-
-    // Additional file extensions to search (for .c files with embedded help)
-    // These files contain help content in a help() function
-    'additional_extensions' => ['c'],
+    // Single file exported by the MUD containing all command help text.
+    // This is the primary source for help content (commands, high-mortal, etc.)
+    // Path is relative to the site root via DOCUMENT_ROOT.
+    'helpdocs_file' => dirname(__DIR__, 2) . '/data/help/helpdocs',
 
     // ===========================================
     // EXTERNAL URL SETTINGS
-    // (Used when content_source is 'external' or display_mode is 'link')
+    // (Only used when display_mode is 'link' for legacy direct-linking)
     // ===========================================
 
     // Base URL for fetching/linking to help files

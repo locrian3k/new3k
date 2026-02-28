@@ -3,6 +3,7 @@
  * Help Page Functions
  *
  * Functions for loading and processing help file data.
+ * Help content is read from a single 'helpdocs' file exported by the MUD.
  */
 
 /**
@@ -18,22 +19,8 @@ function getHelpFiles($config) {
         return $config['categories'];
     }
 
-    if ($source === 'directory' || $source === 'hybrid') {
-        $scannedFiles = scanAllHelpSources($config);
-
-        if ($source === 'directory') {
-            // Return all files in a single "All Help Files" category
-            return [
-                'all' => [
-                    'title' => 'All Help Files',
-                    'icon' => 'fa-solid fa-folder-open',
-                    'description' => 'Complete list of available help topics',
-                    'files' => $scannedFiles
-                ]
-            ];
-        }
-
-        // Hybrid mode: use static categories, add uncategorized files
+    if ($source === 'hybrid') {
+        // Hybrid mode: use static categories + add uncategorized topics from helpdocs
         $categories = $config['categories'];
         $categorizedFiles = [];
 
@@ -44,23 +31,27 @@ function getHelpFiles($config) {
             }
         }
 
-        // Find uncategorized files
-        $uncategorized = [];
-        foreach ($scannedFiles as $file => $title) {
-            if (!isset($categorizedFiles[$file])) {
-                $uncategorized[$file] = $title;
-            }
-        }
+        // Parse helpdocs to find uncategorized topics
+        $helpdocsFile = $config['helpdocs_file'] ?? '';
+        if (!empty($helpdocsFile) && file_exists($helpdocsFile)) {
+            $allTopics = getHelpdocsTopicList($helpdocsFile);
+            $uncategorized = [];
 
-        // Add uncategorized files if any exist
-        if (!empty($uncategorized)) {
-            ksort($uncategorized);
-            $categories['uncategorized'] = [
-                'title' => 'Other Topics',
-                'icon' => 'fa-solid fa-folder',
-                'description' => 'Additional help files',
-                'files' => $uncategorized
-            ];
+            foreach ($allTopics as $topic => $title) {
+                if (!isset($categorizedFiles[$topic])) {
+                    $uncategorized[$topic] = $title;
+                }
+            }
+
+            if (!empty($uncategorized)) {
+                ksort($uncategorized);
+                $categories['uncategorized'] = [
+                    'title' => 'Other Topics',
+                    'icon' => 'fa-solid fa-folder',
+                    'description' => 'Additional help files',
+                    'files' => $uncategorized
+                ];
+            }
         }
 
         return $categories;
@@ -71,449 +62,88 @@ function getHelpFiles($config) {
 }
 
 /**
- * Scan all configured help sources for files
+ * Get a list of all topics in the helpdocs file
  *
- * @param array $config Configuration array
- * @return array Associative array of filename => display name
+ * @param string $helpdocsPath Path to the helpdocs file
+ * @return array Associative array of topic => display name
  */
-function scanAllHelpSources($config) {
-    $allFiles = [];
-    $basePath = $config['help_base_path'] ?? '';
-    $sources = $config['help_sources'] ?? [];
-    $extension = $config['file_extension'] ?? '';
-    $additionalExtensions = $config['additional_extensions'] ?? [];
-    $globalExcludeFolders = $config['global_exclude_folders'] ?? [];
-    $globalExcludeFiles = $config['global_exclude_files'] ?? [];
+function getHelpdocsTopicList($helpdocsPath) {
+    $topics = [];
 
-    foreach ($sources as $sourceId => $sourceConfig) {
-        $sourcePath = $basePath . ($sourceConfig['path'] ?? '');
-
-        if (!is_dir($sourcePath)) {
-            continue;
-        }
-
-        // Scan root files if configured
-        if (!empty($sourceConfig['include_root_files'])) {
-            $rootFiles = scanDirectoryForFiles($sourcePath, $extension, $globalExcludeFiles);
-            $allFiles = array_merge($allFiles, $rootFiles);
-
-            // Also scan for additional extensions (like .c files)
-            foreach ($additionalExtensions as $addExt) {
-                $addFiles = scanDirectoryForFiles($sourcePath, $addExt, $globalExcludeFiles);
-                $allFiles = array_merge($allFiles, $addFiles);
-            }
-        }
-
-        // Handle subfolders
-        $subfolderConfig = $sourceConfig['subfolders'] ?? [];
-        $mode = $subfolderConfig['mode'] ?? 'exclude';
-        $list = $subfolderConfig['list'] ?? [];
-
-        // Get all subdirectories
-        $subdirs = glob($sourcePath . '*', GLOB_ONLYDIR);
-
-        foreach ($subdirs as $subdir) {
-            $subdirName = basename($subdir);
-
-            // Skip hidden directories
-            if (strpos($subdirName, '.') === 0) {
-                continue;
-            }
-
-            // Skip globally excluded folders
-            if (in_array($subdirName, $globalExcludeFolders)) {
-                continue;
-            }
-
-            // Check if we should include this subfolder
-            $shouldInclude = false;
-            if ($mode === 'include') {
-                // Only include if in the list
-                $shouldInclude = in_array($subdirName, $list);
-            } else {
-                // Include unless in the exclude list
-                $shouldInclude = !in_array($subdirName, $list);
-            }
-
-            if ($shouldInclude) {
-                // Recursively scan this subfolder (passing global excludes)
-                $subFiles = scanDirectoryRecursive($subdir, $extension, $globalExcludeFolders, $globalExcludeFiles);
-                $allFiles = array_merge($allFiles, $subFiles);
-
-                // Also scan for additional extensions (like .c files)
-                foreach ($additionalExtensions as $addExt) {
-                    $addFiles = scanDirectoryRecursive($subdir, $addExt, $globalExcludeFolders, $globalExcludeFiles);
-                    $allFiles = array_merge($allFiles, $addFiles);
-                }
-            }
-        }
-    }
-
-    ksort($allFiles);
-    return $allFiles;
-}
-
-/**
- * Scan a single directory for help files (non-recursive)
- *
- * @param string $directory Path to the directory
- * @param string $extension File extension to look for (without dot), or empty for no extension
- * @param array $excludeFiles File names to exclude (without extension)
- * @return array Associative array of filename => display name
- */
-function scanDirectoryForFiles($directory, $extension = '', $excludeFiles = []) {
-    $files = [];
-
-    // Get all items in the directory
-    $items = glob(rtrim($directory, '/') . '/*');
-
-    foreach ($items as $filepath) {
-        // Skip directories
-        if (is_dir($filepath)) {
-            continue;
-        }
-
-        $basename = basename($filepath);
-
-        // Skip hidden files
-        if (strpos($basename, '.') === 0) {
-            continue;
-        }
-
-        // If we're looking for extensionless files, skip files with extensions
-        if (empty($extension) && strpos($basename, '.') !== false) {
-            continue;
-        }
-
-        // If we're looking for specific extension, check it
-        if (!empty($extension)) {
-            $fileExt = pathinfo($filepath, PATHINFO_EXTENSION);
-            if ($fileExt !== $extension) {
-                continue;
-            }
-        }
-
-        $filename = pathinfo($filepath, PATHINFO_FILENAME);
-
-        // Skip excluded files
-        if (in_array($filename, $excludeFiles)) {
-            continue;
-        }
-
-        // Decode URL-encoded filenames for display (e.g., %3F becomes ?)
-        // This handles Windows filesystem limitations for special characters
-        $displayName = urldecode($filename);
-
-        // Use actual filename as key (for fetching), decoded name for display
-        $files[$filename] = strtolower($displayName);
-    }
-
-    return $files;
-}
-
-/**
- * Recursively scan a directory for help files
- *
- * @param string $directory Path to the directory
- * @param string $extension File extension to look for
- * @param array $globalExcludeFolders Folder names to always exclude
- * @param array $globalExcludeFiles File names to always exclude (without extension)
- * @return array Associative array of filename => display name
- */
-function scanDirectoryRecursive($directory, $extension = '', $globalExcludeFolders = [], $globalExcludeFiles = []) {
-    $files = [];
-
-    // Scan current directory
-    $files = array_merge($files, scanDirectoryForFiles($directory, $extension, $globalExcludeFiles));
-
-    // Scan subdirectories
-    $subdirs = glob($directory . '/*', GLOB_ONLYDIR);
-    foreach ($subdirs as $subdir) {
-        $subdirName = basename($subdir);
-
-        // Skip hidden directories
-        if (strpos($subdirName, '.') === 0) {
-            continue;
-        }
-
-        // Skip globally excluded folders
-        if (in_array($subdirName, $globalExcludeFolders)) {
-            continue;
-        }
-
-        $subFiles = scanDirectoryRecursive($subdir, $extension, $globalExcludeFolders, $globalExcludeFiles);
-        $files = array_merge($files, $subFiles);
-    }
-
-    return $files;
-}
-
-/**
- * Find a help file in the configured sources
- *
- * @param string $topic The help topic/filename to find
- * @param array $config Configuration array
- * @return string|false The full path to the file, or false if not found
- */
-function findHelpFile($topic, $config) {
-    $basePath = $config['help_base_path'] ?? '';
-    $sources = $config['help_sources'] ?? [];
-    $extension = $config['file_extension'] ?? '';
-    $additionalExtensions = $config['additional_extensions'] ?? [];
-    $globalExclude = $config['global_exclude_folders'] ?? [];
-
-    // Build possible filenames to try:
-    // 1. Original topic name (e.g., "!" or "?")
-    // 2. URL-encoded version (e.g., "%21" or "%3F") for Windows filesystem compatibility
-    $baseNames = [$topic];
-    $encodedTopic = rawurlencode($topic);
-    if ($encodedTopic !== $topic) {
-        $baseNames[] = $encodedTopic;
-    }
-
-    // Build list of filenames with all possible extensions
-    $filenamesToTry = [];
-
-    // Add extensionless versions if no main extension is configured
-    if (empty($extension)) {
-        $filenamesToTry = array_merge($filenamesToTry, $baseNames);
-    } else {
-        // Add versions with main extension
-        foreach ($baseNames as $base) {
-            $filenamesToTry[] = $base . '.' . $extension;
-        }
-    }
-
-    // Add versions with additional extensions (like .c)
-    foreach ($additionalExtensions as $addExt) {
-        foreach ($baseNames as $base) {
-            $filenamesToTry[] = $base . '.' . $addExt;
-        }
-    }
-
-    foreach ($sources as $sourceId => $sourceConfig) {
-        $sourcePath = $basePath . ($sourceConfig['path'] ?? '');
-
-        if (!is_dir($sourcePath)) {
-            continue;
-        }
-
-        // Check root directory if configured
-        if (!empty($sourceConfig['include_root_files'])) {
-            foreach ($filenamesToTry as $filename) {
-                $filepath = $sourcePath . $filename;
-                if (file_exists($filepath) && is_readable($filepath)) {
-                    return $filepath;
-                }
-            }
-        }
-
-        // Handle subfolders
-        $subfolderConfig = $sourceConfig['subfolders'] ?? [];
-        $mode = $subfolderConfig['mode'] ?? 'exclude';
-        $list = $subfolderConfig['list'] ?? [];
-
-        // Get all subdirectories
-        $subdirs = glob($sourcePath . '*', GLOB_ONLYDIR);
-
-        foreach ($subdirs as $subdir) {
-            $subdirName = basename($subdir);
-
-            // Skip hidden directories
-            if (strpos($subdirName, '.') === 0) {
-                continue;
-            }
-
-            // Skip globally excluded folders
-            if (in_array($subdirName, $globalExclude)) {
-                continue;
-            }
-
-            // Check if we should search this subfolder
-            $shouldSearch = false;
-            if ($mode === 'include') {
-                $shouldSearch = in_array($subdirName, $list);
-            } else {
-                $shouldSearch = !in_array($subdirName, $list);
-            }
-
-            if ($shouldSearch) {
-                // Search recursively in this subfolder, trying all filename variations
-                foreach ($filenamesToTry as $filename) {
-                    $found = findFileRecursive($subdir, $filename, $globalExclude);
-                    if ($found !== false) {
-                        return $found;
-                    }
-                }
-            }
-        }
-    }
-
-    return false;
-}
-
-/**
- * Recursively search for a file in a directory
- *
- * @param string $directory Directory to search
- * @param string $filename Filename to find
- * @param array $globalExclude Folder names to always exclude
- * @return string|false Full path if found, false otherwise
- */
-function findFileRecursive($directory, $filename, $globalExclude = []) {
-    // Check current directory
-    $filepath = rtrim($directory, '/') . '/' . $filename;
-    if (file_exists($filepath) && is_readable($filepath)) {
-        return $filepath;
-    }
-
-    // Check subdirectories
-    $subdirs = glob($directory . '/*', GLOB_ONLYDIR);
-    foreach ($subdirs as $subdir) {
-        $subdirName = basename($subdir);
-
-        // Skip hidden directories
-        if (strpos($subdirName, '.') === 0) {
-            continue;
-        }
-
-        // Skip globally excluded folders
-        if (in_array($subdirName, $globalExclude)) {
-            continue;
-        }
-
-        $found = findFileRecursive($subdir, $filename, $globalExclude);
-        if ($found !== false) {
-            return $found;
-        }
-    }
-
-    return false;
-}
-
-/**
- * Read a local help file's content
- *
- * @param string $topic The help topic/filename
- * @param array $config Configuration array
- * @return array ['success' => bool, 'content' => string, 'error' => string]
- */
-function readLocalHelpFile($topic, $config) {
-    $filepath = findHelpFile($topic, $config);
-
-    if ($filepath === false) {
-        return [
-            'success' => false,
-            'error' => 'Help file not found: ' . $topic
-        ];
-    }
-
-    // Security: Ensure the resolved path is within allowed directories
-    $basePath = realpath($config['help_base_path'] ?? '');
-    $realFilePath = realpath($filepath);
-
-    if ($realFilePath === false || strpos($realFilePath, $basePath) !== 0) {
-        return [
-            'success' => false,
-            'error' => 'Invalid help file path'
-        ];
-    }
-
-    $content = file_get_contents($realFilePath);
-
+    $content = @file_get_contents($helpdocsPath);
     if ($content === false) {
-        return [
-            'success' => false,
-            'error' => 'Unable to read help file'
-        ];
+        return $topics;
     }
 
-    // Check if this is a .c file - extract help from help() function
-    if (pathinfo($realFilePath, PATHINFO_EXTENSION) === 'c') {
-        $content = extractHelpFromCFile($content, $basePath . '/');
-        if ($content === false) {
-            return [
-                'success' => false,
-                'error' => 'No help content found in source file'
-            ];
+    // Split by separator
+    $entries = preg_split('/^-{4,}\s*$/m', $content);
+
+    foreach ($entries as $entry) {
+        $entry = trim($entry);
+        if (empty($entry)) continue;
+
+        // Extract filename: /cmds/mortal/acopy.c -> acopy
+        if (preg_match('/^file:\s*\/.*\/([^\/]+)\.c\s*$/m', $entry, $match)) {
+            $topic = $match[1];
+            // Use the short description as display name if available
+            if (preg_match('/^short:\s*(.+)$/m', $entry, $shortMatch)) {
+                $topics[$topic] = strtolower(trim($shortMatch[1]));
+            } else {
+                $topics[$topic] = strtolower($topic);
+            }
         }
     }
 
-    return [
-        'success' => true,
-        'content' => $content
-    ];
+    return $topics;
 }
 
 /**
- * Extract help content from a .c source file
+ * Find and return help content for a topic from the helpdocs file
  *
- * Parses the help() function and extracts the return string content.
- * Handles multi-line strings concatenated with newlines.
- * Also handles redirects where help() calls another file's help().
- *
- * @param string $content The raw .c file content
- * @param string $basePath Base path for resolving redirects (optional)
- * @return string|false The extracted help text, or false if not found
+ * @param string $topic The help topic to find
+ * @param string $helpdocsPath Path to the helpdocs file
+ * @return string|false The help content, or false if not found
  */
-function extractHelpFromCFile($content, $basePath = '') {
-    // Look for string help() function and its return statement
-    // Pattern matches: string help() { return "..."; }
-    // The help text is typically a series of concatenated strings
-
-    // First, find the help() function
-    if (!preg_match('/string\s+help\s*\(\s*\)\s*\{/s', $content, $funcMatch, PREG_OFFSET_CAPTURE)) {
+function findTopicInHelpdocs($topic, $helpdocsPath) {
+    if (empty($helpdocsPath) || !file_exists($helpdocsPath)) {
         return false;
     }
 
-    $funcStart = $funcMatch[0][1] + strlen($funcMatch[0][0]);
-
-    // Find the return statement
-    $funcBody = substr($content, $funcStart);
-
-    // Extract everything between "return" and the closing "}"
-    if (!preg_match('/return\s*([\s\S]*?)\s*;\s*\}/s', $funcBody, $returnMatch)) {
+    $content = @file_get_contents($helpdocsPath);
+    if ($content === false) {
         return false;
     }
 
-    $returnContent = trim($returnMatch[1]);
+    // Split by separator
+    $entries = preg_split('/^-{4,}\s*$/m', $content);
+    $topicLower = strtolower($topic);
 
-    // Check if this is a redirect to another file's help()
-    // Format: "/cmds/mortal/hwho"->help()
-    if (preg_match('/^"([^"]+)"->help\(\)$/', $returnContent, $redirectMatch)) {
-        $redirectPath = $redirectMatch[1];
-        // Convert MUD path to filesystem path
-        // /cmds/mortal/hwho -> cmds/mortal/hwho.c
-        $redirectPath = ltrim($redirectPath, '/') . '.c';
+    foreach ($entries as $entry) {
+        $entry = trim($entry);
+        if (empty($entry)) continue;
 
-        if (!empty($basePath) && file_exists($basePath . $redirectPath)) {
-            $redirectContent = file_get_contents($basePath . $redirectPath);
-            if ($redirectContent !== false) {
-                // Recursively extract help from the redirected file
-                return extractHelpFromCFile($redirectContent, $basePath);
+        // Check if this entry matches the requested topic
+        // Match by filename: /cmds/mortal/acopy.c -> acopy
+        if (preg_match('/^file:\s*\/.*\/([^\/]+)\.c\s*$/m', $entry, $match)) {
+            $entryTopic = strtolower($match[1]);
+            if ($entryTopic === $topicLower) {
+                // Remove the "file:" line from the content before returning
+                $helpContent = preg_replace('/^file:\s*.*$/m', '', $entry, 1);
+                return trim($helpContent);
             }
         }
-        // If we can't resolve the redirect, return false
-        return false;
-    }
 
-    // Parse the concatenated strings
-    // Format is typically: "line1\n" "line2\n" "line3\n"
-    $helpText = '';
-
-    // Match all quoted strings (handling escaped quotes)
-    preg_match_all('/"((?:[^"\\\\]|\\\\.)*)"/s', $returnContent, $stringMatches);
-
-    if (!empty($stringMatches[1])) {
-        foreach ($stringMatches[1] as $str) {
-            // Process escape sequences
-            $str = str_replace('\\n', "\n", $str);
-            $str = str_replace('\\t', "\t", $str);
-            $str = str_replace('\\"', '"', $str);
-            $str = str_replace('\\\\', '\\', $str);
-            $helpText .= $str;
+        // Also check aliases
+        if (preg_match('/^aliases:\s*(.+)$/m', $entry, $aliasMatch)) {
+            $aliases = array_map('trim', explode(',', $aliasMatch[1]));
+            foreach ($aliases as $alias) {
+                if (strtolower($alias) === $topicLower) {
+                    $helpContent = preg_replace('/^file:\s*.*$/m', '', $entry, 1);
+                    return trim($helpContent);
+                }
+            }
         }
     }
 
-    return !empty($helpText) ? $helpText : false;
+    return false;
 }

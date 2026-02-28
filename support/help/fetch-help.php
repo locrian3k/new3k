@@ -3,7 +3,7 @@
  * Help File Content Fetcher
  *
  * This endpoint fetches help file content for display in the modal.
- * It supports both local files and external URLs, and parses the
+ * It reads from the MUD-exported helpdocs file and parses the
  * 3K help file format with metadata headers and color codes.
  *
  * Usage: fetch-help.php?topic=alias
@@ -32,127 +32,30 @@ if (empty($topic) ||
     exit;
 }
 
-// Determine content source
-$contentSource = $config['content_source'] ?? 'external';
+// Find the topic in the helpdocs file
+$helpdocsFile = $config['helpdocs_file'] ?? '';
+$rawContent = findTopicInHelpdocs($topic, $helpdocsFile);
 
-if ($contentSource === 'local') {
-    // Use the findHelpFile function to locate the file
-    $filepath = findHelpFile($topic, $config);
-
-    if ($filepath === false) {
-        echo json_encode([
-            'success' => false,
-            'error' => 'Help file not found: ' . $topic
-        ]);
-        exit;
-    }
-
-    // Security check: ensure path is within allowed base path
-    $basePath = realpath($config['help_base_path'] ?? '');
-    $realFilePath = realpath($filepath);
-
-    if ($realFilePath === false || $basePath === false || strpos($realFilePath, $basePath) !== 0) {
-        echo json_encode([
-            'success' => false,
-            'error' => 'Help file not found'
-        ]);
-        exit;
-    }
-
-    if (!is_readable($realFilePath)) {
-        echo json_encode([
-            'success' => false,
-            'error' => 'Help file not readable: ' . $topic
-        ]);
-        exit;
-    }
-
-    $rawContent = file_get_contents($realFilePath);
-
-    if ($rawContent === false) {
-        echo json_encode([
-            'success' => false,
-            'error' => 'Unable to read help file'
-        ]);
-        exit;
-    }
-
-    // Check if this is a .c file - extract help from help() function
-    if (pathinfo($realFilePath, PATHINFO_EXTENSION) === 'c') {
-        $rawContent = extractHelpFromCFile($rawContent, $basePath . '/');
-        if ($rawContent === false) {
-            echo json_encode([
-                'success' => false,
-                'error' => 'No help content found in source file'
-            ]);
-            exit;
-        }
-    }
-
-    // Parse the 3K help file format (pass config for topic validation)
-    $parsed = parseHelpFile($rawContent, $config);
-
+if ($rawContent === false) {
     echo json_encode([
-        'success' => true,
-        'topic' => $topic,
-        'header' => $parsed['header'],
-        'content' => $parsed['html'],
-        'keywords' => $parsed['keywords'],
-        'seeAlso' => $parsed['seeAlso'],
-        'source' => 'local'
+        'success' => false,
+        'error' => 'Help file not found: ' . $topic
     ]);
-
-} else {
-    // Fetch from external URL
-    $externalUrl = $config['external_url'] ?? 'https://3k.org/help/';
-    $urlSuffix = $config['url_suffix'] ?? '.php';
-
-    $url = $externalUrl . urlencode($topic) . $urlSuffix;
-
-    // Use cURL to fetch the content
-    $ch = curl_init();
-    curl_setopt_array($ch, [
-        CURLOPT_URL => $url,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_TIMEOUT => 10,
-        CURLOPT_USERAGENT => '3Kingdoms Help Fetcher'
-    ]);
-
-    $response = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    $error = curl_error($ch);
-    curl_close($ch);
-
-    if ($response === false || !empty($error)) {
-        echo json_encode([
-            'success' => false,
-            'error' => 'Unable to fetch help file: ' . $error
-        ]);
-        exit;
-    }
-
-    if ($httpCode !== 200) {
-        echo json_encode([
-            'success' => false,
-            'error' => 'Help file not found (HTTP ' . $httpCode . ')'
-        ]);
-        exit;
-    }
-
-    // Extract content from HTML and format it
-    $content = extractAndFormatExternalContent($response);
-
-    echo json_encode([
-        'success' => true,
-        'topic' => $topic,
-        'header' => '',
-        'content' => $content,
-        'keywords' => [],
-        'seeAlso' => [],
-        'source' => 'external'
-    ]);
+    exit;
 }
+
+// Parse the 3K help file format
+$parsed = parseHelpFile($rawContent, $config);
+
+echo json_encode([
+    'success' => true,
+    'topic' => $topic,
+    'header' => $parsed['header'],
+    'content' => $parsed['html'],
+    'keywords' => $parsed['keywords'],
+    'seeAlso' => $parsed['seeAlso'],
+    'source' => 'local'
+]);
 
 /**
  * Parse a 3K help file format
@@ -334,11 +237,10 @@ function formatHelpContent($body, $header, $seeAlso, $config = []) {
             $topic = trim($topic);
             if (empty($topic)) continue;
 
-            // Check if this topic exists as a help file
+            // Check if this topic exists in our help system
             $topicExists = false;
             if (!empty($config)) {
-                $filepath = findHelpFile($topic, $config);
-                $topicExists = ($filepath !== false);
+                $topicExists = topicExistsInHelp($topic, $config);
             }
 
             if ($topicExists) {
@@ -362,101 +264,34 @@ function formatHelpContent($body, $header, $seeAlso, $config = []) {
 }
 
 /**
- * Extract and format content from external HTML response
+ * Check if a topic exists in our help system
  *
- * @param string $html Raw HTML response
- * @return string Formatted content
+ * Checks static categories first (fast), then the helpdocs file.
+ *
+ * @param string $topic The topic to check
+ * @param array $config Configuration array
+ * @return bool True if the topic exists
  */
-function extractAndFormatExternalContent($html) {
-    $content = '';
+function topicExistsInHelp($topic, $config) {
+    $topicLower = strtolower($topic);
 
-    // Try to find content within <pre> tags
-    if (preg_match('/<pre[^>]*>(.*?)<\/pre>/is', $html, $matches)) {
-        $content = $matches[1];
-    }
-    // Try to find content within <body> tags
-    elseif (preg_match('/<body[^>]*>(.*?)<\/body>/is', $html, $matches)) {
-        $content = $matches[1];
-        // Remove script and style tags
-        $content = preg_replace('/<script[^>]*>.*?<\/script>/is', '', $content);
-        $content = preg_replace('/<style[^>]*>.*?<\/style>/is', '', $content);
-    }
-    else {
-        // Fallback: use as-is
-        $content = $html;
-    }
-
-    // Remove "Close Window" link and its container
-    // Format: <center><a href="javascript:window.close()">Close Window</a></center>
-    $content = preg_replace('/<center>\s*<a[^>]*javascript:window\.close\(\)[^>]*>[^<]*<\/a>\s*<\/center>/is', '', $content);
-    // Also try without center tags
-    $content = preg_replace('/<a[^>]*javascript:window\.close\(\)[^>]*>[^<]*<\/a>/is', '', $content);
-
-    // Convert the ::: decoration lines to a CSS class we can hide on mobile
-    // Format: <FONT COLOR="#990033"> ::::::...</FONT>
-    $content = preg_replace(
-        '/<FONT\s+COLOR=["\']?#990033["\']?[^>]*>\s*:+\s*<\/FONT>/is',
-        '<span class="help-border">::::::::::::::::::::::::::::::</span>',
-        $content
-    );
-
-    // Convert the Topic title to a styled span (trim the whitespace)
-    // Format: <FONT COLOR="#FFFF00"> Topic: Arena</FONT>
-    $content = preg_replace_callback(
-        '/<FONT\s+COLOR=["\']?#FFFF00["\']?[^>]*>([^<]+)<\/FONT>/is',
-        function($matches) {
-            return '<span class="help-header-title">' . trim($matches[1]) . '</span>';
-        },
-        $content
-    );
-
-    // Remove excessive blank lines (more than 2 newlines in a row)
-    $content = preg_replace('/\n{3,}/', "\n\n", $content);
-
-    // Trim leading whitespace from each line (the original has centered text with spaces)
-    $lines = explode("\n", $content);
-    $lines = array_map('trim', $lines);
-    $content = implode("\n", $lines);
-
-    // Handle "See also" section
-    // Format: See also: <A HREF="pk.php">pk</A>, <A HREF="kill.php">kill</A>, ...
-    if (preg_match('/See\s+also:\s*(.*?)(?:\n|$)/is', $content, $seeAlsoMatch)) {
-        $seeAlsoLine = $seeAlsoMatch[0];
-        $seeAlsoContent = $seeAlsoMatch[1];
-
-        // Extract HTML-style links: <A HREF="topic.php">text</A>
-        preg_match_all('/<a\s+href=["\']?([^"\'>\s]+\.php)["\']?[^>]*>([^<]+)<\/a>/is', $seeAlsoContent, $linkMatches, PREG_SET_ORDER);
-
-        if (!empty($linkMatches)) {
-            // Sort links alphabetically by link text
-            usort($linkMatches, function($a, $b) {
-                return strcasecmp(trim($a[2]), trim($b[2]));
-            });
-
-            // Build sorted buttons
-            $sortedButtons = [];
-            foreach ($linkMatches as $match) {
-                $topic = basename($match[1], '.php'); // Get filename without .php
-                $text = trim($match[2]);
-                $sortedButtons[] = '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($text) . '</button>';
+    // Check static categories first (fast, in-memory)
+    $categories = $config['categories'] ?? [];
+    foreach ($categories as $cat) {
+        foreach ($cat['files'] as $file => $title) {
+            if (strtolower($file) === $topicLower) {
+                return true;
             }
-
-            // Replace the See also line with sorted version
-            $newSeeAlso = '<span class="help-color-yellow">See also:</span>  ' . implode(', ', $sortedButtons) . '.';
-            $content = str_replace($seeAlsoLine, $newSeeAlso . "\n", $content);
         }
     }
 
-    // Convert any remaining HTML-style <a> tags to buttons
-    $content = preg_replace_callback(
-        '/<a\s+href=["\']?([^"\'>\s]+\.php)["\']?[^>]*>([^<]+)<\/a>/is',
-        function($matches) {
-            $topic = basename($matches[1], '.php');
-            $text = trim($matches[2]);
-            return '<button type="button" class="help-see-also-link" data-topic="' . htmlspecialchars($topic) . '">' . htmlspecialchars($text) . '</button>';
-        },
-        $content
-    );
+    // Check helpdocs file (covers uncategorized topics)
+    $helpdocsFile = $config['helpdocs_file'] ?? '';
+    if (!empty($helpdocsFile)) {
+        $content = findTopicInHelpdocs($topic, $helpdocsFile);
+        return ($content !== false);
+    }
 
-    return '<div class="help-body">' . trim($content) . '</div>';
+    return false;
 }
+

@@ -82,16 +82,6 @@ return [
             'icon' => 'fa-solid fa-star',
             'description' => 'Essential information for all players',
             'files' => [
-                'email' => 'email',
-                'guest' => 'guest',
-                'ip' => 'ip',
-                'password' => 'password',
-                'punishment' => 'punishment',
-                'purge' => 'purge',
-                'quest' => 'quest',
-                'register' => 'register',
-                'reimbursing' => 'reimbursing',
-                'rules' => 'rules',
                 'showaddr' => 'showaddr',
                 'webpage' => 'webpage'
             ]
@@ -108,27 +98,23 @@ return [
                 'addlink' => 'addlink',
                 'addwho' => 'addwho',
                 'ansiwho' => 'ansiwho',
-                'boards' => 'boards',
                 'checklink' => 'checklink',
                 'checkwho' => 'checkwho',
                 'converse' => 'converse',
                 'dislink' => 'dislink',
                 'diswho' => 'diswho',
                 'emote' => 'emote',
-                'feelings' => 'feelings',
                 'finger' => 'finger',
                 'gossip' => 'gossip',
                 'gossipblock' => 'gossipblock',
                 'gossiphist' => 'gossiphist',
                 'gossipwho' => 'gossipwho',
                 'ignorelink' => 'ignorelink',
-                'linktell' => 'linktell',
                 'mail' => 'mail',
                 'mysoul' => 'mysoul',
                 'mywho' => 'mywho',
                 'mywho2' => 'mywho2',
                 'mywhosync' => 'mywhosync',
-                'newsoul' => 'newsoul',
                 'notify' => 'notify',
                 'party' => 'party',
                 'reply' => 'reply',
@@ -137,7 +123,6 @@ return [
                 'shout' => 'shout',
                 'shoutblock' => 'shoutblock',
                 'shouthist' => 'shouthist',
-                'soul' => 'soul',
                 'soulhist' => 'soulhist',
                 'soulnew' => 'soulnew',
                 'talk' => 'talk',
@@ -145,66 +130,8 @@ return [
                 'tell' => 'tell',
                 'tellb' => 'tellb',
                 'tellhist' => 'tellhist',
-                'trs' => 'trs',
                 'watch' => 'watch',
                 'whisper' => 'whisper'
-            ]
-        ],
-
-        // ===========================================
-        // GENERAL - Core gameplay (General + Basic Topics)
-        // ===========================================
-        'general' => [
-            'title' => 'General',
-            'icon' => 'fa-solid fa-book',
-            'description' => 'Core gameplay mechanics and information',
-            'files' => [
-                // General Topics
-                'anarchy' => 'anarchy',
-                'areadirections' => 'areadirections',
-                'arena' => 'arena',
-                'autoload' => 'autoload',
-                'bloodmatch' => 'bloodmatch',
-                'boards' => 'boards',
-                'bote' => 'bote',
-                'citymap' => 'citymap',
-                'clanworld' => 'clanworld',
-                'crafting' => 'crafting',
-                'formulas' => 'formulas',
-                'helpers' => 'helpers',
-                'highmortal' => 'highmortal',
-                'hmpowers' => 'hmpowers',
-                'houses' => 'houses',
-                'icotag' => 'icotag',
-                'idle' => 'idle',
-                'invasion' => 'invasion',
-                'linkdeath' => 'linkdeath',
-                'linktell' => 'linktell',
-                'method' => 'method',
-                'milestones' => 'milestones',
-                'picture' => 'picture',
-                'pk' => 'pk',
-                'professions' => 'professions',
-                'questhelp' => 'questhelp',
-                'reporting' => 'reporting',
-                'seconds' => 'seconds',
-                'source' => 'source',
-                'vote' => 'vote',
-                'waypoints' => 'waypoints',
-                'whoguilds' => 'whoguilds',
-                'wizzing' => 'wizzing',
-                // Basic Topics
-                'alignment' => 'alignment',
-                'botting' => 'botting',
-                'damage' => 'damage',
-                'death' => 'death',
-                'defense' => 'defense',
-                'faq' => 'faq',
-                'history' => 'history',
-                'pants' => 'pants',
-                'resistance' => 'resistance',
-                'skills' => 'skills',
-                'stats2' => 'stats2'
             ]
         ],
 
@@ -216,15 +143,10 @@ return [
             'icon' => 'fa-solid fa-crosshairs',
             'description' => 'Battle commands and equipment',
             'files' => [
-                // Combat Topics
-                'drink' => 'drink',
-                'remove' => 'remove',
-                'unwield' => 'unwield',
-                'wield' => 'wield',
-                // Mortal Combat Commands
                 'akills' => 'akills',
                 'autohp' => 'autohp',
                 'cbrief' => 'cbrief',
+                'eq' => 'eq',
                 'evasion' => 'evasion',
                 'forcehp' => 'forcehp',
                 'ibrief' => 'ibrief',
@@ -233,45 +155,7 @@ return [
                 'kills' => 'kills',
                 'stop' => 'stop',
                 'wimpy' => 'wimpy',
-                'wimpydir' => 'wimpydir',
-                'eq' => 'eq',
-                'wear' => 'wear'
-            ]
-        ],
-
-        // ===========================================
-        // GUILDS - Guild information
-        // ===========================================
-        'guilds' => [
-            'title' => 'Guilds',
-            'icon' => 'fa-solid fa-shield-halved',
-            'description' => 'Information about player guilds',
-            'files' => [
-                'adventurer' => 'adventurer',
-                'android' => 'android',
-                'angel' => 'angel',
-                'ascended' => 'ascended',
-                'bards' => 'bards',
-                'bladesingers' => 'bladesingers',
-                'breed' => 'breed',
-                'changeling' => 'changeling',
-                'cleric' => 'cleric',
-                'cyborg' => 'cyborg',
-                'elemental' => 'elemental',
-                'fighter' => 'fighter',
-                'fremen' => 'fremen',
-                'gentech' => 'gentech',
-                'guilds' => 'guilds',
-                'jedi' => 'jedi',
-                'juggernaut' => 'juggernaut',
-                'knight' => 'knight',
-                'mage' => 'mage',
-                'monk' => 'monk',
-                'necromancer' => 'necromancer',
-                'priest' => 'priest',
-                'psicorps' => 'psicorps',
-                'sii' => 'sii',
-                'sorcerer' => 'sorcerer'
+                'wimpydir' => 'wimpydir'
             ]
         ],
 
@@ -285,7 +169,6 @@ return [
             'files' => [
                 'acopy' => 'acopy',
                 'ansi' => 'ansi',
-                'ansivars' => 'ansivars',
                 'ansiwho' => 'ansiwho',
                 'aset' => 'aset',
                 'modcopy' => 'modcopy',
@@ -302,13 +185,11 @@ return [
             'icon' => 'fa-solid fa-terminal',
             'description' => 'Common player commands',
             'files' => [
-                '!' => '!',
                 'acronyms' => 'acronyms',
                 'advance' => 'advance',
                 'afind' => 'afind',
                 'afk' => 'afk',
                 'age' => 'age',
-                'alias' => 'alias',
                 'aread' => 'aread',
                 'arealist' => 'arealist',
                 'ask' => 'ask',
@@ -374,7 +255,6 @@ return [
                 'idea' => 'idea',
                 'ii' => 'ii',
                 'infinity' => 'infinity',
-                'inventory' => 'inventory',
                 'ishow' => 'ishow',
                 'keep' => 'keep',
                 'kickstart' => 'kickstart',
@@ -387,14 +267,12 @@ return [
                 'lotchat' => 'lotchat',
                 'mi' => 'mi',
                 'mread' => 'mread',
-                'movement' => 'movement',
                 'mudeq' => 'mudeq',
                 'mudinfo' => 'mudinfo',
                 'mudlag' => 'mudlag',
                 'mudscore' => 'mudscore',
                 'mwho' => 'mwho',
                 'news' => 'news',
-                'nickname' => 'nickname',
                 'nolife' => 'nolife',
                 'north' => 'north',
                 'northeast' => 'northeast',
@@ -416,7 +294,6 @@ return [
                 'praise' => 'praise',
                 'pretitle' => 'pretitle',
                 'profs' => 'profs',
-                'prompt' => 'prompt',
                 'put' => 'put',
                 'pvote' => 'pvote',
                 'qbug' => 'qbug',
@@ -437,9 +314,6 @@ return [
                 'respond' => 'respond',
                 'retrace' => 'retrace',
                 'rfinger' => 'rfinger',
-                'ralias' => 'ralias',
-                'rehash' => 'rehash',
-                'rnickname' => 'rnickname',
                 'saliases' => 'saliases',
                 'save' => 'save',
                 'sc' => 'sc',
@@ -455,7 +329,6 @@ return [
                 'southwest' => 'southwest',
                 'spades' => 'spades',
                 'stats' => 'stats',
-                'suicide' => 'suicide',
                 'swho' => 'swho',
                 'tagcheck' => 'tagcheck',
                 'take' => 'take',
@@ -486,10 +359,6 @@ return [
             'icon' => 'fa-solid fa-crown',
             'description' => 'High-mortal powers and commands',
             'files' => [
-                // High-Mortal Topics
-                'jump' => 'jump',
-                'portal' => 'portal',
-                // High-Mortal Commands
                 'emoteto' => 'emoteto',
                 'hm' => 'hm',
                 'hmblast' => 'hmblast',
@@ -530,19 +399,14 @@ return [
             'icon' => 'fa-solid fa-puzzle-piece',
             'description' => 'Games, utilities, and other topics',
             'files' => [
+                'arenachat' => 'arenachat',
                 'euchre' => 'euchre',
                 'hangman' => 'hangman',
                 'lottery' => 'lottery',
-                'gladiators' => 'gladiators',
-                'arenachat' => 'arenachat',
-                'tbmbet' => 'tbmbet',
-                'teamwho' => 'teamwho',
-                'evolution' => 'evolution',
                 'newb' => 'newb',
                 'newbie' => 'newbie',
-                'newbieland' => 'newbieland',
-                'wizards' => 'wizards',
-                'login' => 'login'
+                'tbmbet' => 'tbmbet',
+                'teamwho' => 'teamwho'
             ]
         ]
     ]

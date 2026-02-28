@@ -9,15 +9,6 @@ include __DIR__ . '/functions.php';
 // Get help categories based on config
 $helpCategories = getHelpFiles($config);
 
-// Display mode settings
-$displayMode = $config['display_mode'] ?? 'modal';
-$isModal = ($displayMode === 'modal');
-
-// URL settings (for link mode fallback)
-$helpBaseUrl = $config['external_url'] ?? 'https://3k.org/help/';
-$urlSuffix = $config['url_suffix'] ?? '.php';
-$openInNewWindow = $config['open_in_new_window'] ?? true;
-$linkTarget = $openInNewWindow ? '_blank' : '_self';
 ?>
 
 <!-- Main Content -->
@@ -69,7 +60,6 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
         </div>
         <div class="help-links">
           <?php foreach ($category['files'] as $file => $title): ?>
-          <?php if ($isModal): ?>
           <button
             type="button"
             class="help-link"
@@ -78,16 +68,6 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
           >
             <?php echo htmlspecialchars($title); ?>
           </button>
-          <?php else: ?>
-          <a
-            href="<?php echo htmlspecialchars($helpBaseUrl . $file . $urlSuffix); ?>"
-            class="help-link"
-            data-topic="<?php echo htmlspecialchars(strtolower($title)); ?>"
-            target="<?php echo $linkTarget; ?>"
-          >
-            <?php echo htmlspecialchars($title); ?>
-          </a>
-          <?php endif; ?>
           <?php endforeach; ?>
         </div>
       </div>
@@ -117,7 +97,6 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
   </section>
 </main>
 
-<?php if ($isModal): ?>
 <!-- Help Modal -->
 <div id="helpModal" class="help-modal" aria-hidden="true">
   <div class="help-modal-overlay"></div>
@@ -144,14 +123,9 @@ $linkTarget = $openInNewWindow ? '_blank' : '_self';
         <i class="fa-solid fa-terminal"></i>
         In-game: <code>help <span id="helpModalCommand"></span></code>
       </span>
-      <a id="helpModalExternal" href="#" target="_blank" class="help-modal-external">
-        <i class="fa-solid fa-external-link-alt"></i>
-        Open in new tab
-      </a>
     </div>
   </div>
 </div>
-<?php endif; ?>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/footer.php'; ?>
 

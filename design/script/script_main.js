@@ -414,9 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const commandEl = document.getElementById('helpModalCommand');
   const externalLink = document.getElementById('helpModalExternal');
 
-  // External URL base (for "Open in new tab" link)
-  const externalUrlBase = 'https://3k.org/help/';
-  const urlSuffix = '.php';
+  // External link is no longer used (content is served locally from helpdocs)
 
   // Get all help link buttons
   const helpLinks = document.querySelectorAll('.help-link[data-topic]');
@@ -469,7 +467,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set title and command
     titleEl.textContent = 'help ' + title;
     commandEl.textContent = topic;
-    externalLink.href = externalUrlBase + topic + urlSuffix;
+    // Hide the external link since content is served locally
+    if (externalLink) {
+      externalLink.style.display = 'none';
+    }
 
     // Show loading state
     loadingEl.style.display = 'flex';

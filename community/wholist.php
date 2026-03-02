@@ -7,23 +7,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
  * WHOLIST CONFIGURATION
  * ==============================================================
  *
- * 'who' command located at: /cmds/mortal/who
- *
- * DATA SOURCE OPTIONS (uncomment ONE):
- * ------------------------------------
+ * The MUD generates who_list2.html with the current player list.
+ * Thor mapped the MUD's shared directory to /var/www/mudshare.
+ * This path is outside the document root for security.
  */
-
-// Option 1: Path to MUD-generated who file
-// The MUD writes this file every 5 minutes to the shared directory.
-// Update this path to wherever the MUD's shared directory is mapped.
-$WHO_DATA_FILE = $_SERVER['DOCUMENT_ROOT'] . '/data/wholist/who_list2.html';
-
-// Fallback: If the local file is unavailable, fetch from 3k.org automatically
-$FETCH_FROM_ORIGINAL = true;
-
-// Option 2: Direct socket connection to MUD
-// $MUD_HOST = 'localhost';
-// $MUD_PORT = 3000;
+$WHO_DATA_FILE = '/var/www/mudshare/wholist/who_list2.html';
 
 /**
  * ==============================================================
@@ -38,53 +26,6 @@ function fetchFromLocalFile($filePath) {
     }
 
     $html = @file_get_contents($filePath);
-    if ($html === false) {
-        return null;
-    }
-
-    return parseWholistHtml($html);
-}
-
-// Try to fetch via socket connection to MUD
-function fetchFromMudSocket($host, $port) {
-    $socket = @fsockopen($host, $port, $errno, $errstr, 5);
-    if (!$socket) {
-        return null;
-    }
-
-    // Send who command (may need adjustment based on MUD protocol)
-    fwrite($socket, "who\n");
-
-    // Read response
-    $response = '';
-    stream_set_timeout($socket, 3);
-    while (!feof($socket)) {
-        $response .= fread($socket, 8192);
-        $info = stream_get_meta_data($socket);
-        if ($info['timed_out']) break;
-    }
-    fclose($socket);
-
-    if (empty($response)) {
-        return null;
-    }
-
-    return parseWholistHtml($response);
-}
-
-// Fallback: fetch from original 3k.org
-function fetchFromOriginalSource() {
-    $url = 'https://www.3k.org/wholist.php';
-
-    $context = stream_context_create([
-        'http' => [
-            'timeout' => 5,
-            'user_agent' => 'Mozilla/5.0 (compatible; 3K Website)'
-        ]
-    ]);
-
-    $html = @file_get_contents($url, false, $context);
-
     if ($html === false) {
         return null;
     }
@@ -159,27 +100,17 @@ function parseWholistHtml($html) {
 
 /**
  * ==============================================================
- * FETCH DATA (tries sources in order of preference)
+ * FETCH DATA
  * ==============================================================
  */
 $whoData = null;
 
-// Try Option 1: Local MUD file
+// Try to read from local MUD-generated file
 if (isset($WHO_DATA_FILE)) {
     $whoData = fetchFromLocalFile($WHO_DATA_FILE);
 }
 
-// Try Option 3: Socket connection (uncomment and set host/port above)
-// if (!$whoData && isset($MUD_HOST) && isset($MUD_PORT)) {
-//     $whoData = fetchFromMudSocket($MUD_HOST, $MUD_PORT);
-// }
-
-// Try Option 2: Fetch from original 3k.org (fallback)
-if (!$whoData && isset($FETCH_FROM_ORIGINAL) && $FETCH_FROM_ORIGINAL) {
-    $whoData = fetchFromOriginalSource();
-}
-
-// Final fallback: empty data
+// Fallback: empty data (shown when MUD file is unavailable)
 if (!$whoData) {
     $whoData = getEmptyWholistData();
 }

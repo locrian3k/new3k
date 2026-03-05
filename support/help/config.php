@@ -82,8 +82,16 @@ return [
             'icon' => 'fa-solid fa-star',
             'description' => 'Essential information for all players',
             'files' => [
-                'showaddr' => 'showaddr',
-                'webpage' => 'webpage'
+                'email' => 'email',
+                'guest' => 'guest',
+                'ip' => 'ip',
+                'password' => 'password',
+                'punishment' => 'punishment',
+                'purge' => 'purge',
+                'quest' => 'quest',
+                'register' => 'register',
+                'reimbursing' => 'reimbursing',
+                'rules' => 'rules'
             ]
         ],
 
@@ -343,6 +351,7 @@ return [
                 'use' => 'use',
                 'vaf' => 'vaf',
                 'ver' => 'ver',
+                'webpage' => 'webpage',                
                 'west' => 'west',
                 'where' => 'where',
                 'who' => 'who',

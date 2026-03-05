@@ -5410,50 +5410,6 @@ button.help-link {
 	word-wrap: break-word;
 }
 
-/* Paragraph spacing in help body */
-.help-body p {
-	margin: 0 0 0.75em 0;
-}
-.help-body p:last-child {
-	margin-bottom: 0;
-}
-
-/* Bullet lists in help body */
-.help-body ul {
-	margin: 0.5em 0;
-	padding-left: 1.5em;
-	list-style-type: disc;
-}
-.help-body li {
-	margin-bottom: 0.35em;
-}
-
-/* Nested lists (sub-bullets) */
-.help-body ul ul {
-	margin-top: 0.25em;
-	margin-bottom: 0.25em;
-}
-
-/* Pre-formatted blocks (tables, aligned columns) - wraps at container edge on mobile */
-.help-body .help-pre {
-	white-space: pre-wrap;
-	word-wrap: break-word;
-	font-family: monospace;
-	font-size: 0.9em;
-	margin: 0.5em 0;
-	padding: 0.5em;
-	background: rgba(0, 0, 0, 0.2);
-	border-radius: 4px;
-}
-
-/* MUD command examples like >kill bandersnatch */
-.help-body .help-example {
-	display: block;
-	font-family: monospace;
-	color: var(--clr-text-heading);
-	padding: 0.15em 0;
-}
-
 .help-modal-content .help-see-also {
 	margin-top: var(--space-lg);
 	padding-top: var(--space-md);
@@ -5605,13 +5561,6 @@ button.help-link {
 		word-wrap: break-word !important;
 		overflow-wrap: break-word !important;
 		word-break: break-word !important;
-		max-width: 100%;
-	}
-
-	/* Pre-formatted blocks should still wrap on mobile */
-	.help-body .help-pre {
-		font-size: 0.8em;
-		overflow-x: auto;
 		max-width: 100%;
 	}
 

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "php-server",
+      "runtimeExecutable": "php",
+      "runtimeArgs": ["-S", "localhost:8080", "-t", "C:\\Users\\1209a\\OneDrive\\WebDesign\\new3k"],
+      "port": 8080
+    }
+  ]
+}

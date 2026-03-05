@@ -66,8 +66,12 @@ function parseWholistHtml($html) {
         $data['reboot'] = trim($matches[1]);
     }
 
-    // Extract player count
-    if (preg_match('/(\d+) Visible Users/', $html, $matches)) {
+    // Extract player count and MUD timestamp
+    // Format: "81 Visible Users Currently on 3 Kingdoms (Fri Feb 27 23:44:53 2026 EST)"
+    if (preg_match('/(\d+) Visible Users Currently on 3 Kingdoms \(([^)]+)\)/', $html, $matches)) {
+        $data['playerCount'] = (int)$matches[1];
+        $data['timestamp'] = trim($matches[2]);
+    } elseif (preg_match('/(\d+) Visible Users/', $html, $matches)) {
         $data['playerCount'] = (int)$matches[1];
     }
 

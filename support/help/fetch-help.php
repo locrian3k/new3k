@@ -108,9 +108,15 @@ function parseHelpFile($content, $config = []) {
         $keywords = array_map('trim', explode(',', $metadata['keywords']));
     }
 
-    // Build "See also" from keywords (excluding common terms)
-    $seeAlso = array_filter($keywords, function($kw) {
-        return !in_array(strtolower($kw), ['general', 'misc', 'miscellaneous']);
+    // Build "See also" from keywords (excluding category labels)
+    // These are MUD help topic categories, not individual help files
+    $categoryKeywords = [
+        'important', 'general', 'basic', 'color',
+        'combat', 'guilds', 'souls', 'miscellaneous', 'misc',
+        'highmort', 'highmortal', 'wizard', 'mortal'
+    ];
+    $seeAlso = array_filter($keywords, function($kw) use ($categoryKeywords) {
+        return !in_array(strtolower($kw), $categoryKeywords);
     });
 
     // Process body content
@@ -223,8 +229,12 @@ function formatHelpContent($body, $header, $seeAlso, $config = []) {
         $output .= '</div>' . "\n";
     }
 
-    // Add body content
-    $output .= '<div class="help-body">' . $html . '</div>';
+    // Convert body text into structured HTML
+    // The raw text has paragraphs (separated by blank lines), bullet lists (* and -),
+    // command examples (lines starting with >), and aligned/table data.
+    // We convert these to proper HTML so they wrap naturally on mobile.
+    $bodyHtml = convertHelpBodyToHtml($html);
+    $output .= '<div class="help-body">' . $bodyHtml . '</div>';
 
     // Add "See also" section
     if (!empty($seeAlso)) {
@@ -261,6 +271,184 @@ function formatHelpContent($body, $header, $seeAlso, $config = []) {
     }
 
     return $output;
+}
+
+/**
+ * Convert help body text into structured HTML
+ *
+ * Splits text on blank lines into paragraph blocks, then detects whether
+ * each block is a bullet list, pre-formatted/aligned data, or a regular
+ * paragraph. This produces proper HTML that wraps on mobile instead of
+ * requiring horizontal scrolling (like <pre> would).
+ *
+ * @param string $html Body text (already HTML-escaped with color spans applied)
+ * @return string Structured HTML with <p>, <ul>, <li>, <br>, etc.
+ */
+function convertHelpBodyToHtml($html) {
+    // Split on blank lines (two or more newlines) to get paragraph blocks
+    $blocks = preg_split('/\n{2,}/', $html);
+    $bodyHtml = '';
+
+    foreach ($blocks as $block) {
+        $block = trim($block);
+        if (empty($block)) continue;
+
+        $lines = explode("\n", $block);
+
+        // Detect block type by checking what the lines look like
+        if (isListBlock($lines)) {
+            $bodyHtml .= convertListBlock($lines);
+        } elseif (isPreformattedBlock($lines)) {
+            $bodyHtml .= '<div class="help-pre">' . $block . '</div>';
+        } else {
+            $bodyHtml .= convertParagraphBlock($lines);
+        }
+    }
+
+    return $bodyHtml;
+}
+
+/**
+ * Check if a block of lines looks like a bullet list
+ *
+ * A block is a list if at least one line starts with whitespace followed
+ * by * or - and then a space (bullet markers).
+ *
+ * @param array $lines Lines of text
+ * @return bool True if this block contains bullet items
+ */
+function isListBlock($lines) {
+    foreach ($lines as $line) {
+        if (preg_match('/^\s+[\*\-]\s/', $line)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * Check if a block looks like pre-formatted/aligned data
+ *
+ * Detects table-like content where lines are aligned with multiple spaces
+ * between columns (e.g., the purge level table). A block qualifies if
+ * most lines start with whitespace AND contain internal gaps of 2+ spaces
+ * between words (column alignment).
+ *
+ * @param array $lines Lines of text
+ * @return bool True if this block looks like aligned/tabular data
+ */
+function isPreformattedBlock($lines) {
+    if (count($lines) < 2) return false;
+
+    $alignedCount = 0;
+    $nonEmptyCount = 0;
+
+    foreach ($lines as $line) {
+        if (trim($line) === '') continue;
+        $nonEmptyCount++;
+
+        // Line starts with whitespace AND has internal multi-space gaps (column alignment)
+        // or contains tab characters
+        if ((preg_match('/^\s{2,}/', $line) && preg_match('/\S\s{3,}\S/', $line))
+            || strpos($line, "\t") !== false) {
+            $alignedCount++;
+        }
+    }
+
+    // If most non-empty lines look aligned, treat as pre-formatted
+    return ($nonEmptyCount > 0 && $alignedCount / $nonEmptyCount >= 0.6);
+}
+
+/**
+ * Convert a bullet list block into HTML <ul><li> structure
+ *
+ * Handles lines starting with * or - as list items. Lines that don't start
+ * with a bullet but are indented get appended to the previous list item
+ * as continuation text. Non-list lines before or after the list portion
+ * are output as paragraphs.
+ *
+ * @param array $lines Lines of text
+ * @return string HTML with <ul>/<li> elements
+ */
+function convertListBlock($lines) {
+    $html = '';
+    $inList = false;
+    $pendingText = [];
+
+    foreach ($lines as $line) {
+        $trimmed = trim($line);
+        if ($trimmed === '') continue;
+
+        // Is this a bullet line?
+        if (preg_match('/^\s+[\*\-]\s+(.*)$/', $line, $match)) {
+            // Flush any pending non-list text as a paragraph
+            if (!empty($pendingText) && !$inList) {
+                $html .= '<p>' . implode('<br>', $pendingText) . '</p>';
+                $pendingText = [];
+            }
+
+            // Start list if not already in one
+            if (!$inList) {
+                $html .= '<ul>';
+                $inList = true;
+            }
+
+            // Close previous <li> if there was one, start new
+            if (!empty($pendingText)) {
+                $html .= ' ' . implode('<br>', $pendingText);
+                $pendingText = [];
+            }
+            // Check if there's already an open <li> to close
+            if (strpos($html, '<li>') !== false && substr_count($html, '<li>') > substr_count($html, '</li>')) {
+                $html .= '</li>';
+            }
+            $html .= '<li>' . trim($match[1]);
+        } elseif ($inList) {
+            // Continuation line inside a list - append to current <li>
+            $html .= '<br>' . $trimmed;
+        } else {
+            // Regular text before the list starts
+            $pendingText[] = $trimmed;
+        }
+    }
+
+    // Close any open list
+    if ($inList) {
+        $html .= '</li></ul>';
+    }
+
+    // Flush any remaining text
+    if (!empty($pendingText)) {
+        $html .= '<p>' . implode('<br>', $pendingText) . '</p>';
+    }
+
+    return $html;
+}
+
+/**
+ * Convert a regular paragraph block into HTML
+ *
+ * Wraps the block in <p> tags with single newlines converted to <br>.
+ * Lines starting with > (MUD command examples) are wrapped in <code>.
+ *
+ * @param array $lines Lines of text
+ * @return string HTML paragraph
+ */
+function convertParagraphBlock($lines) {
+    $processed = [];
+
+    foreach ($lines as $line) {
+        $trimmedLine = trim($line);
+
+        // MUD command example: >kill bandersnatch
+        if (preg_match('/^&gt;(.*)$/', $trimmedLine, $match)) {
+            $processed[] = '<code class="help-example">&gt;' . $match[1] . '</code>';
+        } else {
+            $processed[] = $line;
+        }
+    }
+
+    return '<p>' . implode('<br>', $processed) . '</p>';
 }
 
 /**

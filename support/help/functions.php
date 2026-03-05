@@ -3,7 +3,7 @@
  * Help Page Functions
  *
  * Functions for loading and processing help file data.
- * Help content is read from a single 'helpdocs' file exported by the MUD.
+ * Help content is read from a single 'helpdocs' file submitted by Adalius' script.
  */
 
 /**
@@ -82,15 +82,13 @@ function getHelpdocsTopicList($helpdocsPath) {
         $entry = trim($entry);
         if (empty($entry)) continue;
 
-        // Extract filename: /cmds/mortal/acopy.c -> acopy
-        if (preg_match('/^file:\s*\/.*\/([^\/]+)\.c\s*$/m', $entry, $match)) {
+        // Extract topic name from file path
+        // Handles both formats:
+        //   /cmds/mortal/acopy.c  -> acopy  (command files have .c extension)
+        //   /help/IMPORTANT/rules -> rules  (help files have no extension)
+        if (preg_match('/^file:\s*\/.*\/([^\/]+?)(?:\.c)?\s*$/m', $entry, $match)) {
             $topic = $match[1];
-            // Use the short description as display name if available
-            if (preg_match('/^short:\s*(.+)$/m', $entry, $shortMatch)) {
-                $topics[$topic] = strtolower(trim($shortMatch[1]));
-            } else {
-                $topics[$topic] = strtolower($topic);
-            }
+            $topics[$topic] = $topic;
         }
     }
 
@@ -123,8 +121,8 @@ function findTopicInHelpdocs($topic, $helpdocsPath) {
         if (empty($entry)) continue;
 
         // Check if this entry matches the requested topic
-        // Match by filename: /cmds/mortal/acopy.c -> acopy
-        if (preg_match('/^file:\s*\/.*\/([^\/]+)\.c\s*$/m', $entry, $match)) {
+        // Match by filename: /cmds/mortal/acopy.c -> acopy, or /help/IMPORTANT/rules -> rules
+        if (preg_match('/^file:\s*\/.*\/([^\/]+?)(?:\.c)?\s*$/m', $entry, $match)) {
             $entryTopic = strtolower($match[1]);
             if ($entryTopic === $topicLower) {
                 // Remove the "file:" line from the content before returning

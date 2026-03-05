@@ -39,6 +39,7 @@ return [
         'checkmon',
         'sregister',
         'whox',
+        'flapchat2',
     ],
 
     // ===========================================
@@ -115,6 +116,8 @@ return [
             'icon' => 'fa-solid fa-seedling',
             'description' => 'Things to know when first starting out',
             'files' => [
+                '?' => '?',
+                'adventurer' => 'adventurer',
                 'commands' => 'commands',
                 'faq' => 'faq',
                 'guest' => 'guest',
@@ -344,6 +347,7 @@ return [
                 'cleric' => 'cleric',
                 'crafting' => 'crafting',
                 'craftwho' => 'craftwho',
+                'cyborg' => 'cyborg',
                 'death' => 'death',
                 'deathhist' => 'deathhist',
                 'deathist' => 'deathist',

@@ -96,21 +96,51 @@ return [
         ],
 
         // ===========================================
+        // NEW PLAYERS
+        // ===========================================
+        'new-players' => [
+            'title' => 'New Players',
+            'icon' => 'fa-solid fa-star',
+            'description' => 'Things to know when first starting out',
+            'files' => [
+                'commands' => 'commands',
+                'faq' => 'faq',
+                'guest' => 'guest',
+                'help' => 'help',
+                'helpers' => 'helpers',
+                'login' => 'login',
+                'newb' => 'newb',
+                'newbie' => 'newbie',
+                'newbieland' => 'newbieland',
+                'quest' => 'quest',
+                'register' => 'register',
+                'rules' => 'rules'
+            ]
+        ],
+
+        // ===========================================
         // COMMUNICATION - Player interaction
         // ===========================================
         'communication' => [
             'title' => 'Communication',
             'icon' => 'fa-solid fa-comments',
-            'description' => 'How to interact with other players',
+            'description' => 'Every way to interact with other players',
             'files' => [
                 'addlink' => 'addlink',
                 'addwho' => 'addwho',
                 'ansiwho' => 'ansiwho',
+                'ask' => 'ask',
+                'aread' => 'aread',
+                'biff' => 'biff',
+                'boards' => 'boards',
+                'busy' => 'busy',
+                'chatlines' => 'chatlines',
                 'checklink' => 'checklink',
                 'checkwho' => 'checkwho',
                 'converse' => 'converse',
                 'dislink' => 'dislink',
                 'diswho' => 'diswho',
+                'earmuffs' => 'earmuffs',
                 'emote' => 'emote',
                 'finger' => 'finger',
                 'gossip' => 'gossip',

@@ -430,7 +430,7 @@ return [
                 'wizardling' => 'wizardling'
             ]
         ],
-
+                
         // ===========================================
         // ITEMS & INVENTORY - Managing your stuff
         // ===========================================
@@ -625,7 +625,7 @@ return [
                 'wipehist' => 'wipehist',
                 'wizard' => 'wizard'
             ]
-        ]
+        ],
 
         // ===========================================
         // WHO LISTS & INFO - Finding and identifying players
@@ -659,6 +659,6 @@ return [
                 'who2' => 'who2',
                 'whoguilds' => 'whoguilds'
             ]
-        ],        
+        ]        
     ]
 ];

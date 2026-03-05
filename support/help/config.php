@@ -554,6 +554,8 @@ return [
                 'register' => 'register',
                 'reimbursing' => 'reimbursing',
                 'reporting' => 'reporting',
+                'spawnchar' => 'spawnchar',
+                'spawnsecond' => 'spawnsecond',                
                 'suicide' => 'suicide',
                 'typo' => 'typo'
             ]
@@ -611,8 +613,6 @@ return [
                 'save' => 'save',
                 'setmod' => 'setmod',
                 'source' => 'source',
-                'spawnchar' => 'spawnchar',
-                'spawnsecond' => 'spawnsecond',
                 'tagcheck' => 'tagcheck',
                 'time' => 'time',
                 'uptime' => 'uptime',

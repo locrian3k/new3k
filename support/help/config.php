@@ -30,6 +30,15 @@ return [
     'helpdocs_file' => dirname(__DIR__, 2) . '/data/help/helpdocs',
 
     // ===========================================
+    // EXCLUDED TOPICS
+    // ===========================================
+    // Topics to hide from the website entirely (test files, wizard-only, etc.)
+    // Add the topic name exactly as it appears in the helpdocs file path.
+    'excluded_topics' => [
+        'saytest',
+    ],
+
+    // ===========================================
     // EXTERNAL URL SETTINGS
     // (Only used when display_mode is 'link' for legacy direct-linking)
     // ===========================================
@@ -128,7 +137,6 @@ return [
             'files' => [
                 'addlink' => 'addlink',
                 'addwho' => 'addwho',
-                'ansiwho' => 'ansiwho',
                 'ask' => 'ask',
                 'aread' => 'aread',
                 'biff' => 'biff',
@@ -142,20 +150,29 @@ return [
                 'diswho' => 'diswho',
                 'earmuffs' => 'earmuffs',
                 'emote' => 'emote',
+                'fbchat' => 'fbchat',
                 'finger' => 'finger',
-                'gossip' => 'gossip',
-                'gossipblock' => 'gossipblock',
-                'gossiphist' => 'gossiphist',
-                'gossipwho' => 'gossipwho',
+                'flapchat' => 'flapchat',
+                'gam' => 'gam',
+                'gshout' => 'gshout',
                 'ignorelink' => 'ignorelink',
+                'linktell' => 'linktell',
+                'lotchat' => 'lotchat',
                 'mail' => 'mail',
+                'mread' => 'mread',
                 'mysoul' => 'mysoul',
                 'mywho' => 'mywho',
                 'mywho2' => 'mywho2',
                 'mywhosync' => 'mywhosync',
                 'notify' => 'notify',
+                'omp' => 'omp',
                 'party' => 'party',
+                'pkchat' => 'pkchat',
+                'pol' => 'pol',
+                'poll' => 'poll',
+                'polls' => 'polls',
                 'reply' => 'reply',
+                'respond' => 'respond',
                 'say' => 'say',
                 'sayhist' => 'sayhist',
                 'shout' => 'shout',
@@ -168,6 +185,8 @@ return [
                 'tell' => 'tell',
                 'tellb' => 'tellb',
                 'tellhist' => 'tellhist',
+                'trs' => 'trs',
+                'wall' => 'wall',
                 'watch' => 'watch',
                 'whisper' => 'whisper'
             ]
@@ -182,39 +201,114 @@ return [
             'description' => 'Battle commands and equipment',
             'files' => [
                 'akills' => 'akills',
+                'anarchy' => 'anarchy',
+                'arena' => 'arena',
+                'arenachat' => 'arenachat',
                 'autohp' => 'autohp',
+                'balive' => 'balive',
+                'bloodmatch' => 'bloodmatch',
+                'butcher' => 'butcher',
                 'cbrief' => 'cbrief',
+                'clanworld' => 'clanworld',
+                'consider' => 'consider',
+                'considerx' => 'considerx',
+                'counterpoise' => 'counterpoise',
                 'eq' => 'eq',
                 'evasion' => 'evasion',
+                'flee' => 'flee',
                 'forcehp' => 'forcehp',
+                'gearup' => 'gearup',
+                'hp' => 'hp',
                 'ibrief' => 'ibrief',
+                'invasion' => 'invasion',
                 'kill' => 'kill',
                 'killed' => 'killed',
                 'kills' => 'kills',
+                'pk' => 'pk',
+                'pkwho' => 'pkwho',
+                'reflex' => 'reflex',
+                'resistances' => 'resistances',
                 'stop' => 'stop',
+                'tbmbet' => 'tbmbet',
+                'teamwho' => 'teamwho',
                 'wimpy' => 'wimpy',
                 'wimpydir' => 'wimpydir'
             ]
         ],
 
         // ===========================================
-        // ANSI - Color and display settings
+        // CUSTOMIZATION & DISPLAY - Color and display settings
         // ===========================================
-        'ansi' => [
-            'title' => 'Ansi & Colors',
+        'customize-display' => [
+            'title' => 'Customization & Display',
             'icon' => 'fa-solid fa-palette',
             'description' => 'Color and display customization',
             'files' => [
                 'acopy' => 'acopy',
                 'ansi' => 'ansi',
+                'ansivars' => 'ansivars',
                 'ansiwho' => 'ansiwho',
                 'aset' => 'aset',
+                'describe' => 'describe',
                 'modcopy' => 'modcopy',
                 'mudansi' => 'mudansi',
-                'setcolor' => 'setcolor'
+                'nickname' => 'nickname',
+                'pretitle' => 'pretitle',
+                'prompt' => 'prompt',
+                'setcolor' => 'setcolor',
+                'showaddr' => 'showaddr',
+                'webpage' => 'webpage'
             ]
         ],
 
+        // ===========================================
+        // NAVIGATION & EXPLORATION - Getting around the realms
+        // ===========================================
+        'navigation-exploration' => [
+            'title' => 'Navigation & Exploration',
+            'icon' => 'fa-solid fa-palette',
+            'description' => 'Getting around the realms',
+            'files' => [
+                'areadirections' => 'areadirections',
+                'arealist' => 'arealist',
+                'brief' => 'brief',
+                'checkway' => 'checkway',
+                'citymap' => 'citymap',
+                'dmap' => 'dmap',
+                'down' => 'down',
+                'east' => 'east',
+                'elight' => 'elight',
+                'eport' => 'eport',
+                'esearch' => 'esearch',
+                'exits' => 'exits',
+                'explorer' => 'explorer',
+                'explorers' => 'explorers',
+                'follow' => 'follow',
+                'followers' => 'followers',
+                'following' => 'following',
+                'hail' => 'hail',
+                'lineofsight' => 'lineofsight',
+                'llook' => 'llook',
+                'look' => 'look',
+                'lose' => 'lose',
+                'map' => 'map',
+                'movement' => 'movement',
+                'north' => 'north',
+                'northeast' => 'northeast',
+                'northwest' => 'northwest',
+                'retrace' => 'retrace',
+                'south' => 'south',
+                'southeast' => 'southeast',
+                'southwest' => 'southwest',
+                'swimming' => 'swimming',
+                'townportal' => 'townportal',
+                'unfollow' => 'unfollow',
+                'up' => 'up',
+                'visited' => 'visited',
+                'waypoints' => 'waypoints',
+                'west' => 'west'
+            ]
+        ],        
         // ===========================================
         // COMMANDS - Common mortal commands
         // ===========================================

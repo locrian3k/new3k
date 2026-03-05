@@ -32,6 +32,16 @@ if (empty($topic) ||
     exit;
 }
 
+// Check if topic is excluded (test files, wizard-only, etc.)
+$excluded = $config['excluded_topics'] ?? [];
+if (in_array(strtolower($topic), array_map('strtolower', $excluded))) {
+    echo json_encode([
+        'success' => false,
+        'error' => 'Topic not found'
+    ]);
+    exit;
+}
+
 // Find the topic in the helpdocs file
 $helpdocsFile = $config['helpdocs_file'] ?? '';
 $rawContent = findTopicInHelpdocs($topic, $helpdocsFile);

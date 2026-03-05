@@ -34,7 +34,8 @@ function getHelpFiles($config) {
         // Parse helpdocs to find uncategorized topics
         $helpdocsFile = $config['helpdocs_file'] ?? '';
         if (!empty($helpdocsFile) && file_exists($helpdocsFile)) {
-            $allTopics = getHelpdocsTopicList($helpdocsFile);
+            $excluded = $config['excluded_topics'] ?? [];
+            $allTopics = getHelpdocsTopicList($helpdocsFile, $excluded);
             $uncategorized = [];
 
             foreach ($allTopics as $topic => $title) {
@@ -65,9 +66,10 @@ function getHelpFiles($config) {
  * Get a list of all topics in the helpdocs file
  *
  * @param string $helpdocsPath Path to the helpdocs file
+ * @param array $excluded Topic names to exclude (test files, wizard-only, etc.)
  * @return array Associative array of topic => display name
  */
-function getHelpdocsTopicList($helpdocsPath) {
+function getHelpdocsTopicList($helpdocsPath, $excluded = []) {
     $topics = [];
 
     $content = @file_get_contents($helpdocsPath);
@@ -88,6 +90,10 @@ function getHelpdocsTopicList($helpdocsPath) {
         //   /help/IMPORTANT/rules -> rules  (help files have no extension)
         if (preg_match('/^file:\s*\/.*\/([^\/]+?)(?:\.c)?\s*$/m', $entry, $match)) {
             $topic = $match[1];
+            // Skip excluded topics (test files, wizard-only, etc.)
+            if (in_array(strtolower($topic), array_map('strtolower', $excluded))) {
+                continue;
+            }
             $topics[$topic] = $topic;
         }
     }

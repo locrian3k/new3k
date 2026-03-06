@@ -7097,7 +7097,7 @@ header:  Defense
 
 --------------------
 file: /help/BASIC/faq
-keywords: general, basic, adventurer, combat, movement, communication, ansi, miscellaneous, citymap, areadirections, milestones
+keywords: general, basic, adventurer, combat, movement, ansi, miscellaneous, citymap, areadirections, milestones
 aliases: newbie, newbies, question, questions
 short:  Newbie Frequently Asked Questions
 header: Newbie FAQ
@@ -9982,7 +9982,7 @@ file: /help/CMDS/nd
 This will tell you how much longer a No Death boon (if any) is in effect.
 --------------------
 file: /help/CMDS/newb
-keywords: helpers, newbie, communication
+keywords: helpers, newbie
 aliases: newbieline
 short: The Newbie Help Line
 header: newb - The Newbie Help Line

@@ -102,6 +102,61 @@ function getHelpdocsTopicList($helpdocsPath, $excluded = []) {
 }
 
 /**
+ * Get metadata (keywords, aliases, short description) for all topics in the helpdocs file.
+ * Used to embed searchable data on help page buttons.
+ *
+ * @param string $helpdocsPath Path to the helpdocs file
+ * @return array Associative array of topic => ['keywords' => '...', 'aliases' => '...', 'short' => '...']
+ */
+function getHelpdocsMetadata($helpdocsPath) {
+    $metadata = [];
+
+    $content = @file_get_contents($helpdocsPath);
+    if ($content === false) {
+        return $metadata;
+    }
+
+    $entries = preg_split('/^-{20}\s*$/m', $content);
+
+    foreach ($entries as $entry) {
+        $entry = trim($entry);
+        if (empty($entry)) continue;
+
+        // Extract topic name from file path
+        if (!preg_match('/^file:\s*\/.*\/([^\/]+?)(?:\.c)?\s*$/m', $entry, $match)) {
+            continue;
+        }
+        $topic = $match[1];
+
+        // Only store the first occurrence of each topic (case-insensitive)
+        $topicLower = strtolower($topic);
+        if (isset($metadata[$topicLower])) continue;
+
+        $keywords = '';
+        $aliases = '';
+        $short = '';
+
+        if (preg_match('/^keywords?:\s*(.+)$/im', $entry, $m)) {
+            $keywords = trim($m[1]);
+        }
+        if (preg_match('/^aliases:\s*(.+)$/im', $entry, $m)) {
+            $aliases = trim($m[1]);
+        }
+        if (preg_match('/^short:\s*(.+)$/im', $entry, $m)) {
+            $short = trim($m[1]);
+        }
+
+        $metadata[$topicLower] = [
+            'keywords' => $keywords,
+            'aliases' => $aliases,
+            'short' => $short
+        ];
+    }
+
+    return $metadata;
+}
+
+/**
  * Find and return help content for a topic from the helpdocs file
  *
  * @param string $topic The help topic to find

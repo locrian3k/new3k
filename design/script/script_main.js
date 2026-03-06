@@ -354,8 +354,15 @@ document.addEventListener('DOMContentLoaded', function() {
       let categoryVisible = 0;
 
       links.forEach(function(link) {
-        const topic = link.getAttribute('data-topic');
-        if (topic && topic.includes(searchTerm)) {
+        const topic = (link.getAttribute('data-topic') || '').toLowerCase();
+        const keywords = (link.getAttribute('data-keywords') || '').toLowerCase();
+        const aliases = (link.getAttribute('data-aliases') || '').toLowerCase();
+        const short = (link.getAttribute('data-short') || '').toLowerCase();
+
+        if (topic.includes(searchTerm) ||
+            keywords.includes(searchTerm) ||
+            aliases.includes(searchTerm) ||
+            short.includes(searchTerm)) {
           link.style.display = 'inline-block';
           categoryVisible++;
         } else {

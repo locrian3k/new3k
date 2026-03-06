@@ -42,7 +42,8 @@ if (in_array($topic, $excluded)) {
     exit;
 }
 
-// Apply topic redirects (e.g., 'newbie' -> 'faq' to match MUD behavior)
+// Apply topic redirects (e.g., 'newbie' -> 'faq' to match MUD behavior 
+// since Adalius' script does not differentiate between newb and newbie)
 $redirects = $config['topic_redirects'] ?? [];
 $fetchTopic = $redirects[strtolower($topic)] ?? $topic;
 

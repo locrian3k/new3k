@@ -9,6 +9,12 @@ include __DIR__ . '/functions.php';
 // Get help categories based on config
 $helpCategories = getHelpFiles($config);
 
+// Load metadata (keywords, aliases, short descriptions) for search
+$helpdocsFile = $config['helpdocs_file'] ?? '';
+$topicMeta = (!empty($helpdocsFile) && file_exists($helpdocsFile))
+    ? getHelpdocsMetadata($helpdocsFile)
+    : [];
+
 ?>
 
 <!-- Main Content -->
@@ -59,12 +65,23 @@ $helpCategories = getHelpFiles($config);
           <span class="category-count"><?php echo count($category['files']); ?> topics</span>
         </div>
         <div class="help-links">
-          <?php foreach ($category['files'] as $file => $title): ?>
+          <?php foreach ($category['files'] as $file => $title):
+            // Look up metadata: check for redirects first, then fall back to topic name
+            $redirects = $config['topic_redirects'] ?? [];
+            $lookupKey = strtolower($redirects[strtolower($title)] ?? $title);
+            $meta = $topicMeta[$lookupKey] ?? [];
+            $kw = $meta['keywords'] ?? '';
+            $al = $meta['aliases'] ?? '';
+            $sh = $meta['short'] ?? '';
+          ?>
           <button
             type="button"
             class="help-link"
             data-topic="<?php echo htmlspecialchars($title); ?>"
             data-title="<?php echo htmlspecialchars($title); ?>"
+            <?php if ($kw): ?>data-keywords="<?php echo htmlspecialchars($kw); ?>"<?php endif; ?>
+            <?php if ($al): ?>data-aliases="<?php echo htmlspecialchars($al); ?>"<?php endif; ?>
+            <?php if ($sh): ?>data-short="<?php echo htmlspecialchars($sh); ?>"<?php endif; ?>
           >
             <?php echo htmlspecialchars($title); ?>
           </button>

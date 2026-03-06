@@ -78,7 +78,7 @@ function getHelpdocsTopicList($helpdocsPath, $excluded = []) {
     }
 
     // Split by separator
-    $entries = preg_split('/^-{4,}\s*$/m', $content);
+    $entries = preg_split('/^-{20}\s*$/m', $content);
 
     foreach ($entries as $entry) {
         $entry = trim($entry);
@@ -119,7 +119,7 @@ function findTopicInHelpdocs($topic, $helpdocsPath) {
     }
 
     // Split by separator
-    $entries = preg_split('/^-{4,}\s*$/m', $content);
+    $entries = preg_split('/^-{20}\s*$/m', $content);
     $topicLower = strtolower($topic);
 
     foreach ($entries as $entry) {

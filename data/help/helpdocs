@@ -2764,9 +2764,8 @@ header: Command: Look
    Syntax:   look at [what] <on ground | in room>
         or:   look
 
-The look command allows you to examine your
-environment.  The plain version 'look' gives
-you a description of the room you are in.
+The look command allows you to examine your environment.  The plain 
+version 'look' gives you a description of the room you are in.
 You can specify 'on ground' if you are trying to look at an object
 lying on the ground, such as a sword or monster.  This is useful if
 there is a conflicting item in the room you can also look at.
@@ -2774,8 +2773,7 @@ You can specify 'in room' if you are trying to look at something that
 is part of the room description and there's a conflicting item on the
 ground.
 
-With 'look at something', you can scrutinize
-something more closely.
+With 'look at something', you can scrutinize something more closely.
 
    Example
 

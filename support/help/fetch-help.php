@@ -136,14 +136,14 @@ function parseHelpFile($content, $config = []) {
     // Remove decorative "Topic:" sections (different from header: metadata)
     // Format: @color:::::...:::::\n    Topic: name\n:::::...::::@\n
     // These are decorative headers that duplicate the header: metadata
-    // Pattern 1: Lines that are just colons with optional @color prefix/suffix
+    // Pattern: Lines that are just colons with optional @color prefix/suffix
     $body = preg_replace('/^@?[a-z]*:*::{4,}:*@?\s*$/im', '', $body);
-    // Pattern 2: Lines with "Topic:" preceded by whitespace (indented topic lines)
+    // Pattern: Lines with "Topic:" preceded by whitespace (indented topic lines)
     $body = preg_replace('/^\s+Topic:\s*[^\n]+$/im', '', $body);
     // Remove wizard/titled/admin-only sections from help content
-    // Pattern 1: Sections with ~~~~~ separator (e.g., "Wizard Feedback Line Commands:\n~~~~~\n...")
+    // Pattern: Sections with ~~~~~ separator (e.g., "Wizard Feedback Line Commands:\n~~~~~\n...")
     $body = preg_replace('/^(?:Wizard|TITLED|Admin|Creator|Arch|Elder|Senior)\b[^\n]*:\s*\n~{3,}\s*\n[\s\S]*?(?=\n\n[A-Z]|\z)/im', '', $body);
-    // Pattern 2: Standalone "Wizards:" section header without separator (e.g., in rules)
+    // Pattern: Standalone "Wizards:" section header without separator (e.g., in rules)
     // Removes from "Wizards:" to end of content since these are admin-only rules
     $body = preg_replace('/^Wizards:\s*\n[\s\S]*/im', '', $body);
 

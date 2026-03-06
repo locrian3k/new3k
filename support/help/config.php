@@ -40,6 +40,7 @@ return [
         'sregister',
         'whox',
         'flapchat2',
+        'Pinnacle',
     ],
 
     // ===========================================

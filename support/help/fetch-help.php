@@ -154,6 +154,9 @@ function parseHelpFile($content, $config = [], $topic = '') {
     // Pattern: Wizard-level help search commands (in help ?)
     // Removes "Depending on your wizard level..." through the list of wizard search commands
     $body = preg_replace('/^Depending on your wizard level.*?(?=\n\n)/ms', '', $body);
+    // Pattern: "As a WIZARD" / "As a TITLED WIZARD" paragraphs (e.g., in profs)
+    // Removes wizard-only command instructions that span one or more lines
+    $body = preg_replace('/^As a (?:TITLED )?WIZARD.*?(?=\n\n|\z)/ms', '', $body);
 
     // Clean up any resulting multiple blank lines
     $body = preg_replace('/\n{3,}/', "\n\n", $body);

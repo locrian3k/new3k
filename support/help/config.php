@@ -133,7 +133,7 @@ return [
                 'helpers' => 'helpers',
                 'login' => 'login',
                 'newb' => 'newb',
-                'newbie' => 'faq',
+                'faq' => 'newbie',
                 'newbieland' => 'newbieland',
                 'quest' => 'quest',
                 'register' => 'register',

@@ -151,6 +151,9 @@ function parseHelpFile($content, $config = [], $topic = '') {
     // Pattern: Standalone "Wizards:" section header without separator (e.g., in rules)
     // Removes from "Wizards:" to end of content since these are admin-only rules
     $body = preg_replace('/^Wizards:\s*\n[\s\S]*/im', '', $body);
+    // Pattern: Wizard-level help search commands (in help ?)
+    // Removes "Depending on your wizard level..." through the list of wizard search commands
+    $body = preg_replace('/^Depending on your wizard level.*?(?=\n\n)/ms', '', $body);
 
     // Clean up any resulting multiple blank lines
     $body = preg_replace('/\n{3,}/', "\n\n", $body);

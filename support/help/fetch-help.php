@@ -151,10 +151,13 @@ function parseHelpFile($content, $config = []) {
     $body = trim($body);
 
     // Extract "See Also:" from body content if present
+    // Only match "See Also:" at the START of a line (with optional color codes).
+    // This avoids matching inline references like "(See also: help quest)" in body text.
     $bodySeeAlso = [];
-    if (preg_match('/@?yellow:?\'?See\s+Also:\s*([^@\']+)\'?@?|See\s+Also:\s*(.+)$/im', $body, $seeAlsoMatch)) {
-        // Get the matched topics (either from colored or plain format)
-        $topicsStr = !empty($seeAlsoMatch[1]) ? $seeAlsoMatch[1] : ($seeAlsoMatch[2] ?? '');
+    if (preg_match('/^@?yellow:?\'?See\s+Also:\s*([^@\']+)\'?@?$/im', $body, $seeAlsoMatch)
+        || preg_match('/^See\s+Also:\s*(.+)$/im', $body, $seeAlsoMatch)) {
+        // Get the matched topics
+        $topicsStr = $seeAlsoMatch[1];
         // Parse comma-separated topics
         $bodySeeAlso = array_map('trim', explode(',', $topicsStr));
         // Clean up any trailing punctuation
@@ -165,8 +168,8 @@ function parseHelpFile($content, $config = []) {
         $bodySeeAlso = array_filter($bodySeeAlso);
 
         // Remove the "See Also:" line from the body since we'll add it formatted
-        $body = preg_replace('/@?yellow:?\'?See\s+Also:\s*[^@\']+\'?@?\s*$/im', '', $body);
-        $body = preg_replace('/See\s+Also:\s*.+$/im', '', $body);
+        $body = preg_replace('/^@?yellow:?\'?See\s+Also:\s*[^@\']+\'?@?\s*$/im', '', $body);
+        $body = preg_replace('/^See\s+Also:\s*.+$/im', '', $body);
         $body = trim($body);
     }
 

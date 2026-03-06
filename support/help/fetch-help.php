@@ -141,10 +141,11 @@ function parseHelpFile($content, $config = []) {
     // Pattern 2: Lines with "Topic:" preceded by whitespace (indented topic lines)
     $body = preg_replace('/^\s+Topic:\s*[^\n]+$/im', '', $body);
     // Remove wizard/titled/admin-only sections from help content
-    // These sections start with a header like "Wizard ... Commands:" or "TITLED ... Commands:"
-    // followed by a ~~~~~ separator, and continue until the next double-blank-line or end of text.
-    // Players on the website should not see these privileged command references.
+    // Pattern 1: Sections with ~~~~~ separator (e.g., "Wizard Feedback Line Commands:\n~~~~~\n...")
     $body = preg_replace('/^(?:Wizard|TITLED|Admin|Creator|Arch|Elder|Senior)\b[^\n]*:\s*\n~{3,}\s*\n[\s\S]*?(?=\n\n[A-Z]|\z)/im', '', $body);
+    // Pattern 2: Standalone "Wizards:" section header without separator (e.g., in rules)
+    // Removes from "Wizards:" to end of content since these are admin-only rules
+    $body = preg_replace('/^Wizards:\s*\n[\s\S]*/im', '', $body);
 
     // Clean up any resulting multiple blank lines
     $body = preg_replace('/\n{3,}/', "\n\n", $body);

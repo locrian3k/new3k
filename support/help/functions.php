@@ -90,8 +90,8 @@ function getHelpdocsTopicList($helpdocsPath, $excluded = []) {
         //   /help/IMPORTANT/rules -> rules  (help files have no extension)
         if (preg_match('/^file:\s*\/.*\/([^\/]+?)(?:\.c)?\s*$/m', $entry, $match)) {
             $topic = $match[1];
-            // Skip excluded topics (test files, wizard-only, etc.)
-            if (in_array(strtolower($topic), array_map('strtolower', $excluded))) {
+            // Skip excluded topics (case-sensitive: 'Pinnacle' and 'pinnacle' are different files)
+            if (in_array($topic, $excluded)) {
                 continue;
             }
             $topics[$topic] = $topic;

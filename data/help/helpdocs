@@ -12364,7 +12364,7 @@ for weapon restrictions particular to that guild.
 
 --------------------
 file: /help/GUILD/adventurer
-keywords: guilds, faq
+keywords: guild, faq
 aliases: adventurers
 short: Adventurers: Where it all begins
 header: The Adventurer Guild 
@@ -15013,7 +15013,7 @@ or sponsoring one of your own.
 
 --------------------
 file: /help/guild
-keywords: general, adventurer, bards, cybercorp, elemental, fremen, jedi, juggernaut, knight, mage, monk, necromancer, priest, bladesinger, breed, cyborg, sii, psicorps, angel
+keywords: general, adventurer, bards, elemental, fremen, jedi, juggernaut, knight, mage, monk, necromancer, priest, bladesinger, breed, cyborg, sii, psicorps, angel
 aliases: class, classes, guild
 short: Guilds online/being worked on
 header: Guilds: We want you!

@@ -43,6 +43,13 @@ return [
         'Pinnacle',
     ],
 
+    // Topics that contain ASCII maps — rendered in <pre> with scrollable overflow
+    // instead of normal paragraph formatting (which would break the map alignment)
+    'map_topics' => [
+        'newbieland',
+        'pinnacle',
+    ],
+
     // ===========================================
     // EXTERNAL URL SETTINGS
     // (Only used when display_mode is 'link' for legacy direct-linking)
@@ -511,6 +518,7 @@ return [
                 'north' => 'north',
                 'northeast' => 'northeast',
                 'northwest' => 'northwest',
+                'pinnacle' => 'pinnacle',
                 'retrace' => 'retrace',
                 'south' => 'south',
                 'southeast' => 'southeast',
@@ -599,7 +607,6 @@ return [
                 'ompvoucher' => 'ompvoucher',
                 'panic' => 'panic',
                 'pblock' => 'pblock',
-                'pinnacle' => 'pinnacle',
                 'playgame' => 'playgame',
                 'pvote' => 'pvote',
                 'quit' => 'quit',

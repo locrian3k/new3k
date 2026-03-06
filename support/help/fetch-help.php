@@ -34,7 +34,7 @@ if (empty($topic) ||
 
 // Check if topic is excluded (test files, wizard-only, etc.)
 $excluded = $config['excluded_topics'] ?? [];
-if (in_array(strtolower($topic), array_map('strtolower', $excluded))) {
+if (in_array($topic, $excluded)) {
     echo json_encode([
         'success' => false,
         'error' => 'Topic not found'
@@ -55,7 +55,7 @@ if ($rawContent === false) {
 }
 
 // Parse the 3K help file format
-$parsed = parseHelpFile($rawContent, $config);
+$parsed = parseHelpFile($rawContent, $config, $topic);
 
 echo json_encode([
     'success' => true,
@@ -82,7 +82,7 @@ echo json_encode([
  * @param array $config Configuration array for file validation
  * @return array Parsed data with 'header', 'html', 'keywords', 'seeAlso'
  */
-function parseHelpFile($content, $config = []) {
+function parseHelpFile($content, $config = [], $topic = '') {
     $lines = explode("\n", $content);
     $metadata = [];
     $bodyLines = [];
@@ -123,7 +123,7 @@ function parseHelpFile($content, $config = []) {
     $categoryKeywords = [
         'important', 'general', 'basic', 'color',
         'combat', 'guilds', 'souls', 'miscellaneous', 'misc',
-        'highmort', 'highmortal', 'wizard', 'mortal'
+        'highmort', 'mortal'
     ];
     $seeAlso = array_filter($keywords, function($kw) use ($categoryKeywords) {
         return !in_array(strtolower($kw), $categoryKeywords);
@@ -177,8 +177,15 @@ function parseHelpFile($content, $config = []) {
     // Merge keywords-based and body-based see also lists
     $seeAlso = array_unique(array_merge(array_values($seeAlso), $bodySeeAlso));
 
+    // Check if this topic is a map (render as scrollable <pre> instead of paragraphs)
+    $isMap = false;
+    $mapTopics = $config['map_topics'] ?? [];
+    if (!empty($topic) && in_array(strtolower($topic), array_map('strtolower', $mapTopics))) {
+        $isMap = true;
+    }
+
     // Convert to HTML
-    $html = formatHelpContent($body, $header, $seeAlso, $config);
+    $html = formatHelpContent($body, $header, $seeAlso, $config, $isMap);
 
     return [
         'header' => $header,
@@ -195,9 +202,10 @@ function parseHelpFile($content, $config = []) {
  * @param string $header The header title
  * @param array $seeAlso Related topics
  * @param array $config Configuration array for file validation
+ * @param bool $isMap Whether this topic is an ASCII map (uses scrollable <pre>)
  * @return string Formatted HTML
  */
-function formatHelpContent($body, $header, $seeAlso, $config = []) {
+function formatHelpContent($body, $header, $seeAlso, $config = [], $isMap = false) {
     // Escape HTML entities first
     $html = htmlspecialchars($body, ENT_QUOTES, 'UTF-8');
 
@@ -249,12 +257,18 @@ function formatHelpContent($body, $header, $seeAlso, $config = []) {
         $output .= '</div>' . "\n";
     }
 
-    // Convert body text into structured HTML
-    // The raw text has paragraphs (separated by blank lines), bullet lists (* and -),
-    // command examples (lines starting with >), and aligned/table data.
-    // We convert these to proper HTML so they wrap naturally on mobile.
-    $bodyHtml = convertHelpBodyToHtml($html);
-    $output .= '<div class="help-body">' . $bodyHtml . '</div>';
+    // Render body content
+    if ($isMap) {
+        // ASCII maps need exact character alignment preserved.
+        // Wrap in <pre> with scrollable overflow so mobile users can pan around.
+        $output .= '<div class="help-body"><pre class="help-map">' . $html . '</pre></div>';
+    } else {
+        // Normal help files: convert raw text into structured HTML
+        // (paragraphs, bullet lists, command examples, aligned data)
+        // so they wrap naturally on mobile.
+        $bodyHtml = convertHelpBodyToHtml($html);
+        $output .= '<div class="help-body">' . $bodyHtml . '</div>';
+    }
 
     // Add "See also" section
     if (!empty($seeAlso)) {

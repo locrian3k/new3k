@@ -43,6 +43,14 @@ return [
         'Pinnacle',
     ],
 
+    // Topic redirects — when a topic should display content from a different entry.
+    // This fixes cases where the helpdocs file has multiple entries with the same
+    // name but the MUD prioritizes differently than our top-to-bottom scan.
+    // Format: 'requested_topic' => 'actual_topic_to_fetch'
+    'topic_redirects' => [
+        'newbie' => 'faq',
+    ],
+
     // Topics that contain ASCII maps — rendered in <pre> with scrollable overflow
     // instead of normal paragraph formatting (which would break the map alignment)
     'map_topics' => [
@@ -133,7 +141,7 @@ return [
                 'helpers' => 'helpers',
                 'login' => 'login',
                 'newb' => 'newb',
-                'faq' => 'newbie',
+                'newbie' => 'newbie',
                 'newbieland' => 'newbieland',
                 'quest' => 'quest',
                 'register' => 'register',

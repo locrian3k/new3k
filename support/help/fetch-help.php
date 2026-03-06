@@ -42,9 +42,13 @@ if (in_array($topic, $excluded)) {
     exit;
 }
 
+// Apply topic redirects (e.g., 'newbie' -> 'faq' to match MUD behavior)
+$redirects = $config['topic_redirects'] ?? [];
+$fetchTopic = $redirects[strtolower($topic)] ?? $topic;
+
 // Find the topic in the helpdocs file
 $helpdocsFile = $config['helpdocs_file'] ?? '';
-$rawContent = findTopicInHelpdocs($topic, $helpdocsFile);
+$rawContent = findTopicInHelpdocs($fetchTopic, $helpdocsFile);
 
 if ($rawContent === false) {
     echo json_encode([
